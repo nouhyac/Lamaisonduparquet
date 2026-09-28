@@ -1,4 +1,4 @@
-/* Point d'entrée · La Maison du Parquet (représentant EGGER en Algérie)
+/* Point d'entrée · SARL MYF · La Maison du Parquet
    Architecture :
      config.js        réglages modifiables (numéros, horaires, suivi)
      data.js          catalogue des décors, pièces, FAQ

@@ -450,3 +450,19 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:2
 .why-list span{color:var(--mut);font-size:.92rem}
 @media (max-width:860px){.why-grid{grid-template-columns:1fr}}
 @media (max-width:520px){.why-list{grid-template-columns:1fr}.why-list li:nth-child(odd){border-inline-end:0}.why-list li:nth-child(even){padding-inline-start:0}}
+
+/* ===== SARL MYF : nom de l'entreprise, mis en avant en tête et en pied de page ===== */
+.myf{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:1.9rem;line-height:.9;letter-spacing:.01em;color:#000;white-space:nowrap;display:flex;flex-direction:column;align-items:flex-start}
+.myf:after{content:"";display:block;width:100%;height:4px;background:var(--red);margin-top:5px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .myf{color:#fff}}
+:root[data-theme="dark"] .myf{color:#fff}
+.f-myf{font-weight:600;color:var(--ink)}
+.f-brand .myf{font-size:2.1rem}
+@media (max-width:600px){.myf{font-size:1.45rem}.myf:after{height:3px;margin-top:4px}}
+@media (max-width:400px){:root .top .logo img.eg,:root .top .logo .sep:nth-of-type(2){display:none!important}}
+.nav a{white-space:nowrap}
+@media (max-width:1320px){.nav{gap:18px;font-size:.88rem}}
+@media (max-width:1230px){.nav{display:none}.tels{margin-inline-start:auto}}
+.f-brand{flex-wrap:wrap;row-gap:14px}
+@media (max-width:600px){.f-brand{gap:12px}.f-brand .myf{font-size:1.7rem}.f-brand img[width="799"]{height:40px}.f-brand img[width="321"]{height:17px}}
+.calc>*,.calc-box>*,.cf-row{min-width:0}.calc-box select{min-width:0;text-overflow:ellipsis}

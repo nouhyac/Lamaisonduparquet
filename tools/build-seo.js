@@ -9,8 +9,8 @@ const graph = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "HomeAndConstructionBusiness", "@id": url + "#business", name: "La Maison du Parquet",
-      description: "Représentant EGGER en Algérie. Sols stratifiés EGGER en stock, posés directement sur carrelage. Showroom à Dar El Beïda (Alger), sur rendez-vous.",
+      "@type": "HomeAndConstructionBusiness", "@id": url + "#business", name: "La Maison du Parquet", legalName: "SARL MYF",
+      description: "SARL MYF · La Maison du Parquet. Sols stratifiés EGGER en stock, posés directement sur carrelage. Showroom à Dar El Beïda (Alger), sur rendez-vous.",
       url, telephone: "+" + CONFIG.whatsapp, image: url + "img/og.jpg", logo: url + "img/logo.png",
       hasMap: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.mapsQuery),
       areaServed: { "@type": "Country", name: "Algérie" },
