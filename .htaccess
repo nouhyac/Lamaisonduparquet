@@ -1,43 +1,104 @@
-# La Maison du Parquet · réglages Apache pour Hostinger
-Options -Indexes
+# ==========================================================
+# La Maison du Parquet · réglages Apache / LiteSpeed (Hostinger)
+# Sécurité, performance et référencement
+# ==========================================================
+Options -Indexes -MultiViews
 DirectoryIndex index.html
+ServerSignature Off
+FileETag None
 
-# HTTPS forcé (activez d'abord le certificat SSL gratuit dans hPanel)
 RewriteEngine On
+
+# --- 1. HTTPS forcé (activez d'abord le SSL gratuit dans hPanel) ---
 RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,NE,R=301]
 # lamaisonduparquet.dz → www.lamaisonduparquet.dz
 RewriteCond %{HTTP_HOST} ^lamaisonduparquet\.dz$ [NC]
 RewriteRule ^ https://www.lamaisonduparquet.dz%{REQUEST_URI} [L,NE,R=301]
 
+# La page d'erreur est toujours servie (évite les boucles)
+RewriteRule ^404\.html$ - [L]
+
+# --- 2. Seules les méthodes de lecture sont acceptées (site statique) ---
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|OPTIONS)$ [NC]
+RewriteRule ^ - [F,L]
+
+# --- 3. Fichiers cachés, sauvegardes et documents internes interdits ---
+RewriteRule (^|/)\.(?!well-known/) - [F,L]
+<FilesMatch "(?i)\.(md|txt~|bak|old|orig|save|swp|sql|log|ini|sh|zip|tar|gz|rar|7z|env|git|psd|config|lock|json)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^(site\.webmanifest)$">
+  Require all granted
+</FilesMatch>
+
+# --- 4. Blocage des robots d'attaque et des requêtes malveillantes courantes ---
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (\.\./|\.\.%2F|%00|base64_encode|GLOBALS|_REQUEST|union.*select|concat\() [NC,OR]
+RewriteCond %{REQUEST_URI} (wp-admin|wp-login|xmlrpc\.php|phpmyadmin|\.php$|/cgi-bin/) [NC]
+RewriteRule ^ - [F,L]
+RewriteCond %{HTTP_USER_AGENT} (sqlmap|nikto|masscan|nmap|zgrab|acunetix|nessus|dirbuster|wpscan) [NC]
+RewriteRule ^ - [F,L]
+
+ErrorDocument 403 /404.html
 ErrorDocument 404 /404.html
 
-# Compression
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml application/manifest+json
+# --- 5. En-têtes de sécurité ---
+<IfModule mod_headers.c>
+  # HTTPS obligatoire pendant 2 ans (n'activez "preload" qu'une fois le SSL stable sur www et sans www)
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains" env=HTTPS
+  # Politique de contenu stricte : aucun script ni style externe, aucune injection possible.
+  # Si vous activez Meta Pixel ou Google Analytics, remplacez cette ligne par la version commentée plus bas.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; manifest-src 'self'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+  # Version avec Meta Pixel + Google Analytics :
+  # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://www.facebook.com https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; media-src 'self'; connect-src 'self' https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.google.com https://maps.google.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-site"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+  Header always unset X-Powered-By
+  Header unset X-Powered-By
+  Header unset Server
 </IfModule>
 
-# Cache navigateur : images et vidéos 1 an, CSS/JS 1 mois, HTML toujours revalidé
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType video/mp4 "access plus 1 year"
-  ExpiresByType video/webm "access plus 1 year"
-  ExpiresByType application/pdf "access plus 1 month"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType text/html "access plus 0 seconds"
-</IfModule>
-
+# --- 6. Types de fichiers ---
 AddType image/webp .webp
 AddType video/webm .webm
+AddType font/woff2 .woff2
 AddType application/manifest+json .webmanifest
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .webmanifest .xml
 
+# --- 7. Compression ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript application/javascript application/json application/xml image/svg+xml application/manifest+json
+</IfModule>
+
+# --- 8. Cache navigateur ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType text/javascript "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
 <IfModule mod_headers.c>
-  Header always set X-Content-Type-Options "nosniff"
-  Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  Header always set X-Frame-Options "SAMEORIGIN"
-  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
 </IfModule>
