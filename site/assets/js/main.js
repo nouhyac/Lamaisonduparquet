@@ -46,6 +46,13 @@ const FAQ = [
 ];
 
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+/* Sécurité : aucun style en ligne (compatible avec une CSP stricte). Les fonds d'image passent par data-bg, appliqués via le CSSOM. */
+const SAFE_BG = /^img\/[a-z0-9-]+\.(webp|jpg)$/;
+const paintBg = root => { (root.matches && root.matches("[data-bg]") ? [root] : []).concat([...(root.querySelectorAll ? root.querySelectorAll("[data-bg]") : [])]).forEach(el => { const u = el.getAttribute("data-bg"); if (SAFE_BG.test(u)) el.style.backgroundImage = `url("${u}")`; el.removeAttribute("data-bg"); }); };
+new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => n.nodeType === 1 && paintBg(n)))).observe(document.documentElement, { childList: true, subtree: true });
+/* Sécurité : tout texte saisi par le visiteur est échappé avant d'être réinjecté dans la page */
+const esc = v => String(v).replace(/[&<>"'`]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;", "`": "&#96;" }[c]));
+const clip = (v, n) => String(v).slice(0, n);
 const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"], MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
 const MOIS_C = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
 const hh = t => t.replace(/^0/, "").replace(":", "h");
@@ -88,7 +95,7 @@ function renderHero() {
   $("#heroTag").textContent = "Après · " + d.n;
   $$("#heroDec button").forEach(b => b.setAttribute("aria-checked", b.dataset.r === state.hero));
 }
-$("#heroDec").innerHTML = DECORS.map(d => `<button type="button" role="radio" data-r="${d.ref}" aria-checked="false"><i style="background-image:url(${img("sw-" + d.ref.toLowerCase())})"></i>${short(d.n)}</button>`).join("");
+$("#heroDec").innerHTML = DECORS.map(d => `<button type="button" role="radio" data-r="${d.ref}" aria-checked="false"><i data-bg="${img("sw-" + d.ref.toLowerCase())}"></i>${short(d.n)}</button>`).join("");
 $$("#heroDec button").forEach(b => b.onclick = () => { state.hero = b.dataset.r; renderHero(); stopSweep(); heroSet(35); track("ViewContent", { content_ids: [b.dataset.r] }); });
 renderHero();
 DECORS.forEach(x => { const i = new Image(); i.src = img("ba-" + x.ref.toLowerCase()); });
@@ -110,8 +117,8 @@ function renderViz(anim) {
   <div class="chips"><span>${d.mm} mm</span><span>Classe ${d.cl}</span><span>${d.fin}</span>${d.aqua ? '<span class="aq">Aqua · 24 h</span>' : ''}</div>
   <p class="${isRec ? "note" : ""}">${isRec ? room.note : d.d + ` Idéal aussi en ${ROOMS.find(r => r.rec === d.ref).n.toLowerCase()}.`}</p>
   <div class="buy"><div class="stock"><i aria-hidden="true"></i><span><b>En stock</b>Disponible immédiatement</span></div><a class="btn b-red" href="#reserver" id="vizSee">Voir ce décor au showroom</a></div>
-  <button type="button" class="lk" id="vizFiche" style="margin-top:14px">Fiche technique EGGER →</button><br>
-  <a class="share" id="vizShare" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Montrer ce rendu à un proche</a>`;
+  <button type="button" class="lk" id="vizFiche">Fiche technique EGGER →</button>
+  <a class="share" id="vizShare" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Montrer ce rendu à un proche</a>`;
   $("#vizSee").onclick = () => { state.decors = new Set([d.ref]); renderPicks(); recap(); };
   $("#vizFiche").onclick = () => showFiche(d.ref, true);
   const link = ON_SITE ? "\n" + CONFIG.siteUrl + "/#v-" + state.room + "-" + state.viz.toLowerCase() : (CONFIG.siteUrl ? "\n" + CONFIG.siteUrl : "");
@@ -120,10 +127,11 @@ function renderViz(anim) {
   if (anim) try { history.replaceState(null, "", `#v-${state.room}-${state.viz.toLowerCase()}`); } catch (_) { }
 }
 $("#rooms").innerHTML = ROOMS.map(r => `<button type="button" role="tab" data-r="${r.id}">${r.n}</button>`).join("");
-$("#swatches").innerHTML = DECORS.map(d => `<button type="button" class="swatch" role="radio" data-r="${d.ref}" aria-label="${d.n}, ${d.ref}"><i style="background-image:url(${img("sw-" + d.ref.toLowerCase())})"></i><span>${short(d.n)}</span><small>${d.ref}</small></button>`).join("");
+$("#swatches").innerHTML = DECORS.map(d => `<button type="button" class="swatch" role="radio" data-r="${d.ref}" aria-label="${d.n}, ${d.ref}"><i data-bg="${img("sw-" + d.ref.toLowerCase())}"></i><span>${short(d.n)}</span><small>${d.ref}</small></button>`).join("");
 function roving(container, sel) { container.addEventListener("keydown", e => { const items = $$(sel); const i = items.indexOf(document.activeElement); if (i < 0) return; let j; if (e.key === "ArrowRight" || e.key === "ArrowDown") j = (i + 1) % items.length; else if (e.key === "ArrowLeft" || e.key === "ArrowUp") j = (i - 1 + items.length) % items.length; else return; e.preventDefault(); items[j].focus(); items[j].click(); }); }
 $$("#rooms button").forEach(b => b.onclick = () => { state.room = b.dataset.r; state.viz = ROOMS.find(r => r.id === state.room).rec; renderViz(true); });
 $$("#swatches .swatch").forEach(b => b.onclick = () => { state.viz = b.dataset.r; renderViz(true); track("ViewContent", { content_ids: [b.dataset.r] }); });
+$$("[data-show-cuisine]").forEach(a => a.addEventListener("click", () => { state.room = "cuisine"; state.viz = "EL2416"; renderViz(true); }));
 roving($("#rooms"), "#rooms button"); roving($("#swatches"), "#swatches .swatch");
 { const m = location.hash.match(/^#v-([a-z-]+)-(el\d{4})$/); if (m && ROOMS.some(r => r.id === m[1]) && dec(m[2].toUpperCase())) { state.room = m[1]; state.viz = m[2].toUpperCase(); setTimeout(() => $("#visualiseur").scrollIntoView(), 50); } }
 renderViz(false);
@@ -131,11 +139,11 @@ renderViz(false);
 /* ---------- calculateur de cartons ---------- */
 const calc = { mode: "m2", rows: [{ n: "Salon", a: "", l: "", w: "" }] };
 $("#cDec").innerHTML = DECORS.map(d => `<option value="${d.ref}">${d.n} · ${d.ref} (colis ${num(d.colis)} m²)</option>`).join("");
-function rowArea(r) { const f = v => parseFloat(String(v).replace(",", ".")) || 0; return calc.mode === "m2" ? f(r.a) : f(r.l) * f(r.w); }
+function rowArea(r) { const f = v => parseFloat(String(v).replace(",", ".")) || 0; const v = calc.mode === "m2" ? f(r.a) : f(r.l) * f(r.w); return v > 0 && v < 5000 ? v : 0; }
 function renderRows() {
   $("#rooms2").innerHTML = calc.rows.map((r, i) => calc.mode === "m2"
-    ? `<div class="room-row" data-i="${i}"><div class="cf-row nm"><label for="rn${i}">Pièce</label><input id="rn${i}" data-k="n" value="${r.n}"></div><div class="cf-row"><label for="ra${i}">Surface (m²)</label><input id="ra${i}" data-k="a" type="text" inputmode="decimal" autocomplete="off" value="${r.a}" placeholder="ex. 24"></div><button type="button" class="rm" aria-label="Retirer ${r.n}" ${calc.rows.length < 2 ? "hidden" : ""}>×</button></div>`
-    : `<div class="room-row dim" data-i="${i}"><div class="cf-row nm"><label for="rn${i}">Pièce</label><input id="rn${i}" data-k="n" value="${r.n}"></div><div class="cf-row"><label for="rl${i}">Longueur (m)</label><input id="rl${i}" data-k="l" type="text" inputmode="decimal" autocomplete="off" value="${r.l}" placeholder="5,2"></div><div class="cf-row"><label for="rw${i}">Largeur (m)</label><input id="rw${i}" data-k="w" type="text" inputmode="decimal" autocomplete="off" value="${r.w}" placeholder="4,1"></div><button type="button" class="rm" aria-label="Retirer ${r.n}" ${calc.rows.length < 2 ? "hidden" : ""}>×</button></div>`).join("");
+    ? `<div class="room-row" data-i="${i}"><div class="cf-row nm"><label for="rn${i}">Pièce</label><input id="rn${i}" data-k="n" maxlength="30" value="${esc(r.n)}"></div><div class="cf-row"><label for="ra${i}">Surface (m²)</label><input id="ra${i}" data-k="a" type="text" inputmode="decimal" autocomplete="off" maxlength="8" value="${esc(r.a)}" placeholder="ex. 24"></div><button type="button" class="rm" aria-label="Retirer ${esc(r.n)}" ${calc.rows.length < 2 ? "hidden" : ""}>×</button></div>`
+    : `<div class="room-row dim" data-i="${i}"><div class="cf-row nm"><label for="rn${i}">Pièce</label><input id="rn${i}" data-k="n" maxlength="30" value="${esc(r.n)}"></div><div class="cf-row"><label for="rl${i}">Longueur (m)</label><input id="rl${i}" data-k="l" type="text" inputmode="decimal" autocomplete="off" maxlength="6" value="${esc(r.l)}" placeholder="5,2"></div><div class="cf-row"><label for="rw${i}">Largeur (m)</label><input id="rw${i}" data-k="w" type="text" inputmode="decimal" autocomplete="off" maxlength="6" value="${esc(r.w)}" placeholder="4,1"></div><button type="button" class="rm" aria-label="Retirer ${esc(r.n)}" ${calc.rows.length < 2 ? "hidden" : ""}>×</button></div>`).join("");
   calcOut();
 }
 function calcOut() {
@@ -151,24 +159,24 @@ $("#cDec").onchange = calcOut;
 $("#calcSend").addEventListener("click", ev => {
   const o = calcOut();
   if (!o.m2) { ev.preventDefault(); $("#cErr").textContent = "Indiquez au moins une surface pour calculer vos cartons."; $("#rooms2 input[data-k=a],#rooms2 input[data-k=l]").focus(); return; }
-  const lines = calc.rows.filter(r => rowArea(r) > 0).map(r => `• ${r.n || "Pièce"} : ${num(Math.round(rowArea(r) * 100) / 100)} m²`).join("\n");
+  const lines = calc.rows.filter(r => rowArea(r) > 0).map(r => `• ${clip(r.n || "Pièce", 30)} : ${num(Math.round(rowArea(r) * 100) / 100)} m²`).join("\n");
   $("#calcSend").href = wa(`Bonjour, je souhaite un devis pour du parquet EGGER.\n\n🪵 ${o.d.n} (${o.d.ref})\n${lines}\n📐 Total : ${num(Math.round(o.m2 * 100) / 100)} m², soit ${num(Math.round(o.m2c * 100) / 100)} m² avec coupe\n📦 Estimation : ${o.box} cartons de ${num(o.d.colis)} m²\n\nMerci de me recontacter.`);
   track("Lead", { content_name: "calculateur", value: o.box });
 });
 renderRows();
 
 /* ---------- collection ---------- */
-$("#cards").innerHTML = DECORS.map(d => { const room = ROOMS.find(r => r.rec === d.ref); return `<article class="cardp" data-ref="${d.ref}"><button class="im" type="button" data-fiche="${d.ref}" aria-label="Fiche technique ${d.n}" style="background-image:url(${img("sw-" + d.ref.toLowerCase())})"></button><div class="bd"><div class="ref">${d.ref} · ${d.line.replace("NatureSense ", "")}</div><h3>${d.n}</h3><div class="sp">${d.mm} mm · classe ${d.cl} · ${d.fin}${d.aqua ? " · Aqua" : ""}</div><div class="sp">Pièce idéale : ${room.n.toLowerCase()}</div><div class="av"><i aria-hidden="true"></i>En stock</div><button class="lk" type="button" data-fiche="${d.ref}">Fiche technique</button><button class="lk lk2" type="button" data-show="${d.ref}" data-room="${room.id}">Voir dans le visualiseur →</button></div></article>`; }).join("");
+$("#cards").innerHTML = DECORS.map(d => { const room = ROOMS.find(r => r.rec === d.ref); return `<article class="cardp" data-ref="${d.ref}"><button class="im" type="button" data-fiche="${d.ref}" aria-label="Fiche technique ${d.n}" data-bg="${img("sw-" + d.ref.toLowerCase())}"></button><div class="bd"><div class="ref">${d.ref} · ${d.line.replace("NatureSense ", "")}</div><h3>${d.n}</h3><div class="sp">${d.mm} mm · classe ${d.cl} · ${d.fin}${d.aqua ? " · Aqua" : ""}</div><div class="sp">Pièce idéale : ${room.n.toLowerCase()}</div><div class="av"><i aria-hidden="true"></i>En stock</div><button class="lk" type="button" data-fiche="${d.ref}">Fiche technique</button><button class="lk lk2" type="button" data-show="${d.ref}" data-room="${room.id}">Voir dans le visualiseur →</button></div></article>`; }).join("");
 $$("[data-show]").forEach(b => b.onclick = () => { state.room = b.dataset.room; state.viz = b.dataset.show; renderViz(true); $("#visualiseur").scrollIntoView({ behavior: smooth() }); });
 function showFiche(ref, scroll) {
   const d = dec(ref), room = ROOMS.find(r => r.rec === d.ref); state.fiche = ref;
   $$("#cards .cardp").forEach(c => c.classList.toggle("on", c.dataset.ref === ref));
-  $("#fiche").innerHTML = `<div class="f-img"><div class="plank" role="img" aria-label="Lame ${d.n}" style="background-image:url(${img("sw-" + d.ref.toLowerCase())})"></div><img src="${img(`v-${room.id}-${d.ref.toLowerCase()}`)}" alt="${room.n} avec parquet EGGER ${d.n}" width="800" height="1000" loading="lazy" decoding="async"></div>
+  $("#fiche").innerHTML = `<div class="f-img"><div class="plank" role="img" aria-label="Lame ${d.n}" data-bg="${img("sw-" + d.ref.toLowerCase())}"></div><img src="${img(`v-${room.id}-${d.ref.toLowerCase()}`)}" alt="${room.n} avec parquet EGGER ${d.n}" width="800" height="1000" loading="lazy" decoding="async"></div>
   <div><div class="ref">EGGER · ${d.line} · Réf. ${d.ref}</div><h3>${d.n}</h3>
   <div class="stock"><i aria-hidden="true"></i><span><b>En stock</b>Disponible immédiatement</span></div>
   <p class="ed">${d.ed}</p>
   <h4>Fiche technique</h4><dl class="spec">${d.specs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>
-  <div class="cta"><a class="btn b-red" href="#reserver" id="ficheSee">Voir ce décor au showroom</a><a class="btn b-line" href="#calcul" id="ficheCalc">Calculer mes cartons</a>${d.pdf ? `<a class="btn b-line" href="${d.pdf}" target="_blank" rel="noopener">Fiche PDF</a>` : ""}</div></div>`;
+  <div class="cta"><a class="btn b-red" href="#reserver" id="ficheSee">Voir ce décor au showroom</a><a class="btn b-line" href="#calcul" id="ficheCalc">Calculer mes cartons</a>${d.pdf ? `<a class="btn b-line" href="${d.pdf}" target="_blank" rel="noopener noreferrer">Fiche PDF</a>` : ""}</div></div>`;
   $("#ficheSee").onclick = () => { state.decors = new Set([d.ref]); renderPicks(); recap(); };
   $("#ficheCalc").onclick = () => { $("#cDec").value = d.ref; calcOut(); };
   if (scroll) $("#fiche").scrollIntoView({ behavior: smooth(), block: "start" });
@@ -191,10 +199,10 @@ function renderDays() {
   return ds;
 }
 function renderSlots() { const d = state.day, free = d ? freeSlots(d) : []; $("#slots").innerHTML = CONFIG.slots.map(t => `<button type="button" class="slot" data-t="${t}" aria-pressed="${state.slot === t}" ${free.includes(t) ? "" : "disabled"}>${hh(t)}</button>`).join(""); $$("#slots .slot:not(:disabled)").forEach(b => b.onclick = () => { state.slot = b.dataset.t; renderSlots(); recap(); }); }
-function renderPicks() { $("#picks").innerHTML = DECORS.map(d => `<button type="button" class="pick" data-r="${d.ref}" aria-pressed="${state.decors.has(d.ref)}"><i style="background-image:url(${img("sw-" + d.ref.toLowerCase())})"></i>${short(d.n)}</button>`).join(""); $$("#picks .pick").forEach(b => b.onclick = () => { const r = b.dataset.r; state.decors.has(r) ? state.decors.delete(r) : state.decors.add(r); renderPicks(); recap(); }); }
+function renderPicks() { $("#picks").innerHTML = DECORS.map(d => `<button type="button" class="pick" data-r="${d.ref}" aria-pressed="${state.decors.has(d.ref)}"><i data-bg="${img("sw-" + d.ref.toLowerCase())}"></i>${short(d.n)}</button>`).join(""); $$("#picks .pick").forEach(b => b.onclick = () => { const r = b.dataset.r; state.decors.has(r) ? state.decors.delete(r) : state.decors.add(r); renderPicks(); recap(); }); }
 function whenTxt() { if (!state.day) return "Choisissez un jour"; const d = state.day, base = `${cap(JOURS[d.getDay()])} ${d.getDate()} ${MOIS[d.getMonth()]}`; return state.slot ? `${base} <em>à ${hh(state.slot)}</em>` : base + ` <em>· choisissez l'heure</em>`; }
 function recap() { $("#rWhen").innerHTML = whenTxt(); $("#rPlace").textContent = CONFIG.place; const sel = DECORS.filter(d => state.decors.has(d.ref)); $("#rDec").textContent = sel.length ? sel.map(d => short(d.n)).join(", ") : "Toute la gamme en stock"; }
-function message() { const d = state.day, sel = DECORS.filter(x => state.decors.has(x.ref)), s = $("#bSurf").value; return `Bonjour, je souhaite réserver une visite au showroom.\n\n📅 ${cap(JOURS[d.getDay()])} ${d.getDate()} ${MOIS[d.getMonth()]} à ${hh(state.slot)}\n👤 ${$("#bName").value.trim()}\n📞 ${$("#bTel").value.trim()}\n🏠 ${$("#bProj").value}${s ? `\n📐 Environ ${s} m²` : ""}\n🪵 ${sel.length ? sel.map(x => x.ref + " " + x.n).join(", ") : "Voir la gamme en stock"}\n\nMerci de me confirmer le créneau.`; }
+function message() { const d = state.day, sel = DECORS.filter(x => state.decors.has(x.ref)), s = $("#bSurf").value; return `Bonjour, je souhaite réserver une visite au showroom.\n\n📅 ${cap(JOURS[d.getDay()])} ${d.getDate()} ${MOIS[d.getMonth()]} à ${hh(state.slot)}\n👤 ${clip($("#bName").value.trim(), 60)}\n📞 ${clip($("#bTel").value.trim(), 20)}\n🏠 ${$("#bProj").value}${s ? `\n📐 Environ ${clip(s, 8)} m²` : ""}\n🪵 ${sel.length ? sel.map(x => x.ref + " " + x.n).join(", ") : "Voir la gamme en stock"}\n\nMerci de me confirmer le créneau.`; }
 function validate() { const e = []; if (!state.day) e.push("le jour"); if (!state.slot) e.push("l'heure"); if ($("#bName").value.trim().length < 2) e.push("votre nom"); const t = $("#bTel").value.replace(/[\s.-]/g, "").replace(/^\+?213/, "0"); if (!/^0[5-7]\d{8}$/.test(t)) e.push("un numéro de téléphone valide (05, 06 ou 07)"); return e; }
 $("#bSend").addEventListener("click", ev => {
   const e = validate();
@@ -209,7 +217,7 @@ renderDays(); renderSlots(); renderPicks(); recap();
 /* ---------- contact, carte, vidéo, navigation ---------- */
 $("#cHours").textContent = CONFIG.hoursLabel;
 const MAPS = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.mapsQuery);
-$("#cAddr").innerHTML = `<span>${CONFIG.address}</span><a class="maplink" href="${MAPS}" target="_blank" rel="noopener">Itinéraire Google Maps →</a>`;
+$("#cAddr").innerHTML = `<span>${CONFIG.address}</span><a class="maplink" href="${MAPS}" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps →</a>`;
 if (ON_SITE) { const mb = $("#mapBox"); mb.innerHTML = `<iframe title="Plan d'accès au showroom" src="https://www.google.com/maps?q=${encodeURIComponent(CONFIG.mapsQuery)}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`; mb.hidden = false; }
 const hi = wa("Bonjour, je souhaite des informations sur les parquets EGGER.");
 $$("#waContact,#waBar,#waFloat").forEach(a => { a.href = hi; a.addEventListener("click", () => track("Contact")); });

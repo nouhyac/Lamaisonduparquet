@@ -16,3 +16,21 @@
 
 Si le domaine change, remplacez aussi `lamaisonduparquet.dz` dans `index.html`, `robots.txt` et `sitemap.xml`.
 Après la mise en ligne, déclarez le sitemap dans Google Search Console.
+
+## Sécurité (déjà en place, rien à faire)
+- **HTTPS obligatoire** + HSTS (le navigateur refuse ensuite toute connexion non chiffrée).
+- **Politique de contenu stricte (CSP)** : la page n'exécute que ses propres scripts. Aucun script, style ou police venant d'un autre site. Les polices sont hébergées sur votre serveur, sans appel à Google.
+- **Protection contre l'intégration** du site dans une autre page (clickjacking), contre le « sniffing » de type de fichier, et contre la fuite d'adresse vers d'autres sites.
+- **Fichiers internes inaccessibles** : `.htaccess`, fichiers cachés, `.md`, sauvegardes, archives.
+- **Blocage automatique** des scanners d'attaque courants (sqlmap, nikto, wpscan…), des fausses pages WordPress/PHP, des injections dans l'adresse et de toute requête autre que la lecture (le site n'a pas de formulaire côté serveur : tout part sur WhatsApp).
+- **Code durci** : tout ce que tape un visiteur est échappé et limité en longueur ; aucune donnée n'est stockée ni envoyée ailleurs que dans le message WhatsApp que le visiteur choisit d'envoyer.
+
+### Si vous activez Meta Pixel ou Google Analytics
+La politique de sécurité bloque par défaut ces scripts externes. Après avoir rempli `metaPixel` ou `ga4` dans `assets/js/main.js` :
+1. dans `.htaccess`, remplacez la ligne `Content-Security-Policy` active par la version commentée juste en dessous ;
+2. dans `index.html`, supprimez la ligne `<meta http-equiv="Content-Security-Policy" …>` (ou ajoutez-y les mêmes domaines).
+
+### Conseils hPanel
+- Activez l'**authentification à deux facteurs** sur votre compte Hostinger.
+- Activez les **sauvegardes automatiques**.
+- Une fois le site stable en HTTPS sur `www` et sans `www`, vous pouvez ajouter `; preload` à la ligne `Strict-Transport-Security` et inscrire le domaine sur hstspreload.org.
