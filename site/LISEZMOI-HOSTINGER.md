@@ -8,7 +8,7 @@
 4. **hPanel → Sécurité → SSL** : activez le certificat gratuit. Le fichier `.htaccess` redirige ensuite tout vers `https://www.`.
 5. Le fichier `.htaccess` est caché par défaut : cochez « Afficher les fichiers cachés » pour le vérifier.
 
-## Réglages (fichier `assets/js/main.js`, bloc CONFIG en haut)
+## Réglages (fichier `assets/js/config.js`)
 - `whatsapp`, `phone`, `phone2` : numéros.
 - `openDays`, `slots`, `hoursLabel` : jours et créneaux de visite.
 - `siteUrl` : adresse finale du site (la carte Google Maps s'affiche uniquement sur cette adresse).
@@ -26,7 +26,7 @@ Après la mise en ligne, déclarez le sitemap dans Google Search Console.
 - **Code durci** : tout ce que tape un visiteur est échappé et limité en longueur ; aucune donnée n'est stockée ni envoyée ailleurs que dans le message WhatsApp que le visiteur choisit d'envoyer.
 
 ### Si vous activez Meta Pixel ou Google Analytics
-La politique de sécurité bloque par défaut ces scripts externes. Après avoir rempli `metaPixel` ou `ga4` dans `assets/js/main.js` :
+La politique de sécurité bloque par défaut ces scripts externes. Après avoir rempli `metaPixel` ou `ga4` dans `assets/js/config.js` :
 1. dans `.htaccess`, remplacez la ligne `Content-Security-Policy` active par la version commentée juste en dessous ;
 2. dans `index.html`, supprimez la ligne `<meta http-equiv="Content-Security-Policy" …>` (ou ajoutez-y les mêmes domaines).
 
@@ -34,3 +34,7 @@ La politique de sécurité bloque par défaut ces scripts externes. Après avoir
 - Activez l'**authentification à deux facteurs** sur votre compte Hostinger.
 - Activez les **sauvegardes automatiques**.
 - Une fois le site stable en HTTPS sur `www` et sans `www`, vous pouvez ajouter `; preload` à la ligne `Strict-Transport-Security` et inscrire le domaine sur hstspreload.org.
+
+## Modifier le catalogue
+- Décors, pièces et FAQ : `assets/js/data.js`. Pour un nouveau décor, ajoutez aussi ses images `img/sw-…`, `img/v-<pièce>-…` et `img/ba-…` (WebP + JPEG).
+- Après une modification, mettez à jour les données Google depuis le dépôt : `npm run seo`, puis vérifiez avec `npm test`.
