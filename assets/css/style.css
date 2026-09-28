@@ -18,7 +18,7 @@
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img,video{max-width:100%;display:block}
+img,video{max-width:100%;height:auto;display:block}
 a{color:inherit}
 button,input,select{font:inherit;color:inherit}
 h1,h2,h3,h4{margin:0;font-weight:500;letter-spacing:-.015em;line-height:1.08;text-wrap:balance}
@@ -387,3 +387,66 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:2
 .fcard .ill{top:12px;bottom:auto}
 .fcard .btn{margin-top:6px}
 @media (max-width:860px){.feel-grid{grid-template-columns:1fr}.fcard{min-height:440px}}
+
+/* ===== v3 · prochain créneau, indice de glissement, en-tête compact ===== */
+.next{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:rgba(15,14,12,.55);backdrop-filter:blur(6px);color:#ece6de;border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:8px 16px;font-size:.88rem;cursor:pointer;pointer-events:auto}
+.next b{color:#fff;font-weight:500}
+.next:hover{border-color:#fff}
+@media (max-width:860px){.next{background:transparent}}
+@media (prefers-reduced-motion:no-preference){
+ .hero-ba:not(.touched) .knob{animation:nudge 2.4s ease-in-out 3.6s 3}
+}
+@keyframes nudge{0%,100%{transform:translate(-50%,-50%)}25%{transform:translate(calc(-50% - 10px),-50%)}75%{transform:translate(calc(-50% + 10px),-50%)}}
+.top{transition:box-shadow .2s}
+.top.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.08)}
+@media (min-width:601px){.top .wrap{transition:height .2s}.top.scrolled .wrap{height:62px}}
+
+/* apparitions au défilement : actives uniquement si JavaScript tourne et si le visiteur accepte les animations */
+.fx .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.fx .rv.in{opacity:1;transform:none}
+.fx .nums .rv:nth-child(2),.fx .why-list .rv:nth-child(2),.fx .cards .rv:nth-child(2){transition-delay:.08s}
+.fx .nums .rv:nth-child(3),.fx .why-list .rv:nth-child(3),.fx .cards .rv:nth-child(3){transition-delay:.16s}
+.fx .nums .rv:nth-child(4),.fx .why-list .rv:nth-child(4),.fx .cards .rv:nth-child(4){transition-delay:.24s}
+.fx .cards .rv:nth-child(5){transition-delay:.32s}
+
+.info-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:16px}
+.cf-out .big small{display:block;font-size:.76rem;color:var(--dark-mut);margin-top:4px;min-height:1.1em}
+.chips .ok{border-color:var(--ok);color:var(--ok)}
+
+/* ===== quiz ===== */
+.quiz-sec{padding-block:clamp(56px,8vw,100px);background:var(--paper);border-block:1px solid var(--line)}
+.quiz{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,72px);align-items:start}
+.quiz-l{position:sticky;top:110px}
+.quiz-l .lede{margin-top:16px}
+.quiz-box{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:clamp(20px,3vw,36px);min-height:340px;box-shadow:var(--shadow)}
+.qz-prog{display:flex;gap:6px;margin-bottom:18px}
+.qz-prog i{flex:1;height:4px;border-radius:2px;background:var(--line)}
+.qz-prog i.on{background:var(--red)}
+.qz-n{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:0 0 8px;font-weight:500}
+.qz-q{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:.95;margin-bottom:22px;outline:none}
+.qz-q span{font-family:var(--sans);font-weight:300;text-transform:none;font-size:.5em;color:var(--mut)}
+.qz-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.qz-opts button{text-align:start;border:1px solid var(--line);background:transparent;border-radius:3px;padding:16px 18px;font-size:1rem;cursor:pointer;transition:border-color .15s,background .15s}
+.qz-opts button:hover{border-color:var(--ink)}
+.qz-opts button[aria-pressed="true"]{border-color:var(--red);background:var(--red-soft,rgba(226,0,26,.06))}
+.qz-back,.qz-again{margin-top:18px}
+.qz-res{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(18px,3vw,32px);align-items:start}
+.qz-res img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:50% 88%;border-radius:3px}
+.qz-res .ticks{margin-top:4px}
+.qz-res .ticks li:before{background-color:var(--red)}
+.qz-res .cta{margin-top:20px}
+@media (max-width:860px){.quiz{grid-template-columns:1fr}.quiz-l{position:static}}
+@media (max-width:560px){.qz-res{grid-template-columns:1fr}.qz-res img{aspect-ratio:4/3}}
+
+/* ===== pourquoi EGGER ===== */
+.why{padding-block:clamp(56px,8vw,100px);border-top:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.why .lede{margin-top:16px}
+.why-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:2px solid var(--ink)}
+.why-list li{padding:20px 20px 22px 0;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.why-list li:nth-child(odd){border-inline-end:1px solid var(--line)}
+.why-list li:nth-child(even){padding-inline-start:20px}
+.why-list b{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:1.5rem;line-height:1;color:var(--red)}
+.why-list span{color:var(--mut);font-size:.92rem}
+@media (max-width:860px){.why-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.why-list{grid-template-columns:1fr}.why-list li:nth-child(odd){border-inline-end:0}.why-list li:nth-child(even){padding-inline-start:0}}
