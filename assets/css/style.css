@@ -82,13 +82,14 @@ s{text-decoration-color:var(--red);text-decoration-thickness:.09em}
 .ba .knob svg{width:24px;height:24px}
 .ba .tag{position:absolute;top:18px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#fff;background:rgba(15,14,12,.55);backdrop-filter:blur(6px);padding:7px 12px;border-radius:3px;z-index:2}
 .ba .t-l{left:18px}.ba .t-r{right:18px}
-.hero-ba{--pos:45%;height:clamp(560px,86vh,880px)}
+.hero-ba{--pos:58%;height:clamp(560px,86vh,880px)}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,11,10,.82) 0%,rgba(12,11,10,.55) 38%,rgba(12,11,10,0) 64%),linear-gradient(0deg,rgba(12,11,10,.55),rgba(12,11,10,0) 45%);pointer-events:none;z-index:1}
 .hero-txt{position:absolute;inset:auto 0 0 0;z-index:4;pointer-events:none;padding-block:0 clamp(28px,5vw,56px)}
 .hero-txt .cta,.hero-txt .hero-dec{pointer-events:auto}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:#f1ece5;margin:0 0 18px}
 .dot-live{flex:none;width:9px;height:9px;border-radius:50%;background:#2fbf71;box-shadow:0 0 0 5px rgba(47,191,113,.22)}
-.hero h1{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.9;font-size:clamp(2.8rem,6vw,5.8rem);max-width:13ch}
+.hero h1{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.9;font-size:clamp(2.6rem,5.2vw,5.4rem);max-width:none}
+@media (min-width:861px){.hero h1 span{white-space:nowrap}}
 .hero h1 span{display:block}
 .hero h1 .l2{font-weight:600;color:rgba(255,255,255,.72);font-size:.62em;line-height:1.05;margin-block:.12em .06em;letter-spacing:.005em}
 .hero h1 .l3{color:var(--red-lt)}
@@ -467,3 +468,63 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:2
 @media (max-width:600px){.f-brand{gap:12px}.f-brand .myf{font-size:1.7rem}.f-brand img[width="799"]{height:40px}.f-brand img[width="321"]{height:17px}}
 .calc>*,.calc-box>*,.cf-row{min-width:0}.calc-box select{min-width:0;text-overflow:ellipsis}
 .vs-img img{object-position:50% 80%}.fcard img{object-position:50% 70%}
+
+/* ===== Anatomie d'une lame : rendu 3D en CSS pur (aucune librairie) =====
+   Repère : la lame occupe x∈[0,w], y∈[0,d], z∈[0,t] ; chaque couche est un pavé (dessus, face avant, chant). */
+.anat{padding-block:clamp(72px,10vw,130px);background:var(--paper);border-block:1px solid var(--line);overflow:hidden}
+.anat-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.anat-grid>*{min-width:0}
+.anat .lede{margin-top:16px}
+.layers{list-style:none;counter-reset:ly;margin:28px 0 0;padding:0;display:grid;gap:2px;border-top:1px solid var(--line)}
+.layers li{counter-increment:ly}
+.layers button{width:100%;text-align:start;display:grid;grid-template-columns:34px 1fr;gap:2px 12px;padding:14px 10px 14px 0;background:transparent;border:0;border-bottom:1px solid var(--line);cursor:pointer;color:var(--ink);transition:background .2s}
+.layers button:before{content:counter(ly,decimal-leading-zero);grid-row:span 2;font-family:var(--cond);font-weight:800;font-size:1.3rem;color:var(--red);line-height:1.2}
+.layers b{font-weight:500}
+.layers span{color:var(--mut);font-size:.9rem;line-height:1.5}
+.layers button:hover,.layers button.on{background:var(--bg)}
+.anat-dec{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.anat-dec button{width:38px;height:38px;border-radius:50%;border:2px solid var(--bg);box-shadow:0 0 0 1px var(--line);background-size:cover;background-position:center;cursor:pointer;padding:0}
+.anat-dec button[aria-checked="true"]{box-shadow:0 0 0 2px var(--red)}
+
+.plank3d{position:relative;height:clamp(340px,42vw,520px);display:grid;place-items:center;perspective:1600px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.plank3d:active{cursor:grabbing}
+.scene{--rx:58deg;--rz:-32deg;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateZ(var(--rz));transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.plank3d.drag .scene{transition:none}
+.stack{--w:440px;--d:150px;--gap:0px;position:relative;width:var(--w);height:var(--d);transform-style:preserve-3d;transform:translate3d(calc(var(--w) * -.04),0,-60px)}
+.plank3d.open .stack{--gap:52px}
+.ly{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1.1s cubic-bezier(.2,.8,.2,1),opacity .35s}
+.ly i{position:absolute;display:block}
+.ly .t{inset:0;transform:translateZ(var(--t))}
+.ly .f{left:0;top:var(--d);width:var(--w);height:var(--t);transform-origin:top;transform:rotateX(90deg)}
+.ly .s{left:var(--w);top:0;width:var(--t);height:var(--d);transform-origin:left;transform:rotateY(-90deg)}
+/* empilement : z de base (somme des épaisseurs) + écart d'éclatement */
+.ly4{--t:6px;transform:translateZ(0)}
+.ly3{--t:40px;transform:translateZ(calc(6px + var(--gap)))}
+.ly2{--t:4px;transform:translateZ(calc(46px + var(--gap) * 2))}
+.ly1{--t:4px;transform:translateZ(calc(50px + var(--gap) * 3))}
+/* 4 · contre-balancement */
+.ly4 .t{background:#3b342d}.ly4 .f{background:#2a241f}.ly4 .s{background:#211c18}
+/* 3 · HDF+ : fibres compressées, profil CLIC sur le chant */
+.ly3 .t{background:#b48a5c repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 2px,transparent 2px 7px)}
+.ly3 .f{background:#9a7247 repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 4px)}
+.ly3 .s{background:#83603b;clip-path:polygon(0 0,100% 0,100% 38%,62% 38%,62% 62%,100% 62%,100% 100%,0 100%)}
+/* 2 · décor (texture réelle EGGER) */
+.ly2 .t{background-size:cover;background-position:center}
+.stack[data-dec="el2863"] .ly2 .t{background-image:url(../../img/sw-el2863.webp)}
+.stack[data-dec="el1061"] .ly2 .t{background-image:url(../../img/sw-el1061.webp)}
+.stack[data-dec="el2970"] .ly2 .t{background-image:url(../../img/sw-el2970.webp)}
+.stack[data-dec="el2416"] .ly2 .t{background-image:url(../../img/sw-el2416.webp)}
+.stack[data-dec="el1055"] .ly2 .t{background-image:url(../../img/sw-el1055.webp)}
+.ly2 .f{background:#7d5734}.ly2 .s{background:#6b4a2c}
+/* 1 · protection transparente avec reflet */
+.ly1 .t{background:linear-gradient(115deg,rgba(255,255,255,.08) 20%,rgba(255,255,255,.55) 42%,rgba(255,255,255,.08) 58%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
+.ly1 .f,.ly1 .s{background:rgba(255,255,255,.6)}
+/* ombre portée au sol */
+.stack:before{content:"";position:absolute;inset:-6% -4%;background:radial-gradient(closest-side,rgba(20,15,10,.35),transparent);transform:translateZ(-2px);filter:blur(10px)}
+/* mise en avant d'une couche */
+.stack[data-hl] .ly{opacity:.28}
+.stack[data-hl="1"] .ly1,.stack[data-hl="2"] .ly2,.stack[data-hl="3"] .ly3,.stack[data-hl="4"] .ly4{opacity:1}
+.anat-hint{position:absolute;bottom:0;left:50%;transform:translateX(-50%);margin:0;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+@media (max-width:900px){.anat-grid{grid-template-columns:1fr}.plank3d{order:-1;height:340px}.stack{--w:300px;--d:104px}}
+@media (max-width:400px){.plank3d{height:300px}.stack{--w:250px;--d:88px}}
+@media (prefers-reduced-motion:reduce){.ly,.scene{transition:none}}
