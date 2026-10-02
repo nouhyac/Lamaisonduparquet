@@ -3,13 +3,15 @@
    HTTPS + www, en-têtes de sécurité (CSP stricte, HSTS…), lecture seule, fichiers internes et robots d'attaque bloqués,
    compression, cache et lecture vidéo par plages. Aucune dépendance externe. Démarrage : npm start */
 import http from "node:http";
-import { createReadStream, readFileSync } from "node:fs";
+import { createReadStream, readFileSync, existsSync } from "node:fs";
 import { stat, realpath, readFile } from "node:fs/promises";
 import path from "node:path";
 import zlib from "node:zlib";
 import { fileURLToPath } from "node:url";
 
-const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "site");
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+// dépôt de travail : le site est dans site/ ; branche « hostinger » : le site est à la racine, à côté de ce fichier
+const ROOT = existsSync(path.join(HERE, "site", "index.html")) ? path.join(HERE, "site") : HERE;
 const PORT = Number(process.env.PORT) || 3000;
 
 // domaine canonique lu dans config.js, tenu à jour par « npm run domaine »
@@ -65,6 +67,7 @@ async function resolveFile(urlPath) {
   const segs = p.split("/").filter(Boolean);
   if (segs.some(s => s === ".." || (s.startsWith(".") && s !== ".well-known"))) return null;
   if (DENIED_EXT.test(p) && !p.endsWith(".webmanifest")) return null;
+  if (segs[0] === "node_modules" || (segs.length === 1 && /^(server\.js|package(-lock)?\.json|readme\.md)$/i.test(segs[0]))) return null;
   let file = path.join(ROOT, ...segs);
   let st = await stat(file).catch(() => null);
   if (st?.isDirectory()) { file = path.join(file, "index.html"); st = await stat(file).catch(() => null); }

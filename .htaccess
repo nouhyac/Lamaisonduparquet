@@ -28,7 +28,12 @@ RewriteRule ^ - [F,L]
 
 # --- 3. Fichiers cachés, sauvegardes et documents internes interdits ---
 RewriteRule (^|/)\.(?!well-known/) - [F,L]
+RewriteRule ^node_modules(/|$) - [F,L]
 <FilesMatch "(?i)\.(md|txt~|bak|old|orig|save|swp|sql|log|ini|sh|zip|tar|gz|rar|7z|env|git|psd|config|lock|json)$">
+  Require all denied
+</FilesMatch>
+# Fichiers du serveur Node.js (branche hostinger) : jamais servis
+<FilesMatch "^(server\.js|package(-lock)?\.json|README\.md)$">
   Require all denied
 </FilesMatch>
 <FilesMatch "^(site\.webmanifest)$">
