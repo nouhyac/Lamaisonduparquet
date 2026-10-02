@@ -528,3 +528,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:2
 @media (max-width:900px){.anat-grid{grid-template-columns:1fr}.plank3d{order:-1;height:340px}.stack{--w:300px;--d:104px}}
 @media (max-width:400px){.plank3d{height:300px}.stack{--w:250px;--d:88px}}
 @media (prefers-reduced-motion:reduce){.ly,.scene{transition:none}}
+/* En-têtes de section : titre puis texte, empilés (plus de texte flottant à droite) */
+.head2{display:block}.head2 .lede{margin-top:16px}
+/* Cartes « ressentir » : texte lisible sur toute la photo */
+.fcard:after{background:linear-gradient(180deg,rgba(12,11,10,0) 22%,rgba(12,11,10,.55) 52%,rgba(12,11,10,.92))}
+.fcard span:not(.ill){color:#f3efe9;font-weight:400}

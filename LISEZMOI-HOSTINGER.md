@@ -1,6 +1,6 @@
 # Mettre le site en ligne sur Hostinger
 
-1. **hPanel → Sites web → Gestionnaire de fichiers** du domaine `lamaisonduparquet.dz`.
+1. **hPanel → Sites web → Gestionnaire de fichiers** du domaine `lamaisonduparquet.org`.
 2. Ouvrez le dossier `public_html` et supprimez la page par défaut (`default.php` ou `index.php`).
 3. Envoyez **tout le contenu** du dossier `site/` (pas le dossier lui-même) dans `public_html` :
    `index.html`, `404.html`, `.htaccess`, `robots.txt`, `sitemap.xml`, `site.webmanifest`, et les dossiers `assets/`, `img/`, `fiches/`.
@@ -15,7 +15,7 @@
 - `metaPixel` / `ga4` : identifiants de suivi publicitaire (facultatif). Les réservations et les envois du calculateur sont suivis comme « Lead ».
 
 ## Changer le nom de domaine
-Le site est réglé pour `https://www.lamaisonduparquet.dz`. Pour un autre domaine, une seule commande depuis le dépôt :
+Le site est réglé pour `https://www.lamaisonduparquet.org`. Pour un autre domaine, une seule commande depuis le dépôt :
 `npm run domaine -- www.votre-domaine.com` (ou `votre-site.hostingersite.com`, sans www).
 Elle met à jour l'adresse canonique, l'aperçu de partage, le sitemap, robots.txt, security.txt, les données Google
 et la redirection www ↔ sans www de `.htaccess`. Ne modifiez pas ces adresses à la main.

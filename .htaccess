@@ -14,9 +14,9 @@ RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,NE,R=301]
 # DOMAINE:début (géré par « npm run domaine -- votre-domaine.com », ne pas modifier à la main)
-# lamaisonduparquet.dz → www.lamaisonduparquet.dz
-RewriteCond %{HTTP_HOST} ^lamaisonduparquet\.dz$ [NC]
-RewriteRule ^ https://www.lamaisonduparquet.dz%{REQUEST_URI} [L,NE,R=301]
+# lamaisonduparquet.org → www.lamaisonduparquet.org
+RewriteCond %{HTTP_HOST} ^lamaisonduparquet\.org$ [NC]
+RewriteRule ^ https://www.lamaisonduparquet.org%{REQUEST_URI} [L,NE,R=301]
 # DOMAINE:fin
 
 # La page d'erreur est toujours servie (évite les boucles)
