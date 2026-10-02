@@ -8,6 +8,13 @@
 4. **hPanel → Sécurité → SSL** : activez le certificat gratuit. Le fichier `.htaccess` redirige ensuite tout vers `https://www.`.
 5. Le fichier `.htaccess` est caché par défaut : cochez « Afficher les fichiers cachés » pour le vérifier.
 
+## Option : mise en ligne depuis GitHub (au lieu du zip)
+La branche `hostinger` du dépôt `nouhyac/Lamaisonduparquet` contient uniquement le site, prêt pour `public_html`.
+1. hPanel → **Avancé → GIT**.
+2. Dépôt : `https://github.com/nouhyac/Lamaisonduparquet.git` · Branche : `hostinger` · Dossier : laissez vide (= `public_html`).
+3. `public_html` doit être vide avant la première installation (supprimez `default.php`).
+4. Cliquez **Créer**, puis **Déployer**. Pour chaque mise à jour du site : bouton **Déployer** (ou activez le déploiement automatique avec le webhook proposé par Hostinger).
+
 ## Réglages (fichier `assets/js/config.js`)
 - `whatsapp`, `phone`, `phone2` : numéros.
 - `openDays`, `slots`, `hoursLabel` : jours et créneaux de visite.
