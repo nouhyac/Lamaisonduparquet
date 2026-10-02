@@ -24,7 +24,7 @@ const cards = {
   t4: `<div class="t bot"><span class="tag">Version Aqua</span><br>24 h de<br>résistance<br>à l'eau.</div>`,
   t5: `<div class="t top">Plus chaud<br>que le<br><span class="r">carrelage.</span><span class="s">Compatible chauffage au sol</span></div>`,
   t6: `<div class="t bot">5 décors<br>de chêne<br><span class="r">en stock.</span><span class="s">Fabriqués par EGGER</span></div>`,
-  t7: `<div class="t top">Venez<br>les toucher.<span class="s">Showroom de Dar El Beïda · devis sur place</span></div>`,
+  t7: `<div class="t top">Choisissez-le<br><span class="r">en vrai.</span><span class="s">Showroom de Dar El Beïda · devis sur place</span></div>`,
 };
 
 const decors = [["EL2863","Chêne Asgil miel"],["EL1061","Chêne Achensee"],["EL2970","Chêne du Nord naturel"],["EL2416","Chêne Melba beige"],["EL1055","Chêne Bardolino"]];
