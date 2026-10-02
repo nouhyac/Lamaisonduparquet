@@ -15,9 +15,10 @@ import { initCollection } from "./ui/collection.js";
 import { initBooking } from "./ui/booking.js";
 import { initContact } from "./ui/contact.js";
 import { initFx } from "./ui/fx.js";
+import { initPlank } from "./ui/plank.js";
 
 const ctx = { CONFIG, DECORS, ROOMS };
-const modules = [initHero, initViz, initQuiz, initCalc, initCollection, initBooking, initContact, initFx];
+const modules = [initHero, initViz, initPlank, initQuiz, initCalc, initCollection, initBooking, initContact, initFx];
 
 // FAQ (texte de confiance issu de data.js)
 html($("#faqList"), FAQ.map(([q, a]) => `<details class="rv"><summary>${q}</summary><p>${a}</p></details>`).join(""));

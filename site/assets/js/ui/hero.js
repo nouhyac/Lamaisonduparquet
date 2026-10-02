@@ -26,9 +26,9 @@ export function makeBA(root, knob) {
   return set;
 }
 
-/** Le carrelage disparaît sous les yeux du visiteur : 100 % → 0 % puis retour à 45 %. */
+/** Le carrelage disparaît sous les yeux du visiteur : 100 % → 0 % puis retour à 58 % (à droite du titre). */
 function sweep(set) {
-  const seq = [[100, 0, 1900], [0, 45, 900]];
+  const seq = [[100, 0, 1900], [0, 58, 900]];
   let i = 0, t0 = null;
   set(100);
   const ease = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
@@ -57,7 +57,7 @@ export function initHero({ DECORS, CONFIG }) {
   render();
   // préchargement discret des autres décors, une fois la page affichée
   (window.requestIdleCallback || setTimeout)(() => DECORS.forEach(x => { new Image().src = img("ba-" + x.ref.toLowerCase()); }));
-  if (CALM) set(45); else after.complete ? sweep(set) : after.addEventListener("load", () => sweep(set), { once: true });
+  if (CALM) set(58); else after.complete ? sweep(set) : after.addEventListener("load", () => sweep(set), { once: true });
 
   // prochain créneau réel, calculé à partir des horaires du showroom
   const n = nextSlot(CONFIG), pill = $("#nextSlot");
