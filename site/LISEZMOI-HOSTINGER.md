@@ -14,14 +14,26 @@
 - `siteUrl` : adresse finale du site (la carte Google Maps s'affiche uniquement sur cette adresse).
 - `metaPixel` / `ga4` : identifiants de suivi publicitaire (facultatif). Les réservations et les envois du calculateur sont suivis comme « Lead ».
 
-Si le domaine change, remplacez aussi `lamaisonduparquet.dz` dans `index.html`, `robots.txt` et `sitemap.xml`.
-Après la mise en ligne, déclarez le sitemap dans Google Search Console.
+## Changer le nom de domaine
+Le site est réglé pour `https://www.lamaisonduparquet.dz`. Pour un autre domaine, une seule commande depuis le dépôt :
+`npm run domaine -- www.votre-domaine.com` (ou `votre-site.hostingersite.com`, sans www).
+Elle met à jour l'adresse canonique, l'aperçu de partage, le sitemap, robots.txt, security.txt, les données Google
+et la redirection www ↔ sans www de `.htaccess`. Ne modifiez pas ces adresses à la main.
+
+## Liste de contrôle le jour de la mise en ligne
+1. SSL actif dans hPanel, puis ouvrez `http://` + votre domaine : il doit basculer seul en `https://www.…`.
+2. Ouvrez `https://www.votre-domaine/LISEZMOI-HOSTINGER.md` : la page « introuvable » doit s'afficher (fichier protégé).
+3. Testez les en-têtes sur **securityheaders.com** (note attendue : A ou A+) et le SSL sur **ssllabs.com/ssltest**.
+4. Sur un téléphone : bouton WhatsApp, réservation, calculateur et appel doivent ouvrir la bonne application.
+5. Google Search Console : ajoutez le domaine et déclarez `sitemap.xml`.
+6. Partagez le lien dans WhatsApp pour vérifier l'aperçu (image et titre).
 
 ## Sécurité (déjà en place, rien à faire)
 - **HTTPS obligatoire** + HSTS (le navigateur refuse ensuite toute connexion non chiffrée).
 - **Politique de contenu stricte (CSP)** : la page n'exécute que ses propres scripts. Aucun script, style ou police venant d'un autre site. Les polices sont hébergées sur votre serveur, sans appel à Google.
 - **Protection contre l'intégration** du site dans une autre page (clickjacking), contre le « sniffing » de type de fichier, et contre la fuite d'adresse vers d'autres sites.
-- **Fichiers internes inaccessibles** : `.htaccess`, fichiers cachés, `.md`, sauvegardes, archives.
+- **Fichiers internes inaccessibles** : `.htaccess`, fichiers cachés, `.md`, sauvegardes, archives (seul `/.well-known/security.txt` reste public : il indique comment signaler une faille).
+- **Mises à jour visibles tout de suite** : HTML, CSS et JS sont revérifiés à chaque visite, les images et polices restent en cache.
 - **Blocage automatique** des scanners d'attaque courants (sqlmap, nikto, wpscan…), des fausses pages WordPress/PHP, des injections dans l'adresse et de toute requête autre que la lecture (le site n'a pas de formulaire côté serveur : tout part sur WhatsApp).
 - **Code durci** : tout ce que tape un visiteur est échappé et limité en longueur ; aucune donnée n'est stockée ni envoyée ailleurs que dans le message WhatsApp que le visiteur choisit d'envoyer.
 

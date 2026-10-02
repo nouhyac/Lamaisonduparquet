@@ -13,9 +13,11 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,NE,R=301]
+# DOMAINE:début (géré par « npm run domaine -- votre-domaine.com », ne pas modifier à la main)
 # lamaisonduparquet.dz → www.lamaisonduparquet.dz
 RewriteCond %{HTTP_HOST} ^lamaisonduparquet\.dz$ [NC]
 RewriteRule ^ https://www.lamaisonduparquet.dz%{REQUEST_URI} [L,NE,R=301]
+# DOMAINE:fin
 
 # La page d'erreur est toujours servie (évite les boucles)
 RewriteRule ^404\.html$ - [L]
@@ -47,7 +49,8 @@ ErrorDocument 404 /404.html
 # --- 5. En-têtes de sécurité ---
 <IfModule mod_headers.c>
   # HTTPS obligatoire pendant 2 ans (n'activez "preload" qu'une fois le SSL stable sur www et sans www)
-  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains" env=HTTPS
+  # (envoyé sans condition : les navigateurs l'ignorent en HTTP, et LiteSpeed ne gère pas toujours env=HTTPS)
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
   # Politique de contenu stricte : aucun script ni style externe, aucune injection possible.
   # Si vous activez Meta Pixel ou Google Analytics, remplacez cette ligne par la version commentée plus bas.
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; manifest-src 'self'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
@@ -98,7 +101,9 @@ AddCharset UTF-8 .html .css .js .webmanifest .xml
   <FilesMatch "\.woff2$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "\.html$">
+  # HTML, CSS et JS ne sont pas versionnés : le navigateur revérifie à chaque visite (réponse 304 légère),
+  # donc une mise à jour du site est visible immédiatement, sans vider le cache.
+  <FilesMatch "\.(html|css|js|webmanifest|xml|txt)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
 </IfModule>

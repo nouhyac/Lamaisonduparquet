@@ -2,9 +2,10 @@
   "name": "lamaisonduparquet-site",
   "private": true,
   "type": "module",
-  "description": "Site statique La Maison du Parquet (représentant EGGER en Algérie), hébergé chez Hostinger.",
+  "description": "Site statique La Maison du Parquet (SARL MYF, parquets EGGER à Alger), hébergé chez Hostinger.",
   "scripts": {
     "test": "node --test tests/*.test.js",
-    "seo": "node tools/build-seo.js"
+    "seo": "node tools/build-seo.js",
+    "domaine": "node tools/set-domain.js"
   }
 }
