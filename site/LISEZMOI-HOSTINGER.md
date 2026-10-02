@@ -8,12 +8,14 @@
 4. **hPanel → Sécurité → SSL** : activez le certificat gratuit. Le fichier `.htaccess` redirige ensuite tout vers `https://www.`.
 5. Le fichier `.htaccess` est caché par défaut : cochez « Afficher les fichiers cachés » pour le vérifier.
 
-## Option : mise en ligne depuis GitHub (au lieu du zip)
-La branche `hostinger` du dépôt `nouhyac/Lamaisonduparquet` contient uniquement le site, prêt pour `public_html`.
-1. hPanel → **Avancé → GIT**.
-2. Dépôt : `https://github.com/nouhyac/Lamaisonduparquet.git` · Branche : `hostinger` · Dossier : laissez vide (= `public_html`).
-3. `public_html` doit être vide avant la première installation (supprimez `default.php`).
-4. Cliquez **Créer**, puis **Déployer**. Pour chaque mise à jour du site : bouton **Déployer** (ou activez le déploiement automatique avec le webhook proposé par Hostinger).
+## Option : hébergement Node.js depuis GitHub (au lieu du zip)
+La branche `hostinger` du dépôt `nouhyac/Lamaisonduparquet` est une application Node.js prête à l'emploi
+(`package.json`, `server.js`, dossier `site/`). Le serveur applique lui-même toutes les protections de `.htaccess`,
+qu'un hébergement Node.js ne lit pas.
+1. hPanel → ajouter une application web Node.js → importer depuis GitHub → dépôt `Lamaisonduparquet`.
+2. Branche : `hostinger`. Version de Node : 18 ou plus récente (20 ou 22 recommandée).
+3. Commande de build : aucune (ou `npm install`). Commande de démarrage : `npm start`. Fichier d'entrée : `server.js`.
+4. Déployez, puis rattachez le domaine `lamaisonduparquet.org` et activez le SSL.
 
 ## Réglages (fichier `assets/js/config.js`)
 - `whatsapp`, `phone`, `phone2` : numéros.

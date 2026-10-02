@@ -4,8 +4,13 @@
   "type": "module",
   "description": "Site statique La Maison du Parquet (SARL MYF, parquets EGGER à Alger), hébergé chez Hostinger.",
   "scripts": {
+    "start": "node server.js",
     "test": "node --test tests/*.test.js",
     "seo": "node tools/build-seo.js",
     "domaine": "node tools/set-domain.js"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
   }
 }
