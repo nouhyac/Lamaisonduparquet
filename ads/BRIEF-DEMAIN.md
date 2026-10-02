@@ -45,6 +45,15 @@ Effet « IA », voix off, musique, rythme, textes, images « pas au niveau d'EGG
   - `v-show-floor` 4fe37aee-6f78-4548-9897-8b59e6f5f00b
 - Préréglage Kling à refuser à chaque génération : `declined_preset_id` 24bae836-2c4a-48e0-89b6-49fcc0b21612.
 
+## Préparé le soir du 02/10 (sans crédits)
+- **Story-board complet** : `ads/STORYBOARD.md` (11 plans, consignes image, mouvement et texte, budget détaillé).
+- **Coûts vérifiés** : image `gpt_image_2_5` 2K medium = **1 crédit** (high = 2,75) ; Kling 3.0 pro 5 s = **8,75** ; Veo 3.1 fast 6 s = 24.
+- **Références des vrais décors EGGER** (tirées du kit) : `ads/sources/ref-decor-{el2863,el1061,el2970,el2416,el1055}.jpg`. Importer avec `media_import_url` via l'adresse raw GitHub de la branche (gratuit).
+- **Montage prêt et testé** : `ads/build/build3.py` + textes `ads/build/cards3.cjs`.
+  - Il met les plans générés dans `ads/build/clips3/s01..s09.mp4` et `s11.mp4` (s10 = vraie vidéo du showroom).
+  - Un plan absent est remplacé par une image fixe : on peut monter à tout moment.
+  - Sorties : `out/film-1m10-9x16.mp4` (71 s), `out/film-1m10-4x5.mp4`, `out/film-15s-9x16.mp4`.
+
 ## Méthode de la reprise
 1. Analyser les pubs EGGER publiques (cadrages, rythme, couleurs, ton) et en tirer une direction créative d'une page.
 2. Story-board de 1:10 plan par plan, avec le coût de chaque plan, **soumis au client**.
