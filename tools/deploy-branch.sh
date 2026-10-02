@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Met à jour la branche « hostinger » (hébergement Node.js Hostinger) avec : package.json, package-lock.json, server.js et site/.
+# Met à jour la branche « hostinger » (hébergement Node.js Hostinger) avec le contenu de site/ à la racine, plus package.json, package-lock.json et server.js.
 # Usage depuis la racine du dépôt : bash tools/deploy-branch.sh   puis   git push origin hostinger
 set -euo pipefail
 branch=hostinger
@@ -9,12 +9,12 @@ if git show-ref --verify --quiet "refs/heads/$branch"; then git worktree add -q 
 else git worktree add -q --orphan -b "$branch" "$tmp"; fi
 find "$tmp" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp package.json package-lock.json server.js "$tmp"/
-cp -r site "$tmp"/site
-rm -f "$tmp/site/LISEZMOI-HOSTINGER.md"
+cp -a site/. "$tmp"/                 # site à la racine : marche en statique comme en Node.js
+rm -f "$tmp/LISEZMOI-HOSTINGER.md"
 cat > "$tmp/README.md" <<'MD'
 # La Maison du Parquet · version hébergement (Node.js)
 Branche générée par `tools/deploy-branch.sh` : ne pas modifier à la main.
-Hostinger (Node.js) : commande de démarrage `npm start`, fichier d'entrée `server.js`, aucune commande de build.
+Hostinger : en statique, le site est à la racine ; en Node.js, démarrage `npm start` (fichier `server.js`), aucune commande de build.
 MD
 git -C "$tmp" add -A
 if git -C "$tmp" diff --cached --quiet; then echo "Branche $branch déjà à jour"

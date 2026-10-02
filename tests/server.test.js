@@ -70,3 +70,23 @@ test("vidéo servie par plages d'octets", async () => {
   assert.match(r.headers["content-range"], /^bytes 0-99\/\d+$/);
   assert.equal((await get("/img/show-loop.mp4", { headers: { range: "bytes=999999999-" } })).status, 416);
 });
+
+test("branche hostinger : site à la racine, fichiers du serveur jamais servis", async () => {
+  const { mkdtempSync, cpSync, rmSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const { spawn } = await import("node:child_process");
+  const dir = mkdtempSync(join(tmpdir(), "lmdp-"));
+  cpSync("site", dir, { recursive: true });
+  for (const f of ["server.js", "package.json"]) cpSync(f, join(dir, f));
+  const p = 40000 + Math.floor(Math.random() * 20000);
+  const child = spawn(process.execPath, ["server.js"], { cwd: dir, env: { ...process.env, PORT: String(p) } });
+  await new Promise(r => child.stdout.once("data", r));
+  const hit = path => new Promise((resolve, reject) => http.get({ port: p, path, headers: { host: "www.lamaisonduparquet.org" } },
+    res => { res.resume(); resolve(res.statusCode); }).on("error", reject));
+  try {
+    assert.equal(await hit("/"), 200);
+    assert.equal(await hit("/assets/js/main.js"), 200);
+    for (const f of ["/server.js", "/package.json", "/README.md", "/node_modules/x.js"]) assert.equal(await hit(f), 404, f);
+  } finally { child.kill(); rmSync(dir, { recursive: true, force: true }); }
+});
