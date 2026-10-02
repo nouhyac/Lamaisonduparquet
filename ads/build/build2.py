@@ -13,7 +13,10 @@ W, H, FPS, SR = 1080, 1920, 30, 44100
 GRADE = "eq=contrast=1.06:saturation=1.08:gamma=0.98,colorbalance=rs=0.02:bs=-0.02:rh=0.015,vignette=PI/5"
 ENC = ["-c:v", "libx264", "-preset", "slow", "-crf", "16", "-pix_fmt", "yuv420p", "-r", str(FPS), "-an"]
 
-def ff(*a): subprocess.run([FF, "-y", "-hide_banner", "-loglevel", "error", *a], check=True)
+FAST = os.environ.get("FAST") == "1"   # FAST=1 : réutilise les plans déjà rendus (refait seulement le son)
+def ff(*a):
+    if FAST and a[-1].startswith(SEG) and a[-1].endswith(".mp4") and os.path.exists(a[-1]): return
+    subprocess.run([FF, "-y", "-hide_banner", "-loglevel", "error", *a], check=True)
 def cover(): return f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1"
 
 def overlay(vf, card, dur, at=0.15):
@@ -46,12 +49,13 @@ C, K = f"{HERE}/clips", f"{HERE}/cards"
 # ---- les plans : (fichier, durée), transition vers le suivant ----
 shots = [
     (clip("p01", f"{C}/ai1.mp4", 5.0, f"{K}/t1.png"), "fade"),          # accroche : carrelage -> Asgil miel
-    (clip("p02", f"{C}/ai11.mp4", 3.5), "slideup"),                     # domino rapide -> Bardolino
+    (clip("p02", f"{C}/ai2.mp4", 2.9, ss=3.0), "slideup"),               # les lames claires se posent en vague
     (clip("p03", f"{C}/ai9.mp4", 3.5, f"{K}/t2.png"), "fade"),          # macro : la lame se clipse
-    (clip("p04", f"{C}/ai8.mp4", 3.5), "smoothleft"),                   # macro : le grain du bois
-    (clip("p05", f"{C}/ai6.mp4", 4.0), "fade"),                         # orbite : carrelage -> Chêne du Nord
+    (clip("p04", f"{C}/ai8.mp4", 4.5), "smoothleft"),                   # macro : le grain du bois
+    (clip("p05", f"{C}/ai6.mp4", 1.6, ss=4.55, speed=0.8), "fade"),     # fin de l'orbite : Chêne du Nord posé
     (clip("p06", f"{C}/ai4.mp4", 4.0, f"{K}/t3.png"), "fade"),          # salon lumineux : « en une journée »
-    (clip("p07", f"{C}/ai13.mp4", 7.5, f"{K}/t4.png", speed=0.8), "fade"),  # l'eau perle : Aqua
+    (concat("p07", [clip("p07a", f"{C}/ai13.mp4", 3.4, f"{K}/t4.png", speed=0.45, ss=0.3),   # gouttes au ralenti
+                     still("p07b", f"{IMG}/egger-el2416.jpg", 3.6, 1.02, 1.09, f"{K}/t4.png")]), "fade"),  # vraie photo EGGER Aqua
     (clip("p08", f"{C}/ai3.mp4", 4.5, f"{K}/t5.png"), "fade"),          # ras du sol : plus chaud
     (clip("p09", f"{C}/ai7.mp4", 3.5, f"{K}/t6.png"), "fade"),          # changement de décor
     (concat("p10", [still(f"d{i}", f"{IMG}/sw-{r}.jpg", 1.0, 1.0, 1.08, f"{K}/d{i}.png")
@@ -72,9 +76,15 @@ for i in range(1, len(shots)):
     fc.append(f"{prev}[{i}:v]xfade=transition={shots[i-1][1]}:duration={XF}:offset={off:.3f}[v{i}]"); prev = f"[v{i}]"
 ff(*inputs, "-filter_complex", ";".join(fc), "-map", prev, *ENC, f"{SEG}/video.mp4")
 
-# ---- voix off calée sur les plans : (ligne, plan, décalage) ----
-vo = [(1, 0, 0.3), (2, 2, 0.1), (3, 5, 0.2), (4, 6, 0.3), (5, 7, 0.3), (6, 9, 0.1), (7, 10, 0.2), (8, 12, 0.5)]
-vo_at = {k: starts[s] + d for k, s, d in vo}
+# ---- voix off : chaque phrase démarre sur son plan, sans jamais chevaucher la précédente ----
+TEMPO = 1.1   # débit publicitaire, naturel
+vo = [(1, 0, 0.3), (2, 1, 0.3), (3, 5, 0.0), (4, 6, 0.4), (5, 7, 0.3), (6, 9, 0.2), (7, 10, 0.2), (8, 12, 0.5)]
+def wav_len(f):
+    with wave.open(f) as w: return w.getnframes() / w.getframerate()
+vo_at, end = {}, 0.0
+for k, sh, d in vo:
+    at = max(starts[sh] + d, end + 0.3); vo_at[k] = at; end = at + wav_len(f"{HERE}/vo/l{k}.wav") / TEMPO
+assert end <= total - 0.3, f"la voix dépasse la vidéo ({end:.1f} s > {total:.1f} s)"
 
 # ---- musique + effets générés ----
 BPM = 112; beat = 60 / BPM
@@ -112,16 +122,16 @@ ains = ["-i", f"{SEG}/music.wav"]; labs = []
 mix = []
 for i, (k, at) in enumerate(sorted(vo_at.items()), 1):
     ains += ["-i", f"{HERE}/vo/l{k}.wav"]; ms = int(at * 1000)
-    mix.append(f"[{i}:a]aresample={SR},aformat=channel_layouts=stereo,highpass=f=90,acompressor=threshold=-18dB:ratio=3,adelay={ms}|{ms},volume=1.5[a{i}]"); labs.append(f"[a{i}]")
+    mix.append(f"[{i}:a]aresample={SR},aformat=channel_layouts=stereo,atempo={TEMPO},highpass=f=90,acompressor=threshold=-18dB:ratio=3,adelay={ms}|{ms},volume=1.5[a{i}]"); labs.append(f"[a{i}]")
 mix.append("".join(labs) + f"amix=inputs={len(labs)}:normalize=0[voice]")
 mix.append("[voice]asplit[vk][vm]")
 mix.append("[0:a]volume=0.55[mu];[mu][vk]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=350[duck]")   # la musique s'efface sous la voix
-mix.append("[duck][vm]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=9[m]")
-ff(*ains, "-filter_complex", ";".join(mix), "-map", "[m]", "-t", f"{total:.2f}", "-c:a", "pcm_s16le", f"{SEG}/audio.wav")
+mix.append("[duck][vm]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000,apad[m]")
+ff(*ains, "-filter_complex", ";".join(mix), "-map", "[m]", "-t", f"{total:.2f}", "-ar", "48000", "-c:a", "pcm_s16le", f"{SEG}/audio.wav")
 
 out = f"{HERE}/out/pub-lamaisonduparquet-agence-9x16.mp4"
 ff("-i", f"{SEG}/video.mp4", "-i", f"{SEG}/audio.wav", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", out)
 # version 4:5 pour le fil d'actualité Facebook / Instagram
-ff("-i", out, "-vf", "crop=1080:1350:0:285", "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-pix_fmt", "yuv420p", "-c:a", "copy",
+ff("-i", out, "-filter_complex", "[0:v]split[a][b];[a]scale=1080:1350:force_original_aspect_ratio=increase,crop=1080:1350,gblur=sigma=40,eq=brightness=-0.08[bg];[b]scale=-2:1350[fg];[bg][fg]overlay=(W-w)/2:0", "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-pix_fmt", "yuv420p", "-c:a", "copy",
    "-movflags", "+faststart", f"{HERE}/out/pub-lamaisonduparquet-agence-4x5.mp4")
 print("ok", round(total, 2), "s ; voix :", {k: round(v, 1) for k, v in vo_at.items()})
