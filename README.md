@@ -13,3 +13,6 @@ npm run domaine -- www.votre-domaine.com   # change le domaine partout (canoniqu
 ```
 
 Architecture JS : `core/` = logique pure testée sous Node, `ui/` = un module par section, reliés par un bus d'événements.
+
+Hébergement : la branche `hostinger` contient uniquement `site/` à la racine (hPanel → Avancé → GIT, branche `hostinger`).
+Après une modification de `site/` : `git subtree split --prefix=site -b hostinger && git push origin hostinger`.
