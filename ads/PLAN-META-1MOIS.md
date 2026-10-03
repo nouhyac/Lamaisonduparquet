@@ -22,6 +22,15 @@ WhatsApp unique : **0549 50 68 57** (appel : 0794 70 93 23). Zone : **toute l'Al
 **Titre :** Parquet EGGER posé sur carrelage · **Bouton :** Envoyer un message WhatsApp
 **Message d'accueil WhatsApp :** « Bonjour ! Quelle surface et quelle pièce ? On vous envoie un devis et les décors en stock. »
 
+## Le site dans la campagne : www.lamaisonduparquet.org
+- **Lien du site dans la pub** (champ « Site web » et bio Instagram/Facebook), pour savoir d'où viennent les visites :
+  - pub : `https://www.lamaisonduparquet.org/?utm_source=meta&utm_medium=paid&utm_campaign=lancement`
+  - bio Instagram : `https://www.lamaisonduparquet.org/?utm_source=instagram&utm_medium=bio`
+  - bio Facebook : `https://www.lamaisonduparquet.org/?utm_source=facebook&utm_medium=bio`
+- Dans chaque publication gratuite : « Calculez vos cartons et réservez votre visite sur lamaisonduparquet.org ».
+- **Meta Pixel** : envoyer l'identifiant (Gestionnaire d'événements Meta). Il se règle dans `site/assets/js/config.js` (`metaPixel`). Chaque réservation et chaque devis WhatsApp envoyé depuis le site compte alors comme « Lead ».
+- Le site affiche maintenant les vraies photos du showroom (espace EGGER, stock, décors au sol).
+
 ## Calendrier des publications gratuites (3 posts par semaine à 19 h + 1 story par jour)
 | Sem. | Mardi | Jeudi | Samedi |
 |---|---|---|---|
