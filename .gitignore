@@ -7,3 +7,6 @@ ads/build/vo/
 ads/build/seg2/
 ads/build/seg3/
 ads/build/clips3/
+ads/motion/out/
+ads/motion/frames/
+ads/motion/chk/

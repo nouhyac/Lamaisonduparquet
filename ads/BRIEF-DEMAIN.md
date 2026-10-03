@@ -66,3 +66,16 @@ Effet « IA », voix off, musique, rythme, textes, images « pas au niveau d'EGG
 ## Outils dans ce conteneur
 - ffmpeg : `pip install imageio-ffmpeg`, puis le binaire indiqué par `python3 -c "import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())"` (mettre à jour la variable `FF` de `build2.py`).
 - Cartes texte : `node ads/build/cards.cjs` (Playwright, polices du site).
+
+## Motion design (ajouté le 03/10, gratuit)
+- Référence du client : reel « Motion Design Opus 5.5 » (instagram.com/reel/Dd30EeIu-jP), des vidéos animées créées par Claude avec du code.
+- Moteur : `ads/motion/` (`base.css`, `seek.js`, `render.cjs`). Les scènes HTML sont pilotées dans le temps par `seek(t)` et rendues image par image en 1080x1920 à 30 i/s.
+  - Rendre une scène : `node ads/motion/render.cjs <scène> <durée_s>` → `ads/motion/out/<scène>.mp4`.
+- Scène faite : `m1-intro` (7 s), le carrelage gris puis les vraies lames EGGER EL2863 qui se posent, « Votre carrelage reste. » puis « Votre maison change. ».
+- À créer :
+  - `m2` : lame éclatée en 3D, 4 couches nommées (reprendre la lame 3D du site, `site/assets/css/style.css`) ;
+  - `m3` : chiffres animés « 0 gravat · 1 journée · 24 h Aqua » ;
+  - `m4` : carrousel 3D des 5 décors réels (`ads/sources/ref-decor-*.jpg`) ;
+  - `m5` : carte de fin animée.
+- Film final : alterner les scènes de motion design et les plans photoréalistes dans `ads/build/build3.py`.
+- Première question à poser au client : faut-il une égérie ?
