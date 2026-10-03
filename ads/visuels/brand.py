@@ -9,6 +9,12 @@ def erase(a, x0, y0, x1, y1, pad=5):
         t = (i + 1) / (y1 - y0 + 1); a[y, x0:x1] = (1 - t) * top + t * bot
 def paste(im, tag, x, y): im.alpha_composite(tag, (int(x), int(y)))
 B, Wt, L = (Image.open(f).convert("RGBA") for f in ("myf-black.png", "myf-white.png", "label14.png"))
+UB, UW = (Image.open(f).convert("RGBA") for f in ("url-black.png", "url-white.png"))
+def sign(im, tag, right, y, k=1.0):
+    """SARL MYF + adresse du site en dessous, alignés à droite."""
+    u = UW if tag is Wt else UB
+    if k != 1.0: tag = tag.resize((round(tag.width*k), round(tag.height*k)), Image.LANCZOS); u = u.resize((round(u.width*k), round(u.height*k)), Image.LANCZOS)
+    paste(im, tag, right - tag.width, y); paste(im, u, right - u.width + 4*k, y + tag.height + 2*k)
 TR = (676, 49, 1015, 63)                 # « REPRÉSENTANT EGGER · ALGÉRIE » en haut à droite
 for n in ["02", "03", "04", "05", "06", "08", "10", "11", "13", "14"]:
     a = np.asarray(Image.open(f"src/{n}.jpg").convert("RGB")).astype(float)
@@ -20,7 +26,7 @@ for n in ["02", "03", "04", "05", "06", "08", "10", "11", "13", "14"]:
     dark = region.mean() < 140
     im = Image.fromarray(a.clip(0, 255).astype("uint8")).convert("RGBA")
     tag = Wt if dark else B
-    paste(im, tag, 1022 - tag.width, cy - tag.height / 2 - 2)
+    sign(im, tag, 1022, cy - tag.height / 2 - 2)
     if n == "14": paste(im, L, 77, 358)
     im.convert("RGB").save(f"out/{n}.jpg", quality=95, subsampling=0)
     print(n, "blanc" if dark else "noir")
@@ -29,6 +35,5 @@ for n in ["02", "03", "04", "05", "06", "08", "10", "11", "13", "14"]:
 for n in ["01", "07", "09", "12", "15"]:
     im = Image.open(f"src/{n}.jpg").convert("RGBA"); w, h = im.size
     k = w / 1080; tag0 = Wt if np.asarray(im.convert("L"))[int(h*.88):, int(w*.6):].mean() < 140 else B
-    tag = tag0.resize((round(tag0.width * k), round(tag0.height * k)), Image.LANCZOS)
-    paste(im, tag, w - tag.width - 40 * k, h - tag.height - 40 * k)
+    sign(im, tag0, w - 40 * k, h - (tag0.height + 32) * k - 40 * k, k)
     im.convert("RGB").save(f"out/{n}.jpg", quality=95, subsampling=0); print(n, "photo")

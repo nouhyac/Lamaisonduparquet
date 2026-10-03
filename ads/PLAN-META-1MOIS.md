@@ -6,18 +6,19 @@ WhatsApp unique : **0549 50 68 57** (appel : 0794 70 93 23). Zone : **toute l'Al
 | Réglage | Valeur |
 |---|---|
 | Objectif | Interactions → **Messages WhatsApp** (0549 50 68 57) |
-| Structure | 1 campagne, 1 ensemble de publicités, **2 publicités** (test A/B) |
+| Structure | 1 campagne, 1 ensemble de publicités, **1 publicité : la vidéo de 50 s** (choix du client) |
 | Budget | **2 $ par jour pendant 7 jours** (+1 $ de marge) |
 | Zone | **Algérie entière** |
 | Âge | 25 à 60 ans |
 | Ciblage | Advantage+ (suggestions : décoration intérieure, rénovation, immobilier, AADL, architecture) |
 | Emplacements | Reels + Stories Instagram et Facebook (9:16) |
-| Pub A | `pub-15s-sarl-myf.mp4` (accroche directe, idéale pour la pub) |
-| Pub B | `film-50s-sarl-myf.mp4` (version complète) |
-| Règle | Ne rien modifier pendant 72 h. Au jour 4, couper la pub la plus chère par message. |
+| Vidéo | `film-50s-sarl-myf.mp4` (SARL MYF + lamaisonduparquet.org au début et à la fin) |
+| Parcours | Pub → **bouton WhatsApp (0549 50 68 57)** ; lien du site dans le texte et sur la vidéo. Le site renvoie lui aussi sur WhatsApp (bouton flottant, réservation, calculateur). |
+| Règle | Ne rien modifier pendant 72 h. La version 15 s reste en réserve si le visionnage à 15 s est faible. |
 
 **Texte principal**
 > Changez de sol sans casser votre carrelage. Le parquet EGGER se clipse directement dessus : posé en une journée, sans gravats, sans poussière. 5 décors en stock à Dar El Beïda, livraison partout en Algérie. Écrivez-nous pour votre devis.
+> 👉 Calculez vos cartons et réservez votre visite : lamaisonduparquet.org
 
 **Titre :** Parquet EGGER posé sur carrelage · **Bouton :** Envoyer un message WhatsApp
 **Message d'accueil WhatsApp :** « Bonjour ! Quelle surface et quelle pièce ? On vous envoie un devis et les décors en stock. »
