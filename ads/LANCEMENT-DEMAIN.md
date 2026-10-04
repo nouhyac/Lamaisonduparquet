@@ -9,7 +9,7 @@
 | Vidéo | `ads/pub/film-50s-pub.mp4` (version du client, 5 photos de chantier) |
 | Budget | **65 €** au total (≈ 75 $, marge pour le change ; compte en euros), du 04/10 au 18/10 (14 jours, ≈ 4,6 € par jour) |
 | Audience | Algérie, 25 à 65 ans (Meta impose 65 ans minimum avec Advantage+), intérêt Décoration intérieure |
-| Emplacements | Reels, Stories et fil d'actualité, sur Instagram et Facebook |
+| Emplacements | **Partout** (Advantage+) : Facebook, Instagram, Messenger, Audience Network, tous emplacements (mis à jour le 04/10) |
 
 Pilotage :
 - **J+3 (07/10)** : `get_meta_campaign_performance`. On ne touche à rien pendant l'apprentissage, sauf si le coût par conversation dépasse 0,80 $.
