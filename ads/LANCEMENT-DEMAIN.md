@@ -5,6 +5,15 @@
 - Le compte publicitaire « Sofiane Yacoubi » (`act_2860172500875914`) a **un solde impayé**. La carte, elle, est acceptée.
 - Aucun boost récent sur le compte : seulement 3 vieux boosts de 2020-2021.
 
+**Mise à jour du 04/10, dernier essai :** le message « solde impayé » a disparu. Meta bloque désormais sur un autre point : **« This WhatsApp phone number is not linked to your account »** (code 100/1487246). Rien n'a été créé. Quota Adspirer : 9 appels utilisés sur 15.
+
+Le client doit relier le numéro : Page « La maison du parquet EGGER » → Paramètres → WhatsApp → +213 549 50 68 57 → code de confirmation. Il approvisionne aussi sa carte.
+
+**Au signal « compte rempli » :**
+1. créer la campagne vidéo de la §3 (en pause) ;
+2. créer la pub de 8 $ de la §2 (option B, si le client envoie le média) ;
+3. sur « lance », appeler `resume_meta_campaign`.
+
 ## 1. Check-list du client (avant tout)
 - [ ] **Payer le solde** : business.facebook.com/billing → compte « Sofiane Yacoubi » → **Payer maintenant**.
 - [ ] WhatsApp **+213 549 50 68 57** relié à la Page : Paramètres de la Page → WhatsApp.
