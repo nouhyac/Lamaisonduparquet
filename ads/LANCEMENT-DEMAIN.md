@@ -6,7 +6,7 @@
 | Ensemble de publicités / Pub | `120252281416600105` / `120252281418350105` |
 | Statut | **ACTIVE**. Contrôle Meta en cours (jusqu'à 24 h) |
 | WhatsApp | **+213 794 70 93 23** (numéro relié à la Page, validé par Meta) |
-| Vidéo | `ads/pub/film-50s-pub.mp4` (version du client, 5 photos de chantier) |
+| Vidéo | **`ads/pub/film-50s-pub-v2.mp4`** (v2 du client : 3 photos de chantier), mise dans la pub active `120252281418350105` le 04/10 (création `1816519769355597`). La pub de secours `120252282765570105` (même vidéo) reste **en pause**, à ne pas activer. |
 | Budget | **65 €** au total (≈ 75 $, marge pour le change ; compte en euros), du 04/10 au 18/10 (14 jours, ≈ 4,6 € par jour) |
 | Audience | Algérie, 25 à 65 ans (Meta impose 65 ans minimum avec Advantage+), intérêt Décoration intérieure |
 | Emplacements | **Partout** (Advantage+) : Facebook, Instagram, Messenger, Audience Network, tous emplacements (mis à jour le 04/10) |
