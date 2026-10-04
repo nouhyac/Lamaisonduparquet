@@ -1,3 +1,23 @@
+# Pub Meta vidéo 50 s : EN LIGNE depuis le 04/10/2026
+
+| Élément | Valeur |
+|---|---|
+| Campagne | LMDP · Vidéo 50 s · WhatsApp · Algérie · 80 $ (`120252281416110105`) |
+| Ensemble de publicités / Pub | `120252281416600105` / `120252281418350105` |
+| Statut | **ACTIVE**. Contrôle Meta en cours (jusqu'à 24 h) |
+| WhatsApp | **+213 794 70 93 23** (numéro relié à la Page, validé par Meta) |
+| Vidéo | `ads/pub/film-50s-pub.mp4` (version du client, 5 photos de chantier) |
+| Budget | 80 $ au total, du 04/10 au 18/10 (14 jours) |
+| Audience | Algérie, 25 à 65 ans (Meta impose 65 ans minimum avec Advantage+), intérêt Décoration intérieure |
+| Emplacements | Reels, Stories et fil d'actualité, sur Instagram et Facebook |
+
+Pilotage :
+- **J+3 (07/10)** : `get_meta_campaign_performance`. On ne touche à rien pendant l'apprentissage, sauf si le coût par conversation dépasse 0,80 $.
+- **J+7 (11/10)** : on coupe les emplacements ou les âges qui coûtent plus de 2 fois la moyenne.
+- **J+14 (18/10)** : bilan messages → visites → ventes.
+
+---
+## Archive : préparation
 # Lancement des pubs Meta : fiche de reprise
 
 État au 04/10/2026 :
