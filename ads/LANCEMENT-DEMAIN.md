@@ -100,3 +100,13 @@ Quota Adspirer (offre gratuite) : 15 appels par mois, environ 7 utilisés, remis
 - Jamais « représentant EGGER », jamais de délai d'importation.
 - Rien n'est lancé sans « lance ».
 - Aucun crédit Higgsfield dépensé sans accord.
+
+## Mise à jour du 04/10 au soir : vidéo v3 corrigée
+- `ads/pub/film-50s-pub-v3.mp4` est la v2 du client avec 3 corrections (script : `ads/v50/fix/fix-v2.sh`) :
+  - le WhatsApp passe au **0794 70 93 23** sur les cartes des décors (11-30 s) et sur la carte de fin ; le 0549 50 68 57 devient le numéro d'appel ;
+  - « Représentant EGGER en Algérie » (35,8-36,9 s) est remplacé par « Parquet EGGER · en stock à Alger ».
+- La pub v3 a été créée dans l'ensemble de publicités : **`120252282830600105`** « Vidéo 50 s v3 (corrigée) · secours » (création `1500225388824565`). Elle est **EN PAUSE**.
+- Le quota Adspirer est épuisé (15/15) jusqu'au 02/11. Le client doit faire lui-même la manipulation dans le Gestionnaire de publicités :
+  1. **activer** `120252282830600105` (v3) ;
+  2. **mettre en pause** `120252281418350105` (« Vidéo 50 s v2 (3 photos) · active »).
+- Le suivi se fait désormais avec les captures d'écran du client.
