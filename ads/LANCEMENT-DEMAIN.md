@@ -110,3 +110,8 @@ Quota Adspirer (offre gratuite) : 15 appels par mois, environ 7 utilisés, remis
   1. **activer** `120252282830600105` (v3) ;
   2. **mettre en pause** `120252281418350105` (« Vidéo 50 s v2 (3 photos) · active »).
 - Le suivi se fait désormais avec les captures d'écran du client.
+
+## 05/10 : pub ACTIVE
+- Le client a activé lui-même la campagne, l'ensemble de publicités et la pub v3 dans Business Suite. La pub est diffusée.
+- « Vidéo 50 s v2 (3 photos) · active » doit rester sur **OFF**.
+- Le suivi se fait par captures d'écran : skill `.claude/skills/community-manager-lmdp`.
