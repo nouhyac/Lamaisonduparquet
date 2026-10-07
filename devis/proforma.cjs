@@ -12,7 +12,7 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
 
 const SOC = {
   nom: 'SARL M Y F', activite: 'IMPORT / EXPORT', adresse: 'Cite ONAB Lot 148 DAR EL BEIDA',
-  tel: '00213 555 24 36 83', mail: 'sarlmyf@yahoo.fr', ville: 'Dar El Beïda',
+  tel: '00213 555 24 36 83', mobiles: 'Mob 0549 50 68 57 · WhatsApp 0794 70 93 23', mail: 'sarlmyf@yahoo.fr', ville: 'Dar El Beïda',
 };
 
 function calc(doc) {
@@ -55,7 +55,7 @@ table.t{border-collapse:collapse;width:68mm;font-size:10pt}table.t td{border:1px
 .sc{position:absolute;right:30mm;top:224mm;font-size:10pt}
 </style><div class="p">
 <h1>${SOC.nom}</h1>
-<div class="soc"><p>${SOC.activite}</p><p>${SOC.adresse}</p><p class="t">Tel ${SOC.tel}</p><p>mail&nbsp; ${SOC.mail}</p></div>
+<div class="soc"><p>${SOC.activite}</p><p>${SOC.adresse}</p><p class="t">Tel ${SOC.tel}</p><p>${SOC.mobiles}</p><p>mail&nbsp; ${SOC.mail}</p></div>
 <div class="date">${SOC.ville} le &nbsp;&nbsp;&nbsp; ${esc(doc.date)}</div>
 <div class="cli"><table><tr><td>NOM/R.S</td><td><b>${esc(cl.nom)}</b></td></tr><tr><td style="padding-top:4mm">Adresse</td><td class="ad" style="padding-top:4mm">${esc(cl.adresse)}</td></tr><tr><td>TEL</td><td>${esc(cl.tel)}</td></tr><tr><td>R.C N°</td><td>${esc(cl.rc)}</td></tr></table></div>
 <div class="num">${esc(doc.titre || 'Facture proforma')} N ${esc(doc.numero)}</div>
@@ -72,7 +72,7 @@ table.t{border-collapse:collapse;width:68mm;font-size:10pt}table.t td{border:1px
   const doc = JSON.parse(fs.readFileSync(src, 'utf8'));
   const out = process.argv[3] || src.replace(/\.json$/, '.pdf');
   const c = calc(doc);
-  const b = await chromium.launch(); const p = await b.newPage();
+  const b = await chromium.launch(); const p = await b.newPage({ deviceScaleFactor: 3 });
   await p.setContent(html(doc, c)); await p.pdf({ path: out, format: 'A4', printBackground: true });
   await p.setViewportSize({ width: 794, height: 1123 }); await p.screenshot({ path: out.replace(/\.pdf$/, '.png') });
   await b.close();
