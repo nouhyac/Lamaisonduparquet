@@ -1,8 +1,8 @@
-"""Remplace 0550 48 24 27 par 0549 50 68 57 (WhatsApp) sur les visuels, même police (Poppins Bold) et même taille."""
+"""Remplace le numéro WhatsApp affiché par 0794 70 93 23 (auparavant 0550 48 24 27, puis 0549 50 68 57) (WhatsApp) sur les visuels, même police (Poppins Bold) et même taille."""
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 FONT = "/tmp/claude-0/fonts/package/files/poppins-latin-700-normal.woff"
-NEW = "0549 50 68 57"
+NEW = "0794 70 93 23"
 BOX = {"bar1350": (758, 1265, 1065, 1330), "card1920": (700, 1592, 1012, 1662),
        "big1920": (160, 1055, 720, 1135), "sq1080": (755, 985, 1065, 1050)}
 LAYOUT = {"out/02": "bar1350", "out/04": "bar1350", "out/06": "bar1350", "out/10": "bar1350", "out2/22": "bar1350", "out2/23": "bar1350",

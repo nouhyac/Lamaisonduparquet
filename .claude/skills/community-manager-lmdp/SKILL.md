@@ -8,7 +8,7 @@ description: Community manager et responsable pubs Meta de La Maison du Parquet 
 ## Charte (à respecter à chaque texte, visuel ou pub)
 - Marque : **La Maison du Parquet**, société **SARL MYF**. Parquet **EGGER**, en stock au showroom de **Dar El Beïda (Alger)**.
 - Identité visuelle EGGER : blanc, gris et rouge `#e2001a`, police Fira Sans. Logo SARL MYF en noir et gras.
-- **WhatsApp : 0794 70 93 23**. Appel : 0549 50 68 57. Le 0550 48 24 27 n'est plus utilisé.
+- **Numéro unique : 0794 70 93 23** (WhatsApp et appel). Les 0549 50 68 57 et 0550 48 24 27 ne sont plus utilisés (exception : la vidéo de la pub en cours le montre encore comme numéro d'appel ; ne pas la changer avant la fin de la campagne le 18/10).
 - **lamaisonduparquet.org** dans chaque publication, pub et story.
 - **Interdits** : « représentant (officiel) EGGER », tout « délai d'importation ». On dit « Parquet EGGER · en stock à Alger ».
 - Horaires : du samedi au jeudi, de 8 h à 16 h, sur rendez-vous. Livraison partout en Algérie.
