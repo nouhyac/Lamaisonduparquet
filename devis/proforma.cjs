@@ -7,7 +7,7 @@ const { enLettres } = require('./lettres.cjs');
 
 const r2 = x => Math.round(x * 100) / 100;
 const fmt = (x, d = 2) => x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }).replace(/ | /g, ' ').replace(',', '.');
-const fmtQ = x => (Math.round(x * 1000) / 1000).toFixed(Number.isInteger(x) ? 2 : 3);
+const fmtQ = x => { const s = (Math.round(x * 1000) / 1000).toFixed(3).replace(/0$/, ''); return s; };
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 const SOC = {
@@ -16,9 +16,16 @@ const SOC = {
 };
 
 function calc(doc) {
-  const lignes = doc.lignes.map((l, i) => ({ code: l.code || 'K' + String(i + 1).padStart(3, '0'), unite: 'M2', tva: 19, ...l, total: r2(l.quantite * l.puht) }));
+  // Chaque ligne a soit un prix HT (puht), soit un prix TTC (pttc) : dans ce cas, le HT est déduit et le TTC tombe juste.
+  const lignes = doc.lignes.map((l, i) => {
+    const tva = l.tva ?? 19, ttc = l.pttc != null ? l.quantite * l.pttc : null;
+    const puht = l.pttc != null ? l.pttc / (1 + tva / 100) : l.puht;
+    return { code: l.code || 'K' + String(i + 1).padStart(3, '0'), unite: 'M2', ...l, tva, puht, ttcLigne: ttc, total: r2(l.quantite * puht) };
+  });
   const ht = r2(lignes.reduce((s, l) => s + l.total, 0));
-  const tva = r2(lignes.reduce((s, l) => s + l.total * l.tva / 100, 0));
+  const tva = lignes.every(l => l.ttcLigne != null)
+    ? r2(r2(lignes.reduce((s, l) => s + l.ttcLigne, 0)) - ht)
+    : r2(lignes.reduce((s, l) => s + l.total * l.tva / 100, 0));
   const pose = r2(doc.surcharge_pose || 0);
   const ttc = r2(ht + tva + pose);
   return { lignes, ht, tva, pose, ttc, lettres: enLettres(ttc) };
@@ -51,11 +58,11 @@ table.t{border-collapse:collapse;width:68mm;font-size:10pt}table.t td{border:1px
 <div class="soc"><p>${SOC.activite}</p><p>${SOC.adresse}</p><p class="t">Tel ${SOC.tel}</p><p>mail&nbsp; ${SOC.mail}</p></div>
 <div class="date">${SOC.ville} le &nbsp;&nbsp;&nbsp; ${esc(doc.date)}</div>
 <div class="cli"><table><tr><td>NOM/R.S</td><td><b>${esc(cl.nom)}</b></td></tr><tr><td style="padding-top:4mm">Adresse</td><td class="ad" style="padding-top:4mm">${esc(cl.adresse)}</td></tr><tr><td>TEL</td><td>${esc(cl.tel)}</td></tr><tr><td>R.C N°</td><td>${esc(cl.rc)}</td></tr></table></div>
-<div class="num">Facture proforma N ${esc(doc.numero)}</div>
+<div class="num">${esc(doc.titre || 'Facture proforma')} N ${esc(doc.numero)}</div>
 <table class="l"><tr><th style="width:8%"></th><th>Désignations</th><th style="width:7%">Unité</th><th style="width:9%;text-decoration:none">Taux TVA</th><th style="width:12%">Quantité</th><th style="width:12%">P.U.H.T</th><th style="width:15%">TOTAL</th></tr>${rows}</table>
 <div class="bas"><div class="pay"><p>MODE DE PAIEMENT :</p><p>${esc(doc.paiement || 'A terme (Chèque ou Virement bancaire)')}</p></div>
-<table class="t"><tr><td>Total HT</td><td>${fmt(c.ht)}</td></tr><tr><td>T.V.A 19%</td><td>${fmt(c.tva)}</td></tr><tr><td class="small">SURCHARGE POSE</td><td>${c.pose ? fmt(c.pose) : ''}</td></tr><tr class="ttc"><td>Total TTC</td><td>${fmt(c.ttc)}</td></tr></table></div>
-<div class="arr"><b>La présente facture proforma est arrêtée à la somme de :</b>${c.lettres}</div>
+<table class="t"><tr><td>Total HT</td><td>${fmt(c.ht)}</td></tr><tr><td>T.V.A 19%</td><td>${fmt(c.tva)}</td></tr><tr><td class="small">${esc(doc.libelle_pose || 'SURCHARGE POSE')}</td><td>${c.pose ? fmt(c.pose) : ''}</td></tr><tr class="ttc"><td>Total TTC</td><td>${fmt(c.ttc)}</td></tr></table></div>
+<div class="arr"><b>${doc.titre ? 'Le présent ' + esc(doc.titre.toLowerCase()) + ' est arrêté' : 'La présente facture proforma est arrêtée'} à la somme de :</b>${c.lettres}</div>
 <div class="sc">SERVICE COMMERCIAL</div>
 </div>`;
 }
