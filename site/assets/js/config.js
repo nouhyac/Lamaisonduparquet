@@ -1,8 +1,7 @@
 /* ============ RÉGLAGES (modifiables) ============ */
 export const CONFIG = {
-  whatsapp: "213549506857",
-  phone: "0549 50 68 57",
-  phone2: "0794 70 93 23",
+  whatsapp: "213794709323",
+  phone: "0794 70 93 23",
   address: "La Maison du Parquet EGGER, Dar El Beïda (Alger)",
   place: "Showroom, Dar El Beïda",
   mapsQuery: "La Maison du Parquet EGGER Dar El Beida",

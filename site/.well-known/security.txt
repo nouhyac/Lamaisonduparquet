@@ -1,6 +1,6 @@
 # Signaler une faille de sécurité sur ce site
-Contact: https://wa.me/213549506857
-Contact: tel:+213549506857
+Contact: https://wa.me/213794709323
+Contact: tel:+213794709323
 Preferred-Languages: fr, ar, en
 Canonical: https://www.lamaisonduparquet.org/.well-known/security.txt
 Expires: 2027-10-01T00:00:00.000Z
