@@ -1,4 +1,5 @@
 *.json
+!dernier-numero.txt
 *.pdf
 *.png
 !exemple.json
