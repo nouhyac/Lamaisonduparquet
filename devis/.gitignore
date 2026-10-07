@@ -1,0 +1,6 @@
+*.json
+*.pdf
+*.png
+!exemple.json
+!exemple.pdf
+!exemple.png
