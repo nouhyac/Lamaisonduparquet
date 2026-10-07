@@ -69,7 +69,7 @@ Légende : **IMG** = consigne de l'image de départ, **MVT** = consigne d'animat
 11. **Plan final** : le salon du plan 2 à l'heure dorée.
     - MVT : grue lente qui recule.
     - Pas de texte.
-12. **Carte de fin animée** (gratuite) : SARL MYF, La Maison du Parquet et EGGER, « 0549 50 68 57 · WhatsApp », lamaisonduparquet.org.
+12. **Carte de fin animée** (gratuite) : SARL MYF, La Maison du Parquet et EGGER, « WhatsApp 0794 70 93 23 », « Appel 0549 50 68 57 », lamaisonduparquet.org.
 
 ## Règles
 - Pas de transformation entre deux images, pas de liquide en mouvement, pas de texte généré dans l'image.

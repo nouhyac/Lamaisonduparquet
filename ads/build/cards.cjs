@@ -40,7 +40,7 @@ const end = `
 <div class="w"><div class="myf">SARL MYF</div>
 <div class="logos"><img src="file://${SITE}/img/brand-lmdp.png"><img class="e" src="file://${SITE}/img/brand-egger.png"></div>
 <div class="h">Parquet EGGER<br><b>posé sur carrelage</b></div>
-<div class="wa"><small>WhatsApp · Appel</small>0549 50 68 57</div>
+<div class="wa"><small>WhatsApp</small>0794 70 93 23<small>Appel · 0549 50 68 57</small></div>
 <div class="u">www.lamaisonduparquet.org<span>Showroom Dar El Beïda · Alger · Livraison partout en Algérie</span></div></div>`;
 
 // page écrite sur disque : les polices et logos en file:// se chargent (bloqués depuis about:blank)

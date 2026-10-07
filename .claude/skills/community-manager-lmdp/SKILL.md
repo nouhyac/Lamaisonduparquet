@@ -51,6 +51,7 @@ description: Community manager et responsable pubs Meta de La Maison du Parquet 
 - Vidéos : `ads/pub/film-50s-pub-v3.mp4` est la version à jour (WhatsApp 0794, sans « représentant »).
 
 ## Pubs et boosts Meta
+- **Campagne en cours, identifiants et historique : `ads/PUB-META-EN-COURS.md`** (à lire avant tout bilan ou toute modification).
 - Compte publicitaire `act_2860172500875914` (« Sofiane Yacoubi »), **facturé en €**. Il faut convertir le budget que le client donne en $.
 - Page « La maison du parquet EGGER » `108020917397215`, Instagram @la.maison.du.parquett `17841429516584815`. Intérêt « Décoration intérieure » : `6002920953955`.
 - Réglages qui marchent :

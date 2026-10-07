@@ -38,7 +38,7 @@ const end = `<style>body{background:#fbfaf8}.w{position:absolute;inset:0;display
 <div class="w"><div class="myf">SARL MYF</div>
 <div class="logos"><img src="file://${SITE}/img/brand-lmdp.png"><img class="e" src="file://${SITE}/img/brand-egger.png"></div>
 <div class="h">Votre carrelage reste.<br><b>Votre maison change.</b></div>
-<div class="wa"><small>WhatsApp · Appel</small><span>0549 50 68 57</span></div>
+<div class="wa"><small>WhatsApp</small><span>0794 70 93 23</span><small>Appel · 0549 50 68 57</small></div>
 <div class="u">www.lamaisonduparquet.org</div></div>`;
 
 async function show(p, html) {
