@@ -52,14 +52,15 @@ table.l tr:last-child td{border-bottom:1px solid #111}table.l td.des{text-align:
 table.t{border-collapse:collapse;width:68mm;font-size:10pt}table.t td{border:1px solid #111;padding:0.8mm 1mm}table.t td+td{text-align:right;width:33mm}
 .small{font-size:8.5pt}.ttc td{padding:2.5mm 1mm}
 .arr{margin:18mm 0 0 15mm;font-size:10.5pt}.arr b{display:block}
-.sc{position:absolute;right:30mm;top:224mm;font-size:10pt}
+.sc{text-align:right;margin:12mm 14mm 0 0;font-size:10pt}
+.dense td{padding:1.6mm 1mm!important;font-size:9.5pt}.dense+.bas .pay{margin-top:4mm}
 </style><div class="p">
 <h1>${SOC.nom}</h1>
 <div class="soc"><p>${SOC.activite}</p><p>${SOC.adresse}</p><p class="t">Tel ${SOC.tel}</p><p>${SOC.mobiles}</p><p>mail&nbsp; ${SOC.mail}</p></div>
 <div class="date">${SOC.ville} le &nbsp;&nbsp;&nbsp; ${esc(doc.date)}</div>
 <div class="cli"><table><tr><td>NOM/R.S</td><td><b>${esc(cl.nom)}</b></td></tr><tr><td style="padding-top:4mm">Adresse</td><td class="ad" style="padding-top:4mm">${esc(cl.adresse)}</td></tr><tr><td>TEL</td><td>${esc(cl.tel)}</td></tr><tr><td>R.C N°</td><td>${esc(cl.rc)}</td></tr></table></div>
 <div class="num">${esc(doc.titre || 'Facture proforma')} N ${esc(doc.numero)}</div>
-<table class="l"><tr><th style="width:8%"></th><th>Désignations</th><th style="width:7%">Unité</th><th style="width:9%;text-decoration:none">Taux TVA</th><th style="width:12%">Quantité</th><th style="width:12%">P.U.H.T</th><th style="width:15%">TOTAL</th></tr>${rows}</table>
+<table class="l${c.lignes.length > 5 ? ' dense' : ''}"><tr><th style="width:8%"></th><th>Désignations</th><th style="width:7%">Unité</th><th style="width:9%;text-decoration:none">Taux TVA</th><th style="width:12%">Quantité</th><th style="width:12%">P.U.H.T</th><th style="width:15%">TOTAL</th></tr>${rows}</table>
 <div class="bas"><div class="pay"><p>MODE DE PAIEMENT :</p><p>${esc(doc.paiement || 'A terme (Chèque ou Virement bancaire)')}</p></div>
 <table class="t"><tr><td>Total HT</td><td>${fmt(c.ht)}</td></tr><tr><td>T.V.A 19%</td><td>${fmt(c.tva)}</td></tr><tr><td class="small">${esc(doc.libelle_pose || 'SURCHARGE POSE')}</td><td>${c.pose ? fmt(c.pose) : ''}</td></tr><tr class="ttc"><td>Total TTC</td><td>${fmt(c.ttc)}</td></tr></table></div>
 <div class="arr"><b>${doc.titre ? 'Le présent ' + esc(doc.titre.toLowerCase()) + ' est arrêté' : 'La présente facture proforma est arrêtée'} à la somme de :</b>${c.lettres}</div>
