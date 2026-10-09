@@ -1,0 +1,110 @@
+<!doctype html><meta charset="utf-8">
+<style>
+@font-face{font-family:C;src:url(fira-sans-extra-condensed-800.woff2)}@font-face{font-family:F;font-weight:600;src:url(fira-sans-600.woff2)}@font-face{font-family:F;font-weight:300;src:url(fira-sans-300.woff2)}
+html,body{margin:0;width:1080px;height:1350px;overflow:hidden;background:#0b0a09}
+canvas{display:block}
+.ov{position:absolute;left:0;right:0;top:0;padding:46px 60px;display:flex;justify-content:space-between;color:#f3efe8;font-family:F;pointer-events:none}
+.k{font:600 17px F;letter-spacing:.24em;text-transform:uppercase;color:#d8ba8b}
+.t{font-family:C;font-size:84px;line-height:.9;margin-top:10px}
+.t i{font-style:normal;color:#e2001a}
+.m{font-family:C;font-size:42px;text-align:right;border-bottom:6px solid #e2001a;line-height:1}
+.u{font:600 17px F;text-align:right;margin-top:8px}
+.bot{position:absolute;left:60px;right:60px;bottom:44px;display:flex;gap:14px;font-family:F;color:#f3efe8}
+.bot div{flex:1;background:rgba(14,13,12,.78);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px 18px;backdrop-filter:blur(6px)}
+.bot b{display:block;font:600 13px F;letter-spacing:.16em;text-transform:uppercase;color:#d8ba8b;margin-bottom:4px}
+.bot span{font:300 18px F}
+</style>
+<div class="ov"><div><div class="k">Création 3D · Bureau sur mesure</div><div class="t">Bureau<br><i>Monolithe</i></div></div><div><div class="m">SARL MYF</div><div class="u">lamaisonduparquet.org</div></div></div>
+<div class="bot"><div><b>Plateau</b><span>2,30 m · ép. 5 cm<br>chêne en cascade</span></div><div><b>Caisson</b><span>Noir mat EGGER<br>3 tiroirs « push »</span></div><div><b>Porte-à-faux</b><span>45 cm dans le vide<br>effet flottant</span></div><div><b>Lumière</b><span>LED sous plateau<br>+ étagère murale</span></div></div>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from './RoomEnvironment.js';
+import { RoundedBoxGeometry } from './RoundedBoxGeometry.js';
+import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './jsm/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from './jsm/postprocessing/OutputPass.js';
+const W=1080,H=1350;
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+r.setSize(W,H);r.setPixelRatio(1);r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;
+r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=0.92;r.outputColorSpace=THREE.SRGBColorSpace;
+document.body.prepend(r.domElement);
+const s=new THREE.Scene();s.background=new THREE.Color(0x0e0c0a);
+const pm=new THREE.PMREMGenerator(r);s.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;s.environmentIntensity=0.22;
+const L=new THREE.TextureLoader();
+const tex=(u,rx,ry,rot)=>{const t=L.load(u);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);if(rot)t.rotation=rot;t.anisotropy=8;return t};
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(14,10),new THREE.MeshStandardMaterial({map:tex('floor.jpg',5,3.2,Math.PI/2),roughness:.55}));
+floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;s.add(floor);
+const wallM=new THREE.MeshStandardMaterial({color:0x2b2723,roughness:.95});
+const back=new THREE.Mesh(new THREE.PlaneGeometry(14,6),wallM);back.position.set(0,3,-0.75);back.receiveShadow=true;s.add(back);
+const side=new THREE.Mesh(new THREE.PlaneGeometry(10,6),wallM);side.rotation.y=Math.PI/2;side.position.set(-2.4,3,4);side.receiveShadow=true;s.add(side);
+const blk=new THREE.MeshStandardMaterial({color:0x080808,roughness:.78});
+const oakTop=new THREE.MeshStandardMaterial({map:tex('nord.jpg',2.0,0.7,Math.PI/2),color:0xb98f62,roughness:.5});
+const oakSide=new THREE.MeshStandardMaterial({map:tex('nord.jpg',0.7,0.7),color:0xb98f62,roughness:.5});
+const oakShelf=new THREE.MeshStandardMaterial({map:tex('nord.jpg',1.6,0.3,Math.PI/2),color:0xb98f62,roughness:.5});
+const led=new THREE.MeshStandardMaterial({color:0xffb46a,emissive:0xffa050,emissiveIntensity:5});
+const brass=new THREE.MeshStandardMaterial({color:0xb8925a,metalness:.95,roughness:.28});
+const g=new THREE.Group();s.add(g);
+const add=(geo,m,x,y,z,cast=true,par=g)=>{const o=new THREE.Mesh(geo,m);o.position.set(x,y,z);o.castShadow=cast;o.receiveShadow=true;par.add(o);return o};
+// dimensions (m)
+const WD=2.30,DP=0.75,TH=0.05,HT=0.75,z0=-0.30;
+// plateau épais
+add(new THREE.BoxGeometry(WD,TH,DP),oakTop,0,HT-TH/2,z0);
+// cascade à gauche (bois qui tombe jusqu'au sol)
+add(new THREE.BoxGeometry(TH,HT-TH,DP),oakSide,-WD/2+TH/2,(HT-TH)/2,z0);
+// caisson noir à droite, en retrait de 45 cm du bord : porte-à-faux
+const cw=0.48,cx=WD/2-0.45-cw/2;
+add(new THREE.BoxGeometry(cw,HT-TH-0.06,DP-0.06),blk,cx,(HT-TH-0.06)/2+0.06,z0);
+add(new THREE.BoxGeometry(cw-0.06,0.06,DP-0.12),new THREE.MeshStandardMaterial({color:0x030303,roughness:1}),cx,0.03,z0-0.02);
+for(let k=0;k<3;k++){const y=0.06+0.03+k*0.21+0.1;
+  add(new THREE.BoxGeometry(cw-0.012,0.2,0.006),blk,cx,y,z0+DP/2-0.027);
+  add(new THREE.BoxGeometry(0.16,0.003,0.004),led,cx,y+0.1,z0+DP/2-0.023,false);}
+// fente lumineuse sous le plateau (bande LED) + lumière au sol
+add(new THREE.BoxGeometry(WD-0.2,0.005,0.01),led,0.0,HT-TH-0.004,z0+DP/2-0.05,false);
+for(let i=0;i<5;i++){const p=new THREE.PointLight(0xffa860,0.25,0.9,2);p.position.set(-0.9+i*0.45,HT-TH-0.03,z0+0.2);g.add(p);}
+const pl0=new THREE.PointLight(0xffa050,0.5,0.6,2);pl0.position.set(cx,0.02,z0+0.3);g.add(pl0);
+// sous-main cuir cognac + objets
+add(new THREE.BoxGeometry(0.9,0.004,0.45),new THREE.MeshStandardMaterial({color:0x7a4a28,roughness:.6}),-0.15,HT+0.002,z0+0.08);
+// écran fin
+const sc=new THREE.Group();sc.position.set(-0.15,HT,z0-0.18);g.add(sc);
+add(new THREE.BoxGeometry(0.22,0.01,0.16),blk,0,0.005,0,true,sc);
+add(new THREE.BoxGeometry(0.03,0.32,0.03),blk,0,0.16,-0.04,true,sc);
+add(new THREE.BoxGeometry(0.72,0.42,0.02),new THREE.MeshStandardMaterial({color:0x050505,roughness:.3}),0,0.42,0,true,sc);
+add(new THREE.BoxGeometry(0.69,0.39,0.002),new THREE.MeshStandardMaterial({color:0x111a22,emissive:0x1d2c3a,emissiveIntensity:.6,roughness:.2}),0,0.42,0.011,false,sc);
+// lampe laiton
+const lp=new THREE.Group();lp.position.set(0.62,HT,z0-0.15);g.add(lp);
+add(new THREE.CylinderGeometry(0.07,0.07,0.012,32),brass,0,0.006,0,true,lp);
+add(new THREE.CylinderGeometry(0.006,0.006,0.42,12),brass,0,0.22,0,true,lp);
+const sh=add(new THREE.ConeGeometry(0.1,0.12,32,1,true),brass,0.0,0.45,0.05,true,lp);sh.rotation.x=0.5;
+const lpl=new THREE.SpotLight(0xffd4a0,2.2,2.2,Math.PI/5,0.6,1.5);lpl.position.set(0.62,HT+0.42,z0-0.08);lpl.target.position.set(0.4,HT,z0+0.15);s.add(lpl,lpl.target);
+// livres + plante
+add(new THREE.BoxGeometry(0.22,0.035,0.16),new THREE.MeshStandardMaterial({color:0xe9e1d3,roughness:.7}),-0.85,HT+0.018,z0-0.05);
+add(new THREE.BoxGeometry(0.2,0.03,0.15),new THREE.MeshStandardMaterial({color:0x2b2b2b,roughness:.7}),-0.85,HT+0.05,z0-0.05);
+add(new THREE.CylinderGeometry(0.06,0.05,0.14,24),new THREE.MeshStandardMaterial({color:0xd8d0c2,roughness:.8}),-0.62,HT+0.07,z0-0.2);
+for(let k=0;k<7;k++){const lf=add(new THREE.SphereGeometry(0.05,12,8),new THREE.MeshStandardMaterial({color:0x3f5a3a,roughness:.8}),-0.62+Math.sin(k*1.7)*0.06,HT+0.19+k*0.018,z0-0.2+Math.cos(k*1.7)*0.05);lf.scale.set(1,0.55,0.6);}
+// mur : panneau tasseaux noirs + étagère chêne flottante éclairée
+for(let k=0;k<46;k++) add(new THREE.BoxGeometry(0.03,1.9,0.03),blk,-1.15+k*0.05,1.75,-0.72);
+add(new THREE.BoxGeometry(1.6,0.04,0.25),oakShelf,0.1,1.65,-0.6);
+add(new THREE.BoxGeometry(1.5,0.004,0.01),led,0.1,1.627,-0.5,false);
+for(let i=0;i<3;i++){const p=new THREE.PointLight(0xffb070,0.35,0.9,2);p.position.set(-0.4+i*0.5,1.6,-0.55);g.add(p);}
+add(new THREE.CylinderGeometry(0.05,0.07,0.2,24),new THREE.MeshStandardMaterial({color:0xe9e1d3,roughness:.5}),-0.4,1.77,-0.62);
+add(new THREE.SphereGeometry(0.06,24,16),brass,0.35,1.73,-0.6);
+add(new THREE.BoxGeometry(0.18,0.24,0.03),new THREE.MeshStandardMaterial({color:0x6e5844,roughness:.8}),0.7,1.79,-0.66);
+// chaise design (coque cuir arrondie, pied noir)
+const ch=new THREE.Group();ch.position.set(-0.25,0,0.5);ch.rotation.y=-0.55;g.add(ch);
+const lea=new THREE.MeshStandardMaterial({color:0x4a2814,roughness:.5});
+add(new RoundedBoxGeometry(0.48,0.07,0.46,4,0.03),lea,0,0.47,0,true,ch);
+const bk=add(new RoundedBoxGeometry(0.48,0.36,0.05,4,0.025),lea,0,0.72,0.23,true,ch);bk.rotation.x=-0.12;
+add(new THREE.CylinderGeometry(0.018,0.018,0.42,12),blk,0,0.23,0,true,ch);
+add(new THREE.CylinderGeometry(0.26,0.26,0.015,32),blk,0,0.01,0,true,ch);
+// lumières
+const key=new THREE.SpotLight(0xfff1e0,34,12,Math.PI/7,0.5,1.6);key.position.set(2.4,4.2,3.4);key.target.position.set(0,0.8,-0.2);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.bias=-0.0004;s.add(key,key.target);
+const rim=new THREE.SpotLight(0xffc89a,22,10,Math.PI/6,0.6,1.5);rim.position.set(-2,3.2,1.5);rim.target.position.set(0,0.9,-0.3);s.add(rim,rim.target);
+s.add(new THREE.HemisphereLight(0xfff4e6,0x2a1d14,0.22));
+const cam=new THREE.PerspectiveCamera(36,W/H,0.1,50);
+const comp=new EffectComposer(r);comp.addPass(new RenderPass(s,cam));
+comp.addPass(new UnrealBloomPass(new THREE.Vector2(W,H),0.38,0.35,0.97));comp.addPass(new OutputPass());
+window.renderAt=(a)=>{const R=5.4,cx=0.0;cam.position.set(cx+R*Math.sin(a),1.75,R*Math.cos(a));cam.lookAt(cx,0.85,-0.25);comp.render();};
+L.manager.onLoad=()=>{window.renderAt(0.42);window.ready=true;};
+</script>
