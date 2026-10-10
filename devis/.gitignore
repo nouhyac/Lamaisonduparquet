@@ -1,0 +1,7 @@
+*.json
+!dernier-numero.txt
+*.pdf
+*.png
+!exemple.json
+!exemple.pdf
+!exemple.png

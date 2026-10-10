@@ -1,0 +1,11 @@
+{
+  "numero": "038/2026",
+  "date": "07/10/2026",
+  "client": { "nom": "CLIENT EXEMPLE", "adresse": "Adresse du client, Alger", "tel": "0XXX XX XX XX", "rc": "" },
+  "lignes": [
+    { "designation": "Parquet EGGER EL2970", "quantite": 378.10, "puht": 4537.81 },
+    { "designation": "sous couche BLANCHE", "quantite": 400, "puht": 200 }
+  ],
+  "surcharge_pose": 0,
+  "paiement": "A terme (Chèque ou Virement bancaire)"
+}

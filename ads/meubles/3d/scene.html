@@ -1,0 +1,107 @@
+<!doctype html><meta charset="utf-8">
+<style>
+@font-face{font-family:C;src:url(fira-sans-extra-condensed-800.woff2)}@font-face{font-family:F;font-weight:600;src:url(fira-sans-600.woff2)}@font-face{font-family:F;font-weight:300;src:url(fira-sans-300.woff2)}
+html,body{margin:0;width:1080px;height:1350px;overflow:hidden;background:#0b0a09}
+canvas{display:block}
+.ov{position:absolute;left:0;right:0;top:0;padding:46px 60px;display:flex;justify-content:space-between;color:#f3efe8;font-family:F;pointer-events:none}
+.k{font:600 17px F;letter-spacing:.24em;text-transform:uppercase;color:#d8ba8b}
+.t{font-family:C;font-size:84px;line-height:.9;margin-top:10px}
+.t i{font-style:normal;color:#e2001a}
+.m{font-family:C;font-size:42px;text-align:right;border-bottom:6px solid #e2001a;line-height:1}
+.u{font:600 17px F;text-align:right;margin-top:8px}
+.bot{position:absolute;left:60px;right:60px;bottom:44px;display:flex;gap:14px;font-family:F;color:#f3efe8}
+.bot div{flex:1;background:rgba(14,13,12,.78);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px 18px;backdrop-filter:blur(6px)}
+.bot b{display:block;font:600 13px F;letter-spacing:.16em;text-transform:uppercase;color:#d8ba8b;margin-bottom:4px}
+.bot span{font:300 18px F}
+</style>
+<div class="ov"><div><div class="k">Création 3D · SARL MYF</div><div class="t">Armoire<br><i>Noir</i> absolu</div></div><div><div class="m">SARL MYF</div><div class="u">lamaisonduparquet.org</div></div></div>
+<div class="bot"><div><b>Façades</b><span>EGGER noir mat<br>anti-traces</span></div><div><b>Intérieur</b><span>Décor chêne<br>Bardolino</span></div><div><b>Lumière</b><span>LED dans les joints<br>+ niche éclairée</span></div><div><b>Sol</b><span>Parquet EGGER<br>Chêne Asgil miel</span></div></div>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from './RoomEnvironment.js';
+import { RoundedBoxGeometry } from './RoundedBoxGeometry.js';
+import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './jsm/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from './jsm/postprocessing/OutputPass.js';
+const W=1080,H=1350;
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+r.setSize(W,H);r.setPixelRatio(1);r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;
+r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=0.95;r.outputColorSpace=THREE.SRGBColorSpace;
+document.body.prepend(r.domElement);
+const s=new THREE.Scene();s.background=new THREE.Color(0x0e0c0a);
+const pm=new THREE.PMREMGenerator(r);s.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;s.environmentIntensity=0.18;
+const L=new THREE.TextureLoader();
+const tex=(u,rx,ry,rot)=>{const t=L.load(u);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);if(rot)t.rotation=rot;t.anisotropy=8;return t};
+// sol parquet
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(14,10),new THREE.MeshStandardMaterial({map:tex('floor.jpg',5,3.2,Math.PI/2),roughness:.55}));
+floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;s.add(floor);
+// murs enduit sombre
+const wallM=new THREE.MeshStandardMaterial({color:0x2a2622,roughness:.95});
+const back=new THREE.Mesh(new THREE.PlaneGeometry(14,6),wallM);back.position.set(0,3,-0.32);back.receiveShadow=true;s.add(back);
+const side=new THREE.Mesh(new THREE.PlaneGeometry(10,6),wallM);side.rotation.y=Math.PI/2;side.position.set(-2.2,3,4);side.receiveShadow=true;s.add(side);
+// armoire 2,40 × 2,50 × 0,60, suspendue sur socle en retrait
+const blk=new THREE.MeshStandardMaterial({color:0x080808,roughness:.78,metalness:0});
+const oak=new THREE.MeshStandardMaterial({map:tex('oak.jpg',1,1.6),roughness:.6});
+const g=new THREE.Group();s.add(g);
+const add=(geo,m,x,y,z,cast=true)=>{const o=new THREE.Mesh(geo,m);o.position.set(x,y,z);o.castShadow=cast;o.receiveShadow=true;g.add(o);return o};
+const Wd=2.4,Hh=2.5,D=0.6,base=0.12;
+// caisson
+add(new THREE.BoxGeometry(Wd,Hh,0.02),blk,0,base+Hh/2,-0.29);
+add(new THREE.BoxGeometry(0.02,Hh,D),blk,-Wd/2+0.01,base+Hh/2,0);add(new THREE.BoxGeometry(0.02,Hh,D),blk,Wd/2-0.01,base+Hh/2,0);
+add(new THREE.BoxGeometry(Wd,0.02,D),blk,0,base+Hh-0.01,0);add(new THREE.BoxGeometry(Wd,0.02,D),blk,0,base+0.01,0);
+add(new THREE.BoxGeometry(Wd-0.1,base,D-0.1),new THREE.MeshStandardMaterial({color:0x050505,roughness:1}),0,base/2,-0.05);
+// 3 portes pleines noir mat (gauche), 4e section = niche ouverte intérieur chêne éclairée
+const dw=0.6,gap=0.005;
+const led=new THREE.MeshStandardMaterial({color:0xffb46a,emissive:0xffa050,emissiveIntensity:5});
+
+for(let i=0;i<3;i++){const x=-Wd/2+dw/2+i*dw;
+  if(i===2){ // porte entrouverte (charnière à droite)
+    const hinge=new THREE.Group();hinge.position.set(x-dw/2,base+Hh/2,D/2);hinge.rotation.y=-1.15;g.add(hinge);
+    const door=new THREE.Mesh(new RoundedBoxGeometry(dw-gap,Hh-0.01,0.019,2,0.002),blk);door.position.set(dw/2,0,0.01);door.castShadow=true;hinge.add(door);
+    const din=new THREE.Mesh(new THREE.BoxGeometry(dw-0.03,Hh-0.04,0.002),oak);din.position.set(dw/2,0,-0.011);hinge.add(din);
+    // intérieur penderie chêne + tringle + vêtements
+    add(new THREE.BoxGeometry(dw-0.03,Hh-0.04,0.01),oak,x,base+Hh/2,-0.27);
+    add(new THREE.BoxGeometry(0.01,Hh-0.04,D-0.04),oak,x-dw/2+0.02,base+Hh/2,0);
+    add(new THREE.BoxGeometry(dw-0.03,0.025,D-0.05),oak,x,base+2.05,0);
+    add(new THREE.CylinderGeometry(0.012,0.012,dw-0.04,16).rotateZ(Math.PI/2),new THREE.MeshStandardMaterial({color:0xb08d57,metalness:.9,roughness:.25}),x,base+1.95,0);
+    const cols=[0x8c7f70,0x2d2a26,0x6b5d4e,0x4a3a2e,0x9e8f7c,0x1f1f1f];
+    cols.forEach((c,k)=>add(new THREE.BoxGeometry(0.035,0.95-0.1*(k%2),0.42),new THREE.MeshStandardMaterial({color:c,roughness:.95}),x-0.2+k*0.08,base+1.95-0.5+0.05*(k%2),0));
+    add(new THREE.BoxGeometry(dw-0.08,0.004,0.01),led,x,base+2.03,D/2-0.06,false);
+    const pl=new THREE.PointLight(0xffb070,0.9,1.4,2);pl.position.set(x,base+1.9,0.1);g.add(pl);
+    for(const y of [0.12,0.36]) add(new THREE.BoxGeometry(dw-0.06,0.2,D-0.08),blk,x,base+y,0); // tiroirs intérieurs
+    continue;}
+  add(new RoundedBoxGeometry(dw-gap,Hh-0.01,0.019,2,0.002),blk,x,base+Hh/2,D/2-0.01);
+  // poignée gorge verticale (rainure)
+  add(new THREE.BoxGeometry(0.012,0.9,0.006),new THREE.MeshStandardMaterial({color:0x000000,roughness:1}),x+(i%2?-1:1)*(dw/2-0.03),base+1.15,D/2+0.001);}
+// joints lumineux entre portes
+for(let i=1;i<=2;i++) add(new THREE.BoxGeometry(0.006,Hh-0.04,0.01),led,-Wd/2+i*dw,base+Hh/2,D/2-0.02,false);
+// niche chêne (section 4)
+const nx=Wd/2-dw/2;
+add(new THREE.BoxGeometry(dw-0.04,Hh-0.04,0.01),oak,nx,base+Hh/2,-0.27);
+add(new THREE.BoxGeometry(0.01,Hh-0.04,D-0.04),oak,nx-dw/2+0.025,base+Hh/2,0);
+for(const y of [0.55,1.05,1.55,2.05]){add(new THREE.BoxGeometry(dw-0.05,0.025,D-0.05),oak,nx,base+y,0);
+  add(new THREE.BoxGeometry(dw-0.08,0.004,0.01),led,nx,base+y-0.016,D/2-0.06,false);}
+// objets dans la niche
+const ob=new THREE.MeshStandardMaterial({color:0xe9e1d3,roughness:.5});
+add(new THREE.CylinderGeometry(0.06,0.08,0.22,32),ob,nx-0.1,base+0.55+0.125,0);
+add(new THREE.BoxGeometry(0.22,0.05,0.16),new THREE.MeshStandardMaterial({color:0x6b4a2f,roughness:.7}),nx+0.08,base+1.05+0.04,0);
+add(new THREE.BoxGeometry(0.2,0.05,0.15),new THREE.MeshStandardMaterial({color:0x2b2b2b,roughness:.6}),nx+0.08,base+1.1+0.03,0);
+add(new THREE.SphereGeometry(0.08,32,16),new THREE.MeshStandardMaterial({color:0xc9a77a,roughness:.25,metalness:.6}),nx,base+1.55+0.095,0);
+// lumière chaude dans la niche + sous l'armoire (effet flottant)
+for(const y of [0.8,1.3,1.8,2.3]){const p=new THREE.PointLight(0xffb070,0.45,1.0,2);p.position.set(nx,base+y,0.15);g.add(p);}
+const under=new THREE.RectAreaLight?null:null;
+for(let i=0;i<4;i++){const p=new THREE.PointLight(0xffa050,0.35,0.7,2);p.position.set(-0.9+i*0.6,0.04,0.2);g.add(p);}
+add(new THREE.BoxGeometry(Wd-0.12,0.004,0.01),led,0,0.005,D/2-0.06,false);
+// éclairage principal
+const key=new THREE.SpotLight(0xfff1e0,60,12,Math.PI/7,0.5,1.6);key.position.set(2.6,4.2,3.6);key.target.position.set(0,1.3,0);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.bias=-0.0004;s.add(key,key.target);
+const rim=new THREE.SpotLight(0xffc89a,25,10,Math.PI/6,0.6,1.5);rim.position.set(-2,3.5,1.2);rim.target.position.set(0,1.4,0);s.add(rim,rim.target);
+s.add(new THREE.HemisphereLight(0xfff4e6,0x2a1d14,0.25));
+// caméra
+const cam=new THREE.PerspectiveCamera(34,W/H,0.1,50);
+const comp=new EffectComposer(r);comp.addPass(new RenderPass(s,cam));
+comp.addPass(new UnrealBloomPass(new THREE.Vector2(W,H),0.38,0.35,0.97));comp.addPass(new OutputPass());
+window.renderAt=(a)=>{const R=7.4,cx=0.1;cam.position.set(cx+R*Math.sin(a),1.25,R*Math.cos(a));cam.lookAt(cx,1.05,0);comp.render();};
+L.manager.onLoad=()=>{window.renderAt(0.42);window.ready=true;};
+</script>
