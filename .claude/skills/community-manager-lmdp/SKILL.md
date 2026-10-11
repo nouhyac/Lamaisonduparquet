@@ -73,7 +73,7 @@ description: Community manager et responsable pubs Meta de La Maison du Parquet 
   - Ce qu'il **ne sait pas** faire : booster une publication existante, lister ou publier des publications organiques.
 - **Je ne peux pas** publier sur Instagram ou Facebook, ni répondre aux messages à la place du client. Je prépare les textes, visuels et vidéos, et le client publie.
 - Montage vidéo gratuit : ffmpeg et la chaîne `ads/v50/` (`build50.sh`, `fix/fix-v2.sh`).
-- **Higgsfield** : crédits limités, **aucune génération sans accord explicite du client**. Depuis le 11/10, consigne : ne plus débiter de crédits, travailler avec les outils gratuits (ffmpeg, PIL, three.js) et les images déjà générées.
+- **Higgsfield** : crédits limités, **aucune génération sans accord explicite du client**. Par défaut, travailler avec les outils gratuits (ffmpeg, PIL, three.js) et les images déjà générées ; ne dépenser que sur demande explicite avec un budget (ex. 11/10 : jusqu'à 60 crédits pour la cuisine Signature). Repères de coût : image gpt_image_2_5 = 1 crédit (medium) / 2,75 (high) ; vidéo MiniMax H3 Max 6 s 768p = 15 crédits ; Seedance 8 s 720p = 56.
 
 ## Bilan à partir d'une capture Business Suite
 1. Relever : couverture, conversations démarrées, coût par conversation, dépense, statut (Actif, En examen, Désactivé, Refusé).
