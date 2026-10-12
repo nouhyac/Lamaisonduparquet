@@ -18,6 +18,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | **Prix « à partir de », selon le niveau demandé.** |
 | 2026-10-12 | **Nom : Dzign Studio.** Positionnement **haut de gamme**. |
 | 2026-10-12 | **Paiement BaridiMob : 50 % au début, 50 % à la présentation du site terminé**, puis mise en ligne sur l'hébergement définitif. |
+| 2026-10-12 | Hébergement sur **Hostinger** (site Dzign + sites clients). |
 | 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
 
 ## Questions encore ouvertes
@@ -34,8 +35,17 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 5. **Vente et livraison** : appel découverte, devis, acompte, fabrication, livraison
 6. **Juridique** *(plus tard)* : statut d'auto-entrepreneur algérien, compte bancaire, conditions de vente
 
-## Outils déjà connectés
-Canva, Gamma, Higgsfield (visuels et vidéos), Adspirer (publicités), Gmail.
+## Outils
+| Outil | État | Usage prévu |
+|-------|------|-------------|
+| **GitHub** | ✅ compte, relié | Code des sites + mémoire du projet |
+| **Hostinger** | ✅ compte (pas relié à Claude) | Hébergement du site Dzign Studio + sites clients (abonnement Care), nom de domaine |
+| **Higgsfield** | ✅ relié | Vidéos et visuels pubs, rendus 3D, vidéos produits |
+| **Canva** (gratuit) | ✅ relié | Posts réseaux, carrousels, devis et présentations clients |
+| **Meta** (Facebook/Instagram) | ⏳ à relier (via Adspirer) | Page pro, pubs, statistiques |
+| **Adspirer** | ✅ relié | Création et suivi des campagnes pub |
+| **Gmail** | ✅ relié | Emails clients, devis |
+| **Gamma** | ✅ relié | Présentations commerciales |
 
 ## Journal des sessions
-- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms. Choix : Dzign Studio, haut de gamme, BaridiMob 50/50. Offre v3 et identité proposées.
+- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms. Choix : Dzign Studio, haut de gamme, BaridiMob 50/50. Offre v3 et identité proposées. Outils listés (Hostinger, Higgsfield, Canva gratuit, Meta à relier).
