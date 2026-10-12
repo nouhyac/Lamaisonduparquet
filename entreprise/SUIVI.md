@@ -40,7 +40,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 - [x] Comptes @dzignstudio créés (Instagram, Facebook, TikTok)
 - [ ] Commencer à publier la campagne (J1 : vidéo 1 + post 1)
 - [x] Email Yahoo créé : **dzignstudio16@yahoo.com** (pour les comptes réseaux)
-- [ ] Email pro contact@dzignstudio.store (après enregistrement du domaine)
+- [x] Email pro **contact@dzignstudio.store** créé (webmail : mail.hostinger.com). MX, SPF et DMARC OK au 2026-10-13.
+- [ ] Redirection contact@dzignstudio.store → dzignstudio16@yahoo.com
 
 ## Feuille de route
 1. **Offre** : formules, prix → `OFFRE.md` *(v3 haut de gamme, à valider)*
