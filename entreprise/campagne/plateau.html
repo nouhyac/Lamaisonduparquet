@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Plateau vidéo Dzign</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Readex+Pro:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
+<style>
+:root{--noir:#0B0B0F;--ivoire:#F5F3EE;--gris:#A9A6A0;--or:#C8A96A;--ligne:#2A2A33;--ft:"Syne",sans-serif;--fb:"Hanken Grotesk",sans-serif}
+html[lang=ar]{--ft:"Readex Pro",sans-serif;--fb:"IBM Plex Sans Arabic",sans-serif}
+html[lang=ar] *{letter-spacing:0!important}
+*{box-sizing:border-box;margin:0}
+html,body{width:720px;height:1280px;overflow:hidden;background:var(--noir);color:var(--ivoire);font-family:var(--fb)}
+.scene{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,169,106,.2),transparent 55%),radial-gradient(ellipse at 50% 100%,rgba(14,124,90,.12),transparent 50%),var(--noir)}
+video.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.voile{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,15,.75) 0%,rgba(11,11,15,0) 30%,rgba(11,11,15,0) 62%,rgba(11,11,15,.9) 100%)}
+.logo{position:absolute;top:56px;left:0;right:0;text-align:center;font-family:"Syne",sans-serif;font-weight:800;font-size:40px;letter-spacing:-.02em;direction:ltr}
+.logo b{color:var(--or)}.logo small{font-family:"Hanken Grotesk";font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--gris);margin-left:8px;font-weight:500}
+.legende{position:absolute;left:48px;right:48px;top:130px;min-height:190px;display:grid;align-content:start;justify-items:center;text-align:center}
+.legende.bas{top:auto;bottom:150px}
+.legende p{font-family:var(--ft);font-weight:700;font-size:54px;line-height:1.08;letter-spacing:-.03em;text-wrap:balance;opacity:0;transform:translateY(24px);transition:opacity .45s,transform .45s}
+html[lang=ar] .legende p{line-height:1.35;font-size:52px}
+.legende p.on{opacity:1;transform:none}
+.legende p em{font-style:normal;color:var(--or)}
+.tel{position:absolute;left:50%;top:345px;width:350px;height:740px;transform:translateX(-50%);border-radius:46px;border:11px solid #111;background:#111;overflow:hidden;box-shadow:0 0 0 1.5px #3a3a44,0 60px 120px -40px #000,0 0 120px -30px rgba(200,169,106,.35)}
+.tel iframe{width:390px;height:807px;border:0;transform:scale(.8415);transform-origin:0 0;background:#0B0B0F}
+.pied{position:absolute;left:0;right:0;bottom:62px;display:flex;justify-content:center;gap:18px;align-items:center;font-size:22px;color:var(--gris)}
+.pied b{color:var(--or);direction:ltr;unicode-bidi:isolate}
+.fin{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(200,169,106,.25),transparent 60%),rgba(11,11,15,.96);display:grid;place-items:center;align-content:center;gap:34px;text-align:center;opacity:0;transition:opacity .6s;padding:60px}
+.fin.on{opacity:1}
+.fin .grand{font-family:"Syne",sans-serif;font-weight:800;font-size:120px;letter-spacing:-.04em;direction:ltr}
+.fin .grand b{color:var(--or)}
+.fin p{font-family:var(--ft);font-size:42px;font-weight:700;line-height:1.25}
+.fin p em{font-style:normal;color:var(--or)}
+.fin .badge{font-size:26px;border:1.5px solid var(--or);color:var(--or);padding:12px 26px;border-radius:999px}
+.fin .cta{background:var(--or);color:var(--noir);font-weight:700;font-size:34px;padding:22px 44px;border-radius:999px}
+.fin .wa{font-size:28px;color:var(--ivoire);direction:ltr}
+</style>
+</head>
+<body>
+<div class="scene" id="scene"></div>
+<script>
+var q=new URLSearchParams(location.search),V=q.get('v')||'1',L=q.get('l')||'fr';
+document.documentElement.lang=L;document.documentElement.dir=L==='ar'?'rtl':'ltr';
+function T(fr,ar){return L==='ar'?ar:fr}
+var scene=document.getElementById('scene');
+var FIN='<div class="fin" id="fin"><div class="grand">d<b>z</b>ign</div><p>'+T('Votre site <em>d\'exception</em>,<br>conçu à Alger.','موقعك <em>الاستثنائي</em>،<br>مصمَّم في الجزائر.')+'</p><span class="badge">'+T('-20 % pour nos 5 premiers clients','خصم 20% لأول 5 زبائن')+'</span><span class="cta">'+T('Lien en bio','الرابط في البايو')+'</span><span class="wa">WhatsApp · 0794 70 93 23</span></div>';
+var LOGO='<div class="logo">d<b>z</b>ign<small>studio</small></div>';
+var PIED='<div class="pied"><span>'+T('Studio digital · Alger','استوديو رقمي · الجزائر')+'</span><b>@dzignstudio</b></div>';
+function legendes(liste,bas){return '<div class="legende'+(bas?' bas':'')+'">'+liste.map(function(t,i){return '<p id="l'+i+'" style="position:absolute;left:0;right:0">'+t+'</p>'}).join('')+'</div>'}
+function montre(i){document.querySelectorAll('.legende p').forEach(function(p,k){p.classList.toggle('on',k===i)})}
+function fin(){montre(-1);document.getElementById('fin').classList.add('on')}
+var plan=[];function a(t,f){plan.push([t,f])}
+window.PRET=false;window.DUREE=0;
+function lancer(){var t0=performance.now();plan.forEach(function(p){setTimeout(p[1],p[0]*1000)});window.DEBUT=t0}
+
+if(V==='1'){
+  scene.innerHTML='<video class="fond" id="vid" src="medias/z-boomerang.webm" muted playsinline preload="auto"></video><div class="voile"></div>'+LOGO+legendes([T('Votre entreprise mérite un site <em>d\'exception.</em>','مؤسستك تستحق موقعاً <em>استثنائياً.</em>'),T('Sites web · <em>3D</em> · Boutiques · Applications','مواقع · <em>3D</em> · متاجر · تطبيقات'),T('Conçu à Alger.<br><em>Au niveau mondial.</em>','صُمّم في الجزائر.<br><em>بمستوى عالمي.</em>')],true)+PIED+FIN;
+  window.DUREE=13;
+  var vid=document.getElementById('vid');
+  vid.addEventListener('canplaythrough',function(){window.PRET=true},{once:true});vid.load();
+  window.DEMARRER=function(){vid.play();lancer()};
+  a(.4,function(){montre(0)});a(3.6,function(){montre(1)});a(6.8,function(){montre(2)});a(10,function(){fin()});
+}
+if(V==='2'||V==='3'){
+  var src='/site-dzign/index.html#'+L;
+  scene.innerHTML=LOGO+legendes(V==='2'?[
+    T('Et si vous voyiez votre site <em>avant</em> de nous appeler ?','ماذا لو رأيت موقعك <em>قبل</em> أن تتصل بنا؟'),
+    T('Tapez le nom de <em>votre entreprise</em>','اكتب اسم <em>مؤسستك</em>'),
+    T('Choisissez votre <em>métier</em> et votre <em>couleur</em>','اختر <em>مجالك</em> و<em>لونك</em>'),
+    T('Votre site apparaît.<br><em>À votre nom.</em>','يظهر موقعك.<br><em>باسمك.</em>'),
+    T('Sur votre <em>propre domaine.</em>','على <em>نطاقك الخاص.</em>'),
+    T('Et en <em>arabe</em> aussi.','وبـ<em>العربية</em> أيضاً.')
+  ]:[
+    T('Vos clients veulent <em>toucher</em> avant d\'acheter.','زبائنك يريدون <em>اللمس</em> قبل الشراء.'),
+    T('Ils choisissent <em>la couleur</em>…','يختارون <em>اللون</em>…'),
+    T('…et le font <em>tourner.</em>','…ويديرونه <em>بأيديهم.</em>'),
+    T('Immobilier, mobilier, mode :<br><em>la 3D fait vendre.</em>','عقار، أثاث، أزياء:<br><em>الـ3D تبيع.</em>')
+  ])+'<div class="tel"><iframe id="site" src="'+src+'"></iframe></div>'+PIED+FIN;
+  var fr=document.getElementById('site');
+  fr.addEventListener('load',function(){
+    var w=fr.contentWindow,d=fr.contentDocument;
+    try{w.localStorage.setItem('dz-langue',L)}catch(e){}
+    var st=d.createElement('style');st.textContent='.rideau,.wa-flottant,.lueur{display:none!important}';d.head.appendChild(st);
+    function $(s){return d.querySelector(s)}
+    function defile(el,y,ms){var y0=el.scrollTop,t0=performance.now();(function f(){var k=Math.min(1,(performance.now()-t0)/ms);k=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;el.scrollTop=y0+(y-y0)*k;if(k<1)requestAnimationFrame(f)})()}
+    function defileFen(y,ms){var y0=w.scrollY,t0=performance.now();(function f(){var k=Math.min(1,(performance.now()-t0)/ms);k=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;w.scrollTo(0,y0+(y-y0)*k);if(k<1)requestAnimationFrame(f)})()}
+    function haut(id){return $(id).getBoundingClientRect().top+w.scrollY-70}
+    if(V==='2'){
+      w.scrollTo(0,haut('#essai')-40);
+      window.DUREE=24;
+      var nom=T('Pâtisserie Yasmine','حلويات ياسمين');
+      a(.3,function(){montre(0)});
+      a(3.2,function(){montre(1);var i=$('#essai-nom');i.focus();var k=0;(function tape(){i.value=nom.slice(0,++k);if(k<nom.length)setTimeout(tape,85)})()});
+      a(6.2,function(){montre(2);var s=$('#essai-secteur');s.value='resto';s.dispatchEvent(new Event('change'))});
+      a(7.4,function(){$('#essai-couleurs button:nth-child(3)').click()});
+      a(9,function(){$('#form-essai button[type=submit]').click();montre(3)});
+      a(11.4,function(){montre(4);defile($('#vue'),900,2600)});
+      a(14.6,function(){defile($('#vue'),1700,1800)});
+      a(16.6,function(){montre(5);defile($('#vue'),0,900);setTimeout(function(){var b=$('#vue [data-a="lang"]');if(b)b.click()},950)});
+      a(20,function(){fin()});
+    } else {
+      window.DUREE=22;
+      a(.2,function(){montre(0);w.DZ&&0;var c=$('.site-carte[data-i="3"]');c&&c.click()});
+      a(4.6,function(){montre(1);$('#vue [data-a="teinte"][data-v="1"]').click()});
+      a(6.2,function(){$('#vue [data-a="teinte"][data-v="2"]').click()});
+      a(7.8,function(){montre(2);$('#vue [data-a="teinte"][data-v="3"]').click()});
+      a(9.6,function(){$('#vue [data-a="teinte"][data-v="4"]').click()});
+      a(11.6,function(){montre(3);$('#v-fermer').click();w.scrollTo(0,haut('#demo3d')+250)});
+      a(18,function(){fin()});
+    }
+    setTimeout(function(){window.PRET=true},V==='3'?1500:800);
+  });
+  window.DEMARRER=lancer;
+}
+</script>
+</body>
+</html>

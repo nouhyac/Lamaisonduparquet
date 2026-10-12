@@ -1,0 +1,143 @@
+<title>Campagne de lancement Dzign</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
+<style>
+/* Layout : tableau de bord de campagne en une colonne : vidéos, posts avec légendes, calendrier, hashtags */
+:root{--noir:#0B0B0F;--graphite:#15151B;--ligne:#2A2A33;--ivoire:#F5F3EE;--gris:#A9A6A0;--or:#C8A96A;--vert:#7FD1AE;
+--ft:"Syne","Arial Black",sans-serif;--fb:"Hanken Grotesk",system-ui,sans-serif;--fa:"IBM Plex Sans Arabic",Tahoma,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--noir);color:var(--ivoire);font-family:var(--fb);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,36px);padding-block:32px 80px;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--ft);margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+.tete{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px}
+.tete h1{font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.03em}
+.tete h1 b{color:var(--or)}
+.tete p{color:var(--gris);max-width:60ch;margin-top:10px}
+.eyebrow{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:10px;display:block}
+.langues{display:flex;border:1px solid var(--ligne);border-radius:999px;overflow:hidden}
+.langues button{background:none;border:0;color:var(--gris);padding:10px 18px;font:inherit;cursor:pointer}
+.langues button[aria-pressed="true"]{background:var(--or);color:var(--noir);font-weight:600}
+section{display:grid;gap:22px}
+section>h2{font-size:clamp(1.4rem,3vw,2rem)}
+.chiffres{display:flex;flex-wrap:wrap;gap:10px}
+.chiffres span{border:1px solid var(--ligne);border-radius:999px;padding:6px 14px;font-size:.9rem;color:var(--gris)}
+.chiffres b{color:var(--ivoire)}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.carte{background:var(--graphite);border:1px solid var(--ligne);border-radius:12px;overflow:hidden;display:grid;align-content:start;min-width:0}
+.carte video{width:100%;aspect-ratio:9/16;max-width:100%;background:#000;display:block}
+.carte img{width:100%;aspect-ratio:4/5;max-width:100%;object-fit:cover;display:block}
+.corps{padding:16px;display:grid;gap:10px}
+.corps h3{font-size:1.1rem}
+.meta{font-size:.8rem;color:var(--gris)}
+.legende{font-size:.93rem;color:#D8D4CD;white-space:pre-line}
+:root[data-l="ar"] .legende{font-family:var(--fa);direction:rtl;text-align:right}
+.copier{justify-self:start;background:none;border:1px solid var(--or);color:var(--or);border-radius:999px;padding:7px 14px;font:inherit;font-size:.85rem;cursor:pointer}
+.copier:hover{background:var(--or);color:var(--noir)}
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:18px}
+.table{overflow-x:auto;border:1px solid var(--ligne);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:560px;font-size:.93rem}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--ligne);vertical-align:top}
+th{font-family:var(--ft);font-size:.85rem;color:var(--or);font-weight:700}
+td:first-child{font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.note{background:var(--graphite);border:1px dashed var(--ligne);border-radius:12px;padding:18px;display:grid;gap:8px;color:var(--gris);font-size:.93rem}
+.note b{color:var(--ivoire)}
+.tags{font-family:var(--fb);font-size:.95rem;color:var(--vert);background:var(--graphite);border:1px solid var(--ligne);border-radius:12px;padding:16px;word-break:break-word}
+:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+</style>
+
+<div class="wrap">
+  <header class="tete">
+    <div>
+      <span class="eyebrow">Dzign Studio · Lancement</span>
+      <h1>Campagne de <b>lancement</b></h1>
+      <p>3 vidéos verticales, 9 posts et leurs légendes, en français et en arabe. Tout est prêt à publier sur Instagram, TikTok et Facebook.</p>
+    </div>
+    <div class="langues" role="group" aria-label="Langue des contenus">
+      <button type="button" id="b-fr" aria-pressed="true">Français</button>
+      <button type="button" id="b-ar" aria-pressed="false">العربية</button>
+    </div>
+  </header>
+
+  <div class="chiffres"><span><b>3</b> vidéos 9:16</span><span><b>9</b> posts 4:5</span><span><b>2</b> langues</span><span><b>7,75</b> crédits Higgsfield</span><span>Musique à ajouter dans l'appli</span></div>
+
+  <section aria-labelledby="t-videos">
+    <h2 id="t-videos">Vidéos (Reels et TikTok)</h2>
+    <div class="videos" id="videos"></div>
+  </section>
+
+  <section aria-labelledby="t-posts">
+    <h2 id="t-posts">Posts</h2>
+    <p class="meta">Astuce : publie chaque post en carrousel de 2 images, la version française puis la version arabe.</p>
+    <div class="posts" id="posts"></div>
+  </section>
+
+  <section aria-labelledby="t-cal">
+    <h2 id="t-cal">Calendrier sur 2 semaines</h2>
+    <div class="table"><table>
+      <thead><tr><th>Jour</th><th>Instagram et Facebook</th><th>TikTok</th></tr></thead>
+      <tbody>
+        <tr><td>J1</td><td>Vidéo 1 + Post 1</td><td>Vidéo 1 FR</td></tr>
+        <tr><td>J2</td><td>Post 2 · Programme Fondateurs</td><td></td></tr>
+        <tr><td>J3</td><td>Vidéo 2</td><td>Vidéo 2 FR</td></tr>
+        <tr><td>J4</td><td>Post 3 · La Maison du Parquet</td><td>Vidéo 1 AR</td></tr>
+        <tr><td>J5</td><td>Post 4 · Votre site en 10 s</td><td></td></tr>
+        <tr><td>J6</td><td>Vidéo 3</td><td>Vidéo 3 FR</td></tr>
+        <tr><td>J7</td><td>Post 5 · 3D</td><td>Vidéo 2 AR</td></tr>
+        <tr><td>J8</td><td>Post 6 · Paiement 50/50</td><td></td></tr>
+        <tr><td>J9</td><td>Post 7 · Nos formules</td><td>Vidéo 3 AR</td></tr>
+        <tr><td>J10</td><td>Post 8 · Pourquoi Dzign</td><td></td></tr>
+        <tr><td>J11</td><td>Post 9 · Prêt à briller ?</td><td>Meilleure vidéo, republiée</td></tr>
+        <tr><td>J12 à J14</td><td>Stories : sondage, questions, coulisses</td><td>Réponses aux commentaires</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note"><p><b>Heure de départ conseillée :</b> entre 20 h et 22 h, à ajuster avec tes statistiques après une semaine.</p><p><b>Musique :</b> les vidéos sont muettes exprès. Ajoute un son tendance dans Instagram ou TikTok au moment de publier.</p></div>
+  </section>
+
+  <section aria-labelledby="t-tags">
+    <h2 id="t-tags">Hashtags</h2>
+    <p class="tags" id="tags">#Alger #Algérie #DZ #Algeria #siteweb #créationsiteweb #webdesign #ecommerce #entrepreneur #entrepreneurDZ #3D #marketingdigital #الجزائر #تصميم_مواقع #متجر_إلكتروني #تسويق_رقمي #رواد_الأعمال</p>
+    <button type="button" class="copier" data-cible="tags">Copier les hashtags</button>
+  </section>
+</div>
+
+<script>
+(function(){
+  var V=[
+    ['Le Z doré','13 s · révélation de la marque','Votre entreprise mérite un site d\'exception. ✨ Sites web, expériences 3D, boutiques en ligne et applications, conçus à Alger au niveau des plus grandes marques. -20 % pour nos 5 premiers clients : choisissez votre offre, lien en bio.','مؤسستك تستحق موقعاً استثنائياً. ✨ مواقع إلكترونية، تجارب 3D، متاجر وتطبيقات، مصمَّمة في الجزائر بمستوى كبرى العلامات. خصم 20% لأول 5 زبائن: اختر باقتك، الرابط في البايو.'],
+    ['Votre site en 10 secondes','24 s · le vrai site filmé','Tapez le nom de votre entreprise… et voyez votre site apparaître. 😮 À votre nom, sur votre propre domaine, en arabe et en français. Essayez gratuitement : lien en bio.','اكتب اسم مؤسستك… وشاهد موقعك يظهر أمامك. 😮 باسمك، على نطاقك الخاص، بالعربية والفرنسية. جرّبها مجاناً: الرابط في البايو.'],
+    ['La 3D qui fait vendre','22 s · fauteuil et immeuble en 3D','Vos clients veulent toucher avant d\'acheter. Avec la 3D, ils tournent, zooment et choisissent la couleur, directement sur votre site. Immobilier, mobilier, mode : la différence se voit. Lien en bio.','زبائنك يريدون اللمس قبل الشراء. مع تقنية 3D يديرون المنتج ويقرّبونه ويختارون لونه مباشرة على موقعك. عقار، أثاث، أزياء: الفرق واضح. الرابط في البايو.']
+  ];
+  var P=[
+    ['Ouvert','Dzign Studio ouvre ses portes à Alger. 🏛️ Notre mission : donner aux entreprises algériennes des sites dignes des plus grandes marques. Visitez nos 8 sites de démonstration : lien en bio.','Dzign Studio يفتح أبوابه في الجزائر العاصمة. 🏛️ مهمتنا: مواقع للمؤسسات الجزائرية بمستوى كبرى العلامات. زوروا مواقعنا التجريبية الثمانية: الرابط في البايو.'],
+    ['Programme Fondateurs','5 places. -20 % sur toutes nos formules. En échange : votre avis et le droit de montrer votre site. Les premiers arrivés seront les premiers servis. 👉 Lien en bio.','5 أماكن فقط. خصم 20% على جميع باقاتنا. مقابل رأيك والسماح لنا بعرض موقعك. الأولوية للأسبق. 👉 الرابط في البايو.'],
+    ['La Maison du Parquet','Réalisation 🔨 La Maison du Parquet : comparateur avant/après, calculateur de cartons, réservation au showroom. Un site qui vend, même la nuit. Voir le site en ligne : lien en bio.','إنجاز 🔨 La Maison du Parquet: مقارنة قبل/بعد، حاسبة الكراتين، حجز زيارة صالة العرض. موقع يبيع حتى في الليل. شاهدوه: الرابط في البايو.'],
+    ['Votre site en 10 s','Avant même de nous appeler, voyez votre futur site. Tapez votre nom sur notre site : il apparaît en 10 secondes. Gratuit, sans engagement.','قبل أن تتصل بنا، شاهد موقعك المستقبلي. اكتب اسمك على موقعنا: يظهر في 10 ثوانٍ. مجاناً ودون التزام.'],
+    ['3D','Ils le font tourner. Puis ils achètent. 🛋️ Le configurateur 3D, sur votre site, pour vos produits.','يديرونه بأيديهم. ثم يشترون. 🛋️ أداة التخصيص ثلاثية الأبعاد، على موقعك، لمنتجاتك.'],
+    ['Paiement 50/50','Vous voyez votre site avant de payer le solde. 50 % au lancement par BaridiMob, 50 % après avoir vu le site terminé. Tout à distance, partout en Algérie.','ترى موقعك قبل دفع الباقي. 50% عند الانطلاق عبر BaridiMob، و50% بعد رؤية الموقع جاهزاً. كل شيء عن بُعد، في كل أنحاء الجزائر.'],
+    ['Nos formules','Impact, Signature, Commerce, Immersion, Plateforme. Nom de domaine et email pro inclus. Quelle formule pour votre entreprise ? Dites-le-nous en commentaire. 👇','Impact، Signature، Commerce، Immersion، Plateforme. اسم النطاق والبريد المهني مشمولان. أي باقة تناسب مؤسستك؟ أخبرونا في التعليقات. 👇'],
+    ['Pourquoi Dzign','Un site ordinaire ou un site Dzign ? La différence se voit, et elle se ressent dans vos ventes.','موقع عادي أم موقع Dzign؟ الفرق واضح، ويظهر في مبيعاتك.'],
+    ['Prêt à briller ?','Prêt à briller en ligne ? Choisissez votre offre sur notre site, votre message WhatsApp est déjà prêt. 📲 0794 70 93 23','مستعد للتألّق على الإنترنت؟ اختر باقتك على موقعنا، ورسالتك على واتساب جاهزة. 📲 0794 70 93 23']
+  ];
+  var L='fr';
+  try{L=localStorage.getItem('campagne-l')||'fr'}catch(e){}
+  function rendre(){
+    document.documentElement.setAttribute('data-l',L);
+    document.getElementById('b-fr').setAttribute('aria-pressed',L==='fr');
+    document.getElementById('b-ar').setAttribute('aria-pressed',L==='ar');
+    var k=L==='ar'?3:2;
+    document.getElementById('videos').innerHTML=V.map(function(v,i){return '<article class="carte"><video controls muted playsinline preload="metadata" src="videos/video-'+(i+1)+'-'+L+'.mp4"></video><div class="corps"><h3>Vidéo '+(i+1)+' · '+v[0]+'</h3><p class="meta">'+v[1]+' · video-'+(i+1)+'-'+L+'.mp4</p><p class="legende" id="lv'+i+'">'+v[k]+'</p><button type="button" class="copier" data-cible="lv'+i+'">Copier la légende</button></div></article>'}).join('');
+    k=L==='ar'?2:1;
+    document.getElementById('posts').innerHTML=P.map(function(p,i){return '<article class="carte"><img src="posts/post-'+(i+1)+'-'+L+'.jpg" alt="Post '+(i+1)+' : '+p[0]+'" loading="lazy"><div class="corps"><h3>Post '+(i+1)+' · '+p[0]+'</h3><p class="legende" id="lp'+i+'">'+p[k]+'</p><button type="button" class="copier" data-cible="lp'+i+'">Copier la légende</button></div></article>'}).join('');
+  }
+  document.getElementById('b-fr').onclick=function(){L='fr';try{localStorage.setItem('campagne-l',L)}catch(e){}rendre()};
+  document.getElementById('b-ar').onclick=function(){L='ar';try{localStorage.setItem('campagne-l',L)}catch(e){}rendre()};
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.copier');if(!b)return;
+    var el=document.getElementById(b.dataset.cible),t=el.textContent,txt=b.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copié';setTimeout(function(){b.textContent=txt},1600)},sel)}catch(err){sel()}
+  });
+  rendre();
+})();
+</script>
