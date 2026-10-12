@@ -43,7 +43,7 @@ var q=new URLSearchParams(location.search),V=q.get('v')||'1',L=q.get('l')||'fr';
 document.documentElement.lang=L;document.documentElement.dir=L==='ar'?'rtl':'ltr';
 function T(fr,ar){return L==='ar'?ar:fr}
 var scene=document.getElementById('scene');
-var FIN='<div class="fin" id="fin"><div class="grand">d<b>z</b>ign</div><p>'+T('Votre site <em>d\'exception</em>,<br>conçu à Alger.','موقعك <em>الاستثنائي</em>،<br>مصمَّم في الجزائر.')+'</p><span class="badge">'+T('-20 % pour nos 5 premiers clients','خصم 20% لأول 5 زبائن')+'</span><span class="cta">'+T('Lien en bio','الرابط في البايو')+'</span><span class="wa">WhatsApp · 0794 70 93 23</span></div>';
+var FIN='<div class="fin" id="fin"><div class="grand">d<b>z</b>ign</div><p>'+T('Votre site <em>d\'exception</em>,<br>conçu à Alger.','موقعك <em>الاستثنائي</em>،<br>مصمَّم في الجزائر.')+'</p><span class="badge">'+T('-20 % pour nos 5 premiers clients','خصم 20% لأول 5 زبائن')+'</span><span class="cta">'+T('Lien en bio','الرابط في البايو')+'</span><span class="wa">WhatsApp · 0549 50 68 57</span></div>';
 var LOGO='<div class="logo">d<b>z</b>ign<small>studio</small></div>';
 var PIED='<div class="pied"><span>'+T('Studio digital · Alger','استوديو رقمي · الجزائر')+'</span><b>@dzignstudio</b></div>';
 function legendes(liste,bas){return '<div class="legende'+(bas?' bas':'')+'">'+liste.map(function(t,i){return '<p id="l'+i+'" style="position:absolute;left:0;right:0">'+t+'</p>'}).join('')+'</div>'}

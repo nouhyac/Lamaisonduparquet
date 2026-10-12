@@ -8,13 +8,13 @@
 ```
 ✨ Sites web, 3D & e-commerce haut de gamme
 📍 Alger · 100 % à distance
-📲 WhatsApp 0794 70 93 23
+📲 WhatsApp 0549 50 68 57
 🎁 -20 % · 5 premiers clients
 👇 Votre site en 10 s
 ```
 - **Lien** : `https://dzignstudio.design/#essai` (dès que le site est en ligne)
   En attendant : le lien de l'aperçu https://claude.ai/artifact/RD6NeNfPfgGwtGdppDRUbD (partagé « toute personne avec le lien »).
-- **Bouton de contact** : WhatsApp 0794 70 93 23
+- **Bouton de contact** : WhatsApp 0549 50 68 57
 - **Stories à la une** : Portfolio · Offres · 3D · Avis clients · FAQ
 - **Photo de profil** : `photo-profil.jpg`
 
@@ -40,7 +40,7 @@ Nous créons des sites web, des boutiques en ligne, des expériences 3D et des a
 Formules : Impact, Signature, Commerce, Immersion, Plateforme.
 Choisissez votre offre sur notre site, votre message WhatsApp est prêt.
 ```
-- **Téléphone / WhatsApp** : 0794 70 93 23
+- **Téléphone / WhatsApp** : 0549 50 68 57
 - **Email** : dzignstudio16@yahoo.com pour l'instant, puis contact@dzignstudio.design
 - **Site web** : https://dzignstudio.design (dès la mise en ligne)
 - **Ville** : Alger, Algérie (sans adresse précise, service à distance)

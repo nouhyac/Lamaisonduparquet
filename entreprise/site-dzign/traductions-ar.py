@@ -205,7 +205,7 @@ AR = {
 "Je ne sais pas encore": "لا أعرف بعد",
 "Votre projet en quelques mots": "مشروعك في بضع كلمات",
 "Préparer mon message WhatsApp": "جهّز رسالتي على واتساب",
-"© 2026 Dzign Studio · Alger, Algérie · +213 794 70 93 23": '© 2026 Dzign Studio · الجزائر العاصمة، الجزائر · <span dir="ltr">+213 794 70 93 23</span>',
+"© 2026 Dzign Studio · Alger, Algérie · +213 549 50 68 57": '© 2026 Dzign Studio · الجزائر العاصمة، الجزائر · <span dir="ltr">+213 549 50 68 57</span>',
 # Visionneuse
 "Ordinateur": "حاسوب",
 "Téléphone": "هاتف",

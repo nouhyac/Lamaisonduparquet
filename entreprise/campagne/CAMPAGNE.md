@@ -82,8 +82,8 @@ Heures de départ conseillées : **entre 20 h et 22 h** (à ajuster selon tes st
 **AR** : موقع عادي أم موقع Dzign؟ الفرق واضح، ويظهر في مبيعاتك.
 
 ### Post 9 · Prêt à briller ?
-**FR** : Prêt à briller en ligne ? Choisissez votre offre sur notre site, votre message WhatsApp est déjà prêt. 📲 0794 70 93 23
-**AR** : مستعد للتألّق على الإنترنت؟ اختر باقتك على موقعنا، ورسالتك على واتساب جاهزة. 📲 0794 70 93 23
+**FR** : Prêt à briller en ligne ? Choisissez votre offre sur notre site, votre message WhatsApp est déjà prêt. 📲 0549 50 68 57
+**AR** : مستعد للتألّق على الإنترنت؟ اختر باقتك على موقعنا، ورسالتك على واتساب جاهزة. 📲 0549 50 68 57
 
 ## Hashtags (à coller en fin de légende ou en 1er commentaire)
 `#Alger #Algérie #DZ #Algeria #siteweb #créationsiteweb #webdesign #ecommerce #entrepreneur #entrepreneurDZ #3D #marketingdigital #الجزائر #تصميم_مواقع #متجر_إلكتروني #تسويق_رقمي #رواد_الأعمال`
