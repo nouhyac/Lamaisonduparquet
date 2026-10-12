@@ -1,4 +1,4 @@
-# Projet : micro-entreprise de création de sites web et d'applications
+# Projet Dzign Studio : micro-entreprise de création de sites web et d'applications
 
 ## L'idée
 Créer seul(e) une micro-entreprise en ligne qui vend la création de sites web
@@ -15,18 +15,21 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | **Basé à Alger, marché : l'Algérie.** Prix en dinars, sites en arabe et en français. |
 | 2026-10-12 | **Cible : tout le monde** (généraliste), avec des pubs déclinées par segment. |
 | 2026-10-12 | Prix accessibles pour le marché algérien, mais qualité exceptionnelle. |
-| 2026-10-12 | **Prix « à partir de », selon le niveau demandé** (Standard / Premium / Prestige). |
+| 2026-10-12 | **Prix « à partir de », selon le niveau demandé.** |
+| 2026-10-12 | **Nom : Dzign Studio.** Positionnement **haut de gamme**. |
+| 2026-10-12 | **Paiement BaridiMob : 50 % au début, 50 % à la présentation du site terminé**, puis mise en ligne sur l'hébergement définitif. |
+| 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
 
 ## Questions encore ouvertes
 - [ ] Niveau technique de départ
 - [ ] Budget de départ (pub + outils)
-- [ ] Nom de l'entreprise : propositions dans `NOMS.md`, en attente du choix
-- [ ] Style de l'identité (moderne et tech, chaleureux, haut de gamme)
+- [ ] Valider l'identité (`IDENTITE.md`) et les prix (`OFFRE.md` v3)
+- [ ] Réserver les comptes @dzignstudio sur les réseaux
 
 ## Feuille de route
-1. **Offre** : formules, prix → `OFFRE.md` *(brouillon fait, à valider)*
-2. **Identité** : nom, logo, couleurs, ton *(en cours : `NOMS.md`)*
-3. **Vitrine** : site perso + 2 ou 3 démos pour le portfolio
+1. **Offre** : formules, prix → `OFFRE.md` *(v3 haut de gamme, à valider)*
+2. **Identité** : nom, logo, couleurs, ton → `IDENTITE.md` *(proposition n°1)*
+3. **Vitrine** : site Dzign Studio (avec 3D) + 2 ou 3 démos pour le portfolio *(prochaine étape)*
 4. **Acquisition** : contenu réseaux + pubs Meta/TikTok + page de contact
 5. **Vente et livraison** : appel découverte, devis, acompte, fabrication, livraison
 6. **Juridique** *(plus tard)* : statut d'auto-entrepreneur algérien, compte bancaire, conditions de vente
@@ -35,4 +38,4 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 Canva, Gamma, Higgsfield (visuels et vidéos), Adspirer (publicités), Gmail.
 
 ## Journal des sessions
-- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms.
+- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms. Choix : Dzign Studio, haut de gamme, BaridiMob 50/50. Offre v3 et identité proposées.
