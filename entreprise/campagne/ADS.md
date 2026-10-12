@@ -22,6 +22,11 @@ Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du d
 
 **Campagne 2 · Relance (après 1 à 2 semaines)** : personnes ayant visité le site ou vu 50 % d'une vidéo, sur 30 jours. Publicités : Post 2 (Programme Fondateurs) + Vidéo 1. Budget : 3 $ / jour.
 
+## Vidéos de pub montées (2026-10-13)
+- `videos/pub-50s-fr.mp4` (49 s) : Z doré → aperçu « 10 secondes » → 3D → écran de fin. Pour le fil d'actualité Facebook/Instagram.
+- `videos/pub-23s-fr.mp4` (22 s) : aperçu « 10 secondes » → écran de fin. Pour Reels et Stories (les formats courts coûtent moins cher et se regardent jusqu'au bout).
+- Muettes : ajouter une musique libre de droits dans le Gestionnaire de publicités (bibliothèque de sons Meta), ou laisser sans son (la majorité regarde sans le son).
+
 ## Publicités (5 créations par ensemble)
 | Pub | Visuel | Pourquoi |
 |-----|--------|----------|
