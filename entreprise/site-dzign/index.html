@@ -4,7 +4,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230B0B0F%27/%3E%3Cpath d=%27M16 16h32v7L27 41h21v7H16v-7l21-18H16z%27 fill=%27%23C8A96A%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Readex+Pro:wght@400;600;700&display=swap">
 <style>
 /* Layout : héros vidéo plein cadre, bandeau défilant, démo 3D interactive, exemples en fenêtres de navigateur, formules, déroulement, contact */
 :root{
@@ -128,7 +128,7 @@ section.bloc{padding-block:clamp(72px,10vw,128px);position:relative;z-index:2}
 
 /* Portfolio : grille de sites à visiter */
 .portfolio{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:18px}
-.site-carte{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/5;max-width:100%;border:1px solid var(--ligne);cursor:pointer;background:var(--graphite);text-align:left;padding:0;font:inherit;color:var(--ivoire);display:block;width:100%}
+.site-carte{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/5;max-width:100%;border:1px solid var(--ligne);cursor:pointer;background:var(--graphite);text-align:start;padding:0;font:inherit;color:var(--ivoire);display:block;width:100%}
 .site-carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
 .site-carte::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,11,.95) 0%,rgba(8,8,11,.35) 45%,rgba(8,8,11,0) 70%)}
 .site-carte:hover img,.site-carte:focus-visible img{transform:scale(1.08);filter:saturate(1.15)}
@@ -183,13 +183,13 @@ section.bloc{padding-block:clamp(72px,10vw,128px);position:relative;z-index:2}
 
 /* Comparatif */
 .compare{width:100%;border-collapse:collapse;font-size:.98rem;min-width:560px}
-.compare th,.compare td{padding:16px 14px;border-bottom:1px solid var(--ligne);text-align:left;vertical-align:top}
+.compare th,.compare td{padding:16px 14px;border-bottom:1px solid var(--ligne);text-align:start;vertical-align:top}
 .compare thead th{font-family:var(--f-display);font-size:1.05rem}
 .compare thead th:last-child{color:var(--or)}
 .compare td:nth-child(2){color:var(--gris)}
 .compare td:last-child{color:var(--ivoire);background:color-mix(in srgb,var(--or) 6%,transparent)}
 .compare td:first-child{font-weight:600}
-.ok-or{color:var(--or);font-weight:700;margin-right:6px}
+.ok-or{color:var(--or);font-weight:700;margin-inline-end:6px}
 
 /* Visionneuse de sites */
 body.verrou{overflow:hidden}
@@ -306,8 +306,8 @@ body.verrou{overflow:hidden}
 .pastille{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--noir);background:var(--or);padding:4px 10px;border-radius:999px;white-space:nowrap}
 .pour{color:var(--gris);font-size:.92rem}
 .formule ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem}
-.formule li{padding-left:22px;position:relative}
-.formule li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:1px;background:var(--or)}
+.formule li{padding-inline-start:22px;position:relative}
+.formule li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:10px;height:1px;background:var(--or)}
 .prix{border-top:1px solid var(--ligne);padding-top:18px;display:grid;gap:2px}
 .prix small{color:var(--gris);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
 .prix span{font-family:var(--f-display);font-size:1.8rem;font-weight:700;font-variant-numeric:tabular-nums}
@@ -326,10 +326,10 @@ body.verrou{overflow:hidden}
 /* Abonnements + options */
 .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px}
 .tableau{width:100%;border-collapse:collapse;font-size:.96rem}
-.tableau th{text-align:left;font-family:var(--f-display);font-weight:700;font-size:1.05rem;padding:16px 12px 16px 0;vertical-align:top;white-space:nowrap;border-top:1px solid var(--ligne)}
+.tableau th{text-align:start;font-family:var(--f-display);font-weight:700;font-size:1.05rem;padding-block:16px;padding-inline:0 12px;vertical-align:top;white-space:nowrap;border-top:1px solid var(--ligne)}
 .tableau td{padding:16px 0;color:var(--gris);vertical-align:top;border-top:1px solid var(--ligne)}
 .tableau tr:first-child td,.tableau tr:first-child th{border-top:0}
-.tableau td.montant{color:var(--ivoire);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;padding-left:12px}
+.tableau td.montant{color:var(--ivoire);text-align:end;white-space:nowrap;font-variant-numeric:tabular-nums;padding-inline-start:12px}
 .duo h3{font-size:1.4rem;margin-bottom:8px}
 .duo .intro{color:var(--gris);font-size:.94rem;margin-bottom:18px}
 .table-scroll{overflow-x:auto}
@@ -357,23 +357,58 @@ textarea{min-height:110px;resize:vertical}
 footer{border-top:1px solid var(--ligne);position:relative;z-index:2}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:28px 96px;color:var(--gris);font-size:.86rem}
 
+
+/* Langue, barre de progression, FAQ */
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn-langue{font-family:var(--f-arabe);min-width:64px;justify-content:center}
+:root[lang="ar"] .btn-langue{font-family:var(--f-texte)}
+@media (max-width:480px){.nav-demarrer{display:none}}
+.progression{position:fixed;top:0;left:0;right:0;height:2px;z-index:25;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--emeraude),var(--or));pointer-events:none}
+:root[dir="rtl"] .progression{transform-origin:100% 50%}
+.faq-grille{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+@media (max-width:900px){.faq-grille{grid-template-columns:1fr;gap:8px}}
+.faq{border-top:1px solid var(--ligne)}
+.faq details{border-bottom:1px solid var(--ligne)}
+.faq summary{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--f-display);font-weight:700;font-size:1.12rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--or);font-size:1.6rem;line-height:1;font-weight:400;transition:transform .3s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq summary:hover{color:var(--or-clair)}
+.faq p{color:var(--gris);padding-bottom:22px;max-width:62ch}
+/* Version arabe */
+:root[lang="ar"] body{font-family:var(--f-arabe)}
+:root[lang="ar"] h1,:root[lang="ar"] h2,:root[lang="ar"] h3,:root[lang="ar"] h4,:root[lang="ar"] .faq summary,:root[lang="ar"] .prix span,:root[lang="ar"] .tableau th,:root[lang="ar"] .compare thead th,:root[lang="ar"] .hero-chiffres b,:root[lang="ar"] .defile-piste,:root[lang="ar"] .exp .marque{font-family:"Readex Pro",var(--f-arabe)}
+:root[lang="ar"] *{letter-spacing:0!important}
+:root[lang="ar"] h1,:root[lang="ar"] h2{line-height:1.3}
+:root[lang="ar"] .hero h1{font-size:clamp(2.2rem,5.6vw,4.6rem)}
+:root[lang="ar"] .ar{direction:ltr;font-family:var(--f-texte)}
+:root[dir="rtl"] .hero .wrap{direction:ltr}
+:root[dir="rtl"] .hero-texte{direction:rtl;max-width:540px}
+:root[dir="rtl"] .logo,:root[dir="rtl"] .defile-piste,:root[dir="rtl"] .numero{direction:ltr}
+:root[dir="rtl"] .numero{justify-content:flex-end}
+:root[dir="rtl"] .hero-actions,:root[dir="rtl"] .cas-actions{justify-content:flex-start}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rideau{display:none}}
 </style>
 
 <div class="rideau" aria-hidden="true"><span>d<b>z</b>ign</span></div>
 <div class="lueur" id="lueur" aria-hidden="true"></div>
+<div class="progression" id="progression" aria-hidden="true"></div>
 
 <nav class="haut" id="nav">
   <div class="wrap">
     <a class="logo" href="#haut" aria-label="Dzign Studio, accueil"><span>d<b>z</b>ign</span> <small>studio</small></a>
     <div class="nav-liens">
-            <a href="#portfolio">Portfolio</a>
-      <a href="#essai">Votre aperçu</a>
-      <a href="#formules">Formules</a>
-      <a href="#deroulement">Déroulement</a>
-      <a href="#contact">Contact</a>
+            <a href="#portfolio" data-ar="أعمالنا">Portfolio</a>
+      <a href="#essai" data-ar="معاينة موقعك">Votre aperçu</a>
+      <a href="#formules" data-ar="الباقات">Formules</a>
+      <a href="#deroulement" data-ar="مراحل العمل">Déroulement</a>
+      <a href="#contact" data-ar="تواصل معنا">Contact</a>
     </div>
-    <a class="btn btn-or btn-petit" href="#contact">Démarrer un projet</a>
+    <div class="nav-actions">
+      <button class="btn btn-ligne btn-petit btn-langue" type="button" id="langue" aria-label="Afficher le site en arabe">عربي</button>
+      <a class="btn btn-or btn-petit nav-demarrer" href="#contact" data-ar="ابدأ مشروعك">Démarrer un projet</a>
+    </div>
   </div>
 </nav>
 
@@ -384,18 +419,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   </video>
   <div class="wrap">
     <div class="hero-texte">
-      <p class="eyebrow">Studio digital haut de gamme · Alger</p>
-      <h1>L'excellence digitale, <span class="or-brille">made in DZ.</span></h1>
-      <p class="ar" lang="ar">تميّز رقمي، صُنع في الجزائر</p>
-      <p class="hero-sous">Sites web, expériences 3D, boutiques en ligne et applications. Conçus à Alger, au niveau des plus grandes marques, pour vous apporter des clients.</p>
+      <p class="eyebrow" data-ar="استوديو رقمي راقٍ · الجزائر العاصمة">Studio digital haut de gamme · Alger</p>
+      <h1 data-ar="التميّز الرقمي، &lt;span class=&quot;or-brille&quot;&gt;صُنع في الجزائر.&lt;/span&gt;">L'excellence digitale, <span class="or-brille">made in DZ.</span></h1>
+      <p class="ar" lang="ar" data-ar="L&#x27;excellence digitale, made in DZ.">تميّز رقمي، صُنع في الجزائر</p>
+      <p class="hero-sous" data-ar="مواقع إلكترونية، تجارب ثلاثية الأبعاد، متاجر إلكترونية وتطبيقات. نصمّمها في الجزائر بمستوى كبرى العلامات العالمية، لتجلب لك الزبائن.">Sites web, expériences 3D, boutiques en ligne et applications. Conçus à Alger, au niveau des plus grandes marques, pour vous apporter des clients.</p>
       <div class="hero-actions">
-        <a class="btn btn-or" href="https://wa.me/213794709323" target="_blank" rel="noopener">Parler de mon projet</a>
-        <a class="btn btn-ligne" href="#portfolio">Visiter nos 8 sites</a>
+        <a class="btn btn-or" href="https://wa.me/213794709323" target="_blank" rel="noopener" data-ar="حدّثنا عن مشروعك">Parler de mon projet</a>
+        <a class="btn btn-ligne" href="#portfolio" data-ar="زُر مواقعنا الثمانية">Visiter nos 8 sites</a>
       </div>
       <div class="hero-chiffres">
-        <div><b>72 h</b><span>pour voir votre maquette</span></div>
-        <div><b>3 langues</b><span>arabe, français, anglais</span></div>
-        <div><b>100 %</b><span>à distance, partout en Algérie</span></div>
+        <div><b data-ar="72 ساعة">72 h</b><span data-ar="لرؤية النموذج الأولي لموقعك">pour voir votre maquette</span></div>
+        <div><b data-ar="3 لغات">3 langues</b><span data-ar="العربية، الفرنسية، الإنجليزية">arabe, français, anglais</span></div>
+        <div><b data-ar="&lt;bdi&gt;100%&lt;/bdi&gt;">100 %</b><span data-ar="عن بُعد، في كل أنحاء الجزائر">à distance, partout en Algérie</span></div>
       </div>
     </div>
   </div>
@@ -403,16 +438,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <div class="defile" aria-hidden="true">
   <div class="defile-piste">
-    <span>Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
-    <span>Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
+    <span data-ar="مواقع إلكترونية &lt;i&gt;&lt;/i&gt; تجارب &lt;em&gt;3D&lt;/em&gt; &lt;i&gt;&lt;/i&gt; متاجر إلكترونية &lt;i&gt;&lt;/i&gt; تطبيقات &lt;i&gt;&lt;/i&gt; هوية بصرية &lt;i&gt;&lt;/i&gt; إعلانات &lt;em&gt;Meta و TikTok&lt;/em&gt; &lt;i&gt;&lt;/i&gt; الظهور على Google &lt;i&gt;&lt;/i&gt;">Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
+    <span data-ar="مواقع إلكترونية &lt;i&gt;&lt;/i&gt; تجارب &lt;em&gt;3D&lt;/em&gt; &lt;i&gt;&lt;/i&gt; متاجر إلكترونية &lt;i&gt;&lt;/i&gt; تطبيقات &lt;i&gt;&lt;/i&gt; هوية بصرية &lt;i&gt;&lt;/i&gt; إعلانات &lt;em&gt;Meta و TikTok&lt;/em&gt; &lt;i&gt;&lt;/i&gt; الظهور على Google &lt;i&gt;&lt;/i&gt;">Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
   </div>
 </div>
 
 <section class="bloc" style="padding-block:48px 0">
   <div class="wrap">
     <div class="fondateurs">
-      <p><strong>Programme Fondateurs</strong> : -20 % sur toutes les formules pour nos 5 premiers clients.</p>
-      <div class="places" aria-label="5 places disponibles sur 5"><i></i><i></i><i></i><i></i><i></i> <span>5 places restantes</span></div>
+      <p data-ar="&lt;strong&gt;برنامج المؤسسين&lt;/strong&gt;: خصم &lt;bdi&gt;20%&lt;/bdi&gt; على جميع الباقات لأول 5 زبائن."><strong>Programme Fondateurs</strong> : -20 % sur toutes les formules pour nos 5 premiers clients.</p>
+      <div class="places" aria-label="5 places disponibles sur 5"><i></i><i></i><i></i><i></i><i></i> <span data-ar="5 أماكن متبقية">5 places restantes</span></div>
     </div>
   </div>
 </section>
@@ -420,9 +455,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" id="portfolio" style="padding-top:clamp(72px,10vw,128px)">
   <div class="wrap">
     <div class="titre-bloc">
-      <p class="eyebrow">Portfolio</p>
-      <h2>Entrez dans nos sites. <span class="or-brille">Testez-les vraiment.</span></h2>
-      <p>Un vrai site en ligne, puis 8 sites de démonstration que vous pouvez ouvrir et tester : réserver, ajouter au panier, faire tourner la 3D, passer de l'ordinateur au téléphone.</p>
+      <p class="eyebrow" data-ar="أعمالنا">Portfolio</p>
+      <h2 data-ar="ادخل إلى مواقعنا. &lt;span class=&quot;or-brille&quot;&gt;وجرّبها بنفسك.&lt;/span&gt;">Entrez dans nos sites. <span class="or-brille">Testez-les vraiment.</span></h2>
+      <p data-ar="موقع حقيقي يعمل على الإنترنت، ثم 8 مواقع تجريبية يمكنك فتحها وتجربتها: احجز، أضف إلى السلة، أدر المجسّم ثلاثي الأبعاد، وانتقل من الحاسوب إلى الهاتف.">Un vrai site en ligne, puis 8 sites de démonstration que vous pouvez ouvrir et tester : réserver, ajouter au panier, faire tourner la 3D, passer de l'ordinateur au téléphone.</p>
     </div>
     <article class="cas" aria-labelledby="cas-titre">
       <div class="cas-scene">
@@ -433,30 +468,30 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <div class="cas-tel"><div class="cas-defile" style="background-image:url(medias/lmdp-mobile.jpg)" role="img" aria-label="La Maison du Parquet sur téléphone"></div></div>
       </div>
       <div class="cas-texte">
-        <span class="cas-vrai"><i></i>Réalisation · En ligne</span>
+        <span class="cas-vrai" data-ar="&lt;i&gt;&lt;/i&gt;إنجاز حقيقي · متاح على الإنترنت"><i></i>Réalisation · En ligne</span>
         <h3 id="cas-titre">La Maison du Parquet</h3>
-        <p class="sous">Parquet EGGER en stock et showroom à Dar El Beïda. Un site pensé pour que le visiteur choisisse son sol, calcule sa commande et réserve sa visite, sans même appeler.</p>
+        <p class="sous" data-ar="باركيه EGGER متوفر في المخزون مع صالة عرض في الدار البيضاء. موقع صُمّم ليختار الزائر أرضيته، ويحسب طلبيته، ويحجز زيارته دون حتى أن يتصل.">Parquet EGGER en stock et showroom à Dar El Beïda. Un site pensé pour que le visiteur choisisse son sol, calcule sa commande et réserve sa visite, sans même appeler.</p>
         <ul class="cas-liste">
-          <li>Comparateur avant / après : carrelage contre parquet, au glissé</li>
-          <li>Quiz « Votre décor en 3 questions »</li>
-          <li>Visualiseur des décors dans votre pièce</li>
-          <li>Calculateur du nombre de cartons</li>
-          <li>Catalogue des décors en stock, avec fiches détaillées</li>
-          <li>Réservation de visite au showroom, avec créneaux</li>
-          <li>Appel et WhatsApp en un geste sur téléphone</li>
+          <li data-ar="مقارنة قبل / بعد: البلاط مقابل الباركيه، بلمسة سحب">Comparateur avant / après : carrelage contre parquet, au glissé</li>
+          <li data-ar="اختبار «ديكورك في 3 أسئلة»">Quiz « Votre décor en 3 questions »</li>
+          <li data-ar="معاينة الديكورات داخل غرفتك">Visualiseur des décors dans votre pièce</li>
+          <li data-ar="حاسبة عدد الكراتين">Calculateur du nombre de cartons</li>
+          <li data-ar="كتالوج الديكورات المتوفرة مع بطاقات مفصّلة">Catalogue des décors en stock, avec fiches détaillées</li>
+          <li data-ar="حجز زيارة لصالة العرض حسب المواعيد المتاحة">Réservation de visite au showroom, avec créneaux</li>
+          <li data-ar="اتصال وواتساب بلمسة واحدة على الهاتف">Appel et WhatsApp en un geste sur téléphone</li>
         </ul>
         <div class="cas-actions">
-          <a class="btn btn-or" href="https://www.lamaisonduparquet.org" target="_blank" rel="noopener">Voir le site en ligne ↗</a>
-          <a class="btn btn-ligne" href="https://wa.me/213794709323?text=Bonjour%20Dzign%20Studio%2C%20je%20veux%20un%20site%20comme%20La%20Maison%20du%20Parquet." target="_blank" rel="noopener">Je veux un site comme celui-ci</a>
+          <a class="btn btn-or" href="https://www.lamaisonduparquet.org" target="_blank" rel="noopener" data-ar="زُر الموقع ↗">Voir le site en ligne ↗</a>
+          <a class="btn btn-ligne" href="https://wa.me/213794709323?text=Bonjour%20Dzign%20Studio%2C%20je%20veux%20un%20site%20comme%20La%20Maison%20du%20Parquet." target="_blank" rel="noopener" data-ar="أريد موقعاً مثل هذا">Je veux un site comme celui-ci</a>
         </div>
       </div>
     </article>
     <div class="titre-bloc" style="margin-bottom:32px">
-      <h3 style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700">8 sites de démonstration à tester</h3>
-      <p>Un métier différent pour chaque site. Ouvrez-les, cliquez, essayez sur ordinateur et sur téléphone.</p>
+      <h3 style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700" data-ar="8 مواقع تجريبية للتجربة">8 sites de démonstration à tester</h3>
+      <p data-ar="لكل موقع مجال مختلف. افتحها، انقر، وجرّبها على الحاسوب والهاتف.">Un métier différent pour chaque site. Ouvrez-les, cliquez, essayez sur ordinateur et sur téléphone.</p>
     </div>
     <div class="portfolio" id="grille-portfolio"></div>
-    <p class="mention">Les 8 sites de démonstration utilisent des noms d'entreprises fictifs. La Maison du Parquet est un vrai site, en ligne.</p>
+    <p class="mention" data-ar="المواقع التجريبية الثمانية تحمل أسماء شركات وهمية. أما La Maison du Parquet فهو موقع حقيقي يعمل على الإنترنت.">Les 8 sites de démonstration utilisent des noms d'entreprises fictifs. La Maison du Parquet est un vrai site, en ligne.</p>
   </div>
 </section>
 
@@ -464,20 +499,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   <div class="wrap">
     <div class="essai">
       <div class="essai-texte">
-        <p class="eyebrow">Essai instantané</p>
-        <h2>Voyez <span class="or-brille">votre</span> site en 10 secondes.</h2>
-        <p>Écrivez le nom de votre entreprise, choisissez votre métier et votre couleur. Nous vous montrons tout de suite votre site, à votre nom et sur votre propre nom de domaine. Gratuit, sans engagement.</p>
+        <p class="eyebrow" data-ar="معاينة فورية">Essai instantané</p>
+        <h2 data-ar="شاهد &lt;span class=&quot;or-brille&quot;&gt;موقعك&lt;/span&gt; في 10 ثوانٍ.">Voyez <span class="or-brille">votre</span> site en 10 secondes.</h2>
+        <p data-ar="اكتب اسم مؤسستك، واختر مجالك ولونك. نعرض لك موقعك فوراً، باسمك وعلى اسم نطاقك الخاص. مجاناً ودون أي التزام.">Écrivez le nom de votre entreprise, choisissez votre métier et votre couleur. Nous vous montrons tout de suite votre site, à votre nom et sur votre propre nom de domaine. Gratuit, sans engagement.</p>
       </div>
       <form id="form-essai" novalidate>
-        <label for="essai-nom">Nom de votre entreprise<input id="essai-nom" maxlength="32" placeholder="Ex. : Pâtisserie Yasmine"></label>
-        <label for="essai-secteur">Votre métier
+        <label for="essai-nom"><span data-ar="اسم مؤسستك">Nom de votre entreprise</span><input id="essai-nom" maxlength="32" placeholder="Ex. : Pâtisserie Yasmine" data-ar-ph="مثال: حلويات ياسمين"></label>
+        <label for="essai-secteur"><span data-ar="مجال نشاطك">Votre métier</span>
           <select id="essai-secteur"></select>
         </label>
         <div style="display:grid;gap:8px">
-          <span style="font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)">Votre couleur</span>
+          <span style="font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)" data-ar="لونك">Votre couleur</span>
           <div class="pastilles" id="essai-couleurs"></div>
         </div>
-        <button class="btn btn-or" type="submit">Voir mon site maintenant</button>
+        <button class="btn btn-or" type="submit" data-ar="اعرض موقعي الآن">Voir mon site maintenant</button>
       </form>
     </div>
   </div>
@@ -486,20 +521,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" id="demo3d">
   <div class="wrap demo3d">
     <div class="demo3d-texte">
-      <p class="eyebrow">Essayez maintenant</p>
-      <h2>Touchez-le. <span class="or-brille">Faites-le tourner.</span></h2>
-      <p>Ce bâtiment est un vrai modèle en 3D, pas une photo. C'est l'expérience que vos clients vivront sur votre site : ils explorent votre produit, votre projet ou votre local sous tous les angles, avant même de vous appeler.</p>
+      <p class="eyebrow" data-ar="جرّب الآن">Essayez maintenant</p>
+      <h2 data-ar="المسه. &lt;span class=&quot;or-brille&quot;&gt;أدِره كما تشاء.&lt;/span&gt;">Touchez-le. <span class="or-brille">Faites-le tourner.</span></h2>
+      <p data-ar="هذا المبنى مجسّم حقيقي ثلاثي الأبعاد، وليس صورة. هذه هي التجربة التي سيعيشها زبائنك على موقعك: يستكشفون منتجك أو مشروعك أو محلّك من كل الزوايا، قبل حتى أن يتصلوا بك.">Ce bâtiment est un vrai modèle en 3D, pas une photo. C'est l'expérience que vos clients vivront sur votre site : ils explorent votre produit, votre projet ou votre local sous tous les angles, avant même de vous appeler.</p>
       <ul class="demo3d-liste">
-        <li>Promotion immobilière : faire visiter un projet avant sa construction</li>
-        <li>Mobilier, mode, automobile : montrer chaque détail du produit</li>
-        <li>Boutiques : un effet « waouh » qui fait vendre</li>
+        <li data-ar="الترقية العقارية: زيارة المشروع قبل بنائه">Promotion immobilière : faire visiter un projet avant sa construction</li>
+        <li data-ar="الأثاث، الأزياء، السيارات: إبراز كل تفاصيل المنتج">Mobilier, mode, automobile : montrer chaque détail du produit</li>
+        <li data-ar="المتاجر: تأثير مبهر يدفع إلى الشراء">Boutiques : un effet « waouh » qui fait vendre</li>
       </ul>
-      <div><a class="btn btn-or" href="#formules">Voir la formule Immersion</a></div>
+      <div><a class="btn btn-or" href="#formules" data-ar="اكتشف باقة Immersion">Voir la formule Immersion</a></div>
     </div>
     <div class="vitrine3d" id="vitrine3d" aria-label="Modèle 3D interactif d'un immeuble de standing">
-      <span class="etiquette">Modèle 3D en direct</span>
-      <div class="chargement" id="chargement3d">Chargement du modèle 3D…</div>
-      <p class="aide">Glissez pour tourner · Pincez ou molette pour zoomer</p>
+      <span class="etiquette" data-ar="مجسّم 3D مباشر">Modèle 3D en direct</span>
+      <div class="chargement" id="chargement3d" data-ar="جارٍ تحميل المجسّم…">Chargement du modèle 3D…</div>
+      <p class="aide" data-ar="اسحب للتدوير · قرّب بإصبعين أو بعجلة الفأرة">Glissez pour tourner · Pincez ou molette pour zoomer</p>
     </div>
   </div>
 </section>
@@ -507,17 +542,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" id="expertises" style="padding-top:0">
   <div class="wrap">
     <div class="titre-bloc">
-      <p class="eyebrow">Expertises</p>
-      <h2>Tout ce qu'il faut pour briller en ligne, au même endroit.</h2>
-      <p>Un seul studio pour le design, la technique et le marketing. Vous avez un interlocuteur unique, joignable sur WhatsApp.</p>
+      <p class="eyebrow" data-ar="خبراتنا">Expertises</p>
+      <h2 data-ar="كل ما تحتاجه للتألق على الإنترنت، في مكان واحد.">Tout ce qu'il faut pour briller en ligne, au même endroit.</h2>
+      <p data-ar="استوديو واحد للتصميم والتقنية والتسويق. محاور واحد، متاح على واتساب.">Un seul studio pour le design, la technique et le marketing. Vous avez un interlocuteur unique, joignable sur WhatsApp.</p>
     </div>
     <div class="expertises">
-      <div class="exp"><span class="marque">Design</span><h3>Sur mesure, jamais vu</h3><p>Typographie soignée, animations fluides. Aucun modèle recyclé.</p></div>
-      <div class="exp"><span class="marque">3D</span><h3>Expériences immersives</h3><p>Produits à faire tourner, configurateurs, visites virtuelles.</p></div>
-      <div class="exp"><span class="marque">Web</span><h3>Rapide et bien référencé</h3><p>Chargement éclair, pensé mobile, optimisé pour Google.</p></div>
-      <div class="exp"><span class="marque">Plateformes</span><h3>Applications métier</h3><p>Réservation, espace client, marketplace, tableau de bord.</p></div>
-      <div class="exp"><span class="marque">Marketing</span><h3>Des visiteurs aux clients</h3><p>Pubs Facebook, Instagram, TikTok, vidéos et visuels.</p></div>
-      <div class="exp"><span class="marque">ع · FR · EN</span><h3>Trilingue</h3><p>Arabe, français et anglais, avec une mise en page arabe impeccable.</p></div>
+      <div class="exp"><span class="marque" data-ar="التصميم">Design</span><h3 data-ar="حسب الطلب، لم يُرَ من قبل">Sur mesure, jamais vu</h3><p data-ar="خطوط أنيقة وحركات سلسة. لا قوالب مكرّرة.">Typographie soignée, animations fluides. Aucun modèle recyclé.</p></div>
+      <div class="exp"><span class="marque">3D</span><h3 data-ar="تجارب غامرة">Expériences immersives</h3><p data-ar="منتجات قابلة للتدوير، أدوات تخصيص، زيارات افتراضية.">Produits à faire tourner, configurateurs, visites virtuelles.</p></div>
+      <div class="exp"><span class="marque" data-ar="الويب">Web</span><h3 data-ar="سريع وظاهر على Google">Rapide et bien référencé</h3><p data-ar="تحميل فائق السرعة، مصمّم للهاتف أولاً، ومحسّن لمحركات البحث.">Chargement éclair, pensé mobile, optimisé pour Google.</p></div>
+      <div class="exp"><span class="marque" data-ar="المنصّات">Plateformes</span><h3 data-ar="تطبيقات مهنية">Applications métier</h3><p data-ar="حجوزات، فضاء الزبائن، منصّة بيع، لوحة تحكم.">Réservation, espace client, marketplace, tableau de bord.</p></div>
+      <div class="exp"><span class="marque" data-ar="التسويق">Marketing</span><h3 data-ar="من زوّار إلى زبائن">Des visiteurs aux clients</h3><p data-ar="إعلانات Facebook وInstagram وTikTok، فيديوهات وتصاميم.">Pubs Facebook, Instagram, TikTok, vidéos et visuels.</p></div>
+      <div class="exp"><span class="marque">ع · FR · EN</span><h3 data-ar="ثلاث لغات">Trilingue</h3><p data-ar="العربية والفرنسية والإنجليزية، مع تنسيق عربي متقن.">Arabe, français et anglais, avec une mise en page arabe impeccable.</p></div>
     </div>
   </div>
 </section>
@@ -525,22 +560,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" id="pourquoi" style="padding-top:0">
   <div class="wrap">
     <div class="titre-bloc">
-      <p class="eyebrow">Pourquoi Dzign</p>
-      <h2>Ce que vous n'aurez nulle part ailleurs.</h2>
+      <p class="eyebrow" data-ar="لماذا Dzign">Pourquoi Dzign</p>
+      <h2 data-ar="ما لن تجده في أي مكان آخر.">Ce que vous n'aurez nulle part ailleurs.</h2>
     </div>
     <div class="table-scroll">
       <table class="compare">
-        <thead><tr><th></th><th>Un site ordinaire</th><th>Un site Dzign</th></tr></thead>
+        <thead><tr><th></th><th data-ar="موقع عادي">Un site ordinaire</th><th data-ar="موقع من Dzign">Un site Dzign</th></tr></thead>
         <tbody>
-          <tr><td>Adresse du site</td><td>Une adresse générique, partagée avec la plateforme</td><td><span class="ok-or">✓</span>Votre propre nom de domaine et votre email pro à votre nom</td></tr>
-          <tr><td>Avant de signer</td><td>Des captures d'écran</td><td><span class="ok-or">✓</span>Votre site en aperçu en 10 secondes, puis une maquette sous 72 h</td></tr>
-          <tr><td>Paiement</td><td>Souvent la totalité à l'avance</td><td><span class="ok-or">✓</span>50 % au départ, 50 % seulement après avoir vu le site terminé, tout à distance par BaridiMob</td></tr>
-          <tr><td>Design</td><td>Un modèle déjà vu ailleurs</td><td><span class="ok-or">✓</span>Création sur mesure, animations, 3D</td></tr>
-          <tr><td>Langues</td><td>Une seule, ou une traduction automatique</td><td><span class="ok-or">✓</span>Arabe, français, anglais, mise en page arabe soignée</td></tr>
-          <tr><td>Vente en ligne</td><td>Un simple formulaire</td><td><span class="ok-or">✓</span>Paiement à la livraison, frais par wilaya, BaridiMob</td></tr>
-          <tr><td>Clients</td><td>Le site est livré, et c'est tout</td><td><span class="ok-or">✓</span>Pubs, vidéos et référencement pour faire venir des clients</td></tr>
-          <tr><td>Déplacements</td><td>Rendez-vous en agence</td><td><span class="ok-or">✓</span>Aucun : tout se fait à distance, partout en Algérie</td></tr>
-          <tr><td>Contact</td><td>Un standard ou un email</td><td><span class="ok-or">✓</span>Un seul interlocuteur, directement sur WhatsApp</td></tr>
+          <tr><td data-ar="عنوان الموقع">Adresse du site</td><td data-ar="عنوان عام مشترك مع المنصّة">Une adresse générique, partagée avec la plateforme</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;اسم نطاق خاص بك وبريد مهني باسمك"><span class="ok-or">✓</span>Votre propre nom de domaine et votre email pro à votre nom</td></tr>
+          <tr><td data-ar="قبل التوقيع">Avant de signer</td><td data-ar="لقطات شاشة">Des captures d'écran</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;معاينة موقعك في 10 ثوانٍ، ثم نموذج أولي خلال 72 ساعة"><span class="ok-or">✓</span>Votre site en aperçu en 10 secondes, puis une maquette sous 72 h</td></tr>
+          <tr><td data-ar="الدفع">Paiement</td><td data-ar="غالباً المبلغ كاملاً مسبقاً">Souvent la totalité à l'avance</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;&lt;bdi&gt;50%&lt;/bdi&gt; عند الانطلاق، و&lt;bdi&gt;50%&lt;/bdi&gt; فقط بعد رؤية الموقع جاهزاً، كل ذلك عن بُعد عبر BaridiMob"><span class="ok-or">✓</span>50 % au départ, 50 % seulement après avoir vu le site terminé, tout à distance par BaridiMob</td></tr>
+          <tr><td data-ar="التصميم">Design</td><td data-ar="قالب سبق رؤيته في مكان آخر">Un modèle déjà vu ailleurs</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;تصميم حسب الطلب، حركات، 3D"><span class="ok-or">✓</span>Création sur mesure, animations, 3D</td></tr>
+          <tr><td data-ar="اللغات">Langues</td><td data-ar="لغة واحدة، أو ترجمة آلية">Une seule, ou une traduction automatique</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;العربية والفرنسية والإنجليزية، بتنسيق عربي متقن"><span class="ok-or">✓</span>Arabe, français, anglais, mise en page arabe soignée</td></tr>
+          <tr><td data-ar="البيع عبر الإنترنت">Vente en ligne</td><td data-ar="استمارة بسيطة">Un simple formulaire</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;الدفع عند الاستلام، رسوم التوصيل حسب الولاية، BaridiMob"><span class="ok-or">✓</span>Paiement à la livraison, frais par wilaya, BaridiMob</td></tr>
+          <tr><td data-ar="الزبائن">Clients</td><td data-ar="يُسلَّم الموقع وينتهي الأمر">Le site est livré, et c'est tout</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;إعلانات وفيديوهات وظهور على Google لجلب الزبائن"><span class="ok-or">✓</span>Pubs, vidéos et référencement pour faire venir des clients</td></tr>
+          <tr><td data-ar="التنقّل">Déplacements</td><td data-ar="مواعيد في الوكالة">Rendez-vous en agence</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;لا حاجة: كل شيء عن بُعد، في كل أنحاء الجزائر"><span class="ok-or">✓</span>Aucun : tout se fait à distance, partout en Algérie</td></tr>
+          <tr><td data-ar="تواصل معنا">Contact</td><td data-ar="مقسّم هاتفي أو بريد إلكتروني">Un standard ou un email</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;محاور واحد، مباشرة على واتساب"><span class="ok-or">✓</span>Un seul interlocuteur, directement sur WhatsApp</td></tr>
         </tbody>
       </table>
     </div>
@@ -550,62 +585,62 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" id="formules" style="padding-top:0">
   <div class="wrap">
     <div class="titre-bloc">
-      <p class="eyebrow">Formules</p>
-      <h2>Choisissez votre niveau d'ambition.</h2>
-      <p>Prix de départ indicatifs. Le devis final dépend du niveau demandé, et il est fixé avant de commencer.</p>
+      <p class="eyebrow" data-ar="الباقات">Formules</p>
+      <h2 data-ar="اختر مستوى طموحك.">Choisissez votre niveau d'ambition.</h2>
+      <p data-ar="أسعار انطلاق تقريبية. يتحدد السعر النهائي حسب المستوى المطلوب، ويُثبَّت قبل بدء العمل.">Prix de départ indicatifs. Le devis final dépend du niveau demandé, et il est fixé avant de commencer.</p>
     </div>
     <div class="formules">
       <article class="formule">
         <div class="formule-tete"><h3>Impact</h3></div>
-        <p class="pour">Lancer une offre, un produit ou un événement.</p>
-        <ul><li>Une page unique premium et animée</li><li>WhatsApp, carte et formulaire</li><li>Pensée pour vos publicités</li></ul>
-        <div class="prix"><small>À partir de</small><span>30 000<sup>DA</sup></span></div>
+        <p class="pour" data-ar="لإطلاق عرض أو منتج أو حدث.">Lancer une offre, un produit ou un événement.</p>
+        <ul><li data-ar="صفحة واحدة راقية ومتحركة">Une page unique premium et animée</li><li data-ar="واتساب، خريطة واستمارة">WhatsApp, carte et formulaire</li><li data-ar="مصمّمة لإعلاناتك">Pensée pour vos publicités</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi&gt;30 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">30 000<sup>DA</sup></span></div>
       </article>
       <article class="formule vedette">
-        <div class="formule-tete"><h3>Signature</h3><span class="pastille">Recommandée</span></div>
-        <p class="pour">Commerces, professions libérales, entreprises.</p>
-        <ul><li>Site vitrine sur mesure, jusqu'à 6 pages</li><li>Animations et 2 langues</li><li>Google Maps et référencement</li></ul>
-        <div class="prix"><small>À partir de</small><span>80 000<sup>DA</sup></span></div>
+        <div class="formule-tete"><h3>Signature</h3><span class="pastille" data-ar="موصى بها">Recommandée</span></div>
+        <p class="pour" data-ar="المحلات، المهن الحرة، الشركات.">Commerces, professions libérales, entreprises.</p>
+        <ul><li data-ar="موقع تعريفي حسب الطلب، حتى 6 صفحات">Site vitrine sur mesure, jusqu'à 6 pages</li><li data-ar="حركات ولغتان">Animations et 2 langues</li><li data-ar="Google Maps والظهور في محركات البحث">Google Maps et référencement</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi&gt;80 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">80 000<sup>DA</sup></span></div>
       </article>
       <article class="formule">
         <div class="formule-tete"><h3>Commerce</h3></div>
-        <p class="pour">Vendeurs, marques et boutiques.</p>
-        <ul><li>Boutique en ligne complète</li><li>Paiement à la livraison, frais par wilaya</li><li>BaridiMob, CIB et Edahabia en option</li></ul>
-        <div class="prix"><small>À partir de</small><span>150 000<sup>DA</sup></span></div>
+        <p class="pour" data-ar="البائعون والعلامات والمتاجر.">Vendeurs, marques et boutiques.</p>
+        <ul><li data-ar="متجر إلكتروني متكامل">Boutique en ligne complète</li><li data-ar="الدفع عند الاستلام، رسوم حسب الولاية">Paiement à la livraison, frais par wilaya</li><li data-ar="BaridiMob وCIB والذهبية كخيار">BaridiMob, CIB et Edahabia en option</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi&gt;150 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">150 000<sup>DA</sup></span></div>
       </article>
       <article class="formule">
         <div class="formule-tete"><h3>Immersion</h3></div>
-        <p class="pour">Immobilier, mobilier, mode, automobile, marques premium.</p>
-        <ul><li>Produits ou bâtiments en 3D à faire tourner</li><li>Configurateur ou visite virtuelle</li><li>Vidéos 3D pour vos réseaux</li></ul>
-        <div class="prix"><small>À partir de</small><span>250 000<sup>DA</sup></span></div>
+        <p class="pour" data-ar="العقار، الأثاث، الأزياء، السيارات، العلامات الراقية.">Immobilier, mobilier, mode, automobile, marques premium.</p>
+        <ul><li data-ar="منتجات أو مبانٍ ثلاثية الأبعاد قابلة للتدوير">Produits ou bâtiments en 3D à faire tourner</li><li data-ar="أداة تخصيص أو زيارة افتراضية">Configurateur ou visite virtuelle</li><li data-ar="فيديوهات 3D لشبكاتك الاجتماعية">Vidéos 3D pour vos réseaux</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi&gt;250 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">250 000<sup>DA</sup></span></div>
       </article>
       <article class="formule">
         <div class="formule-tete"><h3>Plateforme</h3></div>
-        <p class="pour">Startups, entreprises et projets ambitieux.</p>
-        <ul><li>Application web ou mobile</li><li>Réservation, espace client, marketplace</li><li>Tableau de bord sur mesure</li></ul>
-        <div class="prix"><small>Sur devis, dès</small><span>400 000<sup>DA</sup></span></div>
+        <p class="pour" data-ar="الشركات الناشئة والمؤسسات والمشاريع الطموحة.">Startups, entreprises et projets ambitieux.</p>
+        <ul><li data-ar="تطبيق ويب أو هاتف">Application web ou mobile</li><li data-ar="حجوزات، فضاء الزبائن، منصّة بيع">Réservation, espace client, marketplace</li><li data-ar="لوحة تحكم حسب الطلب">Tableau de bord sur mesure</li></ul>
+        <div class="prix"><small data-ar="حسب عرض السعر، ابتداءً من">Sur devis, dès</small><span data-ar="&lt;bdi&gt;400 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">400 000<sup>DA</sup></span></div>
       </article>
     </div>
-    <div class="inclus"><b>Inclus dans toutes les formules</b><span>Votre propre nom de domaine (.com ou .dz), 1re année offerte</span><span>Votre email pro, comme contact@votre-entreprise.com</span><span>Certificat de sécurité https</span><span>Fiche Google Maps</span></div>
-    <p class="note-prix">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la 3D, la rédaction des textes, les photos et le délai.</p>
+    <div class="inclus"><b data-ar="مشمول في كل الباقات">Inclus dans toutes les formules</b><span data-ar="اسم نطاق خاص بك (&lt;bdi&gt;.com&lt;/bdi&gt; أو &lt;bdi&gt;.dz&lt;/bdi&gt;)، السنة الأولى مجاناً">Votre propre nom de domaine (.com ou .dz), 1re année offerte</span><span data-ar="بريدك المهني، مثل &lt;bdi&gt;contact@votre-entreprise.com&lt;/bdi&gt;">Votre email pro, comme contact@votre-entreprise.com</span><span data-ar="شهادة أمان https">Certificat de sécurité https</span><span data-ar="بطاقة Google Maps">Fiche Google Maps</span></div>
+    <p class="note-prix" data-ar="يختلف السعر النهائي حسب التصميم، وعدد الصفحات أو المنتجات، واللغات، والوظائف، و3D، وكتابة النصوص، والصور، والمدة.">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la 3D, la rédaction des textes, les photos et le délai.</p>
   </div>
 </section>
 
 <section class="bloc" id="deroulement" style="padding-top:0">
   <div class="wrap">
     <div class="titre-bloc">
-      <p class="eyebrow">Déroulement</p>
-      <h2>Vous voyez votre site avant de payer le solde.</h2>
-      <p>Tout se fait à distance, où que vous soyez en Algérie : appel sur WhatsApp, maquette en ligne, paiement par BaridiMob, mise en ligne. Aucun déplacement.</p>
+      <p class="eyebrow" data-ar="مراحل العمل">Déroulement</p>
+      <h2 data-ar="ترى موقعك قبل دفع الباقي.">Vous voyez votre site avant de payer le solde.</h2>
+      <p data-ar="كل شيء يتم عن بُعد، أينما كنت في الجزائر: مكالمة على واتساب، نموذج على الإنترنت، دفع عبر BaridiMob، ثم إطلاق الموقع. دون أي تنقّل.">Tout se fait à distance, où que vous soyez en Algérie : appel sur WhatsApp, maquette en ligne, paiement par BaridiMob, mise en ligne. Aucun déplacement.</p>
     </div>
     <ol class="etapes">
-      <li><h3>Appel découverte</h3><p>Gratuit, sur WhatsApp ou par téléphone, sans vous déplacer. On comprend votre besoin.</p></li>
-      <li><h3>Devis clair</h3><p>Un prix fixé avant de commencer. Aucune surprise.</p></li>
-      <li class="paiement"><h3>Acompte de 50 %</h3><span class="badge-baridi">BaridiMob</span><p>Payé à distance depuis votre téléphone. Le projet démarre dès réception.</p></li>
-      <li><h3>Maquette sous 72 h</h3><p>Vous validez le style avant la fabrication.</p></li>
-      <li><h3>Fabrication</h3><p>Design, développement, 3D, textes et optimisation.</p></li>
-      <li class="paiement"><h3>Présentation et solde</h3><span class="badge-baridi">BaridiMob</span><p>Vous découvrez votre site terminé en ligne, puis réglez les 50 % restants à distance.</p></li>
-      <li><h3>Mise en ligne</h3><p>Hébergement définitif, nom de domaine et courte formation.</p></li>
+      <li><h3 data-ar="مكالمة تعارف">Appel découverte</h3><p data-ar="مجانية، على واتساب أو بالهاتف، دون تنقّل. نفهم احتياجك.">Gratuit, sur WhatsApp ou par téléphone, sans vous déplacer. On comprend votre besoin.</p></li>
+      <li><h3 data-ar="عرض سعر واضح">Devis clair</h3><p data-ar="سعر ثابت قبل البدء. بلا مفاجآت.">Un prix fixé avant de commencer. Aucune surprise.</p></li>
+      <li class="paiement"><h3 data-ar="دفعة أولى &lt;bdi&gt;50%&lt;/bdi&gt;">Acompte de 50 %</h3><span class="badge-baridi">BaridiMob</span><p data-ar="تُدفع عن بُعد من هاتفك. ينطلق المشروع فور استلامها.">Payé à distance depuis votre téléphone. Le projet démarre dès réception.</p></li>
+      <li><h3 data-ar="نموذج خلال 72 ساعة">Maquette sous 72 h</h3><p data-ar="توافق على الأسلوب قبل التنفيذ.">Vous validez le style avant la fabrication.</p></li>
+      <li><h3 data-ar="التنفيذ">Fabrication</h3><p data-ar="تصميم، برمجة، 3D، نصوص وتحسين.">Design, développement, 3D, textes et optimisation.</p></li>
+      <li class="paiement"><h3 data-ar="العرض والدفعة الثانية">Présentation et solde</h3><span class="badge-baridi">BaridiMob</span><p data-ar="تكتشف موقعك جاهزاً على الإنترنت، ثم تدفع &lt;bdi&gt;50%&lt;/bdi&gt; المتبقية عن بُعد.">Vous découvrez votre site terminé en ligne, puis réglez les 50 % restants à distance.</p></li>
+      <li><h3 data-ar="الإطلاق">Mise en ligne</h3><p data-ar="استضافة نهائية، اسم النطاق، وتكوين قصير.">Hébergement définitif, nom de domaine et courte formation.</p></li>
     </ol>
   </div>
 </section>
@@ -613,25 +648,43 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" style="padding-top:0">
   <div class="wrap duo">
     <div>
-      <h3>Hébergement et suivi</h3>
-      <p class="intro">Optionnel. Votre site reste rapide, sécurisé et à jour.</p>
+      <h3 data-ar="الاستضافة والمتابعة">Hébergement et suivi</h3>
+      <p class="intro" data-ar="اختياري. يبقى موقعك سريعاً وآمناً ومحدّثاً.">Optionnel. Votre site reste rapide, sécurisé et à jour.</p>
       <div class="table-scroll">
         <table class="tableau">
-          <tr><th>Care</th><td>Hébergement rapide, https, sauvegardes, mises à jour, surveillance</td><td class="montant">5 000 DA/mois</td></tr>
-          <tr><th>Care+</th><td>Care, plus modifications illimitées, rapport de visites et référencement</td><td class="montant">15 000 DA/mois</td></tr>
+          <tr><th>Care</th><td data-ar="استضافة سريعة، https، نسخ احتياطية، تحديثات، مراقبة">Hébergement rapide, https, sauvegardes, mises à jour, surveillance</td><td class="montant" data-ar="&lt;bdi&gt;5 000&lt;/bdi&gt; دج/شهرياً">5 000 DA/mois</td></tr>
+          <tr><th>Care+</th><td data-ar="Care، مع تعديلات غير محدودة، تقرير الزيارات وتحسين الظهور">Care, plus modifications illimitées, rapport de visites et référencement</td><td class="montant" data-ar="&lt;bdi&gt;15 000&lt;/bdi&gt; دج/شهرياً">15 000 DA/mois</td></tr>
         </table>
       </div>
     </div>
     <div>
-      <h3>Options marketing</h3>
-      <p class="intro">Pour transformer votre site en machine à clients.</p>
+      <h3 data-ar="خيارات التسويق">Options marketing</h3>
+      <p class="intro" data-ar="لتحويل موقعك إلى آلة لجلب الزبائن.">Pour transformer votre site en machine à clients.</p>
       <div class="table-scroll">
         <table class="tableau">
-          <tr><th>Lancement Pub</th><td>Visuels, vidéos et gestion de vos pubs pendant 1 mois (budget pub à part)</td><td class="montant">dès 35 000 DA</td></tr>
-          <tr><th>Visuels 3D</th><td>Rendus et vidéos 3D de vos produits</td><td class="montant">dès 20 000 DA</td></tr>
-          <tr><th>Google Local</th><td>Fiche Google optimisée, avis et référencement local</td><td class="montant">dès 10 000 DA</td></tr>
+          <tr><th data-ar="إطلاق الإعلانات">Lancement Pub</th><td data-ar="تصاميم وفيديوهات وإدارة إعلاناتك لمدة شهر (ميزانية الإعلان منفصلة)">Visuels, vidéos et gestion de vos pubs pendant 1 mois (budget pub à part)</td><td class="montant" data-ar="ابتداءً من &lt;bdi&gt;35 000&lt;/bdi&gt; دج">dès 35 000 DA</td></tr>
+          <tr><th data-ar="تصاميم 3D">Visuels 3D</th><td data-ar="صور وفيديوهات 3D لمنتجاتك">Rendus et vidéos 3D de vos produits</td><td class="montant" data-ar="ابتداءً من &lt;bdi&gt;20 000&lt;/bdi&gt; دج">dès 20 000 DA</td></tr>
+          <tr><th>Google Local</th><td data-ar="بطاقة Google محسّنة، تقييمات وظهور محلي">Fiche Google optimisée, avis et référencement local</td><td class="montant" data-ar="ابتداءً من &lt;bdi&gt;10 000&lt;/bdi&gt; دج">dès 10 000 DA</td></tr>
         </table>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="faq" style="padding-top:0">
+  <div class="wrap faq-grille">
+    <div class="titre-bloc">
+      <p class="eyebrow" data-ar="أسئلة شائعة">Questions fréquentes</p>
+      <h2 data-ar="أسئلتكم، وأجوبتنا.">Vos questions, nos réponses.</h2>
+      <p data-ar="سؤال آخر؟ راسلنا على واتساب، نرد عليك في نفس اليوم.">Une autre question ? Écrivez-nous sur WhatsApp, nous répondons dans la journée.</p>
+    </div>
+    <div class="faq">
+      <details open><summary data-ar="كم من الوقت أحتاج للحصول على موقعي؟">Combien de temps pour avoir mon site ?</summary><p data-ar="ترى النموذج خلال 72 ساعة. الموقع التعريفي يكون جاهزاً خلال 7 إلى 14 يوماً، والمتجر خلال 2 إلى 3 أسابيع. أما التطبيق فتُحدَّد مدته في عرض السعر.">Vous voyez la maquette sous 72 h. Un site vitrine est prêt en 7 à 14 jours, une boutique en 2 à 3 semaines. Pour une application, le délai est fixé dans le devis.</p></details>
+      <details><summary data-ar="كيف يتم الدفع؟">Comment se passe le paiement ?</summary><p data-ar="&lt;bdi&gt;50%&lt;/bdi&gt; عبر BaridiMob عند الانطلاق، و&lt;bdi&gt;50%&lt;/bdi&gt; فقط بعد رؤية موقعك جاهزاً على الإنترنت. كل شيء يتم عن بُعد، دون تنقّل.">50 % par BaridiMob au lancement, 50 % seulement après avoir vu votre site terminé en ligne. Tout se fait à distance, sans déplacement.</p></details>
+      <details><summary data-ar="هل يصبح الموقع ملكي؟">Le site m'appartient-il ?</summary><p data-ar="نعم. يُسجَّل اسم النطاق باسمك، وبعد دفع الباقي يصبح الموقع ومحتواه ملكاً لك.">Oui. Le nom de domaine est enregistré à votre nom et, une fois le solde réglé, le site et ses contenus sont à vous.</p></details>
+      <details><summary data-ar="هل يمكنني تعديل موقعي لاحقاً؟">Puis-je modifier mon site ensuite ?</summary><p data-ar="نعم. التعديلات الصغيرة غير محدودة مع اشتراك Care+. ودون اشتراك، ننجزها عند الطلب حسب عرض سعر.">Oui. Les petites modifications sont illimitées avec l'abonnement Care+. Sans abonnement, nous les faisons à la demande, sur devis.</p></details>
+      <details><summary data-ar="ليست لدي نصوص ولا صور، هل هذه مشكلة؟">Je n'ai ni textes ni photos, est-ce un problème ?</summary><p data-ar="لا. يمكننا كتابة نصوصك بالعربية والفرنسية والإنجليزية، وإنشاء تصاميمك: صور، ومجسّمات وفيديوهات 3D.">Non. Nous pouvons rédiger vos textes en arabe, en français et en anglais, et créer vos visuels : photos, rendus et vidéos 3D.</p></details>
+      <details><summary data-ar="هل تعملون خارج الجزائر العاصمة؟">Travaillez-vous en dehors d'Alger ?</summary><p data-ar="نعم، في كل أنحاء الجزائر. المكالمة، النموذج، الدفع والتسليم: كل شيء عن بُعد.">Oui, partout en Algérie. Appel, maquette, paiement et livraison : tout se fait à distance.</p></details>
     </div>
   </div>
 </section>
@@ -639,22 +692,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc contact" id="contact">
   <div class="wrap">
     <div class="contact-gauche">
-      <p class="eyebrow">Contact</p>
-      <h2>Votre projet mérite <span class="or-brille">l'exceptionnel.</span></h2>
-      <p style="color:var(--gris);max-width:46ch">Écrivez-nous sur WhatsApp, on vous répond dans la journée. L'appel découverte est gratuit.</p>
-      <div class="numero"><span id="numero">+213 794 70 93 23</span><button class="btn btn-ligne btn-petit" type="button" id="copier">Copier</button></div>
-      <div><a class="btn btn-or" href="https://wa.me/213794709323" target="_blank" rel="noopener">Ouvrir WhatsApp</a></div>
+      <p class="eyebrow" data-ar="تواصل معنا">Contact</p>
+      <h2 data-ar="مشروعك يستحق &lt;span class=&quot;or-brille&quot;&gt;الاستثنائي.&lt;/span&gt;">Votre projet mérite <span class="or-brille">l'exceptionnel.</span></h2>
+      <p style="color:var(--gris);max-width:46ch" data-ar="راسلنا على واتساب، نرد عليك في نفس اليوم. مكالمة التعارف مجانية.">Écrivez-nous sur WhatsApp, on vous répond dans la journée. L'appel découverte est gratuit.</p>
+      <div class="numero"><span id="numero" dir="ltr">+213 794 70 93 23</span><button class="btn btn-ligne btn-petit" type="button" id="copier" data-ar="نسخ">Copier</button></div>
+      <div><a class="btn btn-or" href="https://wa.me/213794709323" target="_blank" rel="noopener" data-ar="افتح واتساب">Ouvrir WhatsApp</a></div>
     </div>
     <form id="formulaire" novalidate>
-      <label for="nom">Votre nom<input id="nom" name="nom" autocomplete="name" placeholder="Ex. : Amine B."></label>
-      <label for="activite">Votre activité<input id="activite" name="activite" placeholder="Ex. : restaurant à Hydra"></label>
-      <label for="formule">Formule qui vous intéresse
+      <label for="nom"><span data-ar="اسمك">Votre nom</span><input id="nom" name="nom" autocomplete="name" placeholder="Ex. : Amine B." data-ar-ph="مثال: أمين ب."></label>
+      <label for="activite"><span data-ar="نشاطك">Votre activité</span><input id="activite" name="activite" placeholder="Ex. : restaurant à Hydra" data-ar-ph="مثال: مطعم في حيدرة"></label>
+      <label for="formule"><span data-ar="الباقة التي تهمّك">Formule qui vous intéresse</span>
         <select id="formule" name="formule">
-          <option>Je ne sais pas encore</option><option>Impact</option><option selected>Signature</option><option>Commerce</option><option>Immersion</option><option>Plateforme</option>
+          <option data-ar="لا أعرف بعد">Je ne sais pas encore</option><option>Impact</option><option selected>Signature</option><option>Commerce</option><option>Immersion</option><option>Plateforme</option>
         </select>
       </label>
-      <label for="message">Votre projet en quelques mots<textarea id="message" name="message" placeholder="Ce que vous voulez, vos délais, vos exemples préférés…"></textarea></label>
-      <button class="btn btn-or" type="submit">Préparer mon message WhatsApp</button>
+      <label for="message"><span data-ar="مشروعك في بضع كلمات">Votre projet en quelques mots</span><textarea id="message" name="message" placeholder="Ce que vous voulez, vos délais, vos exemples préférés…" data-ar-ph="ما تريده، المدة، أمثلتك المفضلة…"></textarea></label>
+      <button class="btn btn-or" type="submit" data-ar="جهّز رسالتي على واتساب">Préparer mon message WhatsApp</button>
       <div class="confirmation" id="confirmation" hidden></div>
     </form>
   </div>
@@ -662,8 +715,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Dzign Studio · Alger, Algérie · +213 794 70 93 23</span>
-    <span class="ar" lang="ar">تميّز رقمي، صُنع في الجزائر</span>
+    <span data-ar="© 2026 Dzign Studio · الجزائر العاصمة، الجزائر · &lt;span dir=&quot;ltr&quot;&gt;+&lt;bdi&gt;213 794&lt;/bdi&gt; 70 93 23&lt;/span&gt;">© 2026 Dzign Studio · Alger, Algérie · +213 794 70 93 23</span>
+    <span class="ar" lang="ar" data-ar="L&#x27;excellence digitale, made in DZ.">تميّز رقمي، صُنع في الجزائر</span>
   </div>
 </footer>
 
@@ -679,10 +732,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <b id="v-titre"></b>
     </div>
     <div class="v-appareils" role="group" aria-label="Type d'écran">
-      <button type="button" id="v-ordi" aria-pressed="true">Ordinateur</button>
-      <button type="button" id="v-mobile" aria-pressed="false">Téléphone</button>
+      <button type="button" id="v-ordi" aria-pressed="true" data-ar="حاسوب">Ordinateur</button>
+      <button type="button" id="v-mobile" aria-pressed="false" data-ar="هاتف">Téléphone</button>
     </div>
-    <a class="btn btn-or btn-petit" id="v-commander" href="https://wa.me/213794709323" target="_blank" rel="noopener">Je veux ce site</a>
+    <a class="btn btn-or btn-petit" id="v-commander" href="https://wa.me/213794709323" target="_blank" rel="noopener" data-ar="أريد هذا الموقع">Je veux ce site</a>
     <button class="v-rond" type="button" id="v-fermer" aria-label="Fermer">✕</button>
     <div class="v-perso" id="v-perso" hidden></div>
   </div>
@@ -732,7 +785,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   btn.addEventListener('click',function(){
     var t=document.getElementById('numero').textContent;
     function selectionner(){var r=document.createRange();r.selectNodeContents(document.getElementById('numero'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
-    try{navigator.clipboard.writeText(t).then(function(){btn.textContent='Copié';setTimeout(function(){btn.textContent='Copier'},1800)},selectionner)}catch(e){selectionner()}
+    var ar=window.DZ&&DZ.lang==='ar';try{navigator.clipboard.writeText(t).then(function(){btn.textContent=ar?'تم النسخ':'Copié';setTimeout(function(){btn.textContent=ar?'نسخ':'Copier'},1800)},selectionner)}catch(e){selectionner()}
   });
 
   // Formulaire : prépare le message WhatsApp
@@ -742,12 +795,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     var act=document.getElementById('activite').value.trim();
     var f=document.getElementById('formule').value;
     var msg=document.getElementById('message').value.trim();
-    var texte='Bonjour Dzign Studio, '+(nom?'je suis '+nom+'. ':'')+(act?'Mon activité : '+act+'. ':'')+'Formule : '+f+'.'+(msg?' '+msg:'');
+    var ar=window.DZ&&DZ.lang==='ar';
+    var texte=ar?'مرحباً Dzign Studio، '+(nom?'أنا '+nom+'. ':'')+(act?'نشاطي: '+act+'. ':'')+'الباقة: '+f+'.'+(msg?' '+msg:''):'Bonjour Dzign Studio, '+(nom?'je suis '+nom+'. ':'')+(act?'Mon activité : '+act+'. ':'')+'Formule : '+f+'.'+(msg?' '+msg:'');
     var c=document.getElementById('confirmation');
     c.innerHTML='';
-    var p=document.createElement('p');p.textContent='Votre message est prêt. Ouvrez WhatsApp pour nous l\'envoyer :';
+    var p=document.createElement('p');p.textContent=ar?'رسالتك جاهزة. افتح واتساب لإرسالها:':'Votre message est prêt. Ouvrez WhatsApp pour nous l\'envoyer :';
     var a=document.createElement('a');a.className='btn btn-or btn-petit';a.target='_blank';a.rel='noopener';
-    a.href='https://wa.me/213794709323?text='+encodeURIComponent(texte);a.textContent='Envoyer sur WhatsApp';
+    a.href='https://wa.me/213794709323?text='+encodeURIComponent(texte);a.textContent=ar?'أرسل على واتساب':'Envoyer sur WhatsApp';
     c.appendChild(p);c.appendChild(a);c.hidden=false;
   });
 
@@ -818,6 +872,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <script>
 (function(){
   var M='medias/', WA='213794709323';
+  window.DZ=window.DZ||{lang:'fr',cb:[]};
+  function enAr(){return DZ.lang==='ar'}
+  var AR_S={resto:['مطعم','FR · عربي'],boutique:['متجر أزياء','سلة تسوق فعّالة'],immo:['ترقية عقارية','مجسّم 3D'],kenza:['أثاث وديكور','أداة تخصيص 3D'],clinique:['صحة','مواعيد عبر الإنترنت'],sport:['قاعة رياضة','جدول تفاعلي'],beaute:['معهد تجميل','حجز'],wesla:['تطبيق توصيل','تطبيق']};
+  function secteurDe(x){return enAr()?AR_S[x.id][0]:x.secteur}
   function esc(t){return String(t).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
   function da(n){return n.toLocaleString('fr-FR').replace(/ | /g,' ')+' DA'}
   function sur(hex){var h=hex.replace('#',''),r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return (r*299+g*587+b*114)/1000>150?'#141414':'#ffffff'}
@@ -868,7 +926,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
      var A=[['F3','105 à 120 m²','Terrasse 25 m², vue baie','32 000 000'],['F4','135 à 150 m²','Terrasse 40 m², 2 salles de bain','45 000 000'],['F5','180 à 210 m²','Terrasse 70 m², suite parentale','62 000 000']];
      return nav(c,['Le projet','Appartements','Intérieurs','Contact'],'<button type="button" class="d-btn petit" data-a="goto3d">Maquette 3D</button>')+
      '<section class="d-hero"><img src="'+M+'immeuble.jpg" alt=""><span class="d-sur">Hydra · Alger · Livraison 2027</span><h1>Vivre face à la baie d\'Alger</h1><p>42 appartements de standing avec terrasses plantées, du F3 au F5.</p><div class="d-actions"><button type="button" class="d-btn" data-a="goto3d">Explorer la maquette 3D</button><a class="d-btn creux" href="#d-apparts" data-a="ancre">Voir les appartements</a></div></section>'+
-     '<section class="d-sec"><div class="d-chiffres"><div><b>42</b><span class="d-mute">appartements</span></div><div><b>100 %</b><span class="d-mute">avec terrasse</span></div><div><b>2</b><span class="d-mute">niveaux de parking</span></div><div><b>2027</b><span class="d-mute">livraison prévue</span></div></div></section>'+
+     '<section class="d-sec"><div class="d-chiffres"><div><b>42</b><span class="d-mute">appartements</span></div><div><b data-ar="&lt;bdi&gt;100%&lt;/bdi&gt;">100 %</b><span class="d-mute">avec terrasse</span></div><div><b>2</b><span class="d-mute">niveaux de parking</span></div><div><b>2027</b><span class="d-mute">livraison prévue</span></div></div></section>'+
      '<section class="d-sec alt" id="d-apparts"><h2 class="d-titre">Choisissez votre appartement</h2><div class="d-tabs">'+A.map(function(a,i){return tab('apt',i,a[0],(s.apt||0)===i)}).join('')+'</div>'+(function(a){return '<div class="d-split"><img src="'+M+'appart.jpg" alt=""><div style="display:grid;gap:14px"><h3 style="font-size:40px">'+a[0]+'</h3><p class="d-mute">'+a[1]+' · '+a[2]+'</p><p style="font-size:14px" class="d-mute">À partir de</p><p class="d-prix" style="font-size:30px;font-family:var(--d-ft)">'+a[3]+' DA</p><p class="d-mute" style="font-size:14px">Paiement échelonné selon l\'avancement des travaux.</p></div></div>'})(A[s.apt||0])+'</section>'+
      '<section class="d-sec"><h2 class="d-titre">Recevoir la brochure</h2>'+(s.ok?'<p class="d-ok">C\'est envoyé ! Un conseiller vous contacte sous 24 h.</p>':'<form class="d-form" data-a="valider"><div class="d-2"><label>Nom<input></label><label>Téléphone<input inputmode="tel"></label></div><label>Appartement souhaité<select><option>F3</option><option>F4</option><option>F5</option></select></label><button class="d-btn" type="submit">Recevoir la brochure</button></form>')+'</section>'+
      pied(c,'Bureau de vente : Hydra, Alger');
@@ -937,7 +995,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
   // Grille du portfolio
   var grille=document.getElementById('grille-portfolio');
-  grille.innerHTML=SITES.map(function(x,i){return '<button type="button" class="site-carte" data-i="'+i+'"><img src="'+M+x.img+'" alt="" loading="lazy"><span class="badge">'+x.badge+'</span><span class="info"><span class="secteur">'+x.secteur+' · '+x.formule+'</span><h3>'+esc(x.nom)+'</h3><span class="visiter">Visiter le site <span aria-hidden="true">→</span></span></span></button>'}).join('');
+  function rendreGrille(){grille.innerHTML=SITES.map(function(x,i){return '<button type="button" class="site-carte" data-i="'+i+'"><img src="'+M+x.img+'" alt="" loading="lazy"><span class="badge">'+(enAr()?AR_S[x.id][1]:x.badge)+'</span><span class="info"><span class="secteur">'+secteurDe(x)+' · '+x.formule+'</span><h3>'+esc(x.nom)+'</h3><span class="visiter">'+(enAr()?'زُر الموقع <span aria-hidden="true">←</span>':'Visiter le site <span aria-hidden="true">→</span>')+'</span></span></button>'}).join('')}
+  rendreGrille();
   grille.addEventListener('click',function(e){var b=e.target.closest('.site-carte');if(b)ouvrir(+b.dataset.i)});
 
   // Visionneuse
@@ -945,17 +1004,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   var courant=0,etat={},perso=null,dernierFocus=null;
   function cfgDe(x){return perso&&perso.id===x.id?{nom:perso.nom,acc:perso.acc}:{nom:x.nom}}
   function dessiner(garderDefil){
-    var x=SITES[courant],c=cfgDe(x),s=etat[x.id]=etat[x.id]||{};
+    var x=SITES[courant],c=cfgDe(x),s=etat[x.id]=etat[x.id]||(x.id==='resto'&&enAr()?{lang:'ar'}:{});
     var style=x.theme+(c.acc?';--d-acc:'+c.acc+';--d-on:'+sur(c.acc):'');
     var y=vue.scrollTop;
     vue.innerHTML='<div class="d" style=\''+style+'\''+(s.lang==='ar'?' dir="rtl" lang="ar"':'')+'>'+x.rendu(c,s)+'</div>';
     if(garderDefil)vue.scrollTop=y;else vue.scrollTop=0;
-    document.getElementById('v-titre').textContent=c.nom+' · '+x.secteur;
+    document.getElementById('v-titre').textContent=c.nom+' · '+secteurDe(x);
     document.getElementById('v-url').textContent=perso&&perso.id===x.id?perso.url:x.url;
-    var msg=perso&&perso.id===x.id?'Bonjour Dzign Studio, je suis '+perso.nom+'. J\'ai vu l\'aperçu de mon site ('+x.secteur+') et je veux le lancer.':'Bonjour Dzign Studio, je veux un site comme « '+x.nom+' » ('+x.secteur+').';
+    var msg=enAr()?(perso&&perso.id===x.id?'مرحباً Dzign Studio، أنا '+perso.nom+'. شاهدت معاينة موقعي ('+secteurDe(x)+') وأريد إطلاقه.':'مرحباً Dzign Studio، أريد موقعاً مثل «'+x.nom+'» ('+secteurDe(x)+').'):(perso&&perso.id===x.id?'Bonjour Dzign Studio, je suis '+perso.nom+'. J\'ai vu l\'aperçu de mon site ('+x.secteur+') et je veux le lancer.':'Bonjour Dzign Studio, je veux un site comme « '+x.nom+' » ('+x.secteur+').');
     document.getElementById('v-commander').href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
     var bandeau=document.getElementById('v-perso');
-    if(perso&&perso.id===x.id){bandeau.hidden=false;bandeau.innerHTML='<span>Aperçu personnalisé pour <b>'+esc(perso.nom)+'</b>, sur votre propre adresse <b>'+esc(perso.url)+'</b> avec l\'email <b>contact@'+esc(perso.url)+'</b>. Ce site peut être le vôtre en 7 jours.</span>'}else bandeau.hidden=true;
+    if(perso&&perso.id===x.id){bandeau.hidden=false;bandeau.innerHTML=enAr()?'<span>معاينة مخصّصة لـ <b>'+esc(perso.nom)+'</b>، على عنوانك الخاص <b dir="ltr">'+esc(perso.url)+'</b> مع البريد <b dir="ltr">contact@'+esc(perso.url)+'</b>. يمكن أن يكون هذا موقعك خلال 7 أيام.</span>':'<span>Aperçu personnalisé pour <b>'+esc(perso.nom)+'</b>, sur votre propre adresse <b>'+esc(perso.url)+'</b> avec l\'email <b>contact@'+esc(perso.url)+'</b>. Ce site peut être le vôtre en 7 jours.</span>'}else bandeau.hidden=true;
     if(x.id==='kenza')kenza3d(s);else arreter3d();
   }
   function ouvrir(i){dernierFocus=document.activeElement;courant=i;V.hidden=false;document.body.classList.add('verrou');dessiner();document.getElementById('v-fermer').focus()}
@@ -1021,19 +1080,45 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   }
 
   // Essai instantané
-  var SECT=[['resto','Restaurant, café, pâtisserie'],['boutique','Boutique, mode, bijoux'],['immo','Immobilier, promotion'],['kenza','Meubles, décoration'],['clinique','Santé, clinique, cabinet'],['sport','Sport, coaching'],['beaute','Beauté, coiffure, spa'],['wesla','Livraison, application']];
+  var SECT=[['resto','Restaurant, café, pâtisserie','مطعم، مقهى، حلويات'],['boutique','Boutique, mode, bijoux','متجر، أزياء، مجوهرات'],['immo','Immobilier, promotion','عقار، ترقية عقارية'],['kenza','Meubles, décoration','أثاث وديكور'],['clinique','Santé, clinique, cabinet','صحة، عيادة، مكتب طبي'],['sport','Sport, coaching','رياضة وتدريب'],['beaute','Beauté, coiffure, spa','تجميل، حلاقة، سبا'],['wesla','Livraison, application','توصيل، تطبيق']];
   var COUL=[['Or','#C8A96A'],['Émeraude','#0E7C5A'],['Bordeaux','#8C2F45'],['Bleu nuit','#2B4C8C'],['Corail','#E2603B'],['Rose','#C8869A']];
-  var selS=document.getElementById('essai-secteur');selS.innerHTML=SECT.map(function(x){return '<option value="'+x[0]+'">'+x[1]+'</option>'}).join('');
+  var selS=document.getElementById('essai-secteur');
+  function rendreSecteurs(){var v=selS.value;selS.innerHTML=SECT.map(function(x){return '<option value="'+x[0]+'">'+(enAr()?x[2]:x[1])+'</option>'}).join('');if(v)selS.value=v}
+  rendreSecteurs();
+  DZ.cb.push(function(){rendreGrille();rendreSecteurs();if(!V.hidden)dessiner(true)});
   var zc=document.getElementById('essai-couleurs'),couleur=COUL[0][1];
   zc.innerHTML=COUL.map(function(x,i){return '<button type="button" aria-label="'+x[0]+'" aria-pressed="'+(i===0)+'" data-c="'+x[1]+'" style="background:'+x[1]+'"></button>'}).join('');
   zc.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;couleur=b.dataset.c;zc.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})});
   document.getElementById('form-essai').addEventListener('submit',function(e){
     e.preventDefault();
-    var nom=document.getElementById('essai-nom').value.trim()||'Votre Entreprise',id=selS.value;
+    var nom=document.getElementById('essai-nom').value.trim()||(enAr()?'مؤسستك':'Votre Entreprise'),id=selS.value;
     var slug=nom.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'')||'votresite';
     perso={id:id,nom:nom,acc:couleur,url:slug.slice(0,24)+'.dz'};
     etat[id]={};
     ouvrir(SITES.findIndex(function(x){return x.id===id}));
   });
+})();
+</script>
+<script>
+(function(){
+  var racine=document.documentElement,btn=document.getElementById('langue'),barre=document.getElementById('progression');
+  window.DZ=window.DZ||{lang:'fr',cb:[]};
+  function appliquer(l){
+    DZ.lang=l;var ar=l==='ar';
+    document.querySelectorAll('[data-ar]').forEach(function(e){if(e.dataset.fr===undefined)e.dataset.fr=e.innerHTML;e.innerHTML=ar?e.dataset.ar:e.dataset.fr});
+    document.querySelectorAll('[data-ar-ph]').forEach(function(e){if(e.dataset.frPh===undefined)e.dataset.frPh=e.placeholder;e.placeholder=ar?e.dataset.arPh:e.dataset.frPh});
+    racine.lang=ar?'ar':'fr';racine.dir=ar?'rtl':'ltr';
+    btn.textContent=ar?'FR':'عربي';btn.lang=ar?'fr':'ar';
+    btn.setAttribute('aria-label',ar?'Afficher le site en français':'عرض الموقع بالعربية');
+    document.title=ar?'Dzign Studio · استوديو رقمي راقٍ':'Dzign Studio';
+    DZ.cb.forEach(function(f){f(l)});
+    try{localStorage.setItem('dz-langue',l)}catch(e){}
+  }
+  btn.addEventListener('click',function(){appliquer(DZ.lang==='ar'?'fr':'ar')});
+  var depart='fr';try{depart=localStorage.getItem('dz-langue')||'fr'}catch(e){}
+  if(location.hash==='#ar')depart='ar';if(location.hash==='#fr')depart='fr';
+  if(depart==='ar')appliquer('ar');
+  function avancer(){var h=document.documentElement.scrollHeight-innerHeight;barre.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'}
+  addEventListener('scroll',avancer,{passive:true});avancer();
 })();
 </script>
