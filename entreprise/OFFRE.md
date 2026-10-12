@@ -18,14 +18,28 @@ Points propres au marché algérien, pris en compte dans l'offre :
 3. Professions libérales (médecins, avocats, architectes…) : « Une image pro et la prise de rendez-vous en ligne. »
 4. Entreprises et startups : « Applications et plateformes sur mesure. »
 
-## 2. Les formules (prix de lancement en dinars, à ajuster)
+## 2. Les formules : prix « à partir de », selon le niveau demandé
 
-| Formule | Contenu | Prix | Délai |
-|---------|---------|------|-------|
+Le prix final dépend du **niveau demandé** par le client. Chaque formule a un
+prix de départ, puis le devis s'ajuste selon :
+- le **design** (modèle adapté, ou création 100 % sur mesure) ;
+- le **nombre de pages ou de produits** ;
+- les **langues** (1, 2 ou 3) ;
+- les **fonctionnalités** (réservation, paiement CIB/Edahabia, espace client, animations…) ;
+- la **rédaction des textes et les photos** (fournis par le client ou faits par nous) ;
+- l'**urgence** du délai.
+
+| Formule | Contenu de base | À partir de | Délai indicatif |
+|---------|-----------------|-------------|-----------------|
 | **Starter** : page unique | 1 page pro (présentation, services, WhatsApp, carte, contact) | 15 000 DA | 3 jours |
-| **Essentiel** : site vitrine | Jusqu'à 5 pages, 2 langues, mobile, formulaire, fiche Google Maps, référencement de base | 35 000 DA | 7 jours |
-| **Boutique** : e-commerce | Boutique jusqu'à 50 produits, commande avec paiement à la livraison, gestion des wilayas et des frais de livraison, tableau de bord des commandes | 75 000 DA | 14 jours |
-| **Sur-mesure** : application | Appli web ou mobile (réservation, fidélité, livraison, espace client…) | Sur devis, à partir de 150 000 DA | Selon le projet |
+| **Essentiel** : site vitrine | Jusqu'à 5 pages, mobile, formulaire, fiche Google Maps, référencement de base | 35 000 DA | 7 jours |
+| **Boutique** : e-commerce | Boutique, commande avec paiement à la livraison, frais par wilaya, tableau de bord des commandes | 75 000 DA | 14 jours |
+| **Sur-mesure** : application | Appli web ou mobile (réservation, fidélité, livraison, espace client…) | 150 000 DA | Selon le projet |
+
+Chaque formule existe en 3 niveaux, pour que le client choisisse facilement :
+- **Standard** : prix de départ, design à partir d'un modèle personnalisé.
+- **Premium** : environ +50 %, design sur mesure, plus de pages et de fonctionnalités.
+- **Prestige** : sur devis, création exceptionnelle, animations, accompagnement complet.
 
 **Abonnement « Tranquillité » : 3 000 DA/mois** (hébergement, mises à jour, petites modifications, sauvegardes).
 Le nom de domaine est facturé à part, au prix coûtant.
@@ -42,6 +56,8 @@ et de l'autorisation de montrer leur site dans le portfolio.
 
 ## 4. Message principal (pour les pubs)
 > « Votre site professionnel prêt en 7 jours, à partir de 15 000 DA. »
+
+(« À partir de » : le prix exact dépend du niveau demandé.)
 
 À décliner en arabe, en darija et en français.
 

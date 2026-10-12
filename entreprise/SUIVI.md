@@ -15,15 +15,17 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | **Basé à Alger, marché : l'Algérie.** Prix en dinars, sites en arabe et en français. |
 | 2026-10-12 | **Cible : tout le monde** (généraliste), avec des pubs déclinées par segment. |
 | 2026-10-12 | Prix accessibles pour le marché algérien, mais qualité exceptionnelle. |
+| 2026-10-12 | **Prix « à partir de », selon le niveau demandé** (Standard / Premium / Prestige). |
 
 ## Questions encore ouvertes
 - [ ] Niveau technique de départ
 - [ ] Budget de départ (pub + outils)
-- [ ] Nom de l'entreprise
+- [ ] Nom de l'entreprise : propositions dans `NOMS.md`, en attente du choix
+- [ ] Style de l'identité (moderne et tech, chaleureux, haut de gamme)
 
 ## Feuille de route
-1. **Offre** : niche, formules, prix → `OFFRE.md` *(en cours)*
-2. **Identité** : nom, logo, couleurs, ton
+1. **Offre** : formules, prix → `OFFRE.md` *(brouillon fait, à valider)*
+2. **Identité** : nom, logo, couleurs, ton *(en cours : `NOMS.md`)*
 3. **Vitrine** : site perso + 2 ou 3 démos pour le portfolio
 4. **Acquisition** : contenu réseaux + pubs Meta/TikTok + page de contact
 5. **Vente et livraison** : appel découverte, devis, acompte, fabrication, livraison
@@ -33,4 +35,4 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 Canva, Gamma, Higgsfield (visuels et vidéos), Adspirer (publicités), Gmail.
 
 ## Journal des sessions
-- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA).
+- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms.
