@@ -25,6 +25,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | Le client **choisit une offre avant d'arriver sur WhatsApp**. |
 | 2026-10-12 | **Publicités en français uniquement.** Ne rien dépenser sans accord. |
 | 2026-10-12 | **Ne rien mettre en ligne (Hostinger) sans l'accord explicite.** |
+| 2026-10-12 | **Email : dzignstudio16@yahoo.com** (comptes réseaux, en attendant contact@dzignstudio.design). Pas affiché sur le site. |
 | 2026-10-12 | **WhatsApp pro : 0794709323** (+213 794 70 93 23). |
 | 2026-10-12 | Hébergement sur **Hostinger** (site Dzign + sites clients). |
 | 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
@@ -34,7 +35,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 - [ ] Budget de départ (pub + outils)
 - [ ] Valider l'identité (`IDENTITE.md`) et les prix (`OFFRE.md` v3)
 - [ ] Réserver les comptes @dzignstudio sur les réseaux (bios, photo de profil et couverture prêtes : `campagne/profil/`)
-- [ ] Créer l'email Yahoo (dzignstudio@yahoo.com en 1er choix), puis contact@dzignstudio.design
+- [x] Email Yahoo créé : **dzignstudio16@yahoo.com** (pour les comptes réseaux)
+- [ ] Email pro contact@dzignstudio.design (après achat du domaine)
 
 ## Feuille de route
 1. **Offre** : formules, prix → `OFFRE.md` *(v3 haut de gamme, à valider)*

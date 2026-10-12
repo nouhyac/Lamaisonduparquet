@@ -40,7 +40,7 @@ Formules : Impact, Signature, Commerce, Immersion, Plateforme.
 Choisissez votre offre sur notre site, votre message WhatsApp est prêt.
 ```
 - **Téléphone / WhatsApp** : 0794 70 93 23
-- **Email** : ton adresse Yahoo pour l'instant, puis contact@dzignstudio.design
+- **Email** : dzignstudio16@yahoo.com pour l'instant, puis contact@dzignstudio.design
 - **Site web** : https://dzignstudio.design (dès la mise en ligne)
 - **Ville** : Alger, Algérie (sans adresse précise, service à distance)
 - **Bouton d'action** : « En savoir plus » vers le site (une fois en ligne), sinon « Envoyer un message WhatsApp »
