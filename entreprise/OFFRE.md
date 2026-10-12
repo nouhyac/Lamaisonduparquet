@@ -1,38 +1,51 @@
-# Offre : brouillon n°1 (à valider)
+# Offre : brouillon n°2 (à valider)
 
-## 1. Niche proposée : les commerces et artisans locaux
-Restaurants, salons de coiffure et d'esthétique, artisans du bâtiment, coachs.
+## 1. Marché : l'Algérie, à partir d'Alger
+**Cible : tout le monde** (commerces, artisans, professions libérales, PME,
+vendeurs en ligne, associations, particuliers).
 
-Pourquoi ce choix :
-- Beaucoup n'ont pas de site, ou ont un site daté.
-- On les touche facilement avec des pubs Facebook et Instagram ciblées par ville.
-- Ils veulent des choses simples : être trouvés, recevoir des appels ou des réservations.
-- Les projets sont courts (1 à 2 semaines), donc on peut vite livrer et avoir des avis clients.
+Points propres au marché algérien, pris en compte dans l'offre :
+- **Facebook est le réseau n°1**, puis Instagram et TikTok. Beaucoup de commerces
+  vendent déjà via leur page Facebook ou WhatsApp : on leur propose de passer au niveau au-dessus.
+- **Le paiement à la livraison domine.** Les boutiques gèrent donc la commande
+  avec paiement à la livraison. Le paiement par carte CIB ou Edahabia est une option.
+- **Sites en arabe et en français** (et en anglais si besoin), adaptés au mobile en priorité.
+- Les prix sont **accessibles mais pas bradés** : la qualité doit se voir dans le portfolio.
 
-Autres niches possibles : e-commerce de petites marques, professions de santé et
-bien-être, associations.
+### Segments pour les pubs (une pub par segment, même si on cible tout le monde)
+1. Commerces et restaurants : « Soyez trouvé sur Google et recevez des commandes. »
+2. Vendeurs Facebook et Instagram : « Votre propre boutique en ligne avec paiement à la livraison. »
+3. Professions libérales (médecins, avocats, architectes…) : « Une image pro et la prise de rendez-vous en ligne. »
+4. Entreprises et startups : « Applications et plateformes sur mesure. »
 
-## 2. Les formules (prix de lancement, à ajuster)
+## 2. Les formules (prix de lancement en dinars, à ajuster)
 
 | Formule | Contenu | Prix | Délai |
 |---------|---------|------|-------|
-| **Essentiel** : site vitrine | Jusqu'à 5 pages, adapté au mobile, formulaire de contact, fiche Google, bases du référencement | 690 € | 7 jours |
-| **Pro** : site + réservation ou boutique | Tout l'Essentiel + prise de rendez-vous ou petite boutique (jusqu'à 20 produits) + paiement en ligne | 1 490 € | 14 jours |
-| **Sur-mesure** : application | Appli web ou mobile (fidélité, commande, espace client…) | Sur devis, à partir de 2 900 € | Selon le projet |
+| **Starter** : page unique | 1 page pro (présentation, services, WhatsApp, carte, contact) | 15 000 DA | 3 jours |
+| **Essentiel** : site vitrine | Jusqu'à 5 pages, 2 langues, mobile, formulaire, fiche Google Maps, référencement de base | 35 000 DA | 7 jours |
+| **Boutique** : e-commerce | Boutique jusqu'à 50 produits, commande avec paiement à la livraison, gestion des wilayas et des frais de livraison, tableau de bord des commandes | 75 000 DA | 14 jours |
+| **Sur-mesure** : application | Appli web ou mobile (réservation, fidélité, livraison, espace client…) | Sur devis, à partir de 150 000 DA | Selon le projet |
 
-**Abonnement « Tranquillité » : 39 €/mois.** Il comprend l'hébergement, les mises à jour,
-les petites modifications et une sauvegarde. C'est ce qui crée un revenu régulier.
+**Abonnement « Tranquillité » : 3 000 DA/mois** (hébergement, mises à jour, petites modifications, sauvegardes).
+Le nom de domaine est facturé à part, au prix coûtant.
+
+**Offre de lancement** : -20 % pour les 10 premiers clients, en échange d'un avis
+et de l'autorisation de montrer leur site dans le portfolio.
 
 ## 3. Ce qui nous différencie
-- **Rapidité** : premier aperçu du site en 48 h.
-- **Prix fixe et clair**, sans surprise.
-- **Un seul interlocuteur**, disponible.
-- Site **pensé pour rapporter des clients** (appels, réservations), pas seulement pour être joli.
+- **Qualité exceptionnelle** à prix accessible.
+- **Aperçu du site en 48 h.**
+- **Prix fixe et clair**, paiement en 2 fois (50 % au départ, 50 % à la livraison).
+- **Un seul interlocuteur**, joignable sur WhatsApp.
+- Sites **pensés pour rapporter des clients**.
 
 ## 4. Message principal (pour les pubs)
-> « Votre site professionnel prêt en 7 jours, à prix fixe. Plus de clients, zéro prise de tête. »
+> « Votre site professionnel prêt en 7 jours, à partir de 15 000 DA. »
+
+À décliner en arabe, en darija et en français.
 
 ## À valider
-- [ ] La niche te convient ?
-- [ ] Les prix te paraissent justes pour toi ?
+- [ ] Les prix te conviennent ?
+- [ ] On garde l'offre de lancement à -20 % ?
 - [ ] On garde l'abonnement mensuel ?

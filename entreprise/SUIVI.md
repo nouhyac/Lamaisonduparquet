@@ -12,10 +12,12 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | Le juridique (statut, assurance, CGV) est **reporté à plus tard**. |
 | 2026-10-12 | Claude fait le travail et montre chaque étape. |
 | 2026-10-12 | Le suivi du projet est rangé dans ce dossier (le nouveau dépôt n'a pas pu être créé). |
+| 2026-10-12 | **Basé à Alger, marché : l'Algérie.** Prix en dinars, sites en arabe et en français. |
+| 2026-10-12 | **Cible : tout le monde** (généraliste), avec des pubs déclinées par segment. |
+| 2026-10-12 | Prix accessibles pour le marché algérien, mais qualité exceptionnelle. |
 
 ## Questions encore ouvertes
 - [ ] Niveau technique de départ
-- [ ] Niche (type de clients visés)
 - [ ] Budget de départ (pub + outils)
 - [ ] Nom de l'entreprise
 
@@ -25,10 +27,10 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 3. **Vitrine** : site perso + 2 ou 3 démos pour le portfolio
 4. **Acquisition** : contenu réseaux + pubs Meta/TikTok + page de contact
 5. **Vente et livraison** : appel découverte, devis, acompte, fabrication, livraison
-6. **Juridique** *(plus tard)* : micro-entreprise, compte pro, assurance RC Pro, CGV
+6. **Juridique** *(plus tard)* : statut d'auto-entrepreneur algérien, compte bancaire, conditions de vente
 
 ## Outils déjà connectés
 Canva, Gamma, Higgsfield (visuels et vidéos), Adspirer (publicités), Gmail.
 
 ## Journal des sessions
-- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre.
+- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA).
