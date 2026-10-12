@@ -33,7 +33,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 - [ ] Niveau technique de départ
 - [ ] Budget de départ (pub + outils)
 - [ ] Valider l'identité (`IDENTITE.md`) et les prix (`OFFRE.md` v3)
-- [ ] Réserver les comptes @dzignstudio sur les réseaux
+- [ ] Réserver les comptes @dzignstudio sur les réseaux (bios, photo de profil et couverture prêtes : `campagne/profil/`)
+- [ ] Créer l'email Yahoo (dzignstudio@yahoo.com en 1er choix), puis contact@dzignstudio.design
 
 ## Feuille de route
 1. **Offre** : formules, prix → `OFFRE.md` *(v3 haut de gamme, à valider)*
@@ -70,3 +71,4 @@ Règle : toujours vérifier le coût (get_cost) avant une vidéo ou un modèle 3
 
 ## Journal des sessions
 - **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms. Choix : Dzign Studio, haut de gamme, BaridiMob 50/50. Offre v3 et identité proposées. Outils listés (Hostinger, Higgsfield, Canva gratuit, Meta à relier). Site Dzign Studio v1 construit (z doré en 3D) et publié en aperçu. Puis exemples de sites, puis v3 « choc » avec Higgsfield (≈14 crédits utilisés sur 24 : 5 images, 1 vidéo Kling, 1 modèle 3D Tripo).
+- **2026-10-12 (suite)** : portfolio 8 sites + aperçu instantané, étude de cas La Maison du Parquet, domaine dzignstudio.design vérifié libre, version arabe + FAQ, choix d'offre obligatoire avant WhatsApp, campagne de lancement (3 vidéos, 9 posts FR/AR), kit pubs Meta (FR), conseils email Yahoo, bios Instagram/Facebook/TikTok + photo de profil + couverture.
