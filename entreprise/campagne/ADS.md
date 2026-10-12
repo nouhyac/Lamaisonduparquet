@@ -3,7 +3,7 @@
 Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du dossier `campagne/`.
 
 ## Avant de lancer (obligatoire)
-1. **Le site doit être en ligne** sur dzignstudio.design : la pub envoie vers le site, où le client **choisit son offre** avant WhatsApp.
+1. **Le site doit être en ligne** sur dzignstudio.store : la pub envoie vers le site, où le client **choisit son offre** avant WhatsApp.
 2. **Une carte bancaire internationale** (Visa/Mastercard) dans le compte publicitaire Meta.
 3. **Le pixel Meta** installé sur le site (je l'ajoute dès que tu me donnes l'identifiant du pixel). Il compte chaque clic sur « Continuer sur WhatsApp » comme un **contact** : c'est ce qui permet à Meta de trouver les bons clients.
 4. Compte relié : Meta Ads « Sofiane Yacoubi » (via Adspirer). Quota Adspirer gratuit épuisé jusqu'au **2 novembre 2026** : d'ici là, la campagne se monte à la main dans le Gestionnaire de publicités (guide ci-dessous), ou après passage à une offre payante d'Adspirer.
@@ -50,7 +50,7 @@ Il reste 5 places.
 **Titres** (à tester) : « Votre site en 10 secondes » · « -20 % pour les 5 premiers » · « Un site d'exception, conçu à Alger »
 **Description** : « Maquette en 72 h · Paiement 50/50 »
 **Bouton** : « En savoir plus »
-**Lien** : https://dzignstudio.design/#essai (P1, P4) · https://dzignstudio.design/#formules (P5) · https://dzignstudio.design (P2, P3)
+**Lien** : https://dzignstudio.store/#essai (P1, P4) · https://dzignstudio.store/#formules (P5) · https://dzignstudio.store (P2, P3)
 
 ## Lire les résultats (après 3 jours, puis 7 jours)
 | Indicateur | Bon signe | Action si mauvais |

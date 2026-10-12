@@ -13,14 +13,14 @@ Objectif : **répondre vite, obtenir un appel découverte, envoyer le devis sous
 - **Description** : Studio digital haut de gamme à Alger. Sites web, 3D, boutiques en ligne et applications. 100 % à distance, partout en Algérie.
 - **Adresse** : Alger (service à distance)
 - **Horaires** : samedi à jeudi, 9 h - 19 h
-- **Email** : dzignstudio16@yahoo.com · **Site** : https://dzignstudio.design
+- **Email** : dzignstudio16@yahoo.com · **Site** : https://dzignstudio.store
 - **Photo** : `campagne/profil/photo-profil.jpg`
 
 ### Message d'accueil (automatique, au 1er message)
 ```
 Bonjour et bienvenue chez Dzign Studio ✨
 Merci pour votre message, nous vous répondons très vite.
-En attendant, découvrez nos sites de démonstration : https://dzignstudio.design/#portfolio
+En attendant, découvrez nos sites de démonstration : https://dzignstudio.store/#portfolio
 ```
 
 ### Message d'absence (hors horaires)
@@ -36,7 +36,7 @@ Nous sommes disponibles du samedi au jeudi, de 9 h à 19 h. Nous vous répondons
 | `/offres` | Nos formules : Impact dès 30 000 DA (page unique) · Signature dès 80 000 DA (site vitrine) · Commerce dès 150 000 DA (boutique) · Immersion dès 250 000 DA (3D) · Plateforme dès 400 000 DA (application). Nom de domaine et email pro inclus. Le prix final dépend de votre projet. |
 | `/delai` | Vous voyez la maquette sous 72 h. Un site vitrine est prêt en 7 à 14 jours, une boutique en 2 à 3 semaines. |
 | `/paiement` | 50 % par BaridiMob au lancement, 50 % seulement après avoir vu votre site terminé. Tout se fait à distance. |
-| `/exemples` | Voici nos sites de démonstration : https://dzignstudio.design/#portfolio · et une réalisation en ligne : https://www.lamaisonduparquet.org |
+| `/exemples` | Voici nos sites de démonstration : https://dzignstudio.store/#portfolio · et une réalisation en ligne : https://www.lamaisonduparquet.org |
 | `/fondateurs` | Bonne nouvelle : il reste [X] places dans notre Programme Fondateurs, -20 % sur votre formule en échange de votre avis et du droit de montrer votre site. |
 | `/devis` | Voici votre devis 📄 Il est valable 15 jours. Pour lancer le projet : acompte de 50 % par BaridiMob, et votre maquette arrive sous 72 h. |
 | `/baridimob` | Pour l'acompte par BaridiMob : [RIP / numéro de compte CCP à compléter]. Merci de m'envoyer la capture du paiement, je lance votre projet dans la foulée. |

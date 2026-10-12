@@ -21,6 +21,8 @@ dzignstudio.net, ou une adresse gratuite pour la vitrine.
 Comptes réseaux à réserver dès que possible : **@dzignstudio** sur Instagram,
 Facebook, TikTok et LinkedIn.
 
+**Mise à jour 2026-10-13 : domaine retenu = dzignstudio.store** (offert avec l'hébergement).
+
 ## Slogan
 - FR : **« L'excellence digitale, made in DZ. »**
 - AR : **« تميّز رقمي، صُنع في الجزائر »**

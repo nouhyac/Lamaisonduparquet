@@ -21,7 +21,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | **Nom de domaine + email pro offerts la 1re année** dans toutes les formules (≈ 2 000 à 4 000 DA par client, à intégrer au prix). |
 | 2026-10-12 | Réalisation réelle à montrer : **lamaisonduparquet.org**. |
 | 2026-10-12 | **Tout à distance** : appel WhatsApp, maquette en ligne, paiement BaridiMob, aucun déplacement. |
-| 2026-10-12 | Nom de domaine choisi : **dzignstudio.design** (libre au 2026-10-12) — achat par l'utilisateur·rice sur Hostinger. Email et comptes Instagram/TikTok créés par l'utilisateur·rice après. |
+| 2026-10-13 | **Domaine retenu : dzignstudio.store** (offert avec l'hébergement Hostinger, choisi par l'utilisateur·rice). dzignstudio.design reste une option plus tard. Email pro : contact@dzignstudio.store. |
+| 2026-10-12 | Nom de domaine envisagé au départ : **dzignstudio.design** (libre au 2026-10-12) — achat par l'utilisateur·rice sur Hostinger. Email et comptes Instagram/TikTok créés par l'utilisateur·rice après. |
 | 2026-10-12 | Le client **choisit une offre avant d'arriver sur WhatsApp**. |
 | 2026-10-12 | **Publicités en français uniquement.** Ne rien dépenser sans accord. |
 | 2026-10-12 | **Ne rien mettre en ligne (Hostinger) sans l'accord explicite.** → **Accord donné le 2026-10-12** pour mettre le site en ligne. |
@@ -36,7 +37,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 - [ ] Valider l'identité (`IDENTITE.md`) et les prix (`OFFRE.md` v3)
 - [ ] Réserver les comptes @dzignstudio sur les réseaux (bios, photo de profil et couverture prêtes : `campagne/profil/`)
 - [x] Email Yahoo créé : **dzignstudio16@yahoo.com** (pour les comptes réseaux)
-- [ ] Email pro contact@dzignstudio.design (après achat du domaine)
+- [ ] Email pro contact@dzignstudio.store (après enregistrement du domaine)
 
 ## Feuille de route
 1. **Offre** : formules, prix → `OFFRE.md` *(v3 haut de gamme, à valider)*
