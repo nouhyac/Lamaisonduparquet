@@ -6,10 +6,11 @@
 - **Catégorie** : Service de conception de sites web
 - **Bio** (moins de 150 caractères) :
 ```
-✨ Sites web, 3D et e-commerce haut de gamme
+✨ Sites web, 3D & e-commerce haut de gamme
 📍 Alger · 100 % à distance
-🎁 -20 % pour les 5 premiers clients
-👇 Votre site en 10 secondes
+📲 WhatsApp 0794 70 93 23
+🎁 -20 % · 5 premiers clients
+👇 Votre site en 10 s
 ```
 - **Lien** : `https://dzignstudio.design/#essai` (dès que le site est en ligne)
   En attendant : le lien de l'aperçu https://claude.ai/artifact/RD6NeNfPfgGwtGdppDRUbD (partagé « toute personne avec le lien »).
