@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Devis Dzign Studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Hanken Grotesk",sans-serif;color:#1B1B20;font-size:11pt;line-height:1.5}
+.page{width:210mm;height:296mm;overflow:hidden;padding:13mm 15mm 11mm;display:grid;grid-template-rows:auto auto 1fr auto;gap:6mm;position:relative}
+.bande{position:absolute;left:0;right:0;top:0;height:5mm;background:linear-gradient(90deg,#0E7C5A,#C8A96A)}
+.tete{display:flex;justify-content:space-between;align-items:flex-start;padding-top:4mm}
+.logo{font-family:Syne;font-weight:800;font-size:26pt;letter-spacing:-.02em;color:#0B0B0F}
+.logo b{color:#B8954E}
+.logo small{display:block;font-family:"Hanken Grotesk";font-size:8pt;letter-spacing:.3em;text-transform:uppercase;color:#777;font-weight:500}
+.coord{text-align:right;font-size:9pt;color:#555}
+.titre{display:flex;justify-content:space-between;align-items:end;border-bottom:1.5px solid #0B0B0F;padding-bottom:4mm}
+h1{font-family:Syne;font-weight:700;font-size:22pt}
+.ref{font-size:9.5pt;color:#555;text-align:right}
+.blocs{display:grid;grid-template-columns:1fr 1fr;gap:8mm;font-size:10pt}
+.blocs h3{font-size:8pt;letter-spacing:.18em;text-transform:uppercase;color:#B8954E;margin-bottom:2mm}
+table{width:100%;border-collapse:collapse;font-size:10pt}
+th{text-align:left;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:#777;border-bottom:1px solid #ccc;padding:2.5mm 2mm}
+td{padding:2.4mm 2mm;border-bottom:1px solid #eee;vertical-align:top}
+td.m,th.m{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td small{display:block;color:#777;font-size:9pt}
+.totaux{margin-top:4mm;margin-left:auto;width:85mm;font-size:10.5pt}
+.totaux div{display:flex;justify-content:space-between;padding:1.6mm 0}
+.totaux .total{border-top:1.5px solid #0B0B0F;margin-top:1mm;padding-top:2.5mm;font-family:Syne;font-weight:700;font-size:14pt}
+.totaux .remise{color:#0E7C5A}
+.cond{display:grid;grid-template-columns:1fr 1fr;gap:6mm;font-size:9pt;color:#444;margin-top:4mm}
+.cond h4{font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:#B8954E;margin-bottom:1.5mm}
+.paie{background:#F6F2EA;border-radius:3mm;padding:4mm 5mm;font-size:9.5pt}
+.pied{display:flex;justify-content:space-between;align-items:end;font-size:8.5pt;color:#777;border-top:1px solid #ddd;padding-top:3mm}
+.sign{width:70mm;border-top:1px solid #999;padding-top:2mm;text-align:center;color:#555}
+.champ{background:#FFF3C4;padding:0 1mm;border-radius:1mm}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bande"></div>
+  <div>
+    <div class="tete">
+      <div class="logo">d<b>z</b>ign<small>studio</small></div>
+      <div class="coord">Dzign Studio · Studio digital<br>Alger, Algérie · service à distance<br>WhatsApp : 0549 50 68 57<br>dzignstudio16@yahoo.com<br>dzignstudio.design</div>
+    </div>
+  </div>
+  <div style="display:grid;gap:5mm">
+    <div class="titre"><h1>Devis</h1><div class="ref">N° <span class="champ">DZ-2026-001</span><br>Date : <span class="champ">[jj/mm/2026]</span><br>Valable 15 jours</div></div>
+    <div class="blocs">
+      <div><h3>Client</h3><span class="champ">[Nom et prénom]</span><br><span class="champ">[Entreprise · activité]</span><br><span class="champ">[Ville]</span> · WhatsApp <span class="champ">[numéro]</span></div>
+      <div><h3>Projet</h3>Formule <b class="champ">[Signature]</b><br>Langues : <span class="champ">[français, arabe]</span><br>Délai : maquette sous 72 h, livraison <span class="champ">[sous 14 jours]</span></div>
+    </div>
+  </div>
+  <div>
+    <table>
+      <thead><tr><th>Prestation</th><th class="m">Montant</th></tr></thead>
+      <tbody>
+        <tr><td><b>Formule <span class="champ">Signature</span></b><small>Site vitrine sur mesure, jusqu'à 6 pages, animations, version mobile, formulaire et WhatsApp, Google Maps, référencement de base</small></td><td class="m"><span class="champ">80 000 DA</span></td></tr>
+        <tr><td><b>Deuxième langue</b><small>Version arabe complète, mise en page de droite à gauche</small></td><td class="m"><span class="champ">Inclus</span></td></tr>
+        <tr><td><b>Option : <span class="champ">[rédaction des textes / visuels 3D / réservation…]</span></b><small><span class="champ">[détail]</span></small></td><td class="m"><span class="champ">[0 DA]</span></td></tr>
+        <tr><td><b>Nom de domaine et email professionnel</b><small><span class="champ">[votre-entreprise.com]</span> · contact@… · 1re année</small></td><td class="m">Offert</td></tr>
+        <tr><td><b>Certificat de sécurité https et fiche Google Maps</b></td><td class="m">Inclus</td></tr>
+      </tbody>
+    </table>
+    <div class="totaux">
+      <div><span>Sous-total</span><span class="champ">80 000 DA</span></div>
+      <div class="remise"><span>Programme Fondateurs (-20 %)</span><span class="champ">-16 000 DA</span></div>
+      <div class="total"><span>Total</span><span class="champ">64 000 DA</span></div>
+    </div>
+    <div class="cond">
+      <div class="paie"><h4>Paiement 100 % à distance</h4>
+        <b>Acompte de 50 % : <span class="champ">32 000 DA</span></b> par BaridiMob à la signature, le projet démarre à réception.<br>
+        <b>Solde de 50 % : <span class="champ">32 000 DA</span></b> après présentation du site terminé, avant la mise en ligne.<br>
+        BaridiMob : <span class="champ">[RIP / numéro CCP]</span></div>
+      <div><h4>Conditions</h4>Maquette sous 72 h après l'acompte, avec 2 séries de retouches incluses. Le client fournit ou valide les textes et visuels. Le site, ses contenus et le nom de domaine appartiennent au client après paiement du solde. Hébergement et suivi en option : Care 5 000 DA/mois ou Care+ 15 000 DA/mois.</div>
+    </div>
+  </div>
+  <div class="pied">
+    <div>Dzign Studio · L'excellence digitale, made in DZ</div>
+    <div class="sign">Bon pour accord, date et signature du client</div>
+  </div>
+</div>
+</body>
+</html>

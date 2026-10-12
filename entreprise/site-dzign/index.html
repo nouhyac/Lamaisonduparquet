@@ -1242,6 +1242,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     if(etat.message)lignes.push((a?'المشروع: ':'Projet : ')+etat.message);
     lignes.push(a?'أودّ حجز مكالمة التعارف المجانية.':'Je souhaite réserver mon appel découverte gratuit.');
     var url='https://wa.me/'+WA+'?text='+encodeURIComponent(lignes.join('\n'));
+    if(window.fbq)fbq('track','Contact',{content_name:o[0]});
     var lien=document.createElement('a');lien.href=url;lien.target='_blank';lien.rel='noopener';lien.dataset.direct='1';
     document.body.appendChild(lien);lien.click();lien.remove();
     fermer();

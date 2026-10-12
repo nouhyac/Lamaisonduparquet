@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://dzignstudio.design/">
+<meta name="theme-color" content="#0B0B0F">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dzign Studio">
+<meta property="og:title" content="Dzign Studio · L'excellence digitale, made in DZ">
+<meta property="og:description" content="Sites web, 3D, boutiques en ligne et applications haut de gamme, conçus à Alger. Voyez votre site en 10 secondes.">
+<meta property="og:url" content="https://dzignstudio.design/">
+<meta property="og:image" content="https://dzignstudio.design/medias/partage.jpg">
+<meta property="og:locale" content="fr_DZ">
+<meta property="og:locale:alternate" content="ar_DZ">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Pixel Meta : remplacer VOTRE_PIXEL_ID puis retirer les commentaires autour du script.
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','VOTRE_PIXEL_ID');fbq('track','PageView');</script>
+-->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Dzign Studio","url":"https://dzignstudio.design/","image":"https://dzignstudio.design/medias/partage.jpg","telephone":"+213549506857","areaServed":"DZ","address":{"@type":"PostalAddress","addressLocality":"Alger","addressCountry":"DZ"},"priceRange":"30 000 DA - 400 000 DA","description":"Studio digital haut de gamme : sites web, 3D, boutiques en ligne et applications."}</script>
+<title>Dzign Studio</title>
+<meta name="description" content="Dzign Studio, studio digital haut de gamme à Alger : sites web, expériences 3D, boutiques en ligne et applications. Votre site en aperçu en 10 secondes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230B0B0F%27/%3E%3Cpath d=%27M16 16h32v7L27 41h21v7H16v-7l21-18H16z%27 fill=%27%23C8A96A%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Readex+Pro:wght@400;600;700&display=swap">
+<style>
+/* Layout : héros vidéo plein cadre, bandeau défilant, démo 3D interactive, exemples en fenêtres de navigateur, formules, déroulement, contact */
+:root{
+  --noir:#0B0B0F; --graphite:#15151B; --ligne:#2A2A33;
+  --ivoire:#F5F3EE; --gris:#A9A6A0;
+  --or:#C8A96A; --or-clair:#E9D6A6; --emeraude:#0E7C5A; --emeraude-clair:#7FD1AE;
+  --f-display:"Syne","Arial Black",system-ui,sans-serif;
+  --f-texte:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-arabe:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif;
+  --f-serif:"Cormorant Garamond",Georgia,serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--ivoire);font-family:var(--f-texte);font-size:17px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or)}
+.ar{font-family:var(--f-arabe);direction:rtl}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.or-brille{background:linear-gradient(100deg,var(--or) 0%,var(--or) 40%,#FFF3D1 50%,var(--or) 60%,var(--or) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brille 5s ease-in-out infinite}
+@keyframes brille{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+
+/* Rideau d'ouverture (CSS seul, disparaît tout seul) */
+.rideau{position:fixed;inset:0;z-index:100;background:var(--noir);display:grid;place-items:center;pointer-events:none;animation:rideau 1.2s cubic-bezier(.77,0,.18,1) .8s forwards}
+.rideau span{font-family:var(--f-display);font-weight:800;font-size:clamp(3rem,12vw,8rem);letter-spacing:-.04em;animation:logo-in .7s ease-out both}
+.rideau b{color:var(--or)}
+@keyframes rideau{to{transform:translateY(-100%);visibility:hidden}}
+@keyframes logo-in{from{opacity:0;letter-spacing:.2em;filter:blur(8px)}to{opacity:1}}
+
+/* Lueur qui suit la souris */
+.lueur{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:1;left:0;top:0;transform:translate(-600px,-600px);background:radial-gradient(circle,color-mix(in srgb,var(--or) 10%,transparent),transparent 60%)}
+@media (hover:none){.lueur{display:none}}
+
+/* Navigation */
+nav.haut{position:fixed;top:0;left:0;right:0;z-index:20;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.haut.colle{background:color-mix(in srgb,var(--noir) 80%,transparent);backdrop-filter:blur(14px);border-color:var(--ligne)}
+nav.haut .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.logo{font-family:var(--f-display);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:baseline;gap:8px}
+.logo b{color:var(--or);font-weight:800}
+.logo small{font-family:var(--f-texte);font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gris);font-weight:500}
+.nav-liens{display:flex;gap:28px;font-size:.92rem}
+.nav-liens a{text-decoration:none;color:var(--gris);transition:color .2s}
+.nav-liens a:hover{color:var(--ivoire)}
+@media (max-width:900px){.nav-liens{display:none}}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--f-texte);transition:transform .25s,background .25s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden}
+.btn-or{background:var(--or);color:var(--noir)}
+.btn-or::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn-or:hover{transform:translateY(-2px);box-shadow:0 12px 40px -12px var(--or)}
+.btn-or:hover::after{transform:translateX(120%)}
+.btn-ligne{border-color:color-mix(in srgb,var(--ivoire) 30%,transparent);color:var(--ivoire);background:color-mix(in srgb,var(--noir) 30%,transparent);backdrop-filter:blur(6px)}
+.btn-ligne:hover{border-color:var(--or)}
+.btn-petit{padding:10px 18px;font-size:.88rem}
+
+/* Héros vidéo */
+.hero{position:relative;min-height:clamp(620px,92vh,900px);display:grid;align-items:end;overflow:hidden;isolation:isolate}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(11,11,15,.92) 0%,rgba(11,11,15,.6) 45%,rgba(11,11,15,0) 75%),linear-gradient(0deg,var(--noir) 0%,rgba(11,11,15,0) 35%)}
+.hero .wrap{width:100%;padding-block:140px clamp(56px,8vw,96px)}
+.hero-texte{display:grid;gap:24px;max-width:680px;min-width:0}
+.hero h1{font-size:clamp(2.1rem,6vw,5rem);font-weight:700;letter-spacing:-.035em}
+.hero .ar{font-size:clamp(1.15rem,2.2vw,1.5rem);color:var(--or-clair);text-align:start}
+.hero-sous{color:#CFCBC4;max-width:50ch;font-size:1.08rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-chiffres{display:flex;flex-wrap:wrap;gap:20px 32px;margin-top:12px;padding-top:24px;border-top:1px solid color-mix(in srgb,var(--ivoire) 15%,transparent)}
+.hero-chiffres div{display:grid}
+.hero-chiffres b{font-family:var(--f-display);font-size:1.5rem;color:var(--ivoire);font-variant-numeric:tabular-nums}
+.hero-chiffres span{font-size:.8rem;color:var(--gris);letter-spacing:.04em}
+@media (max-width:700px){.hero video,.hero .poster{object-position:80% 30%}.hero::before{background:linear-gradient(0deg,var(--noir) 10%,rgba(11,11,15,.85) 58%,rgba(11,11,15,.2) 100%)}.hero .wrap{padding-top:260px}}
+
+/* Bandeau défilant */
+.defile{border-block:1px solid var(--ligne);overflow:hidden;padding-block:18px;background:var(--graphite);position:relative;z-index:2}
+.defile-piste{display:flex;gap:48px;width:max-content;animation:defile 38s linear infinite;font-family:var(--f-display);font-size:clamp(1.2rem,2.4vw,1.8rem);font-weight:700;white-space:nowrap}
+.defile-piste span{display:flex;align-items:center;gap:48px}
+.defile-piste i{width:10px;height:10px;background:var(--or);transform:rotate(45deg);display:inline-block}
+.defile-piste em{font-style:normal;color:var(--or)}
+@keyframes defile{to{transform:translateX(-50%)}}
+
+/* Sections */
+section.bloc{padding-block:clamp(72px,10vw,128px);position:relative;z-index:2}
+.titre-bloc{display:grid;gap:14px;margin-bottom:52px;max-width:780px}
+.titre-bloc h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700;letter-spacing:-.03em}
+.titre-bloc p{color:var(--gris);max-width:60ch}
+
+/* Fondateurs */
+.fondateurs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px 26px;border:1px solid color-mix(in srgb,var(--or) 45%,transparent);border-radius:6px;background:linear-gradient(90deg,color-mix(in srgb,var(--or) 10%,var(--noir)),var(--noir))}
+.fondateurs strong{color:var(--or)}
+.places{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--gris)}
+.places i{width:12px;height:12px;border-radius:50%;border:1px solid var(--or);display:inline-block;animation:pulse 2.4s ease-in-out infinite}
+.places i:nth-child(2){animation-delay:.2s}.places i:nth-child(3){animation-delay:.4s}.places i:nth-child(4){animation-delay:.6s}.places i:nth-child(5){animation-delay:.8s}
+@keyframes pulse{50%{background:color-mix(in srgb,var(--or) 60%,transparent)}}
+
+/* Démo 3D */
+.demo3d{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+@media (max-width:900px){.demo3d{grid-template-columns:1fr}}
+.demo3d-texte{display:grid;gap:22px;min-width:0}
+.demo3d-texte h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700;letter-spacing:-.03em}
+.demo3d-texte p{color:var(--gris);max-width:48ch}
+.demo3d-liste{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:.96rem}
+.demo3d-liste li{display:flex;gap:12px;align-items:baseline}
+.demo3d-liste li::before{content:"";width:8px;height:8px;background:var(--emeraude-clair);transform:rotate(45deg);flex:none;position:relative;top:-1px}
+.vitrine3d{position:relative;aspect-ratio:1/1;max-width:100%;border:1px solid var(--ligne);border-radius:8px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#1C2236,#0B0B0F 70%);cursor:grab;touch-action:none}
+.vitrine3d:active{cursor:grabbing}
+.vitrine3d canvas{display:block;width:100%!important;height:100%!important}
+.vitrine3d .etiquette{position:absolute;left:16px;top:16px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);border:1px solid color-mix(in srgb,var(--or) 50%,transparent);padding:5px 12px;border-radius:999px;background:rgba(11,11,15,.6)}
+.vitrine3d .aide{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-size:.8rem;color:var(--gris);letter-spacing:.08em;pointer-events:none}
+.vitrine3d .chargement{position:absolute;inset:0;display:grid;place-items:center;color:var(--gris);font-size:.9rem}
+
+/* Expertises */
+.expertises{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
+.exp{background:var(--noir);padding:30px 26px;display:grid;gap:12px;align-content:start;min-width:0;transition:background .3s}
+.exp:hover{background:var(--graphite)}
+.exp h3{font-size:1.2rem;font-weight:700}
+.exp p{color:var(--gris);font-size:.95rem}
+.exp .marque{font-family:var(--f-display);color:var(--or);font-size:.85rem;letter-spacing:.08em}
+
+/* Portfolio : grille de sites à visiter */
+.portfolio{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:18px}
+.site-carte{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/5;max-width:100%;border:1px solid var(--ligne);cursor:pointer;background:var(--graphite);text-align:start;padding:0;font:inherit;color:var(--ivoire);display:block;width:100%}
+.site-carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
+.site-carte::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,11,.95) 0%,rgba(8,8,11,.35) 45%,rgba(8,8,11,0) 70%)}
+.site-carte:hover img,.site-carte:focus-visible img{transform:scale(1.08);filter:saturate(1.15)}
+.site-carte .info{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:20px;display:grid;gap:6px}
+.site-carte .secteur{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or)}
+.site-carte h3{font-size:1.35rem;font-weight:700}
+.site-carte .visiter{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--ivoire);opacity:.85;transition:gap .3s,opacity .3s}
+.site-carte:hover .visiter{gap:14px;opacity:1;color:var(--or-clair)}
+.site-carte .badge{position:absolute;top:14px;left:14px;z-index:1;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(11,11,15,.7);border:1px solid color-mix(in srgb,var(--or) 50%,transparent);color:var(--or);padding:4px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+.site-carte.large{grid-column:span 2;aspect-ratio:auto}
+@media (max-width:620px){.site-carte.large{grid-column:auto;aspect-ratio:4/5}}
+
+
+/* Étude de cas : réalisation réelle */
+.cas{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,48px);margin-bottom:72px;padding:clamp(20px,4vw,44px);border:1px solid var(--ligne);border-radius:16px;background:linear-gradient(135deg,#17171E,var(--noir) 70%)}
+.cas-scene{width:100%;max-width:980px;justify-self:center}
+@media (min-width:900px){.cas-texte{grid-template-columns:1fr 1fr;column-gap:56px;align-items:start}.cas-texte .cas-liste{grid-column:2;grid-row:1/span 4;align-self:center}}
+.cas-scene{position:relative;min-width:0;padding-bottom:6%;padding-right:9%}
+.cas-ordi{border-radius:10px;overflow:hidden;border:1px solid var(--ligne);background:#1C1C23;box-shadow:0 40px 80px -40px #000}
+.cas-ordi .v-url{display:flex}
+.cas-defile{aspect-ratio:16/10;max-width:100%;background-size:100% auto;background-repeat:no-repeat;background-position:50% 0;animation:cas-defile 46s ease-in-out infinite alternate}
+.cas-tel{position:absolute;right:0;bottom:0;width:27%;aspect-ratio:9/19.5;border-radius:22px;border:6px solid #111;background:#111;overflow:hidden;box-shadow:0 30px 60px -20px #000,0 0 0 1px var(--ligne)}
+.cas-tel .cas-defile{aspect-ratio:auto;height:100%;animation-duration:38s;animation-delay:-8s}
+.cas-scene:hover .cas-defile{animation-play-state:paused}
+@keyframes cas-defile{0%,6%{background-position:50% 0}94%,100%{background-position:50% 100%}}
+.cas-texte{display:grid;gap:18px;min-width:0}
+.cas-texte h3{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.02em}
+.cas-texte .sous{color:var(--gris)}
+.cas-vrai{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--emeraude-clair);border:1px solid var(--emeraude);padding:4px 12px;border-radius:999px;width:max-content}
+.cas-vrai i{width:8px;height:8px;border-radius:50%;background:#3DDC97;box-shadow:0 0 0 0 rgba(61,220,151,.6);animation:en-ligne 2s infinite}
+@keyframes en-ligne{70%{box-shadow:0 0 0 8px rgba(61,220,151,0)}100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}}
+.cas-liste{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.95rem}
+.cas-liste li{display:flex;gap:12px;align-items:baseline}
+.cas-liste li::before{content:"";width:7px;height:7px;background:var(--or);transform:rotate(45deg);flex:none;position:relative;top:-2px}
+.cas-actions{display:flex;flex-wrap:wrap;gap:12px}
+.inclus{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;padding:20px 24px;border:1px dashed color-mix(in srgb,var(--or) 50%,transparent);border-radius:8px;font-size:.95rem}
+.inclus b{color:var(--or);font-family:var(--f-display);letter-spacing:.02em}
+.inclus span{display:flex;gap:8px;align-items:baseline}
+.inclus span::before{content:"✓";color:var(--or);font-weight:700}
+@media (prefers-reduced-motion:reduce){.cas-defile{animation:none}}
+
+/* Essai instantané */
+.essai{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;border:1px solid color-mix(in srgb,var(--or) 40%,transparent);border-radius:14px;padding:clamp(24px,5vw,56px);background:radial-gradient(ellipse at 100% 0%,color-mix(in srgb,var(--or) 16%,transparent),transparent 55%),var(--graphite)}
+@media (max-width:900px){.essai{grid-template-columns:1fr}}
+.essai h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:700;letter-spacing:-.03em}
+.essai-texte{display:grid;gap:18px;min-width:0}
+.essai-texte p{color:var(--gris);max-width:46ch}
+.essai form{display:grid;gap:16px;min-width:0}
+.pastilles{display:flex;flex-wrap:wrap;gap:10px}
+.pastilles button{width:38px;height:38px;border-radius:50%;border:2px solid transparent;cursor:pointer;outline-offset:3px;box-shadow:inset 0 0 0 3px var(--graphite)}
+.pastilles button[aria-pressed="true"]{border-color:var(--ivoire)}
+
+/* Comparatif */
+.compare{width:100%;border-collapse:collapse;font-size:.98rem;min-width:560px}
+.compare th,.compare td{padding:16px 14px;border-bottom:1px solid var(--ligne);text-align:start;vertical-align:top}
+.compare thead th{font-family:var(--f-display);font-size:1.05rem}
+.compare thead th:last-child{color:var(--or)}
+.compare td:nth-child(2){color:var(--gris)}
+.compare td:last-child{color:var(--ivoire);background:color-mix(in srgb,var(--or) 6%,transparent)}
+.compare td:first-child{font-weight:600}
+.ok-or{color:var(--or);font-weight:700;margin-inline-end:6px}
+
+/* Visionneuse de sites */
+body.verrou{overflow:hidden}
+.visionneuse{position:fixed;inset:0;z-index:60;background:rgba(5,5,8,.94);backdrop-filter:blur(10px);display:grid;grid-template-rows:auto 1fr;grid-template-columns:minmax(0,1fr);padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.v-barre{display:flex;align-items:center;gap:12px;padding:12px clamp(12px,3vw,24px);flex-wrap:wrap}
+.v-nav{display:flex;align-items:center;gap:8px;min-width:0;flex:1}
+.v-nav b{font-family:var(--f-display);font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v-rond{width:40px;height:40px;border-radius:50%;border:1px solid var(--ligne);background:var(--graphite);color:var(--ivoire);cursor:pointer;display:grid;place-items:center;font-size:1.1rem;flex:none}
+.v-rond:hover{border-color:var(--or)}
+.v-appareils{display:flex;border:1px solid var(--ligne);border-radius:999px;overflow:hidden}
+.v-appareils button{background:none;border:0;color:var(--gris);padding:9px 16px;cursor:pointer;font:inherit;font-size:.85rem}
+.v-appareils button[aria-pressed="true"]{background:var(--or);color:var(--noir)}
+@media (max-width:700px){.v-appareils{display:none}}
+.v-perso{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;border-radius:8px;background:color-mix(in srgb,var(--or) 14%,var(--graphite));border:1px solid color-mix(in srgb,var(--or) 40%,transparent);font-size:.92rem}
+.v-zone{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;min-height:0;padding:0 clamp(8px,2vw,24px) 14px}
+.v-ecran{width:min(1280px,100%);height:100%;min-height:0;display:grid;grid-template-rows:auto 1fr;border-radius:12px;overflow:hidden;border:1px solid var(--ligne);background:#fff;transition:width .45s cubic-bezier(.2,.7,.2,1),border-radius .45s}
+.v-ecran.mobile{width:min(400px,100%);border-radius:34px;border:10px solid #111;box-shadow:0 0 0 1px var(--ligne),0 40px 80px -30px #000}
+.v-ecran.mobile .v-url{display:none}
+.v-url{display:flex;align-items:center;gap:6px;padding:9px 14px;background:#1C1C23;border-bottom:1px solid var(--ligne)}
+.v-url i{width:10px;height:10px;border-radius:50%;background:#3A3A44}
+.v-url span{margin-left:10px;font-size:.78rem;color:var(--gris);background:var(--noir);padding:3px 14px;border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.vue{overflow-y:auto;overflow-x:hidden;min-height:0;container-type:inline-size;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@media (max-width:700px){.v-zone{padding:0}.v-ecran,.v-ecran.mobile{width:100%;border-radius:0;border:0;box-shadow:none}.v-url{display:none}.v-barre{gap:8px;padding:10px 12px}.v-rond{width:36px;height:36px}#v-commander{padding:9px 14px}}
+
+/* Sites de démonstration (dimensionnés par container queries) */
+.d{background:var(--d-bg);color:var(--d-fg);font-family:var(--d-fb,var(--f-texte));font-size:16px;line-height:1.55;min-height:100%}
+.d *{box-sizing:border-box}
+.d h1,.d h2,.d h3{font-family:var(--d-ft);margin:0;line-height:1.05;font-weight:var(--d-fw,600);letter-spacing:var(--d-ls,0)}
+.d p{margin:0}
+.d-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 5cqi;position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--d-bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--d-line)}
+.d-marque{font-family:var(--d-ft);font-size:22px;font-weight:var(--d-fw,600);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.d-nav>.d-btn,.d-nav>.d-panier{flex:none;white-space:nowrap}
+@container (max-width:480px){.d-marque{font-size:18px}.d-nav>.d-btn.petit{padding:8px 12px;font-size:13px}}
+.d-menu{display:flex;gap:22px;font-size:14px;color:var(--d-mute)}
+.d-menu span{cursor:pointer}
+@container (max-width:640px){.d-menu{display:none}}
+.d-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--d-acc);color:var(--d-on);padding:13px 24px;border-radius:var(--d-r,999px);font:inherit;font-weight:600;font-size:15px;border:0;cursor:pointer;text-decoration:none;transition:transform .2s,filter .2s}
+.d-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.d-btn.creux{background:transparent;color:inherit;border:1px solid currentColor}
+.d-btn.petit{padding:9px 16px;font-size:14px}
+.d-hero{position:relative;min-height:560px;display:grid;align-content:end;padding:120px 5cqi 8cqi;color:#fff;overflow:hidden;isolation:isolate}
+.d-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;animation:d-zoom 18s ease-out both}
+.d-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--d-voile,linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,.1) 70%))}
+@keyframes d-zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.d-hero h1{font-size:clamp(36px,7.2cqi,84px);max-width:16ch}
+.d-hero p{font-size:clamp(15px,1.7cqi,19px);max-width:46ch;opacity:.9;margin-top:16px}
+.d-hero .d-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.d-sur{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--d-acc);margin-bottom:14px;display:block}
+.d-hero .d-sur{color:var(--d-acc-hero,var(--d-acc))}
+.d-sec{padding:clamp(48px,8cqi,104px) 5cqi}
+.d-sec.alt{background:var(--d-surf)}
+.d-titre{font-size:clamp(28px,4.6cqi,52px);margin-bottom:28px;max-width:20ch}
+.d-mute{color:var(--d-mute)}
+.d-grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px}
+.d-carte{background:var(--d-surf);border-radius:var(--d-rc,10px);overflow:hidden;display:grid;align-content:start;border:1px solid var(--d-line)}
+.d-sec.alt .d-carte{background:var(--d-bg)}
+.d-carte img{width:100%;aspect-ratio:var(--d-ratio,3/4);object-fit:cover;display:block}
+.d-carte .d-corps{padding:18px;display:grid;gap:6px}
+.d-carte h3{font-size:20px}
+.d-prix{font-weight:700;color:var(--d-acc)}
+.d-split{display:grid;grid-template-columns:1fr 1fr;gap:5cqi;align-items:center}
+.d-split img{width:100%;border-radius:var(--d-rc,10px);aspect-ratio:4/3;object-fit:cover;display:block}
+@container (max-width:680px){.d-split{grid-template-columns:1fr}}
+.d-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.d-tab{border:1px solid var(--d-line);background:none;color:inherit;padding:9px 18px;border-radius:999px;cursor:pointer;font:inherit;font-size:14px;transition:background .2s}
+.d-tab[aria-pressed="true"]{background:var(--d-acc);color:var(--d-on);border-color:var(--d-acc)}
+.d-ligne{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px dashed var(--d-line)}
+.d-ligne b{font-weight:600}
+.d-ligne small{display:block;color:var(--d-mute);font-size:13px}
+.d-form{display:grid;gap:12px;max-width:560px}
+.d-form .d-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@container (max-width:480px){.d-form .d-2{grid-template-columns:1fr}}
+.d-form label{display:grid;gap:6px;font-size:13px;color:var(--d-mute)}
+.d-form input,.d-form select{font:inherit;font-size:15px;padding:12px 14px;border-radius:var(--d-ri,8px);border:1px solid var(--d-line);background:var(--d-champ,var(--d-surf));color:var(--d-fg);width:100%}
+.d-ok{padding:16px 18px;border-radius:var(--d-ri,8px);background:color-mix(in srgb,var(--d-acc) 16%,transparent);border:1px solid color-mix(in srgb,var(--d-acc) 45%,transparent)}
+.d-chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:20px}
+.d-chiffres b{display:block;font-family:var(--d-ft);font-size:clamp(30px,4cqi,44px);color:var(--d-acc)}
+.d-foot{padding:32px 5cqi;border-top:1px solid var(--d-line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--d-mute)}
+.d-panier{position:relative;display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer}
+.d-panier em{font-style:normal;background:var(--d-acc);color:var(--d-on);border-radius:99px;min-width:20px;height:20px;display:inline-grid;place-items:center;font-size:12px;padding:0 6px;transition:transform .3s}
+.d-panier em.saute{animation:d-saute .45s}
+@keyframes d-saute{40%{transform:scale(1.5)}}
+.d-recap{display:grid;gap:10px;padding:20px;border-radius:var(--d-rc,10px);background:var(--d-bg);border:1px solid var(--d-line);max-width:560px}
+.d-recap .d-ligne{padding:8px 0}
+.d-3d{aspect-ratio:1/1;max-width:100%;border-radius:var(--d-rc,10px);background:radial-gradient(circle at 50% 40%,#fff,var(--d-surf) 70%);position:relative;touch-action:none;cursor:grab}
+.d-3d canvas{width:100%!important;height:100%!important;display:block}
+.d-3d .d-attente{position:absolute;inset:0;display:grid;place-items:center;color:var(--d-mute);font-size:14px}
+.d-teintes{display:flex;gap:10px;flex-wrap:wrap}
+.d-teintes button{width:40px;height:40px;border-radius:50%;border:2px solid transparent;box-shadow:inset 0 0 0 3px var(--d-bg);cursor:pointer}
+.d-teintes button[aria-pressed="true"]{border-color:var(--d-fg)}
+.d-tel{width:min(300px,80%);aspect-ratio:9/19;margin:auto;background:#1A0E14;border-radius:38px;padding:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4)}
+.d-tel-ecran{height:100%;border-radius:28px;background:#FFF6F2;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;color:#1A0E14;font-size:13px}
+.d-tel-tete{background:var(--d-acc);color:#fff;padding:18px 16px 14px;font-weight:600}
+.d-carte-geo{position:relative;background:repeating-linear-gradient(45deg,#F3E4DD 0 14px,#FBEFEA 14px 28px)}
+.d-trajet{position:absolute;left:18%;top:18%;width:58%;height:58%;border:3px dashed var(--d-acc);border-left:0;border-bottom:0;border-radius:0 45% 0 0}
+.d-livreur{position:absolute;width:18px;height:18px;border-radius:50%;background:#FF7A45;border:3px solid #fff;box-shadow:0 0 0 6px rgba(255,122,69,.25);offset-path:path("M 10 10 C 120 0, 170 40, 170 160");animation:d-route 5s ease-in-out infinite alternate;left:18%;top:18%}
+@keyframes d-route{from{offset-distance:0%}to{offset-distance:100%}}
+.d-tel-pied{padding:14px;display:grid;gap:8px}
+.d-jauge{height:6px;border-radius:99px;background:#F3E4DD;overflow:hidden}
+.d-jauge i{display:block;height:100%;width:30%;background:var(--d-acc);animation:d-jauge 5s ease-in-out infinite alternate}
+@keyframes d-jauge{to{width:85%}}
+.d[dir="rtl"]{font-family:var(--f-arabe)}
+.d[dir="rtl"] h1,.d[dir="rtl"] h2,.d[dir="rtl"] h3,.d[dir="rtl"] .d-marque{font-family:var(--f-arabe);letter-spacing:0}
+@media (prefers-reduced-motion:reduce){.d-hero>img,.d-livreur,.d-jauge i{animation:none}}
+
+/* Formules */
+.formules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+@media (min-width:1000px){.formules{grid-template-columns:repeat(6,1fr)}.formule{grid-column:span 2}.formule:nth-child(n+4){grid-column:span 3}}
+.formule{border:1px solid var(--ligne);border-radius:6px;padding:32px 28px;display:grid;gap:18px;grid-template-rows:auto auto 1fr auto;min-width:0;background:var(--noir);transition:border-color .25s,transform .25s}
+.formule:hover{border-color:var(--or);transform:translateY(-6px)}
+.formule.vedette{border-color:var(--or);background:linear-gradient(180deg,color-mix(in srgb,var(--or) 11%,var(--noir)),var(--noir) 60%)}
+.formule-tete{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.formule h3{font-size:1.7rem;font-weight:700}
+.pastille{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--noir);background:var(--or);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.pour{color:var(--gris);font-size:.92rem}
+.formule ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem}
+.formule li{padding-inline-start:22px;position:relative}
+.formule li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:10px;height:1px;background:var(--or)}
+.prix{border-top:1px solid var(--ligne);padding-top:18px;display:grid;gap:2px}
+.prix small{color:var(--gris);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.prix span{font-family:var(--f-display);font-size:1.8rem;font-weight:700;font-variant-numeric:tabular-nums}
+.prix span sup{font-size:.85rem;color:var(--or);margin-left:4px;vertical-align:.6em}
+.note-prix{margin-top:24px;color:var(--gris);font-size:.92rem;max-width:70ch}
+
+/* Déroulement */
+.etapes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:36px 28px;counter-reset:etape}
+.etapes li{counter-increment:etape;display:grid;gap:8px;align-content:start;padding-top:18px;border-top:1px solid var(--ligne);min-width:0}
+.etapes li::before{content:counter(etape,decimal-leading-zero);font-family:var(--f-display);color:var(--or);font-size:.9rem;letter-spacing:.1em}
+.etapes h3{font-size:1.1rem;font-weight:700}
+.etapes p{color:var(--gris);font-size:.94rem}
+.etapes li.paiement h3{color:var(--or-clair)}
+.badge-baridi{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--emeraude);color:var(--emeraude-clair);padding:2px 8px;border-radius:999px;width:max-content}
+
+/* Abonnements + options */
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px}
+.tableau{width:100%;border-collapse:collapse;font-size:.96rem}
+.tableau th{text-align:start;font-family:var(--f-display);font-weight:700;font-size:1.05rem;padding-block:16px;padding-inline:0 12px;vertical-align:top;white-space:nowrap;border-top:1px solid var(--ligne)}
+.tableau td{padding:16px 0;color:var(--gris);vertical-align:top;border-top:1px solid var(--ligne)}
+.tableau tr:first-child td,.tableau tr:first-child th{border-top:0}
+.tableau td.montant{color:var(--ivoire);text-align:end;white-space:nowrap;font-variant-numeric:tabular-nums;padding-inline-start:12px}
+.duo h3{font-size:1.4rem;margin-bottom:8px}
+.duo .intro{color:var(--gris);font-size:.94rem;margin-bottom:18px}
+.table-scroll{overflow-x:auto}
+
+/* Contact */
+.contact{background:var(--graphite);border-top:1px solid var(--ligne)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+.contact h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:700;letter-spacing:-.03em}
+.contact-gauche{display:grid;gap:22px;min-width:0}
+.numero{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-family:var(--f-display);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.numero span{user-select:all}
+form{display:grid;gap:14px;min-width:0}
+label{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);display:grid;gap:6px}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--ivoire);background:var(--noir);border:1px solid var(--ligne);border-radius:4px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--or);outline:none}
+textarea{min-height:110px;resize:vertical}
+.confirmation{border:1px solid var(--emeraude);border-radius:4px;padding:14px 16px;font-size:.95rem;color:#BFE8D6;display:grid;gap:12px;justify-items:start}
+
+/* Bouton WhatsApp flottant */
+.wa-flottant{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(37,211,102,.6);transition:transform .25s}
+.wa-flottant:hover{transform:scale(1.08)}
+.wa-flottant svg{width:30px;height:30px;fill:#fff}
+
+footer{border-top:1px solid var(--ligne);position:relative;z-index:2}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:28px 96px;color:var(--gris);font-size:.86rem}
+
+
+
+/* Choix de l'offre avant WhatsApp */
+.choix{position:fixed;inset:0;z-index:70;background:rgba(5,5,8,.9);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;overflow-y:auto}
+.choix-boite{width:min(780px,100%);background:var(--graphite);border:1px solid color-mix(in srgb,var(--or) 40%,transparent);border-radius:16px;padding:clamp(20px,4vw,36px);display:grid;gap:20px;box-shadow:0 40px 100px -30px #000;max-height:calc(100dvh - 32px);overflow-y:auto}
+.choix-tete{display:flex;justify-content:space-between;align-items:start;gap:16px}
+.choix-tete h2{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:700;letter-spacing:-.02em}
+.choix-tete p{color:var(--gris);margin-top:6px;font-size:.95rem}
+.choix-offres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;border:0;margin:0;padding:0}
+.choix-offres legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.offre{position:relative;display:grid;gap:4px;text-transform:none;letter-spacing:0;font-size:1rem;color:var(--ivoire);padding:16px 16px 14px;border:1px solid var(--ligne);border-radius:10px;cursor:pointer;background:var(--noir);transition:border-color .2s,background .2s,transform .2s}
+.offre:hover{border-color:color-mix(in srgb,var(--or) 60%,transparent);transform:translateY(-2px)}
+.offre input{position:absolute;opacity:0;pointer-events:none}
+.offre:has(input:checked){border-color:var(--or);background:color-mix(in srgb,var(--or) 12%,var(--noir))}
+.offre:has(input:focus-visible){outline:2px solid var(--or);outline-offset:2px}
+.offre::after{content:"";position:absolute;top:14px;inset-inline-end:14px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--ligne)}
+.offre:has(input:checked)::after{border-color:var(--or);background:radial-gradient(circle,var(--or) 0 45%,transparent 50%)}
+.offre b{font-family:var(--f-display);font-size:1.15rem}
+.offre .px{color:var(--or);font-weight:600;font-variant-numeric:tabular-nums;font-size:.95rem}
+.offre small{color:var(--gris);font-size:.82rem;line-height:1.4}
+:root[lang="ar"] .offre b{font-family:var(--f-display)}
+.choix-champs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.choix-champs{grid-template-columns:1fr}}
+.choix-pied{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.choix-pied p{color:var(--gris);font-size:.85rem;max-width:40ch}
+.choix-erreur{color:#F2B8A0;font-size:.9rem}
+.btn-wa{background:#25D366;color:#06210F}
+.btn-wa:hover{box-shadow:0 12px 40px -12px #25D366;transform:translateY(-2px)}
+.btn-wa[aria-disabled="true"]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.choix-contexte{font-size:.9rem;padding:10px 14px;border-radius:8px;background:var(--noir);border:1px dashed var(--ligne);color:var(--ivoire)}
+.formule .btn{justify-self:start;margin-top:4px}
+
+/* Langue, barre de progression, FAQ */
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn-langue{font-family:var(--f-arabe);min-width:64px;justify-content:center}
+:root[lang="ar"] .btn-langue{font-family:var(--f-texte)}
+@media (max-width:480px){.nav-demarrer{display:none}}
+.progression{position:fixed;top:0;left:0;right:0;height:2px;z-index:25;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--emeraude),var(--or));pointer-events:none}
+:root[dir="rtl"] .progression{transform-origin:100% 50%}
+.faq-grille{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+@media (max-width:900px){.faq-grille{grid-template-columns:1fr;gap:8px}}
+.faq{border-top:1px solid var(--ligne)}
+.faq details{border-bottom:1px solid var(--ligne)}
+.faq summary{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--f-display);font-weight:700;font-size:1.12rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--or);font-size:1.6rem;line-height:1;font-weight:400;transition:transform .3s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq summary:hover{color:var(--or-clair)}
+.faq p{color:var(--gris);padding-bottom:22px;max-width:62ch}
+/* Version arabe */
+:root[lang="ar"] body{font-family:var(--f-arabe)}
+:root[lang="ar"] h1,:root[lang="ar"] h2,:root[lang="ar"] h3,:root[lang="ar"] h4,:root[lang="ar"] .faq summary,:root[lang="ar"] .prix span,:root[lang="ar"] .tableau th,:root[lang="ar"] .compare thead th,:root[lang="ar"] .hero-chiffres b,:root[lang="ar"] .defile-piste,:root[lang="ar"] .exp .marque{font-family:"Readex Pro",var(--f-arabe)}
+:root[lang="ar"] *{letter-spacing:0!important}
+:root[lang="ar"] h1,:root[lang="ar"] h2{line-height:1.3}
+:root[lang="ar"] .hero h1{font-size:clamp(2.2rem,5.6vw,4.6rem)}
+:root[lang="ar"] .ar{direction:ltr;font-family:var(--f-texte)}
+:root[dir="rtl"] .hero .wrap{direction:ltr}
+:root[dir="rtl"] .hero-texte{direction:rtl;max-width:540px}
+:root[dir="rtl"] .logo,:root[dir="rtl"] .defile-piste,:root[dir="rtl"] .numero{direction:ltr}
+:root[dir="rtl"] .numero{justify-content:flex-end}
+:root[dir="rtl"] .hero-actions,:root[dir="rtl"] .cas-actions{justify-content:flex-start}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rideau{display:none}}
+</style>
+</head>
+<body>
+
+<div class="rideau" aria-hidden="true"><span>d<b>z</b>ign</span></div>
+<div class="lueur" id="lueur" aria-hidden="true"></div>
+<div class="progression" id="progression" aria-hidden="true"></div>
+
+<nav class="haut" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#haut" aria-label="Dzign Studio, accueil"><span>d<b>z</b>ign</span> <small>studio</small></a>
+    <div class="nav-liens">
+            <a href="#portfolio" data-ar="أعمالنا">Portfolio</a>
+      <a href="#essai" data-ar="معاينة موقعك">Votre aperçu</a>
+      <a href="#formules" data-ar="الباقات">Formules</a>
+      <a href="#deroulement" data-ar="مراحل العمل">Déroulement</a>
+      <a href="#contact" data-ar="تواصل معنا">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-ligne btn-petit btn-langue" type="button" id="langue" aria-label="Afficher le site en arabe">عربي</button>
+      <a class="btn btn-or btn-petit nav-demarrer" href="#contact" data-offre="" data-ar="ابدأ مشروعك">Démarrer un projet</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="haut">
+  <img class="poster" src="medias/z-or.jpg" alt="">
+  <video id="video-hero" autoplay muted loop playsinline preload="auto" poster="medias/z-or.jpg">
+    <source src="medias/z-or.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <div class="hero-texte">
+      <p class="eyebrow" data-ar="استوديو رقمي راقٍ · الجزائر العاصمة">Studio digital haut de gamme · Alger</p>
+      <h1 data-ar="التميّز الرقمي، &lt;span class=&quot;or-brille&quot;&gt;صُنع في الجزائر.&lt;/span&gt;">L'excellence digitale, <span class="or-brille">made in DZ.</span></h1>
+      <p class="ar" lang="ar" data-ar="L&#x27;excellence digitale, made in DZ.">تميّز رقمي، صُنع في الجزائر</p>
+      <p class="hero-sous" data-ar="مواقع إلكترونية، تجارب ثلاثية الأبعاد، متاجر إلكترونية وتطبيقات. نصمّمها في الجزائر بمستوى كبرى العلامات العالمية، لتجلب لك الزبائن.">Sites web, expériences 3D, boutiques en ligne et applications. Conçus à Alger, au niveau des plus grandes marques, pour vous apporter des clients.</p>
+      <div class="hero-actions">
+        <a class="btn btn-or" href="https://wa.me/213549506857" target="_blank" rel="noopener" data-ar="حدّثنا عن مشروعك">Parler de mon projet</a>
+        <a class="btn btn-ligne" href="#portfolio" data-ar="زُر مواقعنا الثمانية">Visiter nos 8 sites</a>
+      </div>
+      <div class="hero-chiffres">
+        <div><b data-ar="72 ساعة">72 h</b><span data-ar="لرؤية النموذج الأولي لموقعك">pour voir votre maquette</span></div>
+        <div><b data-ar="3 لغات">3 langues</b><span data-ar="العربية، الفرنسية، الإنجليزية">arabe, français, anglais</span></div>
+        <div><b data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;100%&lt;/bdi&gt;">100 %</b><span data-ar="عن بُعد، في كل أنحاء الجزائر">à distance, partout en Algérie</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="defile" aria-hidden="true">
+  <div class="defile-piste">
+    <span data-ar="مواقع إلكترونية &lt;i&gt;&lt;/i&gt; تجارب &lt;em&gt;3D&lt;/em&gt; &lt;i&gt;&lt;/i&gt; متاجر إلكترونية &lt;i&gt;&lt;/i&gt; تطبيقات &lt;i&gt;&lt;/i&gt; هوية بصرية &lt;i&gt;&lt;/i&gt; إعلانات &lt;em&gt;Meta و TikTok&lt;/em&gt; &lt;i&gt;&lt;/i&gt; الظهور على Google &lt;i&gt;&lt;/i&gt;">Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
+    <span data-ar="مواقع إلكترونية &lt;i&gt;&lt;/i&gt; تجارب &lt;em&gt;3D&lt;/em&gt; &lt;i&gt;&lt;/i&gt; متاجر إلكترونية &lt;i&gt;&lt;/i&gt; تطبيقات &lt;i&gt;&lt;/i&gt; هوية بصرية &lt;i&gt;&lt;/i&gt; إعلانات &lt;em&gt;Meta و TikTok&lt;/em&gt; &lt;i&gt;&lt;/i&gt; الظهور على Google &lt;i&gt;&lt;/i&gt;">Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
+  </div>
+</div>
+
+<section class="bloc" style="padding-block:48px 0">
+  <div class="wrap">
+    <div class="fondateurs">
+      <p data-ar="&lt;strong&gt;برنامج المؤسسين&lt;/strong&gt;: خصم &lt;bdi dir=&quot;ltr&quot;&gt;20%&lt;/bdi&gt; على جميع الباقات لأول 5 زبائن."><strong>Programme Fondateurs</strong> : -20 % sur toutes les formules pour nos 5 premiers clients.</p>
+      <div class="places" aria-label="5 places disponibles sur 5"><i></i><i></i><i></i><i></i><i></i> <span data-ar="5 أماكن متبقية">5 places restantes</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="portfolio" style="padding-top:clamp(72px,10vw,128px)">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <p class="eyebrow" data-ar="أعمالنا">Portfolio</p>
+      <h2 data-ar="ادخل إلى مواقعنا. &lt;span class=&quot;or-brille&quot;&gt;وجرّبها بنفسك.&lt;/span&gt;">Entrez dans nos sites. <span class="or-brille">Testez-les vraiment.</span></h2>
+      <p data-ar="موقع حقيقي يعمل على الإنترنت، ثم 8 مواقع تجريبية يمكنك فتحها وتجربتها: احجز، أضف إلى السلة، أدر المجسّم ثلاثي الأبعاد، وانتقل من الحاسوب إلى الهاتف.">Un vrai site en ligne, puis 8 sites de démonstration que vous pouvez ouvrir et tester : réserver, ajouter au panier, faire tourner la 3D, passer de l'ordinateur au téléphone.</p>
+    </div>
+    <article class="cas" aria-labelledby="cas-titre">
+      <div class="cas-scene">
+        <div class="cas-ordi">
+          <div class="v-url"><i></i><i></i><i></i><span>lamaisonduparquet.org</span></div>
+          <div class="cas-defile" style="background-image:url(medias/lmdp-page.jpg)" role="img" aria-label="Défilement de la page d'accueil de La Maison du Parquet sur ordinateur"></div>
+        </div>
+        <div class="cas-tel"><div class="cas-defile" style="background-image:url(medias/lmdp-mobile.jpg)" role="img" aria-label="La Maison du Parquet sur téléphone"></div></div>
+      </div>
+      <div class="cas-texte">
+        <span class="cas-vrai" data-ar="&lt;i&gt;&lt;/i&gt;إنجاز حقيقي · متاح على الإنترنت"><i></i>Réalisation · En ligne</span>
+        <h3 id="cas-titre">La Maison du Parquet</h3>
+        <p class="sous" data-ar="باركيه EGGER متوفر في المخزون مع صالة عرض في الدار البيضاء. موقع صُمّم ليختار الزائر أرضيته، ويحسب طلبيته، ويحجز زيارته دون حتى أن يتصل.">Parquet EGGER en stock et showroom à Dar El Beïda. Un site pensé pour que le visiteur choisisse son sol, calcule sa commande et réserve sa visite, sans même appeler.</p>
+        <ul class="cas-liste">
+          <li data-ar="مقارنة قبل / بعد: البلاط مقابل الباركيه، بلمسة سحب">Comparateur avant / après : carrelage contre parquet, au glissé</li>
+          <li data-ar="اختبار «ديكورك في 3 أسئلة»">Quiz « Votre décor en 3 questions »</li>
+          <li data-ar="معاينة الديكورات داخل غرفتك">Visualiseur des décors dans votre pièce</li>
+          <li data-ar="حاسبة عدد الكراتين">Calculateur du nombre de cartons</li>
+          <li data-ar="كتالوج الديكورات المتوفرة مع بطاقات مفصّلة">Catalogue des décors en stock, avec fiches détaillées</li>
+          <li data-ar="حجز زيارة لصالة العرض حسب المواعيد المتاحة">Réservation de visite au showroom, avec créneaux</li>
+          <li data-ar="اتصال وواتساب بلمسة واحدة على الهاتف">Appel et WhatsApp en un geste sur téléphone</li>
+        </ul>
+        <div class="cas-actions">
+          <a class="btn btn-or" href="https://www.lamaisonduparquet.org" target="_blank" rel="noopener" data-ar="زُر الموقع ↗">Voir le site en ligne ↗</a>
+          <a class="btn btn-ligne" href="https://wa.me/213549506857?text=Bonjour%20Dzign%20Studio%2C%20je%20veux%20un%20site%20comme%20La%20Maison%20du%20Parquet." target="_blank" rel="noopener" data-contexte="lmdp" data-ar="أريد موقعاً مثل هذا">Je veux un site comme celui-ci</a>
+        </div>
+      </div>
+    </article>
+    <div class="titre-bloc" style="margin-bottom:32px">
+      <h3 style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700" data-ar="8 مواقع تجريبية للتجربة">8 sites de démonstration à tester</h3>
+      <p data-ar="لكل موقع مجال مختلف. افتحها، انقر، وجرّبها على الحاسوب والهاتف.">Un métier différent pour chaque site. Ouvrez-les, cliquez, essayez sur ordinateur et sur téléphone.</p>
+    </div>
+    <div class="portfolio" id="grille-portfolio"></div>
+    <p class="mention" data-ar="المواقع التجريبية الثمانية تحمل أسماء شركات وهمية. أما La Maison du Parquet فهو موقع حقيقي يعمل على الإنترنت.">Les 8 sites de démonstration utilisent des noms d'entreprises fictifs. La Maison du Parquet est un vrai site, en ligne.</p>
+  </div>
+</section>
+
+<section class="bloc" id="essai" style="padding-top:0">
+  <div class="wrap">
+    <div class="essai">
+      <div class="essai-texte">
+        <p class="eyebrow" data-ar="معاينة فورية">Essai instantané</p>
+        <h2 data-ar="شاهد &lt;span class=&quot;or-brille&quot;&gt;موقعك&lt;/span&gt; في 10 ثوانٍ.">Voyez <span class="or-brille">votre</span> site en 10 secondes.</h2>
+        <p data-ar="اكتب اسم مؤسستك، واختر مجالك ولونك. نعرض لك موقعك فوراً، باسمك وعلى اسم نطاقك الخاص. مجاناً ودون أي التزام.">Écrivez le nom de votre entreprise, choisissez votre métier et votre couleur. Nous vous montrons tout de suite votre site, à votre nom et sur votre propre nom de domaine. Gratuit, sans engagement.</p>
+      </div>
+      <form id="form-essai" novalidate>
+        <label for="essai-nom"><span data-ar="اسم مؤسستك">Nom de votre entreprise</span><input id="essai-nom" maxlength="32" placeholder="Ex. : Pâtisserie Yasmine" data-ar-ph="مثال: حلويات ياسمين"></label>
+        <label for="essai-secteur"><span data-ar="مجال نشاطك">Votre métier</span>
+          <select id="essai-secteur"></select>
+        </label>
+        <div style="display:grid;gap:8px">
+          <span style="font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)" data-ar="لونك">Votre couleur</span>
+          <div class="pastilles" id="essai-couleurs"></div>
+        </div>
+        <button class="btn btn-or" type="submit" data-ar="اعرض موقعي الآن">Voir mon site maintenant</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="demo3d">
+  <div class="wrap demo3d">
+    <div class="demo3d-texte">
+      <p class="eyebrow" data-ar="جرّب الآن">Essayez maintenant</p>
+      <h2 data-ar="المسه. &lt;span class=&quot;or-brille&quot;&gt;أدِره كما تشاء.&lt;/span&gt;">Touchez-le. <span class="or-brille">Faites-le tourner.</span></h2>
+      <p data-ar="هذا المبنى مجسّم حقيقي ثلاثي الأبعاد، وليس صورة. هذه هي التجربة التي سيعيشها زبائنك على موقعك: يستكشفون منتجك أو مشروعك أو محلّك من كل الزوايا، قبل حتى أن يتصلوا بك.">Ce bâtiment est un vrai modèle en 3D, pas une photo. C'est l'expérience que vos clients vivront sur votre site : ils explorent votre produit, votre projet ou votre local sous tous les angles, avant même de vous appeler.</p>
+      <ul class="demo3d-liste">
+        <li data-ar="الترقية العقارية: زيارة المشروع قبل بنائه">Promotion immobilière : faire visiter un projet avant sa construction</li>
+        <li data-ar="الأثاث، الأزياء، السيارات: إبراز كل تفاصيل المنتج">Mobilier, mode, automobile : montrer chaque détail du produit</li>
+        <li data-ar="المتاجر: تأثير مبهر يدفع إلى الشراء">Boutiques : un effet « waouh » qui fait vendre</li>
+      </ul>
+      <div><a class="btn btn-or" href="#formules" data-ar="اكتشف باقة Immersion">Voir la formule Immersion</a></div>
+    </div>
+    <div class="vitrine3d" id="vitrine3d" aria-label="Modèle 3D interactif d'un immeuble de standing">
+      <span class="etiquette" data-ar="مجسّم 3D مباشر">Modèle 3D en direct</span>
+      <div class="chargement" id="chargement3d" data-ar="جارٍ تحميل المجسّم…">Chargement du modèle 3D…</div>
+      <p class="aide" data-ar="اسحب للتدوير · قرّب بإصبعين أو بعجلة الفأرة">Glissez pour tourner · Pincez ou molette pour zoomer</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="expertises" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <p class="eyebrow" data-ar="خبراتنا">Expertises</p>
+      <h2 data-ar="كل ما تحتاجه للتألق على الإنترنت، في مكان واحد.">Tout ce qu'il faut pour briller en ligne, au même endroit.</h2>
+      <p data-ar="استوديو واحد للتصميم والتقنية والتسويق. محاور واحد، متاح على واتساب.">Un seul studio pour le design, la technique et le marketing. Vous avez un interlocuteur unique, joignable sur WhatsApp.</p>
+    </div>
+    <div class="expertises">
+      <div class="exp"><span class="marque" data-ar="التصميم">Design</span><h3 data-ar="حسب الطلب، لم يُرَ من قبل">Sur mesure, jamais vu</h3><p data-ar="خطوط أنيقة وحركات سلسة. لا قوالب مكرّرة.">Typographie soignée, animations fluides. Aucun modèle recyclé.</p></div>
+      <div class="exp"><span class="marque">3D</span><h3 data-ar="تجارب غامرة">Expériences immersives</h3><p data-ar="منتجات قابلة للتدوير، أدوات تخصيص، زيارات افتراضية.">Produits à faire tourner, configurateurs, visites virtuelles.</p></div>
+      <div class="exp"><span class="marque" data-ar="الويب">Web</span><h3 data-ar="سريع وظاهر على Google">Rapide et bien référencé</h3><p data-ar="تحميل فائق السرعة، مصمّم للهاتف أولاً، ومحسّن لمحركات البحث.">Chargement éclair, pensé mobile, optimisé pour Google.</p></div>
+      <div class="exp"><span class="marque" data-ar="المنصّات">Plateformes</span><h3 data-ar="تطبيقات مهنية">Applications métier</h3><p data-ar="حجوزات، فضاء الزبائن، منصّة بيع، لوحة تحكم.">Réservation, espace client, marketplace, tableau de bord.</p></div>
+      <div class="exp"><span class="marque" data-ar="التسويق">Marketing</span><h3 data-ar="من زوّار إلى زبائن">Des visiteurs aux clients</h3><p data-ar="إعلانات Facebook وInstagram وTikTok، فيديوهات وتصاميم.">Pubs Facebook, Instagram, TikTok, vidéos et visuels.</p></div>
+      <div class="exp"><span class="marque">ع · FR · EN</span><h3 data-ar="ثلاث لغات">Trilingue</h3><p data-ar="العربية والفرنسية والإنجليزية، مع تنسيق عربي متقن.">Arabe, français et anglais, avec une mise en page arabe impeccable.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="pourquoi" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <p class="eyebrow" data-ar="لماذا Dzign">Pourquoi Dzign</p>
+      <h2 data-ar="ما لن تجده في أي مكان آخر.">Ce que vous n'aurez nulle part ailleurs.</h2>
+    </div>
+    <div class="table-scroll">
+      <table class="compare">
+        <thead><tr><th></th><th data-ar="موقع عادي">Un site ordinaire</th><th data-ar="موقع من Dzign">Un site Dzign</th></tr></thead>
+        <tbody>
+          <tr><td data-ar="عنوان الموقع">Adresse du site</td><td data-ar="عنوان عام مشترك مع المنصّة">Une adresse générique, partagée avec la plateforme</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;اسم نطاق خاص بك وبريد مهني باسمك"><span class="ok-or">✓</span>Votre propre nom de domaine et votre email pro à votre nom</td></tr>
+          <tr><td data-ar="قبل التوقيع">Avant de signer</td><td data-ar="لقطات شاشة">Des captures d'écran</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;معاينة موقعك في 10 ثوانٍ، ثم نموذج أولي خلال 72 ساعة"><span class="ok-or">✓</span>Votre site en aperçu en 10 secondes, puis une maquette sous 72 h</td></tr>
+          <tr><td data-ar="الدفع">Paiement</td><td data-ar="غالباً المبلغ كاملاً مسبقاً">Souvent la totalité à l'avance</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عند الانطلاق، و&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; فقط بعد رؤية الموقع جاهزاً، كل ذلك عن بُعد عبر BaridiMob"><span class="ok-or">✓</span>50 % au départ, 50 % seulement après avoir vu le site terminé, tout à distance par BaridiMob</td></tr>
+          <tr><td data-ar="التصميم">Design</td><td data-ar="قالب سبق رؤيته في مكان آخر">Un modèle déjà vu ailleurs</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;تصميم حسب الطلب، حركات، 3D"><span class="ok-or">✓</span>Création sur mesure, animations, 3D</td></tr>
+          <tr><td data-ar="اللغات">Langues</td><td data-ar="لغة واحدة، أو ترجمة آلية">Une seule, ou une traduction automatique</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;العربية والفرنسية والإنجليزية، بتنسيق عربي متقن"><span class="ok-or">✓</span>Arabe, français, anglais, mise en page arabe soignée</td></tr>
+          <tr><td data-ar="البيع عبر الإنترنت">Vente en ligne</td><td data-ar="استمارة بسيطة">Un simple formulaire</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;الدفع عند الاستلام، رسوم التوصيل حسب الولاية، BaridiMob"><span class="ok-or">✓</span>Paiement à la livraison, frais par wilaya, BaridiMob</td></tr>
+          <tr><td data-ar="الزبائن">Clients</td><td data-ar="يُسلَّم الموقع وينتهي الأمر">Le site est livré, et c'est tout</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;إعلانات وفيديوهات وظهور على Google لجلب الزبائن"><span class="ok-or">✓</span>Pubs, vidéos et référencement pour faire venir des clients</td></tr>
+          <tr><td data-ar="التنقّل">Déplacements</td><td data-ar="مواعيد في الوكالة">Rendez-vous en agence</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;لا حاجة: كل شيء عن بُعد، في كل أنحاء الجزائر"><span class="ok-or">✓</span>Aucun : tout se fait à distance, partout en Algérie</td></tr>
+          <tr><td data-ar="تواصل معنا">Contact</td><td data-ar="مقسّم هاتفي أو بريد إلكتروني">Un standard ou un email</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;محاور واحد، مباشرة على واتساب"><span class="ok-or">✓</span>Un seul interlocuteur, directement sur WhatsApp</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="formules" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <p class="eyebrow" data-ar="الباقات">Formules</p>
+      <h2 data-ar="اختر مستوى طموحك.">Choisissez votre niveau d'ambition.</h2>
+      <p data-ar="أسعار انطلاق تقريبية. يتحدد السعر النهائي حسب المستوى المطلوب، ويُثبَّت قبل بدء العمل.">Prix de départ indicatifs. Le devis final dépend du niveau demandé, et il est fixé avant de commencer.</p>
+    </div>
+    <div class="formules">
+      <article class="formule">
+        <div class="formule-tete"><h3>Impact</h3></div>
+        <p class="pour" data-ar="لإطلاق عرض أو منتج أو حدث.">Lancer une offre, un produit ou un événement.</p>
+        <ul><li data-ar="صفحة واحدة راقية ومتحركة">Une page unique premium et animée</li><li data-ar="واتساب، خريطة واستمارة">WhatsApp, carte et formulaire</li><li data-ar="مصمّمة لإعلاناتك">Pensée pour vos publicités</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;30 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">30 000<sup>DA</sup></span></div>
+        <button type="button" class="btn btn-ligne btn-petit" data-offre="Impact" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+      </article>
+      <article class="formule vedette">
+        <div class="formule-tete"><h3>Signature</h3><span class="pastille" data-ar="موصى بها">Recommandée</span></div>
+        <p class="pour" data-ar="المحلات، المهن الحرة، الشركات.">Commerces, professions libérales, entreprises.</p>
+        <ul><li data-ar="موقع تعريفي حسب الطلب، حتى 6 صفحات">Site vitrine sur mesure, jusqu'à 6 pages</li><li data-ar="حركات ولغتان">Animations et 2 langues</li><li data-ar="Google Maps والظهور في محركات البحث">Google Maps et référencement</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;80 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">80 000<sup>DA</sup></span></div>
+        <button type="button" class="btn btn-or btn-petit" data-offre="Signature" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+      </article>
+      <article class="formule">
+        <div class="formule-tete"><h3>Commerce</h3></div>
+        <p class="pour" data-ar="البائعون والعلامات والمتاجر.">Vendeurs, marques et boutiques.</p>
+        <ul><li data-ar="متجر إلكتروني متكامل">Boutique en ligne complète</li><li data-ar="الدفع عند الاستلام، رسوم حسب الولاية">Paiement à la livraison, frais par wilaya</li><li data-ar="BaridiMob وCIB والذهبية كخيار">BaridiMob, CIB et Edahabia en option</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;150 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">150 000<sup>DA</sup></span></div>
+        <button type="button" class="btn btn-ligne btn-petit" data-offre="Commerce" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+      </article>
+      <article class="formule">
+        <div class="formule-tete"><h3>Immersion</h3></div>
+        <p class="pour" data-ar="العقار، الأثاث، الأزياء، السيارات، العلامات الراقية.">Immobilier, mobilier, mode, automobile, marques premium.</p>
+        <ul><li data-ar="منتجات أو مبانٍ ثلاثية الأبعاد قابلة للتدوير">Produits ou bâtiments en 3D à faire tourner</li><li data-ar="أداة تخصيص أو زيارة افتراضية">Configurateur ou visite virtuelle</li><li data-ar="فيديوهات 3D لشبكاتك الاجتماعية">Vidéos 3D pour vos réseaux</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;250 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">250 000<sup>DA</sup></span></div>
+        <button type="button" class="btn btn-ligne btn-petit" data-offre="Immersion" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+      </article>
+      <article class="formule">
+        <div class="formule-tete"><h3>Plateforme</h3></div>
+        <p class="pour" data-ar="الشركات الناشئة والمؤسسات والمشاريع الطموحة.">Startups, entreprises et projets ambitieux.</p>
+        <ul><li data-ar="تطبيق ويب أو هاتف">Application web ou mobile</li><li data-ar="حجوزات، فضاء الزبائن، منصّة بيع">Réservation, espace client, marketplace</li><li data-ar="لوحة تحكم حسب الطلب">Tableau de bord sur mesure</li></ul>
+        <div class="prix"><small data-ar="حسب عرض السعر، ابتداءً من">Sur devis, dès</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;400 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">400 000<sup>DA</sup></span></div>
+        <button type="button" class="btn btn-ligne btn-petit" data-offre="Plateforme" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+      </article>
+    </div>
+    <div class="inclus"><b data-ar="مشمول في كل الباقات">Inclus dans toutes les formules</b><span data-ar="اسم نطاق خاص بك (&lt;bdi dir=&quot;ltr&quot;&gt;.com&lt;/bdi&gt; أو &lt;bdi dir=&quot;ltr&quot;&gt;.dz&lt;/bdi&gt;)، السنة الأولى مجاناً">Votre propre nom de domaine (.com ou .dz), 1re année offerte</span><span data-ar="بريدك المهني، مثل &lt;bdi dir=&quot;ltr&quot;&gt;contact@votre-entreprise.com&lt;/bdi&gt;">Votre email pro, comme contact@votre-entreprise.com</span><span data-ar="شهادة أمان https">Certificat de sécurité https</span><span data-ar="بطاقة Google Maps">Fiche Google Maps</span></div>
+    <p class="note-prix" data-ar="يختلف السعر النهائي حسب التصميم، وعدد الصفحات أو المنتجات، واللغات، والوظائف، و3D، وكتابة النصوص، والصور، والمدة.">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la 3D, la rédaction des textes, les photos et le délai.</p>
+  </div>
+</section>
+
+<section class="bloc" id="deroulement" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <p class="eyebrow" data-ar="مراحل العمل">Déroulement</p>
+      <h2 data-ar="ترى موقعك قبل دفع الباقي.">Vous voyez votre site avant de payer le solde.</h2>
+      <p data-ar="كل شيء يتم عن بُعد، أينما كنت في الجزائر: مكالمة على واتساب، نموذج على الإنترنت، دفع عبر BaridiMob، ثم إطلاق الموقع. دون أي تنقّل.">Tout se fait à distance, où que vous soyez en Algérie : appel sur WhatsApp, maquette en ligne, paiement par BaridiMob, mise en ligne. Aucun déplacement.</p>
+    </div>
+    <ol class="etapes">
+      <li><h3 data-ar="مكالمة تعارف">Appel découverte</h3><p data-ar="مجانية، على واتساب أو بالهاتف، دون تنقّل. نفهم احتياجك.">Gratuit, sur WhatsApp ou par téléphone, sans vous déplacer. On comprend votre besoin.</p></li>
+      <li><h3 data-ar="عرض سعر واضح">Devis clair</h3><p data-ar="سعر ثابت قبل البدء. بلا مفاجآت.">Un prix fixé avant de commencer. Aucune surprise.</p></li>
+      <li class="paiement"><h3 data-ar="دفعة أولى &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt;">Acompte de 50 %</h3><span class="badge-baridi">BaridiMob</span><p data-ar="تُدفع عن بُعد من هاتفك. ينطلق المشروع فور استلامها.">Payé à distance depuis votre téléphone. Le projet démarre dès réception.</p></li>
+      <li><h3 data-ar="نموذج خلال 72 ساعة">Maquette sous 72 h</h3><p data-ar="توافق على الأسلوب قبل التنفيذ.">Vous validez le style avant la fabrication.</p></li>
+      <li><h3 data-ar="التنفيذ">Fabrication</h3><p data-ar="تصميم، برمجة، 3D، نصوص وتحسين.">Design, développement, 3D, textes et optimisation.</p></li>
+      <li class="paiement"><h3 data-ar="العرض والدفعة الثانية">Présentation et solde</h3><span class="badge-baridi">BaridiMob</span><p data-ar="تكتشف موقعك جاهزاً على الإنترنت، ثم تدفع &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; المتبقية عن بُعد.">Vous découvrez votre site terminé en ligne, puis réglez les 50 % restants à distance.</p></li>
+      <li><h3 data-ar="الإطلاق">Mise en ligne</h3><p data-ar="استضافة نهائية، اسم النطاق، وتكوين قصير.">Hébergement définitif, nom de domaine et courte formation.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="bloc" style="padding-top:0">
+  <div class="wrap duo">
+    <div>
+      <h3 data-ar="الاستضافة والمتابعة">Hébergement et suivi</h3>
+      <p class="intro" data-ar="اختياري. يبقى موقعك سريعاً وآمناً ومحدّثاً.">Optionnel. Votre site reste rapide, sécurisé et à jour.</p>
+      <div class="table-scroll">
+        <table class="tableau">
+          <tr><th>Care</th><td data-ar="استضافة سريعة، https، نسخ احتياطية، تحديثات، مراقبة">Hébergement rapide, https, sauvegardes, mises à jour, surveillance</td><td class="montant" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;5 000&lt;/bdi&gt; دج/شهرياً">5 000 DA/mois</td></tr>
+          <tr><th>Care+</th><td data-ar="Care، مع تعديلات غير محدودة، تقرير الزيارات وتحسين الظهور">Care, plus modifications illimitées, rapport de visites et référencement</td><td class="montant" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;15 000&lt;/bdi&gt; دج/شهرياً">15 000 DA/mois</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3 data-ar="خيارات التسويق">Options marketing</h3>
+      <p class="intro" data-ar="لتحويل موقعك إلى آلة لجلب الزبائن.">Pour transformer votre site en machine à clients.</p>
+      <div class="table-scroll">
+        <table class="tableau">
+          <tr><th data-ar="إطلاق الإعلانات">Lancement Pub</th><td data-ar="تصاميم وفيديوهات وإدارة إعلاناتك لمدة شهر (ميزانية الإعلان منفصلة)">Visuels, vidéos et gestion de vos pubs pendant 1 mois (budget pub à part)</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;35 000&lt;/bdi&gt; دج">dès 35 000 DA</td></tr>
+          <tr><th data-ar="تصاميم 3D">Visuels 3D</th><td data-ar="صور وفيديوهات 3D لمنتجاتك">Rendus et vidéos 3D de vos produits</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;20 000&lt;/bdi&gt; دج">dès 20 000 DA</td></tr>
+          <tr><th>Google Local</th><td data-ar="بطاقة Google محسّنة، تقييمات وظهور محلي">Fiche Google optimisée, avis et référencement local</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;10 000&lt;/bdi&gt; دج">dès 10 000 DA</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="faq" style="padding-top:0">
+  <div class="wrap faq-grille">
+    <div class="titre-bloc">
+      <p class="eyebrow" data-ar="أسئلة شائعة">Questions fréquentes</p>
+      <h2 data-ar="أسئلتكم، وأجوبتنا.">Vos questions, nos réponses.</h2>
+      <p data-ar="سؤال آخر؟ راسلنا على واتساب، نرد عليك في نفس اليوم.">Une autre question ? Écrivez-nous sur WhatsApp, nous répondons dans la journée.</p>
+    </div>
+    <div class="faq">
+      <details open><summary data-ar="كم من الوقت أحتاج للحصول على موقعي؟">Combien de temps pour avoir mon site ?</summary><p data-ar="ترى النموذج خلال 72 ساعة. الموقع التعريفي يكون جاهزاً خلال 7 إلى 14 يوماً، والمتجر خلال 2 إلى 3 أسابيع. أما التطبيق فتُحدَّد مدته في عرض السعر.">Vous voyez la maquette sous 72 h. Un site vitrine est prêt en 7 à 14 jours, une boutique en 2 à 3 semaines. Pour une application, le délai est fixé dans le devis.</p></details>
+      <details><summary data-ar="كيف يتم الدفع؟">Comment se passe le paiement ?</summary><p data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عبر BaridiMob عند الانطلاق، و&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; فقط بعد رؤية موقعك جاهزاً على الإنترنت. كل شيء يتم عن بُعد، دون تنقّل.">50 % par BaridiMob au lancement, 50 % seulement après avoir vu votre site terminé en ligne. Tout se fait à distance, sans déplacement.</p></details>
+      <details><summary data-ar="هل يصبح الموقع ملكي؟">Le site m'appartient-il ?</summary><p data-ar="نعم. يُسجَّل اسم النطاق باسمك، وبعد دفع الباقي يصبح الموقع ومحتواه ملكاً لك.">Oui. Le nom de domaine est enregistré à votre nom et, une fois le solde réglé, le site et ses contenus sont à vous.</p></details>
+      <details><summary data-ar="هل يمكنني تعديل موقعي لاحقاً؟">Puis-je modifier mon site ensuite ?</summary><p data-ar="نعم. التعديلات الصغيرة غير محدودة مع اشتراك Care+. ودون اشتراك، ننجزها عند الطلب حسب عرض سعر.">Oui. Les petites modifications sont illimitées avec l'abonnement Care+. Sans abonnement, nous les faisons à la demande, sur devis.</p></details>
+      <details><summary data-ar="ليست لدي نصوص ولا صور، هل هذه مشكلة؟">Je n'ai ni textes ni photos, est-ce un problème ?</summary><p data-ar="لا. يمكننا كتابة نصوصك بالعربية والفرنسية والإنجليزية، وإنشاء تصاميمك: صور، ومجسّمات وفيديوهات 3D.">Non. Nous pouvons rédiger vos textes en arabe, en français et en anglais, et créer vos visuels : photos, rendus et vidéos 3D.</p></details>
+      <details><summary data-ar="هل تعملون خارج الجزائر العاصمة؟">Travaillez-vous en dehors d'Alger ?</summary><p data-ar="نعم، في كل أنحاء الجزائر. المكالمة، النموذج، الدفع والتسليم: كل شيء عن بُعد.">Oui, partout en Algérie. Appel, maquette, paiement et livraison : tout se fait à distance.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="bloc contact" id="contact">
+  <div class="wrap">
+    <div class="contact-gauche">
+      <p class="eyebrow" data-ar="تواصل معنا">Contact</p>
+      <h2 data-ar="مشروعك يستحق &lt;span class=&quot;or-brille&quot;&gt;الاستثنائي.&lt;/span&gt;">Votre projet mérite <span class="or-brille">l'exceptionnel.</span></h2>
+      <p style="color:var(--gris);max-width:46ch" data-ar="راسلنا على واتساب، نرد عليك في نفس اليوم. مكالمة التعارف مجانية.">Écrivez-nous sur WhatsApp, on vous répond dans la journée. L'appel découverte est gratuit.</p>
+      <div class="numero"><span id="numero" dir="ltr">+213 549 50 68 57</span><button class="btn btn-ligne btn-petit" type="button" id="copier" data-ar="نسخ">Copier</button></div>
+      <div><a class="btn btn-or" href="https://wa.me/213549506857" target="_blank" rel="noopener" data-ar="افتح واتساب">Ouvrir WhatsApp</a></div>
+    </div>
+    <form id="formulaire" novalidate>
+      <label for="nom"><span data-ar="اسمك">Votre nom</span><input id="nom" name="nom" autocomplete="name" placeholder="Ex. : Amine B." data-ar-ph="مثال: أمين ب."></label>
+      <label for="activite"><span data-ar="نشاطك">Votre activité</span><input id="activite" name="activite" placeholder="Ex. : restaurant à Hydra" data-ar-ph="مثال: مطعم في حيدرة"></label>
+      <label for="formule"><span data-ar="الباقة التي تهمّك">Formule qui vous intéresse</span>
+        <select id="formule" name="formule">
+          <option value="" selected disabled data-ar="اختر باقة">Choisissez une offre</option><option>Impact</option><option>Signature</option><option>Commerce</option><option>Immersion</option><option>Plateforme</option>
+        </select>
+      </label>
+      <label for="message"><span data-ar="مشروعك في بضع كلمات">Votre projet en quelques mots</span><textarea id="message" name="message" placeholder="Ce que vous voulez, vos délais, vos exemples préférés…" data-ar-ph="ما تريده، المدة، أمثلتك المفضلة…"></textarea></label>
+      <button class="btn btn-or" type="submit" data-ar="تابع على واتساب">Continuer sur WhatsApp</button>
+      <div class="confirmation" id="confirmation" hidden></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span data-ar="© 2026 Dzign Studio · الجزائر العاصمة، الجزائر · &lt;span dir=&quot;ltr&quot;&gt;+&lt;bdi dir=&quot;ltr&quot;&gt;213 794&lt;/bdi&gt; 70 93 23&lt;/span&gt;">© 2026 Dzign Studio · Alger, Algérie · +213 549 50 68 57</span>
+    <span class="ar" lang="ar" data-ar="L&#x27;excellence digitale, made in DZ.">تميّز رقمي، صُنع في الجزائر</span>
+  </div>
+</footer>
+
+<a class="wa-flottant" href="https://wa.me/213549506857" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.500-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>
+</a>
+
+<div class="choix" id="choix" role="dialog" aria-modal="true" aria-labelledby="choix-titre" hidden>
+  <form class="choix-boite" id="choix-form" novalidate>
+    <div class="choix-tete">
+      <div><h2 id="choix-titre"></h2><p id="choix-sous"></p></div>
+      <button class="v-rond" type="button" id="choix-fermer" aria-label="Fermer">✕</button>
+    </div>
+    <p class="choix-contexte" id="choix-contexte" hidden></p>
+    <fieldset class="choix-offres" id="choix-offres"><legend id="choix-legende"></legend></fieldset>
+    <div class="choix-champs">
+      <label for="choix-nom"><span id="choix-l-nom"></span><input id="choix-nom" autocomplete="name"></label>
+      <label for="choix-activite"><span id="choix-l-act"></span><input id="choix-activite"></label>
+    </div>
+    <p class="choix-erreur" id="choix-erreur" role="alert" hidden></p>
+    <div class="choix-pied">
+      <p id="choix-note"></p>
+      <button class="btn btn-wa" type="submit" id="choix-envoyer" aria-disabled="true"></button>
+    </div>
+  </form>
+</div>
+<div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" aria-label="Visite d'un site de démonstration" hidden>
+  <div class="v-barre">
+    <div class="v-nav">
+      <button class="v-rond" type="button" id="v-prec" aria-label="Site précédent">‹</button>
+      <button class="v-rond" type="button" id="v-suiv" aria-label="Site suivant">›</button>
+      <b id="v-titre"></b>
+    </div>
+    <div class="v-appareils" role="group" aria-label="Type d'écran">
+      <button type="button" id="v-ordi" aria-pressed="true" data-ar="حاسوب">Ordinateur</button>
+      <button type="button" id="v-mobile" aria-pressed="false" data-ar="هاتف">Téléphone</button>
+    </div>
+    <a class="btn btn-or btn-petit" id="v-commander" href="https://wa.me/213549506857" target="_blank" rel="noopener" data-ar="أريد هذا الموقع">Je veux ce site</a>
+    <button class="v-rond" type="button" id="v-fermer" aria-label="Fermer">✕</button>
+    <div class="v-perso" id="v-perso" hidden></div>
+  </div>
+  <div class="v-zone">
+    <div class="v-ecran" id="v-ecran">
+      <div class="v-url"><i></i><i></i><i></i><span id="v-url"></span></div>
+      <div class="vue" id="vue"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+  var reduit=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Navigation qui se fige au défilement
+  var nav=document.getElementById('nav');
+  function surDefil(){nav.classList.toggle('colle',scrollY>40)}
+  addEventListener('scroll',surDefil,{passive:true});surDefil();
+
+  // Lueur dorée qui suit la souris
+  var lueur=document.getElementById('lueur');
+  addEventListener('pointermove',function(e){if(e.pointerType==='mouse')lueur.style.transform='translate('+(e.clientX-260)+'px,'+(e.clientY-260)+'px)'},{passive:true});
+
+  // Vidéo : on retire l'image fixe quand la vidéo joue
+  var v=document.getElementById('video-hero');
+  if(reduit){v.removeAttribute('autoplay');v.pause()}
+  v.addEventListener('playing',function(){document.querySelector('.hero .poster').hidden=true});
+
+  // Inclinaison 3D des exemples
+  if(!reduit && matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.projet').forEach(function(p){
+      var c=p.querySelector('.cadre');
+      p.addEventListener('pointermove',function(e){
+        var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        c.style.transform='rotateY('+(x*8)+'deg) rotateX('+(-y*8)+'deg) translateY(-6px)';
+      });
+      p.addEventListener('pointerleave',function(){c.style.transform=''});
+    });
+  }
+
+  // Copier le numéro
+  var btn=document.getElementById('copier');
+  btn.addEventListener('click',function(){
+    var t=document.getElementById('numero').textContent;
+    function selectionner(){var r=document.createRange();r.selectNodeContents(document.getElementById('numero'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    var ar=window.DZ&&DZ.lang==='ar';try{navigator.clipboard.writeText(t).then(function(){btn.textContent=ar?'تم النسخ':'Copié';setTimeout(function(){btn.textContent=ar?'نسخ':'Copier'},1800)},selectionner)}catch(e){selectionner()}
+  });
+
+  // Formulaire de contact : passe par la fenêtre de choix d'offre
+  document.getElementById('formulaire').addEventListener('submit',function(e){
+    e.preventDefault();
+    window.DZchoix&&DZchoix.ouvrir({offre:document.getElementById('formule').value,nom:document.getElementById('nom').value.trim(),activite:document.getElementById('activite').value.trim(),message:document.getElementById('message').value.trim()});
+  });
+
+  // Vitrine 3D interactive
+  var boite=document.getElementById('vitrine3d');
+  var charge=document.getElementById('chargement3d');
+  if(!window.THREE||!THREE.GLTFLoader||!THREE.OrbitControls){charge.textContent='La 3D ne peut pas s\'afficher sur cet appareil.';return}
+  var rendu;
+  try{rendu=new THREE.WebGLRenderer({antialias:true,alpha:true})}catch(e){charge.textContent='La 3D ne peut pas s\'afficher sur cet appareil.';return}
+  rendu.setPixelRatio(Math.min(devicePixelRatio,2));
+  rendu.outputEncoding=THREE.sRGBEncoding;
+  rendu.toneMapping=THREE.ACESFilmicToneMapping;
+  rendu.toneMappingExposure=1.1;
+  boite.insertBefore(rendu.domElement,boite.firstChild);
+
+  var scene=new THREE.Scene();
+  var cam=new THREE.PerspectiveCamera(35,1,.01,100);
+  cam.position.set(2.6,1.6,2.6);
+  scene.add(new THREE.HemisphereLight(0xdfe8ff,0x1a1408,1.1));
+  var soleil=new THREE.DirectionalLight(0xffe2b0,2.2);soleil.position.set(3,5,2);scene.add(soleil);
+  var bleu=new THREE.DirectionalLight(0x7fa6e8,1.2);bleu.position.set(-4,2,-3);scene.add(bleu);
+
+  // Socle doré
+  var socle=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.1,.06,64),new THREE.MeshStandardMaterial({color:0x8A7346,metalness:.9,roughness:.4}));
+  socle.position.y=-.03;scene.add(socle);
+
+  var ctrl=new THREE.OrbitControls(cam,rendu.domElement);
+  ctrl.enableDamping=true;ctrl.autoRotate=!reduit;ctrl.autoRotateSpeed=1.4;
+  ctrl.minDistance=1.6;ctrl.maxDistance=6;ctrl.maxPolarAngle=Math.PI*.49;ctrl.enablePan=false;
+  ctrl.target.set(0,.5,0);
+
+  function taille(){var w=boite.clientWidth,h=boite.clientHeight;rendu.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+  taille();addEventListener('resize',taille);
+
+  function cadrer(obj){
+    var b=new THREE.Box3().setFromObject(obj),s=b.getSize(new THREE.Vector3());
+    obj.scale.multiplyScalar(1.5/Math.max(s.x,s.y,s.z));
+    b.setFromObject(obj);var c=b.getCenter(new THREE.Vector3());
+    obj.position.x-=c.x;obj.position.z-=c.z;obj.position.y-=b.min.y;
+    ctrl.target.set(0,(b.max.y-b.min.y)*.45,0);
+  }
+
+  function repli(){
+    // Immeuble à terrasses dessiné en code si le modèle ne charge pas
+    var g=new THREE.Group(),pierre=new THREE.MeshStandardMaterial({color:0xEDE6DA,roughness:.7}),verre=new THREE.MeshStandardMaterial({color:0xF2C46B,emissive:0x7a5a1a,emissiveIntensity:.6,roughness:.2}),vert=new THREE.MeshStandardMaterial({color:0x2F6B3A,roughness:.9});
+    for(var i=0;i<6;i++){var w=1.2-i*.12,d=.9-i*.06;
+      var dalle=new THREE.Mesh(new THREE.BoxGeometry(w,.04,d),pierre);dalle.position.set(i*.03,i*.24,i*.04);g.add(dalle);
+      var vitre=new THREE.Mesh(new THREE.BoxGeometry(w-.14,.18,d-.2),verre);vitre.position.set(i*.03,i*.24+.11,i*.04-.02);g.add(vitre);
+      var haie=new THREE.Mesh(new THREE.BoxGeometry(w,.05,.06),vert);haie.position.set(i*.03,i*.24+.045,i*.04+d/2-.03);g.add(haie)}
+    return g;
+  }
+
+  function afficherRepli(){var m=repli();cadrer(m);scene.add(m);charge.hidden=true}
+  // Le modèle est stocké en base64 (texte) pour être servi partout, puis décodé ici
+  fetch('medias/immeuble-glb.txt').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(b64){
+    var bin=atob(b64.trim()),octets=new Uint8Array(bin.length);
+    for(var i=0;i<bin.length;i++)octets[i]=bin.charCodeAt(i);
+    new THREE.GLTFLoader().parse(octets.buffer,'',function(gltf){
+      var m=gltf.scene;cadrer(m);scene.add(m);charge.hidden=true;
+    },afficherRepli);
+  }).catch(afficherRepli);
+
+  var visible=true;
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){visible=e[0].isIntersecting}).observe(boite)}
+  (function boucle(){requestAnimationFrame(boucle);if(!visible)return;ctrl.update();rendu.render(scene,cam)})();
+})();
+</script>
+<script>
+(function(){
+  var M='medias/', WA='213549506857';
+  window.DZ=window.DZ||{lang:'fr',cb:[]};
+  function enAr(){return DZ.lang==='ar'}
+  var AR_S={resto:['مطعم','FR · عربي'],boutique:['متجر أزياء','سلة تسوق فعّالة'],immo:['ترقية عقارية','مجسّم 3D'],kenza:['أثاث وديكور','أداة تخصيص 3D'],clinique:['صحة','مواعيد عبر الإنترنت'],sport:['قاعة رياضة','جدول تفاعلي'],beaute:['معهد تجميل','حجز'],wesla:['تطبيق توصيل','تطبيق']};
+  function secteurDe(x){return enAr()?AR_S[x.id][0]:x.secteur}
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function da(n){return n.toLocaleString('fr-FR').replace(/ | /g,' ')+' DA'}
+  function sur(hex){var h=hex.replace('#',''),r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return (r*299+g*587+b*114)/1000>150?'#141414':'#ffffff'}
+  function tab(g,v,txt,on){return '<button type="button" class="d-tab" data-a="tab" data-g="'+g+'" data-v="'+v+'" aria-pressed="'+(on?'true':'false')+'">'+txt+'</button>'}
+  function nav(c,menu,droite){return '<header class="d-nav"><span class="d-marque">'+esc(c.nom)+'</span><nav class="d-menu">'+menu.map(function(m){return '<span>'+m+'</span>'}).join('')+'</nav>'+droite+'</header>'}
+  function pied(c,txt){return '<footer class="d-foot"><span>© 2026 '+esc(c.nom)+'</span><span>'+txt+'</span><span>Site conçu par Dzign Studio</span></footer>'}
+  function jours(n){var noms=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],r=[],d=new Date();for(var i=1;r.length<n;i++){var x=new Date(d.getTime()+i*864e5);if(x.getDay()!==5)r.push(noms[x.getDay()]+' '+x.getDate())}return r}
+
+  var SITES=[
+  {id:'resto',nom:'Dar Lbahdja',secteur:'Restaurant',formule:'Signature',url:'darlbahdja.dz',img:'resto-salle.jpg',badge:'FR · عربي',
+   theme:'--d-bg:#0F1F19;--d-fg:#F3E9DA;--d-acc:#D98E5F;--d-on:#13261F;--d-surf:#14291F;--d-mute:#B9AC98;--d-line:rgba(243,233,218,.14);--d-ft:"Cormorant Garamond",Georgia,serif;--d-fw:600;--d-r:999px;--d-champ:#0F1F19',
+   rendu:function(c,s){
+     var ar=s.lang==='ar',T=ar?{menu:['القائمة','قصتنا','الحجز'],sur:'مطبخ عاصمي أصيل · القصبة',h1:'نكهات القصبة، بلمسة راقية',p:'وصفات عائلية متوارثة، في ديكور عاصمي ساحر.',cta:'احجز طاولتك',voir:'اكتشف القائمة',carte:'قائمتنا',t:['مقبلات','أطباق رئيسية','حلويات'],hist:'قصتنا',histp:'منذ ثلاثة أجيال، نطبخ بنفس الحب ونفس التوابل. كل طبق يحكي حكاية الجزائر العاصمة.',resa:'احجز طاولة',date:'التاريخ',heure:'الساعة',pers:'عدد الأشخاص',env:'تأكيد الحجز',ok:'شكراً! تم تسجيل حجزك. سنؤكد لك عبر واتساب.',adr:'القصبة السفلى، الجزائر العاصمة · 12:00 - 23:00'}
+       :{menu:['La carte','Notre histoire','Réserver'],sur:'Cuisine algéroise · Casbah',h1:'Les saveurs de la Casbah, version raffinée',p:'Des recettes de famille transmises depuis trois générations, servies dans un décor algérois.',cta:'Réserver une table',voir:'Voir la carte',carte:'Notre carte',t:['Entrées','Plats','Desserts'],hist:'Notre histoire',histp:'Depuis trois générations, nous cuisinons avec le même amour et les mêmes épices. Chaque plat raconte Alger.',resa:'Réserver une table',date:'Date',heure:'Heure',pers:'Personnes',env:'Confirmer la réservation',ok:'Merci ! Votre réservation est enregistrée. Nous vous confirmons sur WhatsApp.',adr:'Basse Casbah, Alger · 12 h - 23 h'};
+     var CARTE=ar?[[['شربة فريك','حساء القمح الأخضر المدخن','650 دج'],['بوراك عاصمي','باللحم والبيض','550 دج'],['سلطة مشوية','فلفل وطماطم مشوية','500 دج']],[['تاجين زيتون','لحم الخروف بالزيتون','1 800 دج'],['رشتة عاصمية','بالدجاج والمرق الأبيض','1 500 دج'],['مثوم','كفتة بصلصة الثوم','1 600 دج']],[['محلبي','بماء الزهر والقرفة','450 دج'],['قلب اللوز','بالعسل','400 دج'],['شاي بالنعناع','مع حلويات تقليدية','350 دج']]]
+       :[[['Chorba frik','Soupe de blé vert fumé, coriandre','650 DA'],['Bourek algérois','Viande hachée, œuf, persil','550 DA'],['Slata mechouia','Poivrons et tomates grillés','500 DA']],[['Tajine zitoune','Agneau, olives vertes, citron confit','1 800 DA'],['Rechta algéroise','Poulet, navets, sauce blanche','1 500 DA'],['Mtewem','Boulettes à l\'ail, pois chiches','1 600 DA']],[['Mhalbi','Crème de riz, fleur d\'oranger','450 DA'],['Qalb elouz','Semoule, amandes, miel','400 DA'],['Thé à la menthe','Et gâteaux traditionnels','350 DA']]];
+     var t=s.carte||0;
+     return nav(c,T.menu,'<button type="button" class="d-btn petit creux" data-a="lang">'+(ar?'Français':'عربي')+'</button>')+
+     '<section class="d-hero"><img src="'+M+'resto-salle.jpg" alt=""><span class="d-sur">'+T.sur+'</span><h1>'+T.h1+'</h1><p>'+T.p+'</p><div class="d-actions"><a class="d-btn" href="#d-resa" data-a="ancre">'+T.cta+'</a><a class="d-btn creux" href="#d-carte" data-a="ancre">'+T.voir+'</a></div></section>'+
+     '<section class="d-sec" id="d-carte"><h2 class="d-titre">'+T.carte+'</h2><div class="d-tabs">'+T.t.map(function(x,i){return tab('carte',i,x,i===t)}).join('')+'</div><div style="max-width:720px">'+CARTE[t].map(function(l){return '<div class="d-ligne"><span><b>'+l[0]+'</b><small>'+l[1]+'</small></span><span class="d-prix">'+l[2]+'</span></div>'}).join('')+'</div></section>'+
+     '<section class="d-sec alt"><div class="d-split"><img src="'+M+'resto.jpg" alt=""><div><h2 class="d-titre">'+T.hist+'</h2><p class="d-mute" style="font-size:18px">'+T.histp+'</p></div></div></section>'+
+     '<section class="d-sec" id="d-resa"><h2 class="d-titre">'+T.resa+'</h2>'+(s.ok?'<p class="d-ok">'+T.ok+'</p>':'<form class="d-form" data-a="valider"><div class="d-2"><label>'+T.date+'<input type="date"></label><label>'+T.heure+'<select><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option></select></label></div><label>'+T.pers+'<select><option>2</option><option>3</option><option>4</option><option>6</option><option>8+</option></select></label><button class="d-btn" type="submit">'+T.env+'</button></form>')+'</section>'+
+     pied(c,T.adr);
+   }},
+
+  {id:'boutique',nom:'Lalla Couture',secteur:'Boutique de mode',formule:'Commerce',url:'lallacouture.dz',img:'caftan-blanc.jpg',badge:'Panier actif',
+   theme:'--d-bg:#F6EFEA;--d-fg:#2B1B1E;--d-acc:#8C2F45;--d-on:#ffffff;--d-surf:#FFFFFF;--d-mute:#7A6266;--d-line:rgba(43,27,30,.12);--d-ft:"Cormorant Garamond",Georgia,serif;--d-fw:600;--d-r:2px;--d-rc:4px;--d-voile:linear-gradient(90deg,rgba(43,27,30,.75),rgba(43,27,30,.05) 70%)',
+   rendu:function(c,s){
+     s.items=s.items||[];
+     var P=[['caftan-blanc.jpg','Caftan Nour','Ivoire et fil d\'or',52000],['robe-kabyle.jpg','Robe kabyle Tafsut','Broderies traditionnelles',26000],['caftan.jpg','Karakou Lalla','Velours bordeaux, majboud',38000]];
+     var W={'Alger':400,'Blida':500,'Oran':700,'Constantine':700,'Sétif':650,'Tizi Ouzou':550,'Tamanrasset':1200};
+     var w=s.wilaya||'Alger',st=s.items.reduce(function(a,i){return a+P[i][3]},0),liv=s.items.length?W[w]:0;
+     return nav(c,['Nouveautés','Caftans','Karakous','Robes kabyles'],'<span class="d-panier" data-a="ancre" data-cible="d-commande">Panier <em id="d-badge">'+s.items.length+'</em></span>')+
+     '<section class="d-hero"><img src="'+M+'caftan.jpg" alt="" style="object-position:70% 50%"><span class="d-sur" style="color:#F3C9D2">Collection Printemps 2026</span><h1 style="font-style:italic;font-weight:500">L\'élégance algérienne, cousue main</h1><p>Livraison dans les 58 wilayas · Paiement à la livraison</p><div class="d-actions"><a class="d-btn" href="#d-prod" data-a="ancre">Découvrir la collection</a></div></section>'+
+     '<section class="d-sec" id="d-prod"><span class="d-sur">Pièces d\'exception</span><h2 class="d-titre">Nos créations</h2><div class="d-grille">'+P.map(function(p,i){return '<article class="d-carte"><img src="'+M+p[0]+'" alt="" style="background:#EBD9D4"><div class="d-corps"><h3>'+p[1]+'</h3><p class="d-mute">'+p[2]+'</p><p class="d-prix">'+da(p[3])+'</p><button type="button" class="d-btn petit" data-a="ajout" data-v="'+i+'">Ajouter au panier</button></div></article>'}).join('')+'</div></section>'+
+     '<section class="d-sec alt" id="d-commande"><h2 class="d-titre">Votre commande</h2>'+(s.ok?'<p class="d-ok">Commande confirmée ! Nous vous appelons pour valider la livraison à '+esc(w)+'.</p>':
+     '<div class="d-recap">'+(s.items.length?s.items.map(function(i){return '<div class="d-ligne"><span>'+P[i][1]+'</span><span>'+da(P[i][3])+'</span></div>'}).join(''):'<p class="d-mute">Votre panier est vide. Ajoutez une pièce ci-dessus.</p>')+
+     '<label class="d-form" style="max-width:none"><span>Wilaya de livraison</span><select data-a="wilaya">'+Object.keys(W).map(function(k){return '<option'+(k===w?' selected':'')+'>'+k+'</option>'}).join('')+'</select></label>'+
+     '<div class="d-ligne"><span>Livraison</span><span>'+(liv?da(liv):'—')+'</span></div><div class="d-ligne"><b>Total</b><b class="d-prix">'+da(st+liv)+'</b></div>'+
+     '<div class="d-tabs" style="margin:6px 0 0">'+tab('paie','liv','Paiement à la livraison',(s.paie||'liv')==='liv')+tab('paie','baridi','BaridiMob',s.paie==='baridi')+'</div>'+
+     '<button type="button" class="d-btn" data-a="commander"'+(s.items.length?'':' disabled style="opacity:.5;cursor:not-allowed"')+'>Commander</button></div>')+'</section>'+
+     pied(c,'Atelier à Tlemcen · Showroom à Alger');
+   }},
+
+  {id:'immo',nom:'Les Terrasses d\'Hydra',secteur:'Promotion immobilière',formule:'Immersion',url:'terrasses-hydra.dz',img:'immeuble.jpg',badge:'Maquette 3D',
+   theme:'--d-bg:#0A1020;--d-fg:#EAF0FA;--d-acc:#D4B26A;--d-on:#0A1020;--d-surf:#111A30;--d-mute:#9AA8C2;--d-line:rgba(234,240,250,.12);--d-ft:"Syne",sans-serif;--d-fw:700;--d-ls:-.02em;--d-r:6px;--d-champ:#0A1020;--d-voile:linear-gradient(90deg,rgba(8,14,32,.9),rgba(8,14,32,.1) 70%)',
+   rendu:function(c,s){
+     var A=[['F3','105 à 120 m²','Terrasse 25 m², vue baie','32 000 000'],['F4','135 à 150 m²','Terrasse 40 m², 2 salles de bain','45 000 000'],['F5','180 à 210 m²','Terrasse 70 m², suite parentale','62 000 000']];
+     return nav(c,['Le projet','Appartements','Intérieurs','Contact'],'<button type="button" class="d-btn petit" data-a="goto3d">Maquette 3D</button>')+
+     '<section class="d-hero"><img src="'+M+'immeuble.jpg" alt=""><span class="d-sur">Hydra · Alger · Livraison 2027</span><h1>Vivre face à la baie d\'Alger</h1><p>42 appartements de standing avec terrasses plantées, du F3 au F5.</p><div class="d-actions"><button type="button" class="d-btn" data-a="goto3d">Explorer la maquette 3D</button><a class="d-btn creux" href="#d-apparts" data-a="ancre">Voir les appartements</a></div></section>'+
+     '<section class="d-sec"><div class="d-chiffres"><div><b>42</b><span class="d-mute">appartements</span></div><div><b data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;100%&lt;/bdi&gt;">100 %</b><span class="d-mute">avec terrasse</span></div><div><b>2</b><span class="d-mute">niveaux de parking</span></div><div><b>2027</b><span class="d-mute">livraison prévue</span></div></div></section>'+
+     '<section class="d-sec alt" id="d-apparts"><h2 class="d-titre">Choisissez votre appartement</h2><div class="d-tabs">'+A.map(function(a,i){return tab('apt',i,a[0],(s.apt||0)===i)}).join('')+'</div>'+(function(a){return '<div class="d-split"><img src="'+M+'appart.jpg" alt=""><div style="display:grid;gap:14px"><h3 style="font-size:40px">'+a[0]+'</h3><p class="d-mute">'+a[1]+' · '+a[2]+'</p><p style="font-size:14px" class="d-mute">À partir de</p><p class="d-prix" style="font-size:30px;font-family:var(--d-ft)">'+a[3]+' DA</p><p class="d-mute" style="font-size:14px">Paiement échelonné selon l\'avancement des travaux.</p></div></div>'})(A[s.apt||0])+'</section>'+
+     '<section class="d-sec"><h2 class="d-titre">Recevoir la brochure</h2>'+(s.ok?'<p class="d-ok">C\'est envoyé ! Un conseiller vous contacte sous 24 h.</p>':'<form class="d-form" data-a="valider"><div class="d-2"><label>Nom<input></label><label>Téléphone<input inputmode="tel"></label></div><label>Appartement souhaité<select><option>F3</option><option>F4</option><option>F5</option></select></label><button class="d-btn" type="submit">Recevoir la brochure</button></form>')+'</section>'+
+     pied(c,'Bureau de vente : Hydra, Alger');
+   }},
+
+  {id:'kenza',nom:'Maison Kenza',secteur:'Mobilier et décoration',formule:'Immersion',url:'maisonkenza.dz',img:'fauteuil.jpg',badge:'Configurateur 3D',
+   theme:'--d-bg:#EFEAE2;--d-fg:#2A2622;--d-acc:#8C6A43;--d-on:#ffffff;--d-surf:#F7F3EC;--d-mute:#776D63;--d-line:rgba(42,38,34,.12);--d-ft:"Cormorant Garamond",Georgia,serif;--d-fw:600;--d-r:2px;--d-rc:6px',
+   rendu:function(c,s){
+     var T=[['Bouclette ivoire','#FFFFFF'],['Terracotta','#C9714B'],['Vert sauge','#8FA58A'],['Bleu nuit','#3D4F7A'],['Moutarde','#D3A63A']];
+     var i=s.teinte||0;
+     return nav(c,['Salons','Fauteuils','Tables','Showroom'],'<span class="d-panier">Panier <em>0</em></span>')+
+     '<section class="d-sec"><div class="d-split"><div class="d-3d" id="d-k3d"><div class="d-attente">Chargement du fauteuil en 3D…</div></div><div style="display:grid;gap:18px"><span class="d-sur">Configurateur 3D</span><h1 style="font-size:clamp(36px,5.6cqi,64px)">Fauteuil Nour</h1><p class="d-mute" style="font-size:17px">Faites-le tourner, zoomez, choisissez votre tissu. Ce que vous voyez est ce que vous recevez.</p><div><p style="font-size:14px;margin-bottom:10px">Tissu : <b id="d-nom-teinte">'+T[i][0]+'</b></p><div class="d-teintes">'+T.map(function(t,k){return '<button type="button" data-a="teinte" data-v="'+k+'" data-c="'+t[1]+'" aria-label="'+t[0]+'" aria-pressed="'+(k===i)+'" style="background:'+(k?t[1]:'#EDE7DC')+'"></button>'}).join('')+'</div></div><p class="d-prix" style="font-size:28px;font-family:var(--d-ft)">85 000 DA</p><div class="d-actions" style="display:flex;gap:12px;flex-wrap:wrap"><button type="button" class="d-btn" data-a="ajout-simple">Ajouter au panier</button><span class="d-mute" style="font-size:14px;align-self:center">Livraison et montage offerts à Alger</span></div></div></div></section>'+
+     '<section class="d-sec alt"><div class="d-split"><img src="'+M+'appart.jpg" alt=""><div><h2 class="d-titre">Fabriqué en Algérie, pensé pour durer</h2><p class="d-mute" style="font-size:17px">Structures en hêtre massif, tissus traités anti-taches, pieds en laiton brossé. Garantie 5 ans.</p></div></div></section>'+
+     pied(c,'Showroom : Chéraga, Alger');
+   }},
+
+  {id:'clinique',nom:'Clinique Dentaire Les Pins',secteur:'Santé',formule:'Signature',url:'clinique-lespins.dz',img:'clinique.jpg',badge:'Rendez-vous en ligne',
+   theme:'--d-bg:#F7FAF8;--d-fg:#17312A;--d-acc:#2E7D6B;--d-on:#ffffff;--d-surf:#FFFFFF;--d-mute:#5E7A72;--d-line:rgba(23,49,42,.12);--d-ft:"Hanken Grotesk",sans-serif;--d-fw:600;--d-ls:-.02em;--d-r:12px;--d-rc:16px;--d-ri:10px;--d-voile:linear-gradient(90deg,rgba(14,40,34,.8),rgba(14,40,34,.05) 70%)',
+   rendu:function(c,s){
+     var S=[['Implants dentaires','Pose et couronne, garantie 10 ans','dès 90 000 DA'],['Blanchiment','Résultat visible en 1 séance','dès 25 000 DA'],['Aligneurs invisibles','Orthodontie discrète, adultes et ados','dès 180 000 DA'],['Soins des enfants','Accueil doux et ludique','dès 2 500 DA']];
+     var J=jours(5),H=['09:00','10:30','11:30','14:00','15:30','17:00'];
+     return nav(c,['Soins','L\'équipe','Tarifs','Contact'],'<a class="d-btn petit" href="#d-rdv" data-a="ancre">Prendre rendez-vous</a>')+
+     '<section class="d-hero"><img src="'+M+'clinique.jpg" alt=""><span class="d-sur" style="color:#BFE6DA">Ben Aknoun · Alger</span><h1>Un sourire en confiance, sans stress</h1><p>Équipements de dernière génération, soins sans douleur, rendez-vous en ligne en 30 secondes.</p><div class="d-actions"><a class="d-btn" href="#d-rdv" data-a="ancre">Prendre rendez-vous</a></div></section>'+
+     '<section class="d-sec"><h2 class="d-titre">Nos soins</h2><div class="d-grille">'+S.map(function(x){return '<article class="d-carte"><div class="d-corps" style="padding:24px"><h3>'+x[0]+'</h3><p class="d-mute">'+x[1]+'</p><p class="d-prix">'+x[2]+'</p></div></article>'}).join('')+'</div></section>'+
+     '<section class="d-sec alt" id="d-rdv"><h2 class="d-titre">Rendez-vous en ligne</h2>'+(s.ok?'<p class="d-ok">Rendez-vous confirmé le '+esc(s.jour||J[0])+' à '+esc(s.heure||H[0])+'. Un rappel vous sera envoyé par SMS.</p>':
+     '<div class="d-form" style="max-width:640px"><label>Soin<select><option>Consultation</option>'+S.map(function(x){return '<option>'+x[0]+'</option>'}).join('')+'</select></label><span class="d-mute" style="font-size:13px">Jour</span><div class="d-tabs" style="margin:0">'+J.map(function(j){return tab('jour',j,j,(s.jour||J[0])===j)}).join('')+'</div><span class="d-mute" style="font-size:13px">Heure</span><div class="d-tabs" style="margin:0">'+H.map(function(h){return tab('heure',h,h,(s.heure||H[0])===h)}).join('')+'</div><button type="button" class="d-btn" data-a="ok">Confirmer le rendez-vous</button></div>')+'</section>'+
+     pied(c,'Ben Aknoun, Alger · Sam - Jeu, 9 h - 18 h');
+   }},
+
+  {id:'sport',nom:'Atlas Fitness',secteur:'Salle de sport',formule:'Signature',url:'atlasfitness.dz',img:'sport.jpg',badge:'Planning interactif',
+   theme:'--d-bg:#0C0C0C;--d-fg:#F2F2F2;--d-acc:#FF9F1C;--d-on:#0C0C0C;--d-surf:#151515;--d-mute:#9A9A9A;--d-line:rgba(255,255,255,.1);--d-ft:"Syne",sans-serif;--d-fw:800;--d-ls:-.03em;--d-r:4px;--d-rc:6px;--d-champ:#0C0C0C',
+   rendu:function(c,s){
+     var D={Sam:[['08:00','Cross training','Yacine'],['18:00','Boxe','Karim'],['20:00','Yoga','Lina']],Dim:[['07:00','Cardio HIIT','Sofia'],['19:00','Musculation guidée','Yacine']],Lun:[['08:00','Pilates','Lina'],['18:30','Cross training','Karim'],['20:00','Boxe','Karim']],Mar:[['07:00','Cardio HIIT','Sofia'],['19:00','Yoga','Lina']],Mer:[['08:00','Cross training','Yacine'],['18:30','Pilates','Lina']],Jeu:[['10:00','Stretching','Sofia'],['17:00','Boxe','Karim']]};
+     var j=s.jour||'Sam';
+     return nav(c,['Cours','Planning','Abonnements','Coachs'],'<a class="d-btn petit" href="#d-essai" data-a="ancre">Séance gratuite</a>')+
+     '<section class="d-hero"><img src="'+M+'sport.jpg" alt=""><span class="d-sur">Hydra · Ouvert 6 h - 23 h</span><h1 style="text-transform:uppercase">Dépasse tes limites</h1><p>Équipements premium, coachs diplômés, 40 cours par semaine.</p><div class="d-actions"><a class="d-btn" href="#d-essai" data-a="ancre">Réserver ma séance gratuite</a></div></section>'+
+     '<section class="d-sec"><h2 class="d-titre" style="text-transform:uppercase">Planning</h2><div class="d-tabs">'+Object.keys(D).map(function(k){return tab('jour',k,k,k===j)}).join('')+'</div><div style="max-width:720px">'+D[j].map(function(l){return '<div class="d-ligne"><span><b>'+l[1]+'</b><small>Coach '+l[2]+'</small></span><span class="d-prix">'+l[0]+'</span></div>'}).join('')+'</div></section>'+
+     '<section class="d-sec alt"><h2 class="d-titre" style="text-transform:uppercase">Abonnements</h2><div class="d-grille">'+[['Mensuel','6 000 DA','Accès illimité'],['Trimestriel','15 000 DA','+ 1 bilan coach'],['Annuel','50 000 DA','+ 4 séances privées']].map(function(a,i){return '<article class="d-carte" style="'+(i===1?'border-color:var(--d-acc)':'')+'"><div class="d-corps" style="padding:26px"><h3 style="text-transform:uppercase">'+a[0]+'</h3><p class="d-prix" style="font-size:28px;font-family:var(--d-ft)">'+a[1]+'</p><p class="d-mute">'+a[2]+'</p></div></article>'}).join('')+'</div></section>'+
+     '<section class="d-sec" id="d-essai"><h2 class="d-titre" style="text-transform:uppercase">Ta séance d\'essai</h2>'+(s.ok?'<p class="d-ok">C\'est réservé ! Un coach t\'attend à l\'accueil.</p>':'<form class="d-form" data-a="valider"><div class="d-2"><label>Prénom<input></label><label>Téléphone<input inputmode="tel"></label></div><button class="d-btn" type="submit">Réserver gratuitement</button></form>')+'</section>'+
+     pied(c,'Hydra, Alger');
+   }},
+
+  {id:'beaute',nom:'Rose & Or',secteur:'Institut de beauté',formule:'Signature',url:'roseetor.dz',img:'beaute.jpg',badge:'Réservation',
+   theme:'--d-bg:#FBF3F1;--d-fg:#3A2328;--d-acc:#B76E85;--d-on:#ffffff;--d-surf:#FFFFFF;--d-mute:#8A6C72;--d-line:rgba(58,35,40,.12);--d-ft:"Cormorant Garamond",Georgia,serif;--d-fw:600;--d-r:999px;--d-rc:18px;--d-voile:linear-gradient(90deg,rgba(58,35,40,.7),rgba(58,35,40,.05) 70%)',
+   rendu:function(c,s){
+     var P=[['Brushing','45 min','2 500 DA'],['Coloration','2 h','dès 6 000 DA'],['Soin visage éclat','1 h','5 000 DA'],['Hammam et gommage','1 h 30','4 000 DA'],['Maquillage mariée','Essai inclus','dès 15 000 DA']];
+     var H=['10:00','11:30','13:00','15:00','16:30'];
+     return nav(c,['Prestations','L\'institut','Mariées','Contact'],'<a class="d-btn petit" href="#d-resa" data-a="ancre">Réserver</a>')+
+     '<section class="d-hero"><img src="'+M+'beaute.jpg" alt=""><span class="d-sur" style="color:#F7D3DD">Institut · Dely Ibrahim</span><h1 style="font-style:italic;font-weight:500">Prenez le temps d\'être belle</h1><p>Coiffure, soins et beauté de la mariée, dans un cadre pensé pour vous.</p><div class="d-actions"><a class="d-btn" href="#d-resa" data-a="ancre">Réserver mon moment</a></div></section>'+
+     '<section class="d-sec"><h2 class="d-titre">Nos prestations</h2><div style="max-width:720px">'+P.map(function(p,i){return '<div class="d-ligne"><span><b>'+p[0]+'</b><small>'+p[1]+'</small></span><span style="display:flex;gap:14px;align-items:center"><span class="d-prix">'+p[2]+'</span><button type="button" class="d-tab" data-a="tab" data-g="presta" data-v="'+i+'" aria-pressed="'+((s.presta||0)==i)+'">Choisir</button></span></div>'}).join('')+'</div></section>'+
+     '<section class="d-sec alt" id="d-resa"><h2 class="d-titre">Votre réservation</h2>'+(s.ok?'<p class="d-ok">C\'est noté ! '+P[s.presta||0][0]+' à '+esc(s.heure||H[0])+'. À très bientôt.</p>':'<div class="d-form"><p><b>'+P[s.presta||0][0]+'</b> · <span class="d-prix">'+P[s.presta||0][2]+'</span></p><div class="d-tabs" style="margin:0">'+H.map(function(h){return tab('heure',h,h,(s.heure||H[0])===h)}).join('')+'</div><button type="button" class="d-btn" data-a="ok">Confirmer</button></div>')+'</section>'+
+     pied(c,'Dely Ibrahim, Alger · Mar - Dim');
+   }},
+
+  {id:'wesla',nom:'Wesla',secteur:'Application de livraison',formule:'Plateforme',url:'wesla.app',img:'appli.jpg',badge:'Application',
+   theme:'--d-bg:#FFF6F2;--d-fg:#1A0E14;--d-acc:#E2335B;--d-on:#ffffff;--d-surf:#FFFFFF;--d-mute:#7A5F66;--d-line:rgba(26,14,20,.1);--d-ft:"Syne",sans-serif;--d-fw:800;--d-ls:-.03em;--d-r:14px;--d-rc:18px',
+   rendu:function(c,s){
+     return nav(c,['Comment ça marche','Restaurants','Devenir livreur'],'<span class="d-btn petit">Télécharger</span>')+
+     '<section class="d-sec" style="background:linear-gradient(135deg,#FF7A45,var(--d-acc));color:#fff"><div class="d-split"><div style="display:grid;gap:18px"><span class="d-sur" style="color:#FFE1D6">Alger · Oran · Constantine</span><h1 style="font-size:clamp(40px,7cqi,84px)">Livré en 30 minutes.</h1><p style="font-size:18px;opacity:.92">Restaurants, courses et pharmacies. Suivez votre livreur en direct sur la carte.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><span class="d-btn" style="background:#1A0E14;color:#fff">Google Play</span><span class="d-btn" style="background:#1A0E14;color:#fff">App Store</span></div></div>'+
+     '<div class="d-tel"><div class="d-tel-ecran"><div class="d-tel-tete">'+esc(c.nom)+' · Commande n° 2481</div><div class="d-carte-geo"><div class="d-trajet"></div><div class="d-livreur"></div></div><div class="d-tel-pied"><b>Votre livreur arrive</b><span class="d-mute">Amine · scooter · 12 min</span><div class="d-jauge"><i></i></div></div></div></div></div></section>'+
+     '<section class="d-sec"><h2 class="d-titre">Comment ça marche</h2><div class="d-grille">'+[['Choisissez','Plus de 300 restaurants et commerces.'],['Payez comme vous voulez','À la livraison, par CIB, Edahabia ou BaridiMob.'],['Suivez en direct','Votre livreur sur la carte, minute par minute.']].map(function(x){return '<article class="d-carte"><div class="d-corps" style="padding:24px"><h3>'+x[0]+'</h3><p class="d-mute">'+x[1]+'</p></div></article>'}).join('')+'</div></section>'+
+     '<section class="d-sec alt"><div class="d-split"><img src="'+M+'appli.jpg" alt=""><div style="display:grid;gap:14px"><h2 class="d-titre" style="margin:0">Vous êtes restaurateur ?</h2><p class="d-mute">Rejoignez '+esc(c.nom)+' et recevez des commandes dès demain. Tableau de bord, statistiques et paiements chaque semaine.</p>'+(s.ok?'<p class="d-ok">Merci ! Notre équipe vous appelle sous 48 h.</p>':'<button type="button" class="d-btn" data-a="ok" style="justify-self:start">Devenir partenaire</button>')+'</div></div></section>'+
+     pied(c,'Disponible sur Android et iPhone');
+   }}
+  ];
+
+  // Grille du portfolio
+  var grille=document.getElementById('grille-portfolio');
+  function rendreGrille(){grille.innerHTML=SITES.map(function(x,i){return '<button type="button" class="site-carte" data-i="'+i+'"><img src="'+M+x.img+'" alt="" loading="lazy"><span class="badge">'+(enAr()?AR_S[x.id][1]:x.badge)+'</span><span class="info"><span class="secteur">'+secteurDe(x)+' · '+x.formule+'</span><h3>'+esc(x.nom)+'</h3><span class="visiter">'+(enAr()?'زُر الموقع <span aria-hidden="true">←</span>':'Visiter le site <span aria-hidden="true">→</span>')+'</span></span></button>'}).join('')}
+  rendreGrille();
+  grille.addEventListener('click',function(e){var b=e.target.closest('.site-carte');if(b)ouvrir(+b.dataset.i)});
+
+  // Visionneuse
+  var V=document.getElementById('visionneuse'),vue=document.getElementById('vue'),ecran=document.getElementById('v-ecran');
+  var courant=0,etat={},perso=null,dernierFocus=null;
+  function cfgDe(x){return perso&&perso.id===x.id?{nom:perso.nom,acc:perso.acc}:{nom:x.nom}}
+  function dessiner(garderDefil){
+    var x=SITES[courant],c=cfgDe(x),s=etat[x.id]=etat[x.id]||(x.id==='resto'&&enAr()?{lang:'ar'}:{});
+    var style=x.theme+(c.acc?';--d-acc:'+c.acc+';--d-on:'+sur(c.acc):'');
+    var y=vue.scrollTop;
+    vue.innerHTML='<div class="d" style=\''+style+'\''+(s.lang==='ar'?' dir="rtl" lang="ar"':'')+'>'+x.rendu(c,s)+'</div>';
+    if(garderDefil)vue.scrollTop=y;else vue.scrollTop=0;
+    document.getElementById('v-titre').textContent=c.nom+' · '+secteurDe(x);
+    document.getElementById('v-url').textContent=perso&&perso.id===x.id?perso.url:x.url;
+    var msg=enAr()?(perso&&perso.id===x.id?'مرحباً Dzign Studio، أنا '+perso.nom+'. شاهدت معاينة موقعي ('+secteurDe(x)+') وأريد إطلاقه.':'مرحباً Dzign Studio، أريد موقعاً مثل «'+x.nom+'» ('+secteurDe(x)+').'):(perso&&perso.id===x.id?'Bonjour Dzign Studio, je suis '+perso.nom+'. J\'ai vu l\'aperçu de mon site ('+x.secteur+') et je veux le lancer.':'Bonjour Dzign Studio, je veux un site comme « '+x.nom+' » ('+x.secteur+').');
+    var vc=document.getElementById('v-commander');vc.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);vc.dataset.offre=x.formule;vc.dataset.contexte=perso&&perso.id===x.id?'perso|'+perso.nom+'|'+secteurDe(x):'demo|'+x.nom+'|'+secteurDe(x);
+    var bandeau=document.getElementById('v-perso');
+    if(perso&&perso.id===x.id){bandeau.hidden=false;bandeau.innerHTML=enAr()?'<span>معاينة مخصّصة لـ <b>'+esc(perso.nom)+'</b>، على عنوانك الخاص <b dir="ltr">'+esc(perso.url)+'</b> مع البريد <b dir="ltr">contact@'+esc(perso.url)+'</b>. يمكن أن يكون هذا موقعك خلال 7 أيام.</span>':'<span>Aperçu personnalisé pour <b>'+esc(perso.nom)+'</b>, sur votre propre adresse <b>'+esc(perso.url)+'</b> avec l\'email <b>contact@'+esc(perso.url)+'</b>. Ce site peut être le vôtre en 7 jours.</span>'}else bandeau.hidden=true;
+    if(x.id==='kenza')kenza3d(s);else arreter3d();
+  }
+  function ouvrir(i){dernierFocus=document.activeElement;courant=i;V.hidden=false;document.body.classList.add('verrou');dessiner();document.getElementById('v-fermer').focus()}
+  function fermer(){V.hidden=true;document.body.classList.remove('verrou');arreter3d();if(dernierFocus)dernierFocus.focus()}
+  document.getElementById('v-fermer').onclick=fermer;
+  document.getElementById('v-prec').onclick=function(){courant=(courant+SITES.length-1)%SITES.length;dessiner()};
+  document.getElementById('v-suiv').onclick=function(){courant=(courant+1)%SITES.length;dessiner()};
+  var bOrdi=document.getElementById('v-ordi'),bMob=document.getElementById('v-mobile');
+  bOrdi.onclick=function(){ecran.classList.remove('mobile');bOrdi.setAttribute('aria-pressed','true');bMob.setAttribute('aria-pressed','false')};
+  bMob.onclick=function(){ecran.classList.add('mobile');bMob.setAttribute('aria-pressed','true');bOrdi.setAttribute('aria-pressed','false')};
+  addEventListener('keydown',function(e){if(V.hidden)return;if(e.key==='Escape')fermer();if(e.target.matches&&e.target.matches('input,select,textarea'))return;if(e.key==='ArrowRight')document.getElementById('v-suiv').click();if(e.key==='ArrowLeft')document.getElementById('v-prec').click()});
+
+  // Interactions dans les sites
+  vue.addEventListener('click',function(e){
+    var el=e.target.closest('[data-a]');if(!el)return;
+    var x=SITES[courant],s=etat[x.id],a=el.dataset.a;
+    if(a==='ancre'){e.preventDefault();var id=(el.getAttribute('href')||'#'+el.dataset.cible).slice(1),cible=vue.querySelector('#'+id);if(cible)vue.scrollTo({top:cible.offsetTop-60,behavior:'smooth'});return}
+    if(a==="tab"){s[el.dataset.g]=/^\d+$/.test(el.dataset.v)?+el.dataset.v:el.dataset.v;dessiner(true);return}
+    if(a==='lang'){s.lang=s.lang==='ar'?'fr':'ar';dessiner(true);return}
+    if(a==='ajout'){s.items=(s.items||[]).concat(+el.dataset.v);dessiner(true);var b=vue.querySelector('#d-badge');if(b)b.classList.add('saute');return}
+    if(a==='ajout-simple'){var em=vue.querySelector('.d-panier em');em.textContent=+em.textContent+1;em.classList.remove('saute');void em.offsetWidth;em.classList.add('saute');return}
+    if(a==='commander'||a==='ok'){s.ok=true;dessiner(true);return}
+    if(a==='goto3d'){fermer();document.getElementById('demo3d').scrollIntoView({behavior:'smooth'});return}
+    if(a==='teinte'){s.teinte=+el.dataset.v;vue.querySelectorAll('[data-a="teinte"]').forEach(function(b){b.setAttribute('aria-pressed',b===el)});document.getElementById('d-nom-teinte').textContent=el.getAttribute('aria-label');teindre(el.dataset.c);return}
+  });
+  vue.addEventListener('submit',function(e){e.preventDefault();var s=etat[SITES[courant].id];s.ok=true;dessiner(true)});
+  vue.addEventListener('change',function(e){if(e.target.dataset.a==='wilaya'){etat[SITES[courant].id].wilaya=e.target.value;dessiner(true)}});
+
+  // Configurateur 3D (Maison Kenza)
+  var k={rendu:null,anim:0,mats:[],donnees:null};
+  function chargerFauteuil(){
+    if(!k.donnees)k.donnees=fetch(M+'fauteuil-glb.txt').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(b64){var bin=atob(b64.trim()),o=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)o[i]=bin.charCodeAt(i);return o.buffer});
+    return k.donnees;
+  }
+  function arreter3d(){if(k.anim)cancelAnimationFrame(k.anim);k.anim=0;if(k.rendu){k.rendu.dispose();k.rendu=null}k.mats=[]}
+  function teindre(hex){k.mats.forEach(function(m){m.color.set(hex)})}
+  function kenza3d(s){
+    arreter3d();
+    var boite=vue.querySelector('#d-k3d');if(!boite)return;
+    if(!window.THREE||!THREE.GLTFLoader||!THREE.OrbitControls){boite.querySelector('.d-attente').textContent='La 3D ne peut pas s\'afficher sur cet appareil.';return}
+    var r;try{r=new THREE.WebGLRenderer({antialias:true,alpha:true})}catch(e){boite.querySelector('.d-attente').textContent='La 3D ne peut pas s\'afficher sur cet appareil.';return}
+    k.rendu=r;r.setPixelRatio(Math.min(devicePixelRatio,2));r.outputEncoding=THREE.sRGBEncoding;r.toneMapping=THREE.ACESFilmicToneMapping;
+    boite.insertBefore(r.domElement,boite.firstChild);
+    var sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(32,1,.01,50);cam.position.set(1.9,1.1,2.3);
+    sc.add(new THREE.HemisphereLight(0xffffff,0xb8a68f,1.3));var d1=new THREE.DirectionalLight(0xffffff,1.8);d1.position.set(2,4,3);sc.add(d1);var d2=new THREE.DirectionalLight(0xffe7cc,.7);d2.position.set(-3,2,-2);sc.add(d2);
+    var sol=new THREE.Mesh(new THREE.CircleGeometry(1.2,64),new THREE.MeshStandardMaterial({color:0xE4DCCF,roughness:1}));sol.rotation.x=-Math.PI/2;sc.add(sol);
+    var ctl=new THREE.OrbitControls(cam,r.domElement);ctl.enableDamping=true;ctl.autoRotate=true;ctl.autoRotateSpeed=1.2;ctl.enablePan=false;ctl.minDistance=1.4;ctl.maxDistance=4.5;ctl.maxPolarAngle=Math.PI*.49;
+    function taille(){var w=boite.clientWidth;r.setSize(w,w,false);cam.aspect=1;cam.updateProjectionMatrix()}taille();
+    var actif=r;
+    chargerFauteuil().then(function(buf){
+      if(k.rendu!==actif)return;
+      new THREE.GLTFLoader().parse(buf,'',function(g){
+        if(k.rendu!==actif)return;
+        var m=g.scene,b=new THREE.Box3().setFromObject(m),t=b.getSize(new THREE.Vector3());m.scale.multiplyScalar(1.3/Math.max(t.x,t.y,t.z));
+        b.setFromObject(m);var cc=b.getCenter(new THREE.Vector3());m.position.x-=cc.x;m.position.z-=cc.z;m.position.y-=b.min.y;
+        ctl.target.set(0,(b.max.y-b.min.y)*.45,0);
+        m.traverse(function(o){if(o.isMesh){o.material=o.material.clone();k.mats.push(o.material)}});
+        sc.add(m);var at=boite.querySelector('.d-attente');if(at)at.remove();
+        var bt=vue.querySelector('[data-a="teinte"][aria-pressed="true"]');if(bt)teindre(bt.dataset.c);
+      },function(){var at=boite.querySelector('.d-attente');if(at)at.textContent='Modèle 3D indisponible.'});
+    }).catch(function(){var at=boite.querySelector('.d-attente');if(at)at.textContent='Modèle 3D indisponible.'});
+    (function boucle(){k.anim=requestAnimationFrame(boucle);ctl.update();r.render(sc,cam)})();
+  }
+
+  // Essai instantané
+  var SECT=[['resto','Restaurant, café, pâtisserie','مطعم، مقهى، حلويات'],['boutique','Boutique, mode, bijoux','متجر، أزياء، مجوهرات'],['immo','Immobilier, promotion','عقار، ترقية عقارية'],['kenza','Meubles, décoration','أثاث وديكور'],['clinique','Santé, clinique, cabinet','صحة، عيادة، مكتب طبي'],['sport','Sport, coaching','رياضة وتدريب'],['beaute','Beauté, coiffure, spa','تجميل، حلاقة، سبا'],['wesla','Livraison, application','توصيل، تطبيق']];
+  var COUL=[['Or','#C8A96A'],['Émeraude','#0E7C5A'],['Bordeaux','#8C2F45'],['Bleu nuit','#2B4C8C'],['Corail','#E2603B'],['Rose','#C8869A']];
+  var selS=document.getElementById('essai-secteur');
+  function rendreSecteurs(){var v=selS.value;selS.innerHTML=SECT.map(function(x){return '<option value="'+x[0]+'">'+(enAr()?x[2]:x[1])+'</option>'}).join('');if(v)selS.value=v}
+  rendreSecteurs();
+  DZ.cb.push(function(){rendreGrille();rendreSecteurs();if(!V.hidden)dessiner(true)});
+  var zc=document.getElementById('essai-couleurs'),couleur=COUL[0][1];
+  zc.innerHTML=COUL.map(function(x,i){return '<button type="button" aria-label="'+x[0]+'" aria-pressed="'+(i===0)+'" data-c="'+x[1]+'" style="background:'+x[1]+'"></button>'}).join('');
+  zc.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;couleur=b.dataset.c;zc.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})});
+  document.getElementById('form-essai').addEventListener('submit',function(e){
+    e.preventDefault();
+    var nom=document.getElementById('essai-nom').value.trim()||(enAr()?'مؤسستك':'Votre Entreprise'),id=selS.value;
+    var slug=nom.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'')||'votresite';
+    perso={id:id,nom:nom,acc:couleur,url:slug.slice(0,24)+'.dz'};
+    etat[id]={};
+    ouvrir(SITES.findIndex(function(x){return x.id===id}));
+  });
+})();
+</script>
+<script>
+(function(){
+  var racine=document.documentElement,btn=document.getElementById('langue'),barre=document.getElementById('progression');
+  window.DZ=window.DZ||{lang:'fr',cb:[]};
+  function appliquer(l){
+    DZ.lang=l;var ar=l==='ar';
+    document.querySelectorAll('[data-ar]').forEach(function(e){if(e.dataset.fr===undefined)e.dataset.fr=e.innerHTML;e.innerHTML=ar?e.dataset.ar:e.dataset.fr});
+    document.querySelectorAll('[data-ar-ph]').forEach(function(e){if(e.dataset.frPh===undefined)e.dataset.frPh=e.placeholder;e.placeholder=ar?e.dataset.arPh:e.dataset.frPh});
+    racine.lang=ar?'ar':'fr';racine.dir=ar?'rtl':'ltr';
+    btn.textContent=ar?'FR':'عربي';btn.lang=ar?'fr':'ar';
+    btn.setAttribute('aria-label',ar?'Afficher le site en français':'عرض الموقع بالعربية');
+    document.title=ar?'Dzign Studio · استوديو رقمي راقٍ':'Dzign Studio';
+    DZ.cb.forEach(function(f){f(l)});
+    try{localStorage.setItem('dz-langue',l)}catch(e){}
+  }
+  btn.addEventListener('click',function(){appliquer(DZ.lang==='ar'?'fr':'ar')});
+  var depart='fr';try{depart=localStorage.getItem('dz-langue')||'fr'}catch(e){}
+  if(location.hash==='#ar')depart='ar';if(location.hash==='#fr')depart='fr';
+  if(depart==='ar')appliquer('ar');
+  function avancer(){var h=document.documentElement.scrollHeight-innerHeight;barre.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'}
+  addEventListener('scroll',avancer,{passive:true});avancer();
+})();
+</script>
+
+<script>
+(function(){
+  var WA='213549506857';
+  var OFFRES=[
+    ['Impact',30000,'Une page premium pour lancer une offre ou un produit','صفحة راقية لإطلاق عرض أو منتج'],
+    ['Signature',80000,'Site vitrine sur mesure, animé, 2 langues','موقع تعريفي حسب الطلب، متحرك، بلغتين'],
+    ['Commerce',150000,'Boutique en ligne, paiement à la livraison','متجر إلكتروني، الدفع عند الاستلام'],
+    ['Immersion',250000,'Site avec 3D, configurateur, visite virtuelle','موقع بتقنية 3D، أداة تخصيص، زيارة افتراضية'],
+    ['Plateforme',400000,'Application web ou mobile sur mesure','تطبيق ويب أو هاتف حسب الطلب']
+  ];
+  var M=document.getElementById('choix'),F=document.getElementById('choix-form'),zone=document.getElementById('choix-offres');
+  var envoyer=document.getElementById('choix-envoyer'),erreur=document.getElementById('choix-erreur'),ctxEl=document.getElementById('choix-contexte');
+  var etat={contexte:'',message:''},retour=null;
+  function ar(){return window.DZ&&DZ.lang==='ar'}
+  function nb(n){return n.toLocaleString('fr-FR').replace(/\u202f|\u00a0/g,' ')}
+  function prix(o){return ar()?(o[0]==='Plateforme'?'حسب عرض السعر، ابتداءً من ':'ابتداءً من ')+'<bdi dir="ltr">'+nb(o[1])+'</bdi> دج':(o[0]==='Plateforme'?'Sur devis, dès ':'Dès ')+nb(o[1])+' DA'}
+  function choisie(){var r=F.querySelector('input[name="offre"]:checked');return r?r.value:''}
+  function maj(){var ok=!!choisie();envoyer.setAttribute('aria-disabled',ok?'false':'true');if(ok)erreur.hidden=true}
+  function textes(){
+    var a=ar();
+    document.getElementById('choix-titre').textContent=a?'اختر باقتك':'Choisissez votre offre';
+    document.getElementById('choix-sous').textContent=a?'خطوة واحدة قبل واتساب: نجهّز لك رسالة كاملة لنردّ عليك بدقة.':'Une étape avant WhatsApp : votre message arrive complet, pour une réponse précise et rapide.';
+    document.getElementById('choix-legende').textContent=a?'الباقة':'Offre';
+    document.getElementById('choix-l-nom').textContent=a?'اسمك (اختياري)':'Votre nom (facultatif)';
+    document.getElementById('choix-l-act').textContent=a?'نشاطك (اختياري)':'Votre activité (facultatif)';
+    document.getElementById('choix-nom').placeholder=a?'مثال: أمين ب.':'Ex. : Amine B.';
+    document.getElementById('choix-activite').placeholder=a?'مثال: مطعم في حيدرة':'Ex. : restaurant à Hydra';
+    document.getElementById('choix-note').textContent=a?'الأسعار تقريبية؛ يُثبَّت السعر النهائي في عرض السعر بعد مكالمة التعارف المجانية.':'Prix indicatifs : le prix final est fixé dans le devis, après l\'appel découverte gratuit.';
+    envoyer.textContent=a?'تابع على واتساب':'Continuer sur WhatsApp';
+    var v=choisie();
+    zone.querySelectorAll('.offre').forEach(function(x){x.remove()});
+    OFFRES.forEach(function(o){
+      var l=document.createElement('label');l.className='offre';
+      l.innerHTML='<input type="radio" name="offre" value="'+o[0]+'"'+(o[0]===v?' checked':'')+'><b>'+o[0]+'</b><span class="px">'+prix(o)+'</span><small>'+(a?o[3]:o[2])+'</small>';
+      zone.appendChild(l);
+    });
+    var c=etat.contexte,t='';
+    if(c==='lmdp')t=a?'مرجعك: موقع La Maison du Parquet':'Référence : le site de La Maison du Parquet';
+    else if(c.indexOf('demo|')===0){var d=c.split('|');t=a?'مرجعك: الموقع التجريبي «'+d[1]+'» ('+d[2]+')':'Référence : le site de démonstration « '+d[1]+' » ('+d[2]+')'}
+    else if(c.indexOf('perso|')===0){var q=c.split('|');t=a?'مرجعك: معاينة موقع «'+q[1]+'» ('+q[2]+')':'Référence : l\'aperçu de votre site « '+q[1]+' » ('+q[2]+')'}
+    ctxEl.textContent=t;ctxEl.hidden=!t;
+    maj();
+  }
+  function ouvrir(o){
+    o=o||{};retour=document.activeElement;
+    etat.contexte=o.contexte||'';etat.message=o.message||'';
+    zone.querySelectorAll('input').forEach(function(i){i.checked=false});
+    textes();
+    if(o.offre){var r=zone.querySelector('input[value="'+o.offre+'"]');if(r)r.checked=true}
+    if(o.nom!==undefined)document.getElementById('choix-nom').value=o.nom;
+    if(o.activite!==undefined)document.getElementById('choix-activite').value=o.activite;
+    erreur.hidden=true;maj();
+    M.hidden=false;document.body.classList.add('verrou');
+    var cible=zone.querySelector('input:checked')||zone.querySelector('input');cible.focus();
+  }
+  function fermer(){M.hidden=true;if(document.getElementById('visionneuse').hidden)document.body.classList.remove('verrou');if(retour&&retour.focus)retour.focus()}
+  window.DZchoix={ouvrir:ouvrir};
+  zone.addEventListener('change',maj);
+  document.getElementById('choix-fermer').addEventListener('click',fermer);
+  M.addEventListener('click',function(e){if(e.target===M)fermer()});
+  addEventListener('keydown',function(e){if(!M.hidden&&e.key==='Escape'){e.stopPropagation();fermer()}},true);
+  F.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=choisie(),a=ar();
+    if(!v){erreur.textContent=a?'اختر باقة للمتابعة.':'Choisissez une offre pour continuer.';erreur.hidden=false;zone.querySelector('input').focus();return}
+    var o=OFFRES.filter(function(x){return x[0]===v})[0];
+    var nom=document.getElementById('choix-nom').value.trim(),act=document.getElementById('choix-activite').value.trim();
+    var px=(o[0]==='Plateforme'?(a?'حسب عرض السعر، ابتداءً من ':'sur devis, dès '):(a?'ابتداءً من ':'à partir de '))+nb(o[1])+(a?' دج':' DA');
+    var lignes=a?['مرحباً Dzign Studio 👋','الباقة المختارة: '+o[0]+' ('+px+')']:['Bonjour Dzign Studio 👋','Offre choisie : '+o[0]+' ('+px+')'];
+    if(nom)lignes.push((a?'الاسم: ':'Nom : ')+nom);
+    if(act)lignes.push((a?'النشاط: ':'Activité : ')+act);
+    if(!ctxEl.hidden)lignes.push(ctxEl.textContent);
+    if(etat.message)lignes.push((a?'المشروع: ':'Projet : ')+etat.message);
+    lignes.push(a?'أودّ حجز مكالمة التعارف المجانية.':'Je souhaite réserver mon appel découverte gratuit.');
+    var url='https://wa.me/'+WA+'?text='+encodeURIComponent(lignes.join('\n'));
+    if(window.fbq)fbq('track','Contact',{content_name:o[0]});
+    var lien=document.createElement('a');lien.href=url;lien.target='_blank';lien.rel='noopener';lien.dataset.direct='1';
+    document.body.appendChild(lien);lien.click();lien.remove();
+    fermer();
+  });
+  // Tous les accès à WhatsApp passent par le choix de l'offre
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-offre], a[href^="https://wa.me/"]');
+    if(!el||el.dataset.direct||el.closest('#choix')||el.closest('#vue'))return;
+    e.preventDefault();e.stopPropagation();
+    ouvrir({offre:el.dataset.offre||'',contexte:el.dataset.contexte||''});
+  },true);
+  if(window.DZ)DZ.cb.push(function(){if(!M.hidden)textes()});
+})();
+</script>
+
+</body>
+</html>
