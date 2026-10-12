@@ -18,6 +18,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | **Prix « à partir de », selon le niveau demandé.** |
 | 2026-10-12 | **Nom : Dzign Studio.** Positionnement **haut de gamme**. |
 | 2026-10-12 | **Paiement BaridiMob : 50 % au début, 50 % à la présentation du site terminé**, puis mise en ligne sur l'hébergement définitif. |
+| 2026-10-12 | **Nom de domaine + email pro offerts la 1re année** dans toutes les formules (≈ 2 000 à 4 000 DA par client, à intégrer au prix). |
+| 2026-10-12 | Réalisation réelle à montrer : **lamaisonduparquet.org**. |
 | 2026-10-12 | **Ne rien mettre en ligne (Hostinger) sans l'accord explicite.** |
 | 2026-10-12 | **WhatsApp pro : 0794709323** (+213 794 70 93 23). |
 | 2026-10-12 | Hébergement sur **Hostinger** (site Dzign + sites clients). |
@@ -32,7 +34,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 ## Feuille de route
 1. **Offre** : formules, prix → `OFFRE.md` *(v3 haut de gamme, à valider)*
 2. **Identité** : nom, logo, couleurs, ton → `IDENTITE.md` *(proposition n°1)*
-3. **Vitrine** : site Dzign Studio → `site-dzign/index.html`, aperçu : https://claude.ai/artifact/RD6NeNfPfgGwtGdppDRUbD *(v1 faite)*. Section « Exemples de sites » ajoutée (restaurant, boutique, immobilier 3D, appli livraison ; noms fictifs). **v3 « choc »** : vidéo du z doré (Higgsfield), immeuble 3D interactif (Higgsfield), vrais visuels pour les exemples, WhatsApp 0794709323. **v4 Portfolio** : 8 sites de démo visitables (resto FR/عربي, boutique avec panier + wilayas, immobilier, mobilier avec configurateur 3D, clinique RDV, salle de sport, institut de beauté, appli livraison), mode ordinateur/téléphone, « Votre site en 10 secondes » (aperçu personnalisé au nom du client), comparatif « Pourquoi Dzign ». Reste : version arabe du site Dzign. **Ne pas mettre en ligne sans accord.**
+3. **Vitrine** : site Dzign Studio → `site-dzign/index.html`, aperçu : https://claude.ai/artifact/RD6NeNfPfgGwtGdppDRUbD *(v1 faite)*. Section « Exemples de sites » ajoutée (restaurant, boutique, immobilier 3D, appli livraison ; noms fictifs). **v3 « choc »** : vidéo du z doré (Higgsfield), immeuble 3D interactif (Higgsfield), vrais visuels pour les exemples, WhatsApp 0794709323. **v4 Portfolio** : 8 sites de démo visitables (resto FR/عربي, boutique avec panier + wilayas, immobilier, mobilier avec configurateur 3D, clinique RDV, salle de sport, institut de beauté, appli livraison), mode ordinateur/téléphone, « Votre site en 10 secondes » (aperçu personnalisé au nom du client), comparatif « Pourquoi Dzign ». **v5** : étude de cas réelle **La Maison du Parquet** (lamaisonduparquet.org, réalisée par l'utilisateur·rice) avec captures qui défilent ordinateur + téléphone ; « nom de domaine + email pro inclus 1re année » dans toutes les formules ; favicon ; formules équilibrées ; badge « Recommandée » (et non « la plus choisie », faux sans clients) ; contrôle qualité 390/768/1280/1920 sans erreur. Reste : version arabe du site Dzign. **Ne pas mettre en ligne sans accord.**
 4. **Acquisition** : contenu réseaux + pubs Meta/TikTok + page de contact
 5. **Vente et livraison** : appel découverte, devis, acompte, fabrication, livraison
 6. **Juridique** *(plus tard)* : statut d'auto-entrepreneur algérien, compte bancaire, conditions de vente

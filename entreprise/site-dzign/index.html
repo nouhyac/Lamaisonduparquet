@@ -1,5 +1,7 @@
 <meta charset="utf-8">
 <title>Dzign Studio</title>
+<meta name="description" content="Dzign Studio, studio digital haut de gamme à Alger : sites web, expériences 3D, boutiques en ligne et applications. Votre site en aperçu en 10 secondes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230B0B0F%27/%3E%3Cpath d=%27M16 16h32v7L27 41h21v7H16v-7l21-18H16z%27 fill=%27%23C8A96A%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap">
@@ -139,6 +141,35 @@ section.bloc{padding-block:clamp(72px,10vw,128px);position:relative;z-index:2}
 .site-carte.large{grid-column:span 2;aspect-ratio:auto}
 @media (max-width:620px){.site-carte.large{grid-column:auto;aspect-ratio:4/5}}
 
+
+/* Étude de cas : réalisation réelle */
+.cas{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,48px);margin-bottom:72px;padding:clamp(20px,4vw,44px);border:1px solid var(--ligne);border-radius:16px;background:linear-gradient(135deg,#17171E,var(--noir) 70%)}
+.cas-scene{width:100%;max-width:980px;justify-self:center}
+@media (min-width:900px){.cas-texte{grid-template-columns:1fr 1fr;column-gap:56px;align-items:start}.cas-texte .cas-liste{grid-column:2;grid-row:1/span 4;align-self:center}}
+.cas-scene{position:relative;min-width:0;padding-bottom:6%;padding-right:9%}
+.cas-ordi{border-radius:10px;overflow:hidden;border:1px solid var(--ligne);background:#1C1C23;box-shadow:0 40px 80px -40px #000}
+.cas-ordi .v-url{display:flex}
+.cas-defile{aspect-ratio:16/10;max-width:100%;background-size:100% auto;background-repeat:no-repeat;background-position:50% 0;animation:cas-defile 46s ease-in-out infinite alternate}
+.cas-tel{position:absolute;right:0;bottom:0;width:27%;aspect-ratio:9/19.5;border-radius:22px;border:6px solid #111;background:#111;overflow:hidden;box-shadow:0 30px 60px -20px #000,0 0 0 1px var(--ligne)}
+.cas-tel .cas-defile{aspect-ratio:auto;height:100%;animation-duration:38s;animation-delay:-8s}
+.cas-scene:hover .cas-defile{animation-play-state:paused}
+@keyframes cas-defile{0%,6%{background-position:50% 0}94%,100%{background-position:50% 100%}}
+.cas-texte{display:grid;gap:18px;min-width:0}
+.cas-texte h3{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.02em}
+.cas-texte .sous{color:var(--gris)}
+.cas-vrai{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--emeraude-clair);border:1px solid var(--emeraude);padding:4px 12px;border-radius:999px;width:max-content}
+.cas-vrai i{width:8px;height:8px;border-radius:50%;background:#3DDC97;box-shadow:0 0 0 0 rgba(61,220,151,.6);animation:en-ligne 2s infinite}
+@keyframes en-ligne{70%{box-shadow:0 0 0 8px rgba(61,220,151,0)}100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}}
+.cas-liste{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.95rem}
+.cas-liste li{display:flex;gap:12px;align-items:baseline}
+.cas-liste li::before{content:"";width:7px;height:7px;background:var(--or);transform:rotate(45deg);flex:none;position:relative;top:-2px}
+.cas-actions{display:flex;flex-wrap:wrap;gap:12px}
+.inclus{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;padding:20px 24px;border:1px dashed color-mix(in srgb,var(--or) 50%,transparent);border-radius:8px;font-size:.95rem}
+.inclus b{color:var(--or);font-family:var(--f-display);letter-spacing:.02em}
+.inclus span{display:flex;gap:8px;align-items:baseline}
+.inclus span::before{content:"✓";color:var(--or);font-weight:700}
+@media (prefers-reduced-motion:reduce){.cas-defile{animation:none}}
+
 /* Essai instantané */
 .essai{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;border:1px solid color-mix(in srgb,var(--or) 40%,transparent);border-radius:14px;padding:clamp(24px,5vw,56px);background:radial-gradient(ellipse at 100% 0%,color-mix(in srgb,var(--or) 16%,transparent),transparent 55%),var(--graphite)}
 @media (max-width:900px){.essai{grid-template-columns:1fr}}
@@ -266,6 +297,7 @@ body.verrou{overflow:hidden}
 
 /* Formules */
 .formules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+@media (min-width:1000px){.formules{grid-template-columns:repeat(6,1fr)}.formule{grid-column:span 2}.formule:nth-child(n+4){grid-column:span 3}}
 .formule{border:1px solid var(--ligne);border-radius:6px;padding:32px 28px;display:grid;gap:18px;grid-template-rows:auto auto 1fr auto;min-width:0;background:var(--noir);transition:border-color .25s,transform .25s}
 .formule:hover{border-color:var(--or);transform:translateY(-6px)}
 .formule.vedette{border-color:var(--or);background:linear-gradient(180deg,color-mix(in srgb,var(--or) 11%,var(--noir)),var(--noir) 60%)}
@@ -388,12 +420,43 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" id="portfolio" style="padding-top:clamp(72px,10vw,128px)">
   <div class="wrap">
     <div class="titre-bloc">
-      <p class="eyebrow">Portfolio · 8 sites à visiter</p>
+      <p class="eyebrow">Portfolio</p>
       <h2>Entrez dans nos sites. <span class="or-brille">Testez-les vraiment.</span></h2>
-      <p>Ce ne sont pas des images. Ouvrez chaque site, cliquez, réservez, ajoutez au panier, faites tourner la 3D, passez de l'ordinateur au téléphone. C'est exactement ce que vos clients vivront.</p>
+      <p>Un vrai site en ligne, puis 8 sites de démonstration que vous pouvez ouvrir et tester : réserver, ajouter au panier, faire tourner la 3D, passer de l'ordinateur au téléphone.</p>
+    </div>
+    <article class="cas" aria-labelledby="cas-titre">
+      <div class="cas-scene">
+        <div class="cas-ordi">
+          <div class="v-url"><i></i><i></i><i></i><span>lamaisonduparquet.org</span></div>
+          <div class="cas-defile" style="background-image:url(medias/lmdp-page.jpg)" role="img" aria-label="Défilement de la page d'accueil de La Maison du Parquet sur ordinateur"></div>
+        </div>
+        <div class="cas-tel"><div class="cas-defile" style="background-image:url(medias/lmdp-mobile.jpg)" role="img" aria-label="La Maison du Parquet sur téléphone"></div></div>
+      </div>
+      <div class="cas-texte">
+        <span class="cas-vrai"><i></i>Réalisation · En ligne</span>
+        <h3 id="cas-titre">La Maison du Parquet</h3>
+        <p class="sous">Parquet EGGER en stock et showroom à Dar El Beïda. Un site pensé pour que le visiteur choisisse son sol, calcule sa commande et réserve sa visite, sans même appeler.</p>
+        <ul class="cas-liste">
+          <li>Comparateur avant / après : carrelage contre parquet, au glissé</li>
+          <li>Quiz « Votre décor en 3 questions »</li>
+          <li>Visualiseur des décors dans votre pièce</li>
+          <li>Calculateur du nombre de cartons</li>
+          <li>Catalogue des décors en stock, avec fiches détaillées</li>
+          <li>Réservation de visite au showroom, avec créneaux</li>
+          <li>Appel et WhatsApp en un geste sur téléphone</li>
+        </ul>
+        <div class="cas-actions">
+          <a class="btn btn-or" href="https://www.lamaisonduparquet.org" target="_blank" rel="noopener">Voir le site en ligne ↗</a>
+          <a class="btn btn-ligne" href="https://wa.me/213794709323?text=Bonjour%20Dzign%20Studio%2C%20je%20veux%20un%20site%20comme%20La%20Maison%20du%20Parquet." target="_blank" rel="noopener">Je veux un site comme celui-ci</a>
+        </div>
+      </div>
+    </article>
+    <div class="titre-bloc" style="margin-bottom:32px">
+      <h3 style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700">8 sites de démonstration à tester</h3>
+      <p>Un métier différent pour chaque site. Ouvrez-les, cliquez, essayez sur ordinateur et sur téléphone.</p>
     </div>
     <div class="portfolio" id="grille-portfolio"></div>
-    <p class="mention">Sites de démonstration conçus par Dzign Studio. Les noms d'entreprises sont fictifs.</p>
+    <p class="mention">Les 8 sites de démonstration utilisent des noms d'entreprises fictifs. La Maison du Parquet est un vrai site, en ligne.</p>
   </div>
 </section>
 
@@ -403,7 +466,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <div class="essai-texte">
         <p class="eyebrow">Essai instantané</p>
         <h2>Voyez <span class="or-brille">votre</span> site en 10 secondes.</h2>
-        <p>Écrivez le nom de votre entreprise, choisissez votre métier et votre couleur. Nous vous montrons tout de suite à quoi pourrait ressembler votre site. Gratuit, sans engagement.</p>
+        <p>Écrivez le nom de votre entreprise, choisissez votre métier et votre couleur. Nous vous montrons tout de suite votre site, à votre nom et sur votre propre nom de domaine. Gratuit, sans engagement.</p>
       </div>
       <form id="form-essai" novalidate>
         <label for="essai-nom">Nom de votre entreprise<input id="essai-nom" maxlength="32" placeholder="Ex. : Pâtisserie Yasmine"></label>
@@ -469,6 +532,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <table class="compare">
         <thead><tr><th></th><th>Un site ordinaire</th><th>Un site Dzign</th></tr></thead>
         <tbody>
+          <tr><td>Adresse du site</td><td>Une adresse générique, partagée avec la plateforme</td><td><span class="ok-or">✓</span>Votre propre nom de domaine et votre email pro à votre nom</td></tr>
           <tr><td>Avant de signer</td><td>Des captures d'écran</td><td><span class="ok-or">✓</span>Votre site en aperçu en 10 secondes, puis une maquette sous 72 h</td></tr>
           <tr><td>Paiement</td><td>Souvent la totalité à l'avance</td><td><span class="ok-or">✓</span>50 % au départ, 50 % seulement après avoir vu le site terminé</td></tr>
           <tr><td>Design</td><td>Un modèle déjà vu ailleurs</td><td><span class="ok-or">✓</span>Création sur mesure, animations, 3D</td></tr>
@@ -497,7 +561,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <div class="prix"><small>À partir de</small><span>30 000<sup>DA</sup></span></div>
       </article>
       <article class="formule vedette">
-        <div class="formule-tete"><h3>Signature</h3><span class="pastille">La plus choisie</span></div>
+        <div class="formule-tete"><h3>Signature</h3><span class="pastille">Recommandée</span></div>
         <p class="pour">Commerces, professions libérales, entreprises.</p>
         <ul><li>Site vitrine sur mesure, jusqu'à 6 pages</li><li>Animations et 2 langues</li><li>Google Maps et référencement</li></ul>
         <div class="prix"><small>À partir de</small><span>80 000<sup>DA</sup></span></div>
@@ -521,6 +585,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <div class="prix"><small>Sur devis, dès</small><span>400 000<sup>DA</sup></span></div>
       </article>
     </div>
+    <div class="inclus"><b>Inclus dans toutes les formules</b><span>Votre propre nom de domaine (.com ou .dz), 1re année offerte</span><span>Votre email pro, comme contact@votre-entreprise.com</span><span>Certificat de sécurité https</span><span>Fiche Google Maps</span></div>
     <p class="note-prix">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la 3D, la rédaction des textes, les photos et le délai.</p>
   </div>
 </section>
@@ -888,7 +953,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     var msg=perso&&perso.id===x.id?'Bonjour Dzign Studio, je suis '+perso.nom+'. J\'ai vu l\'aperçu de mon site ('+x.secteur+') et je veux le lancer.':'Bonjour Dzign Studio, je veux un site comme « '+x.nom+' » ('+x.secteur+').';
     document.getElementById('v-commander').href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
     var bandeau=document.getElementById('v-perso');
-    if(perso&&perso.id===x.id){bandeau.hidden=false;bandeau.innerHTML='<span>Aperçu personnalisé pour <b>'+esc(perso.nom)+'</b>. Ce site peut être le vôtre en 7 jours.</span>'}else bandeau.hidden=true;
+    if(perso&&perso.id===x.id){bandeau.hidden=false;bandeau.innerHTML='<span>Aperçu personnalisé pour <b>'+esc(perso.nom)+'</b>, sur votre propre adresse <b>'+esc(perso.url)+'</b> avec l\'email <b>contact@'+esc(perso.url)+'</b>. Ce site peut être le vôtre en 7 jours.</span>'}else bandeau.hidden=true;
     if(x.id==='kenza')kenza3d(s);else arreter3d();
   }
   function ouvrir(i){dernierFocus=document.activeElement;courant=i;V.hidden=false;document.body.classList.add('verrou');dessiner();document.getElementById('v-fermer').focus()}
