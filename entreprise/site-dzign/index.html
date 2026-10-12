@@ -1,0 +1,407 @@
+<title>Dzign Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
+<style>
+/* Layout : héros en deux colonnes (texte + z doré en 3D), puis sections pleine largeur rythmées par des filets dorés */
+:root{
+  --noir:#0B0B0F; --graphite:#17171D; --ligne:#2A2A33;
+  --ivoire:#F5F3EE; --gris:#A9A6A0;
+  --or:#C8A96A; --or-clair:#E4CF9E; --emeraude:#0E7C5A;
+  --f-display:"Syne","Arial Black",system-ui,sans-serif;
+  --f-texte:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-arabe:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--noir);color:var(--ivoire);font-family:var(--f-texte);font-size:17px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+.ar{font-family:var(--f-arabe);direction:rtl}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+
+/* Navigation */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--noir) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{font-family:var(--f-display);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:baseline;gap:8px}
+.logo b{color:var(--or);font-weight:800}
+.logo small{font-family:var(--f-texte);font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gris);font-weight:500}
+.nav-liens{display:flex;gap:28px;font-size:.92rem}
+.nav-liens a{text-decoration:none;color:var(--gris);transition:color .2s}
+.nav-liens a:hover{color:var(--ivoire)}
+@media (max-width:760px){.nav-liens{display:none}}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--f-texte);transition:transform .2s,background .2s,border-color .2s}
+.btn-or{background:var(--or);color:var(--noir)}
+.btn-or:hover{background:var(--or-clair);transform:translateY(-2px)}
+.btn-ligne{border-color:var(--ligne);color:var(--ivoire);background:transparent}
+.btn-ligne:hover{border-color:var(--or)}
+.btn-petit{padding:10px 18px;font-size:.88rem}
+
+/* Héros */
+.hero{padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-texte{display:grid;gap:26px;min-width:0}
+.hero h1{font-size:clamp(2rem,4.6vw,4rem);font-weight:700;letter-spacing:-.03em}
+@media (max-width:860px){.hero h1{font-size:clamp(1.9rem,8.2vw,3.2rem)}}
+.hero h1 em{font-style:normal;color:var(--or)}
+.hero .ar{font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gris);text-align:start}
+.hero-sous{color:var(--gris);max-width:52ch;font-size:1.08rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.scene{position:relative;aspect-ratio:1/1;max-width:100%;width:100%}
+.scene canvas{width:100%!important;height:100%!important;display:block}
+.scene .repli{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:clamp(10rem,30vw,22rem);color:var(--or);line-height:1}
+.scene .halo{position:absolute;inset:12%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--or) 22%,transparent),transparent 65%);filter:blur(30px);pointer-events:none}
+.scene-legende{position:absolute;bottom:4%;left:0;right:0;text-align:center;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gris)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.scene{max-width:420px;margin-inline:auto}}
+
+/* Bandeau Fondateurs */
+.fondateurs{border-block:1px solid var(--ligne);background:var(--graphite)}
+.fondateurs .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
+.fondateurs p{font-size:1rem}
+.fondateurs strong{color:var(--or)}
+.places{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--gris)}
+.places i{width:12px;height:12px;border-radius:50%;border:1px solid var(--or);display:inline-block}
+.places i.prise{background:var(--or)}
+
+/* Sections */
+section.bloc{padding-block:clamp(64px,9vw,112px)}
+.titre-bloc{display:grid;gap:14px;margin-bottom:48px;max-width:760px}
+.titre-bloc h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:700;letter-spacing:-.025em}
+.titre-bloc p{color:var(--gris);max-width:60ch}
+
+/* Expertises */
+.expertises{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
+.exp{background:var(--noir);padding:28px 24px;display:grid;gap:12px;align-content:start;min-width:0}
+.exp h3{font-size:1.2rem;font-weight:700}
+.exp p{color:var(--gris);font-size:.95rem}
+.exp .marque{font-family:var(--f-display);color:var(--or);font-size:.85rem;letter-spacing:.08em}
+
+/* Formules */
+.formules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.formule{border:1px solid var(--ligne);border-radius:4px;padding:30px 26px;display:grid;gap:18px;grid-template-rows:auto auto 1fr auto;min-width:0;background:var(--noir);transition:border-color .25s,transform .25s}
+.formule:hover{border-color:var(--or);transform:translateY(-4px)}
+.formule.vedette{border-color:var(--or);background:linear-gradient(180deg,color-mix(in srgb,var(--or) 9%,var(--noir)),var(--noir) 60%)}
+.formule-tete{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.formule h3{font-size:1.65rem;font-weight:700}
+.pastille{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--noir);background:var(--or);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.pour{color:var(--gris);font-size:.92rem}
+.formule ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem}
+.formule li{padding-left:22px;position:relative}
+.formule li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:1px;background:var(--or)}
+.prix{border-top:1px solid var(--ligne);padding-top:18px;display:grid;gap:2px}
+.prix small{color:var(--gris);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.prix span{font-family:var(--f-display);font-size:1.75rem;font-weight:700;font-variant-numeric:tabular-nums}
+.prix span sup{font-size:.85rem;color:var(--or);margin-left:4px;vertical-align:.6em}
+.note-prix{margin-top:24px;color:var(--gris);font-size:.92rem;max-width:70ch}
+
+/* Déroulement */
+.etapes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:36px 28px;counter-reset:etape}
+.etapes li{counter-increment:etape;display:grid;gap:8px;align-content:start;padding-top:18px;border-top:1px solid var(--ligne);min-width:0}
+.etapes li::before{content:counter(etape,decimal-leading-zero);font-family:var(--f-display);color:var(--or);font-size:.9rem;letter-spacing:.1em}
+.etapes h3{font-size:1.1rem;font-weight:700}
+.etapes p{color:var(--gris);font-size:.94rem}
+.etapes li.paiement h3{color:var(--or-clair)}
+.badge-baridi{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--emeraude);color:#7FD1AE;padding:2px 8px;border-radius:999px;width:max-content}
+
+/* Abonnements + options */
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px}
+.tableau{width:100%;border-collapse:collapse;font-size:.96rem}
+.tableau th{text-align:left;font-family:var(--f-display);font-weight:700;font-size:1.05rem;padding:16px 12px 16px 0;vertical-align:top;white-space:nowrap}
+.tableau td{padding:16px 0;color:var(--gris);vertical-align:top;border-top:1px solid var(--ligne)}
+.tableau tr:first-child td,.tableau tr:first-child th{border-top:0}
+.tableau th{border-top:1px solid var(--ligne)}
+.tableau td.montant{color:var(--ivoire);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;padding-left:12px}
+.duo h3{font-size:1.4rem;margin-bottom:8px}
+.duo .intro{color:var(--gris);font-size:.94rem;margin-bottom:18px}
+.table-scroll{overflow-x:auto}
+
+/* Contact */
+.contact{background:var(--graphite);border-top:1px solid var(--ligne)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+.contact h2{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:700;letter-spacing:-.03em}
+.contact h2 em{font-style:normal;color:var(--or)}
+.contact-gauche{display:grid;gap:22px;min-width:0}
+.numero{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-family:var(--f-display);font-size:1.4rem;font-variant-numeric:tabular-nums}
+.numero span{user-select:all}
+form{display:grid;gap:14px;min-width:0}
+label{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);display:grid;gap:6px}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--ivoire);background:var(--noir);border:1px solid var(--ligne);border-radius:4px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--or);outline:none}
+textarea{min-height:110px;resize:vertical}
+.confirmation{border:1px solid var(--emeraude);border-radius:4px;padding:14px 16px;font-size:.95rem;color:#BFE8D6}
+
+footer{border-top:1px solid var(--ligne)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:28px;color:var(--gris);font-size:.86rem}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#haut" aria-label="Dzign Studio, accueil"><span>d<b>z</b>ign</span> <small>studio</small></a>
+    <div class="nav-liens">
+      <a href="#expertises">Expertises</a>
+      <a href="#formules">Formules</a>
+      <a href="#deroulement">Déroulement</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn btn-or btn-petit" href="#contact">Démarrer un projet</a>
+  </div>
+</nav>
+
+<header class="hero" id="haut">
+  <div class="wrap">
+    <div class="hero-texte">
+      <p class="eyebrow">Studio digital haut de gamme · Alger</p>
+      <h1>L'excellence digitale, <em>made in DZ.</em></h1>
+      <p class="ar" lang="ar">تميّز رقمي، صُنع في الجزائر</p>
+      <p class="hero-sous">Sites web, expériences 3D, boutiques en ligne et applications. Conçus à Alger, au niveau des plus grandes marques, pour vous apporter des clients.</p>
+      <div class="hero-actions">
+        <a class="btn btn-or" href="#contact">Parler de mon projet</a>
+        <a class="btn btn-ligne" href="#formules">Voir les formules</a>
+      </div>
+    </div>
+    <div class="scene" id="scene" aria-label="Le z doré de Dzign Studio, en 3D">
+      <div class="halo"></div>
+      <div class="repli" id="repli">z</div>
+      <p class="scene-legende">Bougez la souris ou le doigt</p>
+    </div>
+  </div>
+</header>
+
+<div class="fondateurs">
+  <div class="wrap">
+    <p><strong>Programme Fondateurs</strong> : -20 % sur toutes les formules pour nos 5 premiers clients.</p>
+    <div class="places" aria-label="5 places disponibles sur 5">
+      <i></i><i></i><i></i><i></i><i></i> <span>5 places restantes</span>
+    </div>
+  </div>
+</div>
+
+<section class="bloc" id="expertises">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <p class="eyebrow">Expertises</p>
+      <h2>Tout ce qu'il faut pour briller en ligne, au même endroit.</h2>
+      <p>Un seul studio pour le design, la technique et le marketing. Vous avez un interlocuteur unique, joignable sur WhatsApp.</p>
+    </div>
+    <div class="expertises">
+      <div class="exp"><span class="marque">Design</span><h3>Sur mesure, jamais vu</h3><p>Typographie soignée, animations fluides. Aucun modèle recyclé.</p></div>
+      <div class="exp"><span class="marque">3D</span><h3>Expériences immersives</h3><p>Produits à faire tourner, configurateurs, visites virtuelles.</p></div>
+      <div class="exp"><span class="marque">Web</span><h3>Rapide et bien référencé</h3><p>Chargement éclair, pensé mobile, optimisé pour Google.</p></div>
+      <div class="exp"><span class="marque">Plateformes</span><h3>Applications métier</h3><p>Réservation, espace client, marketplace, tableau de bord.</p></div>
+      <div class="exp"><span class="marque">Marketing</span><h3>Des visiteurs aux clients</h3><p>Pubs Facebook, Instagram, TikTok, et référencement local.</p></div>
+      <div class="exp"><span class="marque">ع · FR · EN</span><h3>Trilingue</h3><p>Arabe, français et anglais, avec une mise en page arabe impeccable.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="formules" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <p class="eyebrow">Formules</p>
+      <h2>Choisissez votre niveau d'ambition.</h2>
+      <p>Prix de départ indicatifs. Le devis final dépend du niveau demandé, et il est fixé avant de commencer.</p>
+    </div>
+    <div class="formules">
+      <article class="formule">
+        <div class="formule-tete"><h3>Impact</h3></div>
+        <p class="pour">Lancer une offre, un produit ou un événement.</p>
+        <ul><li>Une page unique premium et animée</li><li>WhatsApp, carte et formulaire</li><li>Pensée pour vos publicités</li></ul>
+        <div class="prix"><small>À partir de</small><span>30 000<sup>DA</sup></span></div>
+      </article>
+      <article class="formule vedette">
+        <div class="formule-tete"><h3>Signature</h3><span class="pastille">La plus choisie</span></div>
+        <p class="pour">Commerces, professions libérales, entreprises.</p>
+        <ul><li>Site vitrine sur mesure, jusqu'à 6 pages</li><li>Animations et 2 langues</li><li>Google Maps et référencement</li></ul>
+        <div class="prix"><small>À partir de</small><span>80 000<sup>DA</sup></span></div>
+      </article>
+      <article class="formule">
+        <div class="formule-tete"><h3>Commerce</h3></div>
+        <p class="pour">Vendeurs, marques et boutiques.</p>
+        <ul><li>Boutique en ligne complète</li><li>Paiement à la livraison, frais par wilaya</li><li>BaridiMob, CIB et Edahabia en option</li></ul>
+        <div class="prix"><small>À partir de</small><span>150 000<sup>DA</sup></span></div>
+      </article>
+      <article class="formule">
+        <div class="formule-tete"><h3>Immersion</h3></div>
+        <p class="pour">Immobilier, mobilier, mode, automobile, marques premium.</p>
+        <ul><li>Produits en 3D à faire tourner</li><li>Configurateur ou visite virtuelle</li><li>Effet « waouh » garanti</li></ul>
+        <div class="prix"><small>À partir de</small><span>250 000<sup>DA</sup></span></div>
+      </article>
+      <article class="formule">
+        <div class="formule-tete"><h3>Plateforme</h3></div>
+        <p class="pour">Startups, entreprises et projets ambitieux.</p>
+        <ul><li>Application web ou mobile</li><li>Réservation, espace client, marketplace</li><li>Tableau de bord sur mesure</li></ul>
+        <div class="prix"><small>Sur devis, dès</small><span>400 000<sup>DA</sup></span></div>
+      </article>
+    </div>
+    <p class="note-prix">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la rédaction des textes, les photos et le délai.</p>
+  </div>
+</section>
+
+<section class="bloc" id="deroulement" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <p class="eyebrow">Déroulement</p>
+      <h2>Vous voyez votre site avant de payer le solde.</h2>
+    </div>
+    <ol class="etapes">
+      <li><h3>Appel découverte</h3><p>Gratuit, sur WhatsApp ou par téléphone. On comprend votre besoin.</p></li>
+      <li><h3>Devis clair</h3><p>Un prix fixé avant de commencer. Aucune surprise.</p></li>
+      <li class="paiement"><h3>Acompte de 50 %</h3><span class="badge-baridi">BaridiMob</span><p>Le projet démarre dès réception.</p></li>
+      <li><h3>Maquette sous 72 h</h3><p>Vous validez le style avant la fabrication.</p></li>
+      <li><h3>Fabrication</h3><p>Design, développement, textes et optimisation.</p></li>
+      <li class="paiement"><h3>Présentation et solde</h3><span class="badge-baridi">BaridiMob</span><p>Vous découvrez votre site terminé, puis réglez les 50 % restants.</p></li>
+      <li><h3>Mise en ligne</h3><p>Hébergement définitif, nom de domaine et courte formation.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="bloc" style="padding-top:0">
+  <div class="wrap duo">
+    <div>
+      <h3>Hébergement et suivi</h3>
+      <p class="intro">Optionnel. Votre site reste rapide, sécurisé et à jour.</p>
+      <div class="table-scroll">
+        <table class="tableau">
+          <tr><th>Care</th><td>Hébergement rapide, https, sauvegardes, mises à jour, surveillance</td><td class="montant">5 000 DA/mois</td></tr>
+          <tr><th>Care+</th><td>Care, plus modifications illimitées, rapport de visites et référencement</td><td class="montant">15 000 DA/mois</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3>Options marketing</h3>
+      <p class="intro">Pour transformer votre site en machine à clients.</p>
+      <div class="table-scroll">
+        <table class="tableau">
+          <tr><th>Lancement Pub</th><td>Visuels, vidéos et gestion de vos pubs pendant 1 mois (budget pub à part)</td><td class="montant">dès 35 000 DA</td></tr>
+          <tr><th>Visuels 3D</th><td>Rendus et vidéos 3D de vos produits</td><td class="montant">dès 20 000 DA</td></tr>
+          <tr><th>Google Local</th><td>Fiche Google optimisée, avis et référencement local</td><td class="montant">dès 10 000 DA</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc contact" id="contact">
+  <div class="wrap">
+    <div class="contact-gauche">
+      <p class="eyebrow">Contact</p>
+      <h2>Votre projet mérite <em>l'exceptionnel.</em></h2>
+      <p style="color:var(--gris);max-width:46ch">Écrivez-nous sur WhatsApp, on vous répond dans la journée. L'appel découverte est gratuit.</p>
+      <div class="numero"><span id="numero">+213 5XX XX XX XX</span><button class="btn btn-ligne btn-petit" type="button" id="copier">Copier</button></div>
+      <div><a class="btn btn-or" href="https://wa.me/213000000000" target="_blank" rel="noopener">Ouvrir WhatsApp</a></div>
+    </div>
+    <form id="formulaire" novalidate>
+      <label for="nom">Votre nom<input id="nom" name="nom" autocomplete="name" placeholder="Ex. : Amine Belkacem"></label>
+      <label for="activite">Votre activité<input id="activite" name="activite" placeholder="Ex. : restaurant à Hydra"></label>
+      <label for="formule">Formule qui vous intéresse
+        <select id="formule" name="formule">
+          <option>Je ne sais pas encore</option><option>Impact</option><option selected>Signature</option><option>Commerce</option><option>Immersion</option><option>Plateforme</option>
+        </select>
+      </label>
+      <label for="message">Votre projet en quelques mots<textarea id="message" name="message" placeholder="Ce que vous voulez, vos délais, vos exemples préférés…"></textarea></label>
+      <button class="btn btn-or" type="submit">Préparer ma demande</button>
+      <div class="confirmation" id="confirmation" hidden></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dzign Studio · Alger, Algérie</span>
+    <span class="ar" lang="ar">تميّز رقمي، صُنع في الجزائر</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  // Copier le numéro
+  var btn=document.getElementById('copier');
+  btn.addEventListener('click',function(){
+    var t=document.getElementById('numero').textContent;
+    var ok=function(){btn.textContent='Copié';setTimeout(function(){btn.textContent='Copier'},1800)};
+    try{navigator.clipboard.writeText(t).then(ok,function(){selectionner()})}catch(e){selectionner()}
+    function selectionner(){var r=document.createRange();r.selectNodeContents(document.getElementById('numero'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+  });
+
+  // Formulaire : prépare le message à envoyer sur WhatsApp
+  document.getElementById('formulaire').addEventListener('submit',function(e){
+    e.preventDefault();
+    var nom=document.getElementById('nom').value.trim()||'—';
+    var act=document.getElementById('activite').value.trim()||'—';
+    var f=document.getElementById('formule').value;
+    var c=document.getElementById('confirmation');
+    c.textContent='Merci '+(nom==='—'?'':nom+' ')+'! Votre demande ('+f+', '+act+') est prête. Envoyez-la-nous sur WhatsApp au numéro ci-contre pour réserver votre appel découverte.';
+    c.hidden=false;
+  });
+
+  // Z doré en 3D
+  if(!window.THREE)return;
+  var scene=document.getElementById('scene');
+  var reduit=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var renderer;
+  try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true})}catch(e){return}
+  document.getElementById('repli').hidden=true;
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  scene.appendChild(renderer.domElement);
+
+  var s3=new THREE.Scene();
+  var cam=new THREE.PerspectiveCamera(35,1,0.1,100);
+  cam.position.set(0,0,7.2);
+
+  var forme=new THREE.Shape();
+  [[-1,1],[1,1],[1,.62],[-.42,-.62],[1,-.62],[1,-1],[-1,-1],[-1,-.62],[.42,.62],[-1,.62]].forEach(function(p,i){i?forme.lineTo(p[0],p[1]):forme.moveTo(p[0],p[1])});
+  var geo=new THREE.ExtrudeGeometry(forme,{depth:.55,bevelEnabled:true,bevelThickness:.09,bevelSize:.07,bevelSegments:8,curveSegments:8});
+  geo.center();
+  var mat=new THREE.MeshStandardMaterial({color:0xC8A96A,metalness:.72,roughness:.26});
+  var z=new THREE.Mesh(geo,mat);
+  z.scale.setScalar(1.12);
+  s3.add(z);
+
+  s3.add(new THREE.AmbientLight(0xffffff,.35));
+  var cle=new THREE.DirectionalLight(0xfff4e0,1.6);cle.position.set(3,4,5);s3.add(cle);
+  var dore=new THREE.PointLight(0xE4CF9E,2.2,20);dore.position.set(-4,2,3);s3.add(dore);
+  var vert=new THREE.PointLight(0x0E7C5A,3,20);vert.position.set(2,-3,-3);s3.add(vert);
+  var contre=new THREE.DirectionalLight(0xffffff,.8);contre.position.set(-2,-1,-5);s3.add(contre);
+
+  // Poussière d'or
+  var n=160,pos=new Float32Array(n*3);
+  for(var i=0;i<n;i++){pos[i*3]=(Math.random()-.5)*7;pos[i*3+1]=(Math.random()-.5)*7;pos[i*3+2]=(Math.random()-.5)*4-1}
+  var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  var pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xC8A96A,size:.025,transparent:true,opacity:.7}));
+  s3.add(pts);
+
+  function taille(){var w=scene.clientWidth;renderer.setSize(w,w,false);cam.aspect=1;cam.updateProjectionMatrix()}
+  taille();addEventListener('resize',taille);
+
+  var cible={x:0,y:0};
+  function viser(cx,cy){var r=scene.getBoundingClientRect();cible.x=((cx-r.left)/r.width-.5)*2;cible.y=((cy-r.top)/r.height-.5)*2}
+  addEventListener('pointermove',function(e){viser(e.clientX,e.clientY)});
+  scene.addEventListener('touchmove',function(e){var t=e.touches[0];viser(t.clientX,t.clientY)},{passive:true});
+
+  z.rotation.set(-.15,-.45,0);
+  var t0=performance.now();
+  function boucle(t){
+    var s=(t-t0)/1000;
+    var auto=reduit?0:Math.sin(s*.6)*.55;
+    z.rotation.y+=((auto+cible.x*.7-.2)-z.rotation.y)*.05;
+    z.rotation.x+=((cible.y*.4-.12)-z.rotation.x)*.05;
+    z.position.y=reduit?0:Math.sin(s*1.1)*.08;
+    pts.rotation.y=s*.03;
+    renderer.render(s3,cam);
+    if(!reduit)requestAnimationFrame(boucle);
+  }
+  requestAnimationFrame(boucle);
+  if(reduit)addEventListener('pointermove',function(){requestAnimationFrame(boucle)});
+})();
+</script>

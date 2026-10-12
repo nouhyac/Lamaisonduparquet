@@ -34,7 +34,7 @@ Facebook, TikTok et LinkedIn.
 
 ## Typographies (gratuites)
 - Titres : **Syne** (moderne, caractère fort).
-- Texte : **Inter** (très lisible).
+- Texte : **Hanken Grotesk** (très lisible, plus de caractère qu'Inter).
 - Arabe : **IBM Plex Sans Arabic** (élégante, s'accorde avec Inter).
 
 ## Logo : concept

@@ -30,7 +30,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 ## Feuille de route
 1. **Offre** : formules, prix → `OFFRE.md` *(v3 haut de gamme, à valider)*
 2. **Identité** : nom, logo, couleurs, ton → `IDENTITE.md` *(proposition n°1)*
-3. **Vitrine** : site Dzign Studio (avec 3D) + 2 ou 3 démos pour le portfolio *(prochaine étape)*
+3. **Vitrine** : site Dzign Studio → `site-dzign/index.html`, aperçu : https://claude.ai/artifact/RD6NeNfPfgGwtGdppDRUbD *(v1 faite)*. Reste : vrai numéro WhatsApp, version arabe, 2 ou 3 démos portfolio, mise en ligne sur Hostinger
 4. **Acquisition** : contenu réseaux + pubs Meta/TikTok + page de contact
 5. **Vente et livraison** : appel découverte, devis, acompte, fabrication, livraison
 6. **Juridique** *(plus tard)* : statut d'auto-entrepreneur algérien, compte bancaire, conditions de vente
@@ -48,4 +48,4 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | **Gamma** | ✅ relié | Présentations commerciales |
 
 ## Journal des sessions
-- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms. Choix : Dzign Studio, haut de gamme, BaridiMob 50/50. Offre v3 et identité proposées. Outils listés (Hostinger, Higgsfield, Canva gratuit, Meta à relier).
+- **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms. Choix : Dzign Studio, haut de gamme, BaridiMob 50/50. Offre v3 et identité proposées. Outils listés (Hostinger, Higgsfield, Canva gratuit, Meta à relier). Site Dzign Studio v1 construit (z doré en 3D) et publié en aperçu.
