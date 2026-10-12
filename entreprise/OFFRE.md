@@ -50,7 +50,7 @@ et de l'autorisation de montrer leur site dans le portfolio.
 ## 3. Ce qui nous différencie
 - **Qualité exceptionnelle** à prix accessible.
 - **Aperçu du site en 48 h.**
-- **Prix fixe et clair**, paiement en 2 fois (50 % au départ, 50 % à la livraison).
+- **Devis clair, fixé avant de commencer** (aucune surprise), paiement en 2 fois (50 % au départ, 50 % à la livraison).
 - **Un seul interlocuteur**, joignable sur WhatsApp.
 - Sites **pensés pour rapporter des clients**.
 
