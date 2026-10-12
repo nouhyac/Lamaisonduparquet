@@ -22,6 +22,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | Réalisation réelle à montrer : **lamaisonduparquet.org**. |
 | 2026-10-12 | **Tout à distance** : appel WhatsApp, maquette en ligne, paiement BaridiMob, aucun déplacement. |
 | 2026-10-13 | **Site en ligne : https://dzignstudio.store** |
+| 2026-10-13 | **WhatsApp normal** (pas WhatsApp Business) sur le 0549 50 68 57. Comptes @dzignstudio créés (Instagram, Facebook, TikTok), aucun contenu publié pour l'instant. Email de contact : dzignstudio16@yahoo.com (email pro @dzignstudio.store optionnel). |
 | 2026-10-13 | **Domaine retenu : dzignstudio.store** (offert avec l'hébergement Hostinger, choisi par l'utilisateur·rice). dzignstudio.design reste une option plus tard. Email pro : contact@dzignstudio.store. |
 | 2026-10-12 | Nom de domaine envisagé au départ : **dzignstudio.design** (libre au 2026-10-12) — achat par l'utilisateur·rice sur Hostinger. Email et comptes Instagram/TikTok créés par l'utilisateur·rice après. |
 | 2026-10-12 | Le client **choisit une offre avant d'arriver sur WhatsApp**. |
@@ -36,7 +37,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 - [ ] Niveau technique de départ
 - [ ] Budget de départ (pub + outils)
 - [ ] Valider l'identité (`IDENTITE.md`) et les prix (`OFFRE.md` v3)
-- [ ] Réserver les comptes @dzignstudio sur les réseaux (bios, photo de profil et couverture prêtes : `campagne/profil/`)
+- [x] Comptes @dzignstudio créés (Instagram, Facebook, TikTok)
+- [ ] Commencer à publier la campagne (J1 : vidéo 1 + post 1)
 - [x] Email Yahoo créé : **dzignstudio16@yahoo.com** (pour les comptes réseaux)
 - [ ] Email pro contact@dzignstudio.store (après enregistrement du domaine)
 
