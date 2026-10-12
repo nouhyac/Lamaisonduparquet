@@ -1,0 +1,190 @@
+<title>Prospection Dzign</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Layout : outil en deux colonnes (formulaire du prospect | lien + messages prêts), puis suivi des prospects et règles d'or */
+:root{
+  --noir:#0B0B0F;--graphite:#15151B;--champ:#1C1C23;--ligne:#2A2A33;
+  --ivoire:#F5F3EE;--gris:#A9A6A0;--or:#C8A96A;--or-clair:#E9D6A6;--vert:#7FD1AE;--rouge:#E8A39A;
+  --ft:"Syne","Arial Black",sans-serif;--fb:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--noir);color:var(--ivoire);font-family:var(--fb);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,36px);padding-block:28px 72px;display:grid;gap:40px}
+h1,h2,h3{font-family:var(--ft);margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+.tete h1{font-size:clamp(1.9rem,4.6vw,3rem);letter-spacing:-.03em}
+.tete h1 b{color:var(--or)}
+.tete p{color:var(--gris);max-width:62ch;margin-top:10px}
+.eyebrow{display:block;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:8px}
+.outil{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:24px;align-items:start}
+@media (max-width:860px){.outil{grid-template-columns:1fr}}
+.panneau{background:var(--graphite);border:1px solid var(--ligne);border-radius:14px;padding:clamp(18px,3vw,26px);display:grid;gap:16px;min-width:0}
+.panneau h2{font-size:1.25rem}
+label{display:grid;gap:6px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+input,select{font:inherit;font-size:1rem;text-transform:none;letter-spacing:0;color:var(--ivoire);background:var(--champ);border:1px solid var(--ligne);border-radius:8px;padding:11px 13px;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--or)}
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.deux{grid-template-columns:1fr}}
+.note{font-size:.85rem;color:var(--gris)}
+.lien{display:grid;gap:8px;padding:14px;border:1px dashed var(--or);border-radius:10px;background:color-mix(in srgb,var(--or) 7%,var(--graphite))}
+.lien code{font-family:var(--fb);font-size:.92rem;color:var(--or-clair);word-break:break-all}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font:inherit;font-size:.9rem;font-weight:600;border-radius:999px;padding:9px 16px;cursor:pointer;border:1px solid var(--or);background:none;color:var(--or);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:var(--or);color:var(--noir)}
+.btn.plein{background:var(--or);color:var(--noir)}
+.btn.plein:hover{background:var(--or-clair)}
+.btn.discret{border-color:var(--ligne);color:var(--gris)}
+.msg{display:grid;gap:8px;padding-top:14px;border-top:1px solid var(--ligne)}
+.msg h3{font-size:1rem;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.msg h3 small{font-family:var(--fb);font-weight:500;font-size:.78rem;color:var(--gris)}
+.texte{white-space:pre-wrap;font-size:.95rem;background:var(--champ);border:1px solid var(--ligne);border-radius:10px;padding:14px;color:#E4E0D9;min-width:0;overflow-wrap:anywhere}
+.compteurs{display:flex;flex-wrap:wrap;gap:8px}
+.compteurs span{border:1px solid var(--ligne);border-radius:999px;padding:5px 12px;font-size:.85rem;color:var(--gris)}
+.compteurs b{color:var(--ivoire);font-variant-numeric:tabular-nums}
+.table{overflow-x:auto;border:1px solid var(--ligne);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:640px;font-size:.92rem}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--ligne);vertical-align:middle}
+th{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or);font-weight:600}
+tr:last-child td{border-bottom:0}
+td select{padding:6px 8px;font-size:.88rem}
+.pastille{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.vide{padding:22px;text-align:center;color:var(--gris)}
+.regles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.regle{border:1px solid var(--ligne);border-radius:12px;padding:16px;display:grid;gap:6px;background:var(--graphite)}
+.regle h3{font-size:1rem;color:var(--or-clair)}
+.regle p{color:var(--gris);font-size:.92rem}
+:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--or);color:var(--noir);font-weight:600;padding:10px 18px;border-radius:999px;font-size:.9rem}
+</style>
+
+<div class="wrap">
+  <header class="tete">
+    <span class="eyebrow">Dzign Studio · Prospection</span>
+    <h1>Un lien <b>à leur nom</b>, un message prêt.</h1>
+    <p>Tape le nom du commerce : l'outil crée le lien qui ouvre l'aperçu de son futur site sur dzignstudio.store, et les 3 messages à envoyer. Ajoute-le ensuite à ton suivi.</p>
+  </header>
+
+  <div class="outil">
+    <form class="panneau" id="f" novalidate>
+      <h2>Le prospect</h2>
+      <label for="moi">Ton prénom (signature des messages)<input id="moi" placeholder="Ex. : Sofiane"></label>
+      <label for="nom">Nom du commerce<input id="nom" maxlength="32" value="Pâtisserie Yasmine"></label>
+      <div class="deux">
+        <label for="gerant">Prénom du gérant (facultatif)<input id="gerant" placeholder="Ex. : Yasmine"></label>
+        <label for="ou">Trouvé sur
+          <select id="ou"><option>Instagram</option><option>Facebook</option><option>Google Maps</option><option>TikTok</option><option>Bouche-à-oreille</option></select>
+        </label>
+      </div>
+      <div class="deux">
+        <label for="metier">Métier
+          <select id="metier">
+            <option value="resto">Restaurant, café, pâtisserie</option>
+            <option value="boutique">Boutique, mode, bijoux</option>
+            <option value="immo">Immobilier, promotion</option>
+            <option value="kenza">Meubles, décoration</option>
+            <option value="clinique">Santé, clinique, cabinet</option>
+            <option value="sport">Sport, coaching</option>
+            <option value="beaute">Beauté, coiffure, spa</option>
+            <option value="wesla">Livraison, application</option>
+          </select>
+        </label>
+        <label for="couleur">Couleur
+          <select id="couleur"><option value="or">Or</option><option value="emeraude">Émeraude</option><option value="bordeaux">Bordeaux</option><option value="bleu">Bleu nuit</option><option value="corail">Corail</option><option value="rose" selected>Rose</option></select>
+        </label>
+      </div>
+      <label for="places">Places Fondateurs restantes<input id="places" type="number" min="0" max="5" value="5"></label>
+      <p class="note">L'exemple « Pâtisserie Yasmine » est là pour te montrer le résultat. Remplace-le par ton vrai prospect.</p>
+      <div class="actions"><button class="btn plein" type="submit">Ajouter à mon suivi</button><button class="btn discret" type="button" id="vider">Nouveau prospect</button></div>
+    </form>
+
+    <section class="panneau" aria-labelledby="t-res">
+      <h2 id="t-res">Ce que tu envoies</h2>
+      <div class="lien">
+        <span class="note">Lien de l'aperçu personnalisé</span>
+        <code id="lien"></code>
+        <div class="actions"><button class="btn" type="button" data-copie="lien">Copier le lien</button><a class="btn discret" id="ouvrir" target="_blank" rel="noopener">Voir l'aperçu ↗</a></div>
+      </div>
+      <div class="msg"><h3>1 · Premier message <small>le jour même</small></h3><p class="texte" id="m1"></p><div class="actions"><button class="btn" type="button" data-copie="m1">Copier</button></div></div>
+      <div class="msg"><h3>2 · Relance <small>2 jours après, sans réponse</small></h3><p class="texte" id="m2"></p><div class="actions"><button class="btn" type="button" data-copie="m2">Copier</button></div></div>
+      <div class="msg"><h3>3 · Dernière relance <small>5 jours après</small></h3><p class="texte" id="m3"></p><div class="actions"><button class="btn" type="button" data-copie="m3">Copier</button></div></div>
+    </section>
+  </div>
+
+  <section style="display:grid;gap:14px" aria-labelledby="t-suivi">
+    <h2 id="t-suivi" style="font-size:1.4rem">Mon suivi</h2>
+    <div class="compteurs" id="compteurs"></div>
+    <div class="table"><table>
+      <thead><tr><th>Commerce</th><th>Trouvé sur</th><th>Contacté le</th><th>Statut</th><th>Lien</th><th></th></tr></thead>
+      <tbody id="liste"></tbody>
+    </table></div>
+    <p class="note">Ce suivi reste enregistré dans ce navigateur, sur cet appareil.</p>
+  </section>
+
+  <section style="display:grid;gap:14px" aria-labelledby="t-regles">
+    <h2 id="t-regles" style="font-size:1.4rem">Les règles d'or</h2>
+    <div class="regles">
+      <div class="regle"><h3>Qui contacter</h3><p>Des commerces actifs sur Instagram ou Facebook (posts récents, avis) mais sans site, ou avec seulement un lien Linktree. Ce sont ceux qui ont le plus à gagner.</p></div>
+      <div class="regle"><h3>Où les trouver</h3><p>Instagram : #alger #algerfood #boutiquealger #patisseriealger. Facebook : groupes de commerçants. Google Maps : « restaurant Hydra », « salon de beauté Alger » sans site affiché.</p></div>
+      <div class="regle"><h3>Combien par jour</h3><p>10 à 20 messages maximum, tous personnalisés. Au-delà, Instagram peut bloquer ton compte. Mieux vaut 15 bons messages que 100 copiés-collés.</p></div>
+      <div class="regle"><h3>Avant d'écrire</h3><p>Ouvre toujours l'aperçu pour vérifier qu'il est beau avec leur nom et leur métier. Adapte la couleur à leur logo ou à leur vitrine.</p></div>
+      <div class="regle"><h3>Le bon moment</h3><p>En semaine, entre 10 h et 12 h ou entre 15 h et 17 h, quand le gérant a le temps de répondre. Évite les heures de rush.</p></div>
+      <div class="regle"><h3>S'ils répondent</h3><p>Propose l'appel découverte de 15 minutes sur WhatsApp, puis suis le script de vente. Note le statut ici dès la réponse.</p></div>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+  var BASE='https://dzignstudio.store/';
+  var STATUTS=[['contacte','Contacté','#A9A6A0'],['j2','Relancé J+2','#C8A96A'],['j5','Relancé J+5','#C8A96A'],['interesse','Intéressé','#7FD1AE'],['devis','Devis envoyé','#7FD1AE'],['client','Client 🎉','#3DDC97'],['non','Pas intéressé','#E8A39A']];
+  var $=function(id){return document.getElementById(id)};
+  function lire(k,d){try{var v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+  function ecrire(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+  var prospects=lire('dz-prospects',[]);
+  $('moi').value=lire('dz-moi','');
+
+  function lienDe(nom,metier,couleur){return BASE+'?apercu='+encodeURIComponent(nom)+'&metier='+metier+'&couleur='+couleur+'#essai'}
+  function maj(){
+    var nom=$('nom').value.trim()||'Votre entreprise',g=$('gerant').value.trim(),moi=$('moi').value.trim()||'[ton prénom]',ou=$('ou').value,pl=$('places').value||'5';
+    var url=lienDe(nom,$('metier').value,$('couleur').value);
+    $('lien').textContent=url;$('ouvrir').href=url;
+    var salut='Bonjour'+(g?' '+g:'')+' 👋';
+    var vu=ou==='Bouche-à-oreille'?'On m\'a parlé de '+nom:'J\'ai découvert '+nom+' sur '+ou;
+    $('m1').textContent=salut+'\n\nJe suis '+moi+', de Dzign Studio, un studio de création de sites web à Alger. '+vu+' et j\'ai pris 2 minutes pour imaginer votre site internet :\n\n👉 '+url+'\n\nC\'est un aperçu gratuit, à votre nom. S\'il vous plaît, je peux en faire votre vrai site en 7 jours, avec votre propre nom de domaine. Et vous ne payez le solde qu\'après avoir vu le site terminé.\n\nNos 5 premiers clients ont -20 %. Bonne journée !';
+    $('m2').textContent=salut+'\n\nAvez-vous eu le temps de regarder l\'aperçu de votre site ?\n👉 '+url+'\n\nJe peux changer la couleur, les textes ou le style en 2 minutes si vous voulez voir autre chose. Je reste disponible pour un appel de 15 minutes sur WhatsApp, gratuit et sans engagement 🙂';
+    $('m3').textContent=salut+'\n\nDernier petit message de ma part : il reste '+pl+' place'+(pl>1?'s':'')+' à -20 % dans notre programme Fondateurs, et j\'ai pensé à '+nom+' en premier.\n\nSi le moment n\'est pas idéal, aucun souci, je vous souhaite une belle continuation. Votre aperçu reste disponible ici : '+url;
+  }
+  ['moi','nom','gerant','ou','metier','couleur','places'].forEach(function(id){$(id).addEventListener('input',maj);$(id).addEventListener('change',maj)});
+  $('moi').addEventListener('change',function(){ecrire('dz-moi',$('moi').value.trim())});
+
+  function toast(t){var e=$('toast');e.textContent=t;e.hidden=false;clearTimeout(e._t);e._t=setTimeout(function(){e.hidden=true},1600)}
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-copie]');if(!b)return;
+    var el=$(b.dataset.copie),t=el.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);toast('Texte sélectionné : copie-le')}
+    try{navigator.clipboard.writeText(t).then(function(){toast('Copié')},sel)}catch(err){sel()}
+  });
+
+  function aujourdhui(){var d=new Date();return d.toLocaleDateString('fr-FR')}
+  function rendre(){
+    var tb=$('liste');
+    if(!prospects.length){tb.innerHTML='<tr><td colspan="6" class="vide">Aucun prospect pour l\'instant. Remplis le formulaire et clique sur « Ajouter à mon suivi ».</td></tr>'}
+    else tb.innerHTML=prospects.map(function(p,i){var st=STATUTS.filter(function(s){return s[0]===p.statut})[0]||STATUTS[0];
+      return '<tr><td><b>'+esc(p.nom)+'</b>'+(p.gerant?'<br><span class="note">'+esc(p.gerant)+'</span>':'')+'</td><td>'+esc(p.ou)+'</td><td style="font-variant-numeric:tabular-nums">'+esc(p.date)+'</td><td><span class="pastille" style="background:'+st[2]+'"></span><select data-i="'+i+'" aria-label="Statut de '+esc(p.nom)+'">'+STATUTS.map(function(s){return '<option value="'+s[0]+'"'+(s[0]===p.statut?' selected':'')+'>'+s[1]+'</option>'}).join('')+'</select></td><td><a class="btn discret" href="'+esc(p.url)+'" target="_blank" rel="noopener">Aperçu ↗</a></td><td><button class="btn discret" type="button" data-suppr="'+i+'" aria-label="Retirer '+esc(p.nom)+'">Retirer</button></td></tr>'}).join('');
+    var c={};STATUTS.forEach(function(s){c[s[0]]=0});prospects.forEach(function(p){c[p.statut]=(c[p.statut]||0)+1});
+    $('compteurs').innerHTML='<span><b>'+prospects.length+'</b> prospects</span>'+STATUTS.filter(function(s){return c[s[0]]}).map(function(s){return '<span><b>'+c[s[0]]+'</b> '+s[1]+'</span>'}).join('');
+  }
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  $('liste').addEventListener('change',function(e){var s=e.target.closest('select[data-i]');if(!s)return;prospects[+s.dataset.i].statut=s.value;ecrire('dz-prospects',prospects);rendre()});
+  $('liste').addEventListener('click',function(e){var b=e.target.closest('[data-suppr]');if(!b)return;prospects.splice(+b.dataset.suppr,1);ecrire('dz-prospects',prospects);rendre()});
+  $('f').addEventListener('submit',function(e){
+    e.preventDefault();var nom=$('nom').value.trim();if(!nom){$('nom').focus();toast('Indique le nom du commerce');return}
+    prospects.unshift({nom:nom,gerant:$('gerant').value.trim(),ou:$('ou').value,date:aujourdhui(),statut:'contacte',url:$('lien').textContent});
+    ecrire('dz-prospects',prospects);rendre();toast(nom+' ajouté au suivi');
+  });
+  $('vider').addEventListener('click',function(){$('nom').value='';$('gerant').value='';maj();$('nom').focus()});
+  maj();rendre();
+})();
+</script>

@@ -1162,6 +1162,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     etat[id]={};
     ouvrir(SITES.findIndex(function(x){return x.id===id}));
   });
+  // Lien personnalisé : ?apercu=Nom&metier=resto&couleur=or ouvre directement l'aperçu du prospect
+  (function(){
+    var q;try{q=new URLSearchParams(location.search)}catch(e){return}
+    var n=(q.get('apercu')||'').trim();if(!n)return;
+    document.getElementById('essai-nom').value=n.slice(0,32);
+    var m=q.get('metier');if(m&&SECT.some(function(x){return x[0]===m}))selS.value=m;
+    var c=(q.get('couleur')||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    var NOMS={or:0,emeraude:1,vert:1,bordeaux:2,bleu:3,'bleu-nuit':3,corail:4,orange:4,rose:5};
+    if(c in NOMS){var b=zc.querySelectorAll('button')[NOMS[c]];if(b)b.click()}
+    setTimeout(function(){document.getElementById('form-essai').requestSubmit()},900);
+  })();
 })();
 </script>
 <script>
@@ -1181,7 +1192,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   }
   btn.addEventListener('click',function(){appliquer(DZ.lang==='ar'?'fr':'ar')});
   var depart='fr';try{depart=localStorage.getItem('dz-langue')||'fr'}catch(e){}
-  if(location.hash==='#ar')depart='ar';if(location.hash==='#fr')depart='fr';
+  if(location.hash==='#ar')depart='ar';if(location.hash==='#fr')depart='fr';try{var lq=new URLSearchParams(location.search).get('lang');if(lq==='ar'||lq==='fr')depart=lq}catch(e){}
   if(depart==='ar')appliquer('ar');
   function avancer(){var h=document.documentElement.scrollHeight-innerHeight;barre.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'}
   addEventListener('scroll',avancer,{passive:true});avancer();
