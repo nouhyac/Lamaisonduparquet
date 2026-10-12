@@ -49,8 +49,11 @@ Choisissez votre offre sur notre site, votre message WhatsApp est prêt.
 ## TikTok
 - **Nom d'utilisateur** : `dzignstudio`
 - **Nom** : `Dzign Studio`
-- **Bio** (80 caractères) :
+- **Bio** (74 caractères, limite 80) :
 ```
-Sites web & 3D haut de gamme 🇩🇿 Votre site en 10 s 👇
+Sites web & 3D haut de gamme 🇩🇿 Alger
+📲 0549 50 68 57
+👇 Votre site en 10 s
 ```
-- **Lien** : le même que sur Instagram (le lien en bio TikTok demande parfois un compte professionnel).
+- **Lien** : `https://dzignstudio.store/#essai` (compte professionnel gratuit si le champ n'apparaît pas)
+- **Photo de profil** : `photo-profil.jpg`
