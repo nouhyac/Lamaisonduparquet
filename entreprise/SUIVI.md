@@ -30,7 +30,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 ## Feuille de route
 1. **Offre** : formules, prix → `OFFRE.md` *(v3 haut de gamme, à valider)*
 2. **Identité** : nom, logo, couleurs, ton → `IDENTITE.md` *(proposition n°1)*
-3. **Vitrine** : site Dzign Studio → `site-dzign/index.html`, aperçu : https://claude.ai/artifact/RD6NeNfPfgGwtGdppDRUbD *(v1 faite)*. Reste : vrai numéro WhatsApp, version arabe, 2 ou 3 démos portfolio, mise en ligne sur Hostinger
+3. **Vitrine** : site Dzign Studio → `site-dzign/index.html`, aperçu : https://claude.ai/artifact/RD6NeNfPfgGwtGdppDRUbD *(v1 faite)*. Section « Exemples de sites » ajoutée (restaurant, boutique, immobilier 3D, appli livraison ; noms fictifs). Reste : vrai numéro WhatsApp, version arabe, mise en ligne sur Hostinger
 4. **Acquisition** : contenu réseaux + pubs Meta/TikTok + page de contact
 5. **Vente et livraison** : appel découverte, devis, acompte, fabrication, livraison
 6. **Juridique** *(plus tard)* : statut d'auto-entrepreneur algérien, compte bancaire, conditions de vente
