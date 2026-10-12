@@ -12,8 +12,7 @@
 🎁 -20 % · 5 premiers clients
 👇 Votre site en 10 s
 ```
-- **Lien** : `https://dzignstudio.store/#essai` (dès que le site est en ligne)
-  En attendant : le lien de l'aperçu https://claude.ai/artifact/RD6NeNfPfgGwtGdppDRUbD (partagé « toute personne avec le lien »).
+- **Lien** : `https://dzignstudio.store/#essai` ✅ en ligne
 - **Bouton de contact** : WhatsApp 0549 50 68 57
 - **Stories à la une** : Portfolio · Offres · 3D · Avis clients · FAQ
 - **Photo de profil** : `photo-profil.jpg`
@@ -42,9 +41,9 @@ Choisissez votre offre sur notre site, votre message WhatsApp est prêt.
 ```
 - **Téléphone / WhatsApp** : 0549 50 68 57
 - **Email** : dzignstudio16@yahoo.com pour l'instant, puis contact@dzignstudio.store
-- **Site web** : https://dzignstudio.store (dès la mise en ligne)
+- **Site web** : https://dzignstudio.store ✅ en ligne
 - **Ville** : Alger, Algérie (sans adresse précise, service à distance)
-- **Bouton d'action** : « En savoir plus » vers le site (une fois en ligne), sinon « Envoyer un message WhatsApp »
+- **Bouton d'action** : « En savoir plus » vers https://dzignstudio.store
 - **Photo de profil** : `photo-profil.jpg` · **Couverture** : `couverture-facebook.jpg` (1640 × 624)
 
 ## TikTok
