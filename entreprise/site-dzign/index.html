@@ -3,92 +3,181 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap">
 <style>
-/* Layout : héros en deux colonnes (texte + z doré en 3D), puis sections pleine largeur rythmées par des filets dorés */
+/* Layout : héros vidéo plein cadre, bandeau défilant, démo 3D interactive, exemples en fenêtres de navigateur, formules, déroulement, contact */
 :root{
-  --noir:#0B0B0F; --graphite:#17171D; --ligne:#2A2A33;
+  --noir:#0B0B0F; --graphite:#15151B; --ligne:#2A2A33;
   --ivoire:#F5F3EE; --gris:#A9A6A0;
-  --or:#C8A96A; --or-clair:#E4CF9E; --emeraude:#0E7C5A;
+  --or:#C8A96A; --or-clair:#E9D6A6; --emeraude:#0E7C5A; --emeraude-clair:#7FD1AE;
   --f-display:"Syne","Arial Black",system-ui,sans-serif;
   --f-texte:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-arabe:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif;
+  --f-serif:"Cormorant Garamond",Georgia,serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{background:var(--noir);color:var(--ivoire);font-family:var(--f-texte);font-size:17px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--ivoire);font-family:var(--f-texte);font-size:17px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
 a{color:inherit}
-h1,h2,h3{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance}
 p{margin:0}
-.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or)}
 .ar{font-family:var(--f-arabe);direction:rtl}
 :focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.or-brille{background:linear-gradient(100deg,var(--or) 0%,var(--or) 40%,#FFF3D1 50%,var(--or) 60%,var(--or) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brille 5s ease-in-out infinite}
+@keyframes brille{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+
+/* Rideau d'ouverture (CSS seul, disparaît tout seul) */
+.rideau{position:fixed;inset:0;z-index:100;background:var(--noir);display:grid;place-items:center;pointer-events:none;animation:rideau 1.2s cubic-bezier(.77,0,.18,1) .8s forwards}
+.rideau span{font-family:var(--f-display);font-weight:800;font-size:clamp(3rem,12vw,8rem);letter-spacing:-.04em;animation:logo-in .7s ease-out both}
+.rideau b{color:var(--or)}
+@keyframes rideau{to{transform:translateY(-100%);visibility:hidden}}
+@keyframes logo-in{from{opacity:0;letter-spacing:.2em;filter:blur(8px)}to{opacity:1}}
+
+/* Lueur qui suit la souris */
+.lueur{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:1;left:0;top:0;transform:translate(-600px,-600px);background:radial-gradient(circle,color-mix(in srgb,var(--or) 10%,transparent),transparent 60%)}
+@media (hover:none){.lueur{display:none}}
 
 /* Navigation */
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--noir) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--ligne)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+nav.haut{position:fixed;top:0;left:0;right:0;z-index:20;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.haut.colle{background:color-mix(in srgb,var(--noir) 80%,transparent);backdrop-filter:blur(14px);border-color:var(--ligne)}
+nav.haut .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
 .logo{font-family:var(--f-display);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:baseline;gap:8px}
 .logo b{color:var(--or);font-weight:800}
 .logo small{font-family:var(--f-texte);font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gris);font-weight:500}
 .nav-liens{display:flex;gap:28px;font-size:.92rem}
 .nav-liens a{text-decoration:none;color:var(--gris);transition:color .2s}
 .nav-liens a:hover{color:var(--ivoire)}
-@media (max-width:760px){.nav-liens{display:none}}
+@media (max-width:900px){.nav-liens{display:none}}
 
 /* Boutons */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--f-texte);transition:transform .2s,background .2s,border-color .2s}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--f-texte);transition:transform .25s,background .25s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden}
 .btn-or{background:var(--or);color:var(--noir)}
-.btn-or:hover{background:var(--or-clair);transform:translateY(-2px)}
-.btn-ligne{border-color:var(--ligne);color:var(--ivoire);background:transparent}
+.btn-or::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn-or:hover{transform:translateY(-2px);box-shadow:0 12px 40px -12px var(--or)}
+.btn-or:hover::after{transform:translateX(120%)}
+.btn-ligne{border-color:color-mix(in srgb,var(--ivoire) 30%,transparent);color:var(--ivoire);background:color-mix(in srgb,var(--noir) 30%,transparent);backdrop-filter:blur(6px)}
 .btn-ligne:hover{border-color:var(--or)}
 .btn-petit{padding:10px 18px;font-size:.88rem}
 
-/* Héros */
-.hero{padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px)}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero-texte{display:grid;gap:26px;min-width:0}
-.hero h1{font-size:clamp(2rem,4.6vw,4rem);font-weight:700;letter-spacing:-.03em}
-@media (max-width:860px){.hero h1{font-size:clamp(1.9rem,8.2vw,3.2rem)}}
-.hero h1 em{font-style:normal;color:var(--or)}
-.hero .ar{font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gris);text-align:start}
-.hero-sous{color:var(--gris);max-width:52ch;font-size:1.08rem}
+/* Héros vidéo */
+.hero{position:relative;min-height:clamp(620px,92vh,900px);display:grid;align-items:end;overflow:hidden;isolation:isolate}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(11,11,15,.92) 0%,rgba(11,11,15,.6) 45%,rgba(11,11,15,0) 75%),linear-gradient(0deg,var(--noir) 0%,rgba(11,11,15,0) 35%)}
+.hero .wrap{width:100%;padding-block:140px clamp(56px,8vw,96px)}
+.hero-texte{display:grid;gap:24px;max-width:680px;min-width:0}
+.hero h1{font-size:clamp(2.1rem,6vw,5rem);font-weight:700;letter-spacing:-.035em}
+.hero .ar{font-size:clamp(1.15rem,2.2vw,1.5rem);color:var(--or-clair);text-align:start}
+.hero-sous{color:#CFCBC4;max-width:50ch;font-size:1.08rem}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
-.scene{position:relative;aspect-ratio:1/1;max-width:100%;width:100%}
-.scene canvas{width:100%!important;height:100%!important;display:block}
-.scene .repli{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:clamp(10rem,30vw,22rem);color:var(--or);line-height:1}
-.scene .halo{position:absolute;inset:12%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--or) 22%,transparent),transparent 65%);filter:blur(30px);pointer-events:none}
-.scene-legende{position:absolute;bottom:4%;left:0;right:0;text-align:center;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gris)}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.scene{max-width:420px;margin-inline:auto}}
+.hero-chiffres{display:flex;flex-wrap:wrap;gap:20px 32px;margin-top:12px;padding-top:24px;border-top:1px solid color-mix(in srgb,var(--ivoire) 15%,transparent)}
+.hero-chiffres div{display:grid}
+.hero-chiffres b{font-family:var(--f-display);font-size:1.5rem;color:var(--ivoire);font-variant-numeric:tabular-nums}
+.hero-chiffres span{font-size:.8rem;color:var(--gris);letter-spacing:.04em}
+@media (max-width:700px){.hero video,.hero .poster{object-position:80% 30%}.hero::before{background:linear-gradient(0deg,var(--noir) 10%,rgba(11,11,15,.85) 58%,rgba(11,11,15,.2) 100%)}.hero .wrap{padding-top:260px}}
 
-/* Bandeau Fondateurs */
-.fondateurs{border-block:1px solid var(--ligne);background:var(--graphite)}
-.fondateurs .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
-.fondateurs p{font-size:1rem}
-.fondateurs strong{color:var(--or)}
-.places{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--gris)}
-.places i{width:12px;height:12px;border-radius:50%;border:1px solid var(--or);display:inline-block}
-.places i.prise{background:var(--or)}
+/* Bandeau défilant */
+.defile{border-block:1px solid var(--ligne);overflow:hidden;padding-block:18px;background:var(--graphite);position:relative;z-index:2}
+.defile-piste{display:flex;gap:48px;width:max-content;animation:defile 38s linear infinite;font-family:var(--f-display);font-size:clamp(1.2rem,2.4vw,1.8rem);font-weight:700;white-space:nowrap}
+.defile-piste span{display:flex;align-items:center;gap:48px}
+.defile-piste i{width:10px;height:10px;background:var(--or);transform:rotate(45deg);display:inline-block}
+.defile-piste em{font-style:normal;color:var(--or)}
+@keyframes defile{to{transform:translateX(-50%)}}
 
 /* Sections */
-section.bloc{padding-block:clamp(64px,9vw,112px)}
-.titre-bloc{display:grid;gap:14px;margin-bottom:48px;max-width:760px}
-.titre-bloc h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:700;letter-spacing:-.025em}
+section.bloc{padding-block:clamp(72px,10vw,128px);position:relative;z-index:2}
+.titre-bloc{display:grid;gap:14px;margin-bottom:52px;max-width:780px}
+.titre-bloc h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700;letter-spacing:-.03em}
 .titre-bloc p{color:var(--gris);max-width:60ch}
 
+/* Fondateurs */
+.fondateurs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px 26px;border:1px solid color-mix(in srgb,var(--or) 45%,transparent);border-radius:6px;background:linear-gradient(90deg,color-mix(in srgb,var(--or) 10%,var(--noir)),var(--noir))}
+.fondateurs strong{color:var(--or)}
+.places{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--gris)}
+.places i{width:12px;height:12px;border-radius:50%;border:1px solid var(--or);display:inline-block;animation:pulse 2.4s ease-in-out infinite}
+.places i:nth-child(2){animation-delay:.2s}.places i:nth-child(3){animation-delay:.4s}.places i:nth-child(4){animation-delay:.6s}.places i:nth-child(5){animation-delay:.8s}
+@keyframes pulse{50%{background:color-mix(in srgb,var(--or) 60%,transparent)}}
+
+/* Démo 3D */
+.demo3d{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+@media (max-width:900px){.demo3d{grid-template-columns:1fr}}
+.demo3d-texte{display:grid;gap:22px;min-width:0}
+.demo3d-texte h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700;letter-spacing:-.03em}
+.demo3d-texte p{color:var(--gris);max-width:48ch}
+.demo3d-liste{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:.96rem}
+.demo3d-liste li{display:flex;gap:12px;align-items:baseline}
+.demo3d-liste li::before{content:"";width:8px;height:8px;background:var(--emeraude-clair);transform:rotate(45deg);flex:none;position:relative;top:-1px}
+.vitrine3d{position:relative;aspect-ratio:1/1;max-width:100%;border:1px solid var(--ligne);border-radius:8px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#1C2236,#0B0B0F 70%);cursor:grab;touch-action:none}
+.vitrine3d:active{cursor:grabbing}
+.vitrine3d canvas{display:block;width:100%!important;height:100%!important}
+.vitrine3d .etiquette{position:absolute;left:16px;top:16px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);border:1px solid color-mix(in srgb,var(--or) 50%,transparent);padding:5px 12px;border-radius:999px;background:rgba(11,11,15,.6)}
+.vitrine3d .aide{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-size:.8rem;color:var(--gris);letter-spacing:.08em;pointer-events:none}
+.vitrine3d .chargement{position:absolute;inset:0;display:grid;place-items:center;color:var(--gris);font-size:.9rem}
+
 /* Expertises */
-.expertises{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
-.exp{background:var(--noir);padding:28px 24px;display:grid;gap:12px;align-content:start;min-width:0}
+.expertises{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
+.exp{background:var(--noir);padding:30px 26px;display:grid;gap:12px;align-content:start;min-width:0;transition:background .3s}
+.exp:hover{background:var(--graphite)}
 .exp h3{font-size:1.2rem;font-weight:700}
 .exp p{color:var(--gris);font-size:.95rem}
 .exp .marque{font-family:var(--f-display);color:var(--or);font-size:.85rem;letter-spacing:.08em}
 
+/* Exemples */
+.realisations{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,500px),1fr));gap:48px 32px}
+.projet{display:grid;gap:18px;min-width:0;perspective:1200px}
+.cadre{border:1px solid var(--ligne);border-radius:12px;overflow:hidden;background:var(--graphite);transition:transform .2s ease-out,border-color .35s,box-shadow .35s}
+.projet:hover .cadre{border-color:var(--or);box-shadow:0 30px 80px -30px color-mix(in srgb,var(--or) 50%,transparent)}
+.barre{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#1C1C23;border-bottom:1px solid var(--ligne)}
+.barre i{width:10px;height:10px;border-radius:50%;background:#3A3A44}
+.barre span{margin-left:10px;font-size:.74rem;color:var(--gris);background:var(--noir);padding:3px 12px;border-radius:999px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.ecran{aspect-ratio:27/16;max-width:100%;position:relative;overflow:hidden;container-type:inline-size}
+.ecran img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.projet:hover .ecran img{transform:scale(1.06)}
+.ui{position:absolute;inset:0;display:grid;grid-template-rows:auto 1fr;font-family:var(--f-texte)}
+.ui .nv{display:flex;justify-content:space-between;align-items:center;padding:3cqi 4.5cqi;font-size:2cqi;letter-spacing:.12em;text-transform:uppercase}
+.ui .contenu{padding:0 4.5cqi 5cqi;display:grid;align-content:end;gap:1.4cqi;max-width:62%}
+.ui h4{font-size:5.4cqi;line-height:1}
+.ui p{font-size:2.1cqi}
+.ui .cta{justify-self:start;font-size:1.9cqi;font-weight:600;padding:1.4cqi 3cqi;border-radius:99px}
+.ui-resto{background:linear-gradient(90deg,rgba(10,22,17,.9),rgba(10,22,17,.35) 60%,transparent);color:#F3E9DA}
+.ui-resto .nv{color:#D9B98A}
+.ui-resto h4{font-family:var(--f-serif);font-weight:600;font-size:6.2cqi}
+.ui-resto h4 em{color:#E7A06E;font-weight:500}
+.ui-resto .ar{font-size:2.8cqi;color:#D9B98A;text-align:start}
+.ui-resto .cta{background:#D98E5F;color:#13261F}
+.ui-shop{color:#2B1B1E}
+.ui-shop .nv{background:rgba(246,239,234,.92);color:#2B1B1E}
+.ui-shop .nv b{font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:3.8cqi;letter-spacing:0;text-transform:none;color:#8C2F45}
+.ui-shop .contenu{max-width:36%;background:rgba(246,239,234,.92);margin:0 0 4cqi 4cqi;padding:3cqi;border-radius:1cqi;align-self:end}
+.ui-shop h4{font-family:var(--f-serif);font-weight:600;font-size:4.4cqi}
+.ui-shop .prix-ui{font-size:2.6cqi;color:#8C2F45;font-weight:600}
+.ui-shop .cta{background:#8C2F45;color:#F6EFEA}
+.ui-shop .livraison{font-size:1.6cqi;color:#6B5458}
+.ui-immo{background:linear-gradient(90deg,rgba(8,14,32,.88),rgba(8,14,32,.15) 60%);color:#EAF0FA}
+.ui-immo .nv{color:#A9C3EE}
+.ui-immo h4{font-weight:700}
+.ui-immo p{color:#B7C4DA}
+.ui-immo .cta{border:1px solid #7FA6E8;color:#DCE8FF;background:rgba(8,14,32,.4)}
+.ui-app{color:#fff;justify-items:end}
+.ui-app .nv{justify-self:stretch}
+.ui-app .contenu{max-width:42%;text-align:right;justify-items:end}
+.ui-app h4{font-weight:800;font-size:6cqi}
+.ui-app .stores{display:flex;gap:1.2cqi}
+.ui-app .stores span{background:#1A0E14;font-size:1.7cqi;padding:1.1cqi 2cqi;border-radius:1.2cqi}
+.legende{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.legende h3{font-size:1.3rem;font-weight:700}
+.legende p{color:var(--gris);font-size:.94rem;flex-basis:100%}
+.tag{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or);border:1px solid color-mix(in srgb,var(--or) 50%,transparent);padding:3px 10px;border-radius:999px}
+.mention{margin-top:32px;color:var(--gris);font-size:.86rem}
+
 /* Formules */
 .formules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
-.formule{border:1px solid var(--ligne);border-radius:4px;padding:30px 26px;display:grid;gap:18px;grid-template-rows:auto auto 1fr auto;min-width:0;background:var(--noir);transition:border-color .25s,transform .25s}
-.formule:hover{border-color:var(--or);transform:translateY(-4px)}
-.formule.vedette{border-color:var(--or);background:linear-gradient(180deg,color-mix(in srgb,var(--or) 9%,var(--noir)),var(--noir) 60%)}
+.formule{border:1px solid var(--ligne);border-radius:6px;padding:32px 28px;display:grid;gap:18px;grid-template-rows:auto auto 1fr auto;min-width:0;background:var(--noir);transition:border-color .25s,transform .25s}
+.formule:hover{border-color:var(--or);transform:translateY(-6px)}
+.formule.vedette{border-color:var(--or);background:linear-gradient(180deg,color-mix(in srgb,var(--or) 11%,var(--noir)),var(--noir) 60%)}
 .formule-tete{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.formule h3{font-size:1.65rem;font-weight:700}
+.formule h3{font-size:1.7rem;font-weight:700}
 .pastille{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--noir);background:var(--or);padding:4px 10px;border-radius:999px;white-space:nowrap}
 .pour{color:var(--gris);font-size:.92rem}
 .formule ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem}
@@ -96,7 +185,7 @@ section.bloc{padding-block:clamp(64px,9vw,112px)}
 .formule li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:1px;background:var(--or)}
 .prix{border-top:1px solid var(--ligne);padding-top:18px;display:grid;gap:2px}
 .prix small{color:var(--gris);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
-.prix span{font-family:var(--f-display);font-size:1.75rem;font-weight:700;font-variant-numeric:tabular-nums}
+.prix span{font-family:var(--f-display);font-size:1.8rem;font-weight:700;font-variant-numeric:tabular-nums}
 .prix span sup{font-size:.85rem;color:var(--or);margin-left:4px;vertical-align:.6em}
 .note-prix{margin-top:24px;color:var(--gris);font-size:.92rem;max-width:70ch}
 
@@ -107,15 +196,14 @@ section.bloc{padding-block:clamp(64px,9vw,112px)}
 .etapes h3{font-size:1.1rem;font-weight:700}
 .etapes p{color:var(--gris);font-size:.94rem}
 .etapes li.paiement h3{color:var(--or-clair)}
-.badge-baridi{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--emeraude);color:#7FD1AE;padding:2px 8px;border-radius:999px;width:max-content}
+.badge-baridi{display:inline-block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--emeraude);color:var(--emeraude-clair);padding:2px 8px;border-radius:999px;width:max-content}
 
 /* Abonnements + options */
-.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px}
 .tableau{width:100%;border-collapse:collapse;font-size:.96rem}
-.tableau th{text-align:left;font-family:var(--f-display);font-weight:700;font-size:1.05rem;padding:16px 12px 16px 0;vertical-align:top;white-space:nowrap}
+.tableau th{text-align:left;font-family:var(--f-display);font-weight:700;font-size:1.05rem;padding:16px 12px 16px 0;vertical-align:top;white-space:nowrap;border-top:1px solid var(--ligne)}
 .tableau td{padding:16px 0;color:var(--gris);vertical-align:top;border-top:1px solid var(--ligne)}
 .tableau tr:first-child td,.tableau tr:first-child th{border-top:0}
-.tableau th{border-top:1px solid var(--ligne)}
 .tableau td.montant{color:var(--ivoire);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;padding-left:12px}
 .duo h3{font-size:1.4rem;margin-bottom:8px}
 .duo .intro{color:var(--gris);font-size:.94rem;margin-bottom:18px}
@@ -125,104 +213,36 @@ section.bloc{padding-block:clamp(64px,9vw,112px)}
 .contact{background:var(--graphite);border-top:1px solid var(--ligne)}
 .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
 @media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
-.contact h2{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:700;letter-spacing:-.03em}
-.contact h2 em{font-style:normal;color:var(--or)}
+.contact h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:700;letter-spacing:-.03em}
 .contact-gauche{display:grid;gap:22px;min-width:0}
-.numero{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-family:var(--f-display);font-size:1.4rem;font-variant-numeric:tabular-nums}
+.numero{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-family:var(--f-display);font-size:1.5rem;font-variant-numeric:tabular-nums}
 .numero span{user-select:all}
 form{display:grid;gap:14px;min-width:0}
 label{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);display:grid;gap:6px}
 input,select,textarea{font:inherit;font-size:1rem;color:var(--ivoire);background:var(--noir);border:1px solid var(--ligne);border-radius:4px;padding:12px 14px;width:100%}
 input:focus,select:focus,textarea:focus{border-color:var(--or);outline:none}
 textarea{min-height:110px;resize:vertical}
-.confirmation{border:1px solid var(--emeraude);border-radius:4px;padding:14px 16px;font-size:.95rem;color:#BFE8D6}
+.confirmation{border:1px solid var(--emeraude);border-radius:4px;padding:14px 16px;font-size:.95rem;color:#BFE8D6;display:grid;gap:12px;justify-items:start}
 
+/* Bouton WhatsApp flottant */
+.wa-flottant{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(37,211,102,.6);transition:transform .25s}
+.wa-flottant:hover{transform:scale(1.08)}
+.wa-flottant svg{width:30px;height:30px;fill:#fff}
 
-/* Réalisations : maquettes de sites dans des cadres de navigateur */
-.realisations{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:40px 28px}
-.projet{display:grid;gap:16px;min-width:0}
-.cadre{border:1px solid var(--ligne);border-radius:10px;overflow:hidden;background:var(--graphite);transition:transform .35s,border-color .35s,box-shadow .35s}
-.projet:hover .cadre{transform:translateY(-6px);border-color:var(--or);box-shadow:0 24px 60px -30px color-mix(in srgb,var(--or) 45%,transparent)}
-.barre{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#1C1C23;border-bottom:1px solid var(--ligne)}
-.barre i{width:9px;height:9px;border-radius:50%;background:#3A3A44}
-.barre span{margin-left:10px;font-size:.72rem;color:var(--gris);background:var(--noir);padding:3px 12px;border-radius:999px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.ecran{aspect-ratio:16/10;max-width:100%;position:relative;overflow:hidden;container-type:inline-size}
-.legende{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.legende h3{font-size:1.25rem;font-weight:700}
-.legende p{color:var(--gris);font-size:.92rem;flex-basis:100%}
-.tag{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or);border:1px solid color-mix(in srgb,var(--or) 50%,transparent);padding:3px 10px;border-radius:999px}
-.mention{margin-top:28px;color:var(--gris);font-size:.86rem}
+footer{border-top:1px solid var(--ligne);position:relative;z-index:2}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:28px 96px;color:var(--gris);font-size:.86rem}
 
-/* 1. Restaurant */
-.m-resto{background:#13261F;color:#F3E9DA;height:100%;display:grid;grid-template-rows:auto 1fr;font-family:var(--f-texte)}
-.m-resto nav,.m-resto .nv{position:static;background:none;border:0;backdrop-filter:none;display:flex;justify-content:space-between;align-items:center;padding:3.2cqi 4.5cqi;font-size:2.1cqi;letter-spacing:.12em;text-transform:uppercase;color:#D9B98A}
-.m-resto .corps{display:grid;grid-template-columns:1.1fr .9fr;gap:4cqi;padding:0 4.5cqi 4cqi;align-items:center}
-.m-resto h4{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:6.4cqi;line-height:1;margin:0}
-.m-resto h4 em{color:#D98E5F;font-style:italic;font-weight:500}
-.m-resto .ar{font-size:3cqi;color:#D9B98A;margin:1.6cqi 0}
-.m-resto .cta{display:inline-block;background:#D98E5F;color:#13261F;font-weight:600;font-size:2.1cqi;padding:1.6cqi 3cqi;border-radius:99px;margin-top:2cqi}
-.m-resto .plat{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 50%,#F3E9DA 0 28%,#C9813F 29% 40%,#8E3B1F 41% 50%,#F3E9DA 51% 58%,#1F3A30 59%);box-shadow:0 2cqi 6cqi rgba(0,0,0,.5);animation:tourne 30s linear infinite}
-.m-resto .menu{display:grid;gap:1cqi;margin-top:2.4cqi;font-size:1.9cqi}
-.m-resto .menu div{display:flex;justify-content:space-between;border-bottom:1px dotted #48604F;padding-bottom:.6cqi}
-
-/* 2. Boutique */
-.m-shop{background:#F6EFEA;color:#2B1B1E;height:100%;display:grid;grid-template-rows:auto auto 1fr;font-family:var(--f-texte)}
-.m-shop .nv{display:flex;justify-content:space-between;align-items:center;padding:2.8cqi 4.5cqi;font-size:2cqi}
-.m-shop .nv b{font-family:"Cormorant Garamond",Georgia,serif;font-size:4cqi;font-style:italic;font-weight:500;color:#8C2F45}
-.m-shop .bandeau{background:#8C2F45;color:#F6EFEA;font-size:1.8cqi;text-align:center;padding:1cqi;letter-spacing:.1em;text-transform:uppercase}
-.m-shop .grille{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4cqi;padding:2.6cqi 4.5cqi;align-content:start}
-.m-shop .produit{display:grid;gap:1cqi;font-size:1.9cqi}
-.m-shop .photo{aspect-ratio:1/1;border-radius:1cqi;position:relative;overflow:hidden}
-.m-shop .photo::after{content:"";position:absolute;left:28%;right:28%;top:14%;bottom:0;border-radius:40% 40% 6% 6%/22% 22% 4% 4%;background:inherit;filter:brightness(1.25) saturate(1.1);box-shadow:inset 0 -3cqi 4cqi rgba(0,0,0,.18)}
-.m-shop .p1{background:linear-gradient(160deg,#E7D3C6,#C9A79A)}.m-shop .p1::after{background:linear-gradient(#1F4E5F,#173B48)}
-.m-shop .p2{background:linear-gradient(160deg,#EADFD2,#D4BFA8)}.m-shop .p2::after{background:linear-gradient(#8C2F45,#6A2134)}
-.m-shop .p3{background:linear-gradient(160deg,#E4E0D8,#BFB7A8)}.m-shop .p3::after{background:linear-gradient(#C8A96A,#9C7F45)}
-.m-shop .produit span{color:#8C2F45;font-weight:600}
-
-/* 3. Immobilier 3D */
-.m-immo{background:radial-gradient(ellipse at 70% 20%,#23314F,#0C1220 70%);color:#EAF0FA;height:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4.5cqi;gap:3cqi;font-family:var(--f-texte);perspective:120cqi}
-.m-immo h4{font-family:var(--f-display);font-size:5cqi;line-height:1.02;margin:0;font-weight:700}
-.m-immo p{font-size:2cqi;color:#A9B6CC;margin-top:1.6cqi}
-.m-immo .cta{display:inline-block;margin-top:2.4cqi;border:1px solid #7FA6E8;color:#CFE0FF;font-size:1.9cqi;padding:1.3cqi 2.6cqi;border-radius:99px}
-.m-immo .tour{position:relative;width:20cqi;height:34cqi;margin:auto;transform-style:preserve-3d;animation:pivote 14s linear infinite}
-.m-immo .face{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3.2cqi,rgba(255,255,255,.08) 3.2cqi 3.5cqi),repeating-linear-gradient(90deg,#1B2A47 0 2.6cqi,#F2C46B 2.6cqi 3.6cqi,#1B2A47 3.6cqi 5cqi);border:1px solid #3B5285;opacity:.95}
-.m-immo .f1{transform:translateZ(10cqi)}.m-immo .f2{transform:rotateY(90deg) translateZ(10cqi)}.m-immo .f3{transform:rotateY(180deg) translateZ(10cqi)}.m-immo .f4{transform:rotateY(270deg) translateZ(10cqi)}
-.m-immo .toit{position:absolute;width:20cqi;height:20cqi;top:-10cqi;transform:rotateX(90deg);background:#2E4572}
-.m-immo .sol{position:absolute;width:44cqi;height:44cqi;left:-12cqi;top:12cqi;transform:rotateX(90deg) translateZ(-22cqi);background:radial-gradient(circle,rgba(127,166,232,.35),transparent 65%)}
-.m-immo .badge3d{position:absolute;top:3cqi;right:4.5cqi;font-size:1.7cqi;letter-spacing:.14em;color:#7FA6E8;border:1px solid #3B5285;padding:.8cqi 1.8cqi;border-radius:99px}
-
-/* 4. Application livraison */
-.m-app{background:linear-gradient(135deg,#FF7A45,#E2335B);height:100%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:4cqi;padding:0 7cqi;color:#fff;font-family:var(--f-texte)}
-.m-app h4{font-family:var(--f-display);font-size:5.4cqi;margin:0;line-height:1;font-weight:800}
-.m-app p{font-size:2.1cqi;margin-top:1.6cqi;opacity:.9}
-.m-app .stores{display:flex;gap:1.4cqi;margin-top:2.6cqi}
-.m-app .stores span{background:#1A0E14;font-size:1.7cqi;padding:1.1cqi 2cqi;border-radius:1.2cqi}
-.m-app .tel{width:25cqi;aspect-ratio:9/19;background:#1A0E14;border-radius:3.6cqi;padding:1.2cqi;box-shadow:0 3cqi 6cqi rgba(0,0,0,.35);transform:rotate(-6deg)}
-.m-app .tel-ecran{height:100%;border-radius:2.6cqi;background:#FFF6F2;color:#1A0E14;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;font-size:1.6cqi}
-.m-app .tel-tete{background:#E2335B;color:#fff;padding:2cqi 1.6cqi 1.4cqi;font-weight:600}
-.m-app .carte{position:relative;background:repeating-linear-gradient(45deg,#F3E4DD 0 2cqi,#FBEFEA 2cqi 4cqi)}
-.m-app .trajet{position:absolute;left:20%;top:20%;width:55%;height:55%;border:.5cqi dashed #E2335B;border-left:0;border-bottom:0;border-radius:0 40% 0 0}
-.m-app .livreur{position:absolute;width:3cqi;height:3cqi;border-radius:50%;background:#FF7A45;border:.5cqi solid #fff;left:70%;top:17%;animation:roule 3s ease-in-out infinite alternate}
-.m-app .tel-pied{padding:1.6cqi;display:grid;gap:.6cqi}
-.m-app .tel-pied b{font-size:1.9cqi}
-.m-app .jauge{height:.8cqi;border-radius:99px;background:#F3E4DD;overflow:hidden}.m-app .jauge i{display:block;width:70%;height:100%;background:#E2335B}
-
-@keyframes tourne{to{transform:rotate(360deg)}}
-@keyframes pivote{from{transform:rotateX(-14deg) rotateY(0)}to{transform:rotateX(-14deg) rotateY(360deg)}}
-@keyframes roule{from{left:70%;top:17%}to{left:73%;top:45%}}
-@media (prefers-reduced-motion:reduce){.m-resto .plat,.m-immo .tour,.m-app .livreur{animation:none}.m-immo .tour{transform:rotateX(-14deg) rotateY(35deg)}}
-
-footer{border-top:1px solid var(--ligne)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:28px;color:var(--gris);font-size:.86rem}
-
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rideau{display:none}}
 </style>
 
-<nav>
+<div class="rideau" aria-hidden="true"><span>d<b>z</b>ign</span></div>
+<div class="lueur" id="lueur" aria-hidden="true"></div>
+
+<nav class="haut" id="nav">
   <div class="wrap">
     <a class="logo" href="#haut" aria-label="Dzign Studio, accueil"><span>d<b>z</b>ign</span> <small>studio</small></a>
     <div class="nav-liens">
-      <a href="#expertises">Expertises</a>
+      <a href="#demo3d">3D</a>
       <a href="#realisations">Exemples</a>
       <a href="#formules">Formules</a>
       <a href="#deroulement">Déroulement</a>
@@ -233,35 +253,67 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 </nav>
 
 <header class="hero" id="haut">
+  <img class="poster" src="medias/z-or.jpg" alt="">
+  <video id="video-hero" autoplay muted loop playsinline preload="auto" poster="medias/z-or.jpg">
+    <source src="medias/z-or.mp4" type="video/mp4">
+  </video>
   <div class="wrap">
     <div class="hero-texte">
       <p class="eyebrow">Studio digital haut de gamme · Alger</p>
-      <h1>L'excellence digitale, <em>made in DZ.</em></h1>
+      <h1>L'excellence digitale, <span class="or-brille">made in DZ.</span></h1>
       <p class="ar" lang="ar">تميّز رقمي، صُنع في الجزائر</p>
       <p class="hero-sous">Sites web, expériences 3D, boutiques en ligne et applications. Conçus à Alger, au niveau des plus grandes marques, pour vous apporter des clients.</p>
       <div class="hero-actions">
-        <a class="btn btn-or" href="#contact">Parler de mon projet</a>
-        <a class="btn btn-ligne" href="#formules">Voir les formules</a>
+        <a class="btn btn-or" href="https://wa.me/213794709323" target="_blank" rel="noopener">Parler de mon projet</a>
+        <a class="btn btn-ligne" href="#demo3d">Voir la 3D en action</a>
       </div>
-    </div>
-    <div class="scene" id="scene" aria-label="Le z doré de Dzign Studio, en 3D">
-      <div class="halo"></div>
-      <div class="repli" id="repli">z</div>
-      <p class="scene-legende">Bougez la souris ou le doigt</p>
+      <div class="hero-chiffres">
+        <div><b>72 h</b><span>pour voir votre maquette</span></div>
+        <div><b>3 langues</b><span>arabe, français, anglais</span></div>
+        <div><b>58 wilayas</b><span>livraison gérée en boutique</span></div>
+      </div>
     </div>
   </div>
 </header>
 
-<div class="fondateurs">
-  <div class="wrap">
-    <p><strong>Programme Fondateurs</strong> : -20 % sur toutes les formules pour nos 5 premiers clients.</p>
-    <div class="places" aria-label="5 places disponibles sur 5">
-      <i></i><i></i><i></i><i></i><i></i> <span>5 places restantes</span>
-    </div>
+<div class="defile" aria-hidden="true">
+  <div class="defile-piste">
+    <span>Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
+    <span>Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
   </div>
 </div>
 
-<section class="bloc" id="expertises">
+<section class="bloc" style="padding-block:48px 0">
+  <div class="wrap">
+    <div class="fondateurs">
+      <p><strong>Programme Fondateurs</strong> : -20 % sur toutes les formules pour nos 5 premiers clients.</p>
+      <div class="places" aria-label="5 places disponibles sur 5"><i></i><i></i><i></i><i></i><i></i> <span>5 places restantes</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="demo3d">
+  <div class="wrap demo3d">
+    <div class="demo3d-texte">
+      <p class="eyebrow">Essayez maintenant</p>
+      <h2>Touchez-le. <span class="or-brille">Faites-le tourner.</span></h2>
+      <p>Ce bâtiment est un vrai modèle en 3D, pas une photo. C'est l'expérience que vos clients vivront sur votre site : ils explorent votre produit, votre projet ou votre local sous tous les angles, avant même de vous appeler.</p>
+      <ul class="demo3d-liste">
+        <li>Promotion immobilière : faire visiter un projet avant sa construction</li>
+        <li>Mobilier, mode, automobile : montrer chaque détail du produit</li>
+        <li>Boutiques : un effet « waouh » qui fait vendre</li>
+      </ul>
+      <div><a class="btn btn-or" href="#formules">Voir la formule Immersion</a></div>
+    </div>
+    <div class="vitrine3d" id="vitrine3d" aria-label="Modèle 3D interactif d'un immeuble de standing">
+      <span class="etiquette">Modèle 3D en direct</span>
+      <div class="chargement" id="chargement3d">Chargement du modèle 3D…</div>
+      <p class="aide">Glissez pour tourner · Pincez ou molette pour zoomer</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="expertises" style="padding-top:0">
   <div class="wrap">
     <div class="titre-bloc">
       <p class="eyebrow">Expertises</p>
@@ -273,7 +325,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <div class="exp"><span class="marque">3D</span><h3>Expériences immersives</h3><p>Produits à faire tourner, configurateurs, visites virtuelles.</p></div>
       <div class="exp"><span class="marque">Web</span><h3>Rapide et bien référencé</h3><p>Chargement éclair, pensé mobile, optimisé pour Google.</p></div>
       <div class="exp"><span class="marque">Plateformes</span><h3>Applications métier</h3><p>Réservation, espace client, marketplace, tableau de bord.</p></div>
-      <div class="exp"><span class="marque">Marketing</span><h3>Des visiteurs aux clients</h3><p>Pubs Facebook, Instagram, TikTok, et référencement local.</p></div>
+      <div class="exp"><span class="marque">Marketing</span><h3>Des visiteurs aux clients</h3><p>Pubs Facebook, Instagram, TikTok, vidéos et visuels.</p></div>
       <div class="exp"><span class="marque">ع · FR · EN</span><h3>Trilingue</h3><p>Arabe, français et anglais, avec une mise en page arabe impeccable.</p></div>
     </div>
   </div>
@@ -284,25 +336,24 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     <div class="titre-bloc">
       <p class="eyebrow">Exemples de sites</p>
       <h2>Ce que nous pouvons créer pour vous.</h2>
-      <p>Quatre styles, quatre métiers. Chaque site est conçu sur mesure, selon votre image et vos clients.</p>
+      <p>Quatre métiers, quatre univers. Chaque site est conçu sur mesure, selon votre image et vos clients.</p>
     </div>
     <div class="realisations">
 
       <article class="projet">
         <div class="cadre">
           <div class="barre"><i></i><i></i><i></i><span>darlbahdja.dz</span></div>
-          <div class="ecran"><div class="m-resto">
-            <div class="nv"><span>Dar Lbahdja</span><span>Menu · Réserver</span></div>
-            <div class="corps">
-              <div>
+          <div class="ecran">
+            <img src="medias/resto.jpg" alt="Tajine zitoune et chorba frik sur une table en marbre vert" loading="lazy">
+            <div class="ui ui-resto">
+              <div class="nv"><span>Dar Lbahdja</span><span>Menu · Réserver</span></div>
+              <div class="contenu">
                 <h4>Cuisine algéroise <em>d'exception</em></h4>
                 <p class="ar" lang="ar">دار البهجة · مطبخ عاصمي أصيل</p>
-                <div class="menu"><div><span>Chorba frik</span><span>650 DA</span></div><div><span>Tajine zitoune</span><span>1 400 DA</span></div><div><span>Mhalbi</span><span>450 DA</span></div></div>
                 <span class="cta">Réserver une table</span>
               </div>
-              <div class="plat" aria-hidden="true"></div>
             </div>
-          </div></div>
+          </div>
         </div>
         <div class="legende"><h3>Restaurant</h3><span class="tag">Signature</span><p>Site bilingue arabe et français, menu avec prix, réservation de table sur WhatsApp.</p></div>
       </article>
@@ -310,15 +361,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <article class="projet">
         <div class="cadre">
           <div class="barre"><i></i><i></i><i></i><span>lallacouture.dz</span></div>
-          <div class="ecran"><div class="m-shop">
-            <div class="nv"><b>Lalla Couture</b><span>Collections · Panier (2)</span></div>
-            <div class="bandeau">Livraison dans les 58 wilayas · Paiement à la livraison</div>
-            <div class="grille">
-              <div class="produit"><div class="photo p1"></div>Karakou velours<span>38 000 DA</span></div>
-              <div class="produit"><div class="photo p2"></div>Caftan brodé<span>45 000 DA</span></div>
-              <div class="produit"><div class="photo p3"></div>Robe kabyle<span>24 000 DA</span></div>
+          <div class="ecran">
+            <img src="medias/caftan.jpg" alt="Karakou en velours bordeaux brodé d'or sur un mannequin" loading="lazy" style="object-position:70% 50%">
+            <div class="ui ui-shop">
+              <div class="nv"><b>Lalla Couture</b><span>Collections · Panier (2)</span></div>
+              <div class="contenu">
+                <h4>Karakou Lalla</h4>
+                <span class="prix-ui">38 000 DA</span>
+                <span class="livraison">Livraison 58 wilayas · Paiement à la livraison</span>
+                <span class="cta">Ajouter au panier</span>
+              </div>
             </div>
-          </div></div>
+          </div>
         </div>
         <div class="legende"><h3>Boutique de mode</h3><span class="tag">Commerce</span><p>Boutique en ligne, frais de livraison par wilaya, paiement à la livraison ou par BaridiMob.</p></div>
       </article>
@@ -326,15 +380,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <article class="projet">
         <div class="cadre">
           <div class="barre"><i></i><i></i><i></i><span>terrasses-hydra.dz</span></div>
-          <div class="ecran"><div class="m-immo">
-            <span class="badge3d">VISITE 3D</span>
-            <div>
-              <h4>Les Terrasses d'Hydra</h4>
-              <p>Appartements F3 à F5 avec vue sur la baie. Livraison 2027.</p>
-              <span class="cta">Explorer en 3D</span>
+          <div class="ecran">
+            <img src="medias/immeuble.jpg" alt="Résidence de standing à terrasses, la nuit, face à la baie" loading="lazy">
+            <div class="ui ui-immo">
+              <div class="nv"><span>Les Terrasses d'Hydra</span><span>Visite 3D</span></div>
+              <div class="contenu">
+                <h4>Vivre face à la baie</h4>
+                <p>Appartements F3 à F5 avec terrasses. Livraison 2027.</p>
+                <span class="cta">Explorer en 3D</span>
+              </div>
             </div>
-            <div class="tour" aria-hidden="true"><div class="sol"></div><div class="face f1"></div><div class="face f2"></div><div class="face f3"></div><div class="face f4"></div><div class="toit"></div></div>
-          </div></div>
+          </div>
         </div>
         <div class="legende"><h3>Promotion immobilière</h3><span class="tag">Immersion</span><p>Résidence en 3D à faire tourner, plans des appartements et visite virtuelle.</p></div>
       </article>
@@ -342,18 +398,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <article class="projet">
         <div class="cadre">
           <div class="barre"><i></i><i></i><i></i><span>wesla.app</span></div>
-          <div class="ecran"><div class="m-app">
-            <div>
-              <h4>Wesla</h4>
-              <p>Vos courses livrées en 30 minutes à Alger. Suivi du livreur en direct.</p>
-              <div class="stores"><span>Google Play</span><span>App Store</span></div>
+          <div class="ecran">
+            <img src="medias/appli.jpg" alt="Smartphone affichant le suivi d'une livraison sur une carte" loading="lazy" style="object-position:20% 50%">
+            <div class="ui ui-app">
+              <div class="nv"><span></span><span>Wesla</span></div>
+              <div class="contenu">
+                <h4>Wesla</h4>
+                <p>Vos courses livrées en 30 minutes à Alger. Suivez votre livreur en direct.</p>
+                <div class="stores"><span>Google Play</span><span>App Store</span></div>
+              </div>
             </div>
-            <div class="tel" aria-hidden="true"><div class="tel-ecran">
-              <div class="tel-tete">Commande n° 2481</div>
-              <div class="carte"><div class="trajet"></div><div class="livreur"></div></div>
-              <div class="tel-pied"><b>Arrivée dans 12 min</b><div class="jauge"><i></i></div></div>
-            </div></div>
-          </div></div>
+          </div>
         </div>
         <div class="legende"><h3>Application de livraison</h3><span class="tag">Plateforme</span><p>Appli mobile avec commande, paiement et suivi du livreur sur une carte.</p></div>
       </article>
@@ -392,7 +447,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <article class="formule">
         <div class="formule-tete"><h3>Immersion</h3></div>
         <p class="pour">Immobilier, mobilier, mode, automobile, marques premium.</p>
-        <ul><li>Produits en 3D à faire tourner</li><li>Configurateur ou visite virtuelle</li><li>Effet « waouh » garanti</li></ul>
+        <ul><li>Produits ou bâtiments en 3D à faire tourner</li><li>Configurateur ou visite virtuelle</li><li>Vidéos 3D pour vos réseaux</li></ul>
         <div class="prix"><small>À partir de</small><span>250 000<sup>DA</sup></span></div>
       </article>
       <article class="formule">
@@ -402,7 +457,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <div class="prix"><small>Sur devis, dès</small><span>400 000<sup>DA</sup></span></div>
       </article>
     </div>
-    <p class="note-prix">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la rédaction des textes, les photos et le délai.</p>
+    <p class="note-prix">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la 3D, la rédaction des textes, les photos et le délai.</p>
   </div>
 </section>
 
@@ -417,7 +472,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <li><h3>Devis clair</h3><p>Un prix fixé avant de commencer. Aucune surprise.</p></li>
       <li class="paiement"><h3>Acompte de 50 %</h3><span class="badge-baridi">BaridiMob</span><p>Le projet démarre dès réception.</p></li>
       <li><h3>Maquette sous 72 h</h3><p>Vous validez le style avant la fabrication.</p></li>
-      <li><h3>Fabrication</h3><p>Design, développement, textes et optimisation.</p></li>
+      <li><h3>Fabrication</h3><p>Design, développement, 3D, textes et optimisation.</p></li>
       <li class="paiement"><h3>Présentation et solde</h3><span class="badge-baridi">BaridiMob</span><p>Vous découvrez votre site terminé, puis réglez les 50 % restants.</p></li>
       <li><h3>Mise en ligne</h3><p>Hébergement définitif, nom de domaine et courte formation.</p></li>
     </ol>
@@ -454,13 +509,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   <div class="wrap">
     <div class="contact-gauche">
       <p class="eyebrow">Contact</p>
-      <h2>Votre projet mérite <em>l'exceptionnel.</em></h2>
+      <h2>Votre projet mérite <span class="or-brille">l'exceptionnel.</span></h2>
       <p style="color:var(--gris);max-width:46ch">Écrivez-nous sur WhatsApp, on vous répond dans la journée. L'appel découverte est gratuit.</p>
-      <div class="numero"><span id="numero">+213 5XX XX XX XX</span><button class="btn btn-ligne btn-petit" type="button" id="copier">Copier</button></div>
-      <div><a class="btn btn-or" href="https://wa.me/213000000000" target="_blank" rel="noopener">Ouvrir WhatsApp</a></div>
+      <div class="numero"><span id="numero">+213 794 70 93 23</span><button class="btn btn-ligne btn-petit" type="button" id="copier">Copier</button></div>
+      <div><a class="btn btn-or" href="https://wa.me/213794709323" target="_blank" rel="noopener">Ouvrir WhatsApp</a></div>
     </div>
     <form id="formulaire" novalidate>
-      <label for="nom">Votre nom<input id="nom" name="nom" autocomplete="name" placeholder="Ex. : Amine Belkacem"></label>
+      <label for="nom">Votre nom<input id="nom" name="nom" autocomplete="name" placeholder="Ex. : Amine B."></label>
       <label for="activite">Votre activité<input id="activite" name="activite" placeholder="Ex. : restaurant à Hydra"></label>
       <label for="formule">Formule qui vous intéresse
         <select id="formule" name="formule">
@@ -468,7 +523,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         </select>
       </label>
       <label for="message">Votre projet en quelques mots<textarea id="message" name="message" placeholder="Ce que vous voulez, vos délais, vos exemples préférés…"></textarea></label>
-      <button class="btn btn-or" type="submit">Préparer ma demande</button>
+      <button class="btn btn-or" type="submit">Préparer mon message WhatsApp</button>
       <div class="confirmation" id="confirmation" hidden></div>
     </form>
   </div>
@@ -476,92 +531,133 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Dzign Studio · Alger, Algérie</span>
+    <span>© 2026 Dzign Studio · Alger, Algérie · +213 794 70 93 23</span>
     <span class="ar" lang="ar">تميّز رقمي، صُنع في الجزائر</span>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<a class="wa-flottant" href="https://wa.me/213794709323" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.500-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
 (function(){
+  var reduit=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Navigation qui se fige au défilement
+  var nav=document.getElementById('nav');
+  function surDefil(){nav.classList.toggle('colle',scrollY>40)}
+  addEventListener('scroll',surDefil,{passive:true});surDefil();
+
+  // Lueur dorée qui suit la souris
+  var lueur=document.getElementById('lueur');
+  addEventListener('pointermove',function(e){if(e.pointerType==='mouse')lueur.style.transform='translate('+(e.clientX-260)+'px,'+(e.clientY-260)+'px)'},{passive:true});
+
+  // Vidéo : on retire l'image fixe quand la vidéo joue
+  var v=document.getElementById('video-hero');
+  if(reduit){v.removeAttribute('autoplay');v.pause()}
+  v.addEventListener('playing',function(){document.querySelector('.hero .poster').hidden=true});
+
+  // Inclinaison 3D des exemples
+  if(!reduit && matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.projet').forEach(function(p){
+      var c=p.querySelector('.cadre');
+      p.addEventListener('pointermove',function(e){
+        var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        c.style.transform='rotateY('+(x*8)+'deg) rotateX('+(-y*8)+'deg) translateY(-6px)';
+      });
+      p.addEventListener('pointerleave',function(){c.style.transform=''});
+    });
+  }
+
   // Copier le numéro
   var btn=document.getElementById('copier');
   btn.addEventListener('click',function(){
     var t=document.getElementById('numero').textContent;
-    var ok=function(){btn.textContent='Copié';setTimeout(function(){btn.textContent='Copier'},1800)};
-    try{navigator.clipboard.writeText(t).then(ok,function(){selectionner()})}catch(e){selectionner()}
     function selectionner(){var r=document.createRange();r.selectNodeContents(document.getElementById('numero'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    try{navigator.clipboard.writeText(t).then(function(){btn.textContent='Copié';setTimeout(function(){btn.textContent='Copier'},1800)},selectionner)}catch(e){selectionner()}
   });
 
-  // Formulaire : prépare le message à envoyer sur WhatsApp
+  // Formulaire : prépare le message WhatsApp
   document.getElementById('formulaire').addEventListener('submit',function(e){
     e.preventDefault();
-    var nom=document.getElementById('nom').value.trim()||'—';
-    var act=document.getElementById('activite').value.trim()||'—';
+    var nom=document.getElementById('nom').value.trim();
+    var act=document.getElementById('activite').value.trim();
     var f=document.getElementById('formule').value;
+    var msg=document.getElementById('message').value.trim();
+    var texte='Bonjour Dzign Studio, '+(nom?'je suis '+nom+'. ':'')+(act?'Mon activité : '+act+'. ':'')+'Formule : '+f+'.'+(msg?' '+msg:'');
     var c=document.getElementById('confirmation');
-    c.textContent='Merci '+(nom==='—'?'':nom+' ')+'! Votre demande ('+f+', '+act+') est prête. Envoyez-la-nous sur WhatsApp au numéro ci-contre pour réserver votre appel découverte.';
-    c.hidden=false;
+    c.innerHTML='';
+    var p=document.createElement('p');p.textContent='Votre message est prêt. Ouvrez WhatsApp pour nous l\'envoyer :';
+    var a=document.createElement('a');a.className='btn btn-or btn-petit';a.target='_blank';a.rel='noopener';
+    a.href='https://wa.me/213794709323?text='+encodeURIComponent(texte);a.textContent='Envoyer sur WhatsApp';
+    c.appendChild(p);c.appendChild(a);c.hidden=false;
   });
 
-  // Z doré en 3D
-  if(!window.THREE)return;
-  var scene=document.getElementById('scene');
-  var reduit=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var renderer;
-  try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true})}catch(e){return}
-  document.getElementById('repli').hidden=true;
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.outputEncoding=THREE.sRGBEncoding;
-  scene.appendChild(renderer.domElement);
+  // Vitrine 3D interactive
+  var boite=document.getElementById('vitrine3d');
+  var charge=document.getElementById('chargement3d');
+  if(!window.THREE||!THREE.GLTFLoader||!THREE.OrbitControls){charge.textContent='La 3D ne peut pas s\'afficher sur cet appareil.';return}
+  var rendu;
+  try{rendu=new THREE.WebGLRenderer({antialias:true,alpha:true})}catch(e){charge.textContent='La 3D ne peut pas s\'afficher sur cet appareil.';return}
+  rendu.setPixelRatio(Math.min(devicePixelRatio,2));
+  rendu.outputEncoding=THREE.sRGBEncoding;
+  rendu.toneMapping=THREE.ACESFilmicToneMapping;
+  rendu.toneMappingExposure=1.1;
+  boite.insertBefore(rendu.domElement,boite.firstChild);
 
-  var s3=new THREE.Scene();
-  var cam=new THREE.PerspectiveCamera(35,1,0.1,100);
-  cam.position.set(0,0,7.2);
+  var scene=new THREE.Scene();
+  var cam=new THREE.PerspectiveCamera(35,1,.01,100);
+  cam.position.set(2.6,1.6,2.6);
+  scene.add(new THREE.HemisphereLight(0xdfe8ff,0x1a1408,1.1));
+  var soleil=new THREE.DirectionalLight(0xffe2b0,2.2);soleil.position.set(3,5,2);scene.add(soleil);
+  var bleu=new THREE.DirectionalLight(0x7fa6e8,1.2);bleu.position.set(-4,2,-3);scene.add(bleu);
 
-  var forme=new THREE.Shape();
-  [[-1,1],[1,1],[1,.62],[-.42,-.62],[1,-.62],[1,-1],[-1,-1],[-1,-.62],[.42,.62],[-1,.62]].forEach(function(p,i){i?forme.lineTo(p[0],p[1]):forme.moveTo(p[0],p[1])});
-  var geo=new THREE.ExtrudeGeometry(forme,{depth:.55,bevelEnabled:true,bevelThickness:.09,bevelSize:.07,bevelSegments:8,curveSegments:8});
-  geo.center();
-  var mat=new THREE.MeshStandardMaterial({color:0xC8A96A,metalness:.72,roughness:.26});
-  var z=new THREE.Mesh(geo,mat);
-  z.scale.setScalar(1.12);
-  s3.add(z);
+  // Socle doré
+  var socle=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.1,.06,64),new THREE.MeshStandardMaterial({color:0x8A7346,metalness:.9,roughness:.4}));
+  socle.position.y=-.03;scene.add(socle);
 
-  s3.add(new THREE.AmbientLight(0xffffff,.35));
-  var cle=new THREE.DirectionalLight(0xfff4e0,1.6);cle.position.set(3,4,5);s3.add(cle);
-  var dore=new THREE.PointLight(0xE4CF9E,2.2,20);dore.position.set(-4,2,3);s3.add(dore);
-  var vert=new THREE.PointLight(0x0E7C5A,3,20);vert.position.set(2,-3,-3);s3.add(vert);
-  var contre=new THREE.DirectionalLight(0xffffff,.8);contre.position.set(-2,-1,-5);s3.add(contre);
+  var ctrl=new THREE.OrbitControls(cam,rendu.domElement);
+  ctrl.enableDamping=true;ctrl.autoRotate=!reduit;ctrl.autoRotateSpeed=1.4;
+  ctrl.minDistance=1.6;ctrl.maxDistance=6;ctrl.maxPolarAngle=Math.PI*.49;ctrl.enablePan=false;
+  ctrl.target.set(0,.5,0);
 
-  // Poussière d'or
-  var n=160,pos=new Float32Array(n*3);
-  for(var i=0;i<n;i++){pos[i*3]=(Math.random()-.5)*7;pos[i*3+1]=(Math.random()-.5)*7;pos[i*3+2]=(Math.random()-.5)*4-1}
-  var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
-  var pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xC8A96A,size:.025,transparent:true,opacity:.7}));
-  s3.add(pts);
-
-  function taille(){var w=scene.clientWidth;renderer.setSize(w,w,false);cam.aspect=1;cam.updateProjectionMatrix()}
+  function taille(){var w=boite.clientWidth,h=boite.clientHeight;rendu.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
   taille();addEventListener('resize',taille);
 
-  var cible={x:0,y:0};
-  function viser(cx,cy){var r=scene.getBoundingClientRect();cible.x=((cx-r.left)/r.width-.5)*2;cible.y=((cy-r.top)/r.height-.5)*2}
-  addEventListener('pointermove',function(e){viser(e.clientX,e.clientY)});
-  scene.addEventListener('touchmove',function(e){var t=e.touches[0];viser(t.clientX,t.clientY)},{passive:true});
-
-  z.rotation.set(-.15,-.45,0);
-  var t0=performance.now();
-  function boucle(t){
-    var s=(t-t0)/1000;
-    var auto=reduit?0:Math.sin(s*.6)*.55;
-    z.rotation.y+=((auto+cible.x*.7-.2)-z.rotation.y)*.05;
-    z.rotation.x+=((cible.y*.4-.12)-z.rotation.x)*.05;
-    z.position.y=reduit?0:Math.sin(s*1.1)*.08;
-    pts.rotation.y=s*.03;
-    renderer.render(s3,cam);
-    if(!reduit)requestAnimationFrame(boucle);
+  function cadrer(obj){
+    var b=new THREE.Box3().setFromObject(obj),s=b.getSize(new THREE.Vector3());
+    obj.scale.multiplyScalar(1.5/Math.max(s.x,s.y,s.z));
+    b.setFromObject(obj);var c=b.getCenter(new THREE.Vector3());
+    obj.position.x-=c.x;obj.position.z-=c.z;obj.position.y-=b.min.y;
+    ctrl.target.set(0,(b.max.y-b.min.y)*.45,0);
   }
-  requestAnimationFrame(boucle);
-  if(reduit)addEventListener('pointermove',function(){requestAnimationFrame(boucle)});
+
+  function repli(){
+    // Immeuble à terrasses dessiné en code si le modèle ne charge pas
+    var g=new THREE.Group(),pierre=new THREE.MeshStandardMaterial({color:0xEDE6DA,roughness:.7}),verre=new THREE.MeshStandardMaterial({color:0xF2C46B,emissive:0x7a5a1a,emissiveIntensity:.6,roughness:.2}),vert=new THREE.MeshStandardMaterial({color:0x2F6B3A,roughness:.9});
+    for(var i=0;i<6;i++){var w=1.2-i*.12,d=.9-i*.06;
+      var dalle=new THREE.Mesh(new THREE.BoxGeometry(w,.04,d),pierre);dalle.position.set(i*.03,i*.24,i*.04);g.add(dalle);
+      var vitre=new THREE.Mesh(new THREE.BoxGeometry(w-.14,.18,d-.2),verre);vitre.position.set(i*.03,i*.24+.11,i*.04-.02);g.add(vitre);
+      var haie=new THREE.Mesh(new THREE.BoxGeometry(w,.05,.06),vert);haie.position.set(i*.03,i*.24+.045,i*.04+d/2-.03);g.add(haie)}
+    return g;
+  }
+
+  function afficherRepli(){var m=repli();cadrer(m);scene.add(m);charge.hidden=true}
+  // Le modèle est stocké en base64 (texte) pour être servi partout, puis décodé ici
+  fetch('medias/immeuble-glb.txt').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(b64){
+    var bin=atob(b64.trim()),octets=new Uint8Array(bin.length);
+    for(var i=0;i<bin.length;i++)octets[i]=bin.charCodeAt(i);
+    new THREE.GLTFLoader().parse(octets.buffer,'',function(gltf){
+      var m=gltf.scene;cadrer(m);scene.add(m);charge.hidden=true;
+    },afficherRepli);
+  }).catch(afficherRepli);
+
+  var visible=true;
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){visible=e[0].isIntersecting}).observe(boite)}
+  (function boucle(){requestAnimationFrame(boucle);if(!visible)return;ctrl.update();rendu.render(scene,cam)})();
 })();
 </script>
