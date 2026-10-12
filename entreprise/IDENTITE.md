@@ -10,7 +10,9 @@
 | **dzignstudio.dz**, dzign.dz | ✅ semblent libres (à confirmer sur nic.dz) |
 | dzignstudio.net, dzignstudio.design, dzignstudio.agency, dzignstudio.dev | ✅ semblent libres |
 
-Recommandation : **dzignstudio.dz** à terme. Pour démarrer tout de suite chez Hostinger : **dzignstudio.design** (fait très studio haut de gamme) ou dzignstudio.net.
+**Vérifié au registre le 2026-10-12 : dzignstudio.design est LIBRE** (RDAP du registre .design : introuvable, contrôle positif sur google.design). dzignstudio.net est en réalité déjà pris.
+
+Recommandation : **acheter dzignstudio.design maintenant** chez Hostinger ; dzignstudio.dz à terme. Pour démarrer tout de suite chez Hostinger : **dzignstudio.design** (fait très studio haut de gamme) ou dzignstudio.net.
 
 Ancienne note : Le .dz inspire confiance en Algérie, mais il
 faut en général être enregistré (lié à l'étape juridique). En attendant :

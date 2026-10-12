@@ -20,6 +20,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | **Paiement BaridiMob : 50 % au début, 50 % à la présentation du site terminé**, puis mise en ligne sur l'hébergement définitif. |
 | 2026-10-12 | **Nom de domaine + email pro offerts la 1re année** dans toutes les formules (≈ 2 000 à 4 000 DA par client, à intégrer au prix). |
 | 2026-10-12 | Réalisation réelle à montrer : **lamaisonduparquet.org**. |
+| 2026-10-12 | **Tout à distance** : appel WhatsApp, maquette en ligne, paiement BaridiMob, aucun déplacement. |
+| 2026-10-12 | Nom de domaine choisi : **dzignstudio.design** (libre au 2026-10-12) — achat par l'utilisateur·rice sur Hostinger. Email et comptes Instagram/TikTok créés par l'utilisateur·rice après. |
 | 2026-10-12 | **Ne rien mettre en ligne (Hostinger) sans l'accord explicite.** |
 | 2026-10-12 | **WhatsApp pro : 0794709323** (+213 794 70 93 23). |
 | 2026-10-12 | Hébergement sur **Hostinger** (site Dzign + sites clients). |
