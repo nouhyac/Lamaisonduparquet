@@ -1,67 +1,66 @@
-# Offre : brouillon n°2 (à valider)
+# Offre Dzign Studio : version 3 (haut de gamme)
 
-## 1. Marché : l'Algérie, à partir d'Alger
-**Cible : tout le monde** (commerces, artisans, professions libérales, PME,
-vendeurs en ligne, associations, particuliers).
+## 1. Positionnement
+**Dzign Studio, studio digital haut de gamme basé à Alger.**
+Sites web, expériences 3D, boutiques en ligne et applications, pour tous ceux en
+Algérie qui veulent une présence en ligne au niveau des meilleures marques internationales.
 
-Points propres au marché algérien, pris en compte dans l'offre :
-- **Facebook est le réseau n°1**, puis Instagram et TikTok. Beaucoup de commerces
-  vendent déjà via leur page Facebook ou WhatsApp : on leur propose de passer au niveau au-dessus.
-- **Le paiement à la livraison domine.** Les boutiques gèrent donc la commande
-  avec paiement à la livraison. Le paiement par carte CIB ou Edahabia est une option.
-- **Sites en arabe et en français** (et en anglais si besoin), adaptés au mobile en priorité.
-- Les prix sont **accessibles mais pas bradés** : la qualité doit se voir dans le portfolio.
+Ce qui nous rend uniques sur le marché algérien :
+1. **Le design niveau international** : animations fluides, typographie soignée, aucun modèle « déjà vu ».
+2. **La 3D et l'interactif** : produits en 3D, visites virtuelles, effets immersifs. Très rare en Algérie.
+3. **Des sites qui vendent** : chaque site est pensé pour transformer les visiteurs en clients (appels, WhatsApp, commandes).
+4. **Arabe, français et anglais** parfaitement gérés (y compris le sens d'écriture de l'arabe).
+5. **Rapides et bien référencés** : chargement éclair, optimisés pour Google.
+6. **Le marketing inclus dans la réflexion** : on ne livre pas qu'un site, on livre de quoi trouver des clients.
 
-### Segments pour les pubs (une pub par segment, même si on cible tout le monde)
-1. Commerces et restaurants : « Soyez trouvé sur Google et recevez des commandes. »
-2. Vendeurs Facebook et Instagram : « Votre propre boutique en ligne avec paiement à la livraison. »
-3. Professions libérales (médecins, avocats, architectes…) : « Une image pro et la prise de rendez-vous en ligne. »
-4. Entreprises et startups : « Applications et plateformes sur mesure. »
+## 2. Les formules
+Les prix sont « à partir de ». Le prix final dépend du niveau demandé : pages,
+langues, fonctions, 3D, rédaction des textes, photos et vidéos, délai.
 
-## 2. Les formules : prix « à partir de », selon le niveau demandé
+| Formule | Pour qui | Contenu | À partir de |
+|---------|----------|---------|-------------|
+| **Impact** | Lancer une offre, un événement, un produit | Une page unique premium, animée, avec WhatsApp, carte et formulaire, pensée pour les pubs | 30 000 DA |
+| **Signature** ⭐ | Commerces, professions libérales, entreprises | Site vitrine sur mesure (jusqu'à 6 pages), animations, 2 langues, Google Maps, référencement | 80 000 DA |
+| **Commerce** | Vendeurs, marques, boutiques | Boutique en ligne, paiement à la livraison, frais par wilaya, BaridiMob/CIB/Edahabia en option, suivi des commandes | 150 000 DA |
+| **Immersion** | Immobilier, mobilier, mode, automobile, événementiel, marques premium | Site avec expérience 3D : produit en 3D à faire tourner, configurateur, visite virtuelle | 250 000 DA |
+| **Plateforme** | Startups, entreprises, projets ambitieux | Application web ou mobile, réservation, espace client, marketplace, tableau de bord | Sur devis, dès 400 000 DA |
 
-Le prix final dépend du **niveau demandé** par le client. Chaque formule a un
-prix de départ, puis le devis s'ajuste selon :
-- le **design** (modèle adapté, ou création 100 % sur mesure) ;
-- le **nombre de pages ou de produits** ;
-- les **langues** (1, 2 ou 3) ;
-- les **fonctionnalités** (réservation, paiement CIB/Edahabia, espace client, animations…) ;
-- la **rédaction des textes et les photos** (fournis par le client ou faits par nous) ;
-- l'**urgence** du délai.
+⭐ = formule mise en avant (la plus demandée).
 
-| Formule | Contenu de base | À partir de | Délai indicatif |
-|---------|-----------------|-------------|-----------------|
-| **Starter** : page unique | 1 page pro (présentation, services, WhatsApp, carte, contact) | 15 000 DA | 3 jours |
-| **Essentiel** : site vitrine | Jusqu'à 5 pages, mobile, formulaire, fiche Google Maps, référencement de base | 35 000 DA | 7 jours |
-| **Boutique** : e-commerce | Boutique, commande avec paiement à la livraison, frais par wilaya, tableau de bord des commandes | 75 000 DA | 14 jours |
-| **Sur-mesure** : application | Appli web ou mobile (réservation, fidélité, livraison, espace client…) | 150 000 DA | Selon le projet |
+## 3. Hébergement et suivi (mensuel, optionnel)
+Le client peut aussi héberger lui-même son site ; on lui livre alors tous les fichiers.
 
-Chaque formule existe en 3 niveaux, pour que le client choisisse facilement :
-- **Standard** : prix de départ, design à partir d'un modèle personnalisé.
-- **Premium** : environ +50 %, design sur mesure, plus de pages et de fonctionnalités.
-- **Prestige** : sur devis, création exceptionnelle, animations, accompagnement complet.
+| Abonnement | Contenu | Prix |
+|------------|---------|------|
+| **Care** | Hébergement professionnel rapide, certificat de sécurité (https), sauvegardes, mises à jour, surveillance | 5 000 DA/mois |
+| **Care+** | Care + petites modifications illimitées + rapport de visites mensuel + amélioration du référencement | 15 000 DA/mois |
 
-**Abonnement « Tranquillité » : 3 000 DA/mois** (hébergement, mises à jour, petites modifications, sauvegardes).
-Le nom de domaine est facturé à part, au prix coûtant.
+## 4. Options marketing (pour vendre plus)
+| Option | Contenu | À partir de |
+|--------|---------|-------------|
+| **Lancement Pub** | Création des visuels et vidéos, réglage et suivi des pubs Facebook, Instagram et TikTok pendant 1 mois (budget pub à part) | 35 000 DA |
+| **Visuels 3D** | Rendus et vidéos 3D des produits pour les réseaux et le site | 20 000 DA |
+| **Google Local** | Fiche Google optimisée, avis, référencement local | 10 000 DA |
 
-**Offre de lancement** : -20 % pour les 10 premiers clients, en échange d'un avis
-et de l'autorisation de montrer leur site dans le portfolio.
+## 5. Paiement et déroulement
+1. **Appel découverte gratuit** (WhatsApp ou téléphone) : on comprend le besoin.
+2. **Devis clair**, fixé avant de commencer.
+3. **Acompte de 50 % par BaridiMob** : le projet démarre.
+4. **Maquette sous 72 h** : le client valide le style.
+5. **Fabrication** du site.
+6. **Présentation du site terminé** sur une adresse de prévisualisation → **solde de 50 % par BaridiMob**.
+7. **Mise en ligne** sur l'hébergement définitif et le nom de domaine, puis courte formation du client.
 
-## 3. Ce qui nous différencie
-- **Qualité exceptionnelle** à prix accessible.
-- **Aperçu du site en 48 h.**
-- **Devis clair, fixé avant de commencer** (aucune surprise), paiement en 2 fois (50 % au départ, 50 % à la livraison).
-- **Un seul interlocuteur**, joignable sur WhatsApp.
-- Sites **pensés pour rapporter des clients**.
+## 6. Programme Fondateurs (lancement)
+**5 places seulement** : -20 % sur toutes les formules, en échange d'un avis
+client et du droit de montrer le projet dans notre portfolio.
+Effet recherché : de la rareté (haut de gamme) plutôt qu'une promo « bradée ».
 
-## 4. Message principal (pour les pubs)
-> « Votre site professionnel prêt en 7 jours, à partir de 15 000 DA. »
-
-(« À partir de » : le prix exact dépend du niveau demandé.)
-
-À décliner en arabe, en darija et en français.
+## 7. Messages pour les pubs
+- FR : « Votre marque mérite un site d'exception. Conçu à Alger, au niveau mondial. »
+- AR : « علامتك التجارية تستحق موقعاً استثنائياً. صُمّم في الجزائر، بمستوى عالمي. »
+- Darija : à rédiger avec toi, pour que ça sonne naturel.
 
 ## À valider
-- [ ] Les prix te conviennent ?
-- [ ] On garde l'offre de lancement à -20 % ?
-- [ ] On garde l'abonnement mensuel ?
+- [ ] Les prix « à partir de » te conviennent ?
+- [ ] Programme Fondateurs à 5 places, OK ?
