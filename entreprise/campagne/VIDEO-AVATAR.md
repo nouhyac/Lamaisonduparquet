@@ -60,6 +60,16 @@ Captures réelles prêtes : `avatar/cartes/` (site en ligne, téléphone, 13/10)
 - **Recommandation** : Kling 3.0 pro. Test = 2 mini-vidéos de 8 s (homme + femme) = **40 crédits**, puis vidéo complète avec le personnage choisi ≈ 112 crédits. Total ≈ 152 sur 191 → il ne resterait ≈ 39 crédits. Alternative économique : test en Seedance 2.0 mini (16 crédits) mais rendu moins réaliste.
 - **À décider demain** : accord sur le budget du test (40 crédits) ou option moins chère, puis choix homme/femme.
 
+## Version finale décidée (13/10) : 2 vidéos de 30 s (femme + homme), textes différents
+- **Décors** ultra-modernes faits (Nano Banana Pro, même visage) : `avatar/decor-femme.png` (penthouse face à la baie d'Alger, job `4f36a09a-e2fb-4e0c-8f2a-9a260ba7c975`), `avatar/decor-homme.png` (studio d'architecte, job `2c88e81d-ed1c-4ea4-bd0a-b03af1010c96`).
+- **Méthode sans erreur** : voix française générée d'abord (ElevenLabs, texte exact, vérifiée par transcription automatique), puis vidéo **Wan 2.7 1080p** animée par cette voix (lèvres synchronisées sur l'audio). 2 plans de 15 s par personne = 4 × 37,5 = **150 crédits**. Solde avant : 184,39.
+- **Voix testées** (toutes transcrites sans faute) : femmes Elodie (lente), Celine, Ines ; hommes Luc, Julian, Xavier → `avatar/voix/`. Choix à faire par l'utilisateur·rice (accent).
+- **Textes** (« Design Studio » écrit ainsi pour la prononciation) :
+  - Femme 1 : « Vous avez une entreprise, mais pas encore de site internet ? Chez Design Studio, à Alger, on crée des sites modernes, des boutiques en ligne, et même des sites en 3D, partout en Algérie. »
+  - Femme 2 : « Le plus simple ? Tapez le nom de votre entreprise sur notre site : votre futur site apparaît en dix secondes. C'est gratuit. Ensuite, écrivez-nous sur WhatsApp, et on s'occupe de tout. »
+  - Homme 1 : « Aujourd'hui, vos clients vous cherchent d'abord sur internet. Un beau site, c'est des clients qui vous trouvent, même la nuit. Chez Design Studio, on le conçoit sur mesure, en arabe et en français. »
+  - Homme 2 : « Vous ne prenez aucun risque : vous payez la moitié pour commencer, et si la maquette ne vous plaît pas, on vous rembourse. Pour nos cinq premiers clients, c'est moins vingt pour cent. Lien en bio. »
+
 ## Étapes de fabrication (demain)
 1. Récupérer le lien du modèle et regarder son style (cadrage, rythme, sous-titres).
 2. Choisir/créer l'avatar dans Higgsfield (prix vérifié avant, accord demandé).
