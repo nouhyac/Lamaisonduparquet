@@ -78,6 +78,10 @@ Captures réelles prêtes : `avatar/cartes/` (site en ligne, téléphone, 13/10)
 - Coût total vidéo avatar ≈ 132 crédits (portraits, décors, tests de voix, 4 plans). Solde Higgsfield : **59,49**.
 - Publication : cocher l'étiquette « contenu IA » sur Instagram/Facebook/TikTok. Utilisables aussi en pub Meta (format 9:16, Reels/Stories).
 
+### Version pro (v2, sans crédit)
+Logo Dzign en haut à gauche, titre d'accroche les 3 premières secondes (« Pas encore de site internet ? » / « Vos clients vous cherchent en ligne. »), zoom entre les 2 plans (et homme recadré plus près), léger étalonnage, son normalisé à -14 LUFS (standard Instagram/TikTok). Calques : `avatar/logo.png`, `avatar/hook-*.png` (générés depuis `avatar/ov.html`).
+**Usage décidé** : femme = Reel + future pub Meta (montre l'aperçu gratuit, le plus concret) ; homme = Reel 3 jours après + pub de relance (rassure ceux qui hésitent).
+
 ## Étapes de fabrication (archive)
 1. Récupérer le lien du modèle et regarder son style (cadrage, rythme, sous-titres).
 2. Choisir/créer l'avatar dans Higgsfield (prix vérifié avant, accord demandé).
