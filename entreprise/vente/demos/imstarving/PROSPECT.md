@@ -11,6 +11,13 @@
 - **Démo** : https://claude.ai/artifact/3bXb3y34qYW5rZzQLes3a4 (source `index.html`, photos générées `img/`). **v2 (14/10) à leur image** : logo, bleu nuit + rouge, slogan « Frais · Généreux · Fait pour toi », menu complet relevé sur leurs stories Instagram (Burgers ×7, Crogers ×7, Smash ×2, Tacos ×4 + fromage gratiné, Starvation ×5, Sandwichs ×5, Pâtes ×4) avec tailles et prix, vignettes recadrées depuis leurs visuels de menu, photo réelle de croger en bandeau.
 - **Technique prévue pour la vraie version** : hébergement Hostinger (PHP + MySQL) ou base temps réel ; écran cuisine en page web sur tablette Android ; impression via appli RawBT (ESC/POS Bluetooth) ou Chrome en mode impression silencieuse.
 
+## v4 : rendus 3D + réception au choix (14/10)
+- **34 rendus 3D** (un par plat) + bannière Croger + bandeau « festin » → `site/img3d/` (Higgsfield gpt_image_2_5 low, 0,25 crédit/image, ≈ 9,75 crédits). Bannières refaites **sans bacon** (halal). La galerie « La salle » garde leurs vraies photos du lieu.
+- **Récepteur de bons** `site/recepteur.html` (PC de caisse, code 2026) : impression auto de chaque commande en 1 à 3 copies (cuisine / caisse / livreur), 58 ou 80 mm, journal du jour, Encaisser, Réimprimer, WhatsApp, copie Excel pour la caisse, bon de test, filtre par restaurant.
+- **Onglet Réception** du back-office : le restaurant choisit ses canaux (écran cuisine, récepteur de bons, WhatsApp du restaurant, prévenir le client sur WhatsApp, logiciel de caisse aucune/Excel/API, SMS gérant, e-mail, acceptation manuelle ou automatique).
+- **Vidéo démo 25 s** verticale : `demo-imstarving.mp4` (cuisine en haut, téléphone en bas, 4 étapes, écran de fin). Sources : `video/`.
+- Version réelle : WhatsApp automatique = API WhatsApp Business (Meta, coût par conversation) ; impression = imprimante thermique ESC/POS + petit logiciel ou Chrome en impression silencieuse ; caisse = export ou API selon l'éditeur.
+
 ## v3.1 : deux restaurants (14/10)
 Choix du restaurant dans le panier (ouvert/fermé en direct, celui qui est ouvert est choisi par défaut), section « Nos deux adresses » (horaires, téléphones, itinéraire), back-office filtrable Bab Ezzouar / Aïn Allah / les 2 (commandes, stats comparées), ticket au nom du restaurant, QR codes par restaurant (`#ain-table-7`).
 

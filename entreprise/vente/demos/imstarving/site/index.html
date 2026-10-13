@@ -43,7 +43,7 @@ h1,h2,h3{font-family:var(--f-titre);font-weight:400;text-transform:uppercase;let
 
 /* Héros */
 .heros{position:relative;min-height:min(720px,88vh);display:grid;align-items:end;overflow:hidden;border-bottom:1px solid var(--trait)}
-.heros>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;transform:scale(1.04);animation:respire 14s ease-in-out infinite alternate}
+.heros>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 50%;transform:scale(1.04);animation:respire 14s ease-in-out infinite alternate}
 @keyframes respire{to{transform:scale(1.12)}}
 .heros::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,13,36,.2) 0%,rgba(6,13,36,.35) 40%,rgba(6,13,36,.96) 100%),linear-gradient(90deg,rgba(6,13,36,.75),transparent 60%)}
 .heros .wrap{position:relative;z-index:1;padding-block:120px 64px;display:grid;gap:18px;max-width:1180px;width:100%}
@@ -91,7 +91,15 @@ section.bloc{padding-block:84px}
 .carte{background:var(--nuit2);border:1px solid var(--trait);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
 .carte:hover{transform:translateY(-3px);border-color:#3a4a80}
 .carte .vis{aspect-ratio:4/3;background:radial-gradient(circle at 50% 60%,#16245a,#070f2b 70%);overflow:hidden;max-width:100%}
-.carte .vis img{width:100%;height:100%;object-fit:contain;transform:scale(1.08)}
+.carte .vis img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.carte:hover .vis img{transform:scale(1.06)}
+.festin{position:relative;overflow:hidden;border-block:1px solid var(--trait);background:#050a1d}
+.festin img{display:block;width:100%;height:auto;max-height:620px;object-fit:cover}
+.festin .wrap{position:absolute;inset:auto 0 0;padding-block:0 34px;display:grid;gap:6px}
+.festin::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(6,13,36,.92));pointer-events:none}
+.festin .wrap{z-index:1}
+.festin h2{font-size:clamp(34px,6vw,72px)}
+@media (max-width:640px){.festin img{aspect-ratio:4/3;object-position:30% 50%}.festin .wrap{padding-block:0 18px}}
 .carte .corps{padding:16px;display:grid;gap:6px;flex:1;align-content:start}
 .carte h3{font-size:22px}
 .carte p{margin:0;color:var(--gris);font-size:14px;line-height:1.4}
@@ -191,7 +199,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 
-<div class="demo"><div class="wrap"><span>Démo Dzign Studio · site client d'I'm Starving Food</span><a href="cuisine.html" target="_blank" rel="noopener">Ouvrir le back-office du restaurant ↗</a></div></div>
+<div class="demo"><div class="wrap"><span>Démo Dzign Studio · site client d'I'm Starving Food</span><span style="display:flex;gap:16px;flex-wrap:wrap"><a href="cuisine.html" target="_blank" rel="noopener">Back-office cuisine ↗</a><a href="recepteur.html" target="_blank" rel="noopener">Récepteur de bons (PC caisse) ↗</a></span></div></div>
 
 <header class="nav"><div class="wrap">
   <a class="logo" href="#haut"><img src="img/logo.jpg" alt=""><b>I'M <i>STARVING</i></b></a>
@@ -201,7 +209,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 
 <main id="haut">
   <section class="heros">
-    <img src="img/croger-main.jpg" alt="Croger : burger dans un croissant, fromage fondu">
+    <img src="img3d/hero.jpg" alt="Croger : burger dans un croissant, steak, cheddar fondant">
     <div class="wrap">
       <span class="sur">Fast food · Bab Ezzouar · Aïn Allah</span>
       <h1><span class="script">le burger dans un croissant</span>Le Croger</h1>
@@ -217,6 +225,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     <div class="sigs" id="sigs"></div>
   </div></section>
 
+  <section class="festin" aria-label="Le menu"><img src="img3d/festin.jpg" alt="Croger, smash burger, tacos, gratin et frites" loading="lazy"><div class="wrap"><span class="sur">7 familles · 34 recettes</span><h2>Faim ? <span class="script">on s'occupe du reste</span></h2></div></section>
+
   <section class="bloc" id="menu" style="padding-top:20px"><div class="wrap">
     <div class="tete"><h2>Le <span class="script">menu</span></h2><p>Choisissez la taille, ajoutez au panier, commandez. La cuisine reçoit tout instantanément.</p></div>
     <div class="onglets" id="onglets" role="group" aria-label="Catégories"></div>
@@ -227,9 +237,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     <div class="tete"><h2>La <span class="script">salle</span></h2><p>Murs rouges, arches, lumière chaude : un lieu où l'on vient manger et où l'on reste.</p></div>
     <div class="salle">
       <figure class="a"><img src="img/salle-arche.jpg" alt="Salle aux murs rouges et arche"><figcaption>L'arche rouge</figcaption></figure>
-      <figure><img src="img/croger-brique.jpg" alt="Croger servi sur planche devant un mur de briques"><figcaption>Le Croger</figcaption></figure>
+      <figure><img src="img3d/crg5.jpg" alt="Croger Continental"><figcaption>Le Croger</figcaption></figure>
       <figure class="d"><img src="img/salle-gratin.jpg" alt="Gratin servi en salle, étage et comptoir"><figcaption>En salle</figcaption></figure>
-      <figure><img src="img/gratin.jpg" alt="Plat gratiné au fromage"><figcaption>Gratiné maison</figcaption></figure>
+      <figure><img src="img3d/stv0.jpg" alt="Starvation au poulet gratiné"><figcaption>Gratiné maison</figcaption></figure>
     </div>
   </div></section>
 
@@ -274,7 +284,7 @@ $('ticker').innerHTML=Array(2).fill(['Frais','Généreux','Fait pour toi','Croge
 
 function plat(id){return M.find(function(p){return p.id===id})}
 function signatures(){
-  var S=[['crg6','01','img/croger-oeuf.jpg'],['smc','02','img/croger-frites.jpg'],['stv4','03','img/stv5.jpg']];
+  var S=[['crg6','01','img3d/crg6.jpg'],['smc','02','img3d/smc.jpg'],['stv4','03','img3d/stv4.jpg']];
   $('sigs').innerHTML=S.map(function(s){var p=plat(s[0]);return '<article class="sig"><img src="'+s[2]+'" alt="'+p.nom+'"><div class="in"><span class="no">'+s[1]+'</span><h3>'+p.nom+'</h3><p>'+p.desc+'</p><div class="bas"><span class="prix"><small>dès</small>'+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé</span>')+'</div></div></article>'}).join('');
 }
 function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){return '<button aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>'}).join('');

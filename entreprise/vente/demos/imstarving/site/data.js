@@ -17,32 +17,32 @@
   var PB = [[450,650,800],[450,650,800],[500,700,850],[500,700,850],[500,700,850],[500,700,850],[800,950,1100]];
   var PC = [[550,750,900],[550,750,900],[650,850,1000],[650,850,1000],[650,850,1000],[650,850,1000],[850,1050,1200]];
   var P = [];
-  B.forEach(function (b, i) { P.push({ id: 'crg' + i, cat: 'Crogers', nom: 'Croger ' + b[0], desc: 'Le burger dans un croissant · ' + b[1], img: 'img/crg' + (i + 1) + '.jpg', tailles: T(SDT, PC[i]) }); });
-  P.push({ id: 'smc', cat: 'Smash', nom: 'Smash Croger', desc: 'Steaks écrasés, cheddar, salade, tomate, dans un croissant.', img: 'img/smc2.jpg', tailles: T(SM, [650,800,950,1050]) });
-  P.push({ id: 'smb', cat: 'Smash', nom: 'Smash Burger', desc: 'Steaks écrasés, cheddar, salade, tomate. Du double au quintuple.', img: 'img/smb2.jpg', tailles: T(SM, [550,700,850,950]) });
-  B.forEach(function (b, i) { P.push({ id: 'bur' + i, cat: 'Burgers', nom: 'Burger ' + b[0], desc: 'Pain brioché · ' + b[1], img: 'img/bur' + (i + 1) + '.jpg', tailles: T(SDT, PB[i]) }); });
+  B.forEach(function (b, i) { P.push({ id: 'crg' + i, cat: 'Crogers', nom: 'Croger ' + b[0], desc: 'Le burger dans un croissant · ' + b[1], img: 'img3d/crg' + i + '.jpg', tailles: T(SDT, PC[i]) }); });
+  P.push({ id: 'smc', cat: 'Smash', nom: 'Smash Croger', desc: 'Steaks écrasés, cheddar, salade, tomate, dans un croissant.', img: 'img3d/smc.jpg', tailles: T(SM, [650,800,950,1050]) });
+  P.push({ id: 'smb', cat: 'Smash', nom: 'Smash Burger', desc: 'Steaks écrasés, cheddar, salade, tomate. Du double au quintuple.', img: 'img3d/smb.jpg', tailles: T(SM, [550,700,850,950]) });
+  B.forEach(function (b, i) { P.push({ id: 'bur' + i, cat: 'Burgers', nom: 'Burger ' + b[0], desc: 'Pain brioché · ' + b[1], img: 'img3d/bur' + i + '.jpg', tailles: T(SDT, PB[i]) }); });
   [['Poulet', 'Poulet, frites, sauce fromagère, sauce algérienne', [450,650]],
    ['Poulet curry', 'Poulet, frites, sauce curry, sauce algérienne', [450,650]],
    ['Viande', 'Steak haché, frites, sauce fromagère, sauce algérienne', [550,750]],
    ['Mixte', 'Viande, poulet, frites, sauce fromagère, sauce algérienne', [650,800]]
-  ].forEach(function (t, i) { P.push({ id: 'tac' + i, cat: 'Tacos', nom: 'Tacos ' + t[0], desc: t[1], img: 'img/tac' + (i + 1) + '.jpg', tailles: T(ML, t[2]), extra: [['Fromage gratiné', 150]] }); });
+  ].forEach(function (t, i) { P.push({ id: 'tac' + i, cat: 'Tacos', nom: 'Tacos ' + t[0], desc: t[1], img: 'img3d/tac' + i + '.jpg', tailles: T(ML, t[2]), extra: [['Fromage gratiné', 150]] }); });
   [['Poulet', 'Poulet, sauce crémeuse, fromage gratiné, frites', [550,750]],
    ['Poulet curry', 'Poulet, sauce curry, fromage gratiné, frites', [550,750]],
    ['Steak haché', 'Steak haché, sauce fromagère, fromage gratiné, frites', [650,850]],
    ['Steak haché au poivre', 'Steak haché, sauce au poivre, fromage gratiné, frites', [650,850]],
    ['Mixte', 'Poulet, steak haché, sauce au poivre, fromage gratiné, frites', [750,950]]
-  ].forEach(function (t, i) { P.push({ id: 'stv' + i, cat: 'Starvation', nom: 'Starvation ' + t[0], desc: t[1], img: 'img/stv' + (i + 1) + '.jpg', tailles: T(ML, t[2]) }); });
+  ].forEach(function (t, i) { P.push({ id: 'stv' + i, cat: 'Starvation', nom: 'Starvation ' + t[0], desc: t[1], img: 'img3d/stv' + i + '.jpg', tailles: T(ML, t[2]) }); });
   [['Poulet', 'Pain brioché, poulet, sauce fromagère, frites, tomate, salade', [350,550,700]],
    ['Poulet curry', 'Pain brioché, poulet, sauce curry, frites, tomate, salade', [350,550,700]],
    ['Steak haché', 'Pain brioché, steak haché, sauce fromagère, oignons caramélisés, frites', [400,600,750]],
    ['Steak haché poivre', 'Pain brioché, steak haché, sauce poivre, oignons caramélisés, frites', [400,600,750]],
    ['Mix', 'Pain brioché, steak haché, poulet, oignons caramélisés, frites', [500,700,850]]
-  ].forEach(function (t, i) { P.push({ id: 'san' + i, cat: 'Sandwichs', nom: 'Sandwich ' + t[0], desc: t[1], img: 'img/san' + (i + 1) + '.jpg', tailles: T(SDT, t[2]) }); });
+  ].forEach(function (t, i) { P.push({ id: 'san' + i, cat: 'Sandwichs', nom: 'Sandwich ' + t[0], desc: t[1], img: 'img3d/san' + i + '.jpg', tailles: T(SDT, t[2]) }); });
   [['Sauce fromagère', 'Penne, sauce fromagère', 650],
    ['Sauce curry', 'Penne, poulet, sauce curry, cheddar', 750],
    ['Sauce crémeuse', 'Penne, poulet, champignons, sauce crémeuse, cheddar', 850],
    ['Sauce bolognaise', 'Penne, sauce bolognaise, cheddar', 900]
-  ].forEach(function (t, i) { P.push({ id: 'pat' + i, cat: 'Pâtes', nom: 'Pâtes ' + t[0], desc: t[1], img: 'img/pat' + (i + 1) + '.jpg', prix: t[2] }); });
+  ].forEach(function (t, i) { P.push({ id: 'pat' + i, cat: 'Pâtes', nom: 'Pâtes ' + t[0], desc: t[1], img: 'img3d/pat' + i + '.jpg', prix: t[2] }); });
 
   // ----- Stockage + synchronisation -----
   function lire(k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }
@@ -101,16 +101,27 @@
   ];
   function ouvert(r, d) { d = d || new Date(); var h = d.getHours() + d.getMinutes() / 60; return (h >= r.ouv && h < Math.min(24, r.ferm)) || (r.ferm > 24 && h < r.ferm - 24); }
   function resto(id) { return RESTOS.find(function (r) { return r.id === id; }) || RESTOS[0]; }
+  // Réception des commandes : le restaurant choisit ses canaux (back-office › Réception)
+  var RECEP0 = { ecran: true, bons: true, copies: 2, format: '80', whatsapp: true, sms: false, email: false, emailAdr: 'commandes@imstarving.dz', caisse: 'csv', webhook: '', acceptation: 'manuelle', clientWa: true };
+  function reception() { var r = lire('ims-recep', {}); var o = {}; for (var k in RECEP0) o[k] = r[k] === undefined ? RECEP0[k] : r[k]; return o; }
+  function texteBon(c) {
+    var r = resto(c.resto), m = c.mode === 'place' ? 'Sur place · table ' + c.table : c.mode === 'emporter' ? 'À emporter · ' + c.heure : 'Livraison · ' + c.adresse;
+    return '🍔 *I\'M STARVING ' + r.nom.toUpperCase() + '*\nCommande *' + '#' + String(c.no).padStart(3, '0') + '* · ' + m + '\n\n' +
+      c.lignes.map(function (l) { return l.q + '× ' + l.nom + (l.det.length ? ' (' + l.det.join(', ') + ')' : '') + ' · ' + (l.px * l.q) + ' DA'; }).join('\n') +
+      '\n\n*Total : ' + c.total + ' DA* · ' + (c.mode === 'livraison' ? 'paiement à la livraison' : 'paiement au comptoir') + '\nClient : ' + c.nom + ' · ' + c.tel;
+  }
+  function lienWa(tel, txt) { var n = String(tel).replace(/\D/g, '').replace(/^0/, '213'); return 'https://wa.me/' + n + '?text=' + encodeURIComponent(txt); }
   window.IMS = {
+    reception: reception, majReception: function (o) { ecrire('ims-recep', o); signaler('ims-recep'); }, texteBon: texteBon, lienWa: lienWa,
     RESTOS: RESTOS, resto: resto, ouvert: ouvert,
     CATS: ['Crogers', 'Smash', 'Burgers', 'Tacos', 'Starvation', 'Sandwichs', 'Pâtes'],
     menu: menu, lire: lire, ecrire: ecrire, amorcer: amorcer,
     commandes: function () { return lire('ims-cmds', []); },
     enregistrer: function (cmds) { ecrire('ims-cmds', cmds); signaler('ims-cmds'); },
-    nouvelleCommande: function (c) { var n = lire('ims-no', 1); c.no = n; ecrire('ims-no', n + 1); var L = lire('ims-cmds', []); L.push(c); ecrire('ims-cmds', L); signaler('ims-cmds'); return c; },
+    nouvelleCommande: function (c) { var n = lire('ims-no', 1); c.no = n; if (reception().acceptation === 'auto' && c.st === 'nouv') { c.st = 'prep'; c.auto = true; } ecrire('ims-no', n + 1); var L = lire('ims-cmds', []); L.push(c); ecrire('ims-cmds', L); signaler('ims-cmds'); return c; },
     majMenu: function (dispo, prix) { ecrire('ims-dispo', dispo); ecrire('ims-prix', prix); signaler('ims-menu'); },
     surChangement: surChangement,
-    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); signaler('ims-menu'); },
+    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); signaler('ims-menu'); signaler('ims-recep'); },
     fmt: function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' DA'; },
     numero: function (n) { return '#' + String(n).padStart(3, '0'); }
   };

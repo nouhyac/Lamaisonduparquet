@@ -118,6 +118,24 @@ main{padding-block:18px 40px}
 .modesrep span{background:var(--nuit3);border-radius:999px;padding:6px 12px;font-size:13px}
 .tip{position:fixed;pointer-events:none;background:var(--creme);color:var(--nuit);font-weight:700;font-size:12.5px;border-radius:8px;padding:5px 9px;z-index:30}
 
+/* Réception */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.rc{background:var(--nuit2);border:1px solid var(--trait);border-radius:16px;padding:16px;display:grid;gap:10px;align-content:start}
+.rc.on{border-color:#1f6b40;box-shadow:inset 0 0 0 1px #1f6b40}
+.rc .t{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rc h3{font-size:20px;display:flex;gap:10px;align-items:center}.rc h3 em{font-style:normal;font-size:22px}
+.rc p{margin:0;color:var(--gris);font-size:13.5px}
+.rc .opts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.rc select,.rc input{background:var(--nuit);border:1px solid var(--trait);border-radius:10px;color:var(--creme);padding:8px 10px;font:inherit;font-size:14px;min-width:0}
+.rc input{flex:1 1 200px}
+.seg{display:inline-flex;flex-wrap:wrap;justify-self:start;max-width:100%;background:var(--nuit);border:1px solid var(--trait);border-radius:999px;padding:3px}
+.seg button{white-space:nowrap;border:0;background:none;border-radius:999px;padding:7px 12px;font-weight:700;font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--creme);color:var(--nuit)}
+.rc .num{font-family:var(--f-mono);font-size:13px;background:var(--nuit3);border-radius:8px;padding:6px 9px;user-select:all}
+.recap{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.recap span{border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;background:#0f2f1e;color:var(--vert)}
+.wa{background:#0f3d24!important;color:#5CF29A!important;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-weight:800;font-size:13px;padding:10px 12px}
+
 /* QR */
 .qrtete{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
 .qrgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
@@ -150,11 +168,13 @@ main{padding-block:18px 40px}
       <button role="tab" data-v="menu" aria-selected="false">Menu</button>
       <button role="tab" data-v="stats" aria-selected="false">Statistiques</button>
       <button role="tab" data-v="qr" aria-selected="false">QR tables</button>
+      <button role="tab" data-v="recep" aria-selected="false">Réception</button>
     </div>
     <div class="droite">
       <select class="pil" id="resto" aria-label="Restaurant"><option value="tous">Les 2 restaurants</option><option value="bab">Bab Ezzouar</option><option value="ain">Aïn Allah</option></select>
       <button class="pil" id="son" aria-pressed="false">🔔 Activer la sonnerie</button>
       <a class="pil" href="index.html" target="_blank" rel="noopener">Site client ↗</a>
+      <a class="pil" href="recepteur.html" target="_blank" rel="noopener">Récepteur ↗</a>
       <span class="horloge" id="horloge">--:--</span>
     </div>
   </div></header>
@@ -183,6 +203,13 @@ main{padding-block:18px 40px}
         <div class="panneau"><h3>Commandes par heure</h3><div id="g-heures"></div></div>
         <div class="panneau"><h3>Plats les plus vendus</h3><div class="top" id="g-top"></div><div class="modesrep" id="g-modes"></div></div>
       </div>
+    </section>
+
+    <section id="v-recep" hidden>
+      <h2 style="font-size:26px;margin-bottom:6px">Comment recevoir vos commandes ?</h2>
+      <p class="note" style="margin-top:0">Activez autant de canaux que vous voulez : ils fonctionnent en même temps. Rien n'est figé, vous changez quand vous voulez.</p>
+      <div class="recap" id="recap"></div>
+      <div class="rgrid" id="rgrid"></div>
     </section>
 
     <section id="v-qr" hidden>
@@ -221,19 +248,21 @@ function nomR(c){return IMS.resto(c.resto).nom}
 
 // ----- Onglets -----
 var vue='cmds';
-document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){vue=b.dataset.v;document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b)});['cmds','menu','stats','qr'].forEach(function(v){$('v-'+v).hidden=v!==vue});tout()}});
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){vue=b.dataset.v;document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b)});['cmds','menu','stats','qr','recep'].forEach(function(v){$('v-'+v).hidden=v!==vue});tout()}});
 
 // ----- Commandes -----
 var vus={},premier=true;
 function age(t){var m=Math.floor((Date.now()-t)/60000);return m<1?'à l\'instant':m+' min'}
 function badge(c){return (rsel==='tous'?'<span class="badge resto">'+nomR(c)+'</span> ':'')+(c.mode==='place'?'<span class="badge">Table '+c.table+'</span>':c.mode==='emporter'?'<span class="badge emp">À emporter · '+c.heure+'</span>':'<span class="badge liv">Livraison</span>')}
 function carte(c,neuf){var a=c.st==='nouv'?'<button class="go" data-no="'+c.no+'" data-v="prep">Lancer la préparation</button>':c.st==='prep'?'<button class="ok" data-no="'+c.no+'" data-v="prete">Commande prête</button>':'<button class="fin" data-no="'+c.no+'" data-v="fin">'+(c.mode==='livraison'?'Partie en livraison':'Remise au client')+'</button>';
+  var o=IMS.reception();if(o.whatsapp&&c.st!=='prete')a+='<a class="wa mini" href="'+IMS.lienWa(IMS.resto(c.resto).tel,IMS.texteBon(c))+'" target="_blank" rel="noopener" title="Envoyer le bon sur WhatsApp">WhatsApp</a>';
+  if(o.clientWa&&c.st==='prete')a+='<a class="wa mini" href="'+IMS.lienWa(c.tel,'Bonjour '+c.nom+' 👋 Votre commande '+IMS.numero(c.no)+' chez I\'m Starving '+IMS.resto(c.resto).nom+' est prête'+(c.mode==='livraison'?' et part en livraison 🛵':c.mode==='place'?', on vous l\'apporte 🍔':', vous pouvez venir la récupérer 🍔'))+'" target="_blank" rel="noopener" title="Prévenir le client">Prévenir</a>';
   return '<article class="cmd '+(c.st==='prep'?'prep':c.st==='prete'?'prete':'')+(neuf?' neuf':'')+'" data-t="'+c.no+'"><div class="h"><span class="no">'+IMS.numero(c.no)+'</span><span class="age'+(c.st!=='prete'&&Date.now()-c.t>15*60000?' retard':'')+'">'+age(c.t)+'</span></div>'+badge(c)+
    '<ul>'+c.lignes.map(function(l){return '<li><b>'+l.q+'×</b> '+l.nom+(l.det.length?' <small>· '+l.det.join(' · ')+'</small>':'')+'</li>'}).join('')+'</ul><div class="cl">'+c.nom+' · '+c.tel+(c.mode==='livraison'?'<br>'+c.adresse:'')+' · <b style="color:var(--creme)">'+fmt(c.total)+'</b></div><div class="act">'+a+'</div></article>'}
 function commandes(){
   var L=cmdsR(),nouvelles=[];
   ['nouv','prep','prete'].forEach(function(s){var X=L.filter(function(c){return c.st===s}).sort(function(a,b){return a.t-b.t});$('n-'+s).textContent=X.length;
-    $('c-'+s).innerHTML=X.length?X.map(function(c){var n=!vus[c.no]&&!premier;if(n&&s==='nouv')nouvelles.push(c);vus[c.no]=1;return carte(c,n)}).join(''):'<div class="videcol">'+(s==='nouv'?'Les nouvelles commandes arrivent ici, avec une sonnerie.':s==='prep'?'Rien en préparation.':'Rien en attente.')+'</div>'});
+    $('c-'+s).innerHTML=X.length?X.map(function(c){var n=!vus[c.no]&&!premier;if(n)nouvelles.push(c);vus[c.no]=1;return carte(c,n)}).join(''):'<div class="videcol">'+(s==='nouv'?'Les nouvelles commandes arrivent ici, avec une sonnerie.':s==='prep'?'Rien en préparation.':'Rien en attente.')+'</div>'});
   L.forEach(function(c){vus[c.no]=1});
   var n=L.filter(function(c){return c.st==='nouv'}).length;$('pas').hidden=!n;$('pas').textContent=n;
   if(premier){premier=false;var d=L.filter(function(c){return c.st!=='fin'}).sort(function(a,b){return b.t-a.t})[0];if(d)imprimer(d,false)}
@@ -286,6 +315,31 @@ function stats(){
 var tip=$('tip');
 document.addEventListener('pointermove',function(e){var p=e.target.closest&&e.target.closest('[data-tip]');if(p){tip.hidden=false;tip.textContent=p.dataset.tip;tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY-30)+'px'}else tip.hidden=true});
 
+// ----- Réception -----
+var CANAUX=[
+ ['ecran','📺','Écran cuisine','Cette tablette : commandes en direct, sonnerie, statuts.'],
+ ['bons','🧾','Récepteur de bons (PC de caisse)','Un PC ou une caisse tactile branché à votre imprimante de tickets (USB, réseau ou Bluetooth). Chaque commande sort en bon, sans toucher à rien.'],
+ ['whatsapp','💬','WhatsApp du restaurant','Chaque commande arrive aussi en message WhatsApp sur le numéro du restaurant, même quand personne ne regarde l\'écran.'],
+ ['clientWa','📲','Prévenir le client','Quand la commande est prête, le client reçoit « Votre commande est prête » sur WhatsApp en un clic.'],
+ ['caisse','🧮','Logiciel de caisse / comptabilité','Les commandes s\'ajoutent dans votre caisse ou votre fichier de comptabilité.'],
+ ['sms','✉️','SMS au gérant','Un SMS par commande au téléphone du gérant (utile s\'il n\'y a pas d\'internet en cuisine).'],
+ ['email','📧','E-mail','Une copie de chaque commande, plus le récapitulatif de la journée à la fermeture.'],
+ ['acceptation','⚡','Acceptation des commandes','Manuelle : vous validez chaque commande. Automatique : elle part directement en préparation et le bon s\'imprime.']];
+function recep(){var o=IMS.reception();
+  $('recap').innerHTML=CANAUX.filter(function(c){return c[0]!=='acceptation'&&(c[0]==='caisse'?o.caisse!=='aucune':o[c[0]])}).map(function(c){return '<span>✓ '+c[2]+'</span>'}).join('')+'<span style="background:var(--nuit3);color:var(--creme)">Acceptation '+o.acceptation+'</span>';
+  $('rgrid').innerHTML=CANAUX.map(function(c){var k=c[0],on=k==='caisse'?o.caisse!=='aucune':k==='acceptation'?o.acceptation==='auto':!!o[k],x='';
+    if(k==='bons')x='<div class="opts"><label class="note">Copies <select data-o="copies">'+[1,2,3].map(function(n){return '<option'+(n==o.copies?' selected':'')+'>'+n+'</option>'}).join('')+'</select></label><label class="note">Papier <select data-o="format">'+['58','80'].map(function(n){return '<option value="'+n+'"'+(n===o.format?' selected':'')+'>'+n+' mm</option>'}).join('')+'</select></label><a class="pil" href="recepteur.html" target="_blank" rel="noopener">Ouvrir le récepteur ↗</a></div><p>'+(o.copies>1?'Copie 1 : cuisine · copie 2 : caisse'+(o.copies>2?' · copie 3 : livreur':''):'Une seule copie, pour la cuisine')+'</p>';
+    if(k==='whatsapp')x='<div class="opts">'+IMS.RESTOS.map(function(r){return '<span class="num">'+r.nom+' · '+r.tel+'</span>'}).join('')+'</div>'+(function(){var d=IMS.commandes().slice(-1)[0];return d?'<a class="wa" href="'+IMS.lienWa(IMS.resto(d.resto).tel,IMS.texteBon(d))+'" target="_blank" rel="noopener">Voir le message de la dernière commande ↗</a>':''})();
+    if(k==='caisse')x='<div class="seg" role="group">'+[['aucune','Aucune'],['csv','Export Excel'],['api','Connexion directe']].map(function(v){return '<button data-c="'+v[0]+'" aria-pressed="'+(o.caisse===v[0])+'">'+v[1]+'</button>'}).join('')+'</div>'+(o.caisse==='api'?'<input data-o="webhook" placeholder="Adresse de votre caisse (fournie par votre éditeur)" value="'+o.webhook+'">':o.caisse==='csv'?'<p>Le récepteur de bons copie les commandes du jour au format Excel en un clic.</p>':'');
+    if(k==='email')x=o.email?'<input data-o="emailAdr" value="'+o.emailAdr+'" aria-label="Adresse e-mail">':'';
+    if(k==='acceptation')x='<div class="seg" role="group">'+[['manuelle','Manuelle'],['auto','Automatique']].map(function(v){return '<button data-a="'+v[0]+'" aria-pressed="'+(o.acceptation===v[0])+'">'+v[1]+'</button>'}).join('')+'</div>';
+    var sw=(k==='caisse'||k==='acceptation')?'':'<button class="sw" role="switch" aria-checked="'+on+'" data-k="'+k+'" aria-label="'+c[2]+'"><i></i></button>';
+    return '<div class="rc'+(on?' on':'')+'"><div class="t"><h3><em>'+c[1]+'</em>'+c[2]+'</h3>'+sw+'</div><p>'+c[3]+'</p>'+x+'</div>'}).join('')}
+function majR(f){var o=IMS.reception();f(o);IMS.majReception(o);recep();tout()}
+$('rgrid').addEventListener('click',function(e){var b=e.target.closest('.sw[data-k]');if(b)return majR(function(o){o[b.dataset.k]=!o[b.dataset.k]});
+  b=e.target.closest('[data-c]');if(b)return majR(function(o){o.caisse=b.dataset.c});b=e.target.closest('[data-a]');if(b)return majR(function(o){o.acceptation=b.dataset.a})});
+$('rgrid').addEventListener('change',function(e){var t=e.target.closest('[data-o]');if(t)majR(function(o){o[t.dataset.o]=t.dataset.o==='copies'?+t.value:t.value})});
+
 // ----- QR codes -----
 function qr(){
   var base=location.href.replace(/cuisine\.html.*$/,'index.html'),n=+$('nbt').value,rq=rsel==='tous'?'bab':rsel;
@@ -297,8 +351,8 @@ $('reinit').onclick=function(){IMS.reinitialiser();vus={};premier=true;tout()};
 
 function horloge(){var d=new Date();$('horloge').textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
 function tout(){if($('app').hidden)return;horloge();if(vue==='cmds')commandes();else{var n=cmdsR().filter(function(c){return c.st==='nouv'}).length;$('pas').hidden=!n;$('pas').textContent=n}
-  if(vue==='menu')menu();if(vue==='stats')stats();if(vue==='qr'&&!$('qrgrid').children.length)qr()}
-IMS.surChangement(function(k){if(k==='ims-cmds'||k==='ims-no'){if(vue!=='cmds'){var L=cmdsR();var nv=L.filter(function(c){return !vus[c.no]});if(nv.length){nv.forEach(function(c){vus[c.no]=1});imprimer(nv[nv.length-1],true);sonner()}}tout()}else if(vue==='menu'){}});
+  if(vue==='menu')menu();if(vue==='stats')stats();if(vue==='qr'&&!$('qrgrid').children.length)qr();if(vue==='recep')recep()}
+IMS.surChangement(function(k){if(k==='ims-recep'&&vue==='recep'){recep();return}if(k==='ims-cmds'||k==='ims-no'){if(vue!=='cmds'){var L=cmdsR();var nv=L.filter(function(c){return !vus[c.no]});if(nv.length){nv.forEach(function(c){vus[c.no]=1});imprimer(nv[nv.length-1],true);sonner()}}tout()}else if(vue==='menu'){}});
 setInterval(tout,30000);
 })();
 </script>

@@ -1,0 +1,46 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@500;600;700;800&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#060D24;color:#F4EEE6;font-family:Barlow,sans-serif}
+body{background:radial-gradient(900px 700px at 80% 0%,rgba(215,38,45,.22),transparent 60%),radial-gradient(800px 800px at 0% 100%,rgba(42,64,160,.25),transparent 60%),#060D24}
+.top{position:absolute;left:40px;right:40px;top:26px;display:flex;align-items:center;gap:18px}
+.top img{width:74px;height:74px;border-radius:50%}
+.top b{font-family:Anton;font-weight:400;font-size:44px;letter-spacing:.03em}.top b i{font-style:normal;color:#D7262D}
+.top span{display:block;font-size:20px;color:#A6AEC7;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.ecran{position:absolute;left:40px;top:166px;width:1000px;height:640px;border-radius:22px;overflow:hidden;border:2px solid #25335E;box-shadow:0 30px 80px rgba(0,0,0,.5);background:#000}
+.ecran iframe{width:1120px;height:717px;border:0;transform:scale(.892857);transform-origin:0 0}
+.lab{position:absolute;font-size:19px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#F2C14E}
+.tel{position:absolute;left:40px;top:880px;width:438px;height:946px;border-radius:56px;background:#000;padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px #25335E}
+.tel .vit{width:410px;height:918px;border-radius:44px;overflow:hidden;background:#060D24}
+.tel iframe{width:390px;height:873px;border:0;transform:scale(1.0513);transform-origin:0 0}
+.cap{position:absolute;left:520px;right:40px;top:930px;display:grid;gap:26px}
+.etape{opacity:.28;transition:opacity .5s,transform .5s;transform:translateX(0)}
+.etape.on{opacity:1;transform:translateX(8px)}
+.etape .n{font-family:Anton;font-size:30px;color:#D7262D;letter-spacing:.05em}
+.etape h2{font-family:Anton;font-weight:400;text-transform:uppercase;font-size:44px;line-height:1.02;margin:2px 0 6px}
+.etape p{margin:0;font-size:23px;color:#C9CFE0;line-height:1.35}
+.fin{position:absolute;inset:0;background:#060D24;display:grid;place-content:center;justify-items:center;text-align:center;gap:22px;opacity:0;transition:opacity .7s;padding:80px}
+.fin.on{opacity:1}
+.fin img{width:150px;height:150px;border-radius:50%}
+.fin h1{font-family:Anton;font-weight:400;font-size:96px;line-height:.95;text-transform:uppercase;margin:0}
+.fin .s{font-family:'Kaushan Script';color:#D7262D;font-size:58px;transform:rotate(-3deg)}
+.fin ul{list-style:none;padding:0;margin:10px 0;display:grid;gap:12px;font-size:30px;font-weight:700}
+.fin ul li::before{content:'✓ ';color:#3DDC84}
+.fin .sig{margin-top:30px;font-size:24px;color:#A6AEC7;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.fin .sig b{color:#F4EEE6}
+</style></head><body>
+<div class="top"><img src="img/logo.jpg" alt=""><div><b>I'M <i>STARVING</i></b><span>Commande en ligne · écran cuisine</span></div></div>
+<div class="lab" style="left:44px;top:132px">Écran cuisine · tablette ou PC</div>
+<div class="ecran"><iframe id="k" src="about:blank"></iframe></div>
+<div class="lab" style="left:44px;top:846px">Téléphone du client</div>
+<div class="tel"><div class="vit"><iframe id="c" src="about:blank"></iframe></div></div>
+<div class="cap">
+  <div class="etape" id="e1"><div class="n">01</div><h2>Le client commande</h2><p>Depuis son téléphone, sans appeler : sur place, à emporter ou en livraison.</p></div>
+  <div class="etape" id="e2"><div class="n">02</div><h2>La cuisine reçoit tout</h2><p>Sonnerie, commande à l'écran, ticket imprimé tout seul. Ou sur WhatsApp, au choix.</p></div>
+  <div class="etape" id="e3"><div class="n">03</div><h2>Suivi en direct</h2><p>Le client voit sa commande passer en préparation, puis prête.</p></div>
+  <div class="etape" id="e4"><div class="n">04</div><h2>Vous pilotez tout</h2><p>Menu, ruptures, prix, statistiques des deux restaurants.</p></div>
+</div>
+<div class="fin" id="fin"><img src="img/logo.jpg" alt=""><div class="s">votre site de commande</div><h1>I'm Starving<br>en ligne</h1>
+<ul><li>Bab Ezzouar &amp; Aïn Allah</li><li>Écran cuisine + tickets</li><li>WhatsApp · bons de caisse</li></ul>
+<div class="sig">Démo réalisée par <b>Dzign Studio</b></div></div>
+</body></html>
