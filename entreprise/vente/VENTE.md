@@ -36,6 +36,7 @@ Nous sommes disponibles du samedi au jeudi, de 9 h à 19 h. Nous vous répondons
 | `/offres` | Nos formules : Impact dès 30 000 DA (page unique) · Signature dès 80 000 DA (site vitrine) · Commerce dès 150 000 DA (boutique) · Immersion dès 250 000 DA (3D) · Plateforme dès 400 000 DA (application). Nom de domaine et email pro inclus. Le prix final dépend de votre projet. |
 | `/delai` | Vous voyez la maquette sous 72 h. Un site vitrine est prêt en 7 à 14 jours, une boutique en 2 à 3 semaines. |
 | `/paiement` | 50 % par BaridiMob au lancement, 50 % seulement après avoir vu votre site terminé. Tout se fait à distance. |
+| `/garantie` | Vous ne prenez aucun risque : maquette satisfaite ou remboursée. Si, après 2 séries de retouches, la maquette ne vous convainc pas, nous vous remboursons tout votre acompte. |
 | `/exemples` | Voici nos sites de démonstration : https://dzignstudio.store/#portfolio · et une réalisation en ligne : https://www.lamaisonduparquet.org |
 | `/fondateurs` | Bonne nouvelle : il reste [X] places dans notre Programme Fondateurs, -20 % sur votre formule en échange de votre avis et du droit de montrer votre site. |
 | `/devis` | Voici votre devis 📄 Il est valable 15 jours. Pour lancer le projet : acompte de 50 % par BaridiMob, et votre maquette arrive sous 72 h. |
@@ -67,7 +68,7 @@ Créer 5 articles (Impact, Signature, Commerce, Immersion, Plateforme) avec le p
    - Pour quand en avez-vous besoin ?
    - « La formule [offre] démarre à [prix]. Selon ce que vous m'avez dit, on sera plutôt autour de [fourchette]. Ça correspond à ce que vous aviez prévu ? »
 5. **Conclusion (3 min)**
-   - Rappeler : maquette sous 72 h, 50 % seulement après avoir vu le site.
+   - Rappeler : maquette sous 72 h, 50 % seulement après avoir vu le site, **maquette satisfaite ou remboursée**.
    - « Je vous envoie le devis aujourd'hui avant [heure]. »
    - Si Fondateur : rappeler la remise de 20 % et qu'il reste [X] places.
 

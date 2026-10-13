@@ -40,7 +40,7 @@ Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du d
 **Texte principal A (bénéfice)**
 Votre entreprise mérite un site à la hauteur de votre travail. ✨
 Sites web, boutiques en ligne, 3D et applications, conçus à Alger au niveau des plus grandes marques.
-✅ Maquette en 72 h · ✅ 50 % payés seulement après avoir vu votre site · ✅ Tout à distance
+✅ Maquette en 72 h, satisfaite ou remboursée · ✅ 50 % payés seulement après avoir vu votre site · ✅ Tout à distance
 👉 Voyez votre site en 10 secondes sur notre page.
 
 **Texte principal B (curiosité)**
@@ -53,7 +53,7 @@ Sites vitrines, boutiques avec paiement à la livraison, sites en 3D. Partout en
 Il reste 5 places.
 
 **Titres** (à tester) : « Votre site en 10 secondes » · « -20 % pour les 5 premiers » · « Un site d'exception, conçu à Alger »
-**Description** : « Maquette en 72 h · Paiement 50/50 »
+**Description** : « Maquette en 72 h · Satisfait ou remboursé »
 **Bouton** : « En savoir plus »
 **Lien** : https://dzignstudio.store/#essai (P1, P4) · https://dzignstudio.store/#formules (P5) · https://dzignstudio.store (P2, P3)
 

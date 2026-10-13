@@ -46,7 +46,8 @@ Le client peut aussi héberger lui-même son site ; on lui livre alors tous les 
 1. **Appel découverte gratuit** (WhatsApp ou téléphone) : on comprend le besoin.
 2. **Devis clair**, fixé avant de commencer.
 3. **Acompte de 50 % par BaridiMob** : le projet démarre.
-4. **Maquette sous 72 h** : le client valide le style.
+4. **Maquette sous 72 h** : le client valide le style (2 séries de retouches incluses).
+   **Garantie « Maquette satisfaite ou remboursée »** : si, après 2 séries de retouches, le client n'est toujours pas convaincu par la maquette, on lui rembourse l'intégralité de l'acompte (50 %) et on s'arrête là. Une fois la maquette validée, la garantie ne s'applique plus : on fabrique le site et le client paie le solde à la livraison.
 5. **Fabrication** du site.
 6. **Présentation du site terminé** sur une adresse de prévisualisation → **solde de 50 % par BaridiMob**.
 7. **Mise en ligne** sur l'hébergement définitif et le nom de domaine, puis courte formation du client.

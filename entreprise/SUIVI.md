@@ -32,6 +32,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | **Email : dzignstudio16@yahoo.com** (comptes réseaux, en attendant contact@dzignstudio.design). Pas affiché sur le site. |
 | 2026-10-12 | **WhatsApp pro : 0549506857** (+213 549 50 68 57), utilisé partout (remplace 0794709323). |
 | 2026-10-12 | Hébergement sur **Hostinger** (site Dzign + sites clients). |
+| 2026-10-13 | **Garantie « Maquette satisfaite ou remboursée »** : après 2 séries de retouches, si le client n'est pas convaincu par la maquette, acompte de 50 % remboursé en totalité ; garantie terminée une fois la maquette validée. Ajoutée au site (héros, inclus, déroulement, comparatif, FAQ FR/AR), offre, devis, kit de vente (`/garantie`), pubs, vidéo avatar, outil de prospection. |
 | 2026-10-13 | **Dans les vidéos et textes de marque, on parle au nom de l'entreprise : « nous »** (pas « je » / « moi »). |
 | 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
 
@@ -93,3 +94,4 @@ Règle : toujours vérifier le coût (get_cost) avant une vidéo ou un modèle 3
 - **2026-10-13 (suite 2)** : paquet complet remis en ligne par l'utilisateur·rice. Vérifié : tous les médias en 200, lien personnalisé OK avec photos.
 - **2026-10-13 (fin)** : J1 de la campagne préparé (vidéo 1 + post 1, textes Instagram/Facebook/TikTok, musique). Demain : post 2 Fondateurs.
 - **2026-10-13 (soir)** : plan du jour 2 prêt → `campagne/JOUR-2.md` (bilan J1, story sondage, 10 messages de prospection, post 2 Fondateurs, redirection email). Correction du message 1 de l'outil de prospection (« Si vous l'aimez » au lieu de « S'il vous plaît »), artefact republié.
+- **2026-10-13 (nuit)** : garantie « Maquette satisfaite ou remboursée » validée et ajoutée partout. Nouveau paquet `site-dzign-vite.zip` à remettre en ligne (paquet complet, comme la dernière fois).
