@@ -69,6 +69,7 @@
 
   // Commandes d'exemple : la journée a déjà commencé quand on ouvre la démo
   function amorcer() {
+    if (lire('ims-v', 0) !== 2) { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); ecrire('ims-v', 2); }
     if (lire('ims-cmds', null)) return;
     var now = Date.now(), d = new Date(); d.setHours(11, 40, 0, 0);
     var base = d.getTime(), cmds = [], no = 1;
@@ -84,16 +85,24 @@
         var ti = p.tailles ? Math.min(c[1], p.tailles.length - 1) : -1;
         lignes.push({ id: p.id, nom: p.nom, det: ti >= 0 ? [p.tailles[ti][0]] : [], px: ti >= 0 ? p.tailles[ti][1] : p.prix, q: 1 + ((k + j) % 4 === 0 ? 1 : 0) });
       }
-      cmds.push({ no: no++, t: t, mode: modes[k % 3], table: String(1 + (k % 12)), heure: 'Dès que possible', adresse: 'Résidence, bât. 4', nom: noms[k % noms.length], tel: '05' + (50 + k) + ' 12 34 56', lignes: lignes, total: lignes.reduce(function (a, l) { return a + l.px * l.q; }, 0), st: 'fin', fin: t + (9 + k % 7) * 60000 });
+      cmds.push({ no: no++, resto: k % 5 < 3 ? 'bab' : 'ain', t: t, mode: modes[k % 3], table: String(1 + (k % 12)), heure: 'Dès que possible', adresse: 'Résidence, bât. 4', nom: noms[k % noms.length], tel: '05' + (50 + k) + ' 12 34 56', lignes: lignes, total: lignes.reduce(function (a, l) { return a + l.px * l.q; }, 0), st: 'fin', fin: t + (9 + k % 7) * 60000 });
     }
-    function cmd(st, mode, il, lignes, nom) { var l = lignes.map(function (x) { var p = M.find(function (y) { return y.id === x[0]; }); var ti = p.tailles ? x[1] : -1; return { id: p.id, nom: p.nom, det: (ti >= 0 ? [p.tailles[ti][0]] : []).concat(x[2] ? ['Fromage gratiné'] : []), px: (ti >= 0 ? p.tailles[ti][1] : p.prix) + (x[2] ? 150 : 0), q: x[3] || 1 }; }); cmds.push({ no: no++, t: now - il * 60000, mode: mode, table: '3', heure: 'Dans 15 min', adresse: 'Résidence, bât. 4, 2e étage', nom: nom, tel: '0661 22 33 44', lignes: l, total: l.reduce(function (a, x) { return a + x.px * x.q; }, 0), st: st }); }
-    cmd('prete', 'place', 11, [['crg6', 1], ['smb', 1]], 'Sara');
-    cmd('prep', 'emporter', 4, [['tac3', 1, true], ['stv1', 0]], 'Amine');
-    cmd('nouv', 'livraison', 1, [['bur2', 1, false, 2], ['pat2', 0]], 'Karim');
+    function cmd(st, mode, il, lignes, nom, resto) { var l = lignes.map(function (x) { var p = M.find(function (y) { return y.id === x[0]; }); var ti = p.tailles ? x[1] : -1; return { id: p.id, nom: p.nom, det: (ti >= 0 ? [p.tailles[ti][0]] : []).concat(x[2] ? ['Fromage gratiné'] : []), px: (ti >= 0 ? p.tailles[ti][1] : p.prix) + (x[2] ? 150 : 0), q: x[3] || 1 }; }); cmds.push({ no: no++, resto: resto, t: now - il * 60000, mode: mode, table: '3', heure: 'Dans 15 min', adresse: 'Résidence, bât. 4, 2e étage', nom: nom, tel: '0661 22 33 44', lignes: l, total: l.reduce(function (a, x) { return a + x.px * x.q; }, 0), st: st }); }
+    cmd('prete', 'place', 11, [['crg6', 1], ['smb', 1]], 'Sara', 'bab');
+    cmd('prep', 'emporter', 4, [['tac3', 1, true], ['stv1', 0]], 'Amine', 'ain');
+    cmd('nouv', 'livraison', 1, [['bur2', 1, false, 2], ['pat2', 0]], 'Karim', 'bab');
     ecrire('ims-cmds', cmds); ecrire('ims-no', no);
   }
 
+  // Les deux restaurants (bio Instagram)
+  var RESTOS = [
+    { id: 'bab', nom: 'Bab Ezzouar', ouv: 11, ferm: 23, h: '11h – 23h', tel: '0659 56 46 11', maps: "https://www.google.com/maps/search/I'm+Starving+Food+Bab+Ezzouar" },
+    { id: 'ain', nom: 'Aïn Allah', ouv: 11, ferm: 26, h: '11h – 02h', tel: '07 97 88 38 97', maps: "https://www.google.com/maps/search/I'm+Starving+Food+Ain+Allah" }
+  ];
+  function ouvert(r, d) { d = d || new Date(); var h = d.getHours() + d.getMinutes() / 60; return (h >= r.ouv && h < Math.min(24, r.ferm)) || (r.ferm > 24 && h < r.ferm - 24); }
+  function resto(id) { return RESTOS.find(function (r) { return r.id === id; }) || RESTOS[0]; }
   window.IMS = {
+    RESTOS: RESTOS, resto: resto, ouvert: ouvert,
     CATS: ['Crogers', 'Smash', 'Burgers', 'Tacos', 'Starvation', 'Sandwichs', 'Pâtes'],
     menu: menu, lire: lire, ecrire: ecrire, amorcer: amorcer,
     commandes: function () { return lire('ims-cmds', []); },

@@ -116,7 +116,12 @@ section.bloc{padding-block:84px}
 .etape p{margin:0;color:var(--gris)}
 
 /* Infos */
-.infos{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+.infos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pratique{margin-top:16px}
+.etat{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px}.etat i{width:9px;height:9px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.18)}.etat.ferme i{background:var(--gris);box-shadow:none}
+.tel{font-family:var(--f-titre);font-size:28px;letter-spacing:.03em;user-select:all}
+.modes.deux{grid-template-columns:1fr 1fr}
+.ferme-note{margin:0 0 10px;font-size:13px;color:var(--or)}
 .carto{border-radius:22px;background:var(--nuit2);border:1px solid var(--trait);padding:28px;display:grid;gap:14px;align-content:start;position:relative;overflow:hidden}
 .carto::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(35deg,transparent 0 38px,rgba(255,255,255,.025) 38px 40px),repeating-linear-gradient(-55deg,transparent 0 58px,rgba(255,255,255,.03) 58px 61px);pointer-events:none}
 .carto h3{font-size:44px}
@@ -198,7 +203,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <section class="heros">
     <img src="img/croger-main.jpg" alt="Croger : burger dans un croissant, fromage fondu">
     <div class="wrap">
-      <span class="sur">Fast food · Bab Ezzouar</span>
+      <span class="sur">Fast food · Bab Ezzouar · Aïn Allah</span>
       <h1><span class="script">le burger dans un croissant</span>Le Croger</h1>
       <p>Croissant feuilleté, steak haché, fromage qui coule. Commandez en ligne : sur place, à emporter ou en livraison, sans appeler.</p>
       <div class="actions"><a class="btn" href="#menu">Commander maintenant</a><a class="btn ligne" href="#signatures">Nos signatures</a></div>
@@ -238,20 +243,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   </div></section>
 
   <section class="bloc" id="infos" style="padding-top:20px"><div class="wrap">
-    <div class="infos">
-      <div class="carto">
-        <h3>Venez nous voir</h3>
-        <div class="lieu"><span class="pin" aria-hidden="true"></span>I'm Starving Food · Bab Ezzouar</div>
-        <div class="actions" style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="https://www.google.com/maps/search/I'm+Starving+Food+Bab+Ezzouar" target="_blank" rel="noopener">Itinéraire</a><a class="btn ligne" href="https://www.instagram.com/imstarvingfood/" target="_blank" rel="noopener">@imstarvingfood</a></div>
-      </div>
-      <div class="carto">
-        <h3>En pratique</h3>
-        <div class="liste">
-          <div><span>Commande en ligne</span><b>Sur place · emporter · livraison</b></div>
-          <div><span>Paiement</span><b>Au comptoir ou à la livraison</b></div>
-          <div><span>Horaires</span><b>À compléter</b></div>
-          <div><span>Téléphone</span><b>À compléter</b></div>
-        </div>
+    <div class="tete"><h2>Nos deux <span class="script">adresses</span></h2><p>Bab Ezzouar et Aïn Allah. Commandez en ligne dans celui de votre choix.</p></div>
+    <div class="infos" id="adresses"></div>
+    <div class="carto pratique">
+      <div class="liste">
+        <div><span>Commande en ligne</span><b>Sur place · emporter · livraison</b></div>
+        <div><span>Paiement</span><b>Au comptoir ou à la livraison</b></div>
+        <div><span>Instagram</span><b><a href="https://www.instagram.com/imstarvingfood/" target="_blank" rel="noopener" style="color:inherit">@imstarvingfood</a></b></div>
       </div>
     </div>
   </div></section>
@@ -268,8 +266,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 (function(){
 var IMS=window.IMS,$=function(i){return document.getElementById(i)},fmt=IMS.fmt;
 var M=IMS.menu(),cat='Crogers',panier=[],vue='panier',suivi=null;
-var mode='place',table='1',heure='Dès que possible',adresse='';
-var mt=(location.hash||'').match(/^#table-(\d{1,2})$/);if(mt){table=mt[1];mode='place'}
+var resto=(IMS.RESTOS.find(function(r){return IMS.ouvert(r)})||IMS.RESTOS[0]).id,mode='place',table='1',heure='Dès que possible',adresse='';
+var mt=(location.hash||'').match(/^#(?:(bab|ain)-)?table-(\d{1,2})$/);if(mt){resto=mt[1]||'bab';table=mt[2];mode='place'}
 try{var s=JSON.parse(sessionStorage.getItem('ims-suivi')||'null');if(s)suivi=s}catch(e){}
 
 $('ticker').innerHTML=Array(2).fill(['Frais','Généreux','Fait pour toi','Crogers','Smash','Tacos','Starvation','Sandwichs','Pâtes'].map(function(m){return '<span>'+m+'</span><span>✦</span>'}).join('')).join('');
@@ -313,18 +311,19 @@ function montrerPanier(){
   if(!panier.length){$('t-contenu').innerHTML='<div class="vide">Votre panier est vide.<br>Ajoutez un Croger, vous ne le regretterez pas.</div>';$('t-pied').innerHTML='<button class="btn ligne" id="b-menu">Voir le menu</button>';$('b-menu').onclick=function(){fermer();location.hash='menu'};return}
   var md={place:'Sur place',emporter:'À emporter',livraison:'Livraison'};
   $('t-contenu').innerHTML=panier.map(function(l,i){return '<div class="ligne"><span><b>'+l.nom+'</b>'+(l.det.length?'<small>'+l.det.join(' · ')+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span><div class="qte"><button data-i="'+i+'" data-d="-1" aria-label="Retirer un">−</button><b>'+l.q+'</b><button data-i="'+i+'" data-d="1" aria-label="Ajouter un">+</button></div></div>'}).join('')+
+    '<div class="modes deux" role="group" aria-label="Restaurant" style="margin-bottom:8px">'+IMS.RESTOS.map(function(r){return '<button data-r="'+r.id+'" aria-pressed="'+(r.id===resto)+'">'+r.nom+'<small>'+(IMS.ouvert(r)?'Ouvert · '+r.h:'Fermé · '+r.h)+'</small></button>'}).join('')+'</div>'+
     '<div class="modes" role="group" aria-label="Mode">'+['place','emporter','livraison'].map(function(m){return '<button data-m="'+m+'" aria-pressed="'+(m===mode)+'">'+md[m]+'<small>'+(m==='place'?'Table '+table:m==='emporter'?'Au comptoir':'À domicile')+'</small></button>'}).join('')+'</div>'+
     (mode==='place'?'<label class="champ" for="c-table">Numéro de table (scanné par QR code)<select id="c-table">'+Array.from({length:16},function(_,i){return '<option'+(String(i+1)===table?' selected':'')+'>'+(i+1)+'</option>'}).join('')+'</select></label>':'')+
     (mode==='emporter'?'<label class="champ" for="c-heure">Retrait<select id="c-heure">'+['Dès que possible','Dans 15 min','Dans 30 min','Dans 45 min'].map(function(h){return '<option'+(h===heure?' selected':'')+'>'+h+'</option>'}).join('')+'</select></label>':'')+
     (mode==='livraison'?'<label class="champ" for="c-adr">Adresse de livraison<input id="c-adr" value="'+adresse.replace(/"/g,'&quot;')+'" placeholder="Rue, résidence, bâtiment, étage"></label>':'')+
     '<label class="champ" for="c-nom">Votre prénom<input id="c-nom" value="Yacine" autocomplete="given-name"></label><label class="champ" for="c-tel">Téléphone<input id="c-tel" value="0555 12 34 56" inputmode="tel"></label>';
-  $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(total())+'</span></div><button class="btn" id="b-cmd">Commander · paiement '+(mode==='livraison'?'à la livraison':'au comptoir')+'</button>';
+  $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(total())+'</span></div>'+(IMS.ouvert(IMS.resto(resto))?'':'<p class="ferme-note">'+IMS.resto(resto).nom+' est fermé : votre commande sera préparée dès l\'ouverture ('+IMS.resto(resto).h.split(' ')[0]+').</p>')+'<button class="btn" id="b-cmd">Commander · paiement '+(mode==='livraison'?'à la livraison':'au comptoir')+'</button>';
   $('t-contenu').querySelectorAll('.qte button').forEach(function(b){b.onclick=function(){var l=panier[+b.dataset.i];l.q+=+b.dataset.d;if(l.q<1)panier.splice(+b.dataset.i,1);compte();montrerPanier()}});
-  $('t-contenu').querySelectorAll('.modes button').forEach(function(b){b.onclick=function(){mode=b.dataset.m;montrerPanier()}});
+  $('t-contenu').querySelectorAll('.modes button').forEach(function(b){b.onclick=function(){if(b.dataset.r)resto=b.dataset.r;else mode=b.dataset.m;montrerPanier()}});
   var s=$('c-table');if(s)s.onchange=function(){table=s.value};var h=$('c-heure');if(h)h.onchange=function(){heure=h.value};var a=$('c-adr');if(a)a.oninput=function(){adresse=a.value};
   $('b-cmd').onclick=function(){
     if(mode==='livraison'&&!adresse.trim()){$('c-adr').focus();toast('Indiquez l\'adresse de livraison');return}
-    var c=IMS.nouvelleCommande({t:Date.now(),mode:mode,table:table,heure:heure,adresse:adresse,nom:$('c-nom').value||'Client',tel:$('c-tel').value,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv'});
+    var c=IMS.nouvelleCommande({resto:resto,t:Date.now(),mode:mode,table:table,heure:heure,adresse:adresse,nom:$('c-nom').value||'Client',tel:$('c-tel').value,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv'});
     suivi=c.no;try{sessionStorage.setItem('ims-suivi',JSON.stringify(suivi))}catch(e){}
     panier=[];compte();montrerSuivi();
   };
@@ -334,13 +333,14 @@ function montrerSuivi(){
   $('t-titre').textContent='Ma commande';
   var r={nouv:0,prep:1,prete:2,fin:3}[c.st];
   var E=['Reçue par le restaurant','En préparation en cuisine',c.mode==='livraison'?'En route vers vous':c.mode==='place'?'Prête, on vous l\'apporte':'Prête, venez la récupérer'];
-  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">Commande envoyée</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">Merci '+c.nom+' ! Suivez votre commande en direct.</p></div><div class="pas">'+E.map(function(e,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i+1)+'</i>'+e+'</div>'}).join('')+'</div>'+
+  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">Commande envoyée</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">Merci '+c.nom+' ! I\'m Starving '+IMS.resto(c.resto).nom+' a bien reçu votre commande.</p></div><div class="pas">'+E.map(function(e,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i+1)+'</i>'+e+'</div>'}).join('')+'</div>'+
     '<div>'+c.lignes.map(function(l){return '<div class="ligne"><span><b>'+l.q+'× '+l.nom+'</b>'+(l.det.length?'<small>'+l.det.join(' · ')+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span></div>'}).join('')+'</div>';
   $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(c.total)+'</span></div><button class="btn ligne" id="b-autre">Nouvelle commande</button>';
   $('b-autre').onclick=function(){suivi=null;try{sessionStorage.removeItem('ims-suivi')}catch(e){}fermer()};
 }
 IMS.surChangement(function(t){M=IMS.menu();signatures();grille();if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi()});
-signatures();onglets();grille();compte();
+function adresses(){$('adresses').innerHTML=IMS.RESTOS.map(function(r){var o=IMS.ouvert(r);return '<div class="carto"><h3>'+r.nom+'</h3><span class="etat'+(o?'':' ferme')+'"><i></i>'+(o?'Ouvert maintenant':'Fermé pour le moment')+' · '+r.h+'</span><div class="tel">'+r.tel+'</div><div class="actions" style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="'+r.maps+'" target="_blank" rel="noopener">Itinéraire</a><a class="btn ligne" href="tel:'+r.tel.replace(/\s/g,'')+'">Appeler</a></div></div>'}).join('')}
+signatures();onglets();grille();compte();adresses();setInterval(adresses,60000);
 if(mt){toast('Table '+table+' : bienvenue !')}
 })();
 </script>

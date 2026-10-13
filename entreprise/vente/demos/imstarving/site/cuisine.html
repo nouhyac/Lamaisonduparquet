@@ -64,6 +64,7 @@ main{padding-block:18px 40px}
 .cmd .age{font-family:var(--f-mono);font-size:12px;color:var(--gris)}
 .cmd .age.retard{color:#FF8A8F}
 .badge{justify-self:start;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:7px;padding:3px 8px;background:#3a0f16;color:#FF9EA2}
+.badge.resto{background:#F5F0E7;color:#060D24}
 .badge.emp{background:#3a3112;color:var(--or)}.badge.liv{background:#0f2f1e;color:var(--vert)}
 .cmd ul{margin:0;padding:0;list-style:none;display:grid;gap:3px;font-size:14px}
 .cmd ul b{color:var(--or)}.cmd ul small{color:var(--gris)}
@@ -151,6 +152,7 @@ main{padding-block:18px 40px}
       <button role="tab" data-v="qr" aria-selected="false">QR tables</button>
     </div>
     <div class="droite">
+      <select class="pil" id="resto" aria-label="Restaurant"><option value="tous">Les 2 restaurants</option><option value="bab">Bab Ezzouar</option><option value="ain">Aïn Allah</option></select>
       <button class="pil" id="son" aria-pressed="false">🔔 Activer la sonnerie</button>
       <a class="pil" href="index.html" target="_blank" rel="noopener">Site client ↗</a>
       <span class="horloge" id="horloge">--:--</span>
@@ -210,6 +212,13 @@ document.addEventListener('keydown',function(e){if(!$('acces').hidden&&/^[0-9]$/
 function entrer(){$('acces').hidden=true;$('app').hidden=false;tout()}
 try{if(sessionStorage.getItem('ims-acces')==='1'){entrer()}}catch(e){}
 
+// ----- Restaurant affiché -----
+var rsel='tous';try{rsel=sessionStorage.getItem('ims-resto')||'tous'}catch(e){}
+$('resto').value=rsel;
+$('resto').onchange=function(){rsel=this.value;try{sessionStorage.setItem('ims-resto',rsel)}catch(e){}$('qrgrid').innerHTML='';vus={};premier=true;tout()};
+function cmdsR(){return IMS.commandes().filter(function(c){return rsel==='tous'||(c.resto||'bab')===rsel})}
+function nomR(c){return IMS.resto(c.resto).nom}
+
 // ----- Onglets -----
 var vue='cmds';
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){vue=b.dataset.v;document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b)});['cmds','menu','stats','qr'].forEach(function(v){$('v-'+v).hidden=v!==vue});tout()}});
@@ -217,12 +226,12 @@ document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function
 // ----- Commandes -----
 var vus={},premier=true;
 function age(t){var m=Math.floor((Date.now()-t)/60000);return m<1?'à l\'instant':m+' min'}
-function badge(c){return c.mode==='place'?'<span class="badge">Table '+c.table+'</span>':c.mode==='emporter'?'<span class="badge emp">À emporter · '+c.heure+'</span>':'<span class="badge liv">Livraison</span>'}
+function badge(c){return (rsel==='tous'?'<span class="badge resto">'+nomR(c)+'</span> ':'')+(c.mode==='place'?'<span class="badge">Table '+c.table+'</span>':c.mode==='emporter'?'<span class="badge emp">À emporter · '+c.heure+'</span>':'<span class="badge liv">Livraison</span>')}
 function carte(c,neuf){var a=c.st==='nouv'?'<button class="go" data-no="'+c.no+'" data-v="prep">Lancer la préparation</button>':c.st==='prep'?'<button class="ok" data-no="'+c.no+'" data-v="prete">Commande prête</button>':'<button class="fin" data-no="'+c.no+'" data-v="fin">'+(c.mode==='livraison'?'Partie en livraison':'Remise au client')+'</button>';
   return '<article class="cmd '+(c.st==='prep'?'prep':c.st==='prete'?'prete':'')+(neuf?' neuf':'')+'" data-t="'+c.no+'"><div class="h"><span class="no">'+IMS.numero(c.no)+'</span><span class="age'+(c.st!=='prete'&&Date.now()-c.t>15*60000?' retard':'')+'">'+age(c.t)+'</span></div>'+badge(c)+
    '<ul>'+c.lignes.map(function(l){return '<li><b>'+l.q+'×</b> '+l.nom+(l.det.length?' <small>· '+l.det.join(' · ')+'</small>':'')+'</li>'}).join('')+'</ul><div class="cl">'+c.nom+' · '+c.tel+(c.mode==='livraison'?'<br>'+c.adresse:'')+' · <b style="color:var(--creme)">'+fmt(c.total)+'</b></div><div class="act">'+a+'</div></article>'}
 function commandes(){
-  var L=IMS.commandes(),nouvelles=[];
+  var L=cmdsR(),nouvelles=[];
   ['nouv','prep','prete'].forEach(function(s){var X=L.filter(function(c){return c.st===s}).sort(function(a,b){return a.t-b.t});$('n-'+s).textContent=X.length;
     $('c-'+s).innerHTML=X.length?X.map(function(c){var n=!vus[c.no]&&!premier;if(n&&s==='nouv')nouvelles.push(c);vus[c.no]=1;return carte(c,n)}).join(''):'<div class="videcol">'+(s==='nouv'?'Les nouvelles commandes arrivent ici, avec une sonnerie.':s==='prep'?'Rien en préparation.':'Rien en attente.')+'</div>'});
   L.forEach(function(c){vus[c.no]=1});
@@ -233,7 +242,7 @@ function commandes(){
 document.addEventListener('click',function(e){var b=e.target.closest('.cmd .act button');if(b){var L=IMS.commandes(),c=L.find(function(x){return x.no===+b.dataset.no});c.st=b.dataset.v;if(c.st==='fin')c.fin=Date.now();IMS.enregistrer(L);tout();return}
   var a=e.target.closest('.cmd');if(a){var c2=IMS.commandes().find(function(x){return x.no===+a.dataset.t});if(c2)imprimer(c2,true)}});
 function imprimer(c,anim){var d=new Date(c.t),hh=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);$('t-no').textContent=IMS.numero(c.no);
-  var t=$('ticket');t.innerHTML='<div class="c g">I\'M STARVING FOOD</div><div class="c">Frais · Généreux · Fait pour toi</div><div class="c">'+hh+' · '+IMS.numero(c.no)+'</div><hr><div class="c g">'+(c.mode==='place'?'SUR PLACE · TABLE '+c.table:c.mode==='emporter'?'À EMPORTER':'LIVRAISON')+'</div>'+(c.mode==='emporter'?'<div class="c">'+c.heure+'</div>':'')+'<hr>'+
+  var t=$('ticket');t.innerHTML='<div class="c g">I\'M STARVING FOOD</div><div class="c">'+nomR(c)+' · '+IMS.resto(c.resto).tel+'</div><div class="c">Frais · Généreux · Fait pour toi</div><div class="c">'+hh+' · '+IMS.numero(c.no)+'</div><hr><div class="c g">'+(c.mode==='place'?'SUR PLACE · TABLE '+c.table:c.mode==='emporter'?'À EMPORTER':'LIVRAISON')+'</div>'+(c.mode==='emporter'?'<div class="c">'+c.heure+'</div>':'')+'<hr>'+
    c.lignes.map(function(l){return '<div class="l"><span>'+l.q+'x '+l.nom+'</span><span>'+(l.px*l.q)+'</span></div>'+(l.det.length?'<div>&nbsp;&nbsp;'+l.det.join(', ')+'</div>':'')}).join('')+'<hr><div class="l g"><span>TOTAL</span><span>'+c.total+' DA</span></div><hr><div>'+c.nom+' · '+c.tel+'</div>'+(c.mode==='livraison'?'<div>'+c.adresse+'</div>':'')+'<div class="c" style="margin-top:6px">Paiement '+(c.mode==='livraison'?'à la livraison':'au comptoir')+'</div>';
   if(anim){t.classList.remove('go2');void t.offsetWidth;t.classList.add('go2')}}
 var ctx=null,son=false;
@@ -252,7 +261,7 @@ $('menu-liste').addEventListener('change',function(e){var x=e.target;if(x.tagNam
 
 // ----- Statistiques -----
 function stats(){
-  var L=IMS.commandes(),ca=L.reduce(function(a,c){return a+c.total},0),n=L.length;
+  var L=cmdsR(),ca=L.reduce(function(a,c){return a+c.total},0),n=L.length;
   var fin=L.filter(function(c){return c.fin}),prep=fin.length?Math.round(fin.reduce(function(a,c){return a+(c.fin-c.t)},0)/fin.length/60000):0;
   $('kpis').innerHTML=[['Chiffre du jour',fmt(ca)],['Commandes',n],['Panier moyen',fmt(n?ca/n:0)],['Préparation moyenne',prep+' min']].map(function(k){return '<div class="kpi"><span>'+k[0]+'</span><b>'+k[1]+'</b></div>'}).join('');
   // Commandes par heure (barres, une seule série)
@@ -272,24 +281,24 @@ function stats(){
   var T=Object.keys(t).map(function(k){return [k,t[k]]}).sort(function(a,b){return b[1]-a[1]}).slice(0,5),tm=T.length?T[0][1]:1;
   $('g-top').innerHTML=T.map(function(x){return '<div><span>'+x[0]+'</span><b>'+x[1]+'</b><span class="bar"><i style="width:'+(x[1]/tm*100)+'%"></i></span></div>'}).join('');
   var m={place:0,emporter:0,livraison:0};L.forEach(function(c){m[c.mode]++});
-  $('g-modes').innerHTML='<span>Sur place <b>'+m.place+'</b></span><span>À emporter <b>'+m.emporter+'</b></span><span>Livraison <b>'+m.livraison+'</b></span>';
+  $('g-modes').innerHTML='<span>Sur place <b>'+m.place+'</b></span><span>À emporter <b>'+m.emporter+'</b></span><span>Livraison <b>'+m.livraison+'</b></span>'+(rsel==='tous'?IMS.RESTOS.map(function(r){var X=L.filter(function(c){return (c.resto||'bab')===r.id});return '<span>'+r.nom+' <b>'+fmt(X.reduce(function(a,c){return a+c.total},0))+'</b> · '+X.length+' cmd</span>'}).join(''):'');
 }
 var tip=$('tip');
 document.addEventListener('pointermove',function(e){var p=e.target.closest&&e.target.closest('[data-tip]');if(p){tip.hidden=false;tip.textContent=p.dataset.tip;tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY-30)+'px'}else tip.hidden=true});
 
 // ----- QR codes -----
 function qr(){
-  var base=location.href.replace(/cuisine\.html.*$/,'index.html'),n=+$('nbt').value;
-  $('qrgrid').innerHTML=Array.from({length:n},function(_,i){return '<div class="qr"><div id="qr'+(i+1)+'"></div><span class="t">Table '+(i+1)+'</span><small>Scannez pour commander</small></div>'}).join('');
-  for(var i=1;i<=n;i++){try{new QRCode($('qr'+i),{text:base+'#table-'+i,width:260,height:260,colorDark:'#060D24',colorLight:'#F5F0E7',correctLevel:QRCode.CorrectLevel.M})}catch(e){$('qr'+i).textContent='QR indisponible'}}
+  var base=location.href.replace(/cuisine\.html.*$/,'index.html'),n=+$('nbt').value,rq=rsel==='tous'?'bab':rsel;
+  $('qrgrid').innerHTML=Array.from({length:n},function(_,i){return '<div class="qr"><div id="qr'+(i+1)+'"></div><span class="t">Table '+(i+1)+'</span><small>'+IMS.resto(rq).nom+'</small><small>Scannez pour commander</small></div>'}).join('');
+  for(var i=1;i<=n;i++){try{new QRCode($('qr'+i),{text:base+'#'+rq+'-table-'+i,width:260,height:260,colorDark:'#060D24',colorLight:'#F5F0E7',correctLevel:QRCode.CorrectLevel.M})}catch(e){$('qr'+i).textContent='QR indisponible'}}
 }
 $('nbt').onchange=qr;
 $('reinit').onclick=function(){IMS.reinitialiser();vus={};premier=true;tout()};
 
 function horloge(){var d=new Date();$('horloge').textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
-function tout(){if($('app').hidden)return;horloge();if(vue==='cmds')commandes();else{var n=IMS.commandes().filter(function(c){return c.st==='nouv'}).length;$('pas').hidden=!n;$('pas').textContent=n}
+function tout(){if($('app').hidden)return;horloge();if(vue==='cmds')commandes();else{var n=cmdsR().filter(function(c){return c.st==='nouv'}).length;$('pas').hidden=!n;$('pas').textContent=n}
   if(vue==='menu')menu();if(vue==='stats')stats();if(vue==='qr'&&!$('qrgrid').children.length)qr()}
-IMS.surChangement(function(k){if(k==='ims-cmds'||k==='ims-no'){if(vue!=='cmds'){var L=IMS.commandes();var nv=L.filter(function(c){return !vus[c.no]});if(nv.length){nv.forEach(function(c){vus[c.no]=1});imprimer(nv[nv.length-1],true);sonner()}}tout()}else if(vue==='menu'){}});
+IMS.surChangement(function(k){if(k==='ims-cmds'||k==='ims-no'){if(vue!=='cmds'){var L=cmdsR();var nv=L.filter(function(c){return !vus[c.no]});if(nv.length){nv.forEach(function(c){vus[c.no]=1});imprimer(nv[nv.length-1],true);sonner()}}tout()}else if(vue==='menu'){}});
 setInterval(tout,30000);
 })();
 </script>
