@@ -34,6 +34,9 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | Hébergement sur **Hostinger** (site Dzign + sites clients). |
 | 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
 
+## ▶️ Reprise de la prochaine session
+On reprend **directement par la prospection du jour 2** (plan complet : `campagne/JOUR-2.md`) : aider à trouver 10 commerces d'Alger sans site sur Instagram, créer leurs liens d'aperçu avec l'outil https://claude.ai/artifact/2vYPjDnY6NhvczBbRVgEq9, envoyer le message 1, les ajouter au suivi. Puis : chiffres du jour 1, post 2 le soir (20 h-22 h), redirection email.
+
 ## Questions encore ouvertes
 - [ ] Niveau technique de départ
 - [ ] Budget de départ (pub + outils)
