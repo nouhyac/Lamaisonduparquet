@@ -3,7 +3,7 @@
 **But** : expliquer simplement ce que fait Dzign Studio, pour que tout le monde comprenne (même quelqu'un qui ne sait pas ce qu'est un site web).
 **Format** : vertical 9:16 (Reels, TikTok, Stories, pub Meta). Durée : 40 à 45 s.
 **Langue** : français (pubs en français). Version arabe/darija possible ensuite pour les publications normales.
-**Modèle** : vidéo envoyée par l'utilisateur·rice (lien à redonner : il n'est pas arrivé dans la conversation).
+**Modèle** : https://www.instagram.com/p/DeWtRjHMKU_/ (vidéo du compte avalon_labs, 11/10/2026). Instagram ne laisse pas voir la vidéo depuis Claude : demander une capture d'écran ou un enregistrement d'écran, ou une description (cadrage, décor, sous-titres, rythme).
 **Budget** : vérifier le coût Higgsfield (get_cost / ai_influencer_prepare) **avant** de générer, et demander l'accord. Solde ≈ 191 crédits.
 
 ## Personnage (avatar)

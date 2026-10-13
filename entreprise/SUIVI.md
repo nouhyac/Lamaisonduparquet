@@ -36,7 +36,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 
 ## ▶️ Reprise de la prochaine session
 On reprend **directement par la prospection du jour 2** (plan complet : `campagne/JOUR-2.md`) : aider à trouver 10 commerces d'Alger sans site sur Instagram, créer leurs liens d'aperçu avec l'outil https://claude.ai/artifact/2vYPjDnY6NhvczBbRVgEq9, envoyer le message 1, les ajouter au suivi. Puis : chiffres du jour 1, post 2 le soir (20 h-22 h), redirection email.
-**Aussi demain : vidéo avatar Higgsfield de 40 s** qui explique Dzign Studio → texte prêt dans `campagne/VIDEO-AVATAR.md` (FR + version darija). Redemander le lien de la vidéo modèle (pas reçu). Vérifier le coût et demander l'accord avant de générer.
+**Aussi demain : vidéo avatar Higgsfield de 40 s** qui explique Dzign Studio → texte prêt dans `campagne/VIDEO-AVATAR.md` (FR + version darija). Modèle : https://www.instagram.com/p/DeWtRjHMKU_/ (avalon_labs), vidéo non visible depuis Claude → demander des captures. Vérifier le coût et demander l'accord avant de générer.
 
 ## Questions encore ouvertes
 - [ ] Niveau technique de départ
