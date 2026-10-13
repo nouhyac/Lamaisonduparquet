@@ -28,6 +28,26 @@ Jeune professionnel·le algérien·ne, 28-32 ans, tenue sobre et élégante (noi
 وكلش عن بعد: تخلص 50% في البداية. إذا ما عجبكش النموذج، نرجعولك دراهمك. والباقي تخلصو غير كي يكمل الموقع.
 اسم النطاق والإيميل المهني مشمولين. ولأول 5 زبائن: خصم 20%. الرابط في البايو. »
 
+## Exigence : réalisme parfait (aspect humain, pas « IA »)
+Décision de l'utilisateur·rice : la personne et sa façon de parler doivent paraître réelles.
+- **Méthode retenue** : format « présentateur + site » de Higgsfield (talking head Seedance 2.5, voix native synchronisée aux lèvres, 1080p, 9:16), avec les **vraies captures du site** en cartes par-dessus (jamais d'écran inventé).
+- **Personnage** : portrait généré (Soul 2), puis passe « anti-IA » (peau avec pores, lumière naturelle, rendu iPhone, pas de lissage ni de flou artificiel). Le même visage dans tous les plans.
+- **Façon de parler** : rythme naturel et varié (2,4 à 2,7 mots/s), petites respirations, gestes légers, son « micro de téléphone » dans une vraie pièce, pas de musique pendant la voix. Accent : français neutre (ou léger accent algérien si la voix le permet).
+- **Plans** : 45 s = 3 plans de 15 s, même personne, même décor, même lumière.
+- **Test d'abord** : générer **un seul plan court** (le moins cher) pour valider visage + voix avant de lancer les 3 plans.
+- **Sous-titres** gros et lisibles, posés sur le vrai timing de la voix.
+- **Transparence** : cocher l'étiquette « contenu IA » proposée par Instagram/Facebook/TikTok lors de la publication (obligatoire pour une vidéo réaliste générée). Le personnage parle au nom de Dzign Studio (« nous »), sans se présenter comme une vraie personne nommée.
+
+## Découpage en 3 plans (≈ 118 mots, 45 s)
+1. **Plan 1 (15 s)** : « Vos clients vous cherchent sur internet. Est-ce qu'ils vous trouvent ? Nous, c'est Dzign Studio, à Alger. Nous créons des sites internet pour les entreprises de toute l'Algérie. » → cartes : `1-accueil`, `2-portfolio`
+2. **Plan 2 (15 s)** : « Un site vitrine pour présenter votre activité, une boutique en ligne pour vendre avec paiement à la livraison, et même des sites en 3D. Tapez le nom de votre entreprise sur notre site : votre futur site apparaît en 10 secondes. » → cartes : `4-3d`, `3-essai`, `7-apercu-client`
+3. **Plan 3 (15 s)** : « Tout se fait à distance. Vous payez 50 % pour commencer. Si notre maquette ne vous plaît pas, on vous rembourse. Nom de domaine et email pro inclus, et moins 20 % pour nos 5 premiers clients. Le lien est en bio. » → cartes : `6-deroulement`, `5-formules` ; fin sans carte (visage + lien + WhatsApp en sous-titre)
+
+Captures réelles prêtes : `avatar/cartes/` (site en ligne, téléphone, 13/10). À refaire après la mise en ligne du site avec la garantie.
+
+## Coût (à confirmer avant de lancer)
+Solde : 191,57 crédits. Portrait ≈ 2 images (≈ 0,5 à 2 crédits) ; vidéo Seedance 2.5 1080p avec voix : le prix exact s'affiche à la soumission → on fait d'abord le plan test, on annonce le prix réel, puis accord avant les 3 plans.
+
 ## Étapes de fabrication (demain)
 1. Récupérer le lien du modèle et regarder son style (cadrage, rythme, sous-titres).
 2. Choisir/créer l'avatar dans Higgsfield (prix vérifié avant, accord demandé).
