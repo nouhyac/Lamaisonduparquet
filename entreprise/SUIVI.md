@@ -74,7 +74,7 @@ On reprend **directement par la prospection du jour 2** (plan complet : `campagn
 | **Gamma** | ✅ relié | Présentations commerciales |
 
 ## Budget crédits Higgsfield
-Solde au 2026-10-13 : **59,49 crédits** (après la vidéo avatar ≈ 132). Solde au 2026-10-12 : **199 crédits** (après le portfolio). Coûts repères : image 0,25 · vidéo Kling 5 s sans son 7,5 · modèle 3D texte 5 / image 9.
+Solde au 2026-10-13 : **≈ 29,9 crédits** (après la pub 51 s) (après la vidéo avatar ≈ 132). Solde au 2026-10-12 : **199 crédits** (après le portfolio). Coûts repères : image 0,25 · vidéo Kling 5 s sans son 7,5 · modèle 3D texte 5 / image 9.
 
 | Poste | Réservé | Usage prévu |
 |-------|---------|-------------|
@@ -98,3 +98,4 @@ Règle : toujours vérifier le coût (get_cost) avant une vidéo ou un modèle 3
 - **2026-10-13 (nuit)** : garantie « Maquette satisfaite ou remboursée » validée et ajoutée partout. Nouveau paquet `site-dzign-vite.zip` à remettre en ligne (paquet complet, comme la dernière fois).
 - **2026-10-13 (matin)** : vidéos avatar terminées → `campagne/videos/dzign-avatar-femme.mp4` (voix Celine, penthouse baie d'Alger) et `dzign-avatar-homme.mp4` (voix Xavier, studio d'architecte), ~28 s chacune, textes différents, sous-titres + écran de fin. Méthode : voix ElevenLabs puis Wan 2.7 1080p animé par la voix. ≈ 132 crédits, reste 59,49.
 - **2026-10-13** : carte rechargée (54 $). Plan pub adapté → `campagne/ADS.md` (1 ensemble Advantage+, 6 $/j × 7 j = 42 $, 12 $ de réserve, 3 pubs dont la vidéo avatar femme). En attente : identifiant du pixel Meta. Garantie vérifiée en ligne sur le site.
+- **2026-10-13 (après-midi)** : pub vidéo 51 s → `campagne/videos/pub-50s-avatar.mp4` (femme + voix Celine, 3 ralentis Kling 3.0 pro, vrai site filmé en téléphone : essai, offre, portfolio, 3D ; badges 50/50, remboursée, -20 % ; sous-titres ; écran de fin). Vidéo homme abandonnée (jugée ratée). Sources : `campagne/avatar/pub50/`. ≈ 30 crédits, reste ≈ 29,9.

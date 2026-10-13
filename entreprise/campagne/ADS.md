@@ -12,7 +12,7 @@ Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du d
 - **1 seule campagne, 1 seul ensemble** (avec un petit budget, mieux vaut ne pas le diviser) : objectif **Trafic**, Algérie, 25-55 ans, **audience Advantage+** (Meta cherche seul), placements Advantage+.
 - **Budget : 6 $/jour pendant 7 jours = 42 $**. On garde **12 $ de réserve** pour pousser la meilleure pub ensuite.
 - **3 pubs** dans l'ensemble :
-  1. `videos/dzign-avatar-femme.mp4` (la plus concrète : aperçu gratuit)
+  1. **`videos/pub-50s-avatar.mp4`** (51 s, la pub principale : femme qui parle + ralentis + vrai site filmé dans un téléphone + garantie + -20 %)
   2. `videos/pub-23s-fr.mp4` (démo du site en 10 s)
   3. `posts/post-4-fr.jpg` (image, la moins chère)
 - **Lien** : https://dzignstudio.store/#essai · **Bouton** : « En savoir plus » · **Texte** : texte A ci-dessous, avec « Maquette satisfaite ou remboursée ».
