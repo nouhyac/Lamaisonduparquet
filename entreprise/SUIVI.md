@@ -73,7 +73,7 @@ On reprend **directement par la prospection du jour 2** (plan complet : `campagn
 | **Gamma** | ✅ relié | Présentations commerciales |
 
 ## Budget crédits Higgsfield
-Solde au 2026-10-12 : **199 crédits** (après le portfolio). Coûts repères : image 0,25 · vidéo Kling 5 s sans son 7,5 · modèle 3D texte 5 / image 9.
+Solde au 2026-10-13 : **59,49 crédits** (après la vidéo avatar ≈ 132). Solde au 2026-10-12 : **199 crédits** (après le portfolio). Coûts repères : image 0,25 · vidéo Kling 5 s sans son 7,5 · modèle 3D texte 5 / image 9.
 
 | Poste | Réservé | Usage prévu |
 |-------|---------|-------------|
@@ -95,3 +95,4 @@ Règle : toujours vérifier le coût (get_cost) avant une vidéo ou un modèle 3
 - **2026-10-13 (fin)** : J1 de la campagne préparé (vidéo 1 + post 1, textes Instagram/Facebook/TikTok, musique). Demain : post 2 Fondateurs.
 - **2026-10-13 (soir)** : plan du jour 2 prêt → `campagne/JOUR-2.md` (bilan J1, story sondage, 10 messages de prospection, post 2 Fondateurs, redirection email). Correction du message 1 de l'outil de prospection (« Si vous l'aimez » au lieu de « S'il vous plaît »), artefact republié.
 - **2026-10-13 (nuit)** : garantie « Maquette satisfaite ou remboursée » validée et ajoutée partout. Nouveau paquet `site-dzign-vite.zip` à remettre en ligne (paquet complet, comme la dernière fois).
+- **2026-10-13 (matin)** : vidéos avatar terminées → `campagne/videos/dzign-avatar-femme.mp4` (voix Celine, penthouse baie d'Alger) et `dzign-avatar-homme.mp4` (voix Xavier, studio d'architecte), ~28 s chacune, textes différents, sous-titres + écran de fin. Méthode : voix ElevenLabs puis Wan 2.7 1080p animé par la voix. ≈ 132 crédits, reste 59,49.

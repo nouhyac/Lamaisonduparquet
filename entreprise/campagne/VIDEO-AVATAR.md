@@ -70,7 +70,15 @@ Captures réelles prêtes : `avatar/cartes/` (site en ligne, téléphone, 13/10)
   - Homme 1 : « Aujourd'hui, vos clients vous cherchent d'abord sur internet. Un beau site, c'est des clients qui vous trouvent, même la nuit. Chez Design Studio, on le conçoit sur mesure, en arabe et en français. »
   - Homme 2 : « Vous ne prenez aucun risque : vous payez la moitié pour commencer, et si la maquette ne vous plaît pas, on vous rembourse. Pour nos cinq premiers clients, c'est moins vingt pour cent. Lien en bio. »
 
-## Étapes de fabrication (demain)
+## ✅ Résultat (13/10)
+- `videos/dzign-avatar-femme.mp4` (28 s : 25 s de parole + 3 s d'écran de fin) · voix Celine.
+- `videos/dzign-avatar-homme.mp4` (27 s : 24 s + 3 s) · voix Xavier.
+- Fabrication : voix ElevenLabs (texte exact, vérifié par transcription Whisper), vidéos Wan 2.7 1080p animées par la voix (jobs `366ebcac…`, `f01861b3…`, `21394fa8…`, `d792222d…`), montage ffmpeg, sous-titres Inter ExtraBold (mots clés en or) calés sur la voix, écran de fin repris de `pub-23s-fr.mp4`.
+- Fichiers sources : `avatar/` (voix, sous-titres .ass, décors, portraits).
+- Coût total vidéo avatar ≈ 132 crédits (portraits, décors, tests de voix, 4 plans). Solde Higgsfield : **59,49**.
+- Publication : cocher l'étiquette « contenu IA » sur Instagram/Facebook/TikTok. Utilisables aussi en pub Meta (format 9:16, Reels/Stories).
+
+## Étapes de fabrication (archive)
 1. Récupérer le lien du modèle et regarder son style (cadrage, rythme, sous-titres).
 2. Choisir/créer l'avatar dans Higgsfield (prix vérifié avant, accord demandé).
 3. Générer la voix + la vidéo parlante (FR, puis AR si accord).
