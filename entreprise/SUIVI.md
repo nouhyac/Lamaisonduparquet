@@ -34,6 +34,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | Hébergement sur **Hostinger** (site Dzign + sites clients). |
 | 2026-10-13 | **Garantie « Maquette satisfaite ou remboursée »** : après 2 séries de retouches, si le client n'est pas convaincu par la maquette, acompte de 50 % remboursé en totalité ; garantie terminée une fois la maquette validée. Ajoutée au site (héros, inclus, déroulement, comparatif, FAQ FR/AR), offre, devis, kit de vente (`/garantie`), pubs, vidéo avatar, outil de prospection. |
 | 2026-10-13 | **Dans les vidéos et textes de marque, on parle au nom de l'entreprise : « nous »** (pas « je » / « moi »). |
+| 2026-10-13 | **Priorité absolue : 5 clients en urgence** (fond de roulement). Plan → `vente/URGENCE-5-CLIENTS.md` (entourage + parrainage 3 000 DA, messages privés, porte-à-porte, groupes Facebook, pub 6 $/j). Budget pub : 54 $. |
 | 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
 
 ## ▶️ Reprise de la prochaine session
