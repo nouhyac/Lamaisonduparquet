@@ -32,6 +32,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | **Email : dzignstudio16@yahoo.com** (comptes réseaux, en attendant contact@dzignstudio.design). Pas affiché sur le site. |
 | 2026-10-12 | **WhatsApp pro : 0549506857** (+213 549 50 68 57), utilisé partout (remplace 0794709323). |
 | 2026-10-12 | Hébergement sur **Hostinger** (site Dzign + sites clients). |
+| 2026-10-13 | **Dans les vidéos et textes de marque, on parle au nom de l'entreprise : « nous »** (pas « je » / « moi »). |
 | 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
 
 ## ▶️ Reprise de la prochaine session
