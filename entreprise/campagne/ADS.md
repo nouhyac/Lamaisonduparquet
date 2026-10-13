@@ -8,7 +8,18 @@ Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du d
 3. **Le pixel Meta** installé sur le site (je l'ajoute dès que tu me donnes l'identifiant du pixel). Il compte chaque clic sur « Continuer sur WhatsApp » comme un **contact** : c'est ce qui permet à Meta de trouver les bons clients.
 4. Compte relié : Meta Ads « Sofiane Yacoubi » (via Adspirer). Quota Adspirer gratuit épuisé jusqu'au **2 novembre 2026** : d'ici là, la campagne se monte à la main dans le Gestionnaire de publicités (guide ci-dessous), ou après passage à une offre payante d'Adspirer.
 
-## Structure
+## Plan adapté au budget réel (13/10) : carte rechargée, 54 $
+- **1 seule campagne, 1 seul ensemble** (avec un petit budget, mieux vaut ne pas le diviser) : objectif **Trafic**, Algérie, 25-55 ans, **audience Advantage+** (Meta cherche seul), placements Advantage+.
+- **Budget : 6 $/jour pendant 7 jours = 42 $**. On garde **12 $ de réserve** pour pousser la meilleure pub ensuite.
+- **3 pubs** dans l'ensemble :
+  1. `videos/dzign-avatar-femme.mp4` (la plus concrète : aperçu gratuit)
+  2. `videos/pub-23s-fr.mp4` (démo du site en 10 s)
+  3. `posts/post-4-fr.jpg` (image, la moins chère)
+- **Lien** : https://dzignstudio.store/#essai · **Bouton** : « En savoir plus » · **Texte** : texte A ci-dessous, avec « Maquette satisfaite ou remboursée ».
+- **Avant de lancer** : créer le pixel Meta (gratuit) et me donner son identifiant pour que je l'installe sur le site (sinon Meta ne sait pas qui clique sur « Continuer sur WhatsApp »).
+- Après 3 jours : on coupe la pub la plus chère. Après 7 jours : on met la réserve sur la meilleure.
+
+## Structure (plan initial, pour un budget de 70 $)
 **Campagne 1 · Lancement · Objectif « Trafic » (vues de la page de destination)** puis, dès que le pixel a 50 contacts, passage à l'objectif « Prospects / Contacts ».
 
 | Ensemble de publicités | Audience | Budget test |
