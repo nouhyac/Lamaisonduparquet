@@ -39,7 +39,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 - [ ] Budget de départ (pub + outils)
 - [ ] Valider l'identité (`IDENTITE.md`) et les prix (`OFFRE.md` v3)
 - [x] Comptes @dzignstudio créés (Instagram, Facebook, TikTok)
-- [ ] Commencer à publier la campagne (J1 : vidéo 1 + post 1)
+- [x] J1 de la campagne fourni le 2026-10-13 : vidéo 1 + post 1 (carrousel FR/AR), textes et musique (« Time », Hans Zimmer). Prochain : J2 post 2 « Programme Fondateurs ».
 - [x] Email Yahoo créé : **dzignstudio16@yahoo.com** (pour les comptes réseaux)
 - [x] Email pro **contact@dzignstudio.store** créé (webmail : mail.hostinger.com). MX, SPF et DMARC OK au 2026-10-13.
 - [ ] Redirection contact@dzignstudio.store → dzignstudio16@yahoo.com
@@ -86,3 +86,4 @@ Règle : toujours vérifier le coût (get_cost) avant une vidéo ou un modèle 3
 - **2026-10-13** : mise en ligne sur Hostinger (dzignstudio.store), contrôle complet du site en ligne.
 - **2026-10-13 (suite)** : liens d'aperçu personnalisés mis en ligne et testés (FR + AR OK). Problème : le zip avec index.html seul a remplacé tout le site, donc les médias sont en 404. Paquet Vite complet reconstruit et envoyé, à remettre en ligne.
 - **2026-10-13 (suite 2)** : paquet complet remis en ligne par l'utilisateur·rice. Vérifié : tous les médias en 200, lien personnalisé OK avec photos.
+- **2026-10-13 (fin)** : J1 de la campagne préparé (vidéo 1 + post 1, textes Instagram/Facebook/TikTok, musique). Demain : post 2 Fondateurs.
