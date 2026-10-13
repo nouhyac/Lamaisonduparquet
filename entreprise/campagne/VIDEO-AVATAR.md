@@ -45,8 +45,20 @@ Décision de l'utilisateur·rice : la personne et sa façon de parler doivent pa
 
 Captures réelles prêtes : `avatar/cartes/` (site en ligne, téléphone, 13/10). À refaire après la mise en ligne du site avec la garantie.
 
-## Coût (à confirmer avant de lancer)
-Solde : 191,57 crédits. Portrait ≈ 2 images (≈ 0,5 à 2 crédits) ; vidéo Seedance 2.5 1080p avec voix : le prix exact s'affiche à la soumission → on fait d'abord le plan test, on annonce le prix réel, puis accord avant les 3 plans.
+## Où on en est (13/10, nuit)
+- **Portraits faits** (≈ 1 crédit, 2 essais) : `avatar/portrait-homme.png` (job Higgsfield `2a975368-a5b5-425c-98f4-c5e4628ca380`) et `avatar/portrait-femme.png` (job `bbb6d1b8-de90-4971-b1d9-397d1fdad41a`). Planche envoyée : `avatar/portraits-choix.jpg`. Très réalistes.
+- **Prix réels relevés (vidéo parlante avec voix, 8 s, 9:16)** :
+  | Modèle | Prix 8 s | Vidéo complète 45 s (estim.) |
+  |--------|----------|------------------------------|
+  | Seedance 2.5 · 1080p | 96 | ≈ 540 ❌ hors budget |
+  | Seedance 2.5 · 720p | 56 | ≈ 315 ❌ |
+  | Seedance 2.0 · 720p | 36 | ≈ 200 ❌ |
+  | Grok Video 1.5 · 720p | 36 | ≈ 200 ❌ |
+  | **Kling 3.0 pro** (avec son) | **20** | **≈ 112** |
+  | Kling 3.0 std (avec son) | 16 | ≈ 90 |
+  | Seedance 2.0 mini · 720p | 8 | ≈ 45 (qualité plus faible) |
+- **Recommandation** : Kling 3.0 pro. Test = 2 mini-vidéos de 8 s (homme + femme) = **40 crédits**, puis vidéo complète avec le personnage choisi ≈ 112 crédits. Total ≈ 152 sur 191 → il ne resterait ≈ 39 crédits. Alternative économique : test en Seedance 2.0 mini (16 crédits) mais rendu moins réaliste.
+- **À décider demain** : accord sur le budget du test (40 crédits) ou option moins chère, puis choix homme/femme.
 
 ## Étapes de fabrication (demain)
 1. Récupérer le lien du modèle et regarder son style (cadrage, rythme, sous-titres).
