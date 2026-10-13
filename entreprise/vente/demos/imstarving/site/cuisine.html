@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Starving · Back-office</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Back-office du restaurant : code d'accès, puis barre d'onglets (Commandes · Menu · Statistiques · QR tables). Écran pensé pour une tablette au comptoir. Thème unique, sombre. */
+:root{
+  --nuit:#060D24; --nuit2:#0C1636; --nuit3:#14214A; --trait:#25335E;
+  --creme:#F4EEE6; --gris:#A6AEC7; --rouge:#D7262D; --or:#F2C14E; --vert:#3DDC84; --papier:#F5F0E7; --encre:#1B1816;
+  --f-titre:"Anton","Arial Narrow",Impact,sans-serif; --f-texte:"Barlow",ui-sans-serif,system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}[hidden]{display:none!important}
+html,body{margin:0;min-height:100%}
+body{background:var(--nuit);color:var(--creme);font-family:var(--f-texte);font-size:15px;line-height:1.45;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-titre);font-weight:400;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1.05}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:18px}
+
+/* Accès */
+.acces{min-height:100vh;display:grid;place-items:center;padding:24px}
+.boite{width:min(360px,100%);display:grid;gap:16px;text-align:center}
+.boite img{width:84px;height:84px;border-radius:50%;margin:0 auto}
+.points{display:flex;justify-content:center;gap:12px}
+.points i{width:14px;height:14px;border-radius:50%;border:2px solid var(--gris)}
+.points i.p{background:var(--creme);border-color:var(--creme)}
+.pave{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pave button{height:62px;border-radius:16px;border:1px solid var(--trait);background:var(--nuit2);font-size:24px;font-weight:700}
+.pave button:active{background:var(--nuit3)}
+.aide{color:var(--gris);font-size:13px}
+.erreur{color:#FF8A8F;font-weight:700;min-height:20px}
+
+/* Barre */
+.barre{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(6,13,36,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--trait)}
+.barre .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px}
+.marque{display:flex;align-items:center;gap:10px}
+.marque img{width:38px;height:38px;border-radius:50%}
+.marque b{font-family:var(--f-titre);font-weight:400;font-size:19px;letter-spacing:.04em}
+.marque small{display:block;color:var(--gris);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.tabs{display:flex;gap:4px;background:var(--nuit2);border:1px solid var(--trait);border-radius:999px;padding:4px;overflow-x:auto;max-width:100%}
+.tabs button{border:0;background:none;border-radius:999px;padding:8px 14px;font-weight:700;white-space:nowrap;position:relative}
+.tabs button[aria-selected="true"]{background:var(--creme);color:var(--nuit)}
+.tabs .pas{background:var(--rouge);color:#fff;border-radius:999px;font-size:11px;padding:1px 6px;margin-left:4px}
+.droite{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pil{border:1px solid var(--trait);background:var(--nuit2);border-radius:999px;padding:8px 13px;font-size:13.5px;font-weight:700;text-decoration:none;color:var(--creme)}
+.pil[aria-pressed="true"]{border-color:var(--vert);color:var(--vert)}
+.horloge{font-family:var(--f-mono);color:var(--gris)}
+main{padding-block:18px 40px}
+
+/* Commandes */
+.kanban{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 280px;gap:14px;align-items:start}
+.col h2{font-size:17px;color:var(--gris);letter-spacing:.12em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.col h2 b{font-family:var(--f-texte);background:var(--nuit3);color:var(--creme);border-radius:999px;font-size:12px;padding:2px 9px}
+.pile{display:grid;gap:10px}
+.videcol{border:1.5px dashed var(--trait);border-radius:16px;padding:18px;color:var(--gris);text-align:center;font-size:13.5px}
+.cmd{background:var(--nuit2);border:1px solid var(--trait);border-left:5px solid var(--rouge);border-radius:16px;padding:12px;display:grid;gap:8px}
+.cmd.prep{border-left-color:var(--or)}.cmd.prete{border-left-color:var(--vert)}
+.cmd.neuf{animation:arrive 1s ease-out}
+@keyframes arrive{0%{box-shadow:0 0 0 4px var(--rouge);transform:translateY(-6px)}100%{box-shadow:none;transform:none}}
+.cmd .h{display:flex;justify-content:space-between;align-items:baseline}
+.cmd .no{font-family:var(--f-titre);font-size:24px}
+.cmd .age{font-family:var(--f-mono);font-size:12px;color:var(--gris)}
+.cmd .age.retard{color:#FF8A8F}
+.badge{justify-self:start;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:7px;padding:3px 8px;background:#3a0f16;color:#FF9EA2}
+.badge.emp{background:#3a3112;color:var(--or)}.badge.liv{background:#0f2f1e;color:var(--vert)}
+.cmd ul{margin:0;padding:0;list-style:none;display:grid;gap:3px;font-size:14px}
+.cmd ul b{color:var(--or)}.cmd ul small{color:var(--gris)}
+.cmd .cl{font-size:13px;color:var(--gris)}
+.cmd .act{display:flex;gap:6px}
+.cmd .act button{flex:1;border:0;border-radius:10px;padding:10px;font-weight:800}
+.go{background:var(--or);color:#1b1607}.ok{background:var(--vert);color:#04210f}.fin{background:var(--nuit3)}
+.mini{flex:0 0 auto!important;background:var(--nuit3);padding:10px 12px!important}
+.impr{position:sticky;top:90px;display:grid;gap:10px}
+.fente{background:#020610;border:1px solid var(--trait);border-radius:14px 14px 6px 6px;padding:8px 10px 0}
+.fente .led{display:flex;justify-content:space-between;font-size:11.5px;color:var(--gris);margin-bottom:6px}
+.fente .led i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--vert);margin-right:5px}
+.ticket{background:var(--papier);color:var(--encre);font-family:var(--f-mono);font-size:11.5px;line-height:1.45;padding:12px 12px 16px;min-height:220px;
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,radial-gradient(circle at 6px 8px,transparent 5px,#000 5.5px) bottom/12px 8px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,radial-gradient(circle at 6px 8px,transparent 5px,#000 5.5px) bottom/12px 8px repeat-x}
+.ticket.go2{animation:imp 1.4s steps(14) both}
+@keyframes imp{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+.ticket .c{text-align:center}.ticket .g{font-weight:600;font-size:15px}.ticket hr{border:0;border-top:1px dashed #8a837b;margin:6px 0}.ticket .l{display:flex;justify-content:space-between;gap:6px}
+.note{font-size:12.5px;color:var(--gris)}
+
+/* Menu */
+.mcat{margin-bottom:22px}
+.mcat h2{font-size:24px;margin-bottom:10px}
+.mrow{display:grid;grid-template-columns:56px minmax(0,1fr) auto auto;gap:12px;align-items:center;background:var(--nuit2);border:1px solid var(--trait);border-radius:14px;padding:8px 12px;margin-bottom:8px}
+.mrow img{width:56px;height:56px;border-radius:10px;object-fit:cover;background:var(--nuit3)}
+.mrow .n{font-weight:700}.mrow .d{font-size:12.5px;color:var(--gris)}
+.prixs{display:flex;gap:6px;flex-wrap:wrap}
+.prixs label{display:grid;font-size:11px;color:var(--gris);gap:2px}
+.prixs input{width:76px;background:var(--nuit);border:1px solid var(--trait);border-radius:8px;color:var(--creme);padding:6px 8px;font:inherit;font-size:14px;font-variant-numeric:tabular-nums}
+.sw{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;border:0;background:none;padding:0}
+.sw i{width:44px;height:26px;border-radius:999px;background:var(--nuit3);position:relative;transition:background .2s;flex:none}
+.sw i::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--gris);transition:transform .2s,background .2s}
+.sw[aria-checked="true"] i{background:#14532f}.sw[aria-checked="true"] i::after{transform:translateX(18px);background:var(--vert)}
+.sw[aria-checked="false"]{color:var(--or)}
+.mrow.off{opacity:.6}
+
+/* Stats */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--nuit2);border:1px solid var(--trait);border-radius:16px;padding:16px}
+.kpi span{color:var(--gris);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kpi b{display:block;font-family:var(--f-titre);font-weight:400;font-size:36px;margin-top:4px;font-variant-numeric:tabular-nums}
+.graphs{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+.panneau{background:var(--nuit2);border:1px solid var(--trait);border-radius:16px;padding:16px;min-width:0}
+.panneau h3{font-size:19px;margin-bottom:12px}
+.panneau svg{width:100%;height:auto;display:block}
+.top{display:grid;gap:10px}
+.top div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;font-size:14px}
+.top .bar{grid-column:1/-1;height:8px;border-radius:4px;background:var(--nuit3);overflow:hidden}
+.top .bar i{display:block;height:100%;background:var(--rouge);border-radius:4px}
+.modesrep{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.modesrep span{background:var(--nuit3);border-radius:999px;padding:6px 12px;font-size:13px}
+.tip{position:fixed;pointer-events:none;background:var(--creme);color:var(--nuit);font-weight:700;font-size:12.5px;border-radius:8px;padding:5px 9px;z-index:30}
+
+/* QR */
+.qrtete{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+.qrgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.qr{background:var(--papier);color:var(--encre);border-radius:16px;padding:14px;display:grid;justify-items:center;gap:6px;text-align:center}
+.qr .t{font-family:var(--f-titre);font-size:22px;letter-spacing:.04em}
+.qr small{font-size:11px;color:#5d564e}
+.qr canvas,.qr img{width:130px!important;height:130px!important}
+
+@media (max-width:1100px){.kanban{grid-template-columns:repeat(3,minmax(0,1fr))}.impr{grid-column:1/-1;position:static;grid-template-columns:minmax(0,1fr) 280px;align-items:start}}
+@media (max-width:760px){.kanban{grid-template-columns:minmax(0,1fr)}.impr{grid-template-columns:minmax(0,1fr)}.kpis{grid-template-columns:1fr 1fr}.graphs{grid-template-columns:minmax(0,1fr)}.mrow{grid-template-columns:48px minmax(0,1fr);}.mrow img{width:48px;height:48px}.mrow .prixs,.mrow .sw{grid-column:2}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+<body>
+<section class="acces" id="acces">
+  <div class="boite">
+    <img src="img/logo.jpg" alt="Logo I'm Starving Food">
+    <h1 style="font-size:30px">Back-office</h1>
+    <div class="aide">Accès réservé à l'équipe. Code de démonstration : 2026</div>
+    <div class="points" id="points"><i></i><i></i><i></i><i></i></div>
+    <div class="erreur" id="erreur" aria-live="polite"></div>
+    <div class="pave" id="pave"></div>
+  </div>
+</section>
+
+<div id="app" hidden>
+  <header class="barre"><div class="wrap">
+    <div class="marque"><img src="img/logo.jpg" alt=""><div><b>I'M STARVING</b><small>Back-office</small></div></div>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-v="cmds" aria-selected="true">Commandes<span class="pas" id="pas" hidden>0</span></button>
+      <button role="tab" data-v="menu" aria-selected="false">Menu</button>
+      <button role="tab" data-v="stats" aria-selected="false">Statistiques</button>
+      <button role="tab" data-v="qr" aria-selected="false">QR tables</button>
+    </div>
+    <div class="droite">
+      <button class="pil" id="son" aria-pressed="false">🔔 Activer la sonnerie</button>
+      <a class="pil" href="index.html" target="_blank" rel="noopener">Site client ↗</a>
+      <span class="horloge" id="horloge">--:--</span>
+    </div>
+  </div></header>
+
+  <main class="wrap">
+    <section id="v-cmds">
+      <div class="kanban">
+        <div class="col"><h2>Nouvelles <b id="n-nouv">0</b></h2><div class="pile" id="c-nouv"></div></div>
+        <div class="col"><h2>En préparation <b id="n-prep">0</b></h2><div class="pile" id="c-prep"></div></div>
+        <div class="col"><h2>Prêtes <b id="n-prete">0</b></h2><div class="pile" id="c-prete"></div></div>
+        <aside class="impr">
+          <div class="fente"><div class="led"><span><i></i>Imprimante · 80 mm</span><span id="t-no"></span></div><div class="ticket" id="ticket"></div></div>
+          <p class="note">Chaque nouvelle commande imprime son ticket automatiquement sur l'imprimante thermique Bluetooth du comptoir. Touchez une commande pour réimprimer.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="v-menu" hidden>
+      <p class="note" style="margin-top:0">Mettez un plat en rupture ou changez un prix : le site client se met à jour immédiatement.</p>
+      <div id="menu-liste"></div>
+    </section>
+
+    <section id="v-stats" hidden>
+      <div class="kpis" id="kpis"></div>
+      <div class="graphs">
+        <div class="panneau"><h3>Commandes par heure</h3><div id="g-heures"></div></div>
+        <div class="panneau"><h3>Plats les plus vendus</h3><div class="top" id="g-top"></div><div class="modesrep" id="g-modes"></div></div>
+      </div>
+    </section>
+
+    <section id="v-qr" hidden>
+      <div class="qrtete"><h2 style="font-size:26px">QR codes des tables</h2><label class="note">Nombre de tables <select id="nbt" class="pil">
+        <option>8</option><option selected>12</option><option>16</option><option>20</option></select></label></div>
+      <p class="note" style="margin-top:0">Un QR code par table : le client le scanne, commande, et le numéro de table arrive avec la commande. À imprimer et poser sur chaque table.</p>
+      <div class="qrgrid" id="qrgrid"></div>
+      <p class="note"><button class="pil" id="reinit">Réinitialiser la démo</button></p>
+    </section>
+  </main>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+var IMS=window.IMS,$=function(i){return document.getElementById(i)},fmt=IMS.fmt;
+// ----- Code d'accès -----
+var code='';
+$('pave').innerHTML=['1','2','3','4','5','6','7','8','9','','0','⌫'].map(function(k){return k?'<button data-k="'+k+'" aria-label="'+(k==='⌫'?'Effacer':k)+'">'+k+'</button>':'<span></span>'}).join('');
+function points(){$('points').innerHTML=[0,1,2,3].map(function(i){return '<i class="'+(i<code.length?'p':'')+'"></i>'}).join('')}
+function touche(k){if(k==='⌫'){code=code.slice(0,-1)}else if(code.length<4){code+=k}points();
+  if(code.length===4){if(code==='2026'){try{sessionStorage.setItem('ims-acces','1')}catch(e){}entrer()}else{$('erreur').textContent='Code incorrect';code='';setTimeout(function(){points();$('erreur').textContent=''},900)}}}
+$('pave').addEventListener('click',function(e){var b=e.target.closest('button');if(b)touche(b.dataset.k)});
+document.addEventListener('keydown',function(e){if(!$('acces').hidden&&/^[0-9]$/.test(e.key))touche(e.key);if(!$('acces').hidden&&e.key==='Backspace')touche('⌫')});
+function entrer(){$('acces').hidden=true;$('app').hidden=false;tout()}
+try{if(sessionStorage.getItem('ims-acces')==='1'){entrer()}}catch(e){}
+
+// ----- Onglets -----
+var vue='cmds';
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){vue=b.dataset.v;document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b)});['cmds','menu','stats','qr'].forEach(function(v){$('v-'+v).hidden=v!==vue});tout()}});
+
+// ----- Commandes -----
+var vus={},premier=true;
+function age(t){var m=Math.floor((Date.now()-t)/60000);return m<1?'à l\'instant':m+' min'}
+function badge(c){return c.mode==='place'?'<span class="badge">Table '+c.table+'</span>':c.mode==='emporter'?'<span class="badge emp">À emporter · '+c.heure+'</span>':'<span class="badge liv">Livraison</span>'}
+function carte(c,neuf){var a=c.st==='nouv'?'<button class="go" data-no="'+c.no+'" data-v="prep">Lancer la préparation</button>':c.st==='prep'?'<button class="ok" data-no="'+c.no+'" data-v="prete">Commande prête</button>':'<button class="fin" data-no="'+c.no+'" data-v="fin">'+(c.mode==='livraison'?'Partie en livraison':'Remise au client')+'</button>';
+  return '<article class="cmd '+(c.st==='prep'?'prep':c.st==='prete'?'prete':'')+(neuf?' neuf':'')+'" data-t="'+c.no+'"><div class="h"><span class="no">'+IMS.numero(c.no)+'</span><span class="age'+(c.st!=='prete'&&Date.now()-c.t>15*60000?' retard':'')+'">'+age(c.t)+'</span></div>'+badge(c)+
+   '<ul>'+c.lignes.map(function(l){return '<li><b>'+l.q+'×</b> '+l.nom+(l.det.length?' <small>· '+l.det.join(' · ')+'</small>':'')+'</li>'}).join('')+'</ul><div class="cl">'+c.nom+' · '+c.tel+(c.mode==='livraison'?'<br>'+c.adresse:'')+' · <b style="color:var(--creme)">'+fmt(c.total)+'</b></div><div class="act">'+a+'</div></article>'}
+function commandes(){
+  var L=IMS.commandes(),nouvelles=[];
+  ['nouv','prep','prete'].forEach(function(s){var X=L.filter(function(c){return c.st===s}).sort(function(a,b){return a.t-b.t});$('n-'+s).textContent=X.length;
+    $('c-'+s).innerHTML=X.length?X.map(function(c){var n=!vus[c.no]&&!premier;if(n&&s==='nouv')nouvelles.push(c);vus[c.no]=1;return carte(c,n)}).join(''):'<div class="videcol">'+(s==='nouv'?'Les nouvelles commandes arrivent ici, avec une sonnerie.':s==='prep'?'Rien en préparation.':'Rien en attente.')+'</div>'});
+  L.forEach(function(c){vus[c.no]=1});
+  var n=L.filter(function(c){return c.st==='nouv'}).length;$('pas').hidden=!n;$('pas').textContent=n;
+  if(premier){premier=false;var d=L.filter(function(c){return c.st!=='fin'}).sort(function(a,b){return b.t-a.t})[0];if(d)imprimer(d,false)}
+  if(nouvelles.length){imprimer(nouvelles[nouvelles.length-1],true);sonner()}
+}
+document.addEventListener('click',function(e){var b=e.target.closest('.cmd .act button');if(b){var L=IMS.commandes(),c=L.find(function(x){return x.no===+b.dataset.no});c.st=b.dataset.v;if(c.st==='fin')c.fin=Date.now();IMS.enregistrer(L);tout();return}
+  var a=e.target.closest('.cmd');if(a){var c2=IMS.commandes().find(function(x){return x.no===+a.dataset.t});if(c2)imprimer(c2,true)}});
+function imprimer(c,anim){var d=new Date(c.t),hh=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);$('t-no').textContent=IMS.numero(c.no);
+  var t=$('ticket');t.innerHTML='<div class="c g">I\'M STARVING FOOD</div><div class="c">Frais · Généreux · Fait pour toi</div><div class="c">'+hh+' · '+IMS.numero(c.no)+'</div><hr><div class="c g">'+(c.mode==='place'?'SUR PLACE · TABLE '+c.table:c.mode==='emporter'?'À EMPORTER':'LIVRAISON')+'</div>'+(c.mode==='emporter'?'<div class="c">'+c.heure+'</div>':'')+'<hr>'+
+   c.lignes.map(function(l){return '<div class="l"><span>'+l.q+'x '+l.nom+'</span><span>'+(l.px*l.q)+'</span></div>'+(l.det.length?'<div>&nbsp;&nbsp;'+l.det.join(', ')+'</div>':'')}).join('')+'<hr><div class="l g"><span>TOTAL</span><span>'+c.total+' DA</span></div><hr><div>'+c.nom+' · '+c.tel+'</div>'+(c.mode==='livraison'?'<div>'+c.adresse+'</div>':'')+'<div class="c" style="margin-top:6px">Paiement '+(c.mode==='livraison'?'à la livraison':'au comptoir')+'</div>';
+  if(anim){t.classList.remove('go2');void t.offsetWidth;t.classList.add('go2')}}
+var ctx=null,son=false;
+function sonner(){if(!son||!ctx)return;var n=ctx.currentTime;[0,.18,.36].forEach(function(dt,i){var o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=[988,1320,1568][i];g.gain.setValueAtTime(.0001,n+dt);g.gain.exponentialRampToValueAtTime(.25,n+dt+.02);g.gain.exponentialRampToValueAtTime(.0001,n+dt+.3);o.connect(g).connect(ctx.destination);o.start(n+dt);o.stop(n+dt+.35)})}
+$('son').onclick=function(){try{ctx=ctx||new(window.AudioContext||window.webkitAudioContext)();ctx.resume()}catch(e){}son=!son;this.setAttribute('aria-pressed',son);this.textContent=son?'🔔 Sonnerie activée':'🔔 Activer la sonnerie';if(son)sonner()};
+
+// ----- Menu -----
+function menu(){
+  var M=IMS.menu();
+  $('menu-liste').innerHTML=IMS.CATS.map(function(cat){return '<div class="mcat"><h2>'+cat+'</h2>'+M.filter(function(p){return p.cat===cat}).map(function(p){
+    var px=p.tailles?p.tailles:[['Prix',p.prix]];
+    return '<div class="mrow'+(p.dispo?'':' off')+'"><img src="'+p.img+'" alt=""><div><div class="n">'+p.nom+'</div><div class="d">'+(p.dispo?'En vente sur le site':'Masqué : affiché « épuisé » sur le site')+'</div></div><div class="prixs">'+px.map(function(t,i){return '<label>'+t[0].split(' ·')[0]+'<input type="number" min="0" step="50" value="'+t[1]+'" data-id="'+p.id+'" data-i="'+i+'" aria-label="Prix '+p.nom+' '+t[0]+'"></label>'}).join('')+'</div><button class="sw" role="switch" aria-checked="'+p.dispo+'" data-id="'+p.id+'"><i></i>'+(p.dispo?'Disponible':'Rupture')+'</button></div>'}).join('')+'</div>'}).join('');
+}
+$('menu-liste').addEventListener('click',function(e){var b=e.target.closest('.sw');if(!b)return;var d=IMS.lire('ims-dispo',{});d[b.dataset.id]=b.getAttribute('aria-checked')!=='true';if(d[b.dataset.id])delete d[b.dataset.id];IMS.majMenu(d,IMS.lire('ims-prix',{}));menu()});
+$('menu-liste').addEventListener('change',function(e){var x=e.target;if(x.tagName!=='INPUT')return;var p=IMS.lire('ims-prix',{});p[x.dataset.id]=p[x.dataset.id]||{};p[x.dataset.id][x.dataset.i]=Math.max(0,+x.value||0);IMS.majMenu(IMS.lire('ims-dispo',{}),p)});
+
+// ----- Statistiques -----
+function stats(){
+  var L=IMS.commandes(),ca=L.reduce(function(a,c){return a+c.total},0),n=L.length;
+  var fin=L.filter(function(c){return c.fin}),prep=fin.length?Math.round(fin.reduce(function(a,c){return a+(c.fin-c.t)},0)/fin.length/60000):0;
+  $('kpis').innerHTML=[['Chiffre du jour',fmt(ca)],['Commandes',n],['Panier moyen',fmt(n?ca/n:0)],['Préparation moyenne',prep+' min']].map(function(k){return '<div class="kpi"><span>'+k[0]+'</span><b>'+k[1]+'</b></div>'}).join('');
+  // Commandes par heure (barres, une seule série)
+  var h={};L.forEach(function(c){var x=new Date(c.t).getHours();h[x]=(h[x]||0)+1});
+  var hs=Object.keys(h).map(Number);var h0=Math.min.apply(null,hs.concat([11])),h1=Math.max.apply(null,hs.concat([new Date().getHours()]));
+  var heures=[];for(var i=h0;i<=h1;i++)heures.push(i);
+  var max=Math.max.apply(null,heures.map(function(x){return h[x]||0}).concat([1])),pas=max>8?Math.ceil(max/4):Math.max(1,Math.ceil(max/4));var top=pas*Math.ceil(max/pas);
+  var W=640,H=240,ml=30,mb=26,mt=10,lw=(W-ml-6)/heures.length,bw=Math.min(28,lw-6);
+  var y=function(v){return mt+(H-mt-mb)*(1-v/top)};
+  var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Commandes par heure">';
+  for(var g=0;g<=top;g+=pas){svg+='<line x1="'+ml+'" x2="'+W+'" y1="'+y(g)+'" y2="'+y(g)+'" stroke="#25335E" stroke-width="1"/><text x="'+(ml-6)+'" y="'+(y(g)+4)+'" text-anchor="end" font-size="11" fill="#A6AEC7">'+g+'</text>'}
+  heures.forEach(function(x,i){var v=h[x]||0,cx=ml+lw*i+lw/2;if(v){var y1=y(v),hh=H-mb-y1;svg+='<path data-tip="'+x+' h : '+v+' commande'+(v>1?'s':'')+'" d="M'+(cx-bw/2)+','+(H-mb)+'V'+(y1+4)+'q0,-4 4,-4h'+(bw-8)+'q4,0 4,4V'+(H-mb)+'Z" fill="#D7262D"/>'}
+    if(i%2===0||heures.length<10)svg+='<text x="'+cx+'" y="'+(H-8)+'" text-anchor="middle" font-size="11" fill="#A6AEC7">'+x+'h</text>'});
+  svg+='</svg>';$('g-heures').innerHTML=svg;
+  // Top plats
+  var t={};L.forEach(function(c){c.lignes.forEach(function(l){t[l.nom]=(t[l.nom]||0)+l.q})});
+  var T=Object.keys(t).map(function(k){return [k,t[k]]}).sort(function(a,b){return b[1]-a[1]}).slice(0,5),tm=T.length?T[0][1]:1;
+  $('g-top').innerHTML=T.map(function(x){return '<div><span>'+x[0]+'</span><b>'+x[1]+'</b><span class="bar"><i style="width:'+(x[1]/tm*100)+'%"></i></span></div>'}).join('');
+  var m={place:0,emporter:0,livraison:0};L.forEach(function(c){m[c.mode]++});
+  $('g-modes').innerHTML='<span>Sur place <b>'+m.place+'</b></span><span>À emporter <b>'+m.emporter+'</b></span><span>Livraison <b>'+m.livraison+'</b></span>';
+}
+var tip=$('tip');
+document.addEventListener('pointermove',function(e){var p=e.target.closest&&e.target.closest('[data-tip]');if(p){tip.hidden=false;tip.textContent=p.dataset.tip;tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY-30)+'px'}else tip.hidden=true});
+
+// ----- QR codes -----
+function qr(){
+  var base=location.href.replace(/cuisine\.html.*$/,'index.html'),n=+$('nbt').value;
+  $('qrgrid').innerHTML=Array.from({length:n},function(_,i){return '<div class="qr"><div id="qr'+(i+1)+'"></div><span class="t">Table '+(i+1)+'</span><small>Scannez pour commander</small></div>'}).join('');
+  for(var i=1;i<=n;i++){try{new QRCode($('qr'+i),{text:base+'#table-'+i,width:260,height:260,colorDark:'#060D24',colorLight:'#F5F0E7',correctLevel:QRCode.CorrectLevel.M})}catch(e){$('qr'+i).textContent='QR indisponible'}}
+}
+$('nbt').onchange=qr;
+$('reinit').onclick=function(){IMS.reinitialiser();vus={};premier=true;tout()};
+
+function horloge(){var d=new Date();$('horloge').textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+function tout(){if($('app').hidden)return;horloge();if(vue==='cmds')commandes();else{var n=IMS.commandes().filter(function(c){return c.st==='nouv'}).length;$('pas').hidden=!n;$('pas').textContent=n}
+  if(vue==='menu')menu();if(vue==='stats')stats();if(vue==='qr'&&!$('qrgrid').children.length)qr()}
+IMS.surChangement(function(k){if(k==='ims-cmds'||k==='ims-no'){if(vue!=='cmds'){var L=IMS.commandes();var nv=L.filter(function(c){return !vus[c.no]});if(nv.length){nv.forEach(function(c){vus[c.no]=1});imprimer(nv[nv.length-1],true);sonner()}}tout()}else if(vue==='menu'){}});
+setInterval(tout,30000);
+})();
+</script>
+</body></html>

@@ -1,0 +1,109 @@
+// Données partagées entre le site client (index.html) et le back-office (cuisine.html).
+// Démo : l'état vit dans le navigateur (localStorage) et se synchronise entre onglets
+// (BroadcastChannel). La version livrée utilisera une base de données en ligne.
+(function () {
+  var SDT = ['Simple', 'Double', 'Triple'], ML = ['M', 'L'],
+      SM = ['M · double steak', 'L · triple steak', 'XL · quadruple', 'XXL · quintuple'];
+  function T(n, p) { return n.map(function (x, i) { return [x, p[i]]; }); }
+  var B = [
+    ['Classique', 'Steak haché, cheddar, salade, tomate'],
+    ['Au poivre', 'Steak haché, sauce au poivre, salade, tomate'],
+    ['Forestier', 'Steak haché, cheddar, champignons, salade, tomate'],
+    ['Campagnard', 'Steak haché, cheddar, oignons, salade, tomate'],
+    ['Italien', 'Steak haché, courgette et aubergine grillées, salade, tomate'],
+    ['Continental', 'Steak haché, cheddar, œuf, salade, tomate'],
+    ['Starving', 'Steak haché, poulet, cheddar, œuf, oignons caramélisés, sauce poivre']
+  ];
+  var PB = [[450,650,800],[450,650,800],[500,700,850],[500,700,850],[500,700,850],[500,700,850],[800,950,1100]];
+  var PC = [[550,750,900],[550,750,900],[650,850,1000],[650,850,1000],[650,850,1000],[650,850,1000],[850,1050,1200]];
+  var P = [];
+  B.forEach(function (b, i) { P.push({ id: 'crg' + i, cat: 'Crogers', nom: 'Croger ' + b[0], desc: 'Le burger dans un croissant · ' + b[1], img: 'img/crg' + (i + 1) + '.jpg', tailles: T(SDT, PC[i]) }); });
+  P.push({ id: 'smc', cat: 'Smash', nom: 'Smash Croger', desc: 'Steaks écrasés, cheddar, salade, tomate, dans un croissant.', img: 'img/smc2.jpg', tailles: T(SM, [650,800,950,1050]) });
+  P.push({ id: 'smb', cat: 'Smash', nom: 'Smash Burger', desc: 'Steaks écrasés, cheddar, salade, tomate. Du double au quintuple.', img: 'img/smb2.jpg', tailles: T(SM, [550,700,850,950]) });
+  B.forEach(function (b, i) { P.push({ id: 'bur' + i, cat: 'Burgers', nom: 'Burger ' + b[0], desc: 'Pain brioché · ' + b[1], img: 'img/bur' + (i + 1) + '.jpg', tailles: T(SDT, PB[i]) }); });
+  [['Poulet', 'Poulet, frites, sauce fromagère, sauce algérienne', [450,650]],
+   ['Poulet curry', 'Poulet, frites, sauce curry, sauce algérienne', [450,650]],
+   ['Viande', 'Steak haché, frites, sauce fromagère, sauce algérienne', [550,750]],
+   ['Mixte', 'Viande, poulet, frites, sauce fromagère, sauce algérienne', [650,800]]
+  ].forEach(function (t, i) { P.push({ id: 'tac' + i, cat: 'Tacos', nom: 'Tacos ' + t[0], desc: t[1], img: 'img/tac' + (i + 1) + '.jpg', tailles: T(ML, t[2]), extra: [['Fromage gratiné', 150]] }); });
+  [['Poulet', 'Poulet, sauce crémeuse, fromage gratiné, frites', [550,750]],
+   ['Poulet curry', 'Poulet, sauce curry, fromage gratiné, frites', [550,750]],
+   ['Steak haché', 'Steak haché, sauce fromagère, fromage gratiné, frites', [650,850]],
+   ['Steak haché au poivre', 'Steak haché, sauce au poivre, fromage gratiné, frites', [650,850]],
+   ['Mixte', 'Poulet, steak haché, sauce au poivre, fromage gratiné, frites', [750,950]]
+  ].forEach(function (t, i) { P.push({ id: 'stv' + i, cat: 'Starvation', nom: 'Starvation ' + t[0], desc: t[1], img: 'img/stv' + (i + 1) + '.jpg', tailles: T(ML, t[2]) }); });
+  [['Poulet', 'Pain brioché, poulet, sauce fromagère, frites, tomate, salade', [350,550,700]],
+   ['Poulet curry', 'Pain brioché, poulet, sauce curry, frites, tomate, salade', [350,550,700]],
+   ['Steak haché', 'Pain brioché, steak haché, sauce fromagère, oignons caramélisés, frites', [400,600,750]],
+   ['Steak haché poivre', 'Pain brioché, steak haché, sauce poivre, oignons caramélisés, frites', [400,600,750]],
+   ['Mix', 'Pain brioché, steak haché, poulet, oignons caramélisés, frites', [500,700,850]]
+  ].forEach(function (t, i) { P.push({ id: 'san' + i, cat: 'Sandwichs', nom: 'Sandwich ' + t[0], desc: t[1], img: 'img/san' + (i + 1) + '.jpg', tailles: T(SDT, t[2]) }); });
+  [['Sauce fromagère', 'Penne, sauce fromagère', 650],
+   ['Sauce curry', 'Penne, poulet, sauce curry, cheddar', 750],
+   ['Sauce crémeuse', 'Penne, poulet, champignons, sauce crémeuse, cheddar', 850],
+   ['Sauce bolognaise', 'Penne, sauce bolognaise, cheddar', 900]
+  ].forEach(function (t, i) { P.push({ id: 'pat' + i, cat: 'Pâtes', nom: 'Pâtes ' + t[0], desc: t[1], img: 'img/pat' + (i + 1) + '.jpg', prix: t[2] }); });
+
+  // ----- Stockage + synchronisation -----
+  function lire(k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }
+  function ecrire(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  var canal = null; try { canal = new BroadcastChannel('ims'); } catch (e) {}
+  var abonnes = [];
+  function signaler(type) { if (canal) try { canal.postMessage(type); } catch (e) {} }
+  function surChangement(fn) { abonnes.push(fn); }
+  function notifier(t) { abonnes.forEach(function (f) { f(t); }); }
+  if (canal) canal.onmessage = function (e) { notifier(e.data); };
+  window.addEventListener('storage', function (e) { if (e.key && e.key.indexOf('ims-') === 0) notifier(e.key); });
+
+  // Prix et disponibilités modifiés depuis le back-office
+  function menu() {
+    var dispo = lire('ims-dispo', {}), prix = lire('ims-prix', {});
+    return P.map(function (p) {
+      var q = JSON.parse(JSON.stringify(p));
+      if (prix[p.id]) { if (q.tailles) q.tailles.forEach(function (t, i) { if (prix[p.id][i] != null) t[1] = prix[p.id][i]; }); else if (prix[p.id][0] != null) q.prix = prix[p.id][0]; }
+      if (q.tailles) q.prix = q.tailles[0][1];
+      q.dispo = dispo[p.id] !== false;
+      return q;
+    });
+  }
+
+  // Commandes d'exemple : la journée a déjà commencé quand on ouvre la démo
+  function amorcer() {
+    if (lire('ims-cmds', null)) return;
+    var now = Date.now(), d = new Date(); d.setHours(11, 40, 0, 0);
+    var base = d.getTime(), cmds = [], no = 1;
+    var modes = ['place', 'emporter', 'livraison'], noms = ['Amine', 'Sara', 'Karim', 'Lina', 'Yacine', 'Nour', 'Rayan', 'Inès', 'Walid', 'Meriem'];
+    var choix = [['crg6', 1], ['smc', 3], ['tac3', 1], ['stv4', 0], ['crg0', 1], ['bur2', 1], ['smb', 1], ['san4', 1], ['pat2', 0], ['tac0', 0], ['crg2', 0], ['stv1', 1]];
+    var M = menu();
+    var span = Math.max(30, Math.min(600, (now - base) / 60000 - 25));
+    for (var k = 0; k < 26; k++) {
+      var t = base + (span * (k / 26) + (k * 7) % 11) * 60000;
+      var lignes = [], n = 1 + (k % 3);
+      for (var j = 0; j < n; j++) {
+        var c = choix[(k * 5 + j * 3) % choix.length], p = M.find(function (x) { return x.id === c[0]; });
+        var ti = p.tailles ? Math.min(c[1], p.tailles.length - 1) : -1;
+        lignes.push({ id: p.id, nom: p.nom, det: ti >= 0 ? [p.tailles[ti][0]] : [], px: ti >= 0 ? p.tailles[ti][1] : p.prix, q: 1 + ((k + j) % 4 === 0 ? 1 : 0) });
+      }
+      cmds.push({ no: no++, t: t, mode: modes[k % 3], table: String(1 + (k % 12)), heure: 'Dès que possible', adresse: 'Résidence, bât. 4', nom: noms[k % noms.length], tel: '05' + (50 + k) + ' 12 34 56', lignes: lignes, total: lignes.reduce(function (a, l) { return a + l.px * l.q; }, 0), st: 'fin', fin: t + (9 + k % 7) * 60000 });
+    }
+    function cmd(st, mode, il, lignes, nom) { var l = lignes.map(function (x) { var p = M.find(function (y) { return y.id === x[0]; }); var ti = p.tailles ? x[1] : -1; return { id: p.id, nom: p.nom, det: (ti >= 0 ? [p.tailles[ti][0]] : []).concat(x[2] ? ['Fromage gratiné'] : []), px: (ti >= 0 ? p.tailles[ti][1] : p.prix) + (x[2] ? 150 : 0), q: x[3] || 1 }; }); cmds.push({ no: no++, t: now - il * 60000, mode: mode, table: '3', heure: 'Dans 15 min', adresse: 'Résidence, bât. 4, 2e étage', nom: nom, tel: '0661 22 33 44', lignes: l, total: l.reduce(function (a, x) { return a + x.px * x.q; }, 0), st: st }); }
+    cmd('prete', 'place', 11, [['crg6', 1], ['smb', 1]], 'Sara');
+    cmd('prep', 'emporter', 4, [['tac3', 1, true], ['stv1', 0]], 'Amine');
+    cmd('nouv', 'livraison', 1, [['bur2', 1, false, 2], ['pat2', 0]], 'Karim');
+    ecrire('ims-cmds', cmds); ecrire('ims-no', no);
+  }
+
+  window.IMS = {
+    CATS: ['Crogers', 'Smash', 'Burgers', 'Tacos', 'Starvation', 'Sandwichs', 'Pâtes'],
+    menu: menu, lire: lire, ecrire: ecrire, amorcer: amorcer,
+    commandes: function () { return lire('ims-cmds', []); },
+    enregistrer: function (cmds) { ecrire('ims-cmds', cmds); signaler('ims-cmds'); },
+    nouvelleCommande: function (c) { var n = lire('ims-no', 1); c.no = n; ecrire('ims-no', n + 1); var L = lire('ims-cmds', []); L.push(c); ecrire('ims-cmds', L); signaler('ims-cmds'); return c; },
+    majMenu: function (dispo, prix) { ecrire('ims-dispo', dispo); ecrire('ims-prix', prix); signaler('ims-menu'); },
+    surChangement: surChangement,
+    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); signaler('ims-menu'); },
+    fmt: function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' DA'; },
+    numero: function (n) { return '#' + String(n).padStart(3, '0'); }
+  };
+  amorcer();
+})();

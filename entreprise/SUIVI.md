@@ -42,7 +42,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 1. **Lancer la pub Meta sur le PC** (guide pas à pas dans la conversation du 13/10 et `campagne/ADS.md`) : objectif Trafic, 6 $/j × 7 j, Algérie 25-55, Advantage+, vidéo `campagne/videos/pub-50s-avatar.mp4`, lien https://dzignstudio.store/#essai, texte **sans lieu**.
 2. Demander si on retire les mentions d'Alger du site dzignstudio.store (en attente de réponse).
 3. Prospection : l'utilisateur·rice envoie les noms des commerces repérés (suivis la veille) → préparer liens d'aperçu + messages (outil https://claude.ai/artifact/2vYPjDnY6NhvczBbRVgEq9). Plan complet : `vente/URGENCE-5-CLIENTS.md`.
-4. Demander les chiffres du soir du 13/10 (Reel, post 2, stories, statut WhatsApp).
+4. **I'm Starving** : démo « site double » prête (https://claude.ai/artifact/M7a45ogePhTwVRw81NpiFo, code cuisine 2026). Valider le prix (conseil 240 000 DA Fondateurs + Care+ 15 000/mois), envoyer le DM ou passer sur place, proposer une vidéo de démo. Fiche : `vente/demos/imstarving/PROSPECT.md`.
+5. Demander les chiffres du soir du 13/10 (Reel, post 2, stories, statut WhatsApp).
 
 ## Questions encore ouvertes
 - [ ] Niveau technique de départ
@@ -105,3 +106,4 @@ Règle : toujours vérifier le coût (get_cost) avant une vidéo ou un modèle 3
 - **2026-10-13 (soir)** : pub 48 s « excellence » (v3, sans crédit) : passage face caméra le plus long remplacé par un montage de démos (beauté, boutique, fauteuil 3D), démos refilmées depuis une copie du site **sans aucun lieu** (hero et accroches neutralisés pour le tournage uniquement), La Maison du Parquet retirée (« Dar El Beïda »), sous-titres animés, grain + vignettage, voix avec acoustique de pièce, bruitages de transition. Fichier : `campagne/videos/pub-50s-avatar.mp4`.
 - **2026-10-13 (nuit)** : pas de PC → pub Meta reportée au lendemain. Ce soir, activation des pages depuis le téléphone : Reel + post 2, 3 stories (lien, sondage, questions), invitations Facebook, partage profil perso, statut WhatsApp + 20 proches (parrainage), suivre/commenter 30 commerces.
 - **2026-10-13 (nuit)** : 1er prospect qualifié **I'm Starving** (fast-food, forte présence Instagram, commandes par téléphone). Démo commande en ligne + écran cuisine + ticket construite → `vente/demos/imstarving/` (https://claude.ai/artifact/3bXb3y34qYW5rZzQLes3a4). Offre conseillée : Complète 120 000 DA (Fondateurs).
+- **2026-10-14** : I'm Starving introuvable sur Google (ni site ni fiche Maps) → argument de vente. « Site double » construit : site de commande à leur image + back-office cuisine (commandes en direct, ticket, menu/ruptures/prix en direct, statistiques, QR tables). Testé desktop + mobile, publié : https://claude.ai/artifact/M7a45ogePhTwVRw81NpiFo. Offre conseillée Plateforme Restaurant 240 000 DA (Fondateurs) + Care+.

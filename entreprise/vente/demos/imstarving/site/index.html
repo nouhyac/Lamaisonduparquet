@@ -1,0 +1,346 @@
+<title>I'm Starving Food</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700;800&family=Kaushan+Script&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Mise en page : vitrine plein écran (le croger en héros), bandeau défilant, signatures, menu complet à onglets, la salle, comment ça marche, infos ; panier en tiroir latéral (bas d'écran sur mobile). Identité I'm Starving : bleu nuit, rouge, crème. Thème unique. */
+:root{
+  --nuit:#060D24; --nuit2:#0C1636; --nuit3:#14214A; --trait:#25335E;
+  --creme:#F4EEE6; --gris:#A6AEC7; --rouge:#D7262D; --rouge2:#B51E25; --or:#F2C14E; --vert:#3DDC84;
+  --f-titre:"Anton","Arial Narrow",Impact,sans-serif;
+  --f-texte:"Barlow",ui-sans-serif,system-ui,sans-serif;
+  --f-script:"Kaushan Script","Brush Script MT",cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--nuit);color:var(--creme);font-family:var(--f-texte);font-size:16px;line-height:1.5}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-titre);font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:1;margin:0;text-wrap:balance}
+.script{font-family:var(--f-script);text-transform:none;color:var(--rouge);letter-spacing:0}
+.sur{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--or)}
+
+/* Navigation */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(6,13,36,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--trait)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{width:42px;height:42px;border-radius:50%}
+.logo b{font-family:var(--f-titre);font-weight:400;font-size:21px;letter-spacing:.04em}
+.logo b i{font-style:normal;color:var(--rouge)}
+.nav nav{display:flex;gap:22px;margin-left:auto;font-weight:600;font-size:15px}
+.nav nav a{text-decoration:none;color:var(--gris)}
+.nav nav a:hover{color:var(--creme)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 24px;font-weight:800;font-size:15.5px;text-decoration:none;background:var(--rouge);color:#fff;transition:transform .15s,background .15s}
+.btn:hover{background:var(--rouge2);transform:translateY(-1px)}
+.btn.clair{background:var(--creme);color:var(--nuit)}
+.btn.ligne{background:none;border:1.5px solid rgba(244,238,230,.5);color:var(--creme)}
+.nav .btn{padding:10px 18px;font-size:14.5px}
+.compte{background:#fff;color:var(--rouge);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:12.5px;padding:0 6px}
+
+/* Héros */
+.heros{position:relative;min-height:min(720px,88vh);display:grid;align-items:end;overflow:hidden;border-bottom:1px solid var(--trait)}
+.heros>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;transform:scale(1.04);animation:respire 14s ease-in-out infinite alternate}
+@keyframes respire{to{transform:scale(1.12)}}
+.heros::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,13,36,.2) 0%,rgba(6,13,36,.35) 40%,rgba(6,13,36,.96) 100%),linear-gradient(90deg,rgba(6,13,36,.75),transparent 60%)}
+.heros .wrap{position:relative;z-index:1;padding-block:120px 64px;display:grid;gap:18px;max-width:1180px;width:100%}
+.heros h1{font-size:clamp(64px,13vw,168px);line-height:.86}
+.heros h1 .script{display:block;font-size:.42em;margin:0 0 -.12em .08em;transform:rotate(-4deg);transform-origin:left}
+.heros p{max-width:46ch;font-size:clamp(17px,2vw,20px);color:#E7E0D6;margin:0}
+.heros .actions{display:flex;flex-wrap:wrap;gap:12px}
+.puces{display:flex;flex-wrap:wrap;gap:8px}
+.puces span{border:1px solid rgba(244,238,230,.3);border-radius:999px;padding:6px 13px;font-size:13.5px;font-weight:600;background:rgba(6,13,36,.45)}
+.puces span b{color:var(--vert)}
+
+/* Bandeau défilant */
+.ticker{background:var(--rouge);overflow:hidden;white-space:nowrap;border-block:1px solid var(--rouge2)}
+.ticker div{display:inline-block;padding:13px 0;font-family:var(--f-titre);font-size:22px;letter-spacing:.06em;animation:defile 28s linear infinite}
+.ticker span{margin:0 18px}
+@keyframes defile{to{transform:translateX(-50%)}}
+
+section.bloc{padding-block:84px}
+.tete{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px;margin-bottom:34px}
+.tete h2{font-size:clamp(44px,6vw,76px)}
+.tete p{color:var(--gris);max-width:44ch;margin:0}
+
+/* Signatures */
+.sigs{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px}
+.sig{position:relative;border-radius:22px;overflow:hidden;min-height:430px;display:flex;align-items:flex-end;background:var(--nuit2);isolation:isolate}
+.sig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s}
+.sig:hover img{transform:scale(1.05)}
+.sig::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(6,13,36,.95));z-index:-1}
+.sig .in{padding:22px;display:grid;gap:8px;width:100%}
+.sig .no{font-family:var(--f-titre);color:var(--rouge);font-size:15px;letter-spacing:.1em}
+.sig h3{font-size:36px}
+.sig p{margin:0;color:#DAD3C8;font-size:15px}
+.sig .bas{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:4px}
+.prix{font-weight:800;font-variant-numeric:tabular-nums}
+.prix small{font-weight:600;color:var(--gris);font-size:12px;margin-right:3px}
+.plus{border:0;background:var(--rouge);color:#fff;width:44px;height:44px;border-radius:50%;font-size:26px;line-height:1;display:grid;place-items:center;flex:none;transition:transform .15s}
+.plus:hover{transform:rotate(90deg)}
+
+/* Menu */
+.onglets{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:24px;scrollbar-width:none;position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:5;background:var(--nuit);padding-top:10px}
+.onglets::-webkit-scrollbar{display:none}
+.onglets button{flex:none;border:1.5px solid var(--trait);background:none;border-radius:999px;padding:9px 18px;font-family:var(--f-titre);font-size:17px;letter-spacing:.05em;text-transform:uppercase}
+.onglets button[aria-pressed="true"]{background:var(--creme);color:var(--nuit);border-color:var(--creme)}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.carte{background:var(--nuit2);border:1px solid var(--trait);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.carte:hover{transform:translateY(-3px);border-color:#3a4a80}
+.carte .vis{aspect-ratio:4/3;background:radial-gradient(circle at 50% 60%,#16245a,#070f2b 70%);overflow:hidden;max-width:100%}
+.carte .vis img{width:100%;height:100%;object-fit:contain;transform:scale(1.08)}
+.carte .corps{padding:16px;display:grid;gap:6px;flex:1;align-content:start}
+.carte h3{font-size:22px}
+.carte p{margin:0;color:var(--gris);font-size:14px;line-height:1.4}
+.carte .bas{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding:0 16px 16px}
+.carte.rupture{opacity:.45}
+.carte.rupture .plus{display:none}
+.rupt{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
+
+/* Salle */
+.salle{display:grid;grid-template-columns:1fr 1fr 1.3fr;grid-template-rows:260px 260px;gap:14px}
+.salle figure{margin:0;border-radius:20px;overflow:hidden;position:relative}
+.salle img{width:100%;height:100%;object-fit:cover}
+.salle .a{grid-row:span 2}
+.salle .d{grid-column:3;grid-row:span 2}
+.salle figcaption{position:absolute;left:12px;bottom:12px;background:rgba(6,13,36,.75);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600}
+
+/* Étapes */
+.etapes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.etape{background:var(--nuit2);border:1px solid var(--trait);border-radius:20px;padding:24px;display:grid;gap:10px}
+.etape .n{font-family:var(--f-titre);font-size:54px;color:var(--rouge);line-height:1}
+.etape h3{font-size:26px}
+.etape p{margin:0;color:var(--gris)}
+
+/* Infos */
+.infos{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+.carto{border-radius:22px;background:var(--nuit2);border:1px solid var(--trait);padding:28px;display:grid;gap:14px;align-content:start;position:relative;overflow:hidden}
+.carto::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(35deg,transparent 0 38px,rgba(255,255,255,.025) 38px 40px),repeating-linear-gradient(-55deg,transparent 0 58px,rgba(255,255,255,.03) 58px 61px);pointer-events:none}
+.carto h3{font-size:44px}
+.carto .lieu{display:flex;gap:12px;align-items:center;font-size:18px;font-weight:600}
+.pin{width:44px;height:44px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--rouge);display:grid;place-items:center;flex:none}
+.pin::after{content:'';width:14px;height:14px;border-radius:50%;background:#fff}
+.liste{display:grid;gap:10px}
+.liste div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--trait);padding-bottom:8px}
+.liste span:first-child{color:var(--gris)}
+footer{border-top:1px solid var(--trait);padding-block:36px;color:var(--gris);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+
+/* Bouton panier flottant (mobile) */
+.flottant{position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:none}
+.flottant .btn{width:100%;justify-content:space-between;padding:16px 22px;box-shadow:0 14px 30px -10px rgba(0,0,0,.7)}
+
+/* Tiroir de commande */
+.voile{position:fixed;inset:0;background:rgba(3,6,18,.7);z-index:40}
+.tiroir{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--nuit2);z-index:41;display:flex;flex-direction:column;border-left:1px solid var(--trait);padding-top:env(safe-area-inset-top,0px)}
+.tiroir header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--trait)}
+.tiroir header h2{font-size:30px}
+.fermer{border:0;background:var(--nuit3);width:38px;height:38px;border-radius:50%;font-size:20px}
+.tiroir .contenu{flex:1;overflow-y:auto;padding:18px 20px;display:grid;gap:16px;align-content:start}
+.tiroir footer{border-top:1px solid var(--trait);padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;color:var(--creme)}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.modes button{border:1.5px solid var(--trait);background:var(--nuit);border-radius:14px;padding:10px 6px;font-weight:700;font-size:13.5px;display:grid;gap:2px;justify-items:center}
+.modes button small{font-weight:500;color:var(--gris);font-size:11.5px}
+.modes button[aria-pressed="true"]{border-color:var(--rouge);background:#2a0d17}
+.champ{display:grid;gap:5px;font-size:13px;color:var(--gris)}
+.champ input,.champ select{background:var(--nuit);border:1.5px solid var(--trait);color:var(--creme);border-radius:12px;padding:11px 13px;font:inherit;font-size:15px;width:100%}
+.ligne{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding-bottom:12px;border-bottom:1px dashed var(--trait)}
+.ligne b{font-weight:700}
+.ligne small{color:var(--gris);display:block}
+.qte{display:flex;align-items:center;gap:8px;grid-column:1}
+.qte button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--trait);background:none;font-weight:800}
+.total{display:flex;justify-content:space-between;font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+.vide{color:var(--gris);text-align:center;padding:40px 10px}
+.opt{display:grid;gap:8px}
+.opt .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);font-weight:700}
+.opt label{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--nuit);border:1.5px solid var(--trait);border-radius:12px;padding:12px 14px;font-weight:600}
+.opt label:has(input:checked){border-color:var(--rouge)}
+.opt input{accent-color:var(--rouge)}
+.suivi .num{font-family:var(--f-titre);font-size:72px;line-height:1}
+.pas{display:grid;gap:10px}
+.pas div{display:flex;gap:12px;align-items:center;background:var(--nuit);border-radius:14px;padding:13px;color:var(--gris);font-weight:600;border:1.5px solid transparent}
+.pas i{width:28px;height:28px;border-radius:50%;border:2px solid var(--trait);display:grid;place-items:center;font-style:normal;font-size:13px;flex:none}
+.pas .ok{color:var(--creme)} .pas .ok i{background:var(--vert);border-color:var(--vert);color:#06210f}
+.pas .en{color:var(--creme);border-color:var(--rouge)} .pas .en i{border-color:var(--rouge);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{background:rgba(215,38,45,.45)}}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--creme);color:var(--nuit);font-weight:700;border-radius:999px;padding:10px 18px;z-index:50;box-shadow:0 10px 30px -8px rgba(0,0,0,.6)}
+.demo{background:var(--nuit3);border-bottom:1px solid var(--trait);font-size:13px;color:var(--gris)}
+.demo .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-block:8px}
+.demo a{color:var(--or);font-weight:700}
+
+@media (max-width:900px){
+  .nav nav{display:none}
+  .sigs{grid-template-columns:1fr}.sig{min-height:360px}
+  .salle{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 240px}
+  .salle .a{grid-row:span 1}.salle .d{grid-column:span 2;grid-row:auto}
+  .etapes,.infos{grid-template-columns:1fr}
+  .flottant{display:block}
+  .nav .btn.cmd{display:none}
+  section.bloc{padding-block:60px}
+  .tiroir{top:auto;height:92vh;border-radius:24px 24px 0 0;border-left:0;width:100%}
+  footer{padding-bottom:100px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<div class="demo"><div class="wrap"><span>Démo Dzign Studio · site client d'I'm Starving Food</span><a href="cuisine.html" target="_blank" rel="noopener">Ouvrir le back-office du restaurant ↗</a></div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#haut"><img src="img/logo.jpg" alt=""><b>I'M <i>STARVING</i></b></a>
+  <nav aria-label="Sections"><a href="#menu">Menu</a><a href="#salle">La salle</a><a href="#comment">Commander</a><a href="#infos">Infos</a></nav>
+  <button class="btn cmd" id="b-nav-panier">Mon panier <span class="compte" id="nb-nav">0</span></button>
+</div></header>
+
+<main id="haut">
+  <section class="heros">
+    <img src="img/croger-main.jpg" alt="Croger : burger dans un croissant, fromage fondu">
+    <div class="wrap">
+      <span class="sur">Fast food · Bab Ezzouar</span>
+      <h1><span class="script">le burger dans un croissant</span>Le Croger</h1>
+      <p>Croissant feuilleté, steak haché, fromage qui coule. Commandez en ligne : sur place, à emporter ou en livraison, sans appeler.</p>
+      <div class="actions"><a class="btn" href="#menu">Commander maintenant</a><a class="btn ligne" href="#signatures">Nos signatures</a></div>
+      <div class="puces"><span><b>●</b> Commande en ligne ouverte</span><span>Sur place · QR code à table</span><span>À emporter</span><span>Livraison</span></div>
+    </div>
+  </section>
+  <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
+
+  <section class="bloc" id="signatures"><div class="wrap">
+    <div class="tete"><h2>Nos <span class="script">signatures</span></h2><p>Les trois plats qu'on vient chercher de loin. Frais, généreux, faits pour toi.</p></div>
+    <div class="sigs" id="sigs"></div>
+  </div></section>
+
+  <section class="bloc" id="menu" style="padding-top:20px"><div class="wrap">
+    <div class="tete"><h2>Le <span class="script">menu</span></h2><p>Choisissez la taille, ajoutez au panier, commandez. La cuisine reçoit tout instantanément.</p></div>
+    <div class="onglets" id="onglets" role="group" aria-label="Catégories"></div>
+    <div class="grille" id="grille"></div>
+  </div></section>
+
+  <section class="bloc" id="salle" style="padding-top:20px"><div class="wrap">
+    <div class="tete"><h2>La <span class="script">salle</span></h2><p>Murs rouges, arches, lumière chaude : un lieu où l'on vient manger et où l'on reste.</p></div>
+    <div class="salle">
+      <figure class="a"><img src="img/salle-arche.jpg" alt="Salle aux murs rouges et arche"><figcaption>L'arche rouge</figcaption></figure>
+      <figure><img src="img/croger-brique.jpg" alt="Croger servi sur planche devant un mur de briques"><figcaption>Le Croger</figcaption></figure>
+      <figure class="d"><img src="img/salle-gratin.jpg" alt="Gratin servi en salle, étage et comptoir"><figcaption>En salle</figcaption></figure>
+      <figure><img src="img/gratin.jpg" alt="Plat gratiné au fromage"><figcaption>Gratiné maison</figcaption></figure>
+    </div>
+  </div></section>
+
+  <section class="bloc" id="comment" style="padding-top:20px"><div class="wrap">
+    <div class="tete"><h2>Commander, <span class="script">c'est simple</span></h2><p>Plus besoin d'appeler : votre commande arrive directement en cuisine.</p></div>
+    <div class="etapes">
+      <div class="etape"><span class="n">1</span><h3>Choisissez</h3><p>Le menu complet avec les tailles, les suppléments et les prix. À table, scannez le QR code : le numéro de table s'ajoute tout seul.</p></div>
+      <div class="etape"><span class="n">2</span><h3>Commandez</h3><p>Sur place, à emporter ou en livraison. Vous payez au comptoir ou à la livraison.</p></div>
+      <div class="etape"><span class="n">3</span><h3>Suivez</h3><p>Reçue, en préparation, prête : vous suivez votre commande en direct sur votre téléphone.</p></div>
+    </div>
+  </div></section>
+
+  <section class="bloc" id="infos" style="padding-top:20px"><div class="wrap">
+    <div class="infos">
+      <div class="carto">
+        <h3>Venez nous voir</h3>
+        <div class="lieu"><span class="pin" aria-hidden="true"></span>I'm Starving Food · Bab Ezzouar</div>
+        <div class="actions" style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="https://www.google.com/maps/search/I'm+Starving+Food+Bab+Ezzouar" target="_blank" rel="noopener">Itinéraire</a><a class="btn ligne" href="https://www.instagram.com/imstarvingfood/" target="_blank" rel="noopener">@imstarvingfood</a></div>
+      </div>
+      <div class="carto">
+        <h3>En pratique</h3>
+        <div class="liste">
+          <div><span>Commande en ligne</span><b>Sur place · emporter · livraison</b></div>
+          <div><span>Paiement</span><b>Au comptoir ou à la livraison</b></div>
+          <div><span>Horaires</span><b>À compléter</b></div>
+          <div><span>Téléphone</span><b>À compléter</b></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</main>
+<footer><div class="wrap"><a class="logo" href="#haut"><img src="img/logo.jpg" alt=""><b>I'M <i>STARVING</i></b></a><span>Frais · Généreux · Fait pour toi</span><span>Site réalisé par Dzign Studio</span></div></footer>
+
+<div class="flottant"><button class="btn" id="b-flot"><span>Voir mon panier · <span id="nb-flot">0</span></span><span id="tot-flot">0 DA</span></button></div>
+<div class="voile" id="voile" hidden></div>
+<aside class="tiroir" id="tiroir" hidden aria-label="Commande"><header><h2 id="t-titre">Mon panier</h2><button class="fermer" id="b-fermer" aria-label="Fermer">✕</button></header><div class="contenu" id="t-contenu"></div><footer id="t-pied"></footer></aside>
+<div class="toast" id="toast" hidden></div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+var IMS=window.IMS,$=function(i){return document.getElementById(i)},fmt=IMS.fmt;
+var M=IMS.menu(),cat='Crogers',panier=[],vue='panier',suivi=null;
+var mode='place',table='1',heure='Dès que possible',adresse='';
+var mt=(location.hash||'').match(/^#table-(\d{1,2})$/);if(mt){table=mt[1];mode='place'}
+try{var s=JSON.parse(sessionStorage.getItem('ims-suivi')||'null');if(s)suivi=s}catch(e){}
+
+$('ticker').innerHTML=Array(2).fill(['Frais','Généreux','Fait pour toi','Crogers','Smash','Tacos','Starvation','Sandwichs','Pâtes'].map(function(m){return '<span>'+m+'</span><span>✦</span>'}).join('')).join('');
+
+function plat(id){return M.find(function(p){return p.id===id})}
+function signatures(){
+  var S=[['crg6','01','img/croger-oeuf.jpg'],['smc','02','img/croger-frites.jpg'],['stv4','03','img/stv5.jpg']];
+  $('sigs').innerHTML=S.map(function(s){var p=plat(s[0]);return '<article class="sig"><img src="'+s[2]+'" alt="'+p.nom+'"><div class="in"><span class="no">'+s[1]+'</span><h3>'+p.nom+'</h3><p>'+p.desc+'</p><div class="bas"><span class="prix"><small>dès</small>'+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé</span>')+'</div></div></article>'}).join('');
+}
+function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){return '<button aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>'}).join('');
+  $('onglets').querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;onglets();grille()}})}
+function grille(){
+  $('grille').innerHTML=M.filter(function(p){return p.cat===cat}).map(function(p){return '<article class="carte'+(p.dispo?'':' rupture')+'"><div class="vis"><img src="'+p.img+'" alt="'+p.nom+'" loading="lazy"></div><div class="corps"><h3>'+p.nom+'</h3><p>'+p.desc+'</p></div><div class="bas"><span class="prix">'+(p.tailles?'<small>dès</small>':'')+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé aujourd\'hui</span>')+'</div></article>'}).join('');
+}
+document.addEventListener('click',function(e){var b=e.target.closest('.plus');if(b)choisir(b.dataset.id)});
+
+function ouvrir(){$('voile').hidden=false;$('tiroir').hidden=false;document.body.style.overflow='hidden'}
+function fermer(){$('voile').hidden=true;$('tiroir').hidden=true;document.body.style.overflow=''}
+$('voile').onclick=fermer;$('b-fermer').onclick=fermer;
+document.addEventListener('keydown',function(e){if(e.key==='Escape')fermer()});
+function toast(t){var x=$('toast');x.textContent=t;x.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(function(){x.hidden=true},1800)}
+
+function choisir(id){
+  var p=plat(id);if(!p.tailles&&!p.extra){ajouter(p,[],p.prix);return}
+  vue='options';$('t-titre').textContent=p.nom;
+  $('t-contenu').innerHTML='<div class="carte" style="border:0;background:none"><div class="vis" style="border-radius:16px"><img src="'+p.img+'" alt=""></div></div><p style="margin:0;color:var(--gris)">'+p.desc+'</p>'+
+    (p.tailles?'<div class="opt"><span class="t">Taille</span>'+p.tailles.map(function(t,i){return '<label><span><input type="radio" name="taille" value="'+i+'"'+(i?'':' checked')+'> '+t[0]+'</span><span class="prix">'+fmt(t[1])+'</span></label>'}).join('')+'</div>':'')+
+    (p.extra?'<div class="opt"><span class="t">Supplément</span>'+p.extra.map(function(x,i){return '<label><span><input type="checkbox" name="extra" value="'+i+'"> '+x[0]+'</span><span>+ '+fmt(x[1])+'</span></label>'}).join('')+'</div>':'');
+  $('t-pied').innerHTML='<button class="btn" id="b-ok">Ajouter au panier</button>';
+  $('b-ok').onclick=function(){var det=[],px=p.prix;if(p.tailles){var t=p.tailles[+document.querySelector('input[name=taille]:checked').value];det.push(t[0]);px=t[1]}
+    document.querySelectorAll('input[name=extra]:checked').forEach(function(x){var e=p.extra[+x.value];det.push(e[0]);px+=e[1]});ajouter(p,det,px);fermer()};
+  ouvrir();
+}
+function ajouter(p,det,px){var cle=p.id+'|'+det.join(',');var l=panier.find(function(x){return x.cle===cle});if(l)l.q++;else panier.push({cle:cle,id:p.id,nom:p.nom,det:det,px:px,q:1});compte();toast(p.nom+' ajouté')}
+function total(){return panier.reduce(function(a,l){return a+l.px*l.q},0)}
+function compte(){var n=panier.reduce(function(a,l){return a+l.q},0);$('nb-nav').textContent=n;$('nb-flot').textContent=n;$('tot-flot').textContent=fmt(total())}
+$('b-nav-panier').onclick=$('b-flot').onclick=function(){suivi?montrerSuivi():montrerPanier();ouvrir()};
+
+function montrerPanier(){
+  vue='panier';$('t-titre').textContent='Mon panier';
+  if(!panier.length){$('t-contenu').innerHTML='<div class="vide">Votre panier est vide.<br>Ajoutez un Croger, vous ne le regretterez pas.</div>';$('t-pied').innerHTML='<button class="btn ligne" id="b-menu">Voir le menu</button>';$('b-menu').onclick=function(){fermer();location.hash='menu'};return}
+  var md={place:'Sur place',emporter:'À emporter',livraison:'Livraison'};
+  $('t-contenu').innerHTML=panier.map(function(l,i){return '<div class="ligne"><span><b>'+l.nom+'</b>'+(l.det.length?'<small>'+l.det.join(' · ')+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span><div class="qte"><button data-i="'+i+'" data-d="-1" aria-label="Retirer un">−</button><b>'+l.q+'</b><button data-i="'+i+'" data-d="1" aria-label="Ajouter un">+</button></div></div>'}).join('')+
+    '<div class="modes" role="group" aria-label="Mode">'+['place','emporter','livraison'].map(function(m){return '<button data-m="'+m+'" aria-pressed="'+(m===mode)+'">'+md[m]+'<small>'+(m==='place'?'Table '+table:m==='emporter'?'Au comptoir':'À domicile')+'</small></button>'}).join('')+'</div>'+
+    (mode==='place'?'<label class="champ" for="c-table">Numéro de table (scanné par QR code)<select id="c-table">'+Array.from({length:16},function(_,i){return '<option'+(String(i+1)===table?' selected':'')+'>'+(i+1)+'</option>'}).join('')+'</select></label>':'')+
+    (mode==='emporter'?'<label class="champ" for="c-heure">Retrait<select id="c-heure">'+['Dès que possible','Dans 15 min','Dans 30 min','Dans 45 min'].map(function(h){return '<option'+(h===heure?' selected':'')+'>'+h+'</option>'}).join('')+'</select></label>':'')+
+    (mode==='livraison'?'<label class="champ" for="c-adr">Adresse de livraison<input id="c-adr" value="'+adresse.replace(/"/g,'&quot;')+'" placeholder="Rue, résidence, bâtiment, étage"></label>':'')+
+    '<label class="champ" for="c-nom">Votre prénom<input id="c-nom" value="Yacine" autocomplete="given-name"></label><label class="champ" for="c-tel">Téléphone<input id="c-tel" value="0555 12 34 56" inputmode="tel"></label>';
+  $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(total())+'</span></div><button class="btn" id="b-cmd">Commander · paiement '+(mode==='livraison'?'à la livraison':'au comptoir')+'</button>';
+  $('t-contenu').querySelectorAll('.qte button').forEach(function(b){b.onclick=function(){var l=panier[+b.dataset.i];l.q+=+b.dataset.d;if(l.q<1)panier.splice(+b.dataset.i,1);compte();montrerPanier()}});
+  $('t-contenu').querySelectorAll('.modes button').forEach(function(b){b.onclick=function(){mode=b.dataset.m;montrerPanier()}});
+  var s=$('c-table');if(s)s.onchange=function(){table=s.value};var h=$('c-heure');if(h)h.onchange=function(){heure=h.value};var a=$('c-adr');if(a)a.oninput=function(){adresse=a.value};
+  $('b-cmd').onclick=function(){
+    if(mode==='livraison'&&!adresse.trim()){$('c-adr').focus();toast('Indiquez l\'adresse de livraison');return}
+    var c=IMS.nouvelleCommande({t:Date.now(),mode:mode,table:table,heure:heure,adresse:adresse,nom:$('c-nom').value||'Client',tel:$('c-tel').value,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv'});
+    suivi=c.no;try{sessionStorage.setItem('ims-suivi',JSON.stringify(suivi))}catch(e){}
+    panier=[];compte();montrerSuivi();
+  };
+}
+function montrerSuivi(){
+  vue='suivi';var c=IMS.commandes().find(function(x){return x.no===suivi});if(!c){suivi=null;montrerPanier();return}
+  $('t-titre').textContent='Ma commande';
+  var r={nouv:0,prep:1,prete:2,fin:3}[c.st];
+  var E=['Reçue par le restaurant','En préparation en cuisine',c.mode==='livraison'?'En route vers vous':c.mode==='place'?'Prête, on vous l\'apporte':'Prête, venez la récupérer'];
+  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">Commande envoyée</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">Merci '+c.nom+' ! Suivez votre commande en direct.</p></div><div class="pas">'+E.map(function(e,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i+1)+'</i>'+e+'</div>'}).join('')+'</div>'+
+    '<div>'+c.lignes.map(function(l){return '<div class="ligne"><span><b>'+l.q+'× '+l.nom+'</b>'+(l.det.length?'<small>'+l.det.join(' · ')+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span></div>'}).join('')+'</div>';
+  $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(c.total)+'</span></div><button class="btn ligne" id="b-autre">Nouvelle commande</button>';
+  $('b-autre').onclick=function(){suivi=null;try{sessionStorage.removeItem('ims-suivi')}catch(e){}fermer()};
+}
+IMS.surChangement(function(t){M=IMS.menu();signatures();grille();if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi()});
+signatures();onglets();grille();compte();
+if(mt){toast('Table '+table+' : bienvenue !')}
+})();
+</script>
