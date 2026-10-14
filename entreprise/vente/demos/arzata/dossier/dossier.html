@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Proposition Dzign Studio · Arzata Pizza</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Yellowtail&display=swap">
+<style>
+/* Dossier A4, 4 pages, pour le gérant d'Arzata Pizza. Identité Dzign (Syne, or) + univers du client (vert basilic, rouge tomate, crème). */
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0}
+:root{--nuit:#14402F;--nuit2:#0D2E21;--rouge:#B3122A;--or:#B8954E;--or2:#C8A96A;--encre:#1B1B20;--gris:#666}
+body{font-family:"Hanken Grotesk",sans-serif;color:var(--encre);font-size:10.5pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;overflow:hidden;position:relative;page-break-after:always;padding:16mm 16mm 12mm}
+.page:last-child{page-break-after:auto}
+.logo{font-family:Syne;font-weight:800;font-size:20pt;letter-spacing:-.02em}
+.logo b{color:var(--or2)}
+.logo small{display:block;font-family:"Hanken Grotesk";font-size:7pt;letter-spacing:.3em;text-transform:uppercase;font-weight:600;opacity:.7}
+.sur{font-size:8pt;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--or)}
+h2{font-family:Syne;font-weight:800;font-size:22pt;line-height:1.08;letter-spacing:-.01em;margin:2mm 0 4mm}
+h3{font-family:Syne;font-weight:700;font-size:12.5pt;margin-bottom:1.5mm}
+p{margin:0}
+.num{font-family:Anton,Syne;font-weight:400}
+.pied{position:absolute;left:16mm;right:16mm;bottom:9mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888;border-top:1px solid #e3e3e3;padding-top:2.5mm}
+
+/* Couverture */
+.couv{background:#120B06;color:#F4EEE6;padding:0}
+.couv .img{position:absolute;inset:0;background:url(img/hero.jpg) 68% 40%/cover no-repeat}
+.couv .voile{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,8,4,.35) 0%,rgba(14,8,4,.1) 35%,rgba(14,8,4,.92) 68%,#120B06 100%)}
+.couv .haut{position:absolute;left:16mm;right:16mm;top:15mm;display:flex;justify-content:space-between;align-items:center}
+.couv .haut img{width:22mm;height:22mm;border-radius:50%}
+.couv .bas{position:absolute;left:16mm;right:16mm;bottom:20mm;display:grid;gap:5mm}
+.couv .sur{color:var(--or2)}
+.couv h1{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:50pt;line-height:1;letter-spacing:-.01em}
+.couv h1 .s{display:block;font-family:Yellowtail;font-size:30pt;color:#F3C969;font-weight:400;margin-bottom:2mm}
+.couv h1 em{color:#FF8A5B}
+.couv .accroche{font-size:14pt;max-width:140mm;color:#E2DCD2}
+.couv .meta{display:flex;gap:10mm;font-size:9pt;color:#D2C6B2;border-top:1px solid rgba(255,255,255,.18);padding-top:4mm}
+.couv .meta b{display:block;color:#F4EEE6;font-size:10.5pt}
+
+/* Page constat */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin:2mm 0 5mm}
+.kpi{background:#F6F2EA;border-radius:3mm;padding:5mm}
+.kpi .num{font-size:28pt;line-height:1;color:var(--nuit)}
+.kpi .num.r{color:var(--rouge)}
+.kpi p{font-size:9pt;color:#555;margin-top:1.5mm}
+.perte{background:var(--nuit);color:#F4EEE6;border-radius:3mm;padding:5mm 7mm;display:grid;grid-template-columns:1fr auto;gap:6mm;align-items:center;margin-bottom:5mm}
+.perte .num{font-size:30pt;color:#FF8A5B;white-space:nowrap}
+.perte p{font-size:9.5pt;color:#CFE0D6}
+.perte h3{color:#F4EEE6}
+.trois{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+.trois .e{border-top:2px solid var(--nuit);padding-top:3mm}
+.trois .e .n{font-family:Anton;color:var(--rouge);font-size:15pt}
+.trois .e p{font-size:9.3pt;color:#444}
+.tels{display:flex;gap:8mm;justify-content:center;margin-top:5mm}
+.tel{width:27mm;border-radius:7mm;background:#000;padding:2mm;box-shadow:0 3mm 8mm rgba(0,0,0,.18)}
+.tel img{display:block;width:100%;border-radius:5.5mm}
+.tels figcaption{font-size:8.5pt;color:#666;text-align:center;margin-top:2mm}
+
+/* Page écrans */
+.ecran{border-radius:2.5mm;overflow:hidden;border:1px solid #d9d9e0;box-shadow:0 2mm 6mm rgba(0,0,0,.12)}
+.ecran img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.ecran{height:54mm}
+.bloc{display:grid;gap:2.5mm;margin-bottom:5mm}
+.bloc .leg{display:grid;grid-template-columns:auto 1fr;gap:4mm;align-items:baseline}
+.bloc .leg .n{font-family:Anton;font-size:16pt;color:var(--rouge)}
+.bloc .leg p{font-size:9.3pt;color:#444}
+
+/* Devis */
+.tete{display:flex;justify-content:space-between;align-items:flex-start}
+.coord{text-align:right;font-size:8.5pt;color:#555}
+.titre{display:flex;justify-content:space-between;align-items:end;border-bottom:1.5px solid var(--encre);padding-bottom:3mm;margin:4mm 0 3mm}
+.titre h2{margin:0}
+.ref{font-size:8.5pt;color:#555;text-align:right}
+.client{display:grid;grid-template-columns:1fr 1fr;gap:8mm;font-size:9.3pt;margin-bottom:3mm}
+.client h4{font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;color:var(--or);margin-bottom:1mm}
+table{width:100%;border-collapse:collapse;font-size:9.3pt}
+th{text-align:left;font-size:7.5pt;letter-spacing:.12em;text-transform:uppercase;color:#777;border-bottom:1px solid #ccc;padding:2mm}
+td{padding:1.2mm 2mm;border-bottom:1px solid #eee;vertical-align:top}
+td.m,th.m{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td small{display:block;color:#777;font-size:8.3pt;line-height:1.4}
+.totaux{margin:2mm 0 0 auto;width:88mm;font-size:10pt}
+.totaux div{display:flex;justify-content:space-between;padding:1.2mm 0;font-variant-numeric:tabular-nums}
+.totaux .remise{color:#0E7C5A;font-weight:600}
+.totaux .total{border-top:1.5px solid var(--encre);margin-top:1mm;padding-top:2mm;font-family:Syne;font-weight:800;font-size:15pt}
+.cond{display:grid;grid-template-columns:1fr 1fr;gap:5mm;font-size:8.1pt;color:#444;margin-top:3mm;line-height:1.45}
+.cond h4{font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:1mm}
+.paie{background:#F6F2EA;border-radius:2.5mm;padding:3.5mm 4mm}
+.sign{display:flex;justify-content:space-between;align-items:end;gap:8mm;margin-top:5mm;font-size:8.5pt;color:#555}
+.sign div{width:72mm;border-top:1px solid #999;padding-top:2mm;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- 1. Couverture -->
+<section class="page couv">
+  <div class="img"></div><div class="voile"></div>
+  <div class="haut"><div class="logo">d<b>z</b>ign<small>studio</small></div><img src="img/logo.jpg" alt="Arzata Pizza"></div>
+  <div class="bas">
+    <span class="sur">Proposition préparée pour Arzata Pizza · Dar El Beïda</span>
+    <h1><span class="s">Fermez les yeux,</span>votre pizzeria<br><em>passe en ligne</em></h1>
+    <p class="accroche">Le client compose sa pizza sur son téléphone, même moitié-moitié. Le bon sort devant le four, le client suit sa cuisson en direct. Vous pilotez tout depuis un seul écran.</p>
+    <div class="meta"><span>Date<b>14 octobre 2026</b></span><span>Référence<b>DZ-2026-ARZ-01</b></span><span>Contact<b>0549 50 68 57</b></span><span>Valable<b>15 jours</b></span></div>
+  </div>
+</section>
+
+<!-- 2. Constat et solution -->
+<section class="page">
+  <span class="sur">Le constat</span>
+  <h2>Une pizza qui fait parler. Des commandes qui passent encore par le téléphone.</h2>
+  <div class="kpis">
+    <div class="kpi"><div class="num">7 800</div><p>abonnés Instagram qui voient passer vos pizzas au feu de bois</p></div>
+    <div class="kpi"><div class="num">38</div><p>recettes à la carte : base tomate, base crème, pizzouich, salades</p></div>
+    <div class="kpi"><div class="num r">0</div><p>commande possible en ligne aujourd'hui : tout passe par le téléphone ou les messages</p></div>
+  </div>
+  <div class="perte">
+    <div><h3>Ce que coûte une ligne occupée</h3><p>Pendant le rush du soir, le four tourne et personne ne peut décrocher : le client commande ailleurs. Une seule commande perdue par heure de pointe, avec un panier moyen d'environ 2 000 DA, sur 2 heures par jour et 30 jours, c'est autour de :</p></div>
+    <div class="num">≈ 120 000 DA<br><span style="font-size:11pt;font-family:'Hanken Grotesk';color:#CFE0D6">par mois</span></div>
+  </div>
+  <span class="sur">Notre solution</span>
+  <h2 style="font-size:17pt">Une plateforme complète, pensée pour une pizzeria</h2>
+  <div class="trois">
+    <div class="e"><div class="n">01</div><h3>Le site de commande</h3><p>Vos 38 recettes en photos pro, Normale ou Méga, suppléments, pizza moitié-moitié, livraison par quartier avec frais automatiques, commande programmée, suivi « au four » en direct, en français et en arabe.</p></div>
+    <div class="e"><div class="n">02</div><h3>L'espace gérant</h3><p>Le four avec minuteur de cuisson, livreurs, caisse et ticket Z, comptabilité, fichier clients et fidélité, pizza du jour et promos. Vous modifiez vous-même menu, prix, photos et zones.</p></div>
+    <div class="e"><div class="n">03</div><h3>La réception au choix</h3><p>Bon imprimé automatiquement, WhatsApp, SMS, e-mail : chaque commande arrive où vous voulez. Pause en un clic quand le four est plein.</p></div>
+  </div>
+  <div class="tels">
+    <figure><div class="tel"><img src="img/tel-accueil.jpg" alt=""></div><figcaption>Le site sur le téléphone du client</figcaption></figure>
+    <figure><div class="tel"><img src="img/tel-suivi.jpg" alt=""></div><figcaption>Le client suit sa pizza au four</figcaption></figure>
+  </div>
+</section>
+
+<!-- 3. Les écrans -->
+<section class="page">
+  <span class="sur">Déjà prêt : votre démo</span>
+  <h2>Votre espace gérant</h2>
+  <div class="bloc">
+    <div class="ecran"><img src="img/g-accueil.jpg" alt=""></div>
+    <div class="leg"><span class="n">01</span><p><b>Le tableau de bord.</b> Chiffre du jour comparé à la veille, commandes, panier moyen, temps de préparation. Pause des commandes en ligne et attente annoncée aux clients en un clic.</p></div>
+  </div>
+  <div class="bloc">
+    <div class="ecran"><img src="img/g-cuisine.jpg" alt=""></div>
+    <div class="leg"><span class="n">02</span><p><b>Le four.</b> Nouvelles, au four, prêtes, avec sonnerie et bon imprimé seul. Bouton « Enfourner » et minuteur de cuisson sur chaque commande, nombre de pizzas au four en direct, moitié-moitié bien indiquée.</p></div>
+  </div>
+  <div class="bloc">
+    <div class="ecran"><img src="img/g-reglages.jpg" alt=""></div>
+    <div class="leg"><span class="n">03</span><p><b>Vos réglages.</b> Zones de livraison et frais, livraison offerte à partir d'un montant, horaires, téléphones, codes d'accès gérant, four et caisse, QR codes des tables, sauvegarde.</p></div>
+  </div>
+  <div class="pied"><span>Dzign Studio · Proposition Arzata Pizza</span><span>3 / 4</span></div>
+</section>
+
+<!-- 4. Devis -->
+<section class="page">
+  <div class="tete">
+    <div class="logo" style="color:#0B0B0F">d<b>z</b>ign<small style="color:#777">studio</small></div>
+    <div class="coord">Dzign Studio · Studio digital<br>WhatsApp : 0549 50 68 57<br>contact@dzignstudio.store<br>dzignstudio.store</div>
+  </div>
+  <div class="titre"><h2 style="font-size:18pt">Devis · Plateforme</h2><div class="ref">N° DZ-2026-ARZ-01<br>14 octobre 2026 · valable 15 jours</div></div>
+  <div class="client">
+    <div><h4>Client</h4>Arzata Pizza<br>Dar El Beïda, en face de la banque BNP<br>0772 08 73 87 · 0551 11 75 78</div>
+    <div><h4>Projet</h4>Plateforme complète de commande en ligne et de gestion pour la pizzeria. Mise en ligne en 3 semaines après l'acompte.</div>
+  </div>
+  <table>
+    <thead><tr><th>Prestation</th><th class="m">Montant</th></tr></thead>
+    <tbody>
+      <tr><td><b>Site de commande en ligne</b><small>Carte complète (38 recettes) en photos pro, Normale et Méga, suppléments, pizza moitié-moitié, sur place (QR code à table), à emporter, livraison par quartier avec frais automatiques, commande programmée, suivi au four en direct, pizza du jour et promo, français et arabe</small></td><td class="m">110 000 DA</td></tr>
+      <tr><td><b>Espace gérant complet</b><small>Tableau de bord, four (sonnerie, minuteur de cuisson, alertes), livraisons et livreurs, caisse (encaissement, ticket Z), comptabilité (jour, 7 et 30 jours, bénéfice estimé), clients et fidélité, marketing, menu. Tout se modifie par vous-même (recettes, photos, prix, zones, horaires). Accès séparés gérant, four et caisse. Remise à zéro des compteurs le jour de la mise en service</small></td><td class="m">120 000 DA</td></tr>
+      <tr><td><b>Réception au choix et bons de caisse</b><small>Bons imprimés automatiquement (58 ou 80 mm, 1 à 3 copies), WhatsApp du restaurant, message au client, SMS, e-mail, acceptation automatique, pause quand le four est plein</small></td><td class="m">30 000 DA</td></tr>
+      <tr><td><b>Mise en place</b><small>Nom de domaine (1re année), https, QR codes des tables prêts à imprimer, optimisation de la fiche Google Maps, installation de l'imprimante, formation de l'équipe (1 h)</small></td><td class="m">40 000 DA</td></tr>
+      <tr><td><b>Service client 24h/24, 7j/7 (12 mois)</b><small>Assistance par WhatsApp et téléphone, corrections, modifications, hébergement de la première année</small></td><td class="m"><b style="color:#0E7C5A">Inclus</b></td></tr>
+      <tr><td><b>Vidéo de lancement pour vos réseaux</b><small>Vidéo verticale de 20 s avec plan cinématique de votre four, prête à publier (Instagram, TikTok, Facebook)</small></td><td class="m"><b style="color:#0E7C5A">Offert</b></td></tr>
+    </tbody>
+  </table>
+  <div class="totaux">
+    <div><span>Sous-total</span><span>300 000 DA</span></div>
+    <div class="remise"><span>Programme Fondateurs (-20 %)</span><span>-60 000 DA</span></div>
+    <div class="total"><span>Total</span><span>240 000 DA</span></div>
+  </div>
+  <div class="cond">
+    <div class="paie"><h4>Paiement</h4><b>Acompte de 50 % : 120 000 DA</b> par BaridiMob à la signature, le projet démarre à réception.<br><b>Solde de 50 % : 120 000 DA</b> à la livraison, avant la mise en ligne.<br><br><h4>Service client inclus</h4><b>Assistance 24h/24, 7j/7 pendant 12 mois</b> par WhatsApp et téléphone : panne, bug, modification de la carte, question de l'équipe, on règle tout. Hébergement de la première année inclus.</div>
+    <div><h4>Garantie</h4>Maquette sous 72 h après l'acompte, avec 2 séries de retouches. <b>Maquette satisfaite ou remboursée</b> : si vous n'êtes pas convaincus après ces 2 séries, l'acompte vous est remboursé en totalité. Une fois la maquette validée, la garantie prend fin.<br><br><h4>Non inclus</h4>Imprimante thermique (environ 8 000 à 15 000 DA), tablette et PC. WhatsApp entièrement automatique (API Meta, facturée par Meta) en option.<br><br><h4>Étape suivante (option)</h4>Application Android et iPhone sur Play Store et App Store : sur devis.</div>
+  </div>
+  <div class="sign"><span style="max-width:80mm">Le site, ses contenus et le nom de domaine vous appartiennent après paiement du solde.</span><div>Bon pour accord, date et signature</div></div>
+</section>
+</body>
+</html>

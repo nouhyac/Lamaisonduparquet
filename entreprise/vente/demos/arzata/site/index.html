@@ -154,8 +154,8 @@ section.bloc{padding-block:88px}
 .carte .vis img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .carte:hover .vis img{transform:scale(1.06)}
 .pastille{position:absolute;z-index:1;left:12px;top:12px;background:#F3C969;color:#2A1D05;font-weight:800;font-size:12.5px;border-radius:999px;padding:5px 11px}
-.tags{position:absolute;z-index:1;right:10px;top:10px;display:flex;gap:5px}
-.tags span{width:30px;height:30px;border-radius:50%;background:rgba(255,251,243,.92);display:grid;place-items:center;font-size:15px}
+.pictos{position:absolute;z-index:1;right:10px;top:10px;display:flex;gap:5px}
+.pictos span{width:30px;height:30px;border-radius:50%;background:rgba(255,251,243,.92);display:grid;place-items:center;font-size:15px}
 .carte .corps{padding:16px 18px 10px;display:grid;gap:6px;flex:1;align-content:start}
 .carte h3{font-size:24px;color:var(--vert)}
 .carte p{margin:0;color:var(--gris);font-size:14px;line-height:1.45}
@@ -248,11 +248,11 @@ footer .logo,footer .logo .script{color:var(--clair)} footer .logo small{color:#
 .bascule input{width:20px;height:20px;accent-color:var(--rouge)}
 .bascule small{display:block;font-weight:500;color:#8A4A22}
 .suivi .num{font-family:var(--f-titre);font-size:68px;line-height:1;color:var(--vert)}
-.pas{display:grid;gap:10px}
-.pas div{display:flex;gap:12px;align-items:center;background:var(--papier);border-radius:14px;padding:13px;color:var(--gris);font-weight:600;border:1.5px solid var(--trait);flex-wrap:wrap}
-.pas i{width:28px;height:28px;border-radius:50%;border:2px solid var(--trait);display:grid;place-items:center;font-style:normal;font-size:13px;flex:none}
-.pas .ok{color:var(--encre)} .pas .ok i{background:var(--basilic);border-color:var(--basilic);color:#fff}
-.pas .en{color:var(--encre);border-color:var(--braise)} .pas .en i{border-color:var(--braise);animation:pulse 1.2s infinite}
+.avance{display:grid;gap:10px}
+.avance div{display:flex;gap:12px;align-items:center;background:var(--papier);border-radius:14px;padding:13px;color:var(--gris);font-weight:600;border:1.5px solid var(--trait);flex-wrap:wrap}
+.avance i{width:28px;height:28px;border-radius:50%;border:2px solid var(--trait);display:grid;place-items:center;font-style:normal;font-size:13px;flex:none}
+.avance .ok{color:var(--encre)} .avance .ok i{background:var(--basilic);border-color:var(--basilic);color:#fff}
+.avance .en{color:var(--encre);border-color:var(--braise)} .avance .en i{border-color:var(--braise);animation:pulse 1.2s infinite}
 @keyframes pulse{50%{background:rgba(226,83,27,.35)}}
 .cuisson{flex-basis:100%;height:7px;border-radius:4px;background:#FCE7D6;overflow:hidden}
 .cuisson b{display:block;height:100%;transform-origin:left;background:linear-gradient(90deg,#F5A524,var(--braise),var(--rouge));animation:cuit linear forwards}
@@ -307,7 +307,7 @@ html[lang="ar"] .ticker div{font-style:normal;animation-name:defile-rtl}
 @keyframes defile-rtl{to{transform:translateX(50%)}}
 html[dir="rtl"] .tiroir{right:auto;left:0;border-left:0;border-right:1px solid var(--trait)}
 html[dir="rtl"] .heros::after{background:linear-gradient(270deg,rgba(14,8,4,.92) 0%,rgba(14,8,4,.7) 38%,rgba(14,8,4,.1) 70%),linear-gradient(0deg,rgba(14,8,4,.8),transparent 35%)}
-html[dir="rtl"] .tags{right:auto;left:10px} html[dir="rtl"] .pastille{left:auto;right:12px}
+html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:auto;right:12px}
 </style>
 
 <div class="demo" role="region" aria-label="Démonstration"><div class="wrap"><span>Démo Dzign Studio · la plateforme de commande d'Arzata Pizza</span><button class="gbtn" data-ouvrir="accueil">👨‍🍳 Espace gérant : four, caisse, comptabilité</button></div></div>
@@ -491,7 +491,7 @@ function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){var n=M.filte
   $('filtres').querySelectorAll('button').forEach(function(b){b.onclick=function(){filtre=filtre===b.dataset.f?'':b.dataset.f;onglets();grille()}})}
 function grille(){
   var Q=q.trim().toLowerCase(),L=M.filter(function(p){var ok=Q?(p.nom+' '+p.desc+' '+p.cat).toLowerCase().indexOf(Q)>=0:filtre?true:p.cat===cat;return ok&&(!filtre||(p.tags||[]).indexOf(filtre)>=0)});
-  $('grille').innerHTML=L.map(function(p){return '<article class="carte revele'+(p.dispo?'':' rupture')+'"><div class="vis">'+(p.promo?'<span class="pastille">'+t('platjour')+' · -'+p.promo+' %</span>':'')+((p.tags||[]).length?'<span class="tags" aria-hidden="true">'+p.tags.map(function(x){return '<span>'+TAGS[x]+'</span>'}).join('')+'</span>':'')+'<img src="'+p.img+'" alt="'+esc(p.nom)+'" loading="lazy"></div><div class="corps"><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p></div><div class="bas">'+(p.tailles?'<span class="tailles">'+p.tailles.map(function(x){return '<span>'+esc(x[0])+' <b>'+fmt(x[1])+'</b></span>'}).join('')+'</span>':prixHTML(p))+boutonPlus(p)+'</div></article>'}).join('')||'<p class="aucun">'+t('aucun')+'</p>';
+  $('grille').innerHTML=L.map(function(p){return '<article class="carte revele'+(p.dispo?'':' rupture')+'"><div class="vis">'+(p.promo?'<span class="pastille">'+t('platjour')+' · -'+p.promo+' %</span>':'')+((p.tags||[]).length?'<span class="pictos" aria-hidden="true">'+p.tags.map(function(x){return '<span>'+TAGS[x]+'</span>'}).join('')+'</span>':'')+'<img src="'+p.img+'" alt="'+esc(p.nom)+'" loading="lazy"></div><div class="corps"><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p></div><div class="bas">'+(p.tailles?'<span class="tailles">'+p.tailles.map(function(x){return '<span>'+esc(x[0])+' <b>'+fmt(x[1])+'</b></span>'}).join('')+'</span>':prixHTML(p))+boutonPlus(p)+'</div></article>'}).join('')||'<p class="aucun">'+t('aucun')+'</p>';
   observer();
 }
 $('q').addEventListener('input',function(){q=this.value;onglets();grille()});
@@ -610,7 +610,7 @@ function montrerSuivi(){
   $('t-titre').textContent=t('suivi_title');
   var r={nouv:0,prep:1,prete:2,fin:3}[c.st],att=(IMS.service()[c.resto]||{attente:20}).attente,CU=180,e=c.four?Math.max(0,(Date.now()-c.four)/1000):0;
   var E=[t('s1'),t('s2'),c.mode==='livraison'?t('s3liv'):c.mode==='place'?t('s3place'):t('s3emp')];
-  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">'+t('suivi_sur')+'</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">'+t('merci',{n:esc(c.nom)})+'</p>'+(r<2?'<span class="eta">⏱ '+t('eta',{h:/^Pour /.test(c.heure||'')?c.heure.slice(5):hhmm(c.t+att*60000)})+'</span>':'')+'</div><div class="pas">'+E.map(function(x,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i===1&&cl==='en'?'🔥':i+1)+'</i>'+x+(i===1&&cl==='en'?'<small style="margin-inline-start:auto;font-weight:600">'+t('sortie',{h:hhmm((c.four||c.t)+CU*1000)})+'</small><span class="cuisson"><b style="animation-duration:'+CU+'s;animation-delay:-'+Math.min(e,CU).toFixed(1)+'s"></b></span>':'')+'</div>'}).join('')+'</div>'+
+  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">'+t('suivi_sur')+'</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">'+t('merci',{n:esc(c.nom)})+'</p>'+(r<2?'<span class="eta">⏱ '+t('eta',{h:/^Pour /.test(c.heure||'')?c.heure.slice(5):hhmm(c.t+att*60000)})+'</span>':'')+'</div><div class="avance">'+E.map(function(x,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i===1&&cl==='en'?'🔥':i+1)+'</i>'+x+(i===1&&cl==='en'?'<small style="margin-inline-start:auto;font-weight:600">'+t('sortie',{h:hhmm((c.four||c.t)+CU*1000)})+'</small><span class="cuisson"><b style="animation-duration:'+CU+'s;animation-delay:-'+Math.min(e,CU).toFixed(1)+'s"></b></span>':'')+'</div>'}).join('')+'</div>'+
     '<div>'+c.lignes.map(function(l){return '<div class="ligne"><span><b>'+l.q+'× '+esc(l.nom)+'</b>'+(l.det.length?'<small>'+esc(l.det.join(' · '))+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span></div>'}).join('')+(c.frais?'<div class="sous" style="padding-top:8px"><span>'+t('frais')+' · '+esc(c.zone)+'</span><span>'+fmt(c.frais)+'</span></div>':'')+'</div>';
   $('t-pied').innerHTML='<div class="total"><span>'+t('total')+'</span><span>'+fmt(c.total)+'</span></div>'+(r>=2?'<button class="btn" id="b-re">'+t('recommander')+'</button>':'')+'<button class="btn ligne" id="b-autre">'+t('autre')+'</button>';
   $('b-autre').onclick=function(){suivi=null;try{sessionStorage.removeItem('arz-suivi')}catch(e){}fermer()};

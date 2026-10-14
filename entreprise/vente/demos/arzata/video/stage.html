@@ -1,0 +1,53 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700;9..40,800&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Yellowtail&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;color:#FFF8EC;font-family:'DM Sans',sans-serif}
+body{background:radial-gradient(900px 700px at 85% 0%,rgba(226,83,27,.25),transparent 60%),radial-gradient(800px 800px at 0% 100%,rgba(179,18,42,.22),transparent 60%),#0D2E21}
+.top{position:absolute;left:40px;right:40px;top:30px;display:flex;align-items:center;gap:18px}
+.top img{width:78px;height:78px;border-radius:50%}
+.top b{font-family:Yellowtail;font-weight:400;font-size:56px;line-height:1}
+.top span{display:block;font-size:19px;color:#F3C969;letter-spacing:.2em;text-transform:uppercase;font-weight:800}
+.tri{position:absolute;left:40px;top:124px;width:150px;height:5px;background:linear-gradient(90deg,#1F7A3E 0 33.3%,#FFF8EC 33.3% 66.6%,#B3122A 66.6%);border-radius:3px}
+.ecran{position:absolute;left:40px;top:186px;width:1000px;height:640px;border-radius:22px;overflow:hidden;border:2px solid rgba(243,201,105,.35);box-shadow:0 30px 80px rgba(0,0,0,.5);background:#000}
+.ecran iframe{width:1120px;height:717px;border:0;transform:scale(.892857);transform-origin:0 0}
+.lab{position:absolute;font-size:19px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#F3C969}
+.tel{position:absolute;left:40px;top:896px;width:438px;height:946px;border-radius:56px;background:#000;padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px rgba(243,201,105,.3)}
+.tel .vit{width:410px;height:918px;border-radius:44px;overflow:hidden;background:#F7F1E5}
+.tel iframe{width:390px;height:873px;border:0;transform:scale(1.0513);transform-origin:0 0}
+.cap{position:absolute;left:520px;right:40px;top:920px;display:grid;gap:20px}
+.etape{opacity:.25;transition:opacity .5s,transform .5s}
+.etape.on{opacity:1;transform:translateX(8px)}
+.etape .n{font-family:Yellowtail;font-size:40px;color:#FF8A5B;line-height:1}
+.etape h2{font-family:Fraunces;font-weight:500;font-size:42px;line-height:1.02;margin:2px 0 6px}
+.etape p{margin:0;font-size:21px;color:#CFE0D6;line-height:1.35}
+.flash{position:absolute;left:40px;top:186px;width:1000px;height:640px;border-radius:22px;box-shadow:0 0 0 6px #E2531B,0 0 90px rgba(226,83,27,.8);opacity:0;pointer-events:none;transition:opacity .25s}
+.flash.on{opacity:1}
+.fin{position:absolute;inset:0;background:radial-gradient(800px 800px at 50% 35%,rgba(226,83,27,.28),transparent 70%),#0D2E21;display:grid;place-content:center;justify-items:center;text-align:center;gap:22px;opacity:0;transition:opacity .7s;padding:80px}
+.fin.on{opacity:1}
+.fin img{width:190px;height:190px;border-radius:50%}
+.fin .s{font-family:Yellowtail;color:#F3C969;font-size:70px;transform:rotate(-3deg)}
+.fin h1{font-family:Fraunces;font-weight:500;font-size:104px;line-height:.98;margin:0}
+.fin h1 em{color:#FF8A5B}
+.fin ul{list-style:none;padding:0;margin:10px 0;display:grid;gap:14px;font-size:31px;font-weight:700}
+.fin ul li::before{content:'✓ ';color:#6EE7A0}
+.fin .cta{margin-top:18px;background:#B3122A;color:#fff;font-weight:800;font-size:31px;border-radius:999px;padding:20px 44px}
+.fin .sig{margin-top:26px;font-size:23px;color:#CFE0D6;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.fin .sig b{color:#FFF8EC}
+</style></head><body>
+<div class="top"><img src="img/logo.jpg" alt=""><div><b>Arzata Pizza</b><span>Commande en ligne · espace gérant</span></div></div><div class="tri"></div>
+<div class="lab" style="left:44px;top:150px">Le four · tablette de la cuisine</div>
+<div class="ecran"><iframe id="k" src="about:blank"></iframe></div>
+<div class="lab" style="left:44px;top:862px">Téléphone du client</div>
+<div class="tel"><div class="vit"><iframe id="c" src="about:blank"></iframe></div></div>
+<div class="flash" id="flash"></div>
+<div class="cap">
+  <div class="etape" id="e1"><div class="n">uno</div><h2>Moitié burrata, moitié saumon</h2><p>Le client compose sa pizza, choisit Méga et un supplément stracciatella.</p></div>
+  <div class="etape" id="e2"><div class="n">due</div><h2>Livraison calculée seule</h2><p>Il choisit son quartier : les frais s'ajoutent, il programme l'heure.</p></div>
+  <div class="etape" id="e3"><div class="n">tre</div><h2>Ça sonne au four</h2><p>Le bon s'imprime, les deux moitiés bien indiquées.</p></div>
+  <div class="etape" id="e4"><div class="n">quattro</div><h2>Enfournée, suivie en direct</h2><p>Minuteur de cuisson au four, le client voit sa pizza avancer.</p></div>
+  <div class="etape" id="e5"><div class="n">cinque</div><h2>Toute la gestion</h2><p>Caisse, comptabilité, livreurs, clients, zones, en français et en arabe.</p></div>
+</div>
+<div class="fin" id="fin"><img src="img/logo.jpg" alt=""><div class="s">votre pizzeria en ligne</div><h1>Arzata,<br><em>au feu de bois</em><br>et en ligne</h1>
+<ul><li>38 recettes · moitié-moitié</li><li>Four · caisse · comptabilité</li><li>Livraison par quartier · français et arabe</li></ul>
+<div class="cta">On vous le montre en 5 minutes ?</div><div class="sig">Démo réalisée par <b>Dzign Studio</b> · 0549 50 68 57</div></div>
+</body></html>
