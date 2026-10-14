@@ -28,7 +28,6 @@ Vous trouverez aussi en pièces jointes la vidéo de vente réalisée pour prés
 Votre regard compte beaucoup pour moi. Qu'en pensez-vous, sincèrement ? Qu'est-ce que je pourrais améliorer, que ce soit dans le travail lui-même, dans ma façon de présenter mon offre, dans mes prix ou dans ma stratégie pour trouver mes premiers clients ? Toute remarque, même critique, m'aidera à progresser.
 
 Je serais également heureux de mettre cette expérience au service de l'école, par exemple :
-- des ateliers pratiques pour les étudiants : créer une offre, prospecter un vrai client, réaliser une vidéo publicitaire, utiliser l'IA dans un projet marketing concret ;
 - la communication digitale de l'école : site, campagnes, vidéos et visuels ;
 - l'accueil de stagiaires au sein de Dzign Studio, sur des projets réels.
 
