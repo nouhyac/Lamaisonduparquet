@@ -69,7 +69,7 @@
 
   // Commandes d'exemple : la journée a déjà commencé quand on ouvre la démo
   function amorcer() {
-    if (lire('ims-v', 0) !== 3) { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); ecrire('ims-v', 3); }
+    if (lire('ims-v', 0) !== 4) { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep', 'ims-service', 'ims-z', 'ims-charges'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); ecrire('ims-v', 4); }
     if (lire('ims-cmds', null)) return;
     var now = Date.now(), d = new Date(); d.setHours(11, 40, 0, 0); if (d.getTime() > now - 60 * 60000) d.setDate(d.getDate() - 1);
     var base = d.getTime(), cmds = [], no = 1;
@@ -85,7 +85,7 @@
         var ti = p.tailles ? Math.min(c[1], p.tailles.length - 1) : -1;
         lignes.push({ id: p.id, nom: p.nom, det: ti >= 0 ? [p.tailles[ti][0]] : [], px: ti >= 0 ? p.tailles[ti][1] : p.prix, q: 1 + ((k + j) % 4 === 0 ? 1 : 0) });
       }
-      cmds.push({ no: no++, resto: k % 5 < 3 ? 'bab' : 'ain', t: t, mode: modes[k % 3], table: String(1 + (k % 12)), heure: 'Dès que possible', adresse: 'Résidence, bât. 4', nom: noms[k % noms.length], tel: '05' + (50 + k) + ' 12 34 56', lignes: lignes, total: lignes.reduce(function (a, l) { return a + l.px * l.q; }, 0), st: 'fin', fin: t + (9 + k % 7) * 60000 });
+      cmds.push({ no: no++, resto: k % 5 < 3 ? 'bab' : 'ain', t: t, mode: modes[k % 3], table: String(1 + (k % 12)), heure: 'Dès que possible', adresse: 'Résidence, bât. 4', nom: noms[k % noms.length], tel: '05' + (50 + k) + ' 12 34 56', lignes: lignes, total: lignes.reduce(function (a, l) { return a + l.px * l.q; }, 0), st: 'fin', fin: t + (9 + k % 7) * 60000, paye: true, pay: ['especes', 'especes', 'cib', 'baridimob'][k % 4] });
     }
     function cmd(st, mode, il, lignes, nom, resto) { var l = lignes.map(function (x) { var p = M.find(function (y) { return y.id === x[0]; }); var ti = p.tailles ? x[1] : -1; return { id: p.id, nom: p.nom, det: (ti >= 0 ? [p.tailles[ti][0]] : []).concat(x[2] ? ['Fromage gratiné'] : []), px: (ti >= 0 ? p.tailles[ti][1] : p.prix) + (x[2] ? 150 : 0), q: x[3] || 1 }; }); cmds.push({ no: no++, resto: resto, t: now - il * 60000, mode: mode, table: '3', heure: 'Dans 15 min', adresse: 'Résidence, bât. 4, 2e étage', nom: nom, tel: '0661 22 33 44', lignes: l, total: l.reduce(function (a, x) { return a + x.px * x.q; }, 0), st: st }); }
     cmd('prete', 'place', 11, [['crg6', 1], ['smb', 1]], 'Sara', 'bab');
@@ -124,7 +124,7 @@
     nouvelleCommande: function (c) { var n = lire('ims-no', 1); c.no = n; if (reception().acceptation === 'auto' && c.st === 'nouv') { c.st = 'prep'; c.auto = true; } ecrire('ims-no', n + 1); var L = lire('ims-cmds', []); L.push(c); ecrire('ims-cmds', L); signaler('ims-cmds'); return c; },
     majMenu: function (dispo, prix) { ecrire('ims-dispo', dispo); ecrire('ims-prix', prix); signaler('ims-menu'); },
     surChangement: surChangement,
-    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep', 'ims-service'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); signaler('ims-menu'); signaler('ims-recep'); signaler('ims-service'); },
+    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep', 'ims-service', 'ims-z', 'ims-charges'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); signaler('ims-menu'); signaler('ims-recep'); signaler('ims-service'); },
     fmt: function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' DA'; },
     numero: function (n) { return '#' + String(n).padStart(3, '0'); }
   };

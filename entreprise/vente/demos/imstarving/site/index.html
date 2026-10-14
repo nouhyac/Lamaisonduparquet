@@ -1,6 +1,7 @@
 <title>I'm Starving Food</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700;800&family=Kaushan+Script&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gestion.css">
 <style>
 /* Mise en page : vitrine plein écran (le croger en héros), bandeau défilant, signatures, menu complet à onglets, la salle, comment ça marche, infos ; panier en tiroir latéral (bas d'écran sur mobile). Identité I'm Starving : bleu nuit, rouge, crème. Thème unique. */
 :root{
@@ -185,18 +186,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 .demo a{color:var(--or);font-weight:700}
 .gbtn{border:0;background:var(--or);color:#1b1607;font-weight:800;font-size:13.5px;border-radius:999px;padding:8px 14px;cursor:pointer}
 .gnav{padding:9px 16px!important;font-size:14px!important}
-.gerant{position:fixed;inset:0;z-index:100;background:var(--nuit);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-.gbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 16px;background:#0b0f22;border-bottom:2px solid var(--or)}
-.gbar b{font-family:var(--f-titre);font-weight:400;font-size:20px;letter-spacing:.04em;color:var(--or)}
-.gtabs{display:flex;gap:4px;background:var(--nuit2);border:1px solid var(--trait);border-radius:999px;padding:3px}
-.gtabs button{border:0;background:none;color:var(--creme);border-radius:999px;padding:7px 12px;font-weight:700;font-size:13.5px;cursor:pointer}
-.gtabs button[aria-pressed="true"]{background:var(--creme);color:var(--nuit)}
-.gbar .gret{margin-left:auto;border:1px solid var(--trait);background:var(--rouge);color:#fff;border-radius:999px;padding:8px 14px;font-weight:800;font-size:13.5px;cursor:pointer}
-.gerant iframe{flex:1;width:100%;border:0;background:var(--nuit)}
-.gbtn .nb,.gtabs .nb{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:var(--rouge);color:#fff;font-size:11.5px;margin-left:6px;padding:0 5px}
-.gbtn.alerte{animation:sonne .9s ease-in-out 3}
+.gbtn .nb,.gbtn.alerte{animation:sonne .9s ease-in-out 3}
 @keyframes sonne{0%,100%{transform:none}25%{transform:rotate(-3deg) scale(1.05)}75%{transform:rotate(3deg) scale(1.05)}}
-.gaide{font-size:12.5px;color:var(--gris);width:100%}
 @media (max-width:640px){.gnav{display:none!important}.gbar .gret{margin-left:0}}
 
 @media (max-width:900px){
@@ -214,12 +205,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 
-<div class="demo"><div class="wrap"><span>Démo Dzign Studio · le site client d'I'm Starving</span><button class="gbtn" data-ouvrir="cuisine">👨‍🍳 Espace gérant : cuisine + bons de caisse</button></div></div>
+<div class="demo"><div class="wrap"><span>Démo Dzign Studio · le site client d'I'm Starving</span><button class="gbtn" data-ouvrir="accueil">👨‍🍳 Espace gérant : cuisine, caisse, comptabilité</button></div></div>
 
 <header class="nav"><div class="wrap">
   <a class="logo" href="#haut"><img src="img/logo.jpg" alt=""><b>I'M <i>STARVING</i></b></a>
   <nav aria-label="Sections"><a href="#menu">Menu</a><a href="#salle">La salle</a><a href="#comment">Commander</a><a href="#infos">Infos</a></nav>
-  <button class="btn ligne gnav" data-ouvrir="cuisine">Espace gérant</button>
+  <button class="btn ligne gnav" data-ouvrir="accueil">Espace gérant</button>
   <button class="btn cmd" id="b-nav-panier">Mon panier <span class="compte" id="nb-nav">0</span></button>
 </div></header>
 
@@ -286,17 +277,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 <div class="voile" id="voile" hidden></div>
 <aside class="tiroir" id="tiroir" hidden aria-label="Commande"><header><h2 id="t-titre">Mon panier</h2><button class="fermer" id="b-fermer" aria-label="Fermer">✕</button></header><div class="contenu" id="t-contenu"></div><footer id="t-pied"></footer></aside>
 <div class="toast" id="toast" hidden></div>
-<div class="gerant" id="gerant" hidden role="dialog" aria-label="Espace gérant">
-  <div class="gbar"><img src="img/logo.jpg" alt="" style="width:34px;height:34px;border-radius:50%"><b>Espace gérant</b>
-    <div class="gtabs"><button data-g="cuisine" aria-pressed="true">Écran cuisine</button><button data-g="recepteur" aria-pressed="false">Bons de caisse</button></div>
-    <button class="gret" id="gret">← Retour au site client</button>
-    <span class="gaide">Code : <b style="color:var(--creme)">0328</b> · Passez une commande sur le site, revenez ici : elle arrive avec sa sonnerie et son ticket. Le bouton « pause » coupe les commandes en ligne d'un restaurant pendant un rush.</span>
-  </div>
-  <iframe id="g-cuisine" title="Écran cuisine"></iframe>
-  <iframe id="g-recepteur" title="Récepteur de bons" hidden></iframe>
-</div>
+
 
 <script src="data.js"></script>
+<script src="gestion.js"></script>
 <script>
 (function(){
 var IMS=window.IMS,$=function(i){return document.getElementById(i)},fmt=IMS.fmt;
@@ -361,7 +345,7 @@ function montrerPanier(){
     if(mode==='livraison'&&!adresse.trim()){$('c-adr').focus();toast('Indiquez l\'adresse de livraison');return}
     var c=IMS.nouvelleCommande({resto:resto,t:Date.now(),mode:mode,table:table,heure:heure,adresse:adresse,nom:$('c-nom').value||'Client',tel:$('c-tel').value,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv'});
     suivi=c.no;try{sessionStorage.setItem('ims-suivi',JSON.stringify(suivi))}catch(e){}
-    panier=[];compte();montrerSuivi();etatGerant();toast('Commande envoyée en cuisine ! Ouvrez l\'Espace gérant pour la voir arriver');
+    panier=[];compte();montrerSuivi();etatGerant();toast('Commande envoyée en cuisine !');
   };
 }
 function montrerSuivi(){
@@ -376,16 +360,12 @@ function montrerSuivi(){
 }
 IMS.surChangement(function(t){M=IMS.menu();signatures();grille();if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi()});
 function adresses(){$('adresses').innerHTML=IMS.RESTOS.map(function(r){var o=IMS.ouvert(r);return '<div class="carto"><h3>'+r.nom+'</h3><span class="etat'+(o?'':' ferme')+'"><i></i>'+(o?'Ouvert maintenant':'Fermé pour le moment')+' · '+r.h+'</span><div class="tel">'+r.tel+'</div><div class="actions" style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="'+r.maps+'" target="_blank" rel="noopener">Itinéraire</a><a class="btn ligne" href="tel:'+r.tel.replace(/\s/g,'')+'">Appeler</a></div></div>'}).join('')}
-// Espace gérant : cuisine et récepteur dans la même page, pour que tout reste synchronisé
-var gv='cuisine';
-function gOuvrir(v){gv=v||gv;['cuisine','recepteur'].forEach(function(x){var f=$('g-'+x);if(x===gv&&!f.src)f.src=x+'.html';f.hidden=x!==gv});
-  document.querySelectorAll('.gtabs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.g===gv)});$('gerant').hidden=false;document.body.style.overflow='hidden'}
-document.addEventListener('click',function(e){var b=e.target.closest('[data-ouvrir]');if(b)gOuvrir(b.dataset.ouvrir);var t=e.target.closest('.gtabs button');if(t)gOuvrir(t.dataset.g)});
-$('gret').onclick=function(){$('gerant').hidden=true;document.body.style.overflow=''};
-if(location.hash==='#gerant')gOuvrir('cuisine');
+// Espace gérant : application de gestion ouverte dans la même page (tout reste synchronisé)
+document.addEventListener('click',function(e){var b=e.target.closest('[data-ouvrir]');if(b)IMSG.ouvrir({page:b.dataset.ouvrir})});
+if(location.hash==='#gerant')IMSG.ouvrir({page:'accueil'});
 function etatGerant(){var L=IMS.commandes(),n=L.filter(function(c){return c.st==='nouv'}).length,S=IMS.service(),dernier=IMS.lire('ims-no',1);
-  document.querySelectorAll('[data-ouvrir] .nb,.gtabs .nb').forEach(function(e){e.remove()});
-  if(n){document.querySelectorAll('[data-ouvrir],.gtabs button[data-g="cuisine"]').forEach(function(b){b.insertAdjacentHTML('beforeend','<span class="nb">'+n+'</span>')})}
+  document.querySelectorAll('[data-ouvrir] .nb').forEach(function(e){e.remove()});
+  if(n){document.querySelectorAll('[data-ouvrir]').forEach(function(b){b.insertAdjacentHTML('beforeend','<span class="nb">'+n+'</span>')})}
   if(etatGerant.no&&dernier>etatGerant.no){document.querySelectorAll('.gbtn').forEach(function(b){b.classList.remove('alerte');void b.offsetWidth;b.classList.add('alerte')})}etatGerant.no=dernier;
   var ouverts=IMS.RESTOS.filter(function(r){return !S[r.id].pause}),e=$('etat-cmd');
   e.innerHTML=ouverts.length?'<b>●</b> Commande en ligne ouverte · ≈ '+Math.min.apply(null,ouverts.map(function(r){return S[r.id].attente}))+' min':'<b style="color:var(--or)">●</b> Commandes en ligne en pause'}
