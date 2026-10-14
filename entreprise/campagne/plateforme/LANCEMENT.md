@@ -5,7 +5,7 @@ Tout est filmé sur notre vraie plateforme, sous une marque neutre « Forno ». 
 ## Fichiers
 | Fichier | Usage |
 |---|---|
-| `pub-plateforme-40s.mp4` | **La pub principale** (40 s, voix Céline, sous-titres, musique) : problème → plateforme → client → cuisine → livraison/compta → offre → WhatsApp |
+| `pub-plateforme-40s.mp4` | **La pub principale** (40 s, voix Xavier, « Dzign » prononcé « design », sous-titres, musique) : problème → plateforme → client → cuisine → livraison/compta → offre → WhatsApp |
 | `exemple-client.mp4` | Exemple 20 s : le site de commande (carte, moitié-moitié, panier, suivi) |
 | `exemple-cuisine.mp4` | Exemple 20 s : l'espace gérant (sonnerie, bon, four, caisse, compta) |
 | `affiche-1.jpg` | « Pas un simple site. Tout votre restaurant en ligne. » |
