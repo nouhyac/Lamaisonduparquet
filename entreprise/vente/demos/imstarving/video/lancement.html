@@ -1,0 +1,63 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@500;600;700;800&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#060D24;color:#F4EEE6;font-family:Barlow,sans-serif}
+.sc{position:absolute;inset:0;opacity:0;transition:opacity .6s}.sc.on{opacity:1}
+.k{font-family:'Kaushan Script';color:#D7262D;transform:rotate(-4deg);transform-origin:left}
+h1{font-family:Anton;font-weight:400;text-transform:uppercase;margin:0;line-height:.9}
+/* 1 */
+#s1{display:grid;place-content:center;justify-items:center;text-align:center;gap:30px;background:radial-gradient(700px 700px at 50% 45%,rgba(215,38,45,.35),transparent 70%),#060D24}
+#s1 img{width:300px;height:300px;border-radius:50%;box-shadow:0 0 0 10px rgba(255,255,255,.06),0 30px 80px rgba(0,0,0,.6)}
+#s1 .new{font-family:Anton;font-size:64px;letter-spacing:.2em;color:#F2C14E}
+#s1 h1{font-size:150px}
+.pop{animation:pop .7s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+/* 2 */
+#s2{background:#060D24 url(img3d/hero.jpg) 72% 50%/cover}
+#s2.on{animation:zoom 4.5s ease-out both}
+@keyframes zoom{from{background-size:auto 115%}to{background-size:auto 100%}}
+#s2::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,13,36,.0) 30%,rgba(6,13,36,.95) 80%)}
+#s2 .t{position:absolute;left:60px;right:60px;bottom:220px;z-index:1}
+#s2 .k{font-size:76px}#s2 h1{font-size:170px}
+#s2 p{font-size:40px;margin:20px 0 0;color:#E2DCD2}
+/* 3 */
+#s3{background:radial-gradient(900px 800px at 80% 10%,rgba(215,38,45,.3),transparent 60%),#060D24}
+#s3 .t{position:absolute;left:60px;right:60px;top:110px}
+#s3 h1{font-size:120px}#s3 .k{font-size:64px}
+.tel{position:absolute;left:50%;top:470px;transform:translateX(-50%);width:560px;height:1210px;border-radius:72px;background:#000;padding:18px;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 3px #25335E}
+.tel .vit{width:524px;height:1174px;border-radius:56px;overflow:hidden;background:#060D24}
+.tel iframe{width:390px;height:874px;border:0;transform:scale(1.3436);transform-origin:0 0}
+/* 4 */
+#s4{display:grid;align-content:center;gap:40px;padding:80px;background:#060D24}
+#s4 h1{font-size:110px}
+#s4 .m{display:grid;grid-template-columns:120px 1fr;gap:30px;align-items:center;background:#0C1636;border:2px solid #25335E;border-radius:36px;padding:34px 40px;opacity:0;transform:translateX(-60px);transition:all .6s}
+#s4 .m.on{opacity:1;transform:none}
+#s4 .m i{font-style:normal;font-size:84px;text-align:center}
+#s4 .m b{display:block;font-family:Anton;font-weight:400;font-size:64px;text-transform:uppercase;letter-spacing:.02em}
+#s4 .m span{font-size:34px;color:#C9CFE0}
+/* 5 */
+#s5{background:#060D24}
+#s5 img{position:absolute;left:-60px;right:-60px;top:330px;width:1200px}
+#s5 .t{position:absolute;left:60px;right:60px;top:120px}
+#s5 h1{font-size:120px}
+#s5 .ad{position:absolute;left:60px;right:60px;bottom:180px;display:grid;gap:22px}
+#s5 .ad div{background:#0C1636;border:2px solid #25335E;border-radius:28px;padding:28px 34px;font-size:40px;font-weight:800}
+#s5 .ad small{display:block;font-weight:600;color:#A6AEC7;font-size:30px}
+/* 6 */
+#s6{display:grid;place-content:center;justify-items:center;text-align:center;gap:34px;padding:80px;background:radial-gradient(800px 800px at 50% 40%,rgba(215,38,45,.35),transparent 70%),#060D24}
+#s6 img{width:220px;height:220px;border-radius:50%}
+#s6 .k{font-size:80px;transform:rotate(-3deg)}
+#s6 h1{font-size:150px}
+#s6 .cta{background:#D7262D;color:#fff;font-weight:800;font-size:52px;border-radius:999px;padding:28px 60px}
+#s6 p{font-size:36px;color:#C9CFE0;margin:0}
+</style></head><body>
+<section class="sc" id="s1"><img class="pop" src="img/logo.jpg" alt=""><div class="new">NOUVEAU</div><h1>Ça y est !</h1></section>
+<section class="sc" id="s2"><div class="t"><div class="k">le burger dans un croissant</div><h1>Commandez<br>en ligne</h1><p>Plus besoin d'appeler. Plus de ligne occupée.</p></div></section>
+<section class="sc" id="s3"><div class="t"><div class="k">en 1 minute</div><h1>Choisis. Commande.<br>C'est prêt.</h1></div><div class="tel"><div class="vit"><iframe id="c" src="about:blank"></iframe></div></div></section>
+<section class="sc" id="s4"><h1>Comme tu veux</h1>
+ <div class="m" id="m1"><i>📱</i><div><b>Sur place</b><span>Scanne le QR code à ta table</span></div></div>
+ <div class="m" id="m2"><i>🛍️</i><div><b>À emporter</b><span>Choisis l'heure, c'est prêt</span></div></div>
+ <div class="m" id="m3"><i>🛵</i><div><b>Livraison</b><span>Directement chez toi</span></div></div></section>
+<section class="sc" id="s5"><div class="t"><h1>Frais. Généreux.<br>Fait pour toi.</h1></div><img src="img3d/festin.jpg" alt=""><div class="ad"><div>📍 Bab Ezzouar<small>11h – 23h</small></div><div>📍 Aïn Allah<small>11h – 02h</small></div></div></section>
+<section class="sc" id="s6"><img src="img/logo.jpg" alt=""><div class="k">t'as faim ?</div><h1>I'm Starving<br>en ligne</h1><div class="cta">Commande maintenant</div><p>👆 Lien en bio</p></section>
+</body></html>

@@ -54,3 +54,9 @@ Dzign Studio · 0549 50 68 57
 ## Visite en personne (prévue par l'utilisateur·rice)
 - Dossier imprimé 4 pages : `dossier/Proposition-ImStarving-DzignStudio.pdf` (couverture 3D, constat + 3 écrans, captures, devis Plateforme 400 000 → 320 000 DA, acompte 160 000, Care+, garantie, appli en option). Source : `dossier/dossier.html`.
 - À imprimer en couleur, A4, papier épais (2 exemplaires : un pour eux, un signé pour nous).
+
+## À envoyer (14/10, nuit)
+1. Vidéo démo `demo-imstarving-v3.mp4` + message 1 (Instagram).
+2. S'ils répondent : lien de la démo + mode d'emploi (bouton jaune Espace gérant, code 0328).
+3. S'ils demandent le prix ou montrent de l'intérêt : passer en personne avec le dossier PDF.
+4. Vidéo de lancement `lancement-imstarving.mp4` : argument de clôture (« voilà ce que vous publierez le jour J, offert »). Ne pas l'envoyer avant la signature.
