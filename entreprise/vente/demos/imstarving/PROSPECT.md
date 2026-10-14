@@ -50,3 +50,7 @@ Dzign Studio · 0549 50 68 57
 3. Relance J+2 (démo prête, 34 recettes, 2 restaurants) ; relance J+5 (places Fondateurs limitées, répondez « oui »).
 4. Variante WhatsApp au 0659 56 46 11 si pas de réponse sur Instagram.
 5. Lien de la démo : seulement s'ils le demandent (la démo est plus forte montrée en personne).
+
+## Visite en personne (prévue par l'utilisateur·rice)
+- Dossier imprimé 4 pages : `dossier/Proposition-ImStarving-DzignStudio.pdf` (couverture 3D, constat + 3 écrans, captures, devis Plateforme 400 000 → 320 000 DA, acompte 160 000, Care+, garantie, appli en option). Source : `dossier/dossier.html`.
+- À imprimer en couleur, A4, papier épais (2 exemplaires : un pour eux, un signé pour nous).
