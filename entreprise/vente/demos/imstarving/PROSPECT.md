@@ -13,7 +13,7 @@
 
 ## v4 : rendus 3D + réception au choix (14/10)
 - **34 rendus 3D** (un par plat) + bannière Croger + bandeau « festin » → `site/img3d/` (Higgsfield gpt_image_2_5 low, 0,25 crédit/image, ≈ 9,75 crédits). Bannières refaites **sans bacon** (halal). La galerie « La salle » garde leurs vraies photos du lieu.
-- **Récepteur de bons** `site/recepteur.html` (PC de caisse, code 2026) : impression auto de chaque commande en 1 à 3 copies (cuisine / caisse / livreur), 58 ou 80 mm, journal du jour, Encaisser, Réimprimer, WhatsApp, copie Excel pour la caisse, bon de test, filtre par restaurant.
+- **Récepteur de bons** `site/recepteur.html` (PC de caisse, code 0328) : impression auto de chaque commande en 1 à 3 copies (cuisine / caisse / livreur), 58 ou 80 mm, journal du jour, Encaisser, Réimprimer, WhatsApp, copie Excel pour la caisse, bon de test, filtre par restaurant.
 - **Onglet Réception** du back-office : le restaurant choisit ses canaux (écran cuisine, récepteur de bons, WhatsApp du restaurant, prévenir le client sur WhatsApp, logiciel de caisse aucune/Excel/API, SMS gérant, e-mail, acceptation manuelle ou automatique).
 - **Vidéo démo 25 s** verticale : `demo-imstarving.mp4` (cuisine en haut, téléphone en bas, 4 étapes, écran de fin). Sources : `video/`.
 - Version réelle : WhatsApp automatique = API WhatsApp Business (Meta, coût par conversation) ; impression = imprimante thermique ESC/POS + petit logiciel ou Chrome en impression silencieuse ; caisse = export ou API selon l'éditeur.
@@ -24,7 +24,7 @@ Choix du restaurant dans le panier (ouvert/fermé en direct, celui qui est ouver
 ## v3 « site double » (14/10) → https://claude.ai/artifact/M7a45ogePhTwVRw81NpiFo
 Source : `site/` (`index.html` site client, `cuisine.html` back-office, `data.js` menu + synchro, `img/` leurs vraies photos recadrées).
 - **Site client** : hero Croger, signatures, menu complet par catégories (tailles, suppléments), panier, sur place (table pré-remplie par QR `#table-N`) / à emporter (heure) / livraison (adresse), suivi en direct de la commande.
-- **Back-office** (code **2026**) : commandes en direct + sonnerie, Nouvelles → En préparation → Prêtes, ticket 80 mm, alerte retard 15 min ; **Menu** (rupture et prix modifiés en direct sur le site) ; **Statistiques** (CA du jour, panier moyen, temps de préparation, commandes par heure, top plats, répartition des modes) ; **QR codes** des tables prêts à imprimer.
+- **Back-office** (code **0328**) : commandes en direct + sonnerie, Nouvelles → En préparation → Prêtes, ticket 80 mm, alerte retard 15 min ; **Menu** (rupture et prix modifiés en direct sur le site) ; **Statistiques** (CA du jour, panier moyen, temps de préparation, commandes par heure, top plats, répartition des modes) ; **QR codes** des tables prêts à imprimer.
 - Démo testée desktop + mobile (commande → cuisine → statut côté client, rupture, stats, QR), 0 erreur.
 - Pour la montrer : ouvrir le site et le back-office dans **deux onglets du même navigateur**, passer une commande, elle arrive en cuisine.
 

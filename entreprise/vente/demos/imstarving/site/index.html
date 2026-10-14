@@ -193,6 +193,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 .gtabs button[aria-pressed="true"]{background:var(--creme);color:var(--nuit)}
 .gbar .gret{margin-left:auto;border:1px solid var(--trait);background:var(--rouge);color:#fff;border-radius:999px;padding:8px 14px;font-weight:800;font-size:13.5px;cursor:pointer}
 .gerant iframe{flex:1;width:100%;border:0;background:var(--nuit)}
+.gbtn .nb,.gtabs .nb{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:var(--rouge);color:#fff;font-size:11.5px;margin-left:6px;padding:0 5px}
+.gbtn.alerte{animation:sonne .9s ease-in-out 3}
+@keyframes sonne{0%,100%{transform:none}25%{transform:rotate(-3deg) scale(1.05)}75%{transform:rotate(3deg) scale(1.05)}}
 .gaide{font-size:12.5px;color:var(--gris);width:100%}
 @media (max-width:640px){.gnav{display:none!important}.gbar .gret{margin-left:0}}
 
@@ -228,7 +231,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
       <h1><span class="script">le burger dans un croissant</span>Le Croger</h1>
       <p>Croissant feuilleté, steak haché, fromage qui coule. Commandez en ligne : sur place, à emporter ou en livraison, sans appeler.</p>
       <div class="actions"><a class="btn" href="#menu">Commander maintenant</a><a class="btn ligne" href="#signatures">Nos signatures</a></div>
-      <div class="puces"><span><b>●</b> Commande en ligne ouverte</span><span>Sur place · QR code à table</span><span>À emporter</span><span>Livraison</span></div>
+      <div class="puces"><span id="etat-cmd"><b>●</b> Commande en ligne ouverte</span><span>Sur place · QR code à table</span><span>À emporter</span><span>Livraison</span></div>
     </div>
   </section>
   <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
@@ -284,10 +287,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 <aside class="tiroir" id="tiroir" hidden aria-label="Commande"><header><h2 id="t-titre">Mon panier</h2><button class="fermer" id="b-fermer" aria-label="Fermer">✕</button></header><div class="contenu" id="t-contenu"></div><footer id="t-pied"></footer></aside>
 <div class="toast" id="toast" hidden></div>
 <div class="gerant" id="gerant" hidden role="dialog" aria-label="Espace gérant">
-  <div class="gbar"><b>Espace gérant</b>
+  <div class="gbar"><img src="img/logo.jpg" alt="" style="width:34px;height:34px;border-radius:50%"><b>Espace gérant</b>
     <div class="gtabs"><button data-g="cuisine" aria-pressed="true">Écran cuisine</button><button data-g="recepteur" aria-pressed="false">Bons de caisse</button></div>
     <button class="gret" id="gret">← Retour au site client</button>
-    <span class="gaide">Code : <b style="color:var(--creme)">2026</b>. Passez une commande sur le site client, puis revenez ici : elle arrive avec sa sonnerie et son ticket.</span>
+    <span class="gaide">Code : <b style="color:var(--creme)">0328</b> · Passez une commande sur le site, revenez ici : elle arrive avec sa sonnerie et son ticket. Le bouton « pause » coupe les commandes en ligne d'un restaurant pendant un rush.</span>
   </div>
   <iframe id="g-cuisine" title="Écran cuisine"></iframe>
   <iframe id="g-recepteur" title="Récepteur de bons" hidden></iframe>
@@ -343,21 +346,22 @@ function montrerPanier(){
   if(!panier.length){$('t-contenu').innerHTML='<div class="vide">Votre panier est vide.<br>Ajoutez un Croger, vous ne le regretterez pas.</div>';$('t-pied').innerHTML='<button class="btn ligne" id="b-menu">Voir le menu</button>';$('b-menu').onclick=function(){fermer();location.hash='menu'};return}
   var md={place:'Sur place',emporter:'À emporter',livraison:'Livraison'};
   $('t-contenu').innerHTML=panier.map(function(l,i){return '<div class="ligne"><span><b>'+l.nom+'</b>'+(l.det.length?'<small>'+l.det.join(' · ')+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span><div class="qte"><button data-i="'+i+'" data-d="-1" aria-label="Retirer un">−</button><b>'+l.q+'</b><button data-i="'+i+'" data-d="1" aria-label="Ajouter un">+</button></div></div>'}).join('')+
-    '<div class="modes deux" role="group" aria-label="Restaurant" style="margin-bottom:8px">'+IMS.RESTOS.map(function(r){return '<button data-r="'+r.id+'" aria-pressed="'+(r.id===resto)+'">'+r.nom+'<small>'+(IMS.ouvert(r)?'Ouvert · '+r.h:'Fermé · '+r.h)+'</small></button>'}).join('')+'</div>'+
+    '<div class="modes deux" role="group" aria-label="Restaurant" style="margin-bottom:8px">'+IMS.RESTOS.map(function(r){return '<button data-r="'+r.id+'" aria-pressed="'+(r.id===resto)+'">'+r.nom+'<small>'+(IMS.service()[r.id].pause?'Commandes en pause':IMS.ouvert(r)?'Ouvert · ≈ '+IMS.service()[r.id].attente+' min':'Fermé · '+r.h)+'</small></button>'}).join('')+'</div>'+
     '<div class="modes" role="group" aria-label="Mode">'+['place','emporter','livraison'].map(function(m){return '<button data-m="'+m+'" aria-pressed="'+(m===mode)+'">'+md[m]+'<small>'+(m==='place'?'Table '+table:m==='emporter'?'Au comptoir':'À domicile')+'</small></button>'}).join('')+'</div>'+
     (mode==='place'?'<label class="champ" for="c-table">Numéro de table (scanné par QR code)<select id="c-table">'+Array.from({length:16},function(_,i){return '<option'+(String(i+1)===table?' selected':'')+'>'+(i+1)+'</option>'}).join('')+'</select></label>':'')+
     (mode==='emporter'?'<label class="champ" for="c-heure">Retrait<select id="c-heure">'+['Dès que possible','Dans 15 min','Dans 30 min','Dans 45 min'].map(function(h){return '<option'+(h===heure?' selected':'')+'>'+h+'</option>'}).join('')+'</select></label>':'')+
     (mode==='livraison'?'<label class="champ" for="c-adr">Adresse de livraison<input id="c-adr" value="'+adresse.replace(/"/g,'&quot;')+'" placeholder="Rue, résidence, bâtiment, étage"></label>':'')+
     '<label class="champ" for="c-nom">Votre prénom<input id="c-nom" value="Yacine" autocomplete="given-name"></label><label class="champ" for="c-tel">Téléphone<input id="c-tel" value="0555 12 34 56" inputmode="tel"></label>';
-  $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(total())+'</span></div>'+(IMS.ouvert(IMS.resto(resto))?'':'<p class="ferme-note">'+IMS.resto(resto).nom+' est fermé : votre commande sera préparée dès l\'ouverture ('+IMS.resto(resto).h.split(' ')[0]+').</p>')+'<button class="btn" id="b-cmd">Commander · paiement '+(mode==='livraison'?'à la livraison':'au comptoir')+'</button>';
+  $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(total())+'</span></div>'+(IMS.service()[resto].pause?'<p class="ferme-note">'+IMS.resto(resto).nom+' a mis les commandes en ligne en pause quelques minutes (rush en cuisine). Choisissez l\'autre restaurant ou réessayez dans un instant.</p>':IMS.ouvert(IMS.resto(resto))?'<p class="ferme-note" style="color:var(--gris)">Préparation estimée : ≈ '+IMS.service()[resto].attente+' min</p>':'<p class="ferme-note">'+IMS.resto(resto).nom+' est fermé : votre commande sera préparée dès l\'ouverture ('+IMS.resto(resto).h.split(' ')[0]+').</p>')+'<button class="btn" id="b-cmd">Commander · paiement '+(mode==='livraison'?'à la livraison':'au comptoir')+'</button>';
   $('t-contenu').querySelectorAll('.qte button').forEach(function(b){b.onclick=function(){var l=panier[+b.dataset.i];l.q+=+b.dataset.d;if(l.q<1)panier.splice(+b.dataset.i,1);compte();montrerPanier()}});
   $('t-contenu').querySelectorAll('.modes button').forEach(function(b){b.onclick=function(){if(b.dataset.r)resto=b.dataset.r;else mode=b.dataset.m;montrerPanier()}});
   var s=$('c-table');if(s)s.onchange=function(){table=s.value};var h=$('c-heure');if(h)h.onchange=function(){heure=h.value};var a=$('c-adr');if(a)a.oninput=function(){adresse=a.value};
-  $('b-cmd').onclick=function(){
+  if(IMS.service()[resto].pause){$('b-cmd').disabled=true;$('b-cmd').style.opacity=.45;$('b-cmd').textContent='Commandes en pause'}
+  $('b-cmd').onclick=function(){if(IMS.service()[resto].pause)return;
     if(mode==='livraison'&&!adresse.trim()){$('c-adr').focus();toast('Indiquez l\'adresse de livraison');return}
     var c=IMS.nouvelleCommande({resto:resto,t:Date.now(),mode:mode,table:table,heure:heure,adresse:adresse,nom:$('c-nom').value||'Client',tel:$('c-tel').value,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv'});
     suivi=c.no;try{sessionStorage.setItem('ims-suivi',JSON.stringify(suivi))}catch(e){}
-    panier=[];compte();montrerSuivi();
+    panier=[];compte();montrerSuivi();etatGerant();toast('Commande envoyée en cuisine ! Ouvrez l\'Espace gérant pour la voir arriver');
   };
 }
 function montrerSuivi(){
@@ -379,7 +383,14 @@ function gOuvrir(v){gv=v||gv;['cuisine','recepteur'].forEach(function(x){var f=$
 document.addEventListener('click',function(e){var b=e.target.closest('[data-ouvrir]');if(b)gOuvrir(b.dataset.ouvrir);var t=e.target.closest('.gtabs button');if(t)gOuvrir(t.dataset.g)});
 $('gret').onclick=function(){$('gerant').hidden=true;document.body.style.overflow=''};
 if(location.hash==='#gerant')gOuvrir('cuisine');
-signatures();onglets();grille();compte();adresses();setInterval(adresses,60000);
+function etatGerant(){var L=IMS.commandes(),n=L.filter(function(c){return c.st==='nouv'}).length,S=IMS.service(),dernier=IMS.lire('ims-no',1);
+  document.querySelectorAll('[data-ouvrir] .nb,.gtabs .nb').forEach(function(e){e.remove()});
+  if(n){document.querySelectorAll('[data-ouvrir],.gtabs button[data-g="cuisine"]').forEach(function(b){b.insertAdjacentHTML('beforeend','<span class="nb">'+n+'</span>')})}
+  if(etatGerant.no&&dernier>etatGerant.no){document.querySelectorAll('.gbtn').forEach(function(b){b.classList.remove('alerte');void b.offsetWidth;b.classList.add('alerte')})}etatGerant.no=dernier;
+  var ouverts=IMS.RESTOS.filter(function(r){return !S[r.id].pause}),e=$('etat-cmd');
+  e.innerHTML=ouverts.length?'<b>●</b> Commande en ligne ouverte · ≈ '+Math.min.apply(null,ouverts.map(function(r){return S[r.id].attente}))+' min':'<b style="color:var(--or)">●</b> Commandes en ligne en pause'}
+IMS.surChangement(function(t){etatGerant();if(t==='ims-service'&&!$('tiroir').hidden&&vue==='panier')montrerPanier()});
+signatures();onglets();grille();compte();adresses();etatGerant();setInterval(adresses,60000);
 if(mt){toast('Table '+table+' : bienvenue !')}
 })();
 </script>

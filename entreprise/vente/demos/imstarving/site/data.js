@@ -111,8 +111,11 @@
       '\n\n*Total : ' + c.total + ' DA* · ' + (c.mode === 'livraison' ? 'paiement à la livraison' : 'paiement au comptoir') + '\nClient : ' + c.nom + ' · ' + c.tel;
   }
   function lienWa(tel, txt) { var n = String(tel).replace(/\D/g, '').replace(/^0/, '213'); return 'https://wa.me/' + n + '?text=' + encodeURIComponent(txt); }
+  // Service en cours, réglé depuis la cuisine : commandes en ligne ouvertes ou en pause, temps d'attente annoncé
+  function service() { var s = lire('ims-service', {}); var o = {}; RESTOS.forEach(function (r) { var x = s[r.id] || {}; o[r.id] = { pause: !!x.pause, attente: x.attente || 20 }; }); return o; }
   window.IMS = {
-    reception: reception, majReception: function (o) { ecrire('ims-recep', o); signaler('ims-recep'); }, texteBon: texteBon, lienWa: lienWa,
+    service: service, majService: function (o) { ecrire('ims-service', o); signaler('ims-service'); },
+    reception: reception, majReception: function (o) { ecrire('ims-recep', o); signaler('ims-recep'); signaler('ims-service'); }, texteBon: texteBon, lienWa: lienWa,
     RESTOS: RESTOS, resto: resto, ouvert: ouvert,
     CATS: ['Crogers', 'Smash', 'Burgers', 'Tacos', 'Starvation', 'Sandwichs', 'Pâtes'],
     menu: menu, lire: lire, ecrire: ecrire, amorcer: amorcer,
@@ -121,7 +124,7 @@
     nouvelleCommande: function (c) { var n = lire('ims-no', 1); c.no = n; if (reception().acceptation === 'auto' && c.st === 'nouv') { c.st = 'prep'; c.auto = true; } ecrire('ims-no', n + 1); var L = lire('ims-cmds', []); L.push(c); ecrire('ims-cmds', L); signaler('ims-cmds'); return c; },
     majMenu: function (dispo, prix) { ecrire('ims-dispo', dispo); ecrire('ims-prix', prix); signaler('ims-menu'); },
     surChangement: surChangement,
-    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); signaler('ims-menu'); signaler('ims-recep'); },
+    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep', 'ims-service'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); signaler('ims-menu'); signaler('ims-recep'); signaler('ims-service'); },
     fmt: function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' DA'; },
     numero: function (n) { return '#' + String(n).padStart(3, '0'); }
   };
