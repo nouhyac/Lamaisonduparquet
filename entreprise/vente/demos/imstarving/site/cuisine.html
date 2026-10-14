@@ -147,6 +147,7 @@ main{padding-block:18px 40px}
 @media (max-width:1100px){.kanban{grid-template-columns:repeat(3,minmax(0,1fr))}.impr{grid-column:1/-1;position:static;grid-template-columns:minmax(0,1fr) 280px;align-items:start}}
 @media (max-width:760px){.kanban{grid-template-columns:minmax(0,1fr)}.impr{grid-template-columns:minmax(0,1fr)}.kpis{grid-template-columns:1fr 1fr}.graphs{grid-template-columns:minmax(0,1fr)}.mrow{grid-template-columns:48px minmax(0,1fr);}.mrow img{width:48px;height:48px}.mrow .prixs,.mrow .sw{grid-column:2}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+html.dans-cadre .droite a.pil{display:none}
 </style></head>
 <body>
 <section class="acces" id="acces">
@@ -227,6 +228,7 @@ main{padding-block:18px 40px}
 <script src="data.js"></script>
 <script>
 (function(){
+if(window.parent!==window)document.documentElement.classList.add('dans-cadre');
 var IMS=window.IMS,$=function(i){return document.getElementById(i)},fmt=IMS.fmt;
 // ----- Code d'accès -----
 var code='';

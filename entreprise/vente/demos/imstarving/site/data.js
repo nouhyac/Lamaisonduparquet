@@ -69,9 +69,9 @@
 
   // Commandes d'exemple : la journée a déjà commencé quand on ouvre la démo
   function amorcer() {
-    if (lire('ims-v', 0) !== 2) { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); ecrire('ims-v', 2); }
+    if (lire('ims-v', 0) !== 3) { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); ecrire('ims-v', 3); }
     if (lire('ims-cmds', null)) return;
-    var now = Date.now(), d = new Date(); d.setHours(11, 40, 0, 0);
+    var now = Date.now(), d = new Date(); d.setHours(11, 40, 0, 0); if (d.getTime() > now - 60 * 60000) d.setDate(d.getDate() - 1);
     var base = d.getTime(), cmds = [], no = 1;
     var modes = ['place', 'emporter', 'livraison'], noms = ['Amine', 'Sara', 'Karim', 'Lina', 'Yacine', 'Nour', 'Rayan', 'Inès', 'Walid', 'Meriem'];
     var choix = [['crg6', 1], ['smc', 3], ['tac3', 1], ['stv4', 0], ['crg0', 1], ['bur2', 1], ['smb', 1], ['san4', 1], ['pat2', 0], ['tac0', 0], ['crg2', 0], ['stv1', 1]];
