@@ -91,6 +91,10 @@ section.bloc{padding-block:84px}
 .grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
 .carte{background:var(--nuit2);border:1px solid var(--trait);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
 .carte:hover{transform:translateY(-3px);border-color:#3a4a80}
+.carte .vis{position:relative;}
+.pastille{position:absolute;z-index:1;left:12px;top:12px;background:var(--or);color:#1b1607;font-weight:800;font-size:12.5px;border-radius:999px;padding:5px 11px}
+.prix s{color:var(--gris);font-weight:500;font-size:.8em;margin-right:4px}
+.promo-band{background:linear-gradient(90deg,var(--rouge),#ff4a4f);color:#fff;text-align:center;font-weight:800;font-size:15px;padding:10px 16px;letter-spacing:.01em}
 .carte .vis{aspect-ratio:4/3;background:radial-gradient(circle at 50% 60%,#16245a,#070f2b 70%);overflow:hidden;max-width:100%}
 .carte .vis img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .carte:hover .vis img{transform:scale(1.06)}
@@ -213,6 +217,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <button class="btn ligne gnav" data-ouvrir="accueil">Espace gérant</button>
   <button class="btn cmd" id="b-nav-panier">Mon panier <span class="compte" id="nb-nav">0</span></button>
 </div></header>
+<div class="promo-band" id="promo-band" hidden></div>
 
 <main id="haut">
   <section class="heros">
@@ -294,12 +299,12 @@ $('ticker').innerHTML=Array(2).fill(['Frais','Généreux','Fait pour toi','Croge
 function plat(id){return M.find(function(p){return p.id===id})}
 function signatures(){
   var S=[['crg6','01','img3d/crg6.jpg'],['smc','02','img3d/smc.jpg'],['stv4','03','img3d/stv4.jpg']];
-  $('sigs').innerHTML=S.map(function(s){var p=plat(s[0]);return '<article class="sig"><img src="'+s[2]+'" alt="'+p.nom+'"><div class="in"><span class="no">'+s[1]+'</span><h3>'+p.nom+'</h3><p>'+p.desc+'</p><div class="bas"><span class="prix"><small>dès</small>'+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé</span>')+'</div></div></article>'}).join('');
+  $('sigs').innerHTML=S.map(function(s){var p=plat(s[0]);return '<article class="sig"><img src="'+s[2]+'" alt="'+p.nom+'"><div class="in"><span class="no">'+s[1]+'</span><h3>'+p.nom+'</h3><p>'+p.desc+'</p><div class="bas"><span class="prix"><small>dès</small>'+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé</span>')+'</div></div></article>'}).join('');
 }
 function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){return '<button aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>'}).join('');
   $('onglets').querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;onglets();grille()}})}
 function grille(){
-  $('grille').innerHTML=M.filter(function(p){return p.cat===cat}).map(function(p){return '<article class="carte'+(p.dispo?'':' rupture')+'"><div class="vis"><img src="'+p.img+'" alt="'+p.nom+'" loading="lazy"></div><div class="corps"><h3>'+p.nom+'</h3><p>'+p.desc+'</p></div><div class="bas"><span class="prix">'+(p.tailles?'<small>dès</small>':'')+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé aujourd\'hui</span>')+'</div></article>'}).join('');
+  $('grille').innerHTML=M.filter(function(p){return p.cat===cat}).map(function(p){return '<article class="carte'+(p.dispo?'':' rupture')+'"><div class="vis">'+(p.promo?'<span class="pastille">Plat du jour · -'+p.promo+' %</span>':'')+'<img src="'+p.img+'" alt="'+p.nom+'" loading="lazy"></div><div class="corps"><h3>'+p.nom+'</h3><p>'+p.desc+'</p></div><div class="bas"><span class="prix">'+(p.tailles?'<small>dès</small>':'')+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé aujourd\'hui</span>')+'</div></article>'}).join('');
 }
 document.addEventListener('click',function(e){var b=e.target.closest('.plus');if(b)choisir(b.dataset.id)});
 
@@ -370,7 +375,9 @@ function etatGerant(){var L=IMS.commandes(),n=L.filter(function(c){return c.st==
   var ouverts=IMS.RESTOS.filter(function(r){return !S[r.id].pause}),e=$('etat-cmd');
   e.innerHTML=ouverts.length?'<b>●</b> Commande en ligne ouverte · ≈ '+Math.min.apply(null,ouverts.map(function(r){return S[r.id].attente}))+' min':'<b style="color:var(--or)">●</b> Commandes en ligne en pause'}
 IMS.surChangement(function(t){etatGerant();if(t==='ims-service'&&!$('tiroir').hidden&&vue==='panier')montrerPanier()});
-signatures();onglets();grille();compte();adresses();etatGerant();setInterval(adresses,60000);
+function promoBand(){var o=IMS.promo(),e=$('promo-band');if(o.actif&&o.banniere&&o.texte){e.textContent='🔥 '+o.texte;e.hidden=false}else e.hidden=true}
+IMS.surChangement(function(){promoBand()});
+signatures();onglets();grille();compte();adresses();etatGerant();promoBand();setInterval(adresses,60000);
 if(mt){toast('Table '+table+' : bienvenue !')}
 })();
 </script>

@@ -44,24 +44,28 @@
     caisse: '<svg viewBox="0 0 24 24"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>',
     compta: '<svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
     menu: '<svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
+    livraisons: '<svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 18h7M3 14h9l2-6h4l3 6v4h-1"/><path d="M5 8h5"/></svg>',
+    clients: '<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg>',
+    marketing: '<svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M16 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>',
+    plus: '<svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>',
     reglages: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>'
   };
-  var PAGES = [['accueil', 'Tableau de bord'], ['cuisine', 'Cuisine'], ['caisse', 'Caisse'], ['compta', 'Comptabilité'], ['menu', 'Menu'], ['reglages', 'Réglages']];
-  var COURT = { accueil: 'Accueil', cuisine: 'Cuisine', caisse: 'Caisse', compta: 'Compta', menu: 'Menu' };
+  var PAGES = [['accueil', 'Tableau de bord'], ['cuisine', 'Cuisine'], ['livraisons', 'Livraisons'], ['caisse', 'Caisse'], ['compta', 'Comptabilité'], ['clients', 'Clients et fidélité'], ['marketing', 'Marketing'], ['menu', 'Menu'], ['reglages', 'Réglages'], ['plus', 'Plus']];
+  var COURT = { accueil: 'Accueil', cuisine: 'Cuisine', caisse: 'Caisse', compta: 'Compta', plus: 'Plus' }, TAB = ['accueil', 'cuisine', 'caisse', 'compta', 'plus'];
 
   // ----- Construction -----
   function construire() {
     root = document.createElement('div'); root.className = 'g'; root.hidden = true; root.setAttribute('role', 'dialog'); root.setAttribute('aria-label', 'Espace gérant');
     root.innerHTML =
       '<aside class="g-side"><div class="g-marque"><img src="img/logo.jpg" alt=""><div><b>I\'M STARVING</b><small>Espace gérant</small></div></div>' +
-      '<nav class="g-nav">' + PAGES.map(function (p) { return '<button data-p="' + p[0] + '">' + I[p[0]] + '<span>' + p[1] + '</span></button>'; }).join('') + '</nav>' +
+      '<nav class="g-nav">' + PAGES.filter(function (p) { return p[0] !== 'plus'; }).map(function (p) { return '<button data-p="' + p[0] + '">' + I[p[0]] + '<span>' + p[1] + '</span></button>'; }).join('') + '</nav>' +
       '<div class="bas"><button data-act="verrou">🔒 Verrouiller</button><button class="retour" data-act="fermer">← Retour au site client</button></div></aside>' +
       '<div class="g-main"><header class="g-haut"><div><h1 id="g-titre">Tableau de bord</h1><div class="date" id="g-date"></div></div>' +
       '<div class="droite"><select class="g-sel" id="g-resto" aria-label="Restaurant"><option value="tous">Les 2 restaurants</option><option value="bab">Bab Ezzouar</option><option value="ain">Aïn Allah</option></select>' +
       '<button class="g-pil masque" id="g-son" aria-pressed="false">🔔 Sonnerie</button><span class="g-horloge" id="g-heure"></span>' +
       '<button class="g-x" data-p="reglages" aria-label="Réglages">⚙</button><button class="g-x" data-act="fermer" aria-label="Retour au site client">✕</button></div></header>' +
       '<div class="g-corps" id="g-corps"></div></div>' +
-      '<nav class="g-tabbar">' + PAGES.slice(0, 5).map(function (p) { return '<button data-p="' + p[0] + '">' + I[p[0]] + '<span>' + COURT[p[0]] + '</span></button>'; }).join('') + '</nav>' +
+      '<nav class="g-tabbar">' + TAB.map(function (k) { return '<button data-p="' + k + '">' + I[k] + '<span>' + COURT[k] + '</span></button>'; }).join('') + '</nav>' +
       '<div class="g-tip" id="g-tip" hidden></div>';
     document.body.appendChild(root);
     corps = $('#g-corps', root);
@@ -125,12 +129,12 @@
   function rendre(doux) {
     if (!root || root.hidden) return;
     var nouv = filtrer(toutes()).filter(function (c) { return c.st === 'nouv'; }).length;
-    $$('[data-p]', root).forEach(function (b) { if (b.classList.contains('g-x')) return; b.setAttribute('aria-current', b.dataset.p === st.page ? 'page' : 'false'); var p = $('.pas', b); if (p) p.remove(); if (b.dataset.p === 'cuisine' && nouv) b.insertAdjacentHTML('beforeend', '<span class="pas">' + nouv + '</span>'); });
+    $$('[data-p]', root).forEach(function (b) { if (b.classList.contains('g-x')) return; b.setAttribute('aria-current', (b.dataset.p === st.page || (b.closest('.g-tabbar') && b.dataset.p === 'plus' && TAB.indexOf(st.page) < 0)) ? 'page' : 'false'); var p = $('.pas', b); if (p) p.remove(); if (b.dataset.p === 'cuisine' && nouv) b.insertAdjacentHTML('beforeend', '<span class="pas">' + nouv + '</span>'); if (b.dataset.p === 'livraisons' && aLivrer()) b.insertAdjacentHTML('beforeend', '<span class="pas">' + aLivrer() + '</span>'); });
     $('#g-titre', root).textContent = PAGES.filter(function (p) { return p[0] === st.page; })[0][1];
     var d = new Date(); $('#g-date', root).textContent = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' · ' + (st.resto === 'tous' ? 'Bab Ezzouar et Aïn Allah' : IMS.resto(st.resto).nom);
     horloge();
     var y = corps.scrollTop;
-    corps.innerHTML = '<div class="g-page">' + ({ accueil: pAccueil, cuisine: pCuisine, caisse: pCaisse, compta: pCompta, menu: pMenu, reglages: pReglages })[st.page]() + '</div>';
+    corps.innerHTML = '<div class="g-page">' + ({ accueil: pAccueil, cuisine: pCuisine, livraisons: pLivraisons, caisse: pCaisse, compta: pCompta, clients: pClients, marketing: pMarketing, menu: pMenu, reglages: pReglages, plus: pPlus })[st.page]() + '</div>';
     if (doux) corps.scrollTop = y;
     if (st.page === 'reglages') qr();
     st.neuf = null;
@@ -309,6 +313,70 @@
     try { navigator.clipboard.writeText(t).then(function () { toast('Rapport copié : collez-le dans Excel'); }, function () { toast('Copie impossible sur cet appareil'); }); } catch (e) { toast('Copie impossible sur cet appareil'); }
   }
 
+  // ----- Page : livraisons -----
+  var LIV = [['sofiane', 'Sofiane', '0770 11 22 33'], ['bilal', 'Bilal', '0550 44 55 66'], ['hamza', 'Hamza', '0661 77 88 99']];
+  function livreur(id) { return LIV.filter(function (l) { return l[0] === id; })[0] || ['', '—', '']; }
+  function aLivrer() { return filtrer(toutes()).filter(function (c) { return c.mode === 'livraison' && c.st === 'fin' && !c.livree; }).length; }
+  function pLivraisons() {
+    var L = filtrer(duJour(toutes())).filter(function (c) { return c.mode === 'livraison'; }).sort(function (a, b) { return b.t - a.t; });
+    var att = L.filter(function (c) { return c.st !== 'fin'; }), route = L.filter(function (c) { return c.st === 'fin' && !c.livree; }), faites = L.filter(function (c) { return c.livree; });
+    var del = faites.length ? Math.round(faites.reduce(function (a, c) { return a + (c.livree - c.t); }, 0) / faites.length / 60000) : 0;
+    function ligne(c) {
+      var et = c.livree ? '<span class="g-badge v">Livrée ' + hh(c.livree) + '</span>' : c.st === 'fin' ? '<span class="g-badge b">En route · ' + livreur(c.livreur)[1] + '</span>' : c.st === 'prete' ? '<span class="g-badge a">Prête, à confier</span>' : '<span class="g-badge n">En cuisine</span>';
+      var act = c.livree ? '' : c.st === 'fin' ? '<button class="g-btn ok" data-livree="' + c.no + '">Livrée ✓</button>' : c.st === 'prete' ? '<button class="g-btn" data-confier="' + c.no + '">Confier à un livreur</button>' : '';
+      var wa = c.livreur && !c.livree ? '<a class="g-btn wa" target="_blank" rel="noopener" href="' + IMS.lienWa(livreur(c.livreur)[2], 'Course ' + IMS.numero(c.no) + ' · ' + c.adresse + ' · client ' + c.nom + ' ' + c.tel + ' · à encaisser ' + c.total + ' DA · https://www.google.com/maps/search/' + encodeURIComponent(c.adresse + ' Alger')) + '">Envoyer au livreur</a>' : '';
+      return '<div class="g-reg" style="grid-template-columns:auto minmax(0,1fr) auto"><span class="ic">🛵</span><div><b>' + IMS.numero(c.no) + ' · ' + esc(c.adresse) + '</b><p>' + esc(c.nom) + ' · ' + esc(c.tel) + ' · ' + fmt(c.total) + (st.resto === 'tous' ? ' · ' + esc(nomR(c)) : '') + ' · ' + hh(c.t) + '</p></div>' + et + '<div class="x" style="display:flex;gap:8px;flex-wrap:wrap">' + act + wa + '</div></div>';
+    }
+    return '<div class="g-grille g-k4">' + kpi('À préparer', att.length, '<em>En cuisine</em>') + kpi('En route', route.length, '<em>Chez les livreurs</em>') + kpi('Livrées aujourd\'hui', faites.length, '') + kpi('Délai moyen', del + ' min', '<em>De la commande à la porte</em>') + '</div>' +
+      '<div class="g-carte"><h2>Livreurs</h2><div class="g-grille g-k3">' + LIV.map(function (l) { var enc = route.filter(function (c) { return c.livreur === l[0]; }), n = faites.filter(function (c) { return c.livreur === l[0]; }).length; return '<div class="g-kpi"><span>' + l[1] + ' · ' + l[2] + '</span><b style="font-size:20px">' + (enc.length ? '🛵 En course ' + enc.map(function (c) { return IMS.numero(c.no); }).join(', ') : '✅ Disponible') + '</b><em>' + n + ' livraison' + (n > 1 ? 's' : '') + ' aujourd\'hui</em></div>'; }).join('') + '</div></div>' +
+      '<div class="g-carte"><h2>Livraisons du jour <small>' + L.length + ' commandes</small></h2>' + (L.length ? L.map(ligne).join('') : '<div class="g-vide">Pas encore de livraison aujourd\'hui.</div>') + '</div>';
+  }
+  function choisirLivreur(no) {
+    modale('Confier ' + IMS.numero(no) + ' à un livreur', '<div class="g-grille">' + LIV.map(function (l) { return '<button class="g-btn cl" data-liv="' + l[0] + '" style="padding:16px;text-align:left">🛵 ' + l[1] + ' <span style="font-weight:600;color:var(--encre2)">· ' + l[2] + '</span></button>'; }).join('') + '</div>',
+      function (v) { v.addEventListener('click', function (e) { var b = e.target.closest('[data-liv]'); if (!b) return; var L = toutes(); L.forEach(function (c) { if (c.no === no) { c.livreur = b.dataset.liv; c.st = 'fin'; c.fin = Date.now(); } }); IMS.enregistrer(L); v.remove(); toast(IMS.numero(no) + ' confiée à ' + livreur(b.dataset.liv)[1] + ' · le client est prévenu'); rendre(true); }); });
+  }
+
+  // ----- Page : clients et fidélité -----
+  function hachage(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
+  function clients() {
+    var M = {};
+    filtrer(toutes()).forEach(function (c) { var k = String(c.tel).replace(/\s/g, ''); var x = M[k] = M[k] || { nom: c.nom, tel: c.tel, n: 0, total: 0, der: 0, r: {} }; x.n++; x.total += c.total; x.der = Math.max(x.der, c.t); x.r[c.resto || 'bab'] = 1; });
+    return Object.keys(M).map(function (k) { var x = M[k], anc = 2 + hachage(k) % 17; x.n += anc; x.total += anc * (1700 + hachage(k + 'p') % 400); return x; }).sort(function (a, b) { return b.total - a.total; });
+  }
+  function pClients() {
+    var C = clients(), q = (st.qc || '').toLowerCase(), X = C.filter(function (c) { return !q || (c.nom + ' ' + c.tel).toLowerCase().indexOf(q) >= 0; }), fid = C.filter(function (c) { return c.n >= 10; }).length;
+    var tot = C.reduce(function (a, c) { return a + c.total; }, 0);
+    return '<div class="g-grille g-k4">' + kpi('Clients', C.length, '<em>Fichier constitué automatiquement</em>') + kpi('Clients fidèles', fid, '<em>10 commandes et plus</em>') + kpi('Dépense moyenne', fmt(C.length ? tot / C.length : 0), '<em>Par client, depuis le début</em>') + kpi('Récompenses à offrir', C.reduce(function (a, c) { return a + Math.floor(c.n / 10); }, 0), '<em>1 Croger offert / 10 commandes</em>') + '</div>' +
+      '<div class="g-carte"><h2>Fichier clients <span style="display:flex;gap:8px;flex-wrap:wrap"><input class="g-rech" id="g-qc" style="width:220px" type="search" placeholder="Nom ou téléphone…" value="' + esc(st.qc || '') + '" aria-label="Rechercher un client"><button class="g-pil" data-act="numeros">Copier les numéros</button></span></h2>' +
+      '<div class="g-defile"><table class="g-table"><thead><tr><th>Client</th><th>Téléphone</th><th class="m">Commandes</th><th class="m">Total dépensé</th><th>Dernière commande</th><th>Fidélité</th><th></th></tr></thead><tbody>' +
+      X.map(function (c) { var pr = c.n % 10; return '<tr><td><b>' + esc(c.nom) + '</b></td><td>' + esc(c.tel) + '</td><td class="m">' + c.n + '</td><td class="m"><b>' + fmt(c.total) + '</b></td><td>' + hh(c.der) + (jour(c.der) === jour(Date.now()) ? ' aujourd\'hui' : '') + '</td><td><span class="g-barres" style="display:inline-grid;width:110px;vertical-align:middle"><span class="j"><i style="width:' + pr * 10 + '%;background:var(--rouge)"></i></span></span> <span class="g-sous" style="display:inline">' + pr + '/10' + (c.n >= 10 ? ' · ' + Math.floor(c.n / 10) + ' 🎁' : '') + '</span></td><td><a class="g-pil" style="text-decoration:none" target="_blank" rel="noopener" href="' + IMS.lienWa(c.tel, 'Bonjour ' + c.nom + ' 👋 Merci pour votre fidélité chez I\'m Starving ! ' + (c.n >= 10 ? 'Votre Croger offert vous attend 🎁' : 'Plus que ' + (10 - pr) + ' commandes avant votre Croger offert 🍔')) + '">WhatsApp</a></td></tr>'; }).join('') +
+      '</tbody></table></div><p class="g-sous" style="margin-top:10px">Chaque commande en ligne enrichit le fichier : nom, téléphone, habitudes. C\'est votre base pour les promos WhatsApp et la fidélité.</p></div>';
+  }
+
+  // ----- Page : marketing -----
+  function pMarketing() {
+    var o = IMS.promo(), M = IMS.menu(), p = M.filter(function (x) { return x.id === o.plat; })[0] || M[0];
+    var txt = 'Bonjour 👋 Aujourd\'hui chez I\'m Starving : ' + p.nom + ' à -' + o.remise + ' % 🔥 Commandez en ligne en 1 minute, sur place, à emporter ou en livraison !';
+    return '<div class="g-grille g-k2 g-srvs">' +
+      '<div class="g-carte g-srv"><div class="t"><h3>🔥 Plat du jour</h3><button class="g-sw" role="switch" aria-checked="' + !!o.actif + '" data-promo="actif" aria-label="Activer le plat du jour"><i></i></button></div>' +
+      '<p class="g-sous">Le plat choisi passe en promotion sur le site, avec un badge « Plat du jour ». Le prix réduit s\'applique au panier.</p>' +
+      '<label class="g-sous" style="display:grid;gap:6px">Plat<select class="g-sel" id="g-pplat">' + M.map(function (x) { return '<option value="' + x.id + '"' + (x.id === o.plat ? ' selected' : '') + '>' + esc(x.nom) + '</option>'; }).join('') + '</select></label>' +
+      '<div class="l"><span>Remise</span><div class="g-seg">' + [10, 15, 20, 25].map(function (r) { return '<button data-remise="' + r + '" aria-pressed="' + (o.remise === r) + '">-' + r + ' %</button>'; }).join('') + '</div></div>' +
+      '<div style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:center;background:var(--trait2);border-radius:12px;padding:10px"><img src="' + p.img + '" alt="" style="width:64px;height:64px;border-radius:10px;object-fit:cover"><div><b>' + esc(p.nom) + '</b><div class="g-sous">' + (o.actif ? '<s>' + fmt(p.avant || p.prix) + '</s> <b style="color:var(--rouge)">' + fmt(p.prix) + '</b> · en ligne sur le site' : 'Désactivé') + '</div></div></div></div>' +
+      '<div class="g-carte g-srv"><div class="t"><h3>📣 Bannière sur le site</h3><button class="g-sw" role="switch" aria-checked="' + !!o.banniere + '" data-promo="banniere" aria-label="Afficher la bannière"><i></i></button></div>' +
+      '<p class="g-sous">Un bandeau rouge en haut du site, pour une annonce : promo, nouveau plat, horaires du Ramadan, fermeture exceptionnelle…</p>' +
+      '<input class="g-rech" style="max-width:none" id="g-ptxt" maxlength="90" value="' + esc(o.texte || ('-' + o.remise + ' % sur le ' + p.nom + ' aujourd\'hui seulement')) + '" aria-label="Texte de la bannière">' +
+      '<div style="background:linear-gradient(90deg,#D7262D,#ff4a4f);color:#fff;font-weight:800;border-radius:10px;padding:10px 14px;text-align:center">🔥 ' + esc(o.texte || ('-' + o.remise + ' % sur le ' + p.nom + ' aujourd\'hui seulement')) + '</div></div></div>' +
+      '<div class="g-carte"><h2>Message WhatsApp à vos clients <button class="g-pil" data-act="copiermsg">Copier le message</button></h2><p class="g-sous" style="margin-bottom:10px">À envoyer en liste de diffusion WhatsApp aux ' + clients().length + ' clients du fichier.</p><div style="background:#E6F8EE;border-radius:12px;padding:14px;font-size:15px" id="g-msg">' + esc(txt) + '</div></div>';
+  }
+
+  // ----- Page : plus (téléphone) -----
+  function pPlus() {
+    return '<div class="g-grille g-k2">' + [['livraisons', 'Livraisons', 'Livreurs, courses en route'], ['clients', 'Clients et fidélité', 'Fichier clients, récompenses'], ['marketing', 'Marketing', 'Plat du jour, bannière, WhatsApp'], ['menu', 'Menu', 'Ruptures et prix'], ['reglages', 'Réglages', 'Réception, imprimante, QR codes']].map(function (x) {
+      return '<button class="g-carte" data-p="' + x[0] + '" style="text-align:left;display:grid;gap:8px;cursor:pointer"><span style="width:40px;height:40px;border-radius:11px;background:var(--trait2);display:grid;place-items:center">' + I[x[0]].replace('<svg', '<svg style="width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"') + '</span><b style="font-size:16px">' + x[1] + '</b><span class="g-sous">' + x[2] + '</span></button>';
+    }).join('') + '</div>' + (st.autonome ? '' : '<button class="g-btn rg" data-act="fermer" style="padding:15px">← Retour au site client</button>');
+  }
+
   // ----- Page : menu -----
   function pMenu() {
     var M = IMS.menu(), q = st.q.trim().toLowerCase(), X = M.filter(function (p) { return q ? (p.nom + ' ' + p.desc).toLowerCase().indexOf(q) >= 0 : p.cat === st.cat; }), off = M.filter(function (p) { return !p.dispo; }).length;
@@ -354,7 +422,7 @@
   }
 
   // ----- Interactions -----
-  function majStatut(no, s) { var L = toutes(); L.forEach(function (c) { if (c.no === no) { c.st = s; if (s === 'fin') c.fin = Date.now(); } }); IMS.enregistrer(L); rendre(true); }
+  function majStatut(no, s) { var L = toutes(), c0 = L.filter(function (c) { return c.no === no; })[0]; if (s === 'fin' && c0 && c0.mode === 'livraison' && !c0.livreur) return choisirLivreur(no); L.forEach(function (c) { if (c.no === no) { c.st = s; if (s === 'fin') c.fin = Date.now(); } }); IMS.enregistrer(L); rendre(true); }
   function clic(e) {
     var b;
     if ((b = e.target.closest('[data-p]')) && !e.target.closest('.g-voile [data-p]:not([data-fermer])')) { st.page = b.dataset.p; corps.scrollTop = 0; rendre(); return; }
@@ -366,10 +434,16 @@
       if (a === 'copier') return copier();
       if (a === 'exportc') return exportCompta();
       if (a === 'charges') return editerCharges();
+      if (a === 'numeros') return copierTexte(clients().map(function (c) { return c.nom + '\t' + c.tel; }).join('\n'), 'Numéros copiés : ' + clients().length + ' clients');
+      if (a === 'copiermsg') return copierTexte($('#g-msg', root).textContent, 'Message copié : collez-le dans WhatsApp');
       if (a === 'test') return voirBon({ no: 0, resto: st.resto === 'ain' ? 'ain' : 'bab', t: Date.now(), mode: 'emporter', heure: 'Test', nom: 'Test imprimante', tel: '-', adresse: '', lignes: [{ q: 1, nom: 'Bon de test', det: [], px: 0 }], total: 0 }, false);
       if (a === 'reinit') { IMS.reinitialiser(); st.dernier = maxNo(); toast('Démo réinitialisée'); rendre(); return; }
     }
     if ((b = e.target.closest('[data-st]'))) return majStatut(+b.dataset.no, b.dataset.st);
+    if ((b = e.target.closest('[data-confier]'))) return choisirLivreur(+b.dataset.confier);
+    if ((b = e.target.closest('[data-livree]'))) { var Lv = toutes(); Lv.forEach(function (c) { if (c.no === +b.dataset.livree) c.livree = Date.now(); }); IMS.enregistrer(Lv); toast(IMS.numero(+b.dataset.livree) + ' livrée'); rendre(true); return; }
+    if ((b = e.target.closest('[data-promo]'))) { var po = IMS.promo(); po[b.dataset.promo] = !po[b.dataset.promo]; if (b.dataset.promo === 'banniere' && !po.texte) { var pt = $('#g-ptxt', root); po.texte = pt ? pt.value : ''; } IMS.majPromo(po); toast(b.dataset.promo === 'actif' ? (po.actif ? 'Plat du jour en ligne sur le site' : 'Plat du jour désactivé') : (po.banniere ? 'Bannière affichée sur le site' : 'Bannière retirée')); rendre(true); return; }
+    if ((b = e.target.closest('[data-remise]'))) { var pr = IMS.promo(); pr.remise = +b.dataset.remise; IMS.majPromo(pr); rendre(true); return; }
     if ((b = e.target.closest('[data-bon]'))) { var c = toutes().filter(function (x) { return x.no === +b.dataset.bon; })[0]; if (c) voirBon(c, false); return; }
     if ((b = e.target.closest('[data-enc]'))) return encaisser(+b.dataset.enc);
     if ((b = e.target.closest('[data-kds]'))) { st.kds = b.dataset.kds; rendre(true); return; }
@@ -381,13 +455,16 @@
     if ((b = e.target.closest('[data-rk]'))) { var o = IMS.reception(); o[b.dataset.rk] = !o[b.dataset.rk]; IMS.majReception(o); rendre(true); return; }
     if ((b = e.target.closest('[data-rs]'))) { var o2 = IMS.reception(), v = b.dataset.v; o2[b.dataset.rs] = b.dataset.rs === 'copies' ? +v : v; IMS.majReception(o2); rendre(true); return; }
   }
+  function copierTexte(t, ok) { try { navigator.clipboard.writeText(t).then(function () { toast(ok); }, function () { toast('Copie impossible sur cet appareil'); }); } catch (e) { toast('Copie impossible sur cet appareil'); } }
   function change(e) {
     var t = e.target;
+    if (t.id === 'g-pplat') { var po = IMS.promo(); po.plat = t.value; IMS.majPromo(po); rendre(true); return; }
+    if (t.id === 'g-ptxt') { var pt = IMS.promo(); pt.texte = t.value; IMS.majPromo(pt); toast('Bannière mise à jour'); rendre(true); return; }
     if (t.dataset && t.dataset.pid) { var P = IMS.lire('ims-prix', {}); P[t.dataset.pid] = P[t.dataset.pid] || []; P[t.dataset.pid][+t.dataset.i] = Math.max(0, +t.value || 0); IMS.majMenu(IMS.lire('ims-dispo', {}), P); toast('Prix mis à jour sur le site'); return; }
     if (t.id === 'g-qrn') { st.qrN = +t.value; qr(); }
     if (t.id === 'g-qrr') { st.qrR = t.value; qr(); }
   }
-  function saisie(e) { if (e.target.id === 'g-q') { st.q = e.target.value; var pos = e.target.selectionStart; rendre(true); var i = $('#g-q', root); if (i) { i.focus(); try { i.setSelectionRange(pos, pos); } catch (x) {} } } }
+  function saisie(e) { if (e.target.id === 'g-qc') { st.qc = e.target.value; var p2 = e.target.selectionStart; rendre(true); var i2 = $('#g-qc', root); if (i2) { i2.focus(); try { i2.setSelectionRange(p2, p2); } catch (x) {} } return; } if (e.target.id === 'g-q') { st.q = e.target.value; var pos = e.target.selectionStart; rendre(true); var i = $('#g-q', root); if (i) { i.focus(); try { i.setSelectionRange(pos, pos); } catch (x) {} } } }
 
   window.IMSG = { ouvrir: ouvrir, fermer: fermer };
 })();
