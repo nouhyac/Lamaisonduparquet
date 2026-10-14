@@ -43,3 +43,10 @@ On vous a préparé une démo avec VOTRE menu et vos deux adresses : le client c
 Et vous, vous gérez tout depuis une tablette : menu, ruptures, prix, statistiques du jour, QR codes des tables.
 On peut passer vous la montrer en 5 minutes, ou vous l'envoyer en vidéo ?
 Dzign Studio · 0549 50 68 57
+
+## Kit d'envoi réseaux (14/10)
+1. DM Instagram depuis @dzignstudio, entre 15h et 17h : la vidéo `demo-imstarving.mp4`, puis le message (52 000 abonnés, téléphone = clients perdus, 4 points ✅, proposition de passer 5 min, « quel jour vous arrange ? »). **Pas de prix dans le message.**
+2. Si « c'est combien ? » → « ça dépend de ce que vous gardez, on vous montre en 5 min et on fait le devis sur place ».
+3. Relance J+2 (démo prête, 34 recettes, 2 restaurants) ; relance J+5 (places Fondateurs limitées, répondez « oui »).
+4. Variante WhatsApp au 0659 56 46 11 si pas de réponse sur Instagram.
+5. Lien de la démo : seulement s'ils le demandent (la démo est plus forte montrée en personne).
