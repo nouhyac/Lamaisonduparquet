@@ -42,7 +42,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 1. **Lancer la pub Meta sur le PC** (guide pas à pas dans la conversation du 13/10 et `campagne/ADS.md`) : objectif Trafic, 6 $/j × 7 j, Algérie 25-55, Advantage+, vidéo `campagne/videos/pub-50s-avatar.mp4`, lien https://dzignstudio.store/#essai, texte **sans lieu**.
 2. Demander si on retire les mentions d'Alger du site dzignstudio.store (en attente de réponse).
 3. Prospection : l'utilisateur·rice envoie les noms des commerces repérés (suivis la veille) → préparer liens d'aperçu + messages (outil https://claude.ai/artifact/2vYPjDnY6NhvczBbRVgEq9). Plan complet : `vente/URGENCE-5-CLIENTS.md`.
-4. **I'm Starving** : démo « site double » prête (https://claude.ai/artifact/M7a45ogePhTwVRw81NpiFo, code cuisine 2026). Valider le prix (conseil 280 000 DA Fondateurs pour les 2 restaurants + Care+ 15 000/mois). Attention : suivis par webmastery.agency (concurrent), envoyer le DM ou passer sur place, proposer une vidéo de démo. Fiche : `vente/demos/imstarving/PROSPECT.md`.
+4. **I'm Starving** : démo « site double » prête (https://claude.ai/artifact/M7a45ogePhTwVRw81NpiFo, code cuisine 2026). Valider le prix : formule **Plateforme** 400 000 DA affiché → 320 000 DA Fondateurs (acompte 160 000) + Care+ 15 000/mois. Attention : suivis par webmastery.agency (concurrent), envoyer le DM ou passer sur place, proposer une vidéo de démo. Fiche : `vente/demos/imstarving/PROSPECT.md`.
 5. Demander les chiffres du soir du 13/10 (Reel, post 2, stories, statut WhatsApp).
 
 ## Questions encore ouvertes

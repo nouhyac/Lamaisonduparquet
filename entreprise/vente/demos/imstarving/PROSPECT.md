@@ -29,10 +29,10 @@ Source : `site/` (`index.html` site client, `cuisine.html` back-office, `data.js
 - Pour la montrer : ouvrir le site et le back-office dans **deux onglets du même navigateur**, passer une commande, elle arrive en cuisine.
 
 ### Offre conseillée (prix final = décision de l'utilisateur·rice)
-- **Plateforme Restaurant multi-sites** (2 restaurants, 2 écrans cuisine) : prix affiché **350 000 DA**, Fondateurs -20 % → **280 000 DA** (acompte 140 000 DA).
+- **Formule Plateforme** (2 restaurants, écran cuisine, récepteur de bons, réception au choix, stats) : prix affiché **400 000 DA** (= minimum « dès 400 000 DA » de notre site), Fondateurs -20 % → **320 000 DA** (acompte 160 000 DA).
 - **+ Care+ 15 000 DA/mois** (obligatoire en pratique : hébergement de la base de commandes, modifications du menu, rapport mensuel, fiche Google Maps).
 - Inclus : nom de domaine, optimisation des 2 fiches Google Maps (photos, horaires, lien de commande), QR codes imprimés, formation de l'équipe 1 h, garantie maquette satisfaite ou remboursée.
-- Plancher de négociation : 200 000 DA (sans statistiques ni QR tables) ; ne jamais descendre sous la Complète 120 000 DA.
+- Si trop cher : on ne baisse pas la Plateforme, on redescend vers **Commerce** en retirant des fonctions (sans stats, récepteur de bons, QR, un seul canal) ≈ 200 000-250 000 DA ; ne jamais descendre sous la Complète 120 000 DA.
 - Argument chiffré : 1 commande perdue par heure de pointe × 1 900 DA de panier moyen × 2 h × 30 j ≈ **114 000 DA/mois par restaurant**, donc ≈ 228 000 DA/mois sur les deux, qui partent quand la ligne sonne occupé.
 
 ## Message d'approche (Instagram, compte @dzignstudio)
