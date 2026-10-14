@@ -23,7 +23,7 @@
 - **Dossier PDF 4 pages + devis** : `dossier/Proposition-ArzataPizza-DzignStudio.pdf`.
 
 ## Prix
-**200 000 DA** pour Arzata (décision du 14/10) : 250 000 DA de prestations, -20 % Fondateurs. Acompte 100 000 DA à la signature (BaridiMob), solde 100 000 DA à la livraison. Service client 24h/24, 7j/7 pendant 12 mois et hébergement de la 1re année inclus. Vidéo de lancement offerte. Pas de formule mensuelle.
+**150 000 DA** proposés à Arzata le 14/10 (réponse attendue le 15/10). Devis : 187 500 DA de prestations, -20 % Fondateurs. Acompte 75 000 DA à la signature (BaridiMob), solde 75 000 DA à la livraison. Service client 24h/24, 7j/7 pendant 12 mois et hébergement de la 1re année inclus. Vidéo de lancement offerte. Pas de formule mensuelle.
 
 ## Ordre d'envoi
 1. Partager la démo (menu Partager › « Tout le monde avec le lien »).
@@ -53,8 +53,8 @@ Tout est modifiable par vous : recettes, photos, prix, horaires, frais de livrai
 Message 3 (prix)
 
 C'est une plateforme complète, pas un simple site : commande en ligne, four, caisse, comptabilité, livraison sur Alger avec suivi du livreur, en français et en arabe.
-Pour Arzata, on vous fait le tarif Fondateurs : 200 000 DA au lieu de 250 000 DA.
-Vous payez 100 000 DA au démarrage et 100 000 DA à la livraison, en 3 semaines.
+Pour Arzata, on vous fait le tarif Fondateurs : 150 000 DA.
+Vous payez 75 000 DA au démarrage et 75 000 DA à la livraison, en 3 semaines.
 Inclus : le service client 24h/24 et 7j/7 pendant 12 mois, l'hébergement de la première année, et une vidéo de lancement pour vos réseaux.
 Et la maquette est satisfaite ou remboursée. Je vous envoie le dossier complet ?
 
@@ -68,4 +68,4 @@ Vos clients commandent sans appeler, même pendant le rush. On peut vous le mont
 - « On a construit pour vous une démo de site de commande, avec toute votre carte et vos prix. Elle est déjà prête. »
 - « Le soir, quand le four tourne, vous perdez des appels. Là, le client commande seul, et le bon sort devant le four. »
 - « Je vous l'envoie sur quel numéro WhatsApp ? Et c'est à quel nom ? »
-- Objectif : obtenir le prénom du gérant et son WhatsApp. Ne pas annoncer le prix au téléphone sauf s'il insiste (200 000 DA Fondateurs).
+- Objectif : obtenir le prénom du gérant et son WhatsApp. Ne pas annoncer le prix au téléphone sauf s'il insiste (150 000 DA Fondateurs).

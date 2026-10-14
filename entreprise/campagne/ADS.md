@@ -1,3 +1,29 @@
+# ▶️ LANCEMENT DU 14/10 : 2 pubs à 25 $ (plan validé)
+
+Pas « en similaire » : les 2 vidéos ne parlent pas aux mêmes personnes et ne finissent pas pareil, donc chacune a **sa cible et sa destination**. Même budget, même durée, pour pouvoir les comparer.
+
+| | **Pub A · Plateforme restaurant** | **Pub B · Femme (sites pour tous)** |
+|---|---|---|
+| Vidéo | `plateforme/pub-plateforme-40s.mp4` | `videos/pub-50s-avatar.mp4` |
+| 2e créa dans la même pub (Meta garde la meilleure) | `plateforme/exemple-client.mp4` | `posts/post-4-fr.jpg` |
+| Objectif | **Interactions** › Applications de messagerie › **WhatsApp** | **Trafic** › vers le site (clics sur le lien) |
+| Destination | WhatsApp 0549 50 68 57, message pré-rempli : « Bonjour, je veux ma démo gratuite de plateforme pour mon restaurant. » | https://dzignstudio.store/#essai (la vidéo dit « tapez votre nom sur notre site ») |
+| Audience | Algérie · 23-55 ans · intérêts : restaurant, restauration rapide, pizzeria, café, propriétaire de petite entreprise, administrateurs de pages Facebook | Algérie · 25-55 ans · **Advantage+** (Meta cherche seul) |
+| Budget | **25 $ en budget global, sur 7 jours** (≈ 3,6 $/jour) | **25 $ en budget global, sur 7 jours** |
+| Placements | Advantage+ (Reels, Stories, Fil) | Advantage+ |
+| Texte principal | « Pendant le rush, chaque appel manqué est une commande perdue. Avec votre plateforme, vos clients commandent sans appeler, votre cuisine reçoit tout. Démo gratuite à votre nom · Maquette satisfaite ou remboursée. » | « Tapez le nom de votre entreprise : votre futur site apparaît en 10 secondes. Gratuit. Paiement 50/50 · Maquette satisfaite ou remboursée · -20 % pour nos premiers clients. » |
+| Titre / bouton | « Démo gratuite à votre nom » · Envoyer un message WhatsApp | « Votre site en 10 secondes » · En savoir plus |
+
+**Pourquoi 2 pubs séparées et pas « similaires »** : un restaurateur et un commerçant ne réagissent pas aux mêmes images ; et la vidéo de la femme renvoie au site (aperçu en 10 s), celle de la plateforme à WhatsApp. Si on leur donne les mêmes réglages, Meta montre la vidéo restaurant à n'importe qui et on paie des vues inutiles.
+
+**Suivi**
+- **Ne rien toucher pendant 3 jours** (Meta apprend).
+- J+3 : regarder le **coût par conversation** (pub A, bon si < 1 $) et le **coût par clic** (pub B, bon si < 0,15 $). Dans chaque pub, couper la créa la plus chère.
+- J+7 : on garde la meilleure pub et on y met la réserve (≈ 4 $ restants sur la carte).
+- À faire pour la suite : créer le **pixel Meta** (gratuit, Gestionnaire d'événements) et m'envoyer son identifiant : je l'installe sur le site, et la pub B pourra viser les vraies visites au lieu des clics.
+
+---
+
 # Publicités Dzign Studio (Meta : Facebook + Instagram)
 
 Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du dossier `campagne/`.
