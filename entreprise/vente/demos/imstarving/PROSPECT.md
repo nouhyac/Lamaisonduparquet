@@ -60,3 +60,8 @@ Dzign Studio · 0549 50 68 57
 2. S'ils répondent : lien de la démo + mode d'emploi (bouton jaune Espace gérant, code 0328).
 3. S'ils demandent le prix ou montrent de l'intérêt : passer en personne avec le dossier PDF.
 4. Vidéo de lancement `lancement-imstarving.mp4` : argument de clôture (« voilà ce que vous publierez le jour J, offert »). Ne pas l'envoyer avant la signature.
+
+## Prix révisé (14/10, décision de l'utilisateur·rice)
+- **Plateforme complète : 300 000 DA → 240 000 DA avec Fondateurs (-20 %)**, acompte 120 000 DA, solde 120 000 DA. Care+ 15 000 DA/mois en option. Vidéo de lancement offerte.
+- Vente à distance (pas de visite) : WhatsApp + démonstration en appel vidéo.
+- Instagram sans réponse → relance sur WhatsApp 0659 56 46 11 puis 07 97 88 38 97.
