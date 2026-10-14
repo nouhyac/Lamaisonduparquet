@@ -66,3 +66,4 @@ Dzign Studio · 0549 50 68 57
 - Vente à distance (pas de visite) : WhatsApp + démonstration en appel vidéo.
 - Instagram sans réponse → relance sur WhatsApp 0659 56 46 11 puis 07 97 88 38 97.
 - **Décision finale (14/10)** : on propose **deux options** au choix du client : **Achat 240 000 DA** (120 000 + 120 000) **ou formule mensuelle 90 000 DA (45 000 + 45 000) + 18 000 DA/mois pendant 12 mois** (hébergement, mises à jour, modifications compris) = 306 000 DA sur un an. Dossier PDF mis à jour.
+- **Décision définitive (14/10)** : **pas de mensuel**. Achat **240 000 DA** (120 000 + 120 000), avec **service client 24h/24, 7j/7 pendant 12 mois** et hébergement de la 1re année inclus. Dossier PDF mis à jour.

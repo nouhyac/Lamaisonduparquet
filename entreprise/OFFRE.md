@@ -31,8 +31,8 @@ langues, fonctions, 3D, rédaction des textes, photos et vidéos, délai.
 Démo à son nom avant de signer · design haut de gamme et visuels 3D · français + arabe · tout modifiable par le client · accessibilité 0 défaut · tests sur téléphone et ordinateur · référencement Google · formation et vidéo de lancement. Détail : `QUALITE.md`.
 Décision du 14/10 : **on garde nos prix** (plus élevés que la concurrence) et on les justifie par un niveau de finition supérieur sur chaque projet.
 
-## Paiement en formule mensuelle (pour les plateformes)
-Pour réduire le ticket d'entrée, chaque plateforme peut être proposée en deux options : **achat** (prix plein, 50/50) **ou mensuel** (≈ 30 % de mise en place + abonnement sur 12 mois incluant hébergement et mises à jour). Exemple I'm Starving : 240 000 DA en achat, ou 90 000 DA + 18 000 DA/mois.
+## Règle de vente des plateformes (décision du 14/10)
+**Pas de formule mensuelle : vente en une fois, 50 % à la signature, 50 % à la livraison.** Pour rassurer le client, on inclut un **service client 24h/24, 7j/7 pendant 12 mois** (WhatsApp et téléphone, on règle tout) + l'hébergement de la première année.
 
 ## 3. Hébergement et suivi (mensuel, optionnel)
 Le client peut aussi héberger lui-même son site ; on lui livre alors tous les fichiers.
