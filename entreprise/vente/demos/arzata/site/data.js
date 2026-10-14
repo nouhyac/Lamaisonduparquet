@@ -35,7 +35,7 @@
    ['Pizza Crispy', 'Crème, mozzarella, poulet croustillant, sauce fromagère, tomates cerises, olives', [1090, 2590], []],
    ['Saumon', 'Crème, mozzarella, saumon fumé, boursin, oignons confits, citron, olives, roquette', [1190, 2690], ['mer']],
    ['Océane', 'Crème, mozzarella, crevettes, saumon fumé, persillade, citron, olives', [1290, 2890], ['mer']],
-   ['Bresaola', 'Crème, mozzarella, bresaola, roquette, tomates cerises, parmesan, perles de mozzarella, pesto, crème balsamique, oignons caramélisés', [1990, 3190], ['chef']],
+   ['Bresaola', 'Mozzarella, bresaola, roquette, tomates cerises, cornichons, olives noires, petits piments doux, perles de mozzarella au pesto, parmesan, crème balsamique', [1990, 3190], ['chef']],
    ['Pêcheur', 'Crème, mozzarella, calamars, crevettes, moules, pesto, citron, olives', [1990, 3190], ['mer', 'chef']]
   ].forEach(function (x, i) { P.push({ id: 'c' + i, cat: 'Base crème', nom: x[0], desc: x[1], img: 'img3d/c' + i + '.jpg', tailles: T(x[2]), extra: SUPP, tags: x[3], moitie: 'creme' }); });
   [['Poulet', 'Poulet, pommes de terre, poivrons, fromage fondant', 600, 0, []], ['Viande', 'Viande hachée, pommes de terre, poivrons, oignons, fromage fondant', 650, 1, []],
