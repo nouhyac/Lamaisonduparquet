@@ -40,7 +40,8 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 
 ## ▶️ Reprise de la prochaine session
 1. **I'm Starving (priorité n°1)** : envoyer le DM aujourd'hui 15h-17h avec la vidéo `vente/demos/imstarving/demo-imstarving-v4.mp4` + message 1 (dans `PROSPECT.md`). Puis lien démo https://claude.ai/artifact/M7a45ogePhTwVRw81NpiFo (codes gérant 0328 / cuisine 1111 / caisse 2222), visite avec le dossier PDF, prix **Plateforme 300 000 → 240 000 DA** (acompte 120 000), vente à distance via WhatsApp + appel vidéo (pas de visite). Vidéo de lancement `lancement-imstarving.mp4` seulement au moment du prix.
-2. **Lancer la pub Meta sur le PC** (guide `campagne/ADS.md`) : 6 $/j × 7 j, Algérie 25-55, Advantage+, vidéo `campagne/videos/pub-50s-avatar.mp4`, lien https://dzignstudio.store/#essai, texte **sans lieu**.
+2. **Remettre en ligne le paquet `site-dzign-vite.zip`** (Plateforme dès 300 000 DA) sur Hostinger, paquet complet.
+3. **Lancer la pub Meta sur le PC** (guide `campagne/ADS.md`) : 6 $/j × 7 j, Algérie 25-55, Advantage+, vidéo `campagne/videos/pub-50s-avatar.mp4`, lien https://dzignstudio.store/#essai, texte **sans lieu**.
 3. Demander si on retire les mentions d'Alger du site dzignstudio.store.
 4. Prospection : noms des commerces repérés → liens d'aperçu + messages (outil https://claude.ai/artifact/2vYPjDnY6NhvczBbRVgEq9, plan `vente/URGENCE-5-CLIENTS.md`). Idée : décliner la plateforme restaurant pour d'autres fast-foods.
 5. Concurrence : `vente/CONCURRENCE.md` (Webly, webmastery.agency).
@@ -120,3 +121,4 @@ Règle : toujours vérifier le coût (get_cost) avant une vidéo ou un modèle 3
 - **2026-10-14** : I'm Starving ne répond pas sur Instagram. L'utilisateur·rice ne veut pas se déplacer et trouve 400 000 DA trop cher → **Plateforme ramenée à 300 000 DA, 240 000 DA avec Fondateurs** (acompte 120 000). Dossier PDF mis à jour. À faire : WhatsApp + proposition d'appel vidéo. Le site dzignstudio.store affiche encore « Plateforme dès 400 000 DA » (à aligner si validé).
 - **2026-10-14** : décision : proposer **achat 240 000 DA ou mensuel 90 000 DA + 18 000 DA/mois (12 mois)** à I'm Starving ; règle ajoutée à `OFFRE.md` pour toutes les plateformes.
 - **2026-10-14** : décision définitive : **pas de formule mensuelle**, vente en une fois (I'm Starving : 240 000 DA, 120 000 + 120 000) avec **service client 24h/24, 7j/7 pendant 12 mois** + hébergement 1re année inclus. `OFFRE.md` et dossier mis à jour.
+- **2026-10-14** : prix Plateforme aligné partout à **dès 300 000 DA** + « service client 24h/24, 7j/7 (12 mois) » : site `site-prod` et `site-dzign` (carte FR/AR, calculateur, données Google), `OFFRE.md`, `VENTE.md`, `campagne/posts.html`. Nouveau paquet complet `site-dzign-vite.zip` (27 fichiers) **à remettre en ligne par l'utilisateur·rice** sur Hostinger.

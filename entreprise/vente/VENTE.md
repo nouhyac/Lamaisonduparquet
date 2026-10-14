@@ -33,7 +33,7 @@ Nous sommes disponibles du samedi au jeudi, de 9 h à 19 h. Nous vous répondons
 | Raccourci | Message |
 |-----------|---------|
 | `/bonjour` | Bonjour [prénom] 👋 Merci pour votre intérêt pour la formule [offre]. Pour vous proposer le bon devis, je vous propose un appel découverte gratuit de 15 minutes. Quel moment vous arrange aujourd'hui ou demain ? |
-| `/offres` | Nos formules : Impact dès 30 000 DA (page unique) · Signature dès 80 000 DA (site vitrine) · Commerce dès 150 000 DA (boutique) · Immersion dès 250 000 DA (3D) · Plateforme dès 400 000 DA (application). Nom de domaine et email pro inclus. Le prix final dépend de votre projet. |
+| `/offres` | Nos formules : Impact dès 30 000 DA (page unique) · Signature dès 80 000 DA (site vitrine) · Commerce dès 150 000 DA (boutique) · Immersion dès 250 000 DA (3D) · Plateforme dès 300 000 DA (application, service client 24h/24 7j/7 pendant 12 mois inclus). Nom de domaine et email pro inclus. Le prix final dépend de votre projet. |
 | `/delai` | Vous voyez la maquette sous 72 h. Un site vitrine est prêt en 7 à 14 jours, une boutique en 2 à 3 semaines. |
 | `/paiement` | 50 % par BaridiMob au lancement, 50 % seulement après avoir vu votre site terminé. Tout se fait à distance. |
 | `/garantie` | Vous ne prenez aucun risque : maquette satisfaite ou remboursée. Si, après 2 séries de retouches, la maquette ne vous convainc pas, nous vous remboursons tout votre acompte. |

@@ -23,7 +23,7 @@ langues, fonctions, 3D, rédaction des textes, photos et vidéos, délai.
 | **Signature** ⭐ | Commerces, professions libérales, entreprises | Site vitrine sur mesure (jusqu'à 6 pages), animations, 2 langues, Google Maps, référencement | 80 000 DA |
 | **Commerce** | Vendeurs, marques, boutiques | Boutique en ligne, paiement à la livraison, frais par wilaya, BaridiMob/CIB/Edahabia en option, suivi des commandes | 150 000 DA |
 | **Immersion** | Immobilier, mobilier, mode, automobile, événementiel, marques premium | Site avec expérience 3D : produit en 3D à faire tourner, configurateur, visite virtuelle | 250 000 DA |
-| **Plateforme** | Startups, entreprises, projets ambitieux | Application web ou mobile, réservation, espace client, marketplace, tableau de bord | Sur devis, dès 400 000 DA |
+| **Plateforme** | Startups, entreprises, projets ambitieux | Application web ou mobile, réservation, espace client, marketplace, tableau de bord | Sur devis, dès 300 000 DA (paiement en une fois, service client 24h/24 7j/7 pendant 12 mois inclus) |
 
 ⭐ = formule mise en avant (la plus demandée).
 
