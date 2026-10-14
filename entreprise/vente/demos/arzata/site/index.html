@@ -424,7 +424,7 @@ var TXT={
   suivi_title:'Ma commande',suivi_sur:'Commande envoyée',merci:'Grazie {n} ! Arzata a bien reçu votre commande.',s1:'Reçue par la pizzeria',s2:'Au four, au feu de bois',s3liv:'En route vers vous',s3place:'Prête, on vous l\'apporte',s3emp:'Prête, venez la récupérer',
   eta:'Prête vers <b>{h}</b>',autre:'Nouvelle commande',recommander:'Recommander la même chose',upsell:'Pour accompagner',sortie:'Sortie du four ≈ {h}',
   fid:'Fidélité : {x}/10 · la 10e commande, une pizza offerte',fid_ok:'🎁 Votre pizza offerte vous attend !',bienvenue:'Table {t} : benvenuti !',langue:'العربية',
-  mots:['Goût authentique','Feu de bois','Base tomate','Base crème','Pizzouich','Moitié-moitié','Fait maison'],cats:{}},
+  mots:['Goût authentique','Feu de bois','Figue & noisettes','Magret & foie gras','Base tomate','Base crème','Pizzouich','Moitié-moitié','Fait maison'],cats:{}},
  ar:{nav_menu:'القائمة',nav_moitie:'نصف ونصف',nav_cmd:'اطلب',nav_infos:'معلومات',gerant:'فضاء المسيّر',panier:'سلتي',
   hero_script:'أغمض عينيك،',hero_h1:'إيطاليا <em>في صحنك</em>',hero_p:'عجينة ذهبية على نار الحطب، موزاريلا تذوب ووصفات سخية. اطلب عبر الإنترنت في دقيقة: في المطعم، للأخذ أو بالتوصيل.',
   btn_cmd:'اطلب الآن',btn_moitie:'بيتزا نصف ونصف؟',puce_modes:'توصيل · للأخذ · في المطعم',place:'في المطعم',emporter:'للأخذ',livraison:'توصيل',
@@ -452,7 +452,7 @@ var TXT={
   eta:'جاهزة حوالي <b>{h}</b>',autre:'طلب جديد',recommander:'أعد نفس الطلب',upsell:'للمرافقة',sortie:'تخرج من الفرن ≈ {h}',
   fid:'الوفاء: {x}/10 · الطلب العاشر، بيتزا مجانية',fid_ok:'🎁 بيتزاك المجانية في انتظارك!',bienvenue:'طاولة {t}: مرحبًا!',langue:'Français',
   mots:['مذاق أصيل','نار الحطب','قاعدة طماطم','قاعدة كريمة','بيتزويش','نصف ونصف','صنع منزلي'],
-  cats:{'Base tomate':'قاعدة طماطم','Base crème':'قاعدة كريمة','Pizzouich':'بيتزويش','Tartines':'طارتين','Salades':'سلطات'}}
+  cats:{'Du moment':'من الموسم','Base tomate':'قاعدة طماطم','Base crème':'قاعدة كريمة','Pizzouich':'بيتزويش','Tartines':'طارتين','Salades':'سلطات'}}
 };
 var langue='fr';try{langue=localStorage.getItem('arz-lang')||'fr'}catch(e){}if(location.hash==='#ar')langue='ar';
 function t(k,v){var s=(TXT[langue][k]!=null?TXT[langue][k]:TXT.fr[k]);if(v)for(var x in v)s=String(s).split('{'+x+'}').join(v[x]);return s}
@@ -482,7 +482,7 @@ function plat(id){return M.find(function(p){return p.id===id})}
 function prixHTML(p,d2){return '<span class="prix">'+(d2&&p.tailles?'<small>'+t('des')+'</small>':'')+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'}
 function boutonPlus(p,ep){return p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="'+t('ajouter')+' '+esc(p.nom)+'">+</button>':'<span class="rupt">'+t(ep||'epuise')+'</span>'}
 function signatures(){
-  var ids=['t13','c10','c11'].filter(function(i){return plat(i)});M.forEach(function(p){if(ids.length<3&&ids.indexOf(p.id)<0)ids.push(p.id)});
+  var ids=['t13','m1','m0'].filter(function(i){return plat(i)});M.forEach(function(p){if(ids.length<3&&ids.indexOf(p.id)<0)ids.push(p.id)});
   $('sigs').innerHTML=ids.map(function(id,i){var p=plat(id);return '<article class="sig revele"><div class="rond"><img src="'+p.img+'" alt="Pizza '+esc(p.nom)+'" loading="lazy"></div><span class="no">N° '+(i+1)+'</span><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p><div class="bas">'+prixHTML(p,true)+boutonPlus(p,'epuise2')+'</div></article>'}).join('');
 }
 function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){var n=M.filter(function(p){return p.cat===c}).length;return '<button aria-pressed="'+(c===cat&&!q)+'" data-c="'+esc(c)+'">'+esc(nomCat(c))+'<small>'+n+'</small></button>'}).join('');

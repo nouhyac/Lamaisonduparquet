@@ -6,6 +6,10 @@
   var NM = ['Normale', 'Méga'], SUPP = [['Ricotta', 100], ['Fromagère', 100], ['Stracciatella', 100]];
   function T(p) { return NM.map(function (x, i) { return [x, p[i]]; }); }
   var P = [];
+  // Pizzas du moment (stories Instagram) · prix à confirmer avec la pizzeria
+  [['Figue & noisettes', 'Crème, mozzarella, figues fraîches, noisettes, miel', [1590, 2990], ['veg', 'chef']],
+   ['Magret & foie gras', 'Crème, mozzarella, magret de canard, foie gras, oignons confits, framboises', [2490, 3990], ['chef']]
+  ].forEach(function (x, i) { P.push({ id: 'm' + i, cat: 'Du moment', nom: x[0], desc: x[1], img: 'img3d/m' + i + '.jpg', tailles: T(x[2]), extra: SUPP, tags: x[3], moitie: 'creme' }); });
   [['Marguerite', 'Sauce tomate, mozzarella, cheddar, olives', [490, 1390], ['veg']],
    ['Veggie', 'Sauce tomate, mozzarella, aubergine, courgette, poivrons rôtis, champignons frais, tomates cerises, oignons caramélisés', [690, 1690], ['veg']],
    ['Thon', 'Sauce tomate, mozzarella, thon, poivrons, oignons rouges, olives', [790, 1790], ['mer']],
@@ -23,7 +27,7 @@
   ].forEach(function (x, i) { P.push({ id: 't' + i, cat: 'Base tomate', nom: x[0], desc: x[1], img: 'img3d/t' + i + '.jpg', tailles: T(x[2]), extra: SUPP, tags: x[3], moitie: 'tomate' }); });
   [['Chèvre miel', 'Crème, mozzarella, noix, chèvre, miel, olives', [890, 2090], ['veg', 'fromage']],
    ['Boursin', 'Crème, mozzarella, jambon de dinde, boursin, oignons confits, persil, champignons, poivrons, olives', [990, 2390], []],
-   ['Gruyère', 'Crème, mozzarella, poulet, gruyère, oignons, olives', [990, 2390], ['fromage']],
+   ['Gruyère', 'Crème, mozzarella, poulet, gruyère, oignons rouges, tomates cerises, sauce blanche', [990, 2390], ['fromage']],
    ["L'Escoffier", 'Crème, champignons frais, jambon de dinde, camembert, poivrons', [990, 2390], []],
    ['6 Fromages', 'Crème, mozzarella, emmental, roquefort, edam, cheddar, camembert, olives', [990, 2490], ['veg', 'fromage']],
    ['Chef Pepito', 'Crème, mozzarella, poivrons rôtis, gruyère fumé, lamelles de viande, champignons, viande hachée marinée, olives', [990, 2490], ['chef']],
@@ -104,7 +108,7 @@
   var CONF0 = {
     nom: 'Arzata Pizza', slogan: 'Goût authentique · Feu de bois', insta: 'arzatapizza',
     restos: [{ id: 'dar', nom: 'Dar El Beïda', ouv: 11, ferm: 23, tel: '0772 08 73 87', tel2: '0551 11 75 78', adresse: 'Dar El Beïda, en face de la banque BNP' }],
-    cats: ['Base tomate', 'Base crème', 'Pizzouich', 'Tartines', 'Salades'],
+    cats: ['Du moment', 'Base tomate', 'Base crème', 'Pizzouich', 'Tartines', 'Salades'],
     // Zones de livraison et frais (modifiables par le gérant)
     zones: [['Dar El Beïda', 150], ['El Hamiz', 200], ['Bab Ezzouar', 250], ['Mohammadia', 300], ['Bordj El Kiffan', 300], ['Rouiba', 350]], offerte: 4000,
     pins: { gerant: '0328', cuisine: '1111', caisse: '2222' }

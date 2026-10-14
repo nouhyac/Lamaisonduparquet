@@ -7,13 +7,14 @@
 - Bio : « Goût authentique · Feu de bois · Livraison · À emporter · Sur place ».
 - Identité : vert, crème, rouge, logo manuscrit « Arzata Pizza ». Phrases à eux : « Fermez les yeux, l'Italie est dans votre assiette », « Voyagez en Italie, sans quitter Alger ».
 - Carte : 14 pizzas base tomate (490 à 3 090 DA), 12 base crème (890 à 3 190 DA), 7 pizzouich (600 à 700), tartine hot-dog (700), 4 salades (790 à 1 390), suppléments ricotta / fromagère / stracciatella (100).
-- À vérifier avec eux : horaires (démo : 11h-23h), recettes exactes des pizzouich, zones et frais de livraison (démo : 150 à 350 DA, offerte dès 4 000 DA).
+- Pizzas du moment vues en story : **Figue & noisettes** et **Magret & foie gras** (ajoutées à la démo avec des prix provisoires 1 590 / 2 990 et 2 490 / 3 990 DA, **à confirmer**). Leur vrai logo : badge rond crème, « Arzata » vert manuscrit, texte circulaire rouge « Arzata · Pizza au feu de bois » (refait pour la démo). Boîtes rouges, tabliers brodés.
+- À vérifier avec eux : prix des pizzas du moment, horaires (démo : 11h-23h), recettes exactes des pizzouich, zones et frais de livraison (démo : 150 à 350 DA, offerte dès 4 000 DA).
 
 ## Ce qui est prêt
 - **Démo** (privée, à partager depuis le menu Partager avant l'envoi) : https://claude.ai/artifact/NRZnTu1KCMWGaDpb2eMwte
   - Codes de l'espace gérant : gérant **0328**, four **1111**, caisse **2222**.
   - Nouveautés par rapport à I'm Starving : pizza **moitié-moitié** (on paie la moitié la plus chère), **zones de livraison** avec frais automatiques et livraison offerte, **commande programmée** (créneaux de 15 min), **suivi « au four »** avec minuteur de cuisson côté client et côté cuisine, compteur « pizzas au four » en direct, filtres (végétarien, de la mer, épicé, fromagé, choix du chef), braises animées sur l'accueil, design trattoria.
-  - 38 recettes en visuels photo-réalistes (sans porc : jambon de dinde, viande fumée de bœuf).
+  - 40 recettes en visuels photo-réalistes (sans porc : jambon de dinde, viande fumée de bœuf).
   - Audit accessibilité : 0 défaut sur 15 écrans. Tests téléphone et ordinateur : 0 erreur.
 - **Vidéo démo** (38 s, à envoyer) : `demo-arzata.mp4`, ouverture cinématique du four (IA) puis le parcours complet.
 - **Vidéo de lancement** pour leurs réseaux (20 s, offerte si signature) : `lancement-arzata.mp4`.
