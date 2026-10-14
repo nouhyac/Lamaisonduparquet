@@ -1,7 +1,7 @@
 /* Espace gérant I'm Starving : application de gestion (tableau de bord, cuisine, caisse, comptabilité, menu, réglages).
    Thème clair unique, choisi pour la lisibilité en cuisine et en caisse. Barre latérale sur ordinateur, barre d'onglets en bas sur téléphone. */
-.g{--bg:#F2F3F7;--carte:#FFFFFF;--encre:#0E1430;--encre2:#5A6280;--encre3:#8A91AA;--trait:#E2E5EE;--trait2:#EEF0F5;
-  --rouge:#D7262D;--rouge-f:#FDECEC;--navy:#0B1640;--vert:#12955A;--vert-f:#E4F5EC;--ambre:#B97A05;--ambre-f:#FFF3D6;--bleu:#2F5BEA;--bleu-f:#EAF0FF;
+.g{--bg:#F2F3F7;--carte:#FFFFFF;--encre:#0E1430;--encre2:#5A6280;--encre3:#646B87;--trait:#E2E5EE;--trait2:#EEF0F5;
+  --rouge:#D7262D;--rouge-f:#FDECEC;--navy:#0B1640;--vert:#0B7A48;--vert-f:#E4F5EC;--ambre:#8F5E00;--ambre-f:#FFF3D6;--bleu:#2F5BEA;--bleu-f:#EAF0FF;
   --f:"Barlow",ui-sans-serif,system-ui,sans-serif;--f-t:"Anton","Arial Narrow",Impact,sans-serif;--f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   position:fixed;inset:0;z-index:300;background:var(--bg);color:var(--encre);font-family:var(--f);font-size:15px;line-height:1.45;color-scheme:light;
   display:grid;grid-template-columns:248px minmax(0,1fr);grid-template-rows:minmax(0,1fr);-webkit-font-smoothing:antialiased}
@@ -58,7 +58,7 @@
 .g-kpi em{font-style:normal;font-size:12.5px;font-weight:700;color:var(--encre3)}
 .g-kpi em.haut{color:var(--vert)}.g-kpi em.bas{color:var(--rouge)}
 .g-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;border-radius:7px;padding:3px 8px;white-space:nowrap}
-.g-badge.r{background:var(--rouge-f);color:var(--rouge)}.g-badge.v{background:var(--vert-f);color:var(--vert)}.g-badge.a{background:var(--ambre-f);color:var(--ambre)}.g-badge.b{background:var(--bleu-f);color:var(--bleu)}.g-badge.n{background:var(--trait2);color:var(--encre2)}.g-badge.d{background:var(--navy);color:#fff}
+.g-badge.r{background:var(--rouge-f);color:#A3121A}.g-badge.v{background:var(--vert-f);color:var(--vert)}.g-badge.a{background:var(--ambre-f);color:var(--ambre)}.g-badge.b{background:var(--bleu-f);color:var(--bleu)}.g-badge.n{background:var(--trait2);color:var(--encre2)}.g-badge.d{background:var(--navy);color:#fff}
 .g-seg{display:inline-flex;background:var(--trait2);border-radius:11px;padding:3px;gap:2px;flex-wrap:wrap;max-width:100%}
 .g-seg button{border:0;background:none;border-radius:9px;padding:7px 12px;font-weight:700;font-size:13.5px;color:var(--encre2);white-space:nowrap}
 .g-seg button[aria-pressed="true"]{background:var(--carte);color:var(--encre);box-shadow:0 1px 3px rgba(14,20,48,.12)}
@@ -222,3 +222,6 @@
 }
 @media (max-width:380px){.g-k2{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.g *{animation:none!important;transition:none!important}}
+
+.g .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.g-srv h2{font-size:18px;display:flex;align-items:center;gap:9px}

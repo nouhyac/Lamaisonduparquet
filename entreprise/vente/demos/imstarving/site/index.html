@@ -1,6 +1,13 @@
 <title>I'm Starving Food</title>
+<meta name="description" content="I'm Starving : le Croger, le burger dans un croissant. Commandez en ligne à Bab Ezzouar et Aïn Allah : sur place, à emporter ou en livraison.">
+<meta name="theme-color" content="#060D24">
+<meta property="og:title" content="I'm Starving · Commandez en ligne">
+<meta property="og:description" content="Le Croger, smash, tacos, starvation… Commandez sans appeler : sur place, à emporter ou en livraison.">
+<meta property="og:image" content="img3d/hero.jpg">
+<meta property="og:type" content="restaurant">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700;800&family=Kaushan+Script&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700;800&family=Kaushan+Script&family=IBM+Plex+Mono:wght@500&family=Cairo:wght@500;700;800;900&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img3d/hero.jpg">
 <link rel="stylesheet" href="gestion.css">
 <style>
 /* Mise en page : vitrine plein écran (le croger en héros), bandeau défilant, signatures, menu complet à onglets, la salle, comment ça marche, infos ; panier en tiroir latéral (bas d'écran sur mobile). Identité I'm Starving : bleu nuit, rouge, crème. Thème unique. */
@@ -31,7 +38,7 @@ h1,h2,h3{font-family:var(--f-titre);font-weight:400;text-transform:uppercase;let
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo img{width:42px;height:42px;border-radius:50%}
 .logo b{font-family:var(--f-titre);font-weight:400;font-size:21px;letter-spacing:.04em}
-.logo b i{font-style:normal;color:var(--rouge)}
+.logo b i{font-style:normal;color:#FF5A5F}
 .nav nav{display:flex;gap:22px;margin-left:auto;font-weight:600;font-size:15px}
 .nav nav a{text-decoration:none;color:var(--gris)}
 .nav nav a:hover{color:var(--creme)}
@@ -58,7 +65,7 @@ h1,h2,h3{font-family:var(--f-titre);font-weight:400;text-transform:uppercase;let
 
 /* Bandeau défilant */
 .ticker{background:var(--rouge);overflow:hidden;white-space:nowrap;border-block:1px solid var(--rouge2)}
-.ticker div{display:inline-block;padding:13px 0;font-family:var(--f-titre);font-size:22px;letter-spacing:.06em;animation:defile 28s linear infinite}
+.ticker div{display:inline-block;padding:12px 0;font-family:var(--f-titre);font-size:24px;letter-spacing:.06em;animation:defile 28s linear infinite}
 .ticker span{margin:0 18px}
 @keyframes defile{to{transform:translateX(-50%)}}
 
@@ -154,11 +161,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 /* Tiroir de commande */
 .voile{position:fixed;inset:0;background:rgba(3,6,18,.7);z-index:40}
 .tiroir{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--nuit2);z-index:41;display:flex;flex-direction:column;border-left:1px solid var(--trait);padding-top:env(safe-area-inset-top,0px)}
-.tiroir header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--trait)}
-.tiroir header h2{font-size:30px}
+.tiroir .t-tete{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--trait)}
+.tiroir .t-tete h2{font-size:30px}
 .fermer{border:0;background:var(--nuit3);width:38px;height:38px;border-radius:50%;font-size:20px}
 .tiroir .contenu{flex:1;overflow-y:auto;padding:18px 20px;display:grid;gap:16px;align-content:start}
-.tiroir footer{border-top:1px solid var(--trait);padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;color:var(--creme)}
+.tiroir .t-pied{border-top:1px solid var(--trait);padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;color:var(--creme)}
 .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .modes button{border:1.5px solid var(--trait);background:var(--nuit);border-radius:14px;padding:10px 6px;font-weight:700;font-size:13.5px;display:grid;gap:2px;justify-items:center}
 .modes button small{font-weight:500;color:var(--gris);font-size:11.5px}
@@ -207,179 +214,338 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   footer{padding-bottom:100px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* Arabe : polices et sens de lecture */
+html[lang="ar"]{--f-titre:"Cairo","Segoe UI",Tahoma,sans-serif;--f-texte:"Cairo","Segoe UI",Tahoma,sans-serif;--f-script:"Aref Ruqaa","Cairo",serif}
+html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3{font-weight:900;letter-spacing:0;text-transform:none;line-height:1.15}
+html[lang="ar"] .heros h1{line-height:1.05}
+html[lang="ar"] .heros h1 .script{transform:rotate(3deg);transform-origin:right;margin:0 .08em .1em 0}
+html[lang="ar"] .sur,html[lang="ar"] .opt .t,html[lang="ar"] .rupt{letter-spacing:0}
+html[lang="ar"] .onglets button{font-family:var(--f-titre);font-weight:800}
+html[dir="rtl"] .tiroir{right:auto;left:0;border-left:0;border-right:1px solid var(--trait)}
+html[dir="rtl"] .ticker div{animation-name:defile-rtl}
+@keyframes defile-rtl{to{transform:translateX(50%)}}
+.langue{border:1.5px solid var(--trait);background:none;border-radius:999px;padding:7px 13px;font-weight:800;font-size:14px;white-space:nowrap}
+.langue:hover{border-color:var(--creme)}
+
+/* Recherche du menu */
+.recherche{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.recherche input{flex:1;min-width:0;max-width:420px;background:var(--nuit2);border:1.5px solid var(--trait);border-radius:999px;color:var(--creme);padding:12px 18px;font:inherit;font-size:15px}
+.recherche input::placeholder{color:var(--gris)}
+.recherche input:focus{border-color:var(--creme);outline:none}
+.aucun{color:var(--gris);padding:30px 0;grid-column:1/-1;text-align:center}
+
+/* Apparition au défilement */
+.js .revele{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .revele.vu{opacity:1;transform:none}
+
+/* Plat qui vole vers le panier */
+.vol{position:fixed;z-index:60;width:54px;height:54px;border-radius:50%;object-fit:cover;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.saute{animation:saute .45s ease}
+@keyframes saute{40%{transform:scale(1.25)}}
+
+/* Panier : suggestions, fidélité, erreurs */
+.sugg{display:grid;gap:8px}
+.sugg .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);font-weight:700}
+.sugg .s{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--nuit);border:1.5px solid var(--trait);border-radius:14px;padding:8px}
+.sugg img{width:52px;height:52px;border-radius:10px;object-fit:cover}
+.sugg b{display:block;font-size:14.5px}
+.sugg small{color:var(--gris)}
+.sugg .plus{width:36px;height:36px;font-size:22px}
+.fid{display:flex;gap:10px;align-items:center;background:#2a2107;border:1.5px solid #5c4810;color:var(--or);border-radius:12px;padding:10px 12px;font-size:13.5px;font-weight:700}
+.fid .barre{flex:1;height:7px;border-radius:4px;background:rgba(242,193,78,.2);overflow:hidden;min-width:60px}
+.fid .barre i{display:block;height:100%;background:var(--or)}
+.champ.erreur input{border-color:#ff6b70}
+.champ .msg{color:#ff8a8f;font-size:12.5px;font-weight:600}
+.eta{display:inline-flex;gap:8px;align-items:center;background:var(--nuit);border:1.5px solid var(--trait);border-radius:999px;padding:7px 14px;font-weight:700;margin-top:10px}
+.eta b{color:var(--or)}
 </style>
 
-<div class="demo"><div class="wrap"><span>Démo Dzign Studio · le site client d'I'm Starving</span><button class="gbtn" data-ouvrir="accueil">👨‍🍳 Espace gérant : cuisine, caisse, comptabilité</button></div></div>
+<div class="demo" role="region" aria-label="Démonstration"><div class="wrap"><span>Démo Dzign Studio · le site client d'I'm Starving</span><button class="gbtn" data-ouvrir="accueil">👨‍🍳 Espace gérant : cuisine, caisse, comptabilité</button></div></div>
 
 <header class="nav"><div class="wrap">
-  <a class="logo" href="#haut"><img src="img/logo.jpg" alt=""><b>I'M <i>STARVING</i></b></a>
-  <nav aria-label="Sections"><a href="#menu">Menu</a><a href="#salle">La salle</a><a href="#comment">Commander</a><a href="#infos">Infos</a></nav>
-  <button class="btn ligne gnav" data-ouvrir="accueil">Espace gérant</button>
-  <button class="btn cmd" id="b-nav-panier">Mon panier <span class="compte" id="nb-nav">0</span></button>
+  <a class="logo" href="#haut" aria-label="I'm Starving, accueil"><img src="img/logo.jpg" alt="" width="42" height="42"><b>I'M <i>STARVING</i></b></a>
+  <nav aria-label="Sections"><a href="#menu" data-t="nav_menu">Menu</a><a href="#salle" data-t="nav_salle">La salle</a><a href="#comment" data-t="nav_cmd">Commander</a><a href="#infos" data-t="nav_infos">Infos</a></nav>
+  <button class="langue" id="b-langue" aria-label="Changer de langue">العربية</button>
+  <button class="btn ligne gnav" data-ouvrir="accueil" data-t="gerant">Espace gérant</button>
+  <button class="btn cmd" id="b-nav-panier"><span data-t="panier">Mon panier</span> <span class="compte" id="nb-nav">0</span></button>
 </div></header>
 <div class="promo-band" id="promo-band" hidden></div>
 
 <main id="haut">
   <section class="heros">
-    <img src="img3d/hero.jpg" alt="Croger : burger dans un croissant, steak, cheddar fondant">
+    <img src="img3d/hero.jpg" alt="Croger : burger dans un croissant, steak, cheddar fondant" fetchpriority="high">
     <div class="wrap">
       <span class="sur" id="sur-hero">Fast food · Bab Ezzouar · Aïn Allah</span>
-      <h1><span class="script">le burger dans un croissant</span>Le Croger</h1>
-      <p>Croissant feuilleté, steak haché, fromage qui coule. Commandez en ligne : sur place, à emporter ou en livraison, sans appeler.</p>
-      <div class="actions"><a class="btn" href="#menu">Commander maintenant</a><a class="btn ligne" href="#signatures">Nos signatures</a></div>
-      <div class="puces"><span id="etat-cmd"><b>●</b> Commande en ligne ouverte</span><span>Sur place · QR code à table</span><span>À emporter</span><span>Livraison</span></div>
+      <h1><span class="script" data-t="hero_script">le burger dans un croissant</span><span data-t="hero_h1">Le Croger</span></h1>
+      <p data-t="hero_p">Croissant feuilleté, steak haché, fromage qui coule. Commandez en ligne : sur place, à emporter ou en livraison, sans appeler.</p>
+      <div class="actions"><a class="btn" href="#menu" data-t="btn_cmd">Commander maintenant</a><a class="btn ligne" href="#signatures" data-t="btn_sig">Nos signatures</a></div>
+      <div class="puces"><span id="etat-cmd"><b>●</b> Commande en ligne ouverte</span><span data-t="puce_place">Sur place · QR code à table</span><span data-t="emporter">À emporter</span><span data-t="livraison">Livraison</span></div>
     </div>
   </section>
   <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
 
   <section class="bloc" id="signatures"><div class="wrap">
-    <div class="tete"><h2>Nos <span class="script">signatures</span></h2><p>Les trois plats qu'on vient chercher de loin. Frais, généreux, faits pour toi.</p></div>
+    <div class="tete"><h2 data-t="sig_h" data-html>Nos <span class="script">signatures</span></h2><p data-t="sig_p">Les trois plats qu'on vient chercher de loin. Frais, généreux, faits pour toi.</p></div>
     <div class="sigs" id="sigs"></div>
   </div></section>
 
-  <section class="festin" aria-label="Le menu"><img src="img3d/festin.jpg" alt="Croger, smash burger, tacos, gratin et frites" loading="lazy"><div class="wrap"><span class="sur">7 familles · 34 recettes</span><h2>Faim ? <span class="script">on s'occupe du reste</span></h2></div></section>
+  <section class="festin" aria-label="Le menu"><img src="img3d/festin.jpg" alt="Croger, smash burger, tacos, gratin et frites" loading="lazy"><div class="wrap"><span class="sur" id="festin-sur"></span><h2 data-t="festin_h" data-html>Faim ? <span class="script">on s'occupe du reste</span></h2></div></section>
 
   <section class="bloc" id="menu" style="padding-top:20px"><div class="wrap">
-    <div class="tete"><h2>Le <span class="script">menu</span></h2><p>Choisissez la taille, ajoutez au panier, commandez. La cuisine reçoit tout instantanément.</p></div>
+    <div class="tete"><h2 data-t="menu_h" data-html>Le <span class="script">menu</span></h2><p data-t="menu_p">Choisissez la taille, ajoutez au panier, commandez. La cuisine reçoit tout instantanément.</p></div>
+    <div class="recherche"><input type="search" id="q" data-tp="rech" placeholder="Rechercher un plat…" aria-label="Rechercher un plat" autocomplete="off"></div>
     <div class="onglets" id="onglets" role="group" aria-label="Catégories"></div>
     <div class="grille" id="grille"></div>
   </div></section>
 
   <section class="bloc" id="salle" style="padding-top:20px"><div class="wrap">
-    <div class="tete"><h2>La <span class="script">salle</span></h2><p>Murs rouges, arches, lumière chaude : un lieu où l'on vient manger et où l'on reste.</p></div>
+    <div class="tete"><h2 data-t="salle_h" data-html>La <span class="script">salle</span></h2><p data-t="salle_p">Murs rouges, arches, lumière chaude : un lieu où l'on vient manger et où l'on reste.</p></div>
     <div class="salle">
-      <figure class="a"><img src="img/salle-arche.jpg" alt="Salle aux murs rouges et arche"><figcaption>L'arche rouge</figcaption></figure>
-      <figure><img src="img3d/crg5.jpg" alt="Croger Continental"><figcaption>Le Croger</figcaption></figure>
-      <figure class="d"><img src="img/salle-gratin.jpg" alt="Gratin servi en salle, étage et comptoir"><figcaption>En salle</figcaption></figure>
-      <figure><img src="img3d/stv0.jpg" alt="Starvation au poulet gratiné"><figcaption>Gratiné maison</figcaption></figure>
+      <figure class="a revele"><img src="img/salle-arche.jpg" alt="Salle aux murs rouges et arche" loading="lazy"><figcaption data-t="cap1">L'arche rouge</figcaption></figure>
+      <figure class="revele"><img src="img3d/crg5.jpg" alt="Croger Continental" loading="lazy"><figcaption data-t="cap2">Le Croger</figcaption></figure>
+      <figure class="d revele"><img src="img/salle-gratin.jpg" alt="Gratin servi en salle, étage et comptoir" loading="lazy"><figcaption data-t="cap3">En salle</figcaption></figure>
+      <figure class="revele"><img src="img3d/stv0.jpg" alt="Starvation au poulet gratiné" loading="lazy"><figcaption data-t="cap4">Gratiné maison</figcaption></figure>
     </div>
   </div></section>
 
   <section class="bloc" id="comment" style="padding-top:20px"><div class="wrap">
-    <div class="tete"><h2>Commander, <span class="script">c'est simple</span></h2><p>Plus besoin d'appeler : votre commande arrive directement en cuisine.</p></div>
+    <div class="tete"><h2 data-t="comment_h" data-html>Commander, <span class="script">c'est simple</span></h2><p data-t="comment_p">Plus besoin d'appeler : votre commande arrive directement en cuisine.</p></div>
     <div class="etapes">
-      <div class="etape"><span class="n">1</span><h3>Choisissez</h3><p>Le menu complet avec les tailles, les suppléments et les prix. À table, scannez le QR code : le numéro de table s'ajoute tout seul.</p></div>
-      <div class="etape"><span class="n">2</span><h3>Commandez</h3><p>Sur place, à emporter ou en livraison. Vous payez au comptoir ou à la livraison.</p></div>
-      <div class="etape"><span class="n">3</span><h3>Suivez</h3><p>Reçue, en préparation, prête : vous suivez votre commande en direct sur votre téléphone.</p></div>
+      <div class="etape revele"><span class="n">1</span><h3 data-t="e1">Choisissez</h3><p data-t="e1p">Le menu complet avec les tailles, les suppléments et les prix. À table, scannez le QR code : le numéro de table s'ajoute tout seul.</p></div>
+      <div class="etape revele"><span class="n">2</span><h3 data-t="e2">Commandez</h3><p data-t="e2p">Sur place, à emporter ou en livraison. Vous payez au comptoir ou à la livraison.</p></div>
+      <div class="etape revele"><span class="n">3</span><h3 data-t="e3">Suivez</h3><p data-t="e3p">Reçue, en préparation, prête : vous suivez votre commande en direct sur votre téléphone.</p></div>
     </div>
   </div></section>
 
   <section class="bloc" id="infos" style="padding-top:20px"><div class="wrap">
-    <div class="tete"><h2>Nos deux <span class="script">adresses</span></h2><p>Bab Ezzouar et Aïn Allah. Commandez en ligne dans celui de votre choix.</p></div>
+    <div class="tete"><h2 data-t="infos_h" data-html>Nos <span class="script">adresses</span></h2><p data-t="infos_p">Commandez en ligne dans le restaurant de votre choix.</p></div>
     <div class="infos" id="adresses"></div>
     <div class="carto pratique">
       <div class="liste">
-        <div><span>Commande en ligne</span><b>Sur place · emporter · livraison</b></div>
-        <div><span>Paiement</span><b>Au comptoir ou à la livraison</b></div>
-        <div><span>Instagram</span><b><a href="https://www.instagram.com/imstarvingfood/" target="_blank" rel="noopener" style="color:inherit">@imstarvingfood</a></b></div>
+        <div><span data-t="pr_cmd">Commande en ligne</span><b data-t="pr_cmd_v">Sur place · emporter · livraison</b></div>
+        <div><span data-t="pr_pay">Paiement</span><b data-t="pr_pay_v">Au comptoir ou à la livraison</b></div>
+        <div><span>Instagram</span><b><a id="lien-insta" href="https://www.instagram.com/imstarvingfood/" target="_blank" rel="noopener" style="color:inherit">@imstarvingfood</a></b></div>
       </div>
     </div>
   </div></section>
 </main>
-<footer><div class="wrap"><a class="logo" href="#haut"><img src="img/logo.jpg" alt=""><b>I'M <i>STARVING</i></b></a><span id="slogan-pied">Frais · Généreux · Fait pour toi</span><span>Site réalisé par Dzign Studio</span></div></footer>
+<footer><div class="wrap"><a class="logo" href="#haut"><img src="img/logo.jpg" alt="" width="42" height="42"><b>I'M <i>STARVING</i></b></a><span id="slogan-pied">Frais · Généreux · Fait pour toi</span><span data-t="realise">Site réalisé par Dzign Studio</span></div></footer>
 
-<div class="flottant"><button class="btn" id="b-flot"><span>Voir mon panier · <span id="nb-flot">0</span></span><span id="tot-flot">0 DA</span></button></div>
+<div class="flottant"><button class="btn" id="b-flot"><span><span data-t="flot">Voir mon panier</span> · <span id="nb-flot">0</span></span><span id="tot-flot">0 DA</span></button></div>
 <div class="voile" id="voile" hidden></div>
-<aside class="tiroir" id="tiroir" hidden aria-label="Commande"><header><h2 id="t-titre">Mon panier</h2><button class="fermer" id="b-fermer" aria-label="Fermer">✕</button></header><div class="contenu" id="t-contenu"></div><footer id="t-pied"></footer></aside>
-<div class="toast" id="toast" hidden></div>
-
+<section class="tiroir" id="tiroir" hidden role="dialog" aria-modal="true" aria-labelledby="t-titre"><div class="t-tete"><h2 id="t-titre">Mon panier</h2><button class="fermer" id="b-fermer" aria-label="Fermer">✕</button></div><div class="contenu" id="t-contenu"></div><div class="t-pied" id="t-pied"></div></section>
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
 
 <script src="data.js"></script>
 <script src="gestion.js"></script>
 <script>
 (function(){
-var IMS=window.IMS,$=function(i){return document.getElementById(i)},fmt=IMS.fmt;
-var M=IMS.menu(),cat='Crogers',panier=[],vue='panier',suivi=null;
-var resto=(IMS.RESTOS.find(function(r){return IMS.ouvert(r)})||IMS.RESTOS[0]).id,mode='place',table='1',heure='Dès que possible',adresse='';
-var mt=(location.hash||'').match(/^#(?:(bab|ain)-)?table-(\d{1,2})$/);if(mt){resto=mt[1]||'bab';table=mt[2];mode='place'}
+document.documentElement.classList.add('js');
+var IMS=window.IMS,$=function(i){return document.getElementById(i)},fmt=function(n){var x=IMS.fmt(n);return langue==='ar'?x.replace(/ DA$/,' د.ج'):x};
+
+// ----- Langues : français / arabe -----
+var TXT={
+ fr:{nav_menu:'Menu',nav_salle:'La salle',nav_cmd:'Commander',nav_infos:'Infos',gerant:'Espace gérant',panier:'Mon panier',
+  hero_script:'le burger dans un croissant',hero_h1:'Le Croger',hero_p:'Croissant feuilleté, steak haché, fromage qui coule. Commandez en ligne : sur place, à emporter ou en livraison, sans appeler.',
+  btn_cmd:'Commander maintenant',btn_sig:'Nos signatures',puce_place:'Sur place · QR code à table',place:'Sur place',emporter:'À emporter',livraison:'Livraison',
+  etat_ouvert:'Commande en ligne ouverte',etat_pause:'Commandes en ligne en pause',min:'min',
+  sig_h:'Nos <span class="script">signatures</span>',sig_p:'Les trois plats qu\'on vient chercher de loin. Frais, généreux, faits pour toi.',
+  festin_sur:'{a} familles · {b} recettes',festin_h:'Faim ? <span class="script">on s\'occupe du reste</span>',
+  menu_h:'Le <span class="script">menu</span>',menu_p:'Choisissez la taille, ajoutez au panier, commandez. La cuisine reçoit tout instantanément.',rech:'Rechercher un plat…',aucun:'Aucun plat ne correspond à « {q} ».',
+  des:'dès',epuise:'Épuisé aujourd\'hui',epuise2:'Épuisé',platjour:'Plat du jour',ajouter:'Ajouter',
+  salle_h:'La <span class="script">salle</span>',salle_p:'Murs rouges, arches, lumière chaude : un lieu où l\'on vient manger et où l\'on reste.',cap1:'L\'arche rouge',cap2:'Le Croger',cap3:'En salle',cap4:'Gratiné maison',
+  comment_h:'Commander, <span class="script">c\'est simple</span>',comment_p:'Plus besoin d\'appeler : votre commande arrive directement en cuisine.',
+  e1:'Choisissez',e1p:'Le menu complet avec les tailles, les suppléments et les prix. À table, scannez le QR code : le numéro de table s\'ajoute tout seul.',e2:'Commandez',e2p:'Sur place, à emporter ou en livraison. Vous payez au comptoir ou à la livraison.',e3:'Suivez',e3p:'Reçue, en préparation, prête : vous suivez votre commande en direct sur votre téléphone.',
+  infos_h:'Nos <span class="script">adresses</span>',infos_p:'Commandez en ligne dans le restaurant de votre choix.',ouvert_now:'Ouvert maintenant',ferme_now:'Fermé pour le moment',itin:'Itinéraire',appeler:'Appeler',
+  pr_cmd:'Commande en ligne',pr_cmd_v:'Sur place · emporter · livraison',pr_pay:'Paiement',pr_pay_v:'Au comptoir ou à la livraison',realise:'Site réalisé par Dzign Studio',flot:'Voir mon panier',
+  vide:'Votre panier est vide.<br>Ajoutez un Croger, vous ne le regretterez pas.',voir_menu:'Voir le menu',add:'Ajouter au panier',added:'{p} ajouté',taille:'Taille',supp:'Supplément',
+  table:'Table',comptoir:'Au comptoir',domicile:'À domicile',table_lbl:'Numéro de table (scanné par QR code)',retrait:'Retrait',heures:['Dès que possible','Dans 15 min','Dans 30 min','Dans 45 min'],
+  adr:'Adresse de livraison',adr_ph:'Rue, résidence, bâtiment, étage',prenom:'Votre prénom',tel:'Téléphone',total:'Total',restaurant:'Restaurant',mode:'Mode',
+  cmd_comptoir:'Commander · paiement au comptoir',cmd_livraison:'Commander · paiement à la livraison',
+  pause_note:'{r} a mis les commandes en ligne en pause quelques minutes (rush en cuisine). Choisissez l\'autre restaurant ou réessayez dans un instant.',eta_note:'Préparation estimée : ≈ {m} min',ferme_note:'{r} est fermé : votre commande sera préparée dès l\'ouverture ({h}).',
+  pause_btn:'Commandes en pause',ouvert_r:'Ouvert · ≈ {m} min',ferme_r:'Fermé · {h}',pause_r:'Commandes en pause',
+  err_adr:'Indiquez l\'adresse de livraison',err_tel:'Numéro invalide (ex. 0555 12 34 56)',err_nom:'Indiquez votre prénom',sent:'Commande envoyée en cuisine !',
+  suivi_title:'Ma commande',suivi_sur:'Commande envoyée',merci:'Merci {n} ! {r} a bien reçu votre commande.',s1:'Reçue par le restaurant',s2:'En préparation en cuisine',s3liv:'En route vers vous',s3place:'Prête, on vous l\'apporte',s3emp:'Prête, venez la récupérer',
+  eta:'Prête vers <b>{h}</b>',autre:'Nouvelle commande',recommander:'Recommander la même chose',upsell:'Ça va bien avec',
+  fid:'Fidélité : {x}/10 · la 10e commande, un Croger offert',fid_ok:'🎁 Votre Croger offert vous attend !',bienvenue:'Table {t} : bienvenue !',langue:'العربية',mots:['Frais','Généreux','Fait pour toi']},
+ ar:{nav_menu:'القائمة',nav_salle:'القاعة',nav_cmd:'اطلب',nav_infos:'معلومات',gerant:'فضاء المسيّر',panier:'سلتي',
+  hero_script:'برغر داخل كرواسون',hero_h1:'الكروجر',hero_p:'كرواسون مورّق، لحم مفروم وجبن ذائب. اطلب عبر الإنترنت: في المطعم، للأخذ أو بالتوصيل، دون أن تتصل.',
+  btn_cmd:'اطلب الآن',btn_sig:'أطباقنا المميزة',puce_place:'في المطعم · رمز QR على الطاولة',place:'في المطعم',emporter:'للأخذ',livraison:'توصيل',
+  etat_ouvert:'الطلب عبر الإنترنت مفتوح',etat_pause:'الطلبات متوقفة مؤقتًا',min:'د',
+  sig_h:'أطباقنا <span class="script">المميزة</span>',sig_p:'ثلاثة أطباق يأتي الناس من بعيد من أجلها. طازجة، سخية، ومصنوعة لك.',
+  festin_sur:'{a} أصناف · {b} وصفة',festin_h:'جائع؟ <span class="script">نتكفّل بالباقي</span>',
+  menu_h:'<span class="script">القائمة</span>',menu_p:'اختر الحجم، أضف إلى السلة واطلب. يصل كل شيء إلى المطبخ فورًا.',rech:'ابحث عن طبق…',aucun:'لا يوجد طبق يطابق « {q} ».',
+  des:'ابتداءً من',epuise:'نفد اليوم',epuise2:'نفد',platjour:'طبق اليوم',ajouter:'أضف',
+  salle_h:'<span class="script">القاعة</span>',salle_p:'جدران حمراء، أقواس وإضاءة دافئة: مكان تأتي لتأكل فيه وتبقى.',cap1:'القوس الأحمر',cap2:'الكروجر',cap3:'في القاعة',cap4:'غراتان البيت',
+  comment_h:'الطلب <span class="script">سهل</span>',comment_p:'لا حاجة للاتصال: طلبك يصل مباشرة إلى المطبخ.',
+  e1:'اختر',e1p:'القائمة كاملة بالأحجام والإضافات والأسعار. على الطاولة، امسح رمز QR فيُضاف رقم طاولتك تلقائيًا.',e2:'اطلب',e2p:'في المطعم، للأخذ أو بالتوصيل. تدفع عند الشباك أو عند الاستلام.',e3:'تابع',e3p:'مستلمة، قيد التحضير، جاهزة: تابع طلبك مباشرة على هاتفك.',
+  infos_h:'<span class="script">عناويننا</span>',infos_p:'اطلب عبر الإنترنت من المطعم الذي تختاره.',ouvert_now:'مفتوح الآن',ferme_now:'مغلق حاليًا',itin:'الاتجاهات',appeler:'اتصل',
+  pr_cmd:'الطلب عبر الإنترنت',pr_cmd_v:'في المطعم · للأخذ · توصيل',pr_pay:'الدفع',pr_pay_v:'عند الشباك أو عند الاستلام',realise:'تصميم وتطوير Dzign Studio',flot:'عرض السلة',
+  vide:'سلتك فارغة.<br>أضف كروجر، لن تندم.',voir_menu:'عرض القائمة',add:'أضف إلى السلة',added:'أُضيف {p}',taille:'الحجم',supp:'إضافة',
+  table:'طاولة',comptoir:'عند الشباك',domicile:'إلى المنزل',table_lbl:'رقم الطاولة (من رمز QR)',retrait:'وقت الاستلام',heures:['في أقرب وقت','بعد 15 دقيقة','بعد 30 دقيقة','بعد 45 دقيقة'],
+  adr:'عنوان التوصيل',adr_ph:'الشارع، الحي، العمارة، الطابق',prenom:'اسمك',tel:'رقم الهاتف',total:'المجموع',restaurant:'المطعم',mode:'طريقة الطلب',
+  cmd_comptoir:'اطلب · الدفع عند الشباك',cmd_livraison:'اطلب · الدفع عند الاستلام',
+  pause_note:'أوقف {r} الطلبات مؤقتًا لبضع دقائق (ضغط في المطبخ). اختر المطعم الآخر أو أعد المحاولة بعد قليل.',eta_note:'وقت التحضير المتوقع: ≈ {m} د',ferme_note:'{r} مغلق: سيُحضَّر طلبك عند الافتتاح ({h}).',
+  pause_btn:'الطلبات متوقفة',ouvert_r:'مفتوح · ≈ {m} د',ferme_r:'مغلق · {h}',pause_r:'متوقف مؤقتًا',
+  err_adr:'أدخل عنوان التوصيل',err_tel:'رقم غير صحيح (مثال 0555 12 34 56)',err_nom:'أدخل اسمك',sent:'تم إرسال الطلب إلى المطبخ!',
+  suivi_title:'طلبي',suivi_sur:'تم إرسال الطلب',merci:'شكرًا {n}! استلم {r} طلبك.',s1:'استلمها المطعم',s2:'قيد التحضير في المطبخ',s3liv:'في الطريق إليك',s3place:'جاهزة، سنحضرها إليك',s3emp:'جاهزة، تعال لاستلامها',
+  eta:'جاهزة حوالي <b>{h}</b>',autre:'طلب جديد',recommander:'أعد نفس الطلب',upsell:'يتماشى جيدًا مع',
+  fid:'الوفاء: {x}/10 · الطلب العاشر، كروجر مجاني',fid_ok:'🎁 الكروجر المجاني في انتظارك!',bienvenue:'طاولة {t}: مرحبًا!',langue:'Français',mots:['طازج','سخي','مصنوع لك']}
+};
+var langue='fr';try{langue=localStorage.getItem('ims-lang')||'fr'}catch(e){}if(location.hash==='#ar')langue='ar';
+function t(k,v){var s=(TXT[langue][k]!=null?TXT[langue][k]:TXT.fr[k]);if(v)for(var x in v)s=String(s).split('{'+x+'}').join(v[x]);return s}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function appliquerLangue(){
+  document.documentElement.lang=langue;document.documentElement.dir=langue==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-t]').forEach(function(e){var v=t(e.dataset.t);if(e.hasAttribute('data-html'))e.innerHTML=v;else e.textContent=v});
+  document.querySelectorAll('[data-tp]').forEach(function(e){e.placeholder=t(e.dataset.tp)});
+  $('b-langue').textContent=t('langue');$('b-langue').setAttribute('lang',langue==='ar'?'fr':'ar');
+  $('ticker').innerHTML=Array(2).fill(t('mots').concat(IMS.CATS).map(function(m){return '<span>'+esc(m)+'</span><span>✦</span>'}).join('')).join('');
+}
+$('b-langue').onclick=function(){langue=langue==='ar'?'fr':'ar';try{localStorage.setItem('ims-lang',langue)}catch(e){}appliquerLangue();tout();if(!$('tiroir').hidden)rafraichirTiroir()};
+
+// ----- État -----
+var M=IMS.menu(),cat=IMS.CATS[0],q='',panier=[],vue='panier',suivi=null;
+var resto=(IMS.RESTOS.find(function(r){return IMS.ouvert(r)})||IMS.RESTOS[0]).id,mode='place',table='1',heure=0,adresse='';
+var moi={nom:'Yacine',tel:'0555 12 34 56'};
+try{var m0=JSON.parse(localStorage.getItem('ims-moi')||'null');if(m0)moi=m0;var p0=JSON.parse(localStorage.getItem('ims-panier')||'null');if(p0)panier=p0;adresse=moi.adresse||''}catch(e){}
+var mt=(location.hash||'').match(/^#(?:([a-z0-9]+)-)?table-(\d{1,2})$/);if(mt){resto=mt[1]&&IMS.RESTOS.some(function(r){return r.id===mt[1]})?mt[1]:IMS.RESTOS[0].id;table=mt[2];mode='place'}
 try{var s=JSON.parse(sessionStorage.getItem('ims-suivi')||'null');if(s)suivi=s}catch(e){}
+function garder(){try{localStorage.setItem('ims-panier',JSON.stringify(panier));localStorage.setItem('ims-moi',JSON.stringify(moi))}catch(e){}}
 
-$('ticker').innerHTML=Array(2).fill(['Frais','Généreux','Fait pour toi','Crogers','Smash','Tacos','Starvation','Sandwichs','Pâtes'].map(function(m){return '<span>'+m+'</span><span>✦</span>'}).join('')).join('');
-
+// ----- Vitrine -----
 function plat(id){return M.find(function(p){return p.id===id})}
+function prixHTML(p,d2){return '<span class="prix">'+(d2&&p.tailles?'<small>'+t('des')+'</small>':'')+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'}
+function boutonPlus(p,ep){return p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="'+t('ajouter')+' '+esc(p.nom)+'">+</button>':'<span class="rupt">'+t(ep||'epuise')+'</span>'}
 function signatures(){
   var ids=['crg6','smc','stv4'].filter(function(i){return plat(i)});M.forEach(function(p){if(ids.length<3&&ids.indexOf(p.id)<0)ids.push(p.id)});
-  var S=ids.map(function(id,i){return [id,'0'+(i+1)]});
-  $('sigs').innerHTML=S.map(function(s){var p=plat(s[0]);return '<article class="sig"><img src="'+p.img+'" alt="'+p.nom+'"><div class="in"><span class="no">'+s[1]+'</span><h3>'+p.nom+'</h3><p>'+p.desc+'</p><div class="bas"><span class="prix"><small>dès</small>'+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé</span>')+'</div></div></article>'}).join('');
+  $('sigs').innerHTML=ids.map(function(id,i){var p=plat(id);return '<article class="sig revele"><img src="'+p.img+'" alt="'+esc(p.nom)+'" loading="lazy"><div class="in"><span class="no">0'+(i+1)+'</span><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p><div class="bas">'+prixHTML(p,true)+boutonPlus(p,'epuise2')+'</div></div></article>'}).join('');
 }
-function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){return '<button aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>'}).join('');
-  $('onglets').querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;onglets();grille()}})}
+function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){return '<button aria-pressed="'+(c===cat&&!q)+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join('');
+  $('onglets').querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;q='';$('q').value='';onglets();grille()}})}
 function grille(){
-  $('grille').innerHTML=M.filter(function(p){return p.cat===cat}).map(function(p){return '<article class="carte'+(p.dispo?'':' rupture')+'"><div class="vis">'+(p.promo?'<span class="pastille">Plat du jour · -'+p.promo+' %</span>':'')+'<img src="'+p.img+'" alt="'+p.nom+'" loading="lazy"></div><div class="corps"><h3>'+p.nom+'</h3><p>'+p.desc+'</p></div><div class="bas"><span class="prix">'+(p.tailles?'<small>dès</small>':'')+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé aujourd\'hui</span>')+'</div></article>'}).join('');
+  var Q=q.trim().toLowerCase(),L=M.filter(function(p){return Q?(p.nom+' '+p.desc+' '+p.cat).toLowerCase().indexOf(Q)>=0:p.cat===cat});
+  $('grille').innerHTML=L.map(function(p){return '<article class="carte revele'+(p.dispo?'':' rupture')+'"><div class="vis">'+(p.promo?'<span class="pastille">'+t('platjour')+' · -'+p.promo+' %</span>':'')+'<img src="'+p.img+'" alt="'+esc(p.nom)+'" loading="lazy"></div><div class="corps"><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p></div><div class="bas">'+prixHTML(p,true)+boutonPlus(p)+'</div></article>'}).join('')||'<p class="aucun">'+t('aucun',{q:esc(q)})+'</p>';
+  observer();
 }
-document.addEventListener('click',function(e){var b=e.target.closest('.plus');if(b)choisir(b.dataset.id)});
+$('q').addEventListener('input',function(){q=this.value;onglets();grille()});
+function festin(){$('festin-sur').textContent=t('festin_sur',{a:IMS.CATS.length,b:M.length})}
 
-function ouvrir(){$('voile').hidden=false;$('tiroir').hidden=false;document.body.style.overflow='hidden'}
-function fermer(){$('voile').hidden=true;$('tiroir').hidden=true;document.body.style.overflow=''}
+// Apparition au défilement
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(E){E.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
+function observer(){document.querySelectorAll('.revele:not(.vu)').forEach(function(e){if(io)io.observe(e);else e.classList.add('vu')})}
+
+// ----- Panier -----
+document.addEventListener('click',function(e){var b=e.target.closest('.plus');if(b&&!b.closest('.g'))choisir(b.dataset.id,b)});
+var dernierFocus=null;
+function ouvrir(){dernierFocus=document.activeElement;$('voile').hidden=false;$('tiroir').hidden=false;document.body.style.overflow='hidden';setTimeout(function(){$('b-fermer').focus()},30)}
+function fermer(){$('voile').hidden=true;$('tiroir').hidden=true;document.body.style.overflow='';if(dernierFocus&&dernierFocus.focus)try{dernierFocus.focus()}catch(e){}}
 $('voile').onclick=fermer;$('b-fermer').onclick=fermer;
-document.addEventListener('keydown',function(e){if(e.key==='Escape')fermer()});
-function toast(t){var x=$('toast');x.textContent=t;x.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(function(){x.hidden=true},1800)}
-
-function choisir(id){
-  var p=plat(id);if(!p.tailles&&!p.extra){ajouter(p,[],p.prix);return}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('tiroir').hidden)fermer()});
+function toast(x){var e=$('toast');e.textContent=x;e.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(function(){e.hidden=true},2000)}
+function voler(src,depuis){try{
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!depuis)return;var cible=getComputedStyle($('b-flot').parentNode).display!=='none'?$('b-flot'):$('b-nav-panier');
+  var a=depuis.getBoundingClientRect(),b=cible.getBoundingClientRect(),im=document.createElement('img');im.src=src;im.className='vol';im.style.left=(a.left+a.width/2-27)+'px';im.style.top=(a.top+a.height/2-27)+'px';document.body.appendChild(im);
+  var dx=b.left+b.width/2-(a.left+a.width/2),dy=b.top+b.height/2-(a.top+a.height/2);
+  im.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+dx*.5+'px,'+(dy*.5-120)+'px) scale(.8)',opacity:1},{transform:'translate('+dx+'px,'+dy+'px) scale(.2)',opacity:.2}],{duration:750,easing:'cubic-bezier(.5,0,.6,1)'}).onfinish=function(){im.remove();cible.classList.remove('saute');void cible.offsetWidth;cible.classList.add('saute')};
+}catch(e){}}
+function choisir(id,depuis){
+  var p=plat(id);if(!p||!p.dispo)return;if(!p.tailles&&!p.extra){ajouter(p,[],p.prix,depuis);return}
   vue='options';$('t-titre').textContent=p.nom;
-  $('t-contenu').innerHTML='<div class="carte" style="border:0;background:none"><div class="vis" style="border-radius:16px"><img src="'+p.img+'" alt=""></div></div><p style="margin:0;color:var(--gris)">'+p.desc+'</p>'+
-    (p.tailles?'<div class="opt"><span class="t">Taille</span>'+p.tailles.map(function(t,i){return '<label><span><input type="radio" name="taille" value="'+i+'"'+(i?'':' checked')+'> '+t[0]+'</span><span class="prix">'+fmt(t[1])+'</span></label>'}).join('')+'</div>':'')+
-    (p.extra?'<div class="opt"><span class="t">Supplément</span>'+p.extra.map(function(x,i){return '<label><span><input type="checkbox" name="extra" value="'+i+'"> '+x[0]+'</span><span>+ '+fmt(x[1])+'</span></label>'}).join('')+'</div>':'');
-  $('t-pied').innerHTML='<button class="btn" id="b-ok">Ajouter au panier</button>';
-  $('b-ok').onclick=function(){var det=[],px=p.prix;if(p.tailles){var t=p.tailles[+document.querySelector('input[name=taille]:checked').value];det.push(t[0]);px=t[1]}
-    document.querySelectorAll('input[name=extra]:checked').forEach(function(x){var e=p.extra[+x.value];det.push(e[0]);px+=e[1]});ajouter(p,det,px);fermer()};
+  $('t-contenu').innerHTML='<div class="carte" style="border:0;background:none"><div class="vis" style="border-radius:16px"><img src="'+p.img+'" alt=""></div></div><p style="margin:0;color:var(--gris)">'+esc(p.desc)+'</p>'+
+    (p.tailles?'<div class="opt"><span class="t">'+t('taille')+'</span>'+p.tailles.map(function(x,i){return '<label><span><input type="radio" name="taille" value="'+i+'"'+(i?'':' checked')+'> '+esc(x[0])+'</span><span class="prix">'+fmt(x[1])+'</span></label>'}).join('')+'</div>':'')+
+    (p.extra?'<div class="opt"><span class="t">'+t('supp')+'</span>'+p.extra.map(function(x,i){return '<label><span><input type="checkbox" name="extra" value="'+i+'"> '+esc(x[0])+'</span><span>+ '+fmt(x[1])+'</span></label>'}).join('')+'</div>':'');
+  $('t-pied').innerHTML='<button class="btn" id="b-ok">'+t('add')+'</button>';
+  $('b-ok').onclick=function(){var det=[],px=p.prix;if(p.tailles){var x=p.tailles[+document.querySelector('input[name=taille]:checked').value];det.push(x[0]);px=x[1]}
+    document.querySelectorAll('input[name=extra]:checked').forEach(function(c){var e=p.extra[+c.value];det.push(e[0]);px+=e[1]});fermer();ajouter(p,det,px,depuis)};
   ouvrir();
 }
-function ajouter(p,det,px){var cle=p.id+'|'+det.join(',');var l=panier.find(function(x){return x.cle===cle});if(l)l.q++;else panier.push({cle:cle,id:p.id,nom:p.nom,det:det,px:px,q:1});compte();toast(p.nom+' ajouté')}
+function ajouter(p,det,px,depuis){var cle=p.id+'|'+det.join(',');var l=panier.find(function(x){return x.cle===cle});if(l)l.q++;else panier.push({cle:cle,id:p.id,nom:p.nom,det:det,px:px,q:1});compte();garder();toast(t('added',{p:p.nom}));voler(p.img,depuis)}
 function total(){return panier.reduce(function(a,l){return a+l.px*l.q},0)}
 function compte(){var n=panier.reduce(function(a,l){return a+l.q},0);$('nb-nav').textContent=n;$('nb-flot').textContent=n;$('tot-flot').textContent=fmt(total())}
 $('b-nav-panier').onclick=$('b-flot').onclick=function(){suivi?montrerSuivi():montrerPanier();ouvrir()};
+function rafraichirTiroir(){vue==='suivi'?montrerSuivi():vue==='panier'?montrerPanier():fermer()}
 
+function chiffres(x){return String(x||'').replace(/\D/g,'')}
+function hachage(s){var h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
+function fidelite(tel){var k=chiffres(tel);if(k.length<9)return null;var n=IMS.commandes().filter(function(c){return chiffres(c.tel)===k}).length;if(IMS.mode()==='demo'&&n)n+=2+hachage(String(tel).replace(/\s/g,''))%17;return n}
+function fidHTML(){var n=fidelite(moi.tel);if(n==null||!n)return '';var x=n%10;return '<div class="fid">'+(n>=10&&x===0?t('fid_ok'):'⭐ '+t('fid',{x:x})+'<span class="barre"><i style="width:'+x*10+'%"></i></span>')+'</div>'}
+function suggestions(){var dans={};panier.forEach(function(l){var p=plat(l.id);if(p)dans[p.cat]=1});
+  var S=[];['Starvation','Pâtes','Tacos','Smash','Sandwichs','Crogers','Burgers'].concat(IMS.CATS).forEach(function(c){if(S.length<2&&!dans[c]&&S.every(function(p){return p.cat!==c})){var p=M.find(function(x){return x.cat===c&&x.dispo});if(p)S.push(p)}});
+  return S.length?'<div class="sugg"><span class="t">'+t('upsell')+'</span>'+S.map(function(p){return '<div class="s"><img src="'+p.img+'" alt=""><div><b>'+esc(p.nom)+'</b><small>'+(p.tailles?t('des')+' ':'')+fmt(p.prix)+'</small></div><button class="plus" data-id="'+p.id+'" aria-label="'+t('ajouter')+' '+esc(p.nom)+'">+</button></div>'}).join('')+'</div>':''}
 function montrerPanier(){
-  vue='panier';$('t-titre').textContent='Mon panier';
-  if(!panier.length){$('t-contenu').innerHTML='<div class="vide">Votre panier est vide.<br>Ajoutez un Croger, vous ne le regretterez pas.</div>';$('t-pied').innerHTML='<button class="btn ligne" id="b-menu">Voir le menu</button>';$('b-menu').onclick=function(){fermer();location.hash='menu'};return}
-  var md={place:'Sur place',emporter:'À emporter',livraison:'Livraison'};
-  $('t-contenu').innerHTML=panier.map(function(l,i){return '<div class="ligne"><span><b>'+l.nom+'</b>'+(l.det.length?'<small>'+l.det.join(' · ')+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span><div class="qte"><button data-i="'+i+'" data-d="-1" aria-label="Retirer un">−</button><b>'+l.q+'</b><button data-i="'+i+'" data-d="1" aria-label="Ajouter un">+</button></div></div>'}).join('')+
-    '<div class="modes deux" role="group" aria-label="Restaurant" style="margin-bottom:8px">'+IMS.RESTOS.map(function(r){return '<button data-r="'+r.id+'" aria-pressed="'+(r.id===resto)+'">'+r.nom+'<small>'+(IMS.service()[r.id].pause?'Commandes en pause':IMS.ouvert(r)?'Ouvert · ≈ '+IMS.service()[r.id].attente+' min':'Fermé · '+r.h)+'</small></button>'}).join('')+'</div>'+
-    '<div class="modes" role="group" aria-label="Mode">'+['place','emporter','livraison'].map(function(m){return '<button data-m="'+m+'" aria-pressed="'+(m===mode)+'">'+md[m]+'<small>'+(m==='place'?'Table '+table:m==='emporter'?'Au comptoir':'À domicile')+'</small></button>'}).join('')+'</div>'+
-    (mode==='place'?'<label class="champ" for="c-table">Numéro de table (scanné par QR code)<select id="c-table">'+Array.from({length:16},function(_,i){return '<option'+(String(i+1)===table?' selected':'')+'>'+(i+1)+'</option>'}).join('')+'</select></label>':'')+
-    (mode==='emporter'?'<label class="champ" for="c-heure">Retrait<select id="c-heure">'+['Dès que possible','Dans 15 min','Dans 30 min','Dans 45 min'].map(function(h){return '<option'+(h===heure?' selected':'')+'>'+h+'</option>'}).join('')+'</select></label>':'')+
-    (mode==='livraison'?'<label class="champ" for="c-adr">Adresse de livraison<input id="c-adr" value="'+adresse.replace(/"/g,'&quot;')+'" placeholder="Rue, résidence, bâtiment, étage"></label>':'')+
-    '<label class="champ" for="c-nom">Votre prénom<input id="c-nom" value="Yacine" autocomplete="given-name"></label><label class="champ" for="c-tel">Téléphone<input id="c-tel" value="0555 12 34 56" inputmode="tel"></label>';
-  $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(total())+'</span></div>'+(IMS.service()[resto].pause?'<p class="ferme-note">'+IMS.resto(resto).nom+' a mis les commandes en ligne en pause quelques minutes (rush en cuisine). Choisissez l\'autre restaurant ou réessayez dans un instant.</p>':IMS.ouvert(IMS.resto(resto))?'<p class="ferme-note" style="color:var(--gris)">Préparation estimée : ≈ '+IMS.service()[resto].attente+' min</p>':'<p class="ferme-note">'+IMS.resto(resto).nom+' est fermé : votre commande sera préparée dès l\'ouverture ('+IMS.resto(resto).h.split(' ')[0]+').</p>')+'<button class="btn" id="b-cmd">Commander · paiement '+(mode==='livraison'?'à la livraison':'au comptoir')+'</button>';
-  $('t-contenu').querySelectorAll('.qte button').forEach(function(b){b.onclick=function(){var l=panier[+b.dataset.i];l.q+=+b.dataset.d;if(l.q<1)panier.splice(+b.dataset.i,1);compte();montrerPanier()}});
+  vue='panier';$('t-titre').textContent=t('panier');
+  if(!panier.length){$('t-contenu').innerHTML='<div class="vide">'+t('vide')+'</div>';$('t-pied').innerHTML='<button class="btn ligne" id="b-menu">'+t('voir_menu')+'</button>';$('b-menu').onclick=function(){fermer();location.hash='menu'};return}
+  var S=IMS.service(),R=IMS.resto(resto),Sr=S[resto]||{pause:false,attente:20};
+  $('t-contenu').innerHTML=panier.map(function(l,i){return '<div class="ligne"><span><b>'+esc(l.nom)+'</b>'+(l.det.length?'<small>'+esc(l.det.join(' · '))+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span><div class="qte"><button data-i="'+i+'" data-d="-1" aria-label="−1">−</button><b>'+l.q+'</b><button data-i="'+i+'" data-d="1" aria-label="+1">+</button></div></div>'}).join('')+
+    suggestions()+
+    (IMS.RESTOS.length>1?'<div class="modes deux" role="group" aria-label="'+t('restaurant')+'">'+IMS.RESTOS.map(function(r){var x=S[r.id]||{};return '<button data-r="'+r.id+'" aria-pressed="'+(r.id===resto)+'">'+esc(r.nom)+'<small>'+(x.pause?t('pause_r'):IMS.ouvert(r)?t('ouvert_r',{m:x.attente}):t('ferme_r',{h:r.h}))+'</small></button>'}).join('')+'</div>':'')+
+    '<div class="modes" role="group" aria-label="'+t('mode')+'">'+['place','emporter','livraison'].map(function(m){return '<button data-m="'+m+'" aria-pressed="'+(m===mode)+'">'+t(m)+'<small>'+(m==='place'?t('table')+' '+table:m==='emporter'?t('comptoir'):t('domicile'))+'</small></button>'}).join('')+'</div>'+
+    (mode==='place'?'<label class="champ">'+t('table_lbl')+'<select id="c-table">'+Array.from({length:20},function(_,i){return '<option'+(String(i+1)===table?' selected':'')+'>'+(i+1)+'</option>'}).join('')+'</select></label>':'')+
+    (mode==='emporter'?'<label class="champ">'+t('retrait')+'<select id="c-heure">'+t('heures').map(function(h,i){return '<option value="'+i+'"'+(i===heure?' selected':'')+'>'+h+'</option>'}).join('')+'</select></label>':'')+
+    (mode==='livraison'?'<label class="champ" id="ch-adr">'+t('adr')+'<input id="c-adr" value="'+esc(adresse)+'" placeholder="'+t('adr_ph')+'" autocomplete="street-address"><span class="msg" id="m-adr"></span></label>':'')+
+    '<label class="champ" id="ch-nom">'+t('prenom')+'<input id="c-nom" value="'+esc(moi.nom)+'" autocomplete="given-name"><span class="msg" id="m-nom"></span></label><label class="champ" id="ch-tel">'+t('tel')+'<input id="c-tel" value="'+esc(moi.tel)+'" inputmode="tel" autocomplete="tel"><span class="msg" id="m-tel"></span></label><div id="fid">'+fidHTML()+'</div>';
+  $('t-pied').innerHTML='<div class="total"><span>'+t('total')+'</span><span>'+fmt(total())+'</span></div>'+(Sr.pause?'<p class="ferme-note">'+t('pause_note',{r:esc(R.nom)})+'</p>':IMS.ouvert(R)?'<p class="ferme-note" style="color:var(--gris)">'+t('eta_note',{m:Sr.attente})+'</p>':'<p class="ferme-note">'+t('ferme_note',{r:esc(R.nom),h:R.h.split(' ')[0]})+'</p>')+'<button class="btn" id="b-cmd">'+(Sr.pause?t('pause_btn'):t(mode==='livraison'?'cmd_livraison':'cmd_comptoir'))+'</button>';
+  $('t-contenu').querySelectorAll('.qte button').forEach(function(b){b.onclick=function(){var l=panier[+b.dataset.i];l.q+=+b.dataset.d;if(l.q<1)panier.splice(+b.dataset.i,1);compte();garder();montrerPanier()}});
   $('t-contenu').querySelectorAll('.modes button').forEach(function(b){b.onclick=function(){if(b.dataset.r)resto=b.dataset.r;else mode=b.dataset.m;montrerPanier()}});
-  var s=$('c-table');if(s)s.onchange=function(){table=s.value};var h=$('c-heure');if(h)h.onchange=function(){heure=h.value};var a=$('c-adr');if(a)a.oninput=function(){adresse=a.value};
-  if(IMS.service()[resto].pause){$('b-cmd').disabled=true;$('b-cmd').style.opacity=.45;$('b-cmd').textContent='Commandes en pause'}
-  $('b-cmd').onclick=function(){if(IMS.service()[resto].pause)return;
-    if(mode==='livraison'&&!adresse.trim()){$('c-adr').focus();toast('Indiquez l\'adresse de livraison');return}
-    var c=IMS.nouvelleCommande({resto:resto,t:Date.now(),mode:mode,table:table,heure:heure,adresse:adresse,nom:$('c-nom').value||'Client',tel:$('c-tel').value,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv'});
-    suivi=c.no;try{sessionStorage.setItem('ims-suivi',JSON.stringify(suivi))}catch(e){}
-    panier=[];compte();montrerSuivi();etatGerant();toast('Commande envoyée en cuisine !');
-  };
+  var s=$('c-table');if(s)s.onchange=function(){table=s.value};var h=$('c-heure');if(h)h.onchange=function(){heure=+h.value};
+  var a=$('c-adr');if(a)a.oninput=function(){adresse=a.value;moi.adresse=adresse;garder()};
+  $('c-nom').oninput=function(){moi.nom=this.value;garder()};
+  $('c-tel').oninput=function(){moi.tel=this.value;garder();$('fid').innerHTML=fidHTML()};
+  if(Sr.pause){$('b-cmd').disabled=true;$('b-cmd').style.opacity=.45}
+  $('b-cmd').onclick=envoyer;
 }
+function erreur(id,msg){var c=$('ch-'+id);if(c)c.classList.toggle('erreur',!!msg);var m=$('m-'+id);if(m)m.textContent=msg||''}
+function envoyer(){
+  var Sr=IMS.service()[resto]||{};if(Sr.pause)return;
+  var nom=$('c-nom').value.trim(),tel=$('c-tel').value.trim(),k=chiffres(tel),ok=true;
+  erreur('nom',nom?'':t('err_nom'));if(!nom)ok=false;
+  var tok=/^0[5-7]\d{8}$/.test(k)||/^0[1-4]\d{7}$/.test(k);erreur('tel',tok?'':t('err_tel'));if(!tok)ok=false;
+  if(mode==='livraison'){erreur('adr',adresse.trim()?'':t('err_adr'));if(!adresse.trim())ok=false}
+  if(!ok){var f=document.querySelector('.champ.erreur input');if(f)f.focus();return}
+  moi.nom=nom;moi.tel=tel;garder();
+  var c=IMS.nouvelleCommande({resto:resto,t:Date.now(),mode:mode,table:table,heure:TXT.fr.heures[heure],adresse:adresse,nom:nom,tel:tel,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv',langue:langue});
+  suivi=c.no;try{sessionStorage.setItem('ims-suivi',JSON.stringify(suivi))}catch(e){}
+  panier=[];compte();garder();montrerSuivi();etatGerant();toast(t('sent'));
+}
+function hhmm(ts){var d=new Date(ts);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
 function montrerSuivi(){
   vue='suivi';var c=IMS.commandes().find(function(x){return x.no===suivi});if(!c){suivi=null;montrerPanier();return}
-  $('t-titre').textContent='Ma commande';
-  var r={nouv:0,prep:1,prete:2,fin:3}[c.st];
-  var E=['Reçue par le restaurant','En préparation en cuisine',c.mode==='livraison'?'En route vers vous':c.mode==='place'?'Prête, on vous l\'apporte':'Prête, venez la récupérer'];
-  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">Commande envoyée</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">Merci '+c.nom+' ! I\'m Starving '+IMS.resto(c.resto).nom+' a bien reçu votre commande.</p></div><div class="pas">'+E.map(function(e,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i+1)+'</i>'+e+'</div>'}).join('')+'</div>'+
-    '<div>'+c.lignes.map(function(l){return '<div class="ligne"><span><b>'+l.q+'× '+l.nom+'</b>'+(l.det.length?'<small>'+l.det.join(' · ')+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span></div>'}).join('')+'</div>';
-  $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(c.total)+'</span></div><button class="btn ligne" id="b-autre">Nouvelle commande</button>';
+  $('t-titre').textContent=t('suivi_title');
+  var r={nouv:0,prep:1,prete:2,fin:3}[c.st],att=(IMS.service()[c.resto]||{attente:20}).attente;
+  var E=[t('s1'),t('s2'),c.mode==='livraison'?t('s3liv'):c.mode==='place'?t('s3place'):t('s3emp')];
+  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">'+t('suivi_sur')+'</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">'+t('merci',{n:esc(c.nom),r:esc(IMS.config().nom+' '+IMS.resto(c.resto).nom)})+'</p>'+(r<2?'<span class="eta">⏱ '+t('eta',{h:hhmm(c.t+att*60000)})+'</span>':'')+'</div><div class="pas">'+E.map(function(e,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i+1)+'</i>'+e+'</div>'}).join('')+'</div>'+
+    '<div>'+c.lignes.map(function(l){return '<div class="ligne"><span><b>'+l.q+'× '+esc(l.nom)+'</b>'+(l.det.length?'<small>'+esc(l.det.join(' · '))+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span></div>'}).join('')+'</div>';
+  $('t-pied').innerHTML='<div class="total"><span>'+t('total')+'</span><span>'+fmt(c.total)+'</span></div>'+(r>=2?'<button class="btn" id="b-re">'+t('recommander')+'</button>':'')+'<button class="btn ligne" id="b-autre">'+t('autre')+'</button>';
   $('b-autre').onclick=function(){suivi=null;try{sessionStorage.removeItem('ims-suivi')}catch(e){}fermer()};
+  var re=$('b-re');if(re)re.onclick=function(){panier=c.lignes.map(function(l){return {cle:l.id+'|'+l.det.join(','),id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}});resto=c.resto;mode=c.mode;suivi=null;try{sessionStorage.removeItem('ims-suivi')}catch(e){}compte();garder();montrerPanier()};
 }
-function infosConfig(){var c=IMS.config();$('sur-hero').textContent='Fast food · '+IMS.RESTOS.map(function(r){return r.nom}).join(' · ');$('slogan-pied').textContent=c.slogan;if(IMS.CATS.indexOf(cat)<0)cat=IMS.CATS[0];onglets();adresses()}
-IMS.surChangement(function(t){M=IMS.menu();if(t==='ims-config')infosConfig();signatures();grille();if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi()});
-function adresses(){$('adresses').innerHTML=IMS.RESTOS.map(function(r){var o=IMS.ouvert(r);return '<div class="carto"><h3>'+r.nom+'</h3><span class="etat'+(o?'':' ferme')+'"><i></i>'+(o?'Ouvert maintenant':'Fermé pour le moment')+' · '+r.h+'</span><div class="tel">'+r.tel+'</div><div class="actions" style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="'+r.maps+'" target="_blank" rel="noopener">Itinéraire</a><a class="btn ligne" href="tel:'+r.tel.replace(/\s/g,'')+'">Appeler</a></div></div>'}).join('')}
-// Espace gérant : application de gestion ouverte dans la même page (tout reste synchronisé)
+
+// ----- Établissement (réglé par le gérant) -----
+function adresses(){$('adresses').innerHTML=IMS.RESTOS.map(function(r){var o=IMS.ouvert(r);return '<div class="carto revele"><h3>'+esc(r.nom)+'</h3><span class="etat'+(o?'':' ferme')+'"><i></i>'+(o?t('ouvert_now'):t('ferme_now'))+' · '+r.h+'</span><div class="tel">'+esc(r.tel)+'</div><div class="actions" style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="'+r.maps+'" target="_blank" rel="noopener">'+t('itin')+'</a><a class="btn ligne" href="tel:'+chiffres(r.tel)+'">'+t('appeler')+'</a></div></div>'}).join('');observer()}
+function infosConfig(){var c=IMS.config();$('sur-hero').textContent='Fast food · '+IMS.RESTOS.map(function(r){return r.nom}).join(' · ');$('slogan-pied').textContent=c.slogan;
+  if(c.insta){$('lien-insta').href='https://www.instagram.com/'+encodeURIComponent(c.insta)+'/';$('lien-insta').textContent='@'+c.insta}
+  if(IMS.CATS.indexOf(cat)<0)cat=IMS.CATS[0];onglets();adresses();donneesStructurees()}
+// Données structurées pour Google (fiche restaurant)
+function donneesStructurees(){var c=IMS.config(),j={'@context':'https://schema.org','@graph':IMS.RESTOS.map(function(r){return {'@type':'Restaurant',name:c.nom+' '+r.nom,servesCuisine:['Fast food','Burgers','Tacos'],telephone:r.tel,address:{'@type':'PostalAddress',addressLocality:r.adresse||r.nom,addressCountry:'DZ'},openingHours:'Mo-Su '+('0'+r.ouv).slice(-2)+':00-'+('0'+(r.ferm%24)).slice(-2)+':00',acceptsReservations:false,hasMenu:location.href.split('#')[0]+'#menu'}})};
+  var e=document.getElementById('ld-json');if(!e){e=document.createElement('script');e.type='application/ld+json';e.id='ld-json';document.head.appendChild(e)}e.textContent=JSON.stringify(j)}
+
+// ----- Espace gérant (même page) -----
 document.addEventListener('click',function(e){var b=e.target.closest('[data-ouvrir]');if(b)IMSG.ouvrir({page:b.dataset.ouvrir})});
 if(location.hash==='#gerant')IMSG.ouvrir({page:'accueil'});
 function etatGerant(){var L=IMS.commandes(),n=L.filter(function(c){return c.st==='nouv'}).length,S=IMS.service(),dernier=IMS.lire('ims-no',1);
   document.querySelectorAll('[data-ouvrir] .nb').forEach(function(e){e.remove()});
   if(n){document.querySelectorAll('[data-ouvrir]').forEach(function(b){b.insertAdjacentHTML('beforeend','<span class="nb">'+n+'</span>')})}
   if(etatGerant.no&&dernier>etatGerant.no){document.querySelectorAll('.gbtn').forEach(function(b){b.classList.remove('alerte');void b.offsetWidth;b.classList.add('alerte')})}etatGerant.no=dernier;
-  var ouverts=IMS.RESTOS.filter(function(r){return !S[r.id].pause}),e=$('etat-cmd');
-  e.innerHTML=ouverts.length?'<b>●</b> Commande en ligne ouverte · ≈ '+Math.min.apply(null,ouverts.map(function(r){return S[r.id].attente}))+' min':'<b style="color:var(--or)">●</b> Commandes en ligne en pause'}
-IMS.surChangement(function(t){etatGerant();if(t==='ims-service'&&!$('tiroir').hidden&&vue==='panier')montrerPanier()});
+  var ouverts=IMS.RESTOS.filter(function(r){return !(S[r.id]||{}).pause}),e=$('etat-cmd');
+  e.innerHTML=ouverts.length?'<b>●</b> '+t('etat_ouvert')+' · ≈ '+Math.min.apply(null,ouverts.map(function(r){return S[r.id].attente}))+' '+t('min'):'<b style="color:var(--or)">●</b> '+t('etat_pause')}
 function promoBand(){var o=IMS.promo(),e=$('promo-band');if(o.actif&&o.banniere&&o.texte){e.textContent='🔥 '+o.texte;e.hidden=false}else e.hidden=true}
-IMS.surChangement(function(){promoBand()});
-infosConfig();signatures();onglets();grille();compte();adresses();etatGerant();promoBand();setInterval(adresses,60000);
-if(mt){toast('Table '+table+' : bienvenue !')}
+
+function tout(){festin();signatures();onglets();grille();adresses();etatGerant();promoBand();observer()}
+IMS.surChangement(function(k){M=IMS.menu();if(k==='ims-config'){infosConfig();appliquerLangue()}festin();signatures();grille();etatGerant();promoBand();
+  if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi();if(!$('tiroir').hidden&&vue==='panier'&&k==='ims-service')montrerPanier()});
+appliquerLangue();infosConfig();tout();compte();setInterval(adresses,60000);
+if(mt)toast(t('bienvenue',{t:table}));
 })();
 </script>
