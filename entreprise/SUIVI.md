@@ -39,11 +39,11 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
 
 ## ▶️ Reprise de la prochaine session
-1. **Lancer la pub Meta sur le PC** (guide pas à pas dans la conversation du 13/10 et `campagne/ADS.md`) : objectif Trafic, 6 $/j × 7 j, Algérie 25-55, Advantage+, vidéo `campagne/videos/pub-50s-avatar.mp4`, lien https://dzignstudio.store/#essai, texte **sans lieu**.
-2. Demander si on retire les mentions d'Alger du site dzignstudio.store (en attente de réponse).
-3. Prospection : l'utilisateur·rice envoie les noms des commerces repérés (suivis la veille) → préparer liens d'aperçu + messages (outil https://claude.ai/artifact/2vYPjDnY6NhvczBbRVgEq9). Plan complet : `vente/URGENCE-5-CLIENTS.md`.
-4. **I'm Starving** : démo « site double » prête (https://claude.ai/artifact/M7a45ogePhTwVRw81NpiFo, code cuisine 0328). Valider le prix : formule **Plateforme** 400 000 DA affiché → 320 000 DA Fondateurs (acompte 160 000) + Care+ 15 000/mois. Attention : suivis par webmastery.agency (concurrent), envoyer le DM ou passer sur place, proposer une vidéo de démo. Fiche : `vente/demos/imstarving/PROSPECT.md`.
-5. Demander les chiffres du soir du 13/10 (Reel, post 2, stories, statut WhatsApp).
+1. **I'm Starving (priorité n°1)** : vérifier si le DM est envoyé (vidéo `vente/demos/imstarving/demo-imstarving-v3.mp4` + message 1). Lire leur réponse et préparer la suite (lien démo https://claude.ai/artifact/M7a45ogePhTwVRw81NpiFo, code **0328**, puis visite avec le dossier `dossier/Proposition-ImStarving-DzignStudio.pdf`). Prix : Plateforme 400 000 → **320 000 DA** Fondateurs, acompte 160 000, Care+ 15 000/mois, vidéo de lancement offerte (`lancement-imstarving.mp4`, à montrer seulement au moment du prix). Relances J+2 et J+5 (textes dans `PROSPECT.md`). Lien démo encore public : à repasser en privé après.
+2. **Lancer la pub Meta sur le PC** (guide `campagne/ADS.md`) : 6 $/j × 7 j, Algérie 25-55, Advantage+, vidéo `campagne/videos/pub-50s-avatar.mp4`, lien https://dzignstudio.store/#essai, texte **sans lieu**.
+3. Demander si on retire les mentions d'Alger du site dzignstudio.store.
+4. Prospection : noms des commerces repérés → liens d'aperçu + messages (outil https://claude.ai/artifact/2vYPjDnY6NhvczBbRVgEq9, plan `vente/URGENCE-5-CLIENTS.md`). Idée : décliner la plateforme restaurant pour d'autres fast-foods.
+5. Concurrence : `vente/CONCURRENCE.md` (Webly, webmastery.agency).
 
 ## Questions encore ouvertes
 - [ ] Niveau technique de départ
