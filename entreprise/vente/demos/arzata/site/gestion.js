@@ -3,7 +3,7 @@
 (function () {
   var IMS = window.IMS, fmt = IMS.fmt;
   // Trois accès : le gérant voit tout ; la cuisine et la caisse ne voient que leur poste
-  var ROLES = { gerant: { nom: 'Gérant', pages: null }, cuisine: { nom: 'Cuisine', pages: ['cuisine', 'livraisons', 'menu', 'plus'] }, caisse: { nom: 'Caisse', pages: ['caisse', 'cuisine', 'livraisons', 'clients', 'plus'] } };
+  var ROLES = { gerant: { nom: 'Gérant', pages: null }, cuisine: { nom: 'Cuisine', pages: ['cuisine', 'livraisons', 'menu', 'plus'] }, caisse: { nom: 'Caisse', pages: ['caisse', 'cuisine', 'livraisons', 'clients', 'plus'] }, livreur: { nom: 'Livreur', pages: ['livreur'] } };
   function role() { var r = lireS('arz-role', 'gerant'); return ROLES[r] ? r : 'gerant'; }
   function permis(p) { var x = ROLES[role()].pages; return !x || x.indexOf(p) >= 0; }
   function $(s, r) { return (r || document).querySelector(s); }
@@ -52,10 +52,11 @@
     livraisons: '<svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 18h7M3 14h9l2-6h4l3 6v4h-1"/><path d="M5 8h5"/></svg>',
     clients: '<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg>',
     marketing: '<svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M16 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>',
+    livreur: '<svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
     plus: '<svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>',
     reglages: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>'
   };
-  var PAGES = [['accueil', 'Tableau de bord'], ['cuisine', 'Cuisine'], ['livraisons', 'Livraisons'], ['caisse', 'Caisse'], ['compta', 'Comptabilité'], ['clients', 'Clients et fidélité'], ['marketing', 'Marketing'], ['menu', 'Menu'], ['reglages', 'Réglages'], ['plus', 'Plus']];
+  var PAGES = [['accueil', 'Tableau de bord'], ['cuisine', 'Cuisine'], ['livraisons', 'Livraisons'], ['caisse', 'Caisse'], ['compta', 'Comptabilité'], ['clients', 'Clients et fidélité'], ['marketing', 'Marketing'], ['menu', 'Menu'], ['reglages', 'Réglages'], ['livreur', 'Mes courses'], ['plus', 'Plus']];
   var COURT = { accueil: 'Accueil', cuisine: 'Cuisine', caisse: 'Caisse', compta: 'Compta', plus: 'Plus' }, TAB = ['accueil', 'cuisine', 'caisse', 'compta', 'plus'];
 
   // ----- Construction -----
@@ -91,7 +92,7 @@
     var v = document.createElement('div'); v.className = 'g-verrou'; var code = '';
     v.innerHTML = '<div class="boite"><img src="img/logo.jpg" alt=""><h1>Espace gérant</h1><p>Arzata Pizza · réservé à l\'équipe</p><div class="pts">' + '<i></i>'.repeat(4) + '</div><div class="err" aria-live="polite"></div>' +
       '<div class="pave">' + ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map(function (k) { return k ? '<button data-k="' + k + '" aria-label="' + (k === '⌫' ? 'Effacer' : k) + '">' + k + '</button>' : '<span></span>'; }).join('') + '</div>' +
-      (IMS.mode() === 'demo' ? '<p>Démo · gérant <b style="color:#fff">' + IMS.config().pins.gerant + '</b> · cuisine <b style="color:#fff">' + IMS.config().pins.cuisine + '</b> · caisse <b style="color:#fff">' + IMS.config().pins.caisse + '</b></p>' : '<p>Saisissez votre code personnel.</p>') + (st.autonome ? '' : '<button class="quit">Retour au site client</button>') + '</div>';
+      (IMS.mode() === 'demo' ? '<p>Démo · gérant <b style="color:#fff">' + IMS.config().pins.gerant + '</b> · cuisine <b style="color:#fff">' + IMS.config().pins.cuisine + '</b> · caisse <b style="color:#fff">' + IMS.config().pins.caisse + '</b> · livreur <b style="color:#fff">' + IMS.config().pins.livreur + '</b></p>' : '<p>Saisissez votre code personnel.</p>') + (st.autonome ? '' : '<button class="quit">Retour au site client</button>') + '</div>';
     root.appendChild(v);
     function pts() { $$('.pts i', v).forEach(function (e, i) { e.className = i < code.length ? 'p' : ''; }); }
     function k(x) {
@@ -143,7 +144,7 @@
     var d = new Date(); $('#g-date', root).textContent = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' · ' + (st.resto === 'tous' ? IMS.RESTOS.map(function (r) { return r.nom; }).join(' et ') : IMS.resto(st.resto).nom) + ' · session ' + ROLES[role()].nom + (IMS.mode() === 'demo' ? ' · démo' : '');
     horloge();
     var y = corps.scrollTop;
-    corps.innerHTML = '<div class="g-page">' + ({ accueil: pAccueil, cuisine: pCuisine, livraisons: pLivraisons, caisse: pCaisse, compta: pCompta, clients: pClients, marketing: pMarketing, menu: pMenu, reglages: pReglages, plus: pPlus })[st.page]() + '</div>';
+    corps.innerHTML = '<div class="g-page">' + ({ accueil: pAccueil, cuisine: pCuisine, livraisons: pLivraisons, caisse: pCaisse, compta: pCompta, clients: pClients, livreur: pLivreur, marketing: pMarketing, menu: pMenu, reglages: pReglages, plus: pPlus })[st.page]() + '</div>';
     if (doux) corps.scrollTop = y;
     if (st.page === 'reglages') qr();
     st.neuf = null;
@@ -241,7 +242,7 @@
       '<div class="c gr">ARZATA PIZZA</div><div class="c">' + r.nom + ' · ' + r.tel + '</div><div class="c">' + hh(c.t) + ' · BON ' + IMS.numero(c.no) + '</div><hr>' +
       '<div class="c gr">' + (c.mode === 'place' ? 'SUR PLACE · TABLE ' + c.table : c.mode === 'emporter' ? 'À EMPORTER' : 'LIVRAISON') + '</div>' + (c.mode !== 'place' && c.heure ? '<div class="c">' + esc(c.heure) + '</div>' : '') + '<hr>' +
       c.lignes.map(function (l) { return '<div class="l"><span>' + l.q + 'x ' + esc(l.nom) + '</span><span>' + (k === 0 ? '' : l.px * l.q) + '</span></div>' + (l.det.length ? '<div>&nbsp;&nbsp;' + esc(l.det.join(', ')) + '</div>' : ''); }).join('') +
-      (k === 0 ? '' : '<hr><div class="l gr"><span>TOTAL</span><span>' + c.total + ' DA</span></div>') + '<hr><div>' + esc(c.nom) + ' · ' + esc(c.tel) + '</div>' + (c.mode === 'livraison' ? '<div>' + (c.zone ? esc(c.zone) + ' · ' : '') + esc(c.adresse) + '</div>' + (c.frais ? '<div class="l"><span>Frais de livraison</span><span>' + c.frais + '</span></div>' : '') : '') +
+      (k === 0 ? '' : '<hr><div class="l gr"><span>TOTAL</span><span>' + c.total + ' DA</span></div>') + '<hr><div>' + esc(c.nom) + ' · ' + esc(c.tel) + '</div>' + (c.mode === 'livraison' ? '<div>' + (c.zone ? esc(c.zone) + ' · ' : '') + esc(c.adresse) + '</div>' + (c.adr && c.adr.repere ? '<div>Repère : ' + esc(c.adr.repere) + '</div>' : '') + (c.adr && c.adr.note ? '<div>' + esc(c.adr.note) + '</div>' : '') + (c.frais ? '<div class="l"><span>Frais de livraison</span><span>' + c.frais + '</span></div>' : '') : '') +
       '<div class="c" style="margin-top:6px">' + (c.paye ? '*** PAYÉ · ' + (PAY[c.pay] || '').toUpperCase() + ' ***' : c.mode === 'livraison' ? 'Paiement à la livraison' : 'Paiement au comptoir') + '</div></div>';
   }
   function modale(titre, html, fn) {
@@ -333,26 +334,61 @@
   }
 
   // ----- Page : livraisons -----
-  var LIV = [['sofiane', 'Sofiane', '0770 11 22 33'], ['bilal', 'Bilal', '0550 44 55 66'], ['hamza', 'Hamza', '0661 77 88 99']];
-  function livreur(id) { return LIV.filter(function (l) { return l[0] === id; })[0] || ['', '—', '']; }
+  var LIV = IMS.LIVREURS;
+  function livreur(id) { var l = IMS.livreur(id); return l[0] ? l : ['', '—', '']; }
+  function adrComplete(c) { var a = c.adr || {}; return (c.zone ? c.zone + ' · ' : '') + c.adresse + (a.repere ? ' · repère : ' + a.repere : '') + (a.note ? ' · ' + a.note : ''); }
+  function msgLivreur(c) { return '🛵 Course ' + IMS.numero(c.no) + ' · Arzata Pizza\n📍 ' + adrComplete(c) + '\n👤 ' + c.nom + ' · ' + c.tel + '\n💰 À encaisser : ' + c.total + ' DA\n🗺 Itinéraire : ' + IMS.itineraire(c); }
+  function confier(no, id) { var L = toutes(); L.forEach(function (c) { if (c.no === no) { c.livreur = id; c.st = 'fin'; c.fin = Date.now(); if (!c.eta) { var z = IMS.zone(c.zone); c.eta = z ? z[2] : 25; } } }); IMS.enregistrer(L); }
   function aLivrer() { return filtrer(toutes()).filter(function (c) { return c.mode === 'livraison' && c.st === 'fin' && !c.livree; }).length; }
   function pLivraisons() {
     var L = filtrer(duJour(toutes())).filter(function (c) { return c.mode === 'livraison'; }).sort(function (a, b) { return b.t - a.t; });
     var att = L.filter(function (c) { return c.st !== 'fin'; }), route = L.filter(function (c) { return c.st === 'fin' && !c.livree; }), faites = L.filter(function (c) { return c.livree; });
     var del = faites.length ? Math.round(faites.reduce(function (a, c) { return a + (c.livree - c.t); }, 0) / faites.length / 60000) : 0;
     function ligne(c) {
-      var et = c.livree ? '<span class="g-badge v">Livrée ' + hh(c.livree) + '</span>' : c.st === 'fin' ? '<span class="g-badge b">En route · ' + livreur(c.livreur)[1] + '</span>' : c.st === 'prete' ? '<span class="g-badge a">Prête, à confier</span>' : '<span class="g-badge n">En cuisine</span>';
+      var S = IMS.suiviLiv(c) || {}, et = c.livree ? '<span class="g-badge v">Livrée ' + hh(c.livree) + '</span>' : c.st === 'fin' ? '<span class="g-badge b">En route · ' + livreur(c.livreur)[1] + ' · arrivée ≈ ' + hh(S.arrivee) + '</span>' : c.st === 'prete' ? '<span class="g-badge a">Prête, à confier</span>' : '<span class="g-badge n">En cuisine</span>';
       var act = c.livree ? '' : c.st === 'fin' ? '<button class="g-btn ok" data-livree="' + c.no + '">Livrée ✓</button>' : c.st === 'prete' ? '<button class="g-btn" data-confier="' + c.no + '">Confier à un livreur</button>' : '';
-      var wa = c.livreur && !c.livree ? '<a class="g-btn wa" target="_blank" rel="noopener" href="' + IMS.lienWa(livreur(c.livreur)[2], 'Course ' + IMS.numero(c.no) + ' · ' + c.adresse + ' · client ' + c.nom + ' ' + c.tel + ' · à encaisser ' + c.total + ' DA · https://www.google.com/maps/search/' + encodeURIComponent(c.adresse + ' Alger')) + '">Envoyer au livreur</a>' : '';
-      return '<div class="g-reg" style="grid-template-columns:auto minmax(0,1fr) auto"><span class="ic">🛵</span><div><b>' + IMS.numero(c.no) + ' · ' + esc(c.adresse) + '</b><p>' + esc(c.nom) + ' · ' + esc(c.tel) + ' · ' + fmt(c.total) + (st.resto === 'tous' ? ' · ' + esc(nomR(c)) : '') + ' · ' + hh(c.t) + '</p></div>' + et + '<div class="x" style="display:flex;gap:8px;flex-wrap:wrap">' + act + wa + '</div></div>';
+      var wa = c.livreur && !c.livree ? '<a class="g-btn wa" target="_blank" rel="noopener" href="' + IMS.lienWa(livreur(c.livreur)[2], msgLivreur(c)) + '">Envoyer au livreur</a>' : '';
+      var it = !c.livree ? '<a class="g-btn cl" target="_blank" rel="noopener" href="' + IMS.itineraire(c) + '">Itinéraire</a>' : '';
+      var barre = c.st === 'fin' && !c.livree ? '<div class="g-trajet"><i style="width:' + Math.round((S.prog || 0) * 100) + '%"></i></div>' : '';
+      return '<div class="g-reg" style="grid-template-columns:auto minmax(0,1fr) auto"><span class="ic">🛵</span><div><b>' + IMS.numero(c.no) + ' · ' + esc(c.zone || '') + ' · ' + esc(c.adresse) + '</b><p>' + (c.adr && c.adr.repere ? '📍 ' + esc(c.adr.repere) + ' · ' : '') + (c.adr && c.adr.note ? '💬 ' + esc(c.adr.note) + ' · ' : '') + esc(c.nom) + ' · ' + esc(c.tel) + ' · ' + fmt(c.total) + (c.frais ? ' (dont livraison ' + fmt(c.frais) + ')' : '') + ' · ' + hh(c.t) + (c.loc ? ' · position GPS du client' : '') + '</p>' + barre + '</div>' + et + '<div class="x" style="display:flex;gap:8px;flex-wrap:wrap">' + act + it + wa + '</div></div>';
     }
     return '<div class="g-grille g-k4">' + kpi('À préparer', att.length, '<em>En cuisine</em>') + kpi('En route', route.length, '<em>Chez les livreurs</em>') + kpi('Livrées aujourd\'hui', faites.length, '') + kpi('Délai moyen', del + ' min', '<em>De la commande à la porte</em>') + '</div>' +
-      '<div class="g-carte"><h2>Livreurs</h2><div class="g-grille g-k3">' + LIV.map(function (l) { var enc = route.filter(function (c) { return c.livreur === l[0]; }), n = faites.filter(function (c) { return c.livreur === l[0]; }).length; return '<div class="g-kpi"><span>' + l[1] + ' · ' + l[2] + '</span><b style="font-size:20px">' + (enc.length ? '🛵 En course ' + enc.map(function (c) { return IMS.numero(c.no); }).join(', ') : '✅ Disponible') + '</b><em>' + n + ' livraison' + (n > 1 ? 's' : '') + ' aujourd\'hui</em></div>'; }).join('') + '</div></div>' +
+      '<div class="g-carte"><h2>Carte des livraisons <small>' + route.length + ' en route · position estimée, ou GPS si le livreur la partage</small></h2><div class="g-plan">' + IMS.carte({ cmds: route.concat(att.filter(function (c) { return c.st === 'prete'; })), noms: true, titre: 'Carte des livraisons en cours' }) + '</div></div>' +
+      '<div class="g-carte"><h2>Livreurs <small>accès « Mes courses » avec le code livreur</small></h2><div class="g-grille g-k3">' + LIV.map(function (l) { var enc = route.filter(function (c) { return c.livreur === l[0]; }), n = faites.filter(function (c) { return c.livreur === l[0]; }).length; return '<div class="g-kpi"><span>' + l[1] + ' · ' + l[2] + '</span><b style="font-size:20px">' + (enc.length ? '🛵 En course ' + enc.map(function (c) { return IMS.numero(c.no); }).join(', ') : '✅ Disponible') + '</b><em>' + n + ' livraison' + (n > 1 ? 's' : '') + ' aujourd\'hui</em></div>'; }).join('') + '</div></div>' +
       '<div class="g-carte"><h2>Livraisons du jour <small>' + L.length + ' commandes</small></h2>' + (L.length ? L.map(ligne).join('') : '<div class="g-vide">Pas encore de livraison aujourd\'hui.</div>') + '</div>';
   }
   function choisirLivreur(no) {
     modale('Confier ' + IMS.numero(no) + ' à un livreur', '<div class="g-grille">' + LIV.map(function (l) { return '<button class="g-btn cl" data-liv="' + l[0] + '" style="padding:16px;text-align:left">🛵 ' + l[1] + ' <span style="font-weight:600;color:var(--encre2)">· ' + l[2] + '</span></button>'; }).join('') + '</div>',
-      function (v) { v.addEventListener('click', function (e) { var b = e.target.closest('[data-liv]'); if (!b) return; var L = toutes(); L.forEach(function (c) { if (c.no === no) { c.livreur = b.dataset.liv; c.st = 'fin'; c.fin = Date.now(); } }); IMS.enregistrer(L); v.remove(); toast(IMS.numero(no) + ' confiée à ' + livreur(b.dataset.liv)[1] + ' · le client est prévenu'); rendre(true); }); });
+      function (v) { v.addEventListener('click', function (e) { var b = e.target.closest('[data-liv]'); if (!b) return; confier(no, b.dataset.liv); v.remove(); toast(IMS.numero(no) + ' confiée à ' + livreur(b.dataset.liv)[1] + ' · le client suit la course sur son téléphone'); rendre(true); }); });
+  }
+
+  // ----- Page : espace livreur (téléphone du livreur) -----
+  var gpsWatch = null;
+  function pLivreur() {
+    var moi = lireS('arz-livreur', ''), T = filtrer(duJour(toutes())).filter(function (c) { return c.mode === 'livraison'; });
+    if (!livreur(moi)[0]) return '<div class="g-carte"><h2>Qui êtes-vous ?</h2><div class="g-grille g-k3">' + LIV.map(function (l) { return '<button class="g-btn cl" data-moi="' + l[0] + '" style="padding:18px">🛵 ' + l[1] + '</button>'; }).join('') + '</div></div>';
+    var mes = T.filter(function (c) { return c.livreur === moi && c.st === 'fin' && !c.livree; }), dispo = T.filter(function (c) { return c.st === 'prete' && !c.livreur; }), faites = T.filter(function (c) { return c.livreur === moi && c.livree; });
+    function fiche(c, prendre) {
+      var S = IMS.suiviLiv(c) || {}, a = c.adr || {};
+      return '<div class="g-carte g-course"><div class="t"><h2>' + IMS.numero(c.no) + ' · ' + esc(c.zone || '') + '</h2><span class="g-badge ' + (prendre ? 'a' : 'b') + '">' + (prendre ? 'Prête au comptoir' : 'Arrivée ≈ ' + hh(S.arrivee)) + '</span></div>' +
+        '<p class="adr"><b>' + esc(c.adresse) + '</b>' + (a.repere ? '<br>📍 Repère : ' + esc(a.repere) : '') + (a.note ? '<br>💬 ' + esc(a.note) : '') + '</p>' +
+        '<p class="g-sous">👤 ' + esc(c.nom) + ' · <span dir="ltr">' + esc(c.tel) + '</span> · 💰 à encaisser <b>' + fmt(c.total) + '</b></p>' +
+        (prendre ? '<button class="g-btn go" data-prendre="' + c.no + '" style="padding:15px">Je la prends, je pars</button>' :
+          '<div class="g-trajet"><i style="width:' + Math.round((S.prog || 0) * 100) + '%"></i></div><div class="act"><a class="g-btn" target="_blank" rel="noopener" href="' + IMS.itineraire(c) + '">🗺 Itinéraire</a><a class="g-btn cl" href="tel:' + String(c.tel).replace(/\D/g, '') + '">📞 Appeler</a><a class="g-btn wa" target="_blank" rel="noopener" href="' + IMS.lienWa(c.tel, 'Bonjour ' + c.nom + ', ici ' + livreur(moi)[1] + ', livreur Arzata Pizza 🛵 J\'arrive dans quelques minutes avec votre commande ' + IMS.numero(c.no) + '.') + '">J\'arrive</a><button class="g-btn ok" data-livree="' + c.no + '">Livrée ✓</button></div>') + '</div>';
+    }
+    return '<div class="g-carte g-moi"><div><b>🛵 ' + livreur(moi)[1] + '</b><span class="g-sous">' + mes.length + ' course(s) en cours · ' + faites.length + ' livrée(s) aujourd\'hui</span></div><div class="act"><button class="g-pil" data-gps aria-pressed="' + !!gpsWatch + '">' + (gpsWatch ? '📡 Position partagée' : '📡 Partager ma position') + '</button><button class="g-pil" data-moi="">Changer</button></div><p class="g-sous" id="g-gps-msg" style="margin:0;width:100%"></p></div>' +
+      (mes.length ? '<div class="g-plan">' + IMS.carte({ cmds: mes, noms: true, zoom: true, titre: 'Mes courses' }) + '</div>' : '') +
+      (mes.length ? mes.map(function (c) { return fiche(c, false); }).join('') : '<div class="g-vide">Aucune course en cours.</div>') +
+      (dispo.length ? '<h2 class="g-h">À récupérer au comptoir</h2>' + dispo.map(function (c) { return fiche(c, true); }).join('') : '');
+  }
+  function partagerPosition() {
+    var m = $('#g-gps-msg', root);
+    if (gpsWatch) { try { navigator.geolocation.clearWatch(gpsWatch); } catch (e) {} gpsWatch = null; rendre(true); return; }
+    try {
+      gpsWatch = navigator.geolocation.watchPosition(function (p) { var moi = lireS('arz-livreur', ''), L = toutes(), g = [+p.coords.latitude.toFixed(5), +p.coords.longitude.toFixed(5)], ch = false; L.forEach(function (c) { if (c.livreur === moi && c.st === 'fin' && !c.livree) { c.gps = g; ch = true; } }); if (ch) IMS.enregistrer(L); },
+        function () { gpsWatch = null; var m2 = $('#g-gps-msg', root); if (m2) m2.textContent = 'Position indisponible sur cet appareil (autorisez la localisation). Le client voit une position estimée.'; }, { enableHighAccuracy: true, maximumAge: 10000 });
+      if (m) m.textContent = 'Position partagée : le client voit votre scooter en direct.';
+    } catch (e) { if (m) m.textContent = 'Position indisponible sur cet appareil.'; }
   }
 
   // ----- Page : clients et fidélité -----
@@ -486,11 +522,11 @@
         '<label class="g-sous" style="display:grid;gap:4px;font-weight:700">Adresse (Google Maps)<input class="g-rech" data-r="' + i + '" data-rf="adresse" value="' + esc(r.adresse || r.nom) + '"></label><label class="g-sous" style="display:grid;gap:4px;font-weight:700">Ouverture' + hsel('ouv', i, r.ouv, HO) + '</label><label class="g-sous" style="display:grid;gap:4px;font-weight:700">Fermeture' + hsel('ferm', i, r.ferm, HF) + '</label>' +
         (C.restos.length > 1 ? '<button class="g-lien" style="color:var(--rouge);justify-self:start;align-self:end;padding-bottom:10px" data-delr="' + i + '">Supprimer ce restaurant</button>' : '') + '</div></div>'; }).join('') +
       '<button class="g-pil" data-act="addr" style="margin-top:12px">+ Ajouter un restaurant</button></div>' +
-      '<div class="g-carte"><h2>Zones de livraison <button class="g-btn" data-act="savezones">Enregistrer</button></h2><p class="g-sous" style="margin:0 0 10px">Le client choisit sa zone : les frais s\'ajoutent tout seuls au total.</p>' +
-      '<div class="g-zones">' + (C.zones || []).map(function (z, i) { return '<div class="g-zone"><input class="g-rech" data-zn="' + i + '" value="' + esc(z[0]) + '" aria-label="Zone ' + (i + 1) + '"><label class="g-sous"><input class="g-rech" data-zf="' + i + '" inputmode="numeric" value="' + z[1] + '" aria-label="Frais ' + esc(z[0]) + '"> DA</label><button class="g-lien" data-delz="' + i + '" aria-label="Supprimer ' + esc(z[0]) + '">✕</button></div>'; }).join('') + '</div>' +
-      '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:12px"><button class="g-pil" data-act="addz">+ Ajouter une zone</button><label class="g-sous" style="display:flex;gap:8px;align-items:center;font-weight:700">Livraison offerte dès <input class="g-rech" style="width:100px" id="g-offerte" inputmode="numeric" value="' + (C.offerte || 0) + '"> DA</label></div></div>' +
+      '<div class="g-carte"><h2>Zones de livraison <button class="g-btn" data-act="savezones">Enregistrer</button></h2><p class="g-sous" style="margin:0 0 10px">Le client choisit sa commune sur la carte : frais, délai et minimum de commande s\'appliquent tout seuls. Pré-calculés selon la distance depuis la pizzeria, modifiables.</p>' +
+      '<div class="g-defile"><table class="g-table g-ztab"><thead><tr><th>Commune</th><th class="m">Frais (DA)</th><th class="m">Trajet (min)</th><th class="m">Minimum (DA)</th><th><span class="vh">Supprimer</span></th></tr></thead><tbody>' + (C.zones || []).map(function (z, i) { return '<tr><td><input class="g-rech" data-zn="' + i + '" value="' + esc(z[0]) + '" aria-label="Commune ' + (i + 1) + '"></td><td class="m"><input class="g-rech" data-zf="' + i + '" inputmode="numeric" value="' + z[1] + '" aria-label="Frais ' + esc(z[0]) + '"></td><td class="m"><input class="g-rech" data-zm="' + i + '" inputmode="numeric" value="' + z[2] + '" aria-label="Trajet ' + esc(z[0]) + '"></td><td class="m"><input class="g-rech" data-zx="' + i + '" inputmode="numeric" value="' + z[3] + '" aria-label="Minimum ' + esc(z[0]) + '"></td><td><button class="g-lien" data-delz="' + i + '" aria-label="Supprimer ' + esc(z[0]) + '">✕</button></td></tr>'; }).join('') + '</tbody></table></div>' +
+      '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:12px"><button class="g-pil" data-act="addz">+ Ajouter une zone</button><label class="g-sous" style="display:flex;gap:8px;align-items:center;font-weight:700">Livraison offerte dès <input class="g-rech" style="width:100px" id="g-offerte" inputmode="numeric" value="' + (C.offerte || 0) + '"> DA pour les zones à <input class="g-rech" style="width:80px" id="g-offmax" inputmode="numeric" value="' + (C.offerteMax || 0) + '" aria-label="Frais maximum des zones concernées"> DA de frais ou moins</label></div></div>' +
       '<div class="g-carte"><h2>Équipe et accès <button class="g-btn" data-act="savepins">Enregistrer</button></h2>' +
-      [['gerant', '👑', 'Gérant', 'Accès complet : tableau de bord, caisse, comptabilité, clients, marketing, réglages.'], ['cuisine', '👨‍🍳', 'Cuisine', 'Uniquement la cuisine, les livraisons et les ruptures du menu.'], ['caisse', '🧾', 'Caisse', 'Caisse, encaissements, cuisine, livraisons et fichier clients. Pas de comptabilité.']].map(function (x) {
+      [['gerant', '👑', 'Gérant', 'Accès complet : tableau de bord, caisse, comptabilité, clients, marketing, réglages.'], ['cuisine', '👨‍🍳', 'Cuisine', 'Uniquement la cuisine, les livraisons et les ruptures du menu.'], ['caisse', '🧾', 'Caisse', 'Caisse, encaissements, cuisine, livraisons et fichier clients. Pas de comptabilité.'], ['livreur', '🛵', 'Livreurs', 'Uniquement « Mes courses » : adresse, repère, itinéraire, appel du client, « Livrée », position GPS.']].map(function (x) {
         return ligne(x[1], x[2], x[3], '<input class="g-rech" style="width:96px;text-align:center;letter-spacing:.3em;font-weight:800" inputmode="numeric" maxlength="4" data-pin="' + x[0] + '" value="' + esc(C.pins[x[0]]) + '" aria-label="Code ' + x[2] + '">'); }).join('') + '</div>' +
       '<div class="g-carte"><h2>Réception des commandes <small>activez autant de canaux que vous voulez</small></h2>' +
       ligne('📺', 'Écran cuisine', 'Commandes en direct sur la tablette, avec sonnerie.', sw('ecran')) +
@@ -538,7 +574,7 @@
       if (a === 'service') return modale('Mettre la plateforme en service', '<p>On remet à zéro : <b>commandes, numérotation (#001), caisse et clôtures, fichier clients, statistiques et comptabilité</b>.</p><p>On garde : <b>menu, prix, photos, restaurants, horaires, codes d\'accès et réglages</b>.</p><div class="act"><button class="g-btn cl" data-fermer>Annuler</button><button class="g-btn rg" data-go>Confirmer la mise en service</button></div>', function (v) { v.addEventListener('click', function (e) { if (!e.target.closest('[data-go]')) return; IMS.miseEnService(); st.dernier = 0; v.remove(); toast('Plateforme en service : compteurs à zéro'); st.page = 'accueil'; rendre(); }); });
       if (a === 'demo') { IMS.modeDemo(); st.dernier = maxNo(); toast('Données de démonstration rechargées'); rendre(); return; }
       if (a === 'saveconf') { var C = IMS.config(); $$('[data-cf]', root).forEach(function (e) { C[e.dataset.cf] = e.value.trim(); }); $$('[data-rf]', root).forEach(function (e) { var r = C.restos[+e.dataset.r]; r[e.dataset.rf] = e.dataset.rf === 'ouv' || e.dataset.rf === 'ferm' ? +e.value : e.value.trim(); }); IMS.majConfig(C); toast('Établissement enregistré : le site est à jour'); rendre(true); return; }
-      if (a === 'savezones' || a === 'addz') { var CZ = IMS.config(); CZ.zones = $$('[data-zn]', root).map(function (e) { var f = $('[data-zf="' + e.dataset.zn + '"]', root); return [e.value.trim(), Math.max(0, parseInt(f.value, 10) || 0)]; }).filter(function (z) { return z[0]; }); if (a === 'addz') CZ.zones.push(['Nouvelle zone', 200]); CZ.offerte = Math.max(0, parseInt($('#g-offerte', root).value, 10) || 0); IMS.majConfig(CZ); if (a === 'savezones') toast('Zones de livraison enregistrées'); rendre(true); return; }
+      if (a === 'savezones' || a === 'addz') { var CZ = IMS.config(); var Z0 = CZ.zones, n = function (sel, i) { var x = $('[' + sel + '="' + i + '"]', root); return Math.max(0, parseInt(x && x.value, 10) || 0); }; CZ.zones = $$('[data-zn]', root).map(function (e) { var i = e.dataset.zn, o = Z0[+i] || []; return [e.value.trim(), n('data-zf', i), n('data-zm', i) || 30, n('data-zx', i), o[4] != null ? o[4] : null, o[5] != null ? o[5] : null]; }).filter(function (z) { return z[0]; }); if (a === 'addz') CZ.zones.push(['Nouvelle zone', 400, 30, 0, null, null]); CZ.offerte = Math.max(0, parseInt($('#g-offerte', root).value, 10) || 0); CZ.offerteMax = Math.max(0, parseInt($('#g-offmax', root).value, 10) || 0); IMS.majConfig(CZ); if (a === 'savezones') toast('Zones de livraison enregistrées'); rendre(true); return; }
       if (a === 'addr') { var C2 = IMS.config(); C2.restos.push({ id: 'r' + Date.now().toString(36), nom: 'Nouveau restaurant', ouv: 11, ferm: 23, tel: '', adresse: '' }); IMS.majConfig(C2); rendre(true); return; }
       if (a === 'savepins') { var C3 = IMS.config(), ok = true, vus = {}; $$('[data-pin]', root).forEach(function (e) { var v = e.value.trim(); if (!/^\d{4}$/.test(v) || vus[v]) ok = false; vus[v] = 1; C3.pins[e.dataset.pin] = v; }); if (!ok) return toast('Chaque code : 4 chiffres, tous différents'); IMS.majConfig(C3); toast('Codes d\'accès enregistrés'); return; }
       if (a === 'backup') return copierTexte(IMS.sauvegarde(), 'Sauvegarde copiée : gardez-la dans vos notes ou un e-mail');
@@ -549,6 +585,10 @@
     if ((b = e.target.closest('[data-delr]'))) { var Cd = IMS.config(); if (Cd.restos.length > 1) { Cd.restos.splice(+b.dataset.delr, 1); IMS.majConfig(Cd); if (st.resto !== 'tous' && !IMS.RESTOS.some(function (r) { return r.id === st.resto; })) st.resto = 'tous'; toast('Restaurant retiré'); rendre(true); } return; }
     if ((b = e.target.closest('[data-st]'))) return majStatut(+b.dataset.no, b.dataset.st);
     if ((b = e.target.closest('[data-confier]'))) return choisirLivreur(+b.dataset.confier);
+    if ((b = e.target.closest('[data-moi]'))) { ecrireS('arz-livreur', b.dataset.moi); rendre(); return; }
+    if ((b = e.target.closest('[data-prendre]'))) { confier(+b.dataset.prendre, lireS('arz-livreur', '')); toast(IMS.numero(+b.dataset.prendre) + ' : bonne route ! Le client vous suit sur son téléphone'); rendre(true); return; }
+    if ((b = e.target.closest('[data-gps]'))) return partagerPosition();
+    if ((b = e.target.closest('[data-delz]'))) { var Cz = IMS.config(); Cz.zones.splice(+b.dataset.delz, 1); IMS.majConfig(Cz); toast('Zone supprimée'); rendre(true); return; }
     if ((b = e.target.closest('[data-livree]'))) { var Lv = toutes(); Lv.forEach(function (c) { if (c.no === +b.dataset.livree) c.livree = Date.now(); }); IMS.enregistrer(Lv); toast(IMS.numero(+b.dataset.livree) + ' livrée'); rendre(true); return; }
     if ((b = e.target.closest('[data-promo]'))) { var po = IMS.promo(); po[b.dataset.promo] = !po[b.dataset.promo]; if (b.dataset.promo === 'banniere' && !po.texte) { var pt = $('#g-ptxt', root); po.texte = pt ? pt.value : ''; } IMS.majPromo(po); toast(b.dataset.promo === 'actif' ? (po.actif ? 'Plat du jour en ligne sur le site' : 'Plat du jour désactivé') : (po.banniere ? 'Bannière affichée sur le site' : 'Bannière retirée')); rendre(true); return; }
     if ((b = e.target.closest('[data-remise]'))) { var pr = IMS.promo(); pr.remise = +b.dataset.remise; IMS.majPromo(pr); rendre(true); return; }

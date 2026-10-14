@@ -240,3 +240,21 @@
 .g-zone label{display:flex;align-items:center;gap:6px;font-weight:700}
 .g-zone label .g-rech{width:78px;text-align:right}
 @media (prefers-reduced-motion:reduce){.g-four i b{animation:none;transform:none}}
+
+/* Arzata : livraison (carte, livreur, zones) */
+.g-plan{border-radius:14px;overflow:hidden;border:1px solid var(--trait);line-height:0;background:#EFE7D6}
+.g-plan svg{display:block;width:100%;height:auto}
+.g-trajet{height:7px;border-radius:4px;background:var(--trait2);overflow:hidden;margin-top:6px}
+.g-trajet i{display:block;height:100%;background:linear-gradient(90deg,var(--navy),var(--vert))}
+.g-course{display:grid;gap:8px}
+.g-course .t{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.g-course .adr{margin:0;font-size:15px;line-height:1.5}
+.g-course .act{display:flex;gap:8px;flex-wrap:wrap}
+.g-course .act .g-btn{flex:1 1 auto;text-align:center;padding:13px 14px}
+.g-moi{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.g-moi b{display:block;font-size:18px}
+.g-moi .act{display:flex;gap:8px;flex-wrap:wrap}
+.g-h{font-size:17px;margin:6px 0 0}
+.g-ztab td{padding:5px 6px}
+.g-ztab .g-rech{max-width:none;width:100%;min-width:0;padding:8px 10px}
+.g-ztab td.m .g-rech{width:92px;text-align:right}

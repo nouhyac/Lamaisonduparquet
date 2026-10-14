@@ -209,7 +209,7 @@ section.bloc{padding-block:88px}
 .zonesliste{background:var(--papier);border:1px solid var(--trait);border-radius:24px;padding:28px;display:grid;gap:12px;align-content:start}
 .zonesliste h3{font-size:30px;color:var(--vert)}
 .liste{display:grid;gap:10px}
-.liste div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--trait);padding-bottom:8px}
+.liste{display:grid;gap:10px}.liste>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--trait);padding-bottom:8px}
 .liste span:first-child{color:var(--gris)}
 .liste b{font-variant-numeric:tabular-nums}
 .offerte{background:#E9F3EC;color:var(--basilic);border-radius:12px;padding:10px 14px;font-weight:700;font-size:14px}
@@ -285,6 +285,28 @@ footer .logo,footer .logo .script{color:var(--clair)} footer .logo small{color:#
 .champ .msg{color:var(--rouge);font-size:12.5px;font-weight:700}
 .note{margin:0;font-size:13px;color:var(--gris)} .note.alerte{color:var(--rouge2);font-weight:600}
 
+.livbloc{display:grid;gap:12px;background:var(--papier);border:1.5px solid var(--trait);border-radius:16px;padding:12px}
+.plan-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--trait);background:#EFE7D6;line-height:0}
+.plan{display:block;width:100%;height:auto}
+.plan .pz{cursor:pointer}.plan .pz:focus{outline:none}.plan .pz:focus-visible circle:first-child{stroke:#B3122A;stroke-width:3}
+.zinfo{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;font-weight:700;color:var(--vert)}
+.zinfo span+span{color:var(--rouge2)}
+.recents{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.recents .t{font-size:12px;font-weight:700;color:var(--gris);width:100%}
+.recents button{border:1px solid var(--trait);background:var(--creme);border-radius:999px;padding:6px 11px;font-size:13px;font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.geo{display:grid;gap:4px}.geo .btn{padding:10px 16px;font-size:14px}
+.suivi-liv{display:grid;gap:10px}
+.livreur{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--papier);border:1.5px solid var(--trait);border-radius:14px;padding:10px 12px}
+.livreur .av{width:44px;height:44px;border-radius:50%;background:#E9F3EC;display:grid;place-items:center;font-size:22px}
+.livreur small{display:block;color:var(--gris);font-weight:600}
+.livreur .btn{padding:9px 14px;font-size:14px}
+.livreur.ok{border-color:var(--basilic);background:#EEF7F0}
+.trajet{height:8px;border-radius:4px;background:var(--sable);overflow:hidden}
+.trajet i{display:block;height:100%;background:linear-gradient(90deg,var(--vert),var(--basilic));transition:width 1s}
+.zl{grid-template-columns:1fr 1fr;column-gap:18px;max-height:340px;overflow:auto}
+.zl small{font-weight:500;color:var(--gris)}
+@media (max-width:520px){.zl{grid-template-columns:1fr}}
 /* Animations */
 .js .revele{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .js .revele.vu{opacity:1;transform:none}
@@ -393,7 +415,7 @@ html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:aut
     <div class="tete"><div><span class="sur" data-t="inf_sur">En face de la banque BNP</span><h2 data-t="infos_h" data-html>Venez nous <em>voir</em></h2></div><p data-t="infos_p">Sur place, à emporter ou livrée chez vous, dans les quartiers autour de Dar El Beïda.</p></div>
     <div class="infos">
       <div class="fiche revele" id="fiche"></div>
-      <div class="zonesliste revele"><h3 data-t="zones_h">Zones de livraison</h3><div class="liste" id="zones"></div><div class="offerte" id="offerte"></div>
+      <div class="zonesliste revele"><h3 data-t="zones_h">Livraison dans tout l'Est algérois</h3><div class="plan-wrap" id="plan-zones"></div><div class="liste zl" id="zones" tabindex="0" role="region" aria-label="Tarifs de livraison par commune"></div><div class="offerte" id="offerte"></div>
         <div class="liste" style="margin-top:6px"><div><span data-t="pr_pay">Paiement</span><b data-t="pr_pay_v">Au comptoir ou à la livraison</b></div><div><span>Instagram</span><b><a id="lien-insta" href="https://www.instagram.com/arzatapizza/" target="_blank" rel="noopener" style="color:inherit">@arzatapizza</a></b></div></div>
       </div>
     </div>
@@ -403,7 +425,7 @@ html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:aut
 
 <div class="flottant"><button class="btn" id="b-flot"><span><span data-t="flot">Voir mon panier</span> · <span id="nb-flot">0</span></span><span id="tot-flot">0 DA</span></button></div>
 <div class="voile" id="voile" hidden></div>
-<section class="tiroir" id="tiroir" hidden role="dialog" aria-modal="true" aria-labelledby="t-titre"><div class="t-tete"><h2 id="t-titre">Mon panier</h2><button class="fermer" id="b-fermer" aria-label="Fermer">✕</button></div><div class="contenu" id="t-contenu"></div><div class="t-pied" id="t-pied"></div></section>
+<section class="tiroir" id="tiroir" hidden role="dialog" aria-modal="true" aria-labelledby="t-titre"><div class="t-tete"><h2 id="t-titre">Mon panier</h2><button class="fermer" id="b-fermer" aria-label="Fermer">✕</button></div><div class="contenu" id="t-contenu" tabindex="0"></div><div class="t-pied" id="t-pied"></div></section>
 <div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
 
 <script src="data.js"></script>
@@ -429,15 +451,15 @@ var TXT={
   cmt_sur:'Sans appeler, sans attendre',comment_h:'Commander, <em>c\'est simple</em>',comment_p:'Votre commande arrive directement au four, et vous la suivez en direct.',
   e1:'Choisissez',e1p:'Toute la carte avec les tailles, les suppléments et les prix. À table, scannez le QR code : votre numéro de table s\'ajoute tout seul.',e2:'Commandez',e2p:'Sur place, à emporter ou en livraison, tout de suite ou à l\'heure qui vous arrange. Vous payez au comptoir ou à la livraison.',e3:'Suivez',e3p:'Reçue, au four, prête : vous voyez votre pizza avancer en direct sur votre téléphone.',
   inf_sur:'En face de la banque BNP',infos_h:'Venez nous <em>voir</em>',infos_p:'Sur place, à emporter ou livrée chez vous, dans les quartiers autour de Dar El Beïda.',ouvert_now:'Ouvert maintenant',ferme_now:'Fermé pour le moment',itin:'Itinéraire',appeler:'Appeler',
-  zones_h:'Zones de livraison',offerte:'🎁 Livraison offerte dès {m}',pr_pay:'Paiement',pr_pay_v:'Au comptoir ou à la livraison',realise:'Site réalisé par Dzign Studio',flot:'Voir mon panier',
+  zones_h:'Livraison dans tout l\'Est algérois',offerte:'🎁 Livraison offerte dès {m} à Dar El Beïda et alentours',pr_pay:'Paiement',pr_pay_v:'Au comptoir ou à la livraison',realise:'Site réalisé par Dzign Studio',flot:'Voir mon panier',
   vide:'<span class="script">Bello !</span>Votre panier attend sa première pizza.',voir_menu:'Voir la carte',add:'Ajouter · {p}',added:'{p} ajoutée',taille:'Taille',supp:'Suppléments',
   mm_on:'Moitié-moitié',mm_on2:'Deux recettes sur la même pizza, vous payez la plus chère',mm_choix:'Deuxième moitié',
-  table:'Table',comptoir:'Au comptoir',domicile:'À domicile',table_lbl:'Numéro de table (scanné par QR code)',quand:'Quand ?',asap:'Dès que possible',zone:'Quartier',
-  adr:'Adresse de livraison',adr_ph:'Cité, rue, bâtiment, étage',prenom:'Votre prénom',tel:'Téléphone',total:'Total',sous_total:'Sous-total',frais:'Livraison',gratuit:'Offerte',mode:'Mode',
+  table:'Table',comptoir:'Au comptoir',domicile:'À domicile',table_lbl:'Numéro de table (scanné par QR code)',quand:'Quand ?',asap:'Dès que possible',zone:'Commune',plan_t:'Plan des zones de livraison à Alger : touchez votre commune',plan_suivi:'Suivi de votre livraison sur le plan',z_frais:'Livraison {f} · ≈ {m} min de trajet',z_min:'Minimum de commande {m}',recents:'Vos adresses récentes',adr_cite:'Cité, quartier ou rue',adr_bat:'Bâtiment',adr_etage:'Étage / porte',adr_repere:'Point de repère',repere_ph:'Ex. en face de la mosquée, à côté de la pharmacie',adr_note:'Consigne pour le livreur (facultatif)',note_ph:'Ex. sonner deux fois, appeler en arrivant',geo:'Ajouter ma position exacte',geo_ok:'Position exacte ajoutée',geo_att:'Recherche de votre position…',geo_ok2:'Le livreur viendra pile à cet endroit.',geo_non:'Position indisponible sur cet appareil : le point de repère suffira au livreur.',liv_vers:'Livrée vers {h}',liv_pour:'Livrée pour {h}',min_note:'Minimum de commande pour {z} : {m}. Ajoutez encore {r}.',s4liv:'Livrée, bon appétit',liv_est:'Livraison estimée vers <b>{h}</b>',arrive:'Arrivée prévue vers <b>{h}</b>',livreur_en_route:'{n} est en route vers vous',livree_a:'Livrée à {h}',bon_app:'Bon appétit, et à très vite chez Arzata !',pos_est:'Position estimée d\'après l\'heure de départ.',pos_gps:'Position GPS du livreur, en direct.',
+  adr:'Adresse de livraison',adr_ph:'Ex. Cité 1200 logements',prenom:'Votre prénom',tel:'Téléphone',total:'Total',sous_total:'Sous-total',frais:'Livraison',gratuit:'Offerte',mode:'Mode',
   cmd_comptoir:'Commander · paiement au comptoir',cmd_livraison:'Commander · paiement à la livraison',
   pause_note:'Le four est plein : les commandes en ligne reprennent dans quelques minutes.',eta_note:'Prête en ≈ {m} min',ferme_note:'Nous sommes fermés : votre commande sera préparée dès l\'ouverture ({h}).',reste:'Plus que {m} pour la livraison offerte',
   pause_btn:'Commandes en pause',
-  err_adr:'Indiquez l\'adresse de livraison',err_tel:'Numéro invalide (ex. 0555 12 34 56)',err_nom:'Indiquez votre prénom',sent:'Commande envoyée au four !',
+  err_adr:'Indiquez votre cité, quartier ou rue',err_tel:'Numéro invalide (ex. 0555 12 34 56)',err_nom:'Indiquez votre prénom',sent:'Commande envoyée au four !',
   suivi_title:'Ma commande',suivi_sur:'Commande envoyée',merci:'Grazie {n} ! Arzata a bien reçu votre commande.',s1:'Reçue par la pizzeria',s2:'Au four, au feu de bois',s3liv:'En route vers vous',s3place:'Prête, on vous l\'apporte',s3emp:'Prête, venez la récupérer',
   eta:'Prête vers <b>{h}</b>',autre:'Nouvelle commande',recommander:'Recommander la même chose',upsell:'Pour accompagner',sortie:'Sortie du four ≈ {h}',
   fid:'Fidélité : {x}/10 · la 10e commande, une pizza offerte',fid_ok:'🎁 Votre pizza offerte vous attend !',bienvenue:'Table {t} : benvenuti !',langue:'العربية',
@@ -457,15 +479,15 @@ var TXT={
   cmt_sur:'دون اتصال ودون انتظار',comment_h:'الطلب <em>سهل</em>',comment_p:'يصل طلبك مباشرة إلى الفرن، وتتابعه مباشرة.',
   e1:'اختر',e1p:'القائمة كاملة بالأحجام والإضافات والأسعار. على الطاولة، امسح رمز QR فيُضاف رقم طاولتك تلقائيًا.',e2:'اطلب',e2p:'في المطعم، للأخذ أو بالتوصيل، الآن أو في الوقت الذي يناسبك. تدفع عند الشباك أو عند الاستلام.',e3:'تابع',e3p:'مستلمة، في الفرن، جاهزة: تابع بيتزاك مباشرة على هاتفك.',
   inf_sur:'مقابل بنك BNP',infos_h:'تفضّل <em>بزيارتنا</em>',infos_p:'في المطعم، للأخذ أو توصيل إلى منزلك في الأحياء المحيطة بالدار البيضاء.',ouvert_now:'مفتوح الآن',ferme_now:'مغلق حاليًا',itin:'الاتجاهات',appeler:'اتصل',
-  zones_h:'مناطق التوصيل',offerte:'🎁 توصيل مجاني ابتداءً من {m}',pr_pay:'الدفع',pr_pay_v:'عند الشباك أو عند الاستلام',realise:'تصميم وتطوير Dzign Studio',flot:'عرض السلة',
+  zones_h:'التوصيل في كامل شرق العاصمة',offerte:'🎁 توصيل مجاني ابتداءً من {m} في الدار البيضاء وضواحيها',pr_pay:'الدفع',pr_pay_v:'عند الشباك أو عند الاستلام',realise:'تصميم وتطوير Dzign Studio',flot:'عرض السلة',
   vide:'<span class="script">أهلًا!</span>سلتك في انتظار أول بيتزا.',voir_menu:'عرض القائمة',add:'أضف · {p}',added:'أُضيفت {p}',taille:'الحجم',supp:'إضافات',
   mm_on:'نصف ونصف',mm_on2:'وصفتان على نفس البيتزا، تدفع الأغلى',mm_choix:'النصف الثاني',
-  table:'طاولة',comptoir:'عند الشباك',domicile:'إلى المنزل',table_lbl:'رقم الطاولة (من رمز QR)',quand:'متى؟',asap:'في أقرب وقت',zone:'الحي',
-  adr:'عنوان التوصيل',adr_ph:'الحي، الشارع، العمارة، الطابق',prenom:'اسمك',tel:'رقم الهاتف',total:'المجموع',sous_total:'المجموع الفرعي',frais:'التوصيل',gratuit:'مجاني',mode:'طريقة الطلب',
+  table:'طاولة',comptoir:'عند الشباك',domicile:'إلى المنزل',table_lbl:'رقم الطاولة (من رمز QR)',quand:'متى؟',asap:'في أقرب وقت',zone:'البلدية',plan_t:'مخطط مناطق التوصيل في الجزائر العاصمة: المس بلديتك',plan_suivi:'تتبع التوصيل على المخطط',z_frais:'التوصيل {f} · ≈ {m} د من الطريق',z_min:'الحد الأدنى للطلب {m}',recents:'عناوينك الأخيرة',adr_cite:'الحي أو الشارع',adr_bat:'العمارة',adr_etage:'الطابق / الباب',adr_repere:'نقطة دالة',repere_ph:'مثال: مقابل المسجد، بجانب الصيدلية',adr_note:'ملاحظة للموصل (اختياري)',note_ph:'مثال: دق الجرس مرتين، اتصل عند الوصول',geo:'أضف موقعي الدقيق',geo_ok:'تمت إضافة الموقع',geo_att:'جارٍ تحديد موقعك…',geo_ok2:'سيصل الموصل إلى هذا المكان بالضبط.',geo_non:'الموقع غير متاح على هذا الجهاز: النقطة الدالة تكفي الموصل.',liv_vers:'التوصيل حوالي {h}',liv_pour:'التوصيل على الساعة {h}',min_note:'الحد الأدنى للطلب في {z}: {m}. أضف {r}.',s4liv:'تم التوصيل، بالهناء',liv_est:'التوصيل المتوقع حوالي <b>{h}</b>',arrive:'الوصول المتوقع حوالي <b>{h}</b>',livreur_en_route:'{n} في الطريق إليك',livree_a:'تم التوصيل على {h}',bon_app:'بالهناء والشفاء، نراك قريبًا في أرزاتا!',pos_est:'موقع تقديري حسب وقت الانطلاق.',pos_gps:'موقع الموصل عبر GPS مباشرة.',
+  adr:'عنوان التوصيل',adr_ph:'مثال: حي 1200 مسكن',prenom:'اسمك',tel:'رقم الهاتف',total:'المجموع',sous_total:'المجموع الفرعي',frais:'التوصيل',gratuit:'مجاني',mode:'طريقة الطلب',
   cmd_comptoir:'اطلب · الدفع عند الشباك',cmd_livraison:'اطلب · الدفع عند الاستلام',
   pause_note:'الفرن ممتلئ: تعود الطلبات عبر الإنترنت بعد دقائق.',eta_note:'جاهزة خلال ≈ {m} د',ferme_note:'نحن مغلقون: سيُحضَّر طلبك عند الافتتاح ({h}).',reste:'بقي {m} للتوصيل المجاني',
   pause_btn:'الطلبات متوقفة',
-  err_adr:'أدخل عنوان التوصيل',err_tel:'رقم غير صحيح (مثال 0555 12 34 56)',err_nom:'أدخل اسمك',sent:'أُرسل الطلب إلى الفرن!',
+  err_adr:'أدخل الحي أو الشارع',err_tel:'رقم غير صحيح (مثال 0555 12 34 56)',err_nom:'أدخل اسمك',sent:'أُرسل الطلب إلى الفرن!',
   suivi_title:'طلبي',suivi_sur:'تم إرسال الطلب',merci:'شكرًا {n}! استلمت أرزاتا طلبك.',s1:'استلمتها البيتزيريا',s2:'في الفرن، على نار الحطب',s3liv:'في الطريق إليك',s3place:'جاهزة، سنحضرها إليك',s3emp:'جاهزة، تعال لاستلامها',
   eta:'جاهزة حوالي <b>{h}</b>',autre:'طلب جديد',recommander:'أعد نفس الطلب',upsell:'للمرافقة',sortie:'تخرج من الفرن ≈ {h}',
   fid:'الوفاء: {x}/10 · الطلب العاشر، بيتزا مجانية',fid_ok:'🎁 بيتزاك المجانية في انتظارك!',bienvenue:'طاولة {t}: مرحبًا!',langue:'Français',
@@ -488,9 +510,10 @@ $('b-langue').onclick=function(){langue=langue==='ar'?'fr':'ar';try{localStorage
 
 // ----- État -----
 var M=IMS.menu(),cat=IMS.CATS[0],q='',filtre='',panier=[],vue='panier',suivi=null;
-var resto=IMS.RESTOS[0].id,mode='livraison',table='1',heure='',adresse='',zone=0;
+var resto=IMS.RESTOS[0].id,mode='livraison',table='1',heure='',zoneNom='',adr={cite:'',bat:'',etage:'',repere:'',note:''},loc=null;
 var moi={nom:'Yacine',tel:'0555 12 34 56'};
-try{var m0=JSON.parse(localStorage.getItem('arz-moi')||'null');if(m0)moi=m0;var p0=JSON.parse(localStorage.getItem('arz-panier')||'null');if(p0)panier=p0;adresse=moi.adresse||'';zone=moi.zone||0}catch(e){}
+try{var m0=JSON.parse(localStorage.getItem('arz-moi')||'null');if(m0)moi=m0;var p0=JSON.parse(localStorage.getItem('arz-panier')||'null');if(p0)panier=p0;if(moi.adr)adr=moi.adr;zoneNom=moi.zoneNom||''}catch(e){}
+if(!IMS.zone(zoneNom))zoneNom=(IMS.config().zones[0]||[''])[0];
 var mt=(location.hash||'').match(/^#(?:([a-z0-9]+)-)?table-(\d{1,2})$/);if(mt){resto=mt[1]&&IMS.RESTOS.some(function(r){return r.id===mt[1]})?mt[1]:IMS.RESTOS[0].id;table=mt[2];mode='place'}
 try{var s=JSON.parse(sessionStorage.getItem('arz-suivi')||'null');if(s)suivi=s}catch(e){}
 function garder(){try{localStorage.setItem('arz-panier',JSON.stringify(panier));localStorage.setItem('arz-moi',JSON.stringify(moi))}catch(e){}}
@@ -568,7 +591,10 @@ function choisir(id,depuis,mm){
 }
 function ajouter(p,det,px,depuis){var cle=p.id+'|'+p.nom+'|'+det.join(',');var l=panier.find(function(x){return x.cle===cle});if(l)l.q++;else panier.push({cle:cle,id:p.id,nom:p.nom,det:det,px:px,q:1});compte();garder();toast(t('added',{p:p.nom}));voler(p.img,depuis)}
 function sousTotal(){return panier.reduce(function(a,l){return a+l.px*l.q},0)}
-function frais(){if(mode!=='livraison')return 0;var C=IMS.config(),z=(C.zones||[])[zone]||[0,0];return C.offerte&&sousTotal()>=C.offerte?0:z[1]}
+function zoneSel(){return IMS.zone(zoneNom)||IMS.config().zones[0]||['',0,30,0,null,null]}
+function offerteOk(z){var C=IMS.config();return C.offerte&&z[1]<=C.offerteMax&&sousTotal()>=C.offerte}
+function frais(){if(mode!=='livraison')return 0;var z=zoneSel();return offerteOk(z)?0:z[1]}
+function adresseTexte(a){return [a.cite,a.bat?'bât. '+a.bat:'',a.etage?a.etage+(/^\d+$/.test(a.etage)?'e étage':''):''].filter(Boolean).join(', ')}
 function total(){return sousTotal()+frais()}
 function compte(){var n=panier.reduce(function(a,l){return a+l.q},0);$('nb-nav').textContent=n;$('nb-flot').textContent=n;$('tot-flot').textContent=fmt(sousTotal())}
 $('b-nav-panier').onclick=$('b-flot').onclick=function(){suivi?montrerSuivi():montrerPanier();ouvrir()};
@@ -583,30 +609,49 @@ function suggestions(){var dans={};panier.forEach(function(l){var p=plat(l.id);i
   return S.length?'<div class="sugg"><span class="t">'+t('upsell')+'</span>'+S.map(function(p){return '<div class="s"><img src="'+p.img+'" alt=""><div><b>'+esc(p.nom)+'</b><small>'+(p.tailles?t('des')+' ':'')+fmt(p.prix)+'</small></div><button class="plus" data-id="'+p.id+'" aria-label="'+t('ajouter')+' '+esc(p.nom)+'">+</button></div>'}).join('')+'</div>':''}
 function hhmm(ts){var d=new Date(ts);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
 // Créneaux pour programmer : toutes les 15 min, de maintenant + 30 min jusqu'à la fermeture
-function creneaux(R){var L=[],d=new Date(Date.now()+30*60000);d.setMinutes(Math.ceil(d.getMinutes()/15)*15,0,0);var fin=new Date();fin.setHours(0,0,0,0);fin=fin.getTime()+R.ferm*3600e3;
+function creneaux(R,delai){var L=[],d=new Date(Date.now()+Math.max(30,delai||0)*60000);d.setMinutes(Math.ceil(d.getMinutes()/15)*15,0,0);var fin=new Date();fin.setHours(0,0,0,0);fin=fin.getTime()+R.ferm*3600e3;
   var deb=new Date();deb.setHours(R.ouv,30,0,0);if(d.getTime()<deb.getTime())d=deb;for(var k=0;k<24&&d.getTime()<=fin-15*60000;k++){L.push(hhmm(d.getTime()));d=new Date(d.getTime()+15*60000)}return L}
+function formLivraison(){
+  var C=IMS.config(),Z=C.zones,z=zoneSel(),rec=(moi.recents||[]).filter(function(x){return x.adr&&x.adr.cite});
+  return '<div class="livbloc"><div class="plan-wrap" id="plan-cmd">'+IMS.carte({zones:true,sel:z[0],titre:t('plan_t')})+'</div>'+
+    '<label class="champ">'+t('zone')+'<select id="c-zone">'+Z.map(function(x){return '<option value="'+esc(x[0])+'"'+(x[0]===z[0]?' selected':'')+'>'+esc(x[0])+' · '+fmt(x[1])+' · ≈ '+x[2]+' '+t('min')+'</option>'}).join('')+'</select></label>'+
+    '<div class="zinfo"><span>🛵 '+t('z_frais',{f:offerteOk(z)?t('gratuit'):fmt(z[1]),m:z[2]})+'</span>'+(z[3]?'<span>'+t('z_min',{m:fmt(z[3])})+'</span>':'')+'</div>'+
+    (rec.length?'<div class="recents"><span class="t">'+t('recents')+'</span>'+rec.map(function(x,i){return '<button type="button" data-rec="'+i+'">📍 '+esc(x.zone)+' · '+esc(x.adr.cite)+'</button>'}).join('')+'</div>':'')+
+    '<label class="champ" id="ch-adr">'+t('adr_cite')+'<input id="c-cite" value="'+esc(adr.cite)+'" placeholder="'+t('adr_ph')+'" autocomplete="address-line1"><span class="msg" id="m-adr"></span></label>'+
+    '<div class="deux"><label class="champ">'+t('adr_bat')+'<input id="c-bat" value="'+esc(adr.bat)+'" autocomplete="address-line2"></label><label class="champ">'+t('adr_etage')+'<input id="c-etage" value="'+esc(adr.etage)+'"></label></div>'+
+    '<label class="champ">'+t('adr_repere')+'<input id="c-repere" value="'+esc(adr.repere)+'" placeholder="'+t('repere_ph')+'"></label>'+
+    '<label class="champ">'+t('adr_note')+'<input id="c-note" value="'+esc(adr.note||'')+'" placeholder="'+t('note_ph')+'"></label>'+
+    '<div class="geo"><button type="button" class="btn ligne" id="b-geo">📍 '+t(loc?'geo_ok':'geo')+'</button><span class="note" id="geo-msg" aria-live="polite"></span></div></div>'}
 function montrerPanier(){
   vue='panier';$('t-contenu').onchange=null;$('t-titre').textContent=t('panier');
   if(!panier.length){$('t-contenu').innerHTML='<div class="vide">'+t('vide')+'</div>';$('t-pied').innerHTML='<button class="btn vert" id="b-menu">'+t('voir_menu')+'</button>';$('b-menu').onclick=function(){fermer();location.hash='menu'};return}
-  var S=IMS.service(),R=IMS.resto(resto),Sr=S[resto]||{pause:false,attente:20},C=IMS.config(),Z=C.zones||[],ouv=IMS.ouvert(R),cr=creneaux(R);
+  var S=IMS.service(),R=IMS.resto(resto),Sr=S[resto]||{pause:false,attente:20},C=IMS.config(),ouv=IMS.ouvert(R),z=zoneSel(),cr=creneaux(R,mode==='livraison'?Sr.attente+z[2]:Sr.attente);
   if(heure&&cr.indexOf(heure)<0)heure='';
+  var y=$('t-contenu').scrollTop;
   $('t-contenu').innerHTML=panier.map(function(l,i){return '<div class="ligne"><span><b>'+esc(l.nom)+'</b>'+(l.det.length?'<small>'+esc(l.det.join(' · '))+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span><div class="qte"><button data-i="'+i+'" data-d="-1" aria-label="Retirer une '+esc(l.nom)+'">−</button><b>'+l.q+'</b><button data-i="'+i+'" data-d="1" aria-label="Ajouter une '+esc(l.nom)+'">+</button></div></div>'}).join('')+
     suggestions()+
     '<div class="modes" role="group" aria-label="'+t('mode')+'">'+['livraison','emporter','place'].map(function(m){return '<button data-m="'+m+'" aria-pressed="'+(m===mode)+'">'+t(m)+'<small>'+(m==='place'?t('table')+' '+table:m==='emporter'?t('comptoir'):t('domicile'))+'</small></button>'}).join('')+'</div>'+
     (mode==='place'?'<label class="champ">'+t('table_lbl')+'<select id="c-table">'+Array.from({length:20},function(_,i){return '<option'+(String(i+1)===table?' selected':'')+'>'+(i+1)+'</option>'}).join('')+'</select></label>':
       '<label class="champ">'+t('quand')+'<select id="c-heure"><option value="">'+t('asap')+'</option>'+cr.map(function(h){return '<option'+(h===heure?' selected':'')+'>'+h+'</option>'}).join('')+'</select></label>')+
-    (mode==='livraison'?'<label class="champ">'+t('zone')+'<select id="c-zone">'+Z.map(function(z,i){return '<option value="'+i+'"'+(i===zone?' selected':'')+'>'+esc(z[0])+' · '+fmt(z[1])+'</option>'}).join('')+'</select></label><label class="champ" id="ch-adr">'+t('adr')+'<input id="c-adr" value="'+esc(adresse)+'" placeholder="'+t('adr_ph')+'" autocomplete="street-address"><span class="msg" id="m-adr"></span></label>':'')+
+    (mode==='livraison'?formLivraison():'')+
     '<label class="champ" id="ch-nom">'+t('prenom')+'<input id="c-nom" value="'+esc(moi.nom)+'" autocomplete="given-name"><span class="msg" id="m-nom"></span></label><label class="champ" id="ch-tel">'+t('tel')+'<input id="c-tel" value="'+esc(moi.tel)+'" inputmode="tel" autocomplete="tel"><span class="msg" id="m-tel"></span></label><div id="fid">'+fidHTML()+'</div>';
-  var f=frais(),reste=C.offerte-sousTotal();
-  $('t-pied').innerHTML=(mode==='livraison'?'<div class="sous"><span>'+t('sous_total')+'</span><span>'+fmt(sousTotal())+'</span></div><div class="sous"><span>'+t('frais')+'</span><span>'+(f?fmt(f):t('gratuit'))+'</span></div>'+(f&&C.offerte&&reste>0?'<p class="note">'+t('reste',{m:fmt(reste)})+'</p>':''):'')+
-    '<div class="total"><span>'+t('total')+'</span><span>'+fmt(total())+'</span></div>'+(Sr.pause?'<p class="note alerte">'+t('pause_note')+'</p>':ouv?'<p class="note">'+t('eta_note',{m:Sr.attente})+'</p>':'<p class="note alerte">'+t('ferme_note',{h:R.h.split(' ')[0]})+'</p>')+'<button class="btn" id="b-cmd">'+(Sr.pause?t('pause_btn'):t(mode==='livraison'?'cmd_livraison':'cmd_comptoir'))+'</button>';
+  $('t-contenu').scrollTop=y;
+  var f=frais(),reste=C.offerte-sousTotal(),manque=mode==='livraison'&&z[3]&&sousTotal()<z[3];
+  var arr=mode==='livraison'?(heure?t('liv_pour',{h:heure}):t('liv_vers',{h:hhmm(Date.now()+(Sr.attente+z[2])*60000)})):t('eta_note',{m:Sr.attente});
+  $('t-pied').innerHTML=(mode==='livraison'?'<div class="sous"><span>'+t('sous_total')+'</span><span>'+fmt(sousTotal())+'</span></div><div class="sous"><span>'+t('frais')+' · '+esc(z[0])+'</span><span>'+(f?fmt(f):t('gratuit'))+'</span></div>'+(f&&C.offerte&&z[1]<=C.offerteMax&&reste>0?'<p class="note">'+t('reste',{m:fmt(reste)})+'</p>':''):'')+
+    '<div class="total"><span>'+t('total')+'</span><span>'+fmt(total())+'</span></div>'+(Sr.pause?'<p class="note alerte">'+t('pause_note')+'</p>':manque?'<p class="note alerte">'+t('min_note',{z:esc(z[0]),m:fmt(z[3]),r:fmt(z[3]-sousTotal())})+'</p>':ouv?'<p class="note">'+arr+'</p>':'<p class="note alerte">'+t('ferme_note',{h:R.h.split(' ')[0]})+'</p>')+'<button class="btn" id="b-cmd">'+(Sr.pause?t('pause_btn'):t(mode==='livraison'?'cmd_livraison':'cmd_comptoir'))+'</button>';
   $('t-contenu').querySelectorAll('.qte button').forEach(function(b){b.onclick=function(){var l=panier[+b.dataset.i];l.q+=+b.dataset.d;if(l.q<1)panier.splice(+b.dataset.i,1);compte();garder();montrerPanier()}});
   $('t-contenu').querySelectorAll('.modes button').forEach(function(b){b.onclick=function(){mode=b.dataset.m;montrerPanier()}});
-  var s=$('c-table');if(s)s.onchange=function(){table=s.value};var h=$('c-heure');if(h)h.onchange=function(){heure=h.value};
-  var z=$('c-zone');if(z)z.onchange=function(){zone=+z.value;moi.zone=zone;garder();montrerPanier()};
-  var a=$('c-adr');if(a)a.oninput=function(){adresse=a.value;moi.adresse=adresse;garder()};
-  $('c-nom').oninput=function(){moi.nom=this.value;garder()};
-  $('c-tel').oninput=function(){moi.tel=this.value;garder();$('fid').innerHTML=fidHTML()};
+  var s=$('c-table');if(s)s.onchange=function(){table=s.value};var h=$('c-heure');if(h)h.onchange=function(){heure=h.value;montrerPanier()};
+  function choisirZone(n){zoneNom=n;moi.zoneNom=n;loc=null;garder();montrerPanier()}
+  var zs=$('c-zone');if(zs)zs.onchange=function(){choisirZone(zs.value)};
+  $('t-contenu').querySelectorAll('.pz').forEach(function(g){g.onclick=function(){choisirZone(g.dataset.zone)};g.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();choisirZone(g.dataset.zone)}}});
+  $('t-contenu').querySelectorAll('[data-rec]').forEach(function(b){b.onclick=function(){var x=(moi.recents||[]).filter(function(r){return r.adr&&r.adr.cite})[+b.dataset.rec];if(!x)return;zoneNom=IMS.zone(x.zone)?x.zone:zoneNom;adr=JSON.parse(JSON.stringify(x.adr));moi.adr=adr;moi.zoneNom=zoneNom;garder();montrerPanier()}});
+  ['cite','bat','etage','repere','note'].forEach(function(k){var e=$('c-'+k);if(e)e.oninput=function(){adr[k]=e.value;moi.adr=adr;garder();if(k==='cite'&&e.value.trim())erreur('adr','')}});
+  var g=$('b-geo');if(g)g.onclick=function(){var m=$('geo-msg');m.textContent=t('geo_att');
+    try{navigator.geolocation.getCurrentPosition(function(p){loc=[+p.coords.latitude.toFixed(6),+p.coords.longitude.toFixed(6)];m.textContent=t('geo_ok2');g.textContent='📍 '+t('geo_ok')},function(){m.textContent=t('geo_non')},{enableHighAccuracy:true,timeout:8000})}catch(e){m.textContent=t('geo_non')}};
+  $('c-nom').oninput=function(){moi.nom=this.value;garder();if(this.value.trim())erreur('nom','')};
+  $('c-tel').oninput=function(){moi.tel=this.value;garder();$('fid').innerHTML=fidHTML();var k=chiffres(this.value);if(/^0[5-7]\d{8}$/.test(k)||/^0[1-4]\d{7}$/.test(k))erreur('tel','')};
   if(Sr.pause){$('b-cmd').disabled=true;$('b-cmd').style.opacity=.45}
   $('b-cmd').onclick=envoyer;
 }
@@ -616,29 +661,46 @@ function envoyer(){
   var nom=$('c-nom').value.trim(),tel=$('c-tel').value.trim(),k=chiffres(tel),ok=true;
   erreur('nom',nom?'':t('err_nom'));if(!nom)ok=false;
   var tok=/^0[5-7]\d{8}$/.test(k)||/^0[1-4]\d{7}$/.test(k);erreur('tel',tok?'':t('err_tel'));if(!tok)ok=false;
-  if(mode==='livraison'){erreur('adr',adresse.trim()?'':t('err_adr'));if(!adresse.trim())ok=false}
-  if(!ok){var f=document.querySelector('.champ.erreur input');if(f)f.focus();return}
+  if(mode==='livraison'){var ac=(adr.cite||'').trim();erreur('adr',ac?'':t('err_adr'));if(!ac)ok=false;var zz=zoneSel();if(zz[3]&&sousTotal()<zz[3]){toast(t('min_note',{z:zz[0],m:fmt(zz[3]),r:fmt(zz[3]-sousTotal())}));return}}
+  if(!ok){var f=document.querySelector('.champ.erreur input');if(f){f.focus();f.scrollIntoView({block:'center'})}return}
   moi.nom=nom;moi.tel=tel;garder();
-  var Z=(IMS.config().zones||[])[zone]||['',0],fr=frais();
-  var c=IMS.nouvelleCommande({resto:resto,t:Date.now(),mode:mode,table:table,heure:mode==='place'?'':heure?'Pour '+heure:'Dès que possible',adresse:adresse,zone:mode==='livraison'?Z[0]:'',frais:fr,nom:nom,tel:tel,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv',langue:langue});
+  var Z=zoneSel(),fr=frais(),L=mode==='livraison',a=JSON.parse(JSON.stringify(adr));
+  // Point d'arrivée sur le plan : position exacte si le client l'a donnée, sinon le centre de sa commune (légèrement décalé)
+  var dest=loc||(Z[4]!=null?[+(Z[4]+((chiffres(a.cite).length%5)-2)*0.0012).toFixed(5),+(Z[5]+((a.cite.length%5)-2)*0.0015).toFixed(5)]:null);
+  if(L){var R0=(moi.recents||[]).filter(function(x){return !(x.zone===Z[0]&&x.adr&&x.adr.cite===a.cite)});R0.unshift({zone:Z[0],adr:a});moi.recents=R0.slice(0,3);garder()}
+  var c=IMS.nouvelleCommande({resto:resto,t:Date.now(),mode:mode,table:table,heure:mode==='place'?'':heure?'Pour '+heure:'Dès que possible',adresse:L?adresseTexte(a):'',adr:L?a:null,loc:L?loc:null,dest:L?dest:null,eta:L?Z[2]:null,zone:L?Z[0]:'',frais:fr,nom:nom,tel:tel,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv',langue:langue});
   suivi=c.no;try{sessionStorage.setItem('arz-suivi',JSON.stringify(suivi))}catch(e){}
   panier=[];compte();garder();montrerSuivi();etatGerant();toast(t('sent'));
 }
 function montrerSuivi(){
   vue='suivi';$('t-contenu').onchange=null;var c=IMS.commandes().find(function(x){return x.no===suivi});if(!c){suivi=null;montrerPanier();return}
   $('t-titre').textContent=t('suivi_title');
-  var r={nouv:0,prep:1,prete:2,fin:3}[c.st],att=(IMS.service()[c.resto]||{attente:20}).attente,CU=180,e=c.four?Math.max(0,(Date.now()-c.four)/1000):0;
-  var E=[t('s1'),t('s2'),c.mode==='livraison'?t('s3liv'):c.mode==='place'?t('s3place'):t('s3emp')];
-  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">'+t('suivi_sur')+'</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">'+t('merci',{n:esc(c.nom)})+'</p>'+(r<2?'<span class="eta">⏱ '+t('eta',{h:/^Pour /.test(c.heure||'')?c.heure.slice(5):hhmm(c.t+att*60000)})+'</span>':'')+'</div><div class="avance">'+E.map(function(x,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i===1&&cl==='en'?'🔥':i+1)+'</i>'+x+(i===1&&cl==='en'?'<small style="margin-inline-start:auto;font-weight:600">'+t('sortie',{h:hhmm((c.four||c.t)+CU*1000)})+'</small><span class="cuisson"><b style="animation-duration:'+CU+'s;animation-delay:-'+Math.min(e,CU).toFixed(1)+'s"></b></span>':'')+'</div>'}).join('')+'</div>'+
-    '<div>'+c.lignes.map(function(l){return '<div class="ligne"><span><b>'+l.q+'× '+esc(l.nom)+'</b>'+(l.det.length?'<small>'+esc(l.det.join(' · '))+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span></div>'}).join('')+(c.frais?'<div class="sous" style="padding-top:8px"><span>'+t('frais')+' · '+esc(c.zone)+'</span><span>'+fmt(c.frais)+'</span></div>':'')+'</div>';
-  $('t-pied').innerHTML='<div class="total"><span>'+t('total')+'</span><span>'+fmt(c.total)+'</span></div>'+(r>=2?'<button class="btn" id="b-re">'+t('recommander')+'</button>':'')+'<button class="btn ligne" id="b-autre">'+t('autre')+'</button>';
+  var L=c.mode==='livraison',SL=IMS.suiviLiv(c),att=(IMS.service()[c.resto]||{attente:20}).attente,CU=180,e=c.four?Math.max(0,(Date.now()-c.four)/1000):0;
+  var r=L?(SL.etat==='livree'?4:SL.etat==='route'?2:{nouv:0,prep:1,prete:1}[c.st]):{nouv:0,prep:1,prete:2,fin:3}[c.st];
+  var E=L?[t('s1'),t('s2'),t('s3liv'),t('s4liv')]:[t('s1'),t('s2'),c.mode==='place'?t('s3place'):t('s3emp')];
+  var lv=L&&c.livreur?IMS.livreur(c.livreur):null,prog=/^Pour /.test(c.heure||'')?c.heure.slice(5):null;
+  var arrivee=L?(SL.etat==='livree'?c.livree:SL.etat==='route'?SL.arrivee:(c.four||c.t)+(att+(c.eta||25))*60000):c.t+att*60000;
+  var y=$('t-contenu').scrollTop;
+  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">'+t('suivi_sur')+'</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">'+t('merci',{n:esc(c.nom)})+'</p>'+
+    (r<(L?4:2)?'<span class="eta">⏱ '+(L?t(SL.etat==='route'?'arrive':'liv_est',{h:prog||hhmm(arrivee)}):t('eta',{h:prog||hhmm(arrivee)}))+'</span>':'')+'</div>'+
+    (L?'<div class="suivi-liv"><div class="plan-wrap">'+IMS.carte({cmds:[c],sel:c.zone,zoom:true,titre:t('plan_suivi')})+'</div>'+
+      (SL.etat==='route'?'<div class="livreur"><span class="av">🛵</span><div><b>'+t('livreur_en_route',{n:esc(lv[1])})+'</b><small dir="ltr">'+esc(lv[2])+'</small></div><a class="btn ligne" href="tel:'+chiffres(lv[2])+'">'+t('appeler')+'</a></div><div class="trajet"><i style="width:'+Math.round(SL.prog*100)+'%"></i></div><p class="note">'+(SL.gps?t('pos_gps'):t('pos_est'))+'</p>':
+       SL.etat==='livree'?'<div class="livreur ok"><span class="av">✅</span><div><b>'+t('livree_a',{h:hhmm(c.livree)})+'</b><small>'+t('bon_app')+'</small></div></div>':
+       '<p class="note">📍 '+esc(c.zone)+' · '+esc(c.adresse)+(c.adr&&c.adr.repere?' · '+esc(c.adr.repere):'')+'</p>')+'</div>':'')+
+    '<div class="avance">'+E.map(function(x,i){var cl=i<r||(!L&&r>=2&&i===2)?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i===1&&cl==='en'?'🔥':L&&i===2&&cl==='en'?'🛵':i+1)+'</i>'+x+(i===1&&cl==='en'&&c.st==='prep'?'<small style="margin-inline-start:auto;font-weight:600">'+t('sortie',{h:hhmm((c.four||c.t)+CU*1000)})+'</small><span class="cuisson"><b style="animation-duration:'+CU+'s;animation-delay:-'+Math.min(e,CU).toFixed(1)+'s"></b></span>':'')+'</div>'}).join('')+'</div>'+
+    '<div>'+c.lignes.map(function(l){return '<div class="ligne"><span><b>'+l.q+'× '+esc(l.nom)+'</b>'+(l.det.length?'<small>'+esc(l.det.join(' · '))+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span></div>'}).join('')+(L?'<div class="sous" style="padding-top:8px"><span>'+t('frais')+' · '+esc(c.zone)+'</span><span>'+(c.frais?fmt(c.frais):t('gratuit'))+'</span></div>':'')+'</div>';
+  $('t-contenu').scrollTop=y;
+  var fini=L?r>=4:r>=2;
+  $('t-pied').innerHTML='<div class="total"><span>'+t('total')+'</span><span>'+fmt(c.total)+'</span></div>'+(fini?'<button class="btn" id="b-re">'+t('recommander')+'</button>':'')+'<button class="btn ligne" id="b-autre">'+t('autre')+'</button>';
   $('b-autre').onclick=function(){suivi=null;try{sessionStorage.removeItem('arz-suivi')}catch(e){}fermer()};
   var re=$('b-re');if(re)re.onclick=function(){panier=c.lignes.map(function(l){return {cle:l.id+'|'+l.nom+'|'+l.det.join(','),id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}});mode=c.mode;suivi=null;try{sessionStorage.removeItem('arz-suivi')}catch(e){}compte();garder();montrerPanier()};
 }
+// Le scooter avance tout seul pendant que le client regarde
+setInterval(function(){if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi()},5000);
 
 // ----- Établissement (réglé par le gérant) -----
 function fiche(){var r=IMS.RESTOS[0],o=IMS.ouvert(r);$('fiche').innerHTML='<h3>'+esc(r.nom)+'</h3><p class="adr">'+esc(r.adresse)+'</p><span class="etat'+(o?'':' ferme')+'"><i></i>'+(o?t('ouvert_now'):t('ferme_now'))+' · '+r.h+'</span><div class="tels"><span class="tel" dir="ltr">'+esc(r.tel)+'</span>'+(r.tel2?'<span class="tel" dir="ltr">'+esc(r.tel2)+'</span>':'')+'</div><div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn clair" href="'+r.maps+'" target="_blank" rel="noopener">'+t('itin')+'</a><a class="btn ligne" href="tel:'+chiffres(r.tel)+'">'+t('appeler')+'</a></div>'}
-function zones(){var C=IMS.config();$('zones').innerHTML=(C.zones||[]).map(function(z){return '<div><span>'+esc(z[0])+'</span><b>'+fmt(z[1])+'</b></div>'}).join('');$('offerte').hidden=!C.offerte;$('offerte').textContent=t('offerte',{m:fmt(C.offerte||0)})}
+function zones(){var C=IMS.config();$('plan-zones').innerHTML=IMS.carte({noms:true,titre:t('plan_t')});$('zones').innerHTML=(C.zones||[]).map(function(z){return '<div><span>'+esc(z[0])+'</span><b>'+fmt(z[1])+' <small>≈ '+z[2]+' '+t('min')+'</small></b></div>'}).join('');$('offerte').hidden=!C.offerte;$('offerte').textContent=t('offerte',{m:fmt(C.offerte||0)})}
 function infosConfig(){var c=IMS.config();$('sur-hero').textContent=(langue==='ar'?'بيتزا على نار الحطب · ':'Pizza au feu de bois · ')+IMS.RESTOS.map(function(r){return r.nom}).join(' · ');$('slogan-pied').textContent=c.slogan;
   if(c.insta){$('lien-insta').href='https://www.instagram.com/'+encodeURIComponent(c.insta)+'/';$('lien-insta').textContent='@'+c.insta}
   if(IMS.CATS.indexOf(cat)<0)cat=IMS.CATS[0];onglets();fiche();zones();donneesStructurees()}

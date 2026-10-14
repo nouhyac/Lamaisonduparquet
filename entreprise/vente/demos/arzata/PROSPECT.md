@@ -13,10 +13,11 @@
 
 ## Ce qui est prêt
 - **Démo** (privée, à partager depuis le menu Partager avant l'envoi) : https://claude.ai/artifact/NRZnTu1KCMWGaDpb2eMwte
-  - Codes de l'espace gérant : gérant **0328**, four **1111**, caisse **2222**.
+  - Codes de l'espace gérant : gérant **0328**, four **1111**, caisse **2222**, livreur **3333**.
   - Nouveautés par rapport à I'm Starving : pizza **moitié-moitié** (on paie la moitié la plus chère), **zones de livraison** avec frais automatiques et livraison offerte, **commande programmée** (créneaux de 15 min), **suivi « au four »** avec minuteur de cuisson côté client et côté cuisine, compteur « pizzas au four » en direct, filtres (végétarien, de la mer, épicé, fromagé, choix du chef), braises animées sur l'accueil, design trattoria.
   - 40 recettes en visuels photo-réalistes (sans porc : jambon de dinde, viande fumée de bœuf).
-  - Audit accessibilité : 0 défaut sur 15 écrans. Tests téléphone et ordinateur : 0 erreur.
+  - **Livraison complète sur Alger** : 23 communes de l'Est algérois (Dar El Beïda → Chéraga) avec frais, trajet et minimum de commande calculés selon la distance (150 à 1 050 DA, à valider avec eux), plan interactif, adresse détaillée (cité, bâtiment, étage, point de repère, consigne), position exacte du client si son téléphone le permet, adresses récentes mémorisées, créneaux programmés qui tiennent compte du trajet. Suivi client en 4 étapes (reçue, au four, en route avec le livreur sur la carte, livrée). Espace livreur (code **3333**) : ses courses, itinéraire Google Maps, appeler le client, « J'arrive » WhatsApp, « Livrée », partage de position GPS. Côté gérant : carte des livraisons en cours, WhatsApp au livreur avec adresse complète + itinéraire, éditeur des communes.
+  - Audit accessibilité : 0 défaut sur 19 écrans. Tests téléphone et ordinateur : 0 erreur.
 - **Vidéo démo** (38 s, à envoyer) : `demo-arzata.mp4`, ouverture cinématique du four (IA) puis le parcours complet.
 - **Vidéo de lancement** pour leurs réseaux (20 s, offerte si signature) : `lancement-arzata.mp4`.
 - **Dossier PDF 4 pages + devis** : `dossier/Proposition-ArzataPizza-DzignStudio.pdf`.
