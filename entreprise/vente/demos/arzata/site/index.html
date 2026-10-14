@@ -15,7 +15,7 @@
 :root{
   --creme:#F7F1E5; --papier:#FFFBF3; --sable:#EFE6D3; --trait:#E2D7C1;
   --vert:#14402F; --vert2:#0D2E21; --basilic:#2F6B3A; --rouge:#B3122A; --rouge2:#8E0E21; --or:#8A5A0B; --braise:#E2531B;
-  --encre:#1C1A16; --gris:#5E574C; --clair:#FFF8EC;
+  --encre:#1C1A16; --sauge:#4E6A55; --anthracite:#24272A; --gris:#5E574C; --clair:#FFF8EC;
   --f-titre:"Fraunces",Georgia,"Times New Roman",serif;
   --f-texte:"DM Sans",ui-sans-serif,system-ui,sans-serif;
   --f-script:"Yellowtail","Brush Script MT",cursive;
@@ -89,8 +89,12 @@ h2 em,h1 em{font-style:italic;color:var(--rouge)}
 @keyframes flamme{from{transform:scale(1) rotate(-4deg)}to{transform:scale(1.18) rotate(4deg)}}
 
 /* Bandeau défilant */
-.ticker{background:var(--vert);color:var(--clair);overflow:hidden;white-space:nowrap}
-.ticker div{display:inline-block;padding:13px 0;font-family:var(--f-titre);font-style:italic;font-size:22px;animation:defile 36s linear infinite}
+.ticker{background:var(--sauge);color:var(--clair);overflow:hidden;white-space:nowrap;position:relative;z-index:2;border-top:3px solid #E9E1CF}
+/* Le store vert sauge de la façade, bord festonné */
+.ticker::after{content:'';position:absolute;left:0;right:0;bottom:-11px;height:12px;background:radial-gradient(circle at 14px 0,var(--sauge) 11px,transparent 11.5px) 0 0/28px 12px repeat-x}
+.store-bas{height:0;position:relative;z-index:2}
+.store-bas::after{content:'';position:absolute;left:0;right:0;top:0;height:12px;background:radial-gradient(circle at 14px 0,var(--sauge) 11px,transparent 11.5px) 0 0/28px 12px repeat-x}
+.ticker div{display:inline-block;padding:14px 0;font-family:var(--f-titre);font-style:italic;font-size:22px;animation:defile 36s linear infinite}
 .ticker span{margin:0 16px}.ticker span.e{color:#F3C969;font-style:normal}
 @keyframes defile{to{transform:translateX(-50%)}}
 
@@ -176,6 +180,13 @@ section.bloc{padding-block:88px}
 .voyage h2 .script{color:#F3C969}
 .voyage .sur{color:#F3C969}
 
+/* La maison : façade anthracite, enseigne rouge */
+.maison{background:var(--anthracite);color:var(--clair);text-align:center;padding-block:80px;border-top:6px solid var(--rouge)}
+.maison .wrap{display:grid;gap:14px;justify-items:center}
+.maison .script{font-size:44px;color:#F3C969;line-height:1.1}
+.maison h2{font-size:clamp(36px,5vw,64px)}
+.maison h2 em{color:#FF8A5B}
+.maison p{max-width:52ch;margin:0;color:#D9D4C8}
 /* Étapes */
 .etapes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .etape{background:var(--papier);border:1px solid var(--trait);border-radius:22px;padding:26px;display:grid;gap:10px;align-content:start}
@@ -333,7 +344,7 @@ html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:aut
       <div class="puces"><span id="etat-cmd"><b>●</b> Commande en ligne ouverte</span><span class="feu" id="four-live"></span><span data-t="puce_modes">Livraison · À emporter · Sur place</span></div>
     </div>
   </section>
-  <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
+  <div class="ticker" aria-hidden="true"><div id="ticker"></div></div><div class="store-bas" aria-hidden="true"></div>
 
   <section class="bloc sigs-bloc" id="signatures"><div class="wrap">
     <div class="tete"><div><span class="sur" data-t="sig_sur">Le choix du chef</span><h2 data-t="sig_h" data-html>Nos pizzas <em class="script" style="color:#F3C969;font-style:normal">signature</em></h2></div><p data-t="sig_p">Les trois recettes qui font la réputation d'Arzata. Cuites devant vous, au feu de bois.</p></div>
@@ -362,6 +373,12 @@ html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:aut
   </div></section>
 
   <section class="voyage" aria-labelledby="voyage-h"><img src="img3d/table.jpg" alt="Table garnie de pizzas au feu de bois, burrata, saumon et margherita" loading="lazy"><div class="wrap"><span class="sur" data-t="voy_sur">Arzata · Dar El Beïda</span><h2 id="voyage-h" data-t="voy_h" data-html>Voyagez en Italie, <span class="script">sans quitter Alger</span></h2></div></section>
+
+  <section class="maison" aria-labelledby="maison-h"><div class="wrap">
+    <span class="script" data-t="maison_s">le goût de vous faire plaisir</span>
+    <h2 id="maison-h" data-t="maison_h" data-html>Élégance, excellence <em>et hospitalité</em></h2>
+    <p data-t="maison_p">Une grande équipe, une terrasse, un four à bois au cœur de la pizzeria. En terrasse comme en salle, scannez le QR code de votre table : la commande part directement au four.</p>
+  </div></section>
 
   <section class="bloc" id="comment"><div class="wrap">
     <div class="tete"><div><span class="sur" data-t="cmt_sur">Sans appeler, sans attendre</span><h2 data-t="comment_h" data-html>Commander, <em>c'est simple</em></h2></div><p data-t="comment_p">Votre commande arrive directement au four, et vous la suivez en direct.</p></div>
@@ -424,7 +441,8 @@ var TXT={
   suivi_title:'Ma commande',suivi_sur:'Commande envoyée',merci:'Grazie {n} ! Arzata a bien reçu votre commande.',s1:'Reçue par la pizzeria',s2:'Au four, au feu de bois',s3liv:'En route vers vous',s3place:'Prête, on vous l\'apporte',s3emp:'Prête, venez la récupérer',
   eta:'Prête vers <b>{h}</b>',autre:'Nouvelle commande',recommander:'Recommander la même chose',upsell:'Pour accompagner',sortie:'Sortie du four ≈ {h}',
   fid:'Fidélité : {x}/10 · la 10e commande, une pizza offerte',fid_ok:'🎁 Votre pizza offerte vous attend !',bienvenue:'Table {t} : benvenuti !',langue:'العربية',
-  mots:['Goût authentique','Feu de bois','Figue & noisettes','Magret & foie gras','Base tomate','Base crème','Pizzouich','Moitié-moitié','Fait maison'],cats:{}},
+  maison_s:'le goût de vous faire plaisir',maison_h:'Élégance, excellence <em>et hospitalité</em>',maison_p:'Une grande équipe, une terrasse, un four à bois au cœur de la pizzeria. En terrasse comme en salle, scannez le QR code de votre table : la commande part directement au four.',
+  mots:['Arzata Pizza au feu de bois','Goût authentique','Figue & noisettes','Magret & foie gras','Base tomate','Base crème','Pizzouich','Moitié-moitié','Fait maison'],cats:{}},
  ar:{nav_menu:'القائمة',nav_moitie:'نصف ونصف',nav_cmd:'اطلب',nav_infos:'معلومات',gerant:'فضاء المسيّر',panier:'سلتي',
   hero_script:'أغمض عينيك،',hero_h1:'إيطاليا <em>في صحنك</em>',hero_p:'عجينة ذهبية على نار الحطب، موزاريلا تذوب ووصفات سخية. اطلب عبر الإنترنت في دقيقة: في المطعم، للأخذ أو بالتوصيل.',
   btn_cmd:'اطلب الآن',btn_moitie:'بيتزا نصف ونصف؟',puce_modes:'توصيل · للأخذ · في المطعم',place:'في المطعم',emporter:'للأخذ',livraison:'توصيل',
@@ -451,7 +469,8 @@ var TXT={
   suivi_title:'طلبي',suivi_sur:'تم إرسال الطلب',merci:'شكرًا {n}! استلمت أرزاتا طلبك.',s1:'استلمتها البيتزيريا',s2:'في الفرن، على نار الحطب',s3liv:'في الطريق إليك',s3place:'جاهزة، سنحضرها إليك',s3emp:'جاهزة، تعال لاستلامها',
   eta:'جاهزة حوالي <b>{h}</b>',autre:'طلب جديد',recommander:'أعد نفس الطلب',upsell:'للمرافقة',sortie:'تخرج من الفرن ≈ {h}',
   fid:'الوفاء: {x}/10 · الطلب العاشر، بيتزا مجانية',fid_ok:'🎁 بيتزاك المجانية في انتظارك!',bienvenue:'طاولة {t}: مرحبًا!',langue:'Français',
-  mots:['مذاق أصيل','نار الحطب','قاعدة طماطم','قاعدة كريمة','بيتزويش','نصف ونصف','صنع منزلي'],
+  maison_s:'متعة المذاق لأجلكم',maison_h:'أناقة، تميّز <em>وكرم ضيافة</em>',maison_p:'فريق كبير، شرفة، وفرن حطب في قلب البيتزيريا. في الشرفة أو في القاعة، امسح رمز QR على طاولتك: يصل طلبك مباشرة إلى الفرن.',
+  mots:['أرزاتا بيتزا على نار الحطب','مذاق أصيل','نار الحطب','قاعدة طماطم','قاعدة كريمة','بيتزويش','نصف ونصف','صنع منزلي'],
   cats:{'Du moment':'من الموسم','Base tomate':'قاعدة طماطم','Base crème':'قاعدة كريمة','Pizzouich':'بيتزويش','Tartines':'طارتين','Salades':'سلطات'}}
 };
 var langue='fr';try{langue=localStorage.getItem('arz-lang')||'fr'}catch(e){}if(location.hash==='#ar')langue='ar';

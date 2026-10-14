@@ -106,7 +106,7 @@
   // Les deux restaurants (bio Instagram)
   // Configuration de l'établissement, modifiable par le gérant (Réglages › Établissement)
   var CONF0 = {
-    nom: 'Arzata Pizza', slogan: 'Goût authentique · Feu de bois', insta: 'arzatapizza',
+    nom: 'Arzata Pizza', slogan: 'Le goût de vous faire plaisir', insta: 'arzatapizza',
     restos: [{ id: 'dar', nom: 'Dar El Beïda', ouv: 11, ferm: 23, tel: '0772 08 73 87', tel2: '0551 11 75 78', adresse: 'Dar El Beïda, en face de la banque BNP' }],
     cats: ['Du moment', 'Base tomate', 'Base crème', 'Pizzouich', 'Tartines', 'Salades'],
     // Zones de livraison et frais (modifiables par le gérant)

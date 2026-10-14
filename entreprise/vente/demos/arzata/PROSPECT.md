@@ -7,6 +7,7 @@
 - Bio : « Goût authentique · Feu de bois · Livraison · À emporter · Sur place ».
 - Identité : vert, crème, rouge, logo manuscrit « Arzata Pizza ». Phrases à eux : « Fermez les yeux, l'Italie est dans votre assiette », « Voyagez en Italie, sans quitter Alger ».
 - Carte : 14 pizzas base tomate (490 à 3 090 DA), 12 base crème (890 à 3 190 DA), 7 pizzouich (600 à 700), tartine hot-dog (700), 4 salades (790 à 1 390), suppléments ricotta / fromagère / stracciatella (100).
+- Façade : enseigne rouge, façade anthracite, stores vert sauge « Arzata Pizza au Feu de Bois », terrasse. Grande équipe (≈ 15 personnes, tabliers et casquettes rouges brodés). Phrases : « Le goût de vous faire plaisir », « Élégance, excellence et hospitalité ». Reel façade : 1 900 j'aime, 181 partages. Post du 19 septembre : ils demandent « un avis sincère » (accroche du message 1).
 - Pizzas du moment vues en story : **Figue & noisettes** et **Magret & foie gras** (ajoutées à la démo avec des prix provisoires 1 590 / 2 990 et 2 490 / 3 990 DA, **à confirmer**). Leur vrai logo : badge rond crème, « Arzata » vert manuscrit, texte circulaire rouge « Arzata · Pizza au feu de bois » (refait pour la démo). Boîtes rouges, tabliers brodés.
 - À vérifier avec eux : prix des pizzas du moment, horaires (démo : 11h-23h), recettes exactes des pizzouich, zones et frais de livraison (démo : 150 à 350 DA, offerte dès 4 000 DA).
 
@@ -35,7 +36,8 @@ Plateforme 300 000 DA → **240 000 DA** avec le programme Fondateurs (-20 %). A
 Message 1 (Instagram, avec la vidéo démo)
 
 Bonjour Arzata 👋
-On adore vos pizzas au feu de bois, alors on vous a préparé une surprise : votre propre site de commande en ligne, déjà prêt, avec toute votre carte.
+Vous demandiez un avis sincère sur vos pizzas : elles sont superbes, et ça se voit (1 900 j'aime sur un seul reel !).
+Ce qui manque, c'est de pouvoir les commander en ligne. Alors on vous a préparé une surprise : votre propre site de commande, déjà prêt, avec toute votre carte.
 Vos clients composent leur pizza (même moitié-moitié), choisissent leur quartier pour la livraison, et suivent leur pizza au four en direct. De votre côté, le bon sort tout seul devant le four.
 Regardez la vidéo, 38 secondes. On vous envoie le lien pour l'essayer ?
 Dzign Studio
