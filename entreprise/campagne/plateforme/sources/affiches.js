@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:1080,height:1350}});await p.goto('file://'+__dirname+'/affiches.html');await p.waitForTimeout(1500);
+for(const i of [1,2,3,4]){await p.evaluate(i=>{document.querySelectorAll('.a').forEach(a=>a.classList.toggle('on',a.id==='a'+i))},i);await p.waitForTimeout(300);await p.screenshot({path:__dirname+'/affiche-'+i+'.jpg',type:'jpeg',quality:90})}await b.close()})();

@@ -439,6 +439,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 :root[dir="rtl"] .hero-actions,:root[dir="rtl"] .cas-actions{justify-content:flex-start}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rideau{display:none}}
+
+/* Plateforme restaurant : la démo complète, en image */
+.plat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(28px,5vw,64px);align-items:center}
+.plat-vis{border-radius:22px;overflow:hidden;border:1px solid var(--ligne);box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
+.plat-vis img{display:block;width:100%;height:auto}
+.plat-liste{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:12px}
+.plat-liste li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;color:var(--ivoire)}
+.plat-liste li b{color:var(--or);font-family:var(--f-display)}
+.plat-liste small{display:block;color:var(--gris);font-size:.92rem}
+.plat-actions{display:flex;flex-wrap:wrap;gap:12px}
+#plateforme h2{font-size:clamp(32px,4.4vw,56px)}
+@media (max-width:900px){.plat{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -544,6 +556,27 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     </div>
     <div class="portfolio" id="grille-portfolio"></div>
     <p class="mention" data-ar="المواقع التجريبية الثمانية تحمل أسماء شركات وهمية. أما La Maison du Parquet فهو موقع حقيقي يعمل على الإنترنت.">Les 8 sites de démonstration utilisent des noms d'entreprises fictifs. La Maison du Parquet est un vrai site, en ligne.</p>
+  </div>
+</section>
+
+<section class="bloc" id="plateforme">
+  <div class="wrap plat">
+    <div>
+      <p class="eyebrow" data-ar="جديد · منصّة المطاعم">Nouveau · Plateforme restaurant</p>
+      <h2 data-ar="ليس مجرد موقع. &lt;span class=&quot;or-brille&quot;&gt;مطعمك كاملًا على الإنترنت.&lt;/span&gt;">Pas un simple site. <span class="or-brille">Tout votre restaurant en ligne.</span></h2>
+      <p style="color:var(--gris);margin-top:14px" data-ar="زبائنك يطلبون، مطبخك يستلم، وأنت تحصّل. منصّة واحدة للطلبات والمطبخ والصندوق والمحاسبة والتوصيل.">Vos clients commandent, votre cuisine reçoit, vous encaissez. Une seule plateforme pour les commandes, la cuisine, la caisse, la comptabilité et la livraison.</p>
+      <ul class="plat-liste">
+        <li><b>01</b><span data-ar="الطلب عبر الإنترنت بالعربية والفرنسية &lt;small&gt;القائمة كاملة، الأحجام، الإضافات، في المطعم بـ QR، للأخذ أو بالتوصيل&lt;/small&gt;">Commande en ligne, en français et en arabe<small>Toute la carte, tailles, suppléments, sur place par QR code, à emporter ou en livraison</small></span></li>
+        <li><b>02</b><span data-ar="شاشة المطبخ ووصل يُطبع وحده &lt;small&gt;رنين لكل طلب، مؤقّت التحضير، توقّف مؤقت وقت الضغط&lt;/small&gt;">Écran cuisine et bon imprimé tout seul<small>Sonnerie à chaque commande, minuteur, pause des commandes pendant le rush</small></span></li>
+        <li><b>03</b><span data-ar="توصيل متابَع مباشرة &lt;small&gt;مناطق وأسعار، فضاء للموصل، والزبون يرى طلبه يتقدّم&lt;/small&gt;">Livraison suivie en direct<small>Zones et frais, espace livreur, le client voit sa commande avancer</small></span></li>
+        <li><b>04</b><span data-ar="الصندوق، المحاسبة والزبائن &lt;small&gt;تحصيل، تذكرة Z، الأرباح، الوفاء والعروض&lt;/small&gt;">Caisse, comptabilité et fichier clients<small>Encaissement, ticket Z, bénéfice estimé, fidélité et promotions</small></span></li>
+      </ul>
+      <div class="plat-actions">
+        <button type="button" class="btn btn-or" data-offre="Plateforme" data-ar="أريد عرضي التجريبي">Je veux ma démo</button>
+        <a class="btn btn-ligne" href="#formules" data-ar="الباقات والأسعار">Voir les formules</a>
+      </div>
+    </div>
+    <div class="plat-vis"><img src="medias/plateforme.jpg" alt="Plateforme restaurant : écran cuisine sur ordinateur, menu et suivi de commande sur téléphone" loading="lazy" width="1600" height="1050"></div>
   </div>
 </section>
 
