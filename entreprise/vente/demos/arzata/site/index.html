@@ -1,0 +1,650 @@
+<title>Arzata Pizza</title>
+<meta name="description" content="Arzata Pizza, pizzas au feu de bois à Dar El Beïda. Commandez en ligne : sur place, à emporter ou en livraison. Base tomate, base crème, pizzouich, salades.">
+<meta name="theme-color" content="#14402F">
+<meta property="og:title" content="Arzata Pizza · Pizza au feu de bois">
+<meta property="og:description" content="Fermez les yeux, l'Italie est dans votre assiette. Commandez en ligne en une minute.">
+<meta property="og:image" content="img3d/hero.jpg">
+<meta property="og:type" content="restaurant">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500;1,9..144,700&family=Yellowtail&family=IBM+Plex+Mono:wght@500&family=Cairo:wght@500;700;800;900&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img3d/hero.jpg">
+<link rel="stylesheet" href="gestion.css">
+<style>
+/* Arzata Pizza : trattoria au feu de bois. Crème chaude, vert basilic profond, rouge tomate, or de la croûte.
+   Thème clair unique et assumé (papier de menu italien) : toutes les couleurs sont posées explicitement. */
+:root{
+  --creme:#F7F1E5; --papier:#FFFBF3; --sable:#EFE6D3; --trait:#E2D7C1;
+  --vert:#14402F; --vert2:#0D2E21; --basilic:#2F6B3A; --rouge:#B3122A; --rouge2:#8E0E21; --or:#8A5A0B; --braise:#E2531B;
+  --encre:#1C1A16; --gris:#5E574C; --clair:#FFF8EC;
+  --f-titre:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-texte:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --f-script:"Yellowtail","Brush Script MT",cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--creme);color:var(--encre);font-family:var(--f-texte);font-size:16px;line-height:1.55}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--rouge);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-titre);font-weight:500;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2 em,h1 em{font-style:italic;color:var(--rouge)}
+.script{font-family:var(--f-script);font-weight:400;letter-spacing:0;font-style:normal}
+.sur{font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--or)}
+.tricolore{height:4px;background:linear-gradient(90deg,#1F7A3E 0 33.3%,#FFF8EC 33.3% 66.6%,var(--rouge) 66.6%)}
+
+/* Démo */
+.demo{background:var(--vert2);color:#D9E6DE;font-size:13px}
+.demo .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-block:8px}
+.gbtn{border:0;background:#F3C969;color:#2A1D05;font-weight:800;font-size:13.5px;border-radius:999px;padding:8px 14px;cursor:pointer}
+.gbtn .nb{margin-left:6px;background:var(--rouge);color:#fff;border-radius:999px;padding:0 7px}
+.gbtn.alerte{animation:sonne .9s ease-in-out 3}
+@keyframes sonne{0%,100%{transform:none}25%{transform:rotate(-3deg) scale(1.05)}75%{transform:rotate(3deg) scale(1.05)}}
+
+/* Navigation */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(247,241,229,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--trait)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:70px}
+.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--vert);line-height:1}
+.logo .script{font-size:36px;color:var(--vert);transform:translateY(3px)}
+.logo small{font-size:10.5px;letter-spacing:.3em;font-weight:800;color:var(--rouge)}
+.nav nav{display:flex;gap:24px;margin-left:auto;font-weight:600;font-size:15px}
+.nav nav a{text-decoration:none;color:var(--gris)}
+.nav nav a:hover{color:var(--vert)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 24px;font-weight:700;font-size:15.5px;text-decoration:none;background:var(--rouge);color:#fff;transition:transform .15s,background .15s,box-shadow .15s}
+.btn:hover{background:var(--rouge2);transform:translateY(-1px)}
+.btn.vert{background:var(--vert)} .btn.vert:hover{background:var(--vert2)}
+.btn.ligne{background:none;border:1.5px solid currentColor;color:var(--vert)}
+.btn.ligne:hover{background:rgba(20,64,47,.06)}
+.btn.clair{background:var(--clair);color:var(--vert)}
+.nav .btn{padding:10px 18px;font-size:14.5px}
+.compte{background:#fff;color:var(--rouge);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:12.5px;padding:0 6px}
+.langue{border:1.5px solid var(--trait);background:none;border-radius:999px;padding:7px 13px;font-weight:800;font-size:14px;white-space:nowrap;color:var(--vert)}
+.langue:hover{border-color:var(--vert)}
+.gnav{padding:9px 16px!important;font-size:14px!important}
+.promo-band{background:var(--rouge);color:#fff;text-align:center;font-weight:700;font-size:15px;padding:10px 16px}
+
+/* Héros : le four, les braises qui montent */
+.heros{position:relative;min-height:min(760px,92vh);display:grid;align-items:center;overflow:hidden;background:#120B06;color:var(--clair)}
+.heros>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;transform:scale(1.03);animation:respire 16s ease-in-out infinite alternate}
+@keyframes respire{to{transform:scale(1.1)}}
+.heros::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,8,4,.92) 0%,rgba(14,8,4,.7) 38%,rgba(14,8,4,.1) 70%),linear-gradient(0deg,rgba(14,8,4,.8),transparent 35%)}
+#braises{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.heros .wrap{position:relative;z-index:2;padding-block:110px 90px;display:grid;gap:20px;width:100%}
+.heros .sur{color:#F3C969}
+.heros h1{font-size:clamp(46px,7.6vw,104px);max-width:12ch;font-weight:500}
+.heros h1 .script{display:block;font-size:.62em;color:#F3C969;margin-bottom:.06em;transform:rotate(-3deg);transform-origin:left}
+.heros h1 em{color:#FF8A5B}
+.heros p{max-width:44ch;font-size:clamp(17px,1.8vw,20px);color:#EADFCB;margin:0}
+.heros .actions{display:flex;flex-wrap:wrap;gap:12px}
+.heros .btn.ligne{color:var(--clair)}
+.heros .btn.ligne:hover{background:rgba(255,248,236,.08)}
+.puces{display:flex;flex-wrap:wrap;gap:8px}
+.puces span{border:1px solid rgba(255,248,236,.28);border-radius:999px;padding:6px 13px;font-size:13.5px;font-weight:600;background:rgba(14,8,4,.45);backdrop-filter:blur(4px)}
+.puces span b{color:#6EE7A0}
+.puces .feu{border-color:rgba(255,138,91,.6);color:#FFD7C2}
+.feu i{display:inline-block;animation:flamme 1.1s ease-in-out infinite alternate;font-style:normal}
+@keyframes flamme{from{transform:scale(1) rotate(-4deg)}to{transform:scale(1.18) rotate(4deg)}}
+
+/* Bandeau défilant */
+.ticker{background:var(--vert);color:var(--clair);overflow:hidden;white-space:nowrap}
+.ticker div{display:inline-block;padding:13px 0;font-family:var(--f-titre);font-style:italic;font-size:22px;animation:defile 36s linear infinite}
+.ticker span{margin:0 16px}.ticker span.e{color:#F3C969;font-style:normal}
+@keyframes defile{to{transform:translateX(-50%)}}
+
+section.bloc{padding-block:88px}
+.tete{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px;margin-bottom:34px}
+.tete h2{font-size:clamp(40px,5.6vw,72px);color:var(--vert)}
+.tete p{color:var(--gris);max-width:46ch;margin:0}
+
+/* Signatures du chef */
+.sigs-bloc{background:var(--vert);color:var(--clair);position:relative;overflow:hidden}
+.sigs-bloc::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 85% 0%,rgba(243,201,105,.14),transparent 45%),radial-gradient(circle at 0% 100%,rgba(179,18,42,.25),transparent 40%);pointer-events:none}
+.sigs-bloc .tete h2{color:var(--clair)} .sigs-bloc .tete p{color:#C9D9CF} .sigs-bloc .sur{color:#F3C969}
+.sigs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;position:relative}
+.sig{display:grid;gap:14px;align-content:start;text-align:center;padding:10px 6px 0}
+.sig .rond{position:relative;width:min(100%,320px);aspect-ratio:1;margin:0 auto;border-radius:50%;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.6),0 0 0 8px rgba(255,248,236,.06)}
+.sig .rond img{width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.sig:hover .rond img{transform:scale(1.26) rotate(8deg)}
+.sig .no{font-family:var(--f-script);font-size:28px;color:#F3C969;line-height:1}
+.sig h3{font-size:34px;color:var(--clair)}
+.sig p{margin:0 auto;color:#C9D9CF;font-size:14.5px;max-width:34ch}
+.sig .bas{display:flex;justify-content:center;align-items:center;gap:14px}
+.prix{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.prix small{font-weight:600;color:inherit;opacity:.75;font-size:12px;margin-right:4px}
+.prix s{opacity:.6;font-weight:500;font-size:.85em;margin-right:4px}
+.plus{border:0;background:var(--rouge);color:#fff;width:44px;height:44px;border-radius:50%;font-size:26px;line-height:1;display:grid;place-items:center;flex:none;transition:transform .2s,background .15s}
+.plus:hover{transform:rotate(90deg);background:var(--rouge2)}
+
+/* Moitié-moitié */
+.moitie{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:center}
+.duo{position:relative;width:min(100%,460px);aspect-ratio:1;margin:0 auto;border-radius:50%;box-shadow:0 40px 70px -30px rgba(60,30,10,.55)}
+.duo .clip{position:absolute;inset:0;border-radius:50%;overflow:hidden}
+.duo .rot{position:absolute;inset:0;border-radius:50%;overflow:hidden;animation:tourne 40s linear infinite}
+.duo .rot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.2)}
+.duo .rot img+img{clip-path:inset(0 0 0 50%)}
+.duo .rot::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:rgba(255,248,236,.85)}
+.duo .et{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--clair);color:var(--rouge);display:grid;place-items:center;font-family:var(--f-script);font-size:36px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+@keyframes tourne{to{transform:rotate(360deg)}}
+.moitie h2{font-size:clamp(40px,5.4vw,70px);color:var(--vert)}
+.moitie p{color:var(--gris);max-width:46ch}
+.points{display:grid;gap:10px;margin:22px 0 26px;padding:0;list-style:none}
+.points li{display:flex;gap:12px;align-items:baseline}
+.points b{font-family:var(--f-titre);font-style:italic;color:var(--rouge);font-size:20px;min-width:28px}
+
+/* Menu */
+.outils{display:grid;gap:12px;margin-bottom:22px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);z-index:5;background:var(--creme);padding-block:10px 8px}
+.recherche{display:flex;gap:10px;align-items:center}
+.recherche input{flex:1;min-width:0;max-width:420px;background:var(--papier);border:1.5px solid var(--trait);border-radius:999px;color:var(--encre);padding:12px 18px;font:inherit;font-size:15px}
+.recherche input::placeholder{color:#857D70}
+.recherche input:focus{border-color:var(--vert);outline:none}
+.onglets,.filtres{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.onglets::-webkit-scrollbar,.filtres::-webkit-scrollbar{display:none}
+.onglets button{flex:none;border:1.5px solid var(--trait);background:var(--papier);border-radius:999px;padding:9px 18px;font-family:var(--f-titre);font-size:17px;color:var(--vert)}
+.onglets button[aria-pressed="true"]{background:var(--vert);color:var(--clair);border-color:var(--vert)}
+.onglets button small{font-family:var(--f-texte);font-size:12px;opacity:.75;margin-left:6px}
+.filtres button{flex:none;border:1px dashed #C9BBA0;background:none;border-radius:999px;padding:6px 13px;font-size:13.5px;font-weight:600;color:var(--gris)}
+.filtres button[aria-pressed="true"]{border-style:solid;border-color:var(--rouge);background:#FBE9EA;color:var(--rouge2)}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.carte{background:var(--papier);border:1px solid var(--trait);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.carte:hover{transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(60,35,10,.45)}
+.carte .vis{position:relative;aspect-ratio:1/0.82;overflow:hidden;background:#2A160B;max-width:100%}
+.carte .vis img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.carte:hover .vis img{transform:scale(1.06)}
+.pastille{position:absolute;z-index:1;left:12px;top:12px;background:#F3C969;color:#2A1D05;font-weight:800;font-size:12.5px;border-radius:999px;padding:5px 11px}
+.tags{position:absolute;z-index:1;right:10px;top:10px;display:flex;gap:5px}
+.tags span{width:30px;height:30px;border-radius:50%;background:rgba(255,251,243,.92);display:grid;place-items:center;font-size:15px}
+.carte .corps{padding:16px 18px 10px;display:grid;gap:6px;flex:1;align-content:start}
+.carte h3{font-size:24px;color:var(--vert)}
+.carte p{margin:0;color:var(--gris);font-size:14px;line-height:1.45}
+.carte .bas{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 18px 18px}
+.tailles{display:flex;gap:6px;flex-wrap:wrap;font-size:13px;color:var(--gris)}
+.tailles span{border:1px solid var(--trait);border-radius:8px;padding:3px 8px;background:var(--creme)}
+.tailles b{color:var(--encre);font-variant-numeric:tabular-nums}
+.carte.rupture{opacity:.5}.carte.rupture .plus{display:none}
+.rupt{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--rouge)}
+.aucun{color:var(--gris);padding:30px 0;grid-column:1/-1;text-align:center}
+
+/* Voyage */
+.voyage{position:relative;overflow:hidden;background:#1B0F07;color:var(--clair)}
+.voyage img{width:100%;height:auto;max-height:640px;object-fit:cover;opacity:.92}
+.voyage::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,4,.1) 40%,rgba(20,10,4,.88));pointer-events:none}
+.voyage .wrap{position:absolute;inset:auto 0 0;z-index:1;padding-block:0 40px;display:grid;gap:8px}
+.voyage h2{font-size:clamp(34px,5.6vw,76px)}
+.voyage h2 .script{color:#F3C969}
+.voyage .sur{color:#F3C969}
+
+/* Étapes */
+.etapes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.etape{background:var(--papier);border:1px solid var(--trait);border-radius:22px;padding:26px;display:grid;gap:10px;align-content:start}
+.etape .n{font-family:var(--f-script);font-size:58px;color:var(--rouge);line-height:.8}
+.etape h3{font-size:28px;color:var(--vert)}
+.etape p{margin:0;color:var(--gris)}
+
+/* Infos */
+.infos{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px}
+.fiche{border-radius:24px;background:var(--vert);color:var(--clair);padding:30px;display:grid;gap:16px;align-content:start;position:relative;overflow:hidden}
+.fiche::after{content:'';position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;border:30px solid rgba(243,201,105,.08)}
+.fiche h3{font-size:40px}
+.fiche .adr{color:#D2E0D7;margin:0}
+.etat{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.etat i{width:9px;height:9px;border-radius:50%;background:#6EE7A0;box-shadow:0 0 0 4px rgba(110,231,160,.2)}
+.etat.ferme i{background:#C9BBA0;box-shadow:none}
+.tels{display:grid;gap:4px}
+.tel{font-family:var(--f-titre);font-size:30px;user-select:all;font-variant-numeric:tabular-nums}
+.fiche .btn.ligne{color:var(--clair)}
+.zonesliste{background:var(--papier);border:1px solid var(--trait);border-radius:24px;padding:28px;display:grid;gap:12px;align-content:start}
+.zonesliste h3{font-size:30px;color:var(--vert)}
+.liste{display:grid;gap:10px}
+.liste div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--trait);padding-bottom:8px}
+.liste span:first-child{color:var(--gris)}
+.liste b{font-variant-numeric:tabular-nums}
+.offerte{background:#E9F3EC;color:var(--basilic);border-radius:12px;padding:10px 14px;font-weight:700;font-size:14px}
+footer{background:var(--vert2);color:#C9D9CF;padding-block:40px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer .logo,footer .logo .script{color:var(--clair)} footer .logo small{color:#F3C969}
+
+/* Bouton panier flottant (mobile) */
+.flottant{position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:none}
+.flottant .btn{width:100%;justify-content:space-between;padding:16px 22px;box-shadow:0 14px 30px -10px rgba(60,10,10,.6)}
+
+/* Tiroir de commande */
+.voile{position:fixed;inset:0;background:rgba(28,20,10,.55);z-index:40;backdrop-filter:blur(2px)}
+.tiroir{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--creme);z-index:41;display:flex;flex-direction:column;border-left:1px solid var(--trait);padding-top:env(safe-area-inset-top,0px);box-shadow:-20px 0 60px -20px rgba(0,0,0,.3)}
+.tiroir .t-tete{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:18px 20px;border-bottom:1px solid var(--trait)}
+.tiroir .t-tete h2{font-size:28px;color:var(--vert)}
+.fermer{border:0;background:var(--sable);width:38px;height:38px;border-radius:50%;font-size:18px;flex:none}
+.tiroir .contenu{flex:1;overflow-y:auto;padding:18px 20px;display:flex;flex-direction:column;gap:16px}
+.tiroir .contenu>*{flex:none}
+.tiroir .t-pied{border-top:1px solid var(--trait);padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;background:var(--papier)}
+.apercu{border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#2A160B;position:relative}
+.apercu{flex:none;width:100%;height:auto;min-height:0}
+.apercu img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.apercu.duo2 img+img{clip-path:inset(0 0 0 50%)}
+.apercu.duo2::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:rgba(255,248,236,.9)}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.modes button{border:1.5px solid var(--trait);background:var(--papier);border-radius:14px;padding:10px 6px;font-weight:700;font-size:13.5px;display:grid;gap:2px;justify-items:center}
+.modes button small{font-weight:500;color:var(--gris);font-size:11.5px}
+.modes button[aria-pressed="true"]{border-color:var(--vert);background:#E9F3EC;color:var(--vert2)}
+.champ{display:grid;gap:5px;font-size:13px;color:var(--gris);font-weight:600}
+.champ input,.champ select{background:var(--papier);border:1.5px solid var(--trait);color:var(--encre);border-radius:12px;padding:11px 13px;font:inherit;font-size:15px;width:100%}
+.champ input:focus,.champ select:focus{border-color:var(--vert);outline:none}
+.ligne{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding-bottom:12px;border-bottom:1px dashed var(--trait)}
+.ligne small{color:var(--gris);display:block}
+.qte{display:flex;align-items:center;gap:8px;grid-column:1}
+.qte button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--trait);background:var(--papier);font-weight:800}
+.total{display:flex;justify-content:space-between;font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+.sous{display:flex;justify-content:space-between;font-size:14px;color:var(--gris);font-variant-numeric:tabular-nums}
+.vide{color:var(--gris);text-align:center;padding:40px 10px}
+.vide .script{display:block;font-size:44px;color:var(--rouge);margin-bottom:6px}
+.opt{display:grid;gap:8px}
+.opt .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);font-weight:700}
+.opt label{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--papier);border:1.5px solid var(--trait);border-radius:12px;padding:12px 14px;font-weight:600}
+.opt label:has(input:checked){border-color:var(--vert);background:#F0F7F2}
+.opt input{accent-color:var(--vert)}
+.bascule{display:flex;align-items:center;gap:12px;background:#FFF1E6;border:1.5px solid #F2CBAE;border-radius:14px;padding:12px 14px;font-weight:700;color:#7A3410}
+.bascule input{width:20px;height:20px;accent-color:var(--rouge)}
+.bascule small{display:block;font-weight:500;color:#8A4A22}
+.suivi .num{font-family:var(--f-titre);font-size:68px;line-height:1;color:var(--vert)}
+.pas{display:grid;gap:10px}
+.pas div{display:flex;gap:12px;align-items:center;background:var(--papier);border-radius:14px;padding:13px;color:var(--gris);font-weight:600;border:1.5px solid var(--trait);flex-wrap:wrap}
+.pas i{width:28px;height:28px;border-radius:50%;border:2px solid var(--trait);display:grid;place-items:center;font-style:normal;font-size:13px;flex:none}
+.pas .ok{color:var(--encre)} .pas .ok i{background:var(--basilic);border-color:var(--basilic);color:#fff}
+.pas .en{color:var(--encre);border-color:var(--braise)} .pas .en i{border-color:var(--braise);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{background:rgba(226,83,27,.35)}}
+.cuisson{flex-basis:100%;height:7px;border-radius:4px;background:#FCE7D6;overflow:hidden}
+.cuisson b{display:block;height:100%;transform-origin:left;background:linear-gradient(90deg,#F5A524,var(--braise),var(--rouge));animation:cuit linear forwards}
+@keyframes cuit{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.eta{display:inline-flex;gap:8px;align-items:center;background:var(--papier);border:1.5px solid var(--trait);border-radius:999px;padding:7px 14px;font-weight:700;margin-top:10px}
+.eta b{color:var(--rouge)}
+.toast{position:fixed;left:50%;top:calc(84px + env(safe-area-inset-top,0px));transform:translateX(-50%);background:var(--vert2);color:var(--clair);font-weight:700;border-radius:999px;padding:10px 18px;z-index:50;box-shadow:0 10px 30px -8px rgba(0,0,0,.5);max-width:calc(100% - 32px)}
+.sugg{display:grid;gap:8px}
+.sugg .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);font-weight:700}
+.sugg .s{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--papier);border:1.5px solid var(--trait);border-radius:14px;padding:8px}
+.sugg img{width:52px;height:52px;border-radius:10px;object-fit:cover}
+.sugg b{display:block;font-size:14.5px}
+.sugg small{color:var(--gris)}
+.sugg .plus{width:36px;height:36px;font-size:22px}
+.fid{display:flex;gap:10px;align-items:center;background:#FFF4DA;border:1.5px solid #EED49A;color:#6B4A07;border-radius:12px;padding:10px 12px;font-size:13.5px;font-weight:700}
+.fid .barre{flex:1;height:7px;border-radius:4px;background:rgba(185,128,31,.2);overflow:hidden;min-width:60px}
+.fid .barre i{display:block;height:100%;background:var(--or)}
+.champ.erreur input{border-color:var(--rouge)}
+.champ .msg{color:var(--rouge);font-size:12.5px;font-weight:700}
+.note{margin:0;font-size:13px;color:var(--gris)} .note.alerte{color:var(--rouge2);font-weight:600}
+
+/* Animations */
+.js .revele{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .revele.vu{opacity:1;transform:none}
+.vol{position:fixed;z-index:60;width:58px;height:58px;border-radius:50%;object-fit:cover;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.saute{animation:saute .45s ease}
+@keyframes saute{40%{transform:scale(1.22)}}
+
+@media (max-width:900px){
+  .nav nav{display:none}
+  .sigs{grid-template-columns:1fr;gap:44px}
+  .moitie{grid-template-columns:1fr;gap:30px}
+  .etapes,.infos{grid-template-columns:1fr}
+  .flottant{display:block}
+  .nav .btn.cmd{display:none}
+  section.bloc{padding-block:64px}
+  .tiroir{top:auto;height:92vh;border-radius:24px 24px 0 0;border-left:0;width:100%}
+  footer{padding-bottom:110px}
+  .heros::after{background:linear-gradient(0deg,rgba(14,8,4,.95) 10%,rgba(14,8,4,.55) 60%,rgba(14,8,4,.25))}
+  .heros{align-items:end}
+}
+@media (max-width:640px){.gnav{display:none!important}.voyage img{aspect-ratio:4/3}.voyage .wrap{padding-block:0 22px}.logo .script{font-size:32px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}#braises{display:none}}
+
+/* Arabe : polices et sens de lecture */
+html[lang="ar"]{--f-titre:"Cairo","Segoe UI",Tahoma,sans-serif;--f-texte:"Cairo","Segoe UI",Tahoma,sans-serif}
+html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3{font-weight:800;letter-spacing:0;line-height:1.2}
+html[lang="ar"] h1 em,html[lang="ar"] h2 em{font-style:normal}
+html[lang="ar"] .heros h1 .script,html[lang="ar"] h2 .script,html[lang="ar"] .voyage .script{font-family:"Aref Ruqaa","Cairo",serif;transform:none}
+html[lang="ar"] .sur,html[lang="ar"] .opt .t,html[lang="ar"] .sugg .t,html[lang="ar"] .rupt{letter-spacing:0}
+html[lang="ar"] .ticker div{font-style:normal;animation-name:defile-rtl}
+@keyframes defile-rtl{to{transform:translateX(50%)}}
+html[dir="rtl"] .tiroir{right:auto;left:0;border-left:0;border-right:1px solid var(--trait)}
+html[dir="rtl"] .heros::after{background:linear-gradient(270deg,rgba(14,8,4,.92) 0%,rgba(14,8,4,.7) 38%,rgba(14,8,4,.1) 70%),linear-gradient(0deg,rgba(14,8,4,.8),transparent 35%)}
+html[dir="rtl"] .tags{right:auto;left:10px} html[dir="rtl"] .pastille{left:auto;right:12px}
+</style>
+
+<div class="demo" role="region" aria-label="Démonstration"><div class="wrap"><span>Démo Dzign Studio · la plateforme de commande d'Arzata Pizza</span><button class="gbtn" data-ouvrir="accueil">👨‍🍳 Espace gérant : four, caisse, comptabilité</button></div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#haut" aria-label="Arzata Pizza, accueil"><span class="script">Arzata</span><small>PIZZA</small></a>
+  <nav aria-label="Sections"><a href="#menu" data-t="nav_menu">La carte</a><a href="#moitie" data-t="nav_moitie">Moitié-moitié</a><a href="#comment" data-t="nav_cmd">Commander</a><a href="#infos" data-t="nav_infos">Infos</a></nav>
+  <button class="langue" id="b-langue" aria-label="Changer de langue">العربية</button>
+  <button class="btn ligne gnav" data-ouvrir="accueil" data-t="gerant">Espace gérant</button>
+  <button class="btn cmd" id="b-nav-panier"><span data-t="panier">Mon panier</span> <span class="compte" id="nb-nav">0</span></button>
+</div><div class="tricolore"></div></header>
+<div class="promo-band" id="promo-band" hidden></div>
+
+<main id="haut">
+  <section class="heros">
+    <img src="img3d/hero.jpg" alt="Pizza margherita sortie du four à bois" fetchpriority="high">
+    <canvas id="braises" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="sur" id="sur-hero">Pizza au feu de bois · Dar El Beïda</span>
+      <h1><span class="script" data-t="hero_script">Fermez les yeux,</span><span data-t="hero_h1" data-html>l'Italie est dans <em>votre assiette</em></span></h1>
+      <p data-t="hero_p">Pâte dorée au feu de bois, mozzarella qui file, recettes généreuses. Commandez en ligne en une minute : sur place, à emporter ou en livraison.</p>
+      <div class="actions"><a class="btn" href="#menu" data-t="btn_cmd">Commander maintenant</a><a class="btn ligne" href="#moitie" data-t="btn_moitie">Une pizza moitié-moitié ?</a></div>
+      <div class="puces"><span id="etat-cmd"><b>●</b> Commande en ligne ouverte</span><span class="feu" id="four-live"></span><span data-t="puce_modes">Livraison · À emporter · Sur place</span></div>
+    </div>
+  </section>
+  <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
+
+  <section class="bloc sigs-bloc" id="signatures"><div class="wrap">
+    <div class="tete"><div><span class="sur" data-t="sig_sur">Le choix du chef</span><h2 data-t="sig_h" data-html>Nos pizzas <em class="script" style="color:#F3C969;font-style:normal">signature</em></h2></div><p data-t="sig_p">Les trois recettes qui font la réputation d'Arzata. Cuites devant vous, au feu de bois.</p></div>
+    <div class="sigs" id="sigs"></div>
+  </div></section>
+
+  <section class="bloc" id="moitie"><div class="wrap moitie">
+    <div class="duo revele" aria-hidden="true"><div class="clip"><div class="rot"><img src="img3d/t13.jpg" alt="" loading="lazy"><img src="img3d/c8.jpg" alt="" loading="lazy"></div></div><span class="et">&amp;</span></div>
+    <div class="revele">
+      <span class="sur" data-t="mm_sur">Nouveau · exclusif en ligne</span>
+      <h2 data-t="mm_h" data-html>Deux envies ? <em>Moitié-moitié.</em></h2>
+      <p data-t="mm_p">Burrata d'un côté, saumon de l'autre : composez votre pizza avec deux recettes de la carte. Vous payez la moitié la plus chère, c'est tout.</p>
+      <ol class="points"><li><b>1</b><span data-t="mm1">Choisissez une pizza et sa taille, Normale ou Méga.</span></li><li><b>2</b><span data-t="mm2">Activez « Moitié-moitié » et choisissez la deuxième recette.</span></li><li><b>3</b><span data-t="mm3">Le four reçoit le bon avec les deux moitiés bien indiquées.</span></li></ol>
+      <button class="btn vert" id="b-moitie" data-t="mm_btn">Composer ma moitié-moitié</button>
+    </div>
+  </div></section>
+
+  <section class="bloc" id="menu" style="padding-top:10px"><div class="wrap">
+    <div class="tete"><div><span class="sur" data-t="menu_sur">38 recettes · Normale ou Méga</span><h2 data-t="menu_h" data-html>La <em>carte</em></h2></div><p data-t="menu_p">Choisissez, ajoutez au panier, commandez. Votre bon arrive directement devant le four.</p></div>
+    <div class="outils">
+      <div class="recherche"><input type="search" id="q" data-tp="rech" placeholder="Burrata, saumon, chèvre…" aria-label="Rechercher une pizza" autocomplete="off"></div>
+      <div class="onglets" id="onglets" role="group" aria-label="Catégories"></div>
+      <div class="filtres" id="filtres" role="group" aria-label="Filtres"></div>
+    </div>
+    <div class="grille" id="grille"></div>
+  </div></section>
+
+  <section class="voyage" aria-labelledby="voyage-h"><img src="img3d/table.jpg" alt="Table garnie de pizzas au feu de bois, burrata, saumon et margherita" loading="lazy"><div class="wrap"><span class="sur" data-t="voy_sur">Arzata · Dar El Beïda</span><h2 id="voyage-h" data-t="voy_h" data-html>Voyagez en Italie, <span class="script">sans quitter Alger</span></h2></div></section>
+
+  <section class="bloc" id="comment"><div class="wrap">
+    <div class="tete"><div><span class="sur" data-t="cmt_sur">Sans appeler, sans attendre</span><h2 data-t="comment_h" data-html>Commander, <em>c'est simple</em></h2></div><p data-t="comment_p">Votre commande arrive directement au four, et vous la suivez en direct.</p></div>
+    <div class="etapes">
+      <div class="etape revele"><span class="n">1</span><h3 data-t="e1">Choisissez</h3><p data-t="e1p">Toute la carte avec les tailles, les suppléments et les prix. À table, scannez le QR code : votre numéro de table s'ajoute tout seul.</p></div>
+      <div class="etape revele"><span class="n">2</span><h3 data-t="e2">Commandez</h3><p data-t="e2p">Sur place, à emporter ou en livraison, tout de suite ou à l'heure qui vous arrange. Vous payez au comptoir ou à la livraison.</p></div>
+      <div class="etape revele"><span class="n">3</span><h3 data-t="e3">Suivez</h3><p data-t="e3p">Reçue, au four, prête : vous voyez votre pizza avancer en direct sur votre téléphone.</p></div>
+    </div>
+  </div></section>
+
+  <section class="bloc" id="infos" style="padding-top:10px"><div class="wrap">
+    <div class="tete"><div><span class="sur" data-t="inf_sur">En face de la banque BNP</span><h2 data-t="infos_h" data-html>Venez nous <em>voir</em></h2></div><p data-t="infos_p">Sur place, à emporter ou livrée chez vous, dans les quartiers autour de Dar El Beïda.</p></div>
+    <div class="infos">
+      <div class="fiche revele" id="fiche"></div>
+      <div class="zonesliste revele"><h3 data-t="zones_h">Zones de livraison</h3><div class="liste" id="zones"></div><div class="offerte" id="offerte"></div>
+        <div class="liste" style="margin-top:6px"><div><span data-t="pr_pay">Paiement</span><b data-t="pr_pay_v">Au comptoir ou à la livraison</b></div><div><span>Instagram</span><b><a id="lien-insta" href="https://www.instagram.com/arzatapizza/" target="_blank" rel="noopener" style="color:inherit">@arzatapizza</a></b></div></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+<footer><div class="wrap"><a class="logo" href="#haut" aria-label="Arzata Pizza, haut de page"><span class="script">Arzata</span><small>PIZZA</small></a><span id="slogan-pied">Goût authentique · Feu de bois</span><span data-t="realise">Site réalisé par Dzign Studio</span></div></footer>
+
+<div class="flottant"><button class="btn" id="b-flot"><span><span data-t="flot">Voir mon panier</span> · <span id="nb-flot">0</span></span><span id="tot-flot">0 DA</span></button></div>
+<div class="voile" id="voile" hidden></div>
+<section class="tiroir" id="tiroir" hidden role="dialog" aria-modal="true" aria-labelledby="t-titre"><div class="t-tete"><h2 id="t-titre">Mon panier</h2><button class="fermer" id="b-fermer" aria-label="Fermer">✕</button></div><div class="contenu" id="t-contenu"></div><div class="t-pied" id="t-pied"></div></section>
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="gestion.js"></script>
+<script>
+(function(){
+document.documentElement.classList.add('js');
+var IMS=window.IMS,$=function(i){return document.getElementById(i)},fmt=function(n){var x=IMS.fmt(n);return langue==='ar'?x.replace(/ DA$/,' د.ج'):x};
+
+// ----- Langues : français / arabe -----
+var TXT={
+ fr:{nav_menu:'La carte',nav_moitie:'Moitié-moitié',nav_cmd:'Commander',nav_infos:'Infos',gerant:'Espace gérant',panier:'Mon panier',
+  hero_script:'Fermez les yeux,',hero_h1:'l\'Italie est dans <em>votre assiette</em>',hero_p:'Pâte dorée au feu de bois, mozzarella qui file, recettes généreuses. Commandez en ligne en une minute : sur place, à emporter ou en livraison.',
+  btn_cmd:'Commander maintenant',btn_moitie:'Une pizza moitié-moitié ?',puce_modes:'Livraison · À emporter · Sur place',place:'Sur place',emporter:'À emporter',livraison:'Livraison',
+  etat_ouvert:'Commande en ligne ouverte',etat_pause:'Commandes en ligne en pause',min:'min',four_live:'{n} au four en ce moment',four_calme:'Le four est chaud, à vous de jouer',
+  sig_sur:'Le choix du chef',sig_h:'Nos pizzas <em class="script" style="color:#F3C969;font-style:normal">signature</em>',sig_p:'Les trois recettes qui font la réputation d\'Arzata. Cuites devant vous, au feu de bois.',
+  mm_sur:'Nouveau · exclusif en ligne',mm_h:'Deux envies ? <em>Moitié-moitié.</em>',mm_p:'Burrata d\'un côté, saumon de l\'autre : composez votre pizza avec deux recettes de la carte. Vous payez la moitié la plus chère, c\'est tout.',
+  mm1:'Choisissez une pizza et sa taille, Normale ou Méga.',mm2:'Activez « Moitié-moitié » et choisissez la deuxième recette.',mm3:'Le four reçoit le bon avec les deux moitiés bien indiquées.',mm_btn:'Composer ma moitié-moitié',
+  menu_sur:'{n} recettes · Normale ou Méga',menu_h:'La <em>carte</em>',menu_p:'Choisissez, ajoutez au panier, commandez. Votre bon arrive directement devant le four.',rech:'Burrata, saumon, chèvre…',aucun:'Aucune recette ne correspond.',
+  des:'dès',epuise:'Épuisée aujourd\'hui',epuise2:'Épuisée',platjour:'Pizza du jour',ajouter:'Ajouter',
+  f_veg:'🌿 Végétarien',f_mer:'🐟 De la mer',f_epice:'🌶️ Épicé',f_fromage:'🧀 Fromagé',f_chef:'⭐ Le choix du chef',
+  voy_sur:'Arzata · Dar El Beïda',voy_h:'Voyagez en Italie, <span class="script">sans quitter Alger</span>',
+  cmt_sur:'Sans appeler, sans attendre',comment_h:'Commander, <em>c\'est simple</em>',comment_p:'Votre commande arrive directement au four, et vous la suivez en direct.',
+  e1:'Choisissez',e1p:'Toute la carte avec les tailles, les suppléments et les prix. À table, scannez le QR code : votre numéro de table s\'ajoute tout seul.',e2:'Commandez',e2p:'Sur place, à emporter ou en livraison, tout de suite ou à l\'heure qui vous arrange. Vous payez au comptoir ou à la livraison.',e3:'Suivez',e3p:'Reçue, au four, prête : vous voyez votre pizza avancer en direct sur votre téléphone.',
+  inf_sur:'En face de la banque BNP',infos_h:'Venez nous <em>voir</em>',infos_p:'Sur place, à emporter ou livrée chez vous, dans les quartiers autour de Dar El Beïda.',ouvert_now:'Ouvert maintenant',ferme_now:'Fermé pour le moment',itin:'Itinéraire',appeler:'Appeler',
+  zones_h:'Zones de livraison',offerte:'🎁 Livraison offerte dès {m}',pr_pay:'Paiement',pr_pay_v:'Au comptoir ou à la livraison',realise:'Site réalisé par Dzign Studio',flot:'Voir mon panier',
+  vide:'<span class="script">Bello !</span>Votre panier attend sa première pizza.',voir_menu:'Voir la carte',add:'Ajouter · {p}',added:'{p} ajoutée',taille:'Taille',supp:'Suppléments',
+  mm_on:'Moitié-moitié',mm_on2:'Deux recettes sur la même pizza, vous payez la plus chère',mm_choix:'Deuxième moitié',
+  table:'Table',comptoir:'Au comptoir',domicile:'À domicile',table_lbl:'Numéro de table (scanné par QR code)',quand:'Quand ?',asap:'Dès que possible',zone:'Quartier',
+  adr:'Adresse de livraison',adr_ph:'Cité, rue, bâtiment, étage',prenom:'Votre prénom',tel:'Téléphone',total:'Total',sous_total:'Sous-total',frais:'Livraison',gratuit:'Offerte',mode:'Mode',
+  cmd_comptoir:'Commander · paiement au comptoir',cmd_livraison:'Commander · paiement à la livraison',
+  pause_note:'Le four est plein : les commandes en ligne reprennent dans quelques minutes.',eta_note:'Prête en ≈ {m} min',ferme_note:'Nous sommes fermés : votre commande sera préparée dès l\'ouverture ({h}).',reste:'Plus que {m} pour la livraison offerte',
+  pause_btn:'Commandes en pause',
+  err_adr:'Indiquez l\'adresse de livraison',err_tel:'Numéro invalide (ex. 0555 12 34 56)',err_nom:'Indiquez votre prénom',sent:'Commande envoyée au four !',
+  suivi_title:'Ma commande',suivi_sur:'Commande envoyée',merci:'Grazie {n} ! Arzata a bien reçu votre commande.',s1:'Reçue par la pizzeria',s2:'Au four, au feu de bois',s3liv:'En route vers vous',s3place:'Prête, on vous l\'apporte',s3emp:'Prête, venez la récupérer',
+  eta:'Prête vers <b>{h}</b>',autre:'Nouvelle commande',recommander:'Recommander la même chose',upsell:'Pour accompagner',sortie:'Sortie du four ≈ {h}',
+  fid:'Fidélité : {x}/10 · la 10e commande, une pizza offerte',fid_ok:'🎁 Votre pizza offerte vous attend !',bienvenue:'Table {t} : benvenuti !',langue:'العربية',
+  mots:['Goût authentique','Feu de bois','Base tomate','Base crème','Pizzouich','Moitié-moitié','Fait maison'],cats:{}},
+ ar:{nav_menu:'القائمة',nav_moitie:'نصف ونصف',nav_cmd:'اطلب',nav_infos:'معلومات',gerant:'فضاء المسيّر',panier:'سلتي',
+  hero_script:'أغمض عينيك،',hero_h1:'إيطاليا <em>في صحنك</em>',hero_p:'عجينة ذهبية على نار الحطب، موزاريلا تذوب ووصفات سخية. اطلب عبر الإنترنت في دقيقة: في المطعم، للأخذ أو بالتوصيل.',
+  btn_cmd:'اطلب الآن',btn_moitie:'بيتزا نصف ونصف؟',puce_modes:'توصيل · للأخذ · في المطعم',place:'في المطعم',emporter:'للأخذ',livraison:'توصيل',
+  etat_ouvert:'الطلب عبر الإنترنت مفتوح',etat_pause:'الطلبات متوقفة مؤقتًا',min:'د',four_live:'{n} بيتزا في الفرن الآن',four_calme:'الفرن ساخن وفي انتظارك',
+  sig_sur:'اختيار الشيف',sig_h:'بيتزا <em class="script" style="color:#F3C969;font-style:normal">التوقيع</em>',sig_p:'ثلاث وصفات صنعت شهرة أرزاتا، تُطهى أمامك على نار الحطب.',
+  mm_sur:'جديد · حصريًا عبر الإنترنت',mm_h:'رغبتان؟ <em>نصف ونصف.</em>',mm_p:'بوراتا من جهة وسلمون من الجهة الأخرى: ركّب بيتزاك من وصفتين. تدفع سعر النصف الأغلى فقط.',
+  mm1:'اختر بيتزا وحجمها، عادية أو ميغا.',mm2:'فعّل « نصف ونصف » واختر الوصفة الثانية.',mm3:'يصل الوصل إلى الفرن مع النصفين بوضوح.',mm_btn:'ركّب بيتزا نصف ونصف',
+  menu_sur:'{n} وصفة · عادية أو ميغا',menu_h:'<em>القائمة</em>',menu_p:'اختر، أضف إلى السلة واطلب. يصل وصلك مباشرة إلى الفرن.',rech:'بوراتا، سلمون، جبن الماعز…',aucun:'لا توجد وصفة مطابقة.',
+  des:'ابتداءً من',epuise:'نفدت اليوم',epuise2:'نفدت',platjour:'بيتزا اليوم',ajouter:'أضف',
+  f_veg:'🌿 نباتي',f_mer:'🐟 بحري',f_epice:'🌶️ حار',f_fromage:'🧀 بالأجبان',f_chef:'⭐ اختيار الشيف',
+  voy_sur:'أرزاتا · الدار البيضاء',voy_h:'سافر إلى إيطاليا <span class="script">دون مغادرة الجزائر</span>',
+  cmt_sur:'دون اتصال ودون انتظار',comment_h:'الطلب <em>سهل</em>',comment_p:'يصل طلبك مباشرة إلى الفرن، وتتابعه مباشرة.',
+  e1:'اختر',e1p:'القائمة كاملة بالأحجام والإضافات والأسعار. على الطاولة، امسح رمز QR فيُضاف رقم طاولتك تلقائيًا.',e2:'اطلب',e2p:'في المطعم، للأخذ أو بالتوصيل، الآن أو في الوقت الذي يناسبك. تدفع عند الشباك أو عند الاستلام.',e3:'تابع',e3p:'مستلمة، في الفرن، جاهزة: تابع بيتزاك مباشرة على هاتفك.',
+  inf_sur:'مقابل بنك BNP',infos_h:'تفضّل <em>بزيارتنا</em>',infos_p:'في المطعم، للأخذ أو توصيل إلى منزلك في الأحياء المحيطة بالدار البيضاء.',ouvert_now:'مفتوح الآن',ferme_now:'مغلق حاليًا',itin:'الاتجاهات',appeler:'اتصل',
+  zones_h:'مناطق التوصيل',offerte:'🎁 توصيل مجاني ابتداءً من {m}',pr_pay:'الدفع',pr_pay_v:'عند الشباك أو عند الاستلام',realise:'تصميم وتطوير Dzign Studio',flot:'عرض السلة',
+  vide:'<span class="script">أهلًا!</span>سلتك في انتظار أول بيتزا.',voir_menu:'عرض القائمة',add:'أضف · {p}',added:'أُضيفت {p}',taille:'الحجم',supp:'إضافات',
+  mm_on:'نصف ونصف',mm_on2:'وصفتان على نفس البيتزا، تدفع الأغلى',mm_choix:'النصف الثاني',
+  table:'طاولة',comptoir:'عند الشباك',domicile:'إلى المنزل',table_lbl:'رقم الطاولة (من رمز QR)',quand:'متى؟',asap:'في أقرب وقت',zone:'الحي',
+  adr:'عنوان التوصيل',adr_ph:'الحي، الشارع، العمارة، الطابق',prenom:'اسمك',tel:'رقم الهاتف',total:'المجموع',sous_total:'المجموع الفرعي',frais:'التوصيل',gratuit:'مجاني',mode:'طريقة الطلب',
+  cmd_comptoir:'اطلب · الدفع عند الشباك',cmd_livraison:'اطلب · الدفع عند الاستلام',
+  pause_note:'الفرن ممتلئ: تعود الطلبات عبر الإنترنت بعد دقائق.',eta_note:'جاهزة خلال ≈ {m} د',ferme_note:'نحن مغلقون: سيُحضَّر طلبك عند الافتتاح ({h}).',reste:'بقي {m} للتوصيل المجاني',
+  pause_btn:'الطلبات متوقفة',
+  err_adr:'أدخل عنوان التوصيل',err_tel:'رقم غير صحيح (مثال 0555 12 34 56)',err_nom:'أدخل اسمك',sent:'أُرسل الطلب إلى الفرن!',
+  suivi_title:'طلبي',suivi_sur:'تم إرسال الطلب',merci:'شكرًا {n}! استلمت أرزاتا طلبك.',s1:'استلمتها البيتزيريا',s2:'في الفرن، على نار الحطب',s3liv:'في الطريق إليك',s3place:'جاهزة، سنحضرها إليك',s3emp:'جاهزة، تعال لاستلامها',
+  eta:'جاهزة حوالي <b>{h}</b>',autre:'طلب جديد',recommander:'أعد نفس الطلب',upsell:'للمرافقة',sortie:'تخرج من الفرن ≈ {h}',
+  fid:'الوفاء: {x}/10 · الطلب العاشر، بيتزا مجانية',fid_ok:'🎁 بيتزاك المجانية في انتظارك!',bienvenue:'طاولة {t}: مرحبًا!',langue:'Français',
+  mots:['مذاق أصيل','نار الحطب','قاعدة طماطم','قاعدة كريمة','بيتزويش','نصف ونصف','صنع منزلي'],
+  cats:{'Base tomate':'قاعدة طماطم','Base crème':'قاعدة كريمة','Pizzouich':'بيتزويش','Tartines':'طارتين','Salades':'سلطات'}}
+};
+var langue='fr';try{langue=localStorage.getItem('arz-lang')||'fr'}catch(e){}if(location.hash==='#ar')langue='ar';
+function t(k,v){var s=(TXT[langue][k]!=null?TXT[langue][k]:TXT.fr[k]);if(v)for(var x in v)s=String(s).split('{'+x+'}').join(v[x]);return s}
+function nomCat(c){return (TXT[langue].cats||{})[c]||c}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function appliquerLangue(){
+  document.documentElement.lang=langue;document.documentElement.dir=langue==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-t]').forEach(function(e){var v=t(e.dataset.t);if(e.hasAttribute('data-html'))e.innerHTML=v;else e.textContent=v});
+  document.querySelectorAll('[data-tp]').forEach(function(e){e.placeholder=t(e.dataset.tp)});
+  $('b-langue').textContent=t('langue');$('b-langue').setAttribute('lang',langue==='ar'?'fr':'ar');
+  var m=t('mots').concat(IMS.CATS.map(nomCat));$('ticker').innerHTML=Array(2).fill(m.map(function(x){return '<span>'+esc(x)+'</span><span class="e">✦</span>'}).join('')).join('');
+}
+$('b-langue').onclick=function(){langue=langue==='ar'?'fr':'ar';try{localStorage.setItem('arz-lang',langue)}catch(e){}appliquerLangue();infosConfig();tout();if(!$('tiroir').hidden)rafraichirTiroir()};
+
+// ----- État -----
+var M=IMS.menu(),cat=IMS.CATS[0],q='',filtre='',panier=[],vue='panier',suivi=null;
+var resto=IMS.RESTOS[0].id,mode='livraison',table='1',heure='',adresse='',zone=0;
+var moi={nom:'Yacine',tel:'0555 12 34 56'};
+try{var m0=JSON.parse(localStorage.getItem('arz-moi')||'null');if(m0)moi=m0;var p0=JSON.parse(localStorage.getItem('arz-panier')||'null');if(p0)panier=p0;adresse=moi.adresse||'';zone=moi.zone||0}catch(e){}
+var mt=(location.hash||'').match(/^#(?:([a-z0-9]+)-)?table-(\d{1,2})$/);if(mt){resto=mt[1]&&IMS.RESTOS.some(function(r){return r.id===mt[1]})?mt[1]:IMS.RESTOS[0].id;table=mt[2];mode='place'}
+try{var s=JSON.parse(sessionStorage.getItem('arz-suivi')||'null');if(s)suivi=s}catch(e){}
+function garder(){try{localStorage.setItem('arz-panier',JSON.stringify(panier));localStorage.setItem('arz-moi',JSON.stringify(moi))}catch(e){}}
+
+// ----- Vitrine -----
+var TAGS={veg:'🌿',mer:'🐟',epice:'🌶️',fromage:'🧀',chef:'⭐'};
+function plat(id){return M.find(function(p){return p.id===id})}
+function prixHTML(p,d2){return '<span class="prix">'+(d2&&p.tailles?'<small>'+t('des')+'</small>':'')+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'}
+function boutonPlus(p,ep){return p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="'+t('ajouter')+' '+esc(p.nom)+'">+</button>':'<span class="rupt">'+t(ep||'epuise')+'</span>'}
+function signatures(){
+  var ids=['t13','c10','c11'].filter(function(i){return plat(i)});M.forEach(function(p){if(ids.length<3&&ids.indexOf(p.id)<0)ids.push(p.id)});
+  $('sigs').innerHTML=ids.map(function(id,i){var p=plat(id);return '<article class="sig revele"><div class="rond"><img src="'+p.img+'" alt="Pizza '+esc(p.nom)+'" loading="lazy"></div><span class="no">N° '+(i+1)+'</span><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p><div class="bas">'+prixHTML(p,true)+boutonPlus(p,'epuise2')+'</div></article>'}).join('');
+}
+function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){var n=M.filter(function(p){return p.cat===c}).length;return '<button aria-pressed="'+(c===cat&&!q)+'" data-c="'+esc(c)+'">'+esc(nomCat(c))+'<small>'+n+'</small></button>'}).join('');
+  $('onglets').querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;q='';$('q').value='';onglets();grille()}});
+  $('filtres').innerHTML=Object.keys(TAGS).map(function(k){return '<button aria-pressed="'+(filtre===k)+'" data-f="'+k+'">'+t('f_'+k)+'</button>'}).join('');
+  $('filtres').querySelectorAll('button').forEach(function(b){b.onclick=function(){filtre=filtre===b.dataset.f?'':b.dataset.f;onglets();grille()}})}
+function grille(){
+  var Q=q.trim().toLowerCase(),L=M.filter(function(p){var ok=Q?(p.nom+' '+p.desc+' '+p.cat).toLowerCase().indexOf(Q)>=0:filtre?true:p.cat===cat;return ok&&(!filtre||(p.tags||[]).indexOf(filtre)>=0)});
+  $('grille').innerHTML=L.map(function(p){return '<article class="carte revele'+(p.dispo?'':' rupture')+'"><div class="vis">'+(p.promo?'<span class="pastille">'+t('platjour')+' · -'+p.promo+' %</span>':'')+((p.tags||[]).length?'<span class="tags" aria-hidden="true">'+p.tags.map(function(x){return '<span>'+TAGS[x]+'</span>'}).join('')+'</span>':'')+'<img src="'+p.img+'" alt="'+esc(p.nom)+'" loading="lazy"></div><div class="corps"><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p></div><div class="bas">'+(p.tailles?'<span class="tailles">'+p.tailles.map(function(x){return '<span>'+esc(x[0])+' <b>'+fmt(x[1])+'</b></span>'}).join('')+'</span>':prixHTML(p))+boutonPlus(p)+'</div></article>'}).join('')||'<p class="aucun">'+t('aucun')+'</p>';
+  observer();
+}
+$('q').addEventListener('input',function(){q=this.value;onglets();grille()});
+
+// Apparition au défilement
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(E){E.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
+function observer(){document.querySelectorAll('.revele:not(.vu)').forEach(function(e){if(io)io.observe(e);else e.classList.add('vu')})}
+
+// Braises qui montent du four (canvas léger, coupé hors écran et si l'utilisateur réduit les animations)
+(function braises(){var c=$('braises');if(!c||!c.getContext||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var x=c.getContext('2d'),P=[],W,H,vis=true,dpr=Math.min(2,window.devicePixelRatio||1);
+  function taille(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}taille();addEventListener('resize',taille);
+  function nait(){return {x:W*(.45+Math.random()*.55),y:H+10,r:.6+Math.random()*2.2,v:.35+Math.random()*1.1,d:(Math.random()-.5)*.6,a:.5+Math.random()*.5,f:Math.random()*6}}
+  for(var i=0;i<70;i++){var p=nait();p.y=Math.random()*H;P.push(p)}
+  if('IntersectionObserver' in window)new IntersectionObserver(function(E){vis=E[0].isIntersecting}).observe(c);
+  (function tic(){requestAnimationFrame(tic);if(!vis||document.hidden)return;x.clearRect(0,0,W,H);
+    P.forEach(function(p,i){p.y-=p.v;p.f+=.03;p.x+=p.d+Math.sin(p.f)*.35;p.a-=.0016;if(p.y<-10||p.a<=0)P[i]=nait();
+      var g=x.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);g.addColorStop(0,'rgba(255,190,90,'+p.a+')');g.addColorStop(.4,'rgba(255,110,40,'+p.a*.5+')');g.addColorStop(1,'rgba(255,80,20,0)');x.fillStyle=g;x.beginPath();x.arc(p.x,p.y,p.r*4,0,7);x.fill()})})();
+})();
+
+// ----- Panier -----
+document.addEventListener('click',function(e){var b=e.target.closest('.plus');if(b&&!b.closest('.g'))choisir(b.dataset.id,b)});
+$('b-moitie').onclick=function(){choisir('t13',this,true)};
+var dernierFocus=null;
+function ouvrir(){dernierFocus=document.activeElement;$('voile').hidden=false;$('tiroir').hidden=false;document.body.style.overflow='hidden';setTimeout(function(){$('b-fermer').focus()},30)}
+function fermer(){$('voile').hidden=true;$('tiroir').hidden=true;document.body.style.overflow='';if(dernierFocus&&dernierFocus.focus)try{dernierFocus.focus()}catch(e){}}
+$('voile').onclick=fermer;$('b-fermer').onclick=fermer;
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('tiroir').hidden)fermer()});
+function toast(x){var e=$('toast');e.textContent=x;e.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(function(){e.hidden=true},2200)}
+function voler(src,depuis){try{
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!depuis)return;var cible=getComputedStyle($('b-flot').parentNode).display!=='none'?$('b-flot'):$('b-nav-panier');
+  var a=depuis.getBoundingClientRect(),b=cible.getBoundingClientRect(),im=document.createElement('img');im.src=src;im.className='vol';im.alt='';im.style.left=(a.left+a.width/2-29)+'px';im.style.top=(a.top+a.height/2-29)+'px';document.body.appendChild(im);
+  var dx=b.left+b.width/2-(a.left+a.width/2),dy=b.top+b.height/2-(a.top+a.height/2);
+  im.animate([{transform:'translate(0,0) scale(1) rotate(0)',opacity:1},{transform:'translate('+dx*.5+'px,'+(dy*.5-130)+'px) scale(.85) rotate(180deg)',opacity:1},{transform:'translate('+dx+'px,'+dy+'px) scale(.2) rotate(360deg)',opacity:.2}],{duration:800,easing:'cubic-bezier(.5,0,.6,1)'}).onfinish=function(){im.remove();cible.classList.remove('saute');void cible.offsetWidth;cible.classList.add('saute')};
+}catch(e){}}
+// Fiche d'un plat : taille, moitié-moitié (pizzas), suppléments
+function choisir(id,depuis,mm){
+  var p=plat(id);if(!p||!p.dispo)return;if(!p.tailles&&!p.extra){ajouter(p,[],p.prix,depuis);return}
+  vue='options';$('t-titre').textContent=p.nom;
+  var autres=M.filter(function(x){return x.moitie&&x.dispo&&x.id!==p.id});
+  $('t-contenu').innerHTML='<div class="apercu" id="apercu"><img src="'+p.img+'" alt=""></div><p style="margin:0;color:var(--gris)">'+esc(p.desc)+'</p>'+
+    (p.tailles?'<div class="opt"><span class="t">'+t('taille')+'</span>'+p.tailles.map(function(x,i){return '<label><span><input type="radio" name="taille" value="'+i+'"'+(i?'':' checked')+'> '+esc(x[0])+'</span><span class="prix">'+fmt(x[1])+'</span></label>'}).join('')+'</div>':'')+
+    (p.moitie?'<label class="bascule"><input type="checkbox" id="c-mm"'+(mm?' checked':'')+'><span>'+t('mm_on')+'<small>'+t('mm_on2')+'</small></span></label><label class="champ" id="ch-mm"'+(mm?'':' hidden')+'>'+t('mm_choix')+'<select id="c-mm2">'+autres.map(function(x){return '<option value="'+x.id+'"'+(x.id==='c8'?' selected':'')+'>'+esc(x.nom)+' · '+esc(nomCat(x.cat))+'</option>'}).join('')+'</select></label>':'')+
+    (p.extra?'<div class="opt"><span class="t">'+t('supp')+'</span>'+p.extra.map(function(x,i){return '<label><span><input type="checkbox" name="extra" value="'+i+'"> '+esc(x[0])+'</span><span>+ '+fmt(x[1])+'</span></label>'}).join('')+'</div>':'');
+  $('t-pied').innerHTML='<button class="btn" id="b-ok"></button>';
+  function calc(){var ti=p.tailles?+document.querySelector('input[name=taille]:checked').value:-1,det=[],px=p.prix,nom=p.nom,img2=null;
+    if(ti>=0){det.push(p.tailles[ti][0]);px=p.tailles[ti][1]}
+    var cm=$('c-mm');if(cm&&cm.checked){var q2=plat($('c-mm2').value);if(q2){var p2=q2.tailles?q2.tailles[Math.min(ti,q2.tailles.length-1)][1]:q2.prix;px=Math.max(px,p2);nom='½ '+p.nom+' · ½ '+q2.nom;img2=q2.img}}
+    document.querySelectorAll('input[name=extra]:checked').forEach(function(c){var e=p.extra[+c.value];det.push('+ '+e[0]);px+=e[1]});
+    return {det:det,px:px,nom:nom,img2:img2}}
+  function maj(){if(vue!=='options')return;var r=calc(),a=$('apercu');a.className='apercu'+(r.img2?' duo2':'');a.innerHTML='<img src="'+p.img+'" alt="">'+(r.img2?'<img src="'+r.img2+'" alt="">':'');$('b-ok').textContent=t('add',{p:fmt(r.px)});var ch=$('ch-mm');if(ch)ch.hidden=!$('c-mm').checked}
+  $('t-contenu').onchange=maj;maj();
+  $('b-ok').onclick=function(){var r=calc();fermer();ajouter({id:p.id,nom:r.nom,img:p.img},r.det,r.px,depuis)};
+  ouvrir();
+}
+function ajouter(p,det,px,depuis){var cle=p.id+'|'+p.nom+'|'+det.join(',');var l=panier.find(function(x){return x.cle===cle});if(l)l.q++;else panier.push({cle:cle,id:p.id,nom:p.nom,det:det,px:px,q:1});compte();garder();toast(t('added',{p:p.nom}));voler(p.img,depuis)}
+function sousTotal(){return panier.reduce(function(a,l){return a+l.px*l.q},0)}
+function frais(){if(mode!=='livraison')return 0;var C=IMS.config(),z=(C.zones||[])[zone]||[0,0];return C.offerte&&sousTotal()>=C.offerte?0:z[1]}
+function total(){return sousTotal()+frais()}
+function compte(){var n=panier.reduce(function(a,l){return a+l.q},0);$('nb-nav').textContent=n;$('nb-flot').textContent=n;$('tot-flot').textContent=fmt(sousTotal())}
+$('b-nav-panier').onclick=$('b-flot').onclick=function(){suivi?montrerSuivi():montrerPanier();ouvrir()};
+function rafraichirTiroir(){vue==='suivi'?montrerSuivi():vue==='panier'?montrerPanier():fermer()}
+
+function chiffres(x){return String(x||'').replace(/\D/g,'')}
+function hachage(s){var h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
+function fidelite(tel){var k=chiffres(tel);if(k.length<9)return null;var n=IMS.commandes().filter(function(c){return chiffres(c.tel)===k}).length;if(IMS.mode()==='demo'&&n)n+=2+hachage(String(tel).replace(/\s/g,''))%17;return n}
+function fidHTML(){var n=fidelite(moi.tel);if(n==null||!n)return '';var x=n%10;return '<div class="fid">'+(n>=10&&x===0?t('fid_ok'):'⭐ '+t('fid',{x:x})+'<span class="barre"><i style="width:'+x*10+'%"></i></span>')+'</div>'}
+function suggestions(){var dans={};panier.forEach(function(l){var p=plat(l.id);if(p)dans[p.cat]=1});
+  var S=[];[['Salades','s1'],['Pizzouich','z0'],['Base crème','c0'],['Base tomate','t0']].forEach(function(c){if(S.length<2&&!dans[c[0]]){var p=plat(c[1]);if(p&&p.dispo)S.push(p)}});
+  return S.length?'<div class="sugg"><span class="t">'+t('upsell')+'</span>'+S.map(function(p){return '<div class="s"><img src="'+p.img+'" alt=""><div><b>'+esc(p.nom)+'</b><small>'+(p.tailles?t('des')+' ':'')+fmt(p.prix)+'</small></div><button class="plus" data-id="'+p.id+'" aria-label="'+t('ajouter')+' '+esc(p.nom)+'">+</button></div>'}).join('')+'</div>':''}
+function hhmm(ts){var d=new Date(ts);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+// Créneaux pour programmer : toutes les 15 min, de maintenant + 30 min jusqu'à la fermeture
+function creneaux(R){var L=[],d=new Date(Date.now()+30*60000);d.setMinutes(Math.ceil(d.getMinutes()/15)*15,0,0);var fin=new Date();fin.setHours(0,0,0,0);fin=fin.getTime()+R.ferm*3600e3;
+  var deb=new Date();deb.setHours(R.ouv,30,0,0);if(d.getTime()<deb.getTime())d=deb;for(var k=0;k<24&&d.getTime()<=fin-15*60000;k++){L.push(hhmm(d.getTime()));d=new Date(d.getTime()+15*60000)}return L}
+function montrerPanier(){
+  vue='panier';$('t-contenu').onchange=null;$('t-titre').textContent=t('panier');
+  if(!panier.length){$('t-contenu').innerHTML='<div class="vide">'+t('vide')+'</div>';$('t-pied').innerHTML='<button class="btn vert" id="b-menu">'+t('voir_menu')+'</button>';$('b-menu').onclick=function(){fermer();location.hash='menu'};return}
+  var S=IMS.service(),R=IMS.resto(resto),Sr=S[resto]||{pause:false,attente:20},C=IMS.config(),Z=C.zones||[],ouv=IMS.ouvert(R),cr=creneaux(R);
+  if(heure&&cr.indexOf(heure)<0)heure='';
+  $('t-contenu').innerHTML=panier.map(function(l,i){return '<div class="ligne"><span><b>'+esc(l.nom)+'</b>'+(l.det.length?'<small>'+esc(l.det.join(' · '))+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span><div class="qte"><button data-i="'+i+'" data-d="-1" aria-label="Retirer une '+esc(l.nom)+'">−</button><b>'+l.q+'</b><button data-i="'+i+'" data-d="1" aria-label="Ajouter une '+esc(l.nom)+'">+</button></div></div>'}).join('')+
+    suggestions()+
+    '<div class="modes" role="group" aria-label="'+t('mode')+'">'+['livraison','emporter','place'].map(function(m){return '<button data-m="'+m+'" aria-pressed="'+(m===mode)+'">'+t(m)+'<small>'+(m==='place'?t('table')+' '+table:m==='emporter'?t('comptoir'):t('domicile'))+'</small></button>'}).join('')+'</div>'+
+    (mode==='place'?'<label class="champ">'+t('table_lbl')+'<select id="c-table">'+Array.from({length:20},function(_,i){return '<option'+(String(i+1)===table?' selected':'')+'>'+(i+1)+'</option>'}).join('')+'</select></label>':
+      '<label class="champ">'+t('quand')+'<select id="c-heure"><option value="">'+t('asap')+'</option>'+cr.map(function(h){return '<option'+(h===heure?' selected':'')+'>'+h+'</option>'}).join('')+'</select></label>')+
+    (mode==='livraison'?'<label class="champ">'+t('zone')+'<select id="c-zone">'+Z.map(function(z,i){return '<option value="'+i+'"'+(i===zone?' selected':'')+'>'+esc(z[0])+' · '+fmt(z[1])+'</option>'}).join('')+'</select></label><label class="champ" id="ch-adr">'+t('adr')+'<input id="c-adr" value="'+esc(adresse)+'" placeholder="'+t('adr_ph')+'" autocomplete="street-address"><span class="msg" id="m-adr"></span></label>':'')+
+    '<label class="champ" id="ch-nom">'+t('prenom')+'<input id="c-nom" value="'+esc(moi.nom)+'" autocomplete="given-name"><span class="msg" id="m-nom"></span></label><label class="champ" id="ch-tel">'+t('tel')+'<input id="c-tel" value="'+esc(moi.tel)+'" inputmode="tel" autocomplete="tel"><span class="msg" id="m-tel"></span></label><div id="fid">'+fidHTML()+'</div>';
+  var f=frais(),reste=C.offerte-sousTotal();
+  $('t-pied').innerHTML=(mode==='livraison'?'<div class="sous"><span>'+t('sous_total')+'</span><span>'+fmt(sousTotal())+'</span></div><div class="sous"><span>'+t('frais')+'</span><span>'+(f?fmt(f):t('gratuit'))+'</span></div>'+(f&&C.offerte&&reste>0?'<p class="note">'+t('reste',{m:fmt(reste)})+'</p>':''):'')+
+    '<div class="total"><span>'+t('total')+'</span><span>'+fmt(total())+'</span></div>'+(Sr.pause?'<p class="note alerte">'+t('pause_note')+'</p>':ouv?'<p class="note">'+t('eta_note',{m:Sr.attente})+'</p>':'<p class="note alerte">'+t('ferme_note',{h:R.h.split(' ')[0]})+'</p>')+'<button class="btn" id="b-cmd">'+(Sr.pause?t('pause_btn'):t(mode==='livraison'?'cmd_livraison':'cmd_comptoir'))+'</button>';
+  $('t-contenu').querySelectorAll('.qte button').forEach(function(b){b.onclick=function(){var l=panier[+b.dataset.i];l.q+=+b.dataset.d;if(l.q<1)panier.splice(+b.dataset.i,1);compte();garder();montrerPanier()}});
+  $('t-contenu').querySelectorAll('.modes button').forEach(function(b){b.onclick=function(){mode=b.dataset.m;montrerPanier()}});
+  var s=$('c-table');if(s)s.onchange=function(){table=s.value};var h=$('c-heure');if(h)h.onchange=function(){heure=h.value};
+  var z=$('c-zone');if(z)z.onchange=function(){zone=+z.value;moi.zone=zone;garder();montrerPanier()};
+  var a=$('c-adr');if(a)a.oninput=function(){adresse=a.value;moi.adresse=adresse;garder()};
+  $('c-nom').oninput=function(){moi.nom=this.value;garder()};
+  $('c-tel').oninput=function(){moi.tel=this.value;garder();$('fid').innerHTML=fidHTML()};
+  if(Sr.pause){$('b-cmd').disabled=true;$('b-cmd').style.opacity=.45}
+  $('b-cmd').onclick=envoyer;
+}
+function erreur(id,msg){var c=$('ch-'+id);if(c)c.classList.toggle('erreur',!!msg);var m=$('m-'+id);if(m)m.textContent=msg||''}
+function envoyer(){
+  var Sr=IMS.service()[resto]||{};if(Sr.pause)return;
+  var nom=$('c-nom').value.trim(),tel=$('c-tel').value.trim(),k=chiffres(tel),ok=true;
+  erreur('nom',nom?'':t('err_nom'));if(!nom)ok=false;
+  var tok=/^0[5-7]\d{8}$/.test(k)||/^0[1-4]\d{7}$/.test(k);erreur('tel',tok?'':t('err_tel'));if(!tok)ok=false;
+  if(mode==='livraison'){erreur('adr',adresse.trim()?'':t('err_adr'));if(!adresse.trim())ok=false}
+  if(!ok){var f=document.querySelector('.champ.erreur input');if(f)f.focus();return}
+  moi.nom=nom;moi.tel=tel;garder();
+  var Z=(IMS.config().zones||[])[zone]||['',0],fr=frais();
+  var c=IMS.nouvelleCommande({resto:resto,t:Date.now(),mode:mode,table:table,heure:mode==='place'?'':heure?'Pour '+heure:'Dès que possible',adresse:adresse,zone:mode==='livraison'?Z[0]:'',frais:fr,nom:nom,tel:tel,lignes:panier.map(function(l){return {id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}}),total:total(),st:'nouv',langue:langue});
+  suivi=c.no;try{sessionStorage.setItem('arz-suivi',JSON.stringify(suivi))}catch(e){}
+  panier=[];compte();garder();montrerSuivi();etatGerant();toast(t('sent'));
+}
+function montrerSuivi(){
+  vue='suivi';$('t-contenu').onchange=null;var c=IMS.commandes().find(function(x){return x.no===suivi});if(!c){suivi=null;montrerPanier();return}
+  $('t-titre').textContent=t('suivi_title');
+  var r={nouv:0,prep:1,prete:2,fin:3}[c.st],att=(IMS.service()[c.resto]||{attente:20}).attente,CU=180,e=c.four?Math.max(0,(Date.now()-c.four)/1000):0;
+  var E=[t('s1'),t('s2'),c.mode==='livraison'?t('s3liv'):c.mode==='place'?t('s3place'):t('s3emp')];
+  $('t-contenu').innerHTML='<div class="suivi"><span class="sur">'+t('suivi_sur')+'</span><div class="num">'+IMS.numero(c.no)+'</div><p style="color:var(--gris);margin:6px 0 0">'+t('merci',{n:esc(c.nom)})+'</p>'+(r<2?'<span class="eta">⏱ '+t('eta',{h:/^Pour /.test(c.heure||'')?c.heure.slice(5):hhmm(c.t+att*60000)})+'</span>':'')+'</div><div class="pas">'+E.map(function(x,i){var cl=i<r||r>=2&&i===2?'ok':i===r?'en':'';return '<div class="'+cl+'"><i>'+(cl==='ok'?'✓':i===1&&cl==='en'?'🔥':i+1)+'</i>'+x+(i===1&&cl==='en'?'<small style="margin-inline-start:auto;font-weight:600">'+t('sortie',{h:hhmm((c.four||c.t)+CU*1000)})+'</small><span class="cuisson"><b style="animation-duration:'+CU+'s;animation-delay:-'+Math.min(e,CU).toFixed(1)+'s"></b></span>':'')+'</div>'}).join('')+'</div>'+
+    '<div>'+c.lignes.map(function(l){return '<div class="ligne"><span><b>'+l.q+'× '+esc(l.nom)+'</b>'+(l.det.length?'<small>'+esc(l.det.join(' · '))+'</small>':'')+'</span><span class="prix">'+fmt(l.px*l.q)+'</span></div>'}).join('')+(c.frais?'<div class="sous" style="padding-top:8px"><span>'+t('frais')+' · '+esc(c.zone)+'</span><span>'+fmt(c.frais)+'</span></div>':'')+'</div>';
+  $('t-pied').innerHTML='<div class="total"><span>'+t('total')+'</span><span>'+fmt(c.total)+'</span></div>'+(r>=2?'<button class="btn" id="b-re">'+t('recommander')+'</button>':'')+'<button class="btn ligne" id="b-autre">'+t('autre')+'</button>';
+  $('b-autre').onclick=function(){suivi=null;try{sessionStorage.removeItem('arz-suivi')}catch(e){}fermer()};
+  var re=$('b-re');if(re)re.onclick=function(){panier=c.lignes.map(function(l){return {cle:l.id+'|'+l.nom+'|'+l.det.join(','),id:l.id,nom:l.nom,det:l.det,px:l.px,q:l.q}});mode=c.mode;suivi=null;try{sessionStorage.removeItem('arz-suivi')}catch(e){}compte();garder();montrerPanier()};
+}
+
+// ----- Établissement (réglé par le gérant) -----
+function fiche(){var r=IMS.RESTOS[0],o=IMS.ouvert(r);$('fiche').innerHTML='<h3>'+esc(r.nom)+'</h3><p class="adr">'+esc(r.adresse)+'</p><span class="etat'+(o?'':' ferme')+'"><i></i>'+(o?t('ouvert_now'):t('ferme_now'))+' · '+r.h+'</span><div class="tels"><span class="tel" dir="ltr">'+esc(r.tel)+'</span>'+(r.tel2?'<span class="tel" dir="ltr">'+esc(r.tel2)+'</span>':'')+'</div><div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn clair" href="'+r.maps+'" target="_blank" rel="noopener">'+t('itin')+'</a><a class="btn ligne" href="tel:'+chiffres(r.tel)+'">'+t('appeler')+'</a></div>'}
+function zones(){var C=IMS.config();$('zones').innerHTML=(C.zones||[]).map(function(z){return '<div><span>'+esc(z[0])+'</span><b>'+fmt(z[1])+'</b></div>'}).join('');$('offerte').hidden=!C.offerte;$('offerte').textContent=t('offerte',{m:fmt(C.offerte||0)})}
+function infosConfig(){var c=IMS.config();$('sur-hero').textContent=(langue==='ar'?'بيتزا على نار الحطب · ':'Pizza au feu de bois · ')+IMS.RESTOS.map(function(r){return r.nom}).join(' · ');$('slogan-pied').textContent=c.slogan;
+  if(c.insta){$('lien-insta').href='https://www.instagram.com/'+encodeURIComponent(c.insta)+'/';$('lien-insta').textContent='@'+c.insta}
+  if(IMS.CATS.indexOf(cat)<0)cat=IMS.CATS[0];onglets();fiche();zones();donneesStructurees()}
+// Données structurées pour Google (fiche restaurant)
+function donneesStructurees(){var c=IMS.config(),j={'@context':'https://schema.org','@graph':IMS.RESTOS.map(function(r){return {'@type':'Restaurant',name:c.nom,servesCuisine:['Pizza','Italienne'],telephone:r.tel,address:{'@type':'PostalAddress',streetAddress:r.adresse,addressLocality:'Dar El Beïda',addressRegion:'Alger',addressCountry:'DZ'},openingHours:'Mo-Su '+('0'+r.ouv).slice(-2)+':00-'+('0'+(r.ferm%24)).slice(-2)+':00',priceRange:'490 DA - 3190 DA',acceptsReservations:false,hasMenu:location.href.split('#')[0]+'#menu',sameAs:['https://www.instagram.com/'+c.insta+'/']}})};
+  var e=document.getElementById('ld-json');if(!e){e=document.createElement('script');e.type='application/ld+json';e.id='ld-json';document.head.appendChild(e)}e.textContent=JSON.stringify(j)}
+
+// ----- Espace gérant (même page) -----
+document.addEventListener('click',function(e){var b=e.target.closest('[data-ouvrir]');if(b)IMSG.ouvrir({page:b.dataset.ouvrir})});
+if(location.hash==='#gerant')IMSG.ouvrir({page:'accueil'});
+function etatGerant(){var L=IMS.commandes(),n=L.filter(function(c){return c.st==='nouv'}).length,S=IMS.service(),dernier=IMS.lire('arz-no',1);
+  document.querySelectorAll('[data-ouvrir] .nb').forEach(function(e){e.remove()});
+  if(n){document.querySelectorAll('.gbtn[data-ouvrir]').forEach(function(b){b.insertAdjacentHTML('beforeend','<span class="nb">'+n+'</span>')})}
+  if(etatGerant.no&&dernier>etatGerant.no){document.querySelectorAll('.gbtn').forEach(function(b){b.classList.remove('alerte');void b.offsetWidth;b.classList.add('alerte')})}etatGerant.no=dernier;
+  var ouverts=IMS.RESTOS.filter(function(r){return !(S[r.id]||{}).pause}),e=$('etat-cmd');
+  e.innerHTML=ouverts.length?'<b>●</b> '+t('etat_ouvert')+' · ≈ '+Math.min.apply(null,ouverts.map(function(r){return S[r.id].attente}))+' '+t('min'):'<b style="color:#F3C969">●</b> '+t('etat_pause');
+  var pf=L.filter(function(c){return c.st==='prep'}).reduce(function(a,c){return a+c.lignes.reduce(function(b,l){return b+(/^[tc]\d/.test(l.id)?l.q:0)},0)},0);
+  $('four-live').innerHTML='<i>🔥</i> '+(pf?t('four_live',{n:langue==='ar'?pf:pf+(pf>1?' pizzas':' pizza')}):t('four_calme'))}
+function promoBand(){var o=IMS.promo(),e=$('promo-band');if(o.actif&&o.banniere&&o.texte){e.textContent='🔥 '+o.texte;e.hidden=false}else e.hidden=true}
+function menuSur(){var e=document.querySelector('[data-t="menu_sur"]');if(e)e.textContent=t('menu_sur',{n:M.length})}
+
+function tout(){signatures();onglets();grille();fiche();zones();etatGerant();promoBand();menuSur();observer()}
+IMS.surChangement(function(k){M=IMS.menu();if(k==='arz-config'){infosConfig();appliquerLangue()}signatures();grille();etatGerant();promoBand();menuSur();
+  if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi();if(!$('tiroir').hidden&&vue==='panier'&&(k==='arz-service'||k==='arz-config'))montrerPanier()});
+appliquerLangue();infosConfig();tout();compte();setInterval(function(){fiche();etatGerant()},60000);
+if(mt)toast(t('bienvenue',{t:table}));
+})();
+</script>
