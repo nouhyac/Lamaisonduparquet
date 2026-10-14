@@ -49,6 +49,7 @@ h2 em,h1 em{font-style:italic;color:var(--rouge)}
 .nav .wrap{display:flex;align-items:center;gap:18px;height:70px}
 .logo{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--vert);line-height:1}
 .logo .script{font-size:36px;color:var(--vert);transform:translateY(3px)}
+.logo{align-items:center}.logo .badge{width:48px;height:48px;border-radius:50%;flex:none;box-shadow:0 0 0 1px var(--trait)}
 .logo small{font-size:10.5px;letter-spacing:.3em;font-weight:800;color:var(--rouge)}
 .nav nav{display:flex;gap:24px;margin-left:auto;font-weight:600;font-size:15px}
 .nav nav a{text-decoration:none;color:var(--gris)}
@@ -327,7 +328,7 @@ footer .logo,footer .logo .script{color:var(--clair)} footer .logo small{color:#
   .heros::after{background:linear-gradient(0deg,rgba(14,8,4,.95) 10%,rgba(14,8,4,.55) 60%,rgba(14,8,4,.25))}
   .heros{align-items:end}
 }
-@media (max-width:640px){.gnav{display:none!important}.voyage img{aspect-ratio:4/3}.voyage .wrap{padding-block:0 22px}.logo .script{font-size:32px}}
+@media (max-width:640px){.logo .badge{width:40px;height:40px}.gnav{display:none!important}.voyage img{aspect-ratio:4/3}.voyage .wrap{padding-block:0 22px}.logo .script{font-size:32px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}#braises{display:none}}
 
 /* Arabe : polices et sens de lecture */
@@ -346,7 +347,7 @@ html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:aut
 <div class="demo" role="region" aria-label="Démonstration"><div class="wrap"><span>Démo Dzign Studio · la plateforme de commande d'Arzata Pizza</span><button class="gbtn" data-ouvrir="accueil">👨‍🍳 Espace gérant : four, caisse, comptabilité</button></div></div>
 
 <header class="nav"><div class="wrap">
-  <a class="logo" href="#haut" aria-label="Arzata Pizza, accueil"><span class="script">Arzata</span><small>PIZZA</small></a>
+  <a class="logo" href="#haut" aria-label="Arzata Pizza, accueil"><img class="badge" src="img/logo.jpg" alt="" width="48" height="48"><span class="script">Arzata</span><small>PIZZA</small></a>
   <nav aria-label="Sections"><a href="#menu" data-t="nav_menu">La carte</a><a href="#moitie" data-t="nav_moitie">Moitié-moitié</a><a href="#comment" data-t="nav_cmd">Commander</a><a href="#infos" data-t="nav_infos">Infos</a></nav>
   <button class="langue" id="b-langue" aria-label="Changer de langue">العربية</button>
   <button class="btn ligne gnav" data-ouvrir="accueil" data-t="gerant">Espace gérant</button>
@@ -421,7 +422,7 @@ html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:aut
     </div>
   </div></section>
 </main>
-<footer><div class="wrap"><a class="logo" href="#haut" aria-label="Arzata Pizza, haut de page"><span class="script">Arzata</span><small>PIZZA</small></a><span id="slogan-pied">Goût authentique · Feu de bois</span><span data-t="realise">Site réalisé par Dzign Studio</span></div></footer>
+<footer><div class="wrap"><a class="logo" href="#haut" aria-label="Arzata Pizza, haut de page"><img class="badge" src="img/logo.jpg" alt="" width="48" height="48"><span class="script">Arzata</span><small>PIZZA</small></a><span id="slogan-pied">Goût authentique · Feu de bois</span><span data-t="realise">Site réalisé par Dzign Studio</span></div></footer>
 
 <div class="flottant"><button class="btn" id="b-flot"><span><span data-t="flot">Voir mon panier</span> · <span id="nb-flot">0</span></span><span id="tot-flot">0 DA</span></button></div>
 <div class="voile" id="voile" hidden></div>
