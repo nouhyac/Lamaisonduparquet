@@ -6,17 +6,17 @@
 <meta property="og:image" content="img3d/hero.jpg">
 <meta property="og:type" content="restaurant">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500;1,9..144,700&family=Yellowtail&family=IBM+Plex+Mono:wght@500&family=Cairo:wght@500;700;800;900&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500;1,9..144,700&family=Yellowtail&family=IBM+Plex+Mono:wght@500&family=Cairo:wght@500;700;800;900&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img3d/hero.jpg">
 <link rel="stylesheet" href="gestion.css">
 <style>
 /* Arzata Pizza : trattoria au feu de bois. Crème chaude, vert basilic profond, rouge tomate, or de la croûte.
    Thème clair unique et assumé (papier de menu italien) : toutes les couleurs sont posées explicitement. */
 :root{
-  --creme:#F7F1E5; --papier:#FFFBF3; --sable:#EFE6D3; --trait:#E2D7C1;
-  --vert:#14402F; --vert2:#0D2E21; --basilic:#2F6B3A; --rouge:#B3122A; --rouge2:#8E0E21; --or:#8A5A0B; --braise:#E2531B;
+  --creme:#F3ECDE; --papier:#FFFBF3; --sable:#ECE3D0; --trait:#E0D5BF;
+  --vert:#0A614D; --vert2:#064234; --basilic:#0A614D; --rouge:#C62F2B; --rouge2:#A3231F; --or:#8A5A0B; --braise:#E2531B;
   --encre:#1C1A16; --sauge:#4E6A55; --anthracite:#24272A; --gris:#5E574C; --clair:#FFF8EC;
-  --f-titre:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-titre:"Oswald","Arial Narrow",Impact,sans-serif; --nuitv:#0D3B2F; --nuitv2:#0A2F25;
   --f-texte:"DM Sans",ui-sans-serif,system-ui,sans-serif;
   --f-script:"Yellowtail","Brush Script MT",cursive;
   color-scheme:light;
@@ -331,7 +331,73 @@ footer .logo,footer .logo .script{color:var(--clair)} footer .logo small{color:#
 @media (max-width:640px){.logo .badge{width:40px;height:40px}.gnav{display:none!important}.voyage img{aspect-ratio:4/3}.voyage .wrap{padding-block:0 22px}.logo .script{font-size:32px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}#braises{display:none}}
 
-/* Arabe : polices et sens de lecture */
+/* Charte Arzata, d'après leur menu imprimé et leur logo : fond vert sapin, étiquettes rouges (base tomate) et crème (base crème),
+   capitales condensées (Oswald), cases de prix Normal / Méga, logo rond, script vert. */
+h1,h2,h3,h4{font-family:var(--f-titre);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.02}
+h1 em,h2 em{font-family:var(--f-script);font-style:normal;font-weight:400;letter-spacing:0;text-transform:none;color:var(--rouge);font-size:1.12em;line-height:.9}
+.heros h1{font-size:clamp(40px,6.4vw,92px);max-width:13ch}
+.heros h1 em{color:#FF6B5E}
+.heros h1 .script{font-size:.7em;text-transform:none}
+.tete h2{font-size:clamp(34px,4.8vw,64px)}
+.moitie h2{font-size:clamp(34px,4.6vw,60px)}
+.voyage h2{font-size:clamp(30px,4.8vw,64px)}
+.maison h2{font-size:clamp(30px,4.2vw,56px)}
+.maison h2 em{color:#FF6B5E}
+.sig h3{font-size:30px}
+.etape h3{font-size:24px}
+.fiche h3{font-size:34px}
+.zonesliste h3{font-size:26px}
+.tiroir .t-tete h2{font-size:24px}
+.suivi .num{font-size:60px}
+.ticker div{font-family:var(--f-titre);font-style:normal;font-weight:600;font-size:19px;letter-spacing:.06em;text-transform:uppercase}
+.points b{font-family:var(--f-script);font-style:normal;font-size:30px}
+.logo small{font-family:var(--f-titre);font-weight:600;font-size:12px}
+.sigs-bloc{background:var(--nuitv)}
+.sigs-bloc .tete h2 em{color:#F3C969}
+footer{background:var(--nuitv2);border-top:6px solid var(--rouge)}
+/* La carte, comme leur menu */
+#menu{background:var(--nuitv) radial-gradient(1200px 500px at 90% 0%,rgba(255,255,255,.05),transparent 60%);color:var(--clair);padding-block:84px}
+#menu .tete h2{color:var(--clair)} #menu .tete h2 em{color:#FF6B5E} #menu .tete p{color:#C9D9CF} #menu .sur{color:#F3C969}
+#menu .outils{background:var(--nuitv);top:calc(env(safe-area-inset-top,0px) + 70px);padding-block:12px 10px;margin-bottom:8px;border-bottom:1px solid rgba(255,255,255,.08)}
+#menu .recherche input{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--clair)}
+#menu .recherche input::placeholder{color:#A9C4B5}
+#menu .onglets button{background:transparent;border-color:rgba(255,255,255,.25);color:var(--clair);font-family:var(--f-titre);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:15px}
+#menu .onglets button[aria-pressed="true"]{background:var(--rouge);border-color:var(--rouge);color:#fff}
+#menu .filtres button{border-color:rgba(255,255,255,.3);color:#DCE7E0}
+#menu .filtres button[aria-pressed="true"]{background:var(--clair);border-color:var(--clair);color:var(--nuitv)}
+.cat-h{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin:34px 0 4px;font-size:clamp(26px,3.6vw,40px);color:var(--clair);scroll-margin-top:200px}
+.cat-h:first-child{margin-top:6px}
+.cat-h .s{font-family:var(--f-script);text-transform:none;font-weight:400;color:#FF6B5E;font-size:.8em;letter-spacing:0}
+.cat-h small{font-family:var(--f-texte);font-size:13px;font-weight:600;color:#A9C4B5;letter-spacing:0;text-transform:none}
+.cat-h::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,rgba(255,255,255,.35),transparent)}
+#grille{gap:22px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+#grille .carte{background:#FBF6EC;border:0;border-radius:18px;color:var(--encre);box-shadow:0 18px 40px -26px rgba(0,0,0,.7)}
+#grille .carte .corps{padding:18px 18px 8px;gap:10px}
+.nom{justify-self:start;display:inline-block;background:var(--rouge);color:#fff;font-family:var(--f-titre);font-weight:700;text-transform:uppercase;font-size:19px;letter-spacing:.02em;line-height:1.1;padding:5px 14px 6px;border-radius:999px;margin:0}
+.carte.creme .nom{background:#EDE1C8;color:var(--nuitv);box-shadow:inset 0 0 0 1.5px #D9C9A6}
+.ingr{font-family:var(--f-titre);font-weight:500;text-transform:uppercase;font-size:13.5px;letter-spacing:.02em;line-height:1.35;color:#3B3A35;margin:0}
+.prixcases{display:flex;gap:8px}
+.prixcases span{display:grid;justify-items:center;gap:1px;min-width:74px;padding:6px 10px;border-radius:10px;background:#7A2A22;color:#fff;font-family:var(--f-titre);font-weight:700;font-size:20px;line-height:1}
+.prixcases span small{font-size:10.5px;font-weight:600;letter-spacing:.08em;opacity:.85}
+.carte.creme .prixcases span{background:#B8A27E;color:#1E1F1C}
+#grille .carte .bas{padding:6px 18px 18px;align-items:end}
+#grille .aucun{color:#C9D9CF}
+@media (max-width:640px){
+  #menu{padding-block:56px}
+  #grille{grid-template-columns:1fr;gap:12px}
+  #grille .carte{display:grid;grid-template-columns:118px minmax(0,1fr);border-radius:16px}
+  #grille .carte .vis{grid-row:1/3;aspect-ratio:auto;height:100%;min-height:160px}
+  #grille .carte .corps{padding:12px 12px 4px;gap:7px}
+  #grille .carte .bas{padding:4px 12px 12px;gap:8px}
+  .nom{font-size:15.5px;padding:4px 11px 5px}
+  .ingr{font-size:12px;line-height:1.3}
+  .prixcases{gap:6px}.prixcases span{min-width:58px;font-size:16px;padding:5px 7px}
+  #grille .plus{width:40px;height:40px;font-size:24px}
+  #grille .pictos{right:6px;top:6px;gap:3px}#grille .pictos span{width:24px;height:24px;font-size:12px}
+  .cat-h{margin-top:26px}
+  #menu .outils{gap:8px}
+}
+/* Arabe : polices et sens de lecture *//* Arabe : polices et sens de lecture */
 html[lang="ar"]{--f-titre:"Cairo","Segoe UI",Tahoma,sans-serif;--f-texte:"Cairo","Segoe UI",Tahoma,sans-serif}
 html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3{font-weight:800;letter-spacing:0;line-height:1.2}
 html[lang="ar"] h1 em,html[lang="ar"] h2 em{font-style:normal}
@@ -370,7 +436,7 @@ html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:aut
   <div class="ticker" aria-hidden="true"><div id="ticker"></div></div><div class="store-bas" aria-hidden="true"></div>
 
   <section class="bloc sigs-bloc" id="signatures"><div class="wrap">
-    <div class="tete"><div><span class="sur" data-t="sig_sur">Le choix du chef</span><h2 data-t="sig_h" data-html>Nos pizzas <em class="script" style="color:#F3C969;font-style:normal">signature</em></h2></div><p data-t="sig_p">Les trois recettes qui font la réputation d'Arzata. Cuites devant vous, au feu de bois.</p></div>
+    <div class="tete"><div><span class="sur" data-t="sig_sur">Le choix du chef</span><h2 data-t="sig_h" data-html>Nos pizzas <em>signature</em></h2></div><p data-t="sig_p">Les trois recettes qui font la réputation d'Arzata. Cuites devant vous, au feu de bois.</p></div>
     <div class="sigs" id="sigs"></div>
   </div></section>
 
@@ -387,7 +453,7 @@ html[dir="rtl"] .pictos{right:auto;left:10px} html[dir="rtl"] .pastille{left:aut
 
   <section class="bloc" id="menu" style="padding-top:10px"><div class="wrap">
     <div class="tete"><div><span class="sur" data-t="menu_sur">38 recettes · Normale ou Méga</span><h2 data-t="menu_h" data-html>La <em>carte</em></h2></div><p data-t="menu_p">Choisissez, ajoutez au panier, commandez. Votre bon arrive directement devant le four.</p></div>
-    <div class="outils">
+    <div class="outils" id="outils-ref">
       <div class="recherche"><input type="search" id="q" data-tp="rech" placeholder="Burrata, saumon, chèvre…" aria-label="Rechercher une pizza" autocomplete="off"></div>
       <div class="onglets" id="onglets" role="group" aria-label="Catégories"></div>
       <div class="filtres" id="filtres" role="group" aria-label="Filtres"></div>
@@ -442,10 +508,10 @@ var TXT={
   hero_script:'Fermez les yeux,',hero_h1:'l\'Italie est dans <em>votre assiette</em>',hero_p:'Pâte dorée au feu de bois, mozzarella qui file, recettes généreuses. Commandez en ligne en une minute : sur place, à emporter ou en livraison.',
   btn_cmd:'Commander maintenant',btn_moitie:'Une pizza moitié-moitié ?',puce_modes:'Livraison · À emporter · Sur place',place:'Sur place',emporter:'À emporter',livraison:'Livraison',
   etat_ouvert:'Commande en ligne ouverte',etat_pause:'Commandes en ligne en pause',min:'min',four_live:'{n} au four en ce moment',four_calme:'Le four est chaud, à vous de jouer',
-  sig_sur:'Le choix du chef',sig_h:'Nos pizzas <em class="script" style="color:#F3C969;font-style:normal">signature</em>',sig_p:'Les trois recettes qui font la réputation d\'Arzata. Cuites devant vous, au feu de bois.',
+  sig_sur:'Le choix du chef',sig_h:'Nos pizzas <em>signature</em>',sig_p:'Les trois recettes qui font la réputation d\'Arzata. Cuites devant vous, au feu de bois.',
   mm_sur:'Nouveau · exclusif en ligne',mm_h:'Deux envies ? <em>Moitié-moitié.</em>',mm_p:'Burrata d\'un côté, saumon de l\'autre : composez votre pizza avec deux recettes de la carte. Vous payez la moitié la plus chère, c\'est tout.',
   mm1:'Choisissez une pizza et sa taille, Normale ou Méga.',mm2:'Activez « Moitié-moitié » et choisissez la deuxième recette.',mm3:'Le four reçoit le bon avec les deux moitiés bien indiquées.',mm_btn:'Composer ma moitié-moitié',
-  menu_sur:'{n} recettes · Normale ou Méga',menu_h:'La <em>carte</em>',menu_p:'Choisissez, ajoutez au panier, commandez. Votre bon arrive directement devant le four.',rech:'Burrata, saumon, chèvre…',aucun:'Aucune recette ne correspond.',
+  menu_sur:'{n} recettes · pâte 100 % artisanale',menu_h:'Toute la <em>carte</em>',menu_p:'Exactement notre menu, à commander en un clic. Le bon arrive directement devant le four.',rech:'Burrata, saumon, chèvre…',aucun:'Aucune recette ne correspond.',
   des:'dès',epuise:'Épuisée aujourd\'hui',epuise2:'Épuisée',platjour:'Pizza du jour',ajouter:'Ajouter',
   f_veg:'🌿 Végétarien',f_mer:'🐟 De la mer',f_epice:'🌶️ Épicé',f_fromage:'🧀 Fromagé',f_chef:'⭐ Le choix du chef',
   voy_sur:'Arzata · Dar El Beïda',voy_h:'Voyagez en Italie, <span class="script">sans quitter Alger</span>',
@@ -455,7 +521,7 @@ var TXT={
   zones_h:'Livraison dans tout l\'Est algérois',offerte:'🎁 Livraison offerte dès {m} à Dar El Beïda et alentours',pr_pay:'Paiement',pr_pay_v:'Au comptoir ou à la livraison',realise:'Site réalisé par Dzign Studio',flot:'Voir mon panier',
   vide:'<span class="script">Bello !</span>Votre panier attend sa première pizza.',voir_menu:'Voir la carte',add:'Ajouter · {p}',added:'{p} ajoutée',taille:'Taille',supp:'Suppléments',
   mm_on:'Moitié-moitié',mm_on2:'Deux recettes sur la même pizza, vous payez la plus chère',mm_choix:'Deuxième moitié',
-  table:'Table',comptoir:'Au comptoir',domicile:'À domicile',table_lbl:'Numéro de table (scanné par QR code)',quand:'Quand ?',asap:'Dès que possible',zone:'Commune',plan_t:'Plan des zones de livraison à Alger : touchez votre commune',plan_suivi:'Suivi de votre livraison sur le plan',z_frais:'Livraison {f} · ≈ {m} min de trajet',z_min:'Minimum de commande {m}',recents:'Vos adresses récentes',adr_cite:'Cité, quartier ou rue',adr_bat:'Bâtiment',adr_etage:'Étage / porte',adr_repere:'Point de repère',repere_ph:'Ex. en face de la mosquée, à côté de la pharmacie',adr_note:'Consigne pour le livreur (facultatif)',note_ph:'Ex. sonner deux fois, appeler en arrivant',geo:'Ajouter ma position exacte',geo_ok:'Position exacte ajoutée',geo_att:'Recherche de votre position…',geo_ok2:'Le livreur viendra pile à cet endroit.',geo_non:'Position indisponible sur cet appareil : le point de repère suffira au livreur.',liv_vers:'Livrée vers {h}',liv_pour:'Livrée pour {h}',min_note:'Minimum de commande pour {z} : {m}. Ajoutez encore {r}.',s4liv:'Livrée, bon appétit',liv_est:'Livraison estimée vers <b>{h}</b>',arrive:'Arrivée prévue vers <b>{h}</b>',livreur_en_route:'{n} est en route vers vous',livree_a:'Livrée à {h}',bon_app:'Bon appétit, et à très vite chez Arzata !',pos_est:'Position estimée d\'après l\'heure de départ.',pos_gps:'Position GPS du livreur, en direct.',
+  table:'Table',comptoir:'Au comptoir',domicile:'À domicile',table_lbl:'Numéro de table (scanné par QR code)',quand:'Quand ?',asap:'Dès que possible',t_n:'Normal',t_m:'Méga',prix:'Prix',zone:'Commune',plan_t:'Plan des zones de livraison à Alger : touchez votre commune',plan_suivi:'Suivi de votre livraison sur le plan',z_frais:'Livraison {f} · ≈ {m} min de trajet',z_min:'Minimum de commande {m}',recents:'Vos adresses récentes',adr_cite:'Cité, quartier ou rue',adr_bat:'Bâtiment',adr_etage:'Étage / porte',adr_repere:'Point de repère',repere_ph:'Ex. en face de la mosquée, à côté de la pharmacie',adr_note:'Consigne pour le livreur (facultatif)',note_ph:'Ex. sonner deux fois, appeler en arrivant',geo:'Ajouter ma position exacte',geo_ok:'Position exacte ajoutée',geo_att:'Recherche de votre position…',geo_ok2:'Le livreur viendra pile à cet endroit.',geo_non:'Position indisponible sur cet appareil : le point de repère suffira au livreur.',liv_vers:'Livrée vers {h}',liv_pour:'Livrée pour {h}',min_note:'Minimum de commande pour {z} : {m}. Ajoutez encore {r}.',s4liv:'Livrée, bon appétit',liv_est:'Livraison estimée vers <b>{h}</b>',arrive:'Arrivée prévue vers <b>{h}</b>',livreur_en_route:'{n} est en route vers vous',livree_a:'Livrée à {h}',bon_app:'Bon appétit, et à très vite chez Arzata !',pos_est:'Position estimée d\'après l\'heure de départ.',pos_gps:'Position GPS du livreur, en direct.',
   adr:'Adresse de livraison',adr_ph:'Ex. Cité 1200 logements',prenom:'Votre prénom',tel:'Téléphone',total:'Total',sous_total:'Sous-total',frais:'Livraison',gratuit:'Offerte',mode:'Mode',
   cmd_comptoir:'Commander · paiement au comptoir',cmd_livraison:'Commander · paiement à la livraison',
   pause_note:'Le four est plein : les commandes en ligne reprennent dans quelques minutes.',eta_note:'Prête en ≈ {m} min',ferme_note:'Nous sommes fermés : votre commande sera préparée dès l\'ouverture ({h}).',reste:'Plus que {m} pour la livraison offerte',
@@ -473,7 +539,7 @@ var TXT={
   sig_sur:'اختيار الشيف',sig_h:'بيتزا <em class="script" style="color:#F3C969;font-style:normal">التوقيع</em>',sig_p:'ثلاث وصفات صنعت شهرة أرزاتا، تُطهى أمامك على نار الحطب.',
   mm_sur:'جديد · حصريًا عبر الإنترنت',mm_h:'رغبتان؟ <em>نصف ونصف.</em>',mm_p:'بوراتا من جهة وسلمون من الجهة الأخرى: ركّب بيتزاك من وصفتين. تدفع سعر النصف الأغلى فقط.',
   mm1:'اختر بيتزا وحجمها، عادية أو ميغا.',mm2:'فعّل « نصف ونصف » واختر الوصفة الثانية.',mm3:'يصل الوصل إلى الفرن مع النصفين بوضوح.',mm_btn:'ركّب بيتزا نصف ونصف',
-  menu_sur:'{n} وصفة · عادية أو ميغا',menu_h:'<em>القائمة</em>',menu_p:'اختر، أضف إلى السلة واطلب. يصل وصلك مباشرة إلى الفرن.',rech:'بوراتا، سلمون، جبن الماعز…',aucun:'لا توجد وصفة مطابقة.',
+  menu_sur:'{n} وصفة · عجينة حرفية 100%',menu_h:'القائمة <em>كاملة</em>',menu_p:'قائمتنا كما هي، اطلب بنقرة واحدة. يصل الوصل مباشرة إلى الفرن.',rech:'بوراتا، سلمون، جبن الماعز…',aucun:'لا توجد وصفة مطابقة.',
   des:'ابتداءً من',epuise:'نفدت اليوم',epuise2:'نفدت',platjour:'بيتزا اليوم',ajouter:'أضف',
   f_veg:'🌿 نباتي',f_mer:'🐟 بحري',f_epice:'🌶️ حار',f_fromage:'🧀 بالأجبان',f_chef:'⭐ اختيار الشيف',
   voy_sur:'أرزاتا · الدار البيضاء',voy_h:'سافر إلى إيطاليا <span class="script">دون مغادرة الجزائر</span>',
@@ -483,7 +549,7 @@ var TXT={
   zones_h:'التوصيل في كامل شرق العاصمة',offerte:'🎁 توصيل مجاني ابتداءً من {m} في الدار البيضاء وضواحيها',pr_pay:'الدفع',pr_pay_v:'عند الشباك أو عند الاستلام',realise:'تصميم وتطوير Dzign Studio',flot:'عرض السلة',
   vide:'<span class="script">أهلًا!</span>سلتك في انتظار أول بيتزا.',voir_menu:'عرض القائمة',add:'أضف · {p}',added:'أُضيفت {p}',taille:'الحجم',supp:'إضافات',
   mm_on:'نصف ونصف',mm_on2:'وصفتان على نفس البيتزا، تدفع الأغلى',mm_choix:'النصف الثاني',
-  table:'طاولة',comptoir:'عند الشباك',domicile:'إلى المنزل',table_lbl:'رقم الطاولة (من رمز QR)',quand:'متى؟',asap:'في أقرب وقت',zone:'البلدية',plan_t:'مخطط مناطق التوصيل في الجزائر العاصمة: المس بلديتك',plan_suivi:'تتبع التوصيل على المخطط',z_frais:'التوصيل {f} · ≈ {m} د من الطريق',z_min:'الحد الأدنى للطلب {m}',recents:'عناوينك الأخيرة',adr_cite:'الحي أو الشارع',adr_bat:'العمارة',adr_etage:'الطابق / الباب',adr_repere:'نقطة دالة',repere_ph:'مثال: مقابل المسجد، بجانب الصيدلية',adr_note:'ملاحظة للموصل (اختياري)',note_ph:'مثال: دق الجرس مرتين، اتصل عند الوصول',geo:'أضف موقعي الدقيق',geo_ok:'تمت إضافة الموقع',geo_att:'جارٍ تحديد موقعك…',geo_ok2:'سيصل الموصل إلى هذا المكان بالضبط.',geo_non:'الموقع غير متاح على هذا الجهاز: النقطة الدالة تكفي الموصل.',liv_vers:'التوصيل حوالي {h}',liv_pour:'التوصيل على الساعة {h}',min_note:'الحد الأدنى للطلب في {z}: {m}. أضف {r}.',s4liv:'تم التوصيل، بالهناء',liv_est:'التوصيل المتوقع حوالي <b>{h}</b>',arrive:'الوصول المتوقع حوالي <b>{h}</b>',livreur_en_route:'{n} في الطريق إليك',livree_a:'تم التوصيل على {h}',bon_app:'بالهناء والشفاء، نراك قريبًا في أرزاتا!',pos_est:'موقع تقديري حسب وقت الانطلاق.',pos_gps:'موقع الموصل عبر GPS مباشرة.',
+  table:'طاولة',comptoir:'عند الشباك',domicile:'إلى المنزل',table_lbl:'رقم الطاولة (من رمز QR)',quand:'متى؟',asap:'في أقرب وقت',t_n:'عادي',t_m:'ميغا',prix:'السعر',zone:'البلدية',plan_t:'مخطط مناطق التوصيل في الجزائر العاصمة: المس بلديتك',plan_suivi:'تتبع التوصيل على المخطط',z_frais:'التوصيل {f} · ≈ {m} د من الطريق',z_min:'الحد الأدنى للطلب {m}',recents:'عناوينك الأخيرة',adr_cite:'الحي أو الشارع',adr_bat:'العمارة',adr_etage:'الطابق / الباب',adr_repere:'نقطة دالة',repere_ph:'مثال: مقابل المسجد، بجانب الصيدلية',adr_note:'ملاحظة للموصل (اختياري)',note_ph:'مثال: دق الجرس مرتين، اتصل عند الوصول',geo:'أضف موقعي الدقيق',geo_ok:'تمت إضافة الموقع',geo_att:'جارٍ تحديد موقعك…',geo_ok2:'سيصل الموصل إلى هذا المكان بالضبط.',geo_non:'الموقع غير متاح على هذا الجهاز: النقطة الدالة تكفي الموصل.',liv_vers:'التوصيل حوالي {h}',liv_pour:'التوصيل على الساعة {h}',min_note:'الحد الأدنى للطلب في {z}: {m}. أضف {r}.',s4liv:'تم التوصيل، بالهناء',liv_est:'التوصيل المتوقع حوالي <b>{h}</b>',arrive:'الوصول المتوقع حوالي <b>{h}</b>',livreur_en_route:'{n} في الطريق إليك',livree_a:'تم التوصيل على {h}',bon_app:'بالهناء والشفاء، نراك قريبًا في أرزاتا!',pos_est:'موقع تقديري حسب وقت الانطلاق.',pos_gps:'موقع الموصل عبر GPS مباشرة.',
   adr:'عنوان التوصيل',adr_ph:'مثال: حي 1200 مسكن',prenom:'اسمك',tel:'رقم الهاتف',total:'المجموع',sous_total:'المجموع الفرعي',frais:'التوصيل',gratuit:'مجاني',mode:'طريقة الطلب',
   cmd_comptoir:'اطلب · الدفع عند الشباك',cmd_livraison:'اطلب · الدفع عند الاستلام',
   pause_note:'الفرن ممتلئ: تعود الطلبات عبر الإنترنت بعد دقائق.',eta_note:'جاهزة خلال ≈ {m} د',ferme_note:'نحن مغلقون: سيُحضَّر طلبك عند الافتتاح ({h}).',reste:'بقي {m} للتوصيل المجاني',
@@ -528,16 +594,29 @@ function signatures(){
   var ids=['t13','m1','m0'].filter(function(i){return plat(i)});M.forEach(function(p){if(ids.length<3&&ids.indexOf(p.id)<0)ids.push(p.id)});
   $('sigs').innerHTML=ids.map(function(id,i){var p=plat(id);return '<article class="sig revele"><div class="rond"><img src="'+p.img+'" alt="Pizza '+esc(p.nom)+'" loading="lazy"></div><span class="no">N° '+(i+1)+'</span><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p><div class="bas">'+prixHTML(p,true)+boutonPlus(p,'epuise2')+'</div></article>'}).join('');
 }
-function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){var n=M.filter(function(p){return p.cat===c}).length;return '<button aria-pressed="'+(c===cat&&!q)+'" data-c="'+esc(c)+'">'+esc(nomCat(c))+'<small>'+n+'</small></button>'}).join('');
-  $('onglets').querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;q='';$('q').value='';onglets();grille()}});
+// Onglets = sommaire de la carte : un clic fait défiler en douceur jusqu'à la catégorie, sans jamais renvoyer en bas de page
+function onglets(){var V=visibles();$('onglets').innerHTML=IMS.CATS.map(function(c,i){var n=V.filter(function(p){return p.cat===c}).length;return n?'<button aria-pressed="'+(c===cat)+'" data-c="'+esc(c)+'">'+esc(nomCat(c))+'<small>'+n+'</small></button>':''}).join('');
+  $('onglets').querySelectorAll('button').forEach(function(b){b.onclick=function(){aller(b.dataset.c)}});
   $('filtres').innerHTML=Object.keys(TAGS).map(function(k){return '<button aria-pressed="'+(filtre===k)+'" data-f="'+k+'">'+t('f_'+k)+'</button>'}).join('');
-  $('filtres').querySelectorAll('button').forEach(function(b){b.onclick=function(){filtre=filtre===b.dataset.f?'':b.dataset.f;onglets();grille()}})}
+  $('filtres').querySelectorAll('button').forEach(function(b){b.onclick=function(){filtre=filtre===b.dataset.f?'':b.dataset.f;onglets();grille();haut()}})}
+function visibles(){var Q=q.trim().toLowerCase();return M.filter(function(p){return (!Q||(p.nom+' '+p.desc+' '+p.cat+' '+nomCat(p.cat)).toLowerCase().indexOf(Q)>=0)&&(!filtre||(p.tags||[]).indexOf(filtre)>=0)})}
+function decalage(){return $('outils-ref').getBoundingClientRect().height+document.querySelector('.nav').getBoundingClientRect().height+12}
+function aller(c){var h=document.getElementById('cat-'+IMS.CATS.indexOf(c));if(!h)return;cat=c;marquer();var y=h.getBoundingClientRect().top+scrollY-decalage();scrollTo({top:y,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+// Après une recherche ou un filtre : on reste en haut de la carte au lieu de tomber dans le pied de page
+function haut(){var g=$('grille').getBoundingClientRect().top+scrollY-decalage();if(scrollY>g)scrollTo({top:g})}
+function marquer(){$('onglets').querySelectorAll('button').forEach(function(b){var on=b.dataset.c===cat;b.setAttribute('aria-pressed',on);if(on){var o=$('onglets');var l=b.offsetLeft-o.offsetLeft-16;if(Math.abs(o.scrollLeft-l)>40)o.scrollTo({left:l,behavior:'smooth'})}})}
+var espion=0;window.addEventListener('scroll',function(){if(espion)return;espion=requestAnimationFrame(function(){espion=0;var H=document.querySelectorAll('.cat-h'),d=decalage()+30,c2=null;H.forEach(function(h){if(h.getBoundingClientRect().top<=d)c2=h.dataset.c});if(!c2&&H[0])c2=H[0].dataset.c;if(c2&&c2!==cat){cat=c2;marquer()}})},{passive:true});
 function grille(){
-  var Q=q.trim().toLowerCase(),L=M.filter(function(p){var ok=Q?(p.nom+' '+p.desc+' '+p.cat).toLowerCase().indexOf(Q)>=0:filtre?true:p.cat===cat;return ok&&(!filtre||(p.tags||[]).indexOf(filtre)>=0)});
-  $('grille').innerHTML=L.map(function(p){return '<article class="carte revele'+(p.dispo?'':' rupture')+'"><div class="vis">'+(p.promo?'<span class="pastille">'+t('platjour')+' · -'+p.promo+' %</span>':'')+((p.tags||[]).length?'<span class="pictos" aria-hidden="true">'+p.tags.map(function(x){return '<span>'+TAGS[x]+'</span>'}).join('')+'</span>':'')+'<img src="'+p.img+'" alt="'+esc(p.nom)+'" loading="lazy"></div><div class="corps"><h3>'+esc(p.nom)+'</h3><p>'+esc(p.desc)+'</p></div><div class="bas">'+(p.tailles?'<span class="tailles">'+p.tailles.map(function(x){return '<span>'+esc(x[0])+' <b>'+fmt(x[1])+'</b></span>'}).join('')+'</span>':prixHTML(p))+boutonPlus(p)+'</div></article>'}).join('')||'<p class="aucun">'+t('aucun')+'</p>';
+  var L=visibles();
+  $('grille').innerHTML=IMS.CATS.map(function(c,i){var X=L.filter(function(p){return p.cat===c});return X.length?'<h3 class="cat-h" id="cat-'+i+'" data-c="'+esc(c)+'">'+esc(nomCat(c))+(c==='Base crème'?' <span class="s">fraîche</span>':'')+'<small>'+X.length+'</small></h3>'+X.map(carteHTML).join(''):''}).join('')||'<p class="aucun">'+t('aucun')+'</p>';
   observer();
 }
-$('q').addEventListener('input',function(){q=this.value;onglets();grille()});
+function carteHTML(p){var cr=p.moitie==='creme'||p.cat==='Salades';
+  return '<article class="carte revele'+(cr?' creme':'')+(p.dispo?'':' rupture')+'"><div class="vis">'+(p.promo?'<span class="pastille">'+t('platjour')+' · -'+p.promo+' %</span>':'')+((p.tags||[]).length?'<span class="pictos" aria-hidden="true">'+p.tags.map(function(x){return '<span>'+TAGS[x]+'</span>'}).join('')+'</span>':'')+'<img src="'+p.img+'" alt="'+esc(p.nom)+'" loading="lazy"></div>'+
+    '<div class="corps"><h4 class="nom">'+esc(p.nom)+'</h4><p class="ingr">'+esc(p.desc)+'</p></div>'+
+    '<div class="bas"><span class="prixcases">'+(p.tailles?p.tailles.map(function(x){return '<span><small>'+esc(x[0]==='Normale'?t('t_n'):x[0]==='Méga'?t('t_m'):x[0])+'</small>'+fmtc(x[1])+'</span>'}).join(''):'<span><small>'+t('prix')+'</small>'+fmtc(p.prix)+'</span>')+'</span>'+boutonPlus(p)+'</div></article>'}
+function fmtc(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+'<small style="font-size:10px"> '+(langue==='ar'?'د.ج':'DA')+'</small>'}
+$('q').addEventListener('input',function(){q=this.value;onglets();grille();haut()});
 
 // Apparition au défilement
 var io=('IntersectionObserver' in window)?new IntersectionObserver(function(E){E.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;

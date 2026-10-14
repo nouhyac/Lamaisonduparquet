@@ -151,7 +151,7 @@
   }
 
   // ----- Graphique en barres (une série, ou deux empilées : Bab Ezzouar / Aïn Allah) -----
-  var PAL = ['#143A2C', '#B3122A', '#2F5BEA', '#12955A', '#B97A05'];
+  var PAL = ['#0D3B2F', '#C62F2B', '#2F5BEA', '#12955A', '#B97A05'];
   function coul(id) { var i = IMS.RESTOS.findIndex(function (r) { return r.id === id; }); return PAL[Math.max(0, i) % PAL.length]; }
   function graphe(D, o) {
     o = o || {}; var etroit = innerWidth < 700, W = etroit ? 360 : 640, H = Math.round((o.h || 220) * (etroit ? .8 : 1)), ml = 44, mb = 24, mt = 8, n = D.length || 1;
@@ -161,7 +161,7 @@
     var s = '<svg class="g-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.titre || '') + '">';
     for (var g = 0; g <= top + 1e-9; g += pas) s += '<line x1="' + ml + '" x2="' + W + '" y1="' + y(g) + '" y2="' + y(g) + '" stroke="#E2E5EE"/><text x="' + (ml - 6) + '" y="' + (y(g) + 4) + '" text-anchor="end">' + (o.court ? court(g) : g) + '</text>';
     D.forEach(function (d, i) {
-      var x = ml + lw * i + (lw - bw) / 2, base = H - mb, parts = d.parts || [{ v: d.v, c: o.c || '#143A2C', n: '' }], acc = 0;
+      var x = ml + lw * i + (lw - bw) / 2, base = H - mb, parts = d.parts || [{ v: d.v, c: o.c || '#0D3B2F', n: '' }], acc = 0;
       parts.forEach(function (p, k) {
         if (!p.v) return; var y0 = y(acc), y1 = y(acc + p.v); acc += p.v; var h = y0 - y1 - (k ? 2 : 0); if (h <= 0) return;
         var haut = k === parts.length - 1 || !parts.slice(k + 1).some(function (q) { return q.v; }), r = haut ? Math.min(4, bw / 2, h) : 0;
@@ -421,7 +421,7 @@
       '<div class="g-carte g-srv"><div class="t"><h2>📣 Bannière sur le site</h2><button class="g-sw" role="switch" aria-checked="' + !!o.banniere + '" data-promo="banniere" aria-label="Afficher la bannière"><i></i></button></div>' +
       '<p class="g-sous">Un bandeau rouge en haut du site, pour une annonce : promo, nouveau plat, horaires du Ramadan, fermeture exceptionnelle…</p>' +
       '<input class="g-rech" style="max-width:none" id="g-ptxt" maxlength="90" value="' + esc(o.texte || ('-' + o.remise + ' % sur le ' + p.nom + ' aujourd\'hui seulement')) + '" aria-label="Texte de la bannière">' +
-      '<div style="background:linear-gradient(90deg,#B3122A,#ff4a4f);color:#fff;font-weight:800;border-radius:10px;padding:10px 14px;text-align:center">🔥 ' + esc(o.texte || ('-' + o.remise + ' % sur le ' + p.nom + ' aujourd\'hui seulement')) + '</div></div></div>' +
+      '<div style="background:linear-gradient(90deg,#C62F2B,#ff4a4f);color:#fff;font-weight:800;border-radius:10px;padding:10px 14px;text-align:center">🔥 ' + esc(o.texte || ('-' + o.remise + ' % sur le ' + p.nom + ' aujourd\'hui seulement')) + '</div></div></div>' +
       '<div class="g-carte"><h2>Message WhatsApp à vos clients <button class="g-pil" data-act="copiermsg">Copier le message</button></h2><p class="g-sous" style="margin-bottom:10px">À envoyer en liste de diffusion WhatsApp aux ' + clients().length + ' clients du fichier.</p><div style="background:#E6F8EE;border-radius:12px;padding:14px;font-size:15px" id="g-msg">' + esc(txt) + '</div></div>';
   }
 
@@ -453,7 +453,7 @@
     var T = p.tailles ? p.tailles.slice() : [['Prix unique', p.prix || 0]], img = p.img, ex = p.extra && p.extra[0] ? p.extra[0] : ['', 0];
     function lignesT() { return T.map(function (t, i) { return '<div style="display:grid;grid-template-columns:minmax(0,1fr) 110px auto;gap:8px;align-items:center"><input class="g-rech" style="max-width:none" data-tl="' + i + '" value="' + esc(t[0]) + '" placeholder="Taille (ex. Double)"><input class="g-rech" type="number" min="0" step="50" data-tp="' + i + '" value="' + t[1] + '"><button class="g-pil" data-tx="' + i + '" aria-label="Retirer">✕</button></div>'; }).join(''); }
     var v = modale(nv ? 'Ajouter un plat' : 'Modifier « ' + esc(p.nom) + ' »',
-      '<div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center"><img id="e-img" src="' + img + '" alt="" style="width:96px;height:96px;border-radius:14px;object-fit:cover;background:#143A2C"><label class="g-pil" style="justify-self:start;cursor:pointer">📷 Changer la photo<input type="file" accept="image/*" id="e-file" hidden></label></div>' +
+      '<div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center"><img id="e-img" src="' + img + '" alt="" style="width:96px;height:96px;border-radius:14px;object-fit:cover;background:#0D3B2F"><label class="g-pil" style="justify-self:start;cursor:pointer">📷 Changer la photo<input type="file" accept="image/*" id="e-file" hidden></label></div>' +
       '<label class="g-sous" style="display:grid;gap:5px;font-weight:700">Nom<input class="g-rech" style="max-width:none" id="e-nom" value="' + esc(p.nom) + '" placeholder="Ex. Pizza Truffe"></label>' +
       '<label class="g-sous" style="display:grid;gap:5px;font-weight:700">Description<input class="g-rech" style="max-width:none" id="e-desc" value="' + esc(p.desc) + '" placeholder="Ingrédients"></label>' +
       '<label class="g-sous" style="display:grid;gap:5px;font-weight:700">Catégorie<select class="g-sel" id="e-cat">' + IMS.CATS.map(function (c) { return '<option' + (c === p.cat ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('') + '</select></label>' +
@@ -545,7 +545,7 @@
   var qrLib = null;
   function qr() {
     var box = $('#g-qr', root); if (!box) return;
-    function go() { var base = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '') + 'index.html'; box.innerHTML = ''; for (var i = 1; i <= st.qrN; i++) { var d = document.createElement('div'); d.innerHTML = '<span></span><b>Table ' + i + '</b><small>' + IMS.resto(st.qrR).nom + ' · scannez pour commander</small>'; box.appendChild(d); try { var qq = new window.QRCode(d.firstChild, { text: base + '#' + st.qrR + '-table-' + i, width: 232, height: 232, colorDark: '#143A2C', colorLight: '#FFFFFF', correctLevel: window.QRCode.CorrectLevel.M }); } catch (e) { d.firstChild.textContent = 'QR indisponible'; } } setTimeout(function () { $$('.g-qr img', box).forEach(function (im, k) { im.alt = 'QR code de la table ' + (k + 1); }); }, 60); }
+    function go() { var base = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '') + 'index.html'; box.innerHTML = ''; for (var i = 1; i <= st.qrN; i++) { var d = document.createElement('div'); d.innerHTML = '<span></span><b>Table ' + i + '</b><small>' + IMS.resto(st.qrR).nom + ' · scannez pour commander</small>'; box.appendChild(d); try { var qq = new window.QRCode(d.firstChild, { text: base + '#' + st.qrR + '-table-' + i, width: 232, height: 232, colorDark: '#0D3B2F', colorLight: '#FFFFFF', correctLevel: window.QRCode.CorrectLevel.M }); } catch (e) { d.firstChild.textContent = 'QR indisponible'; } } setTimeout(function () { $$('.g-qr img', box).forEach(function (im, k) { im.alt = 'QR code de la table ' + (k + 1); }); }, 60); }
     if (window.QRCode) return go();
     box.innerHTML = '<div class="g-vide" style="grid-column:1/-1">Chargement des QR codes…</div>';
     if (!qrLib) { qrLib = document.createElement('script'); qrLib.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'; document.head.appendChild(qrLib); }

@@ -2,7 +2,7 @@
 // Démo : l'état vit dans le navigateur (localStorage) et se synchronise entre onglets
 // (BroadcastChannel). La version livrée utilisera une base de données en ligne.
 (function () {
-  // Carte Arzata Pizza (photos de la carte, octobre 2026) · tailles Normale / Méga
+  // Carte Arzata Pizza, recopiée mot pour mot de leur menu (avril 2026) · tailles Normale / Méga
   var NM = ['Normale', 'Méga'], SUPP = [['Ricotta', 100], ['Fromagère', 100], ['Stracciatella', 100]];
   function T(p) { return NM.map(function (x, i) { return [x, p[i]]; }); }
   var P = [];
@@ -10,43 +10,43 @@
   [['Figue & noisettes', 'Crème, mozzarella, figues fraîches, noisettes, miel', [1590, 2990], ['veg', 'chef']],
    ['Magret & foie gras', 'Crème, mozzarella, magret de canard, foie gras, oignons confits, framboises', [2490, 3990], ['chef']]
   ].forEach(function (x, i) { P.push({ id: 'm' + i, cat: 'Du moment', nom: x[0], desc: x[1], img: 'img3d/m' + i + '.jpg', tailles: T(x[2]), extra: SUPP, tags: x[3], moitie: 'creme' }); });
-  [['Marguerite', 'Sauce tomate, mozzarella, cheddar, olives', [490, 1390], ['veg']],
-   ['Veggie', 'Sauce tomate, mozzarella, aubergine, courgette, poivrons rôtis, champignons frais, tomates cerises, oignons caramélisés', [690, 1690], ['veg']],
-   ['Thon', 'Sauce tomate, mozzarella, thon, poivrons, oignons rouges, olives', [790, 1790], ['mer']],
-   ['Orientale', 'Sauce tomate, mozzarella, merguez, poivrons, oignons, olives', [790, 1990], ['epice']],
-   ['Reine', 'Sauce tomate, mozzarella, viande fumée, champignons frais, olives', [790, 1990], []],
-   ['4 Fromages', 'Sauce tomate, mozzarella, boursin, cheddar, camembert, olives', [890, 1990], ['veg', 'fromage']],
-   ['Chorizo', 'Sauce tomate, mozzarella, cheddar, chorizo, oignons caramélisés, poivrons, olives', [890, 2290], ['epice']],
-   ['Pastrami', 'Sauce tomate, mozzarella, pastrami, tomates cerises, camembert, roquefort, poivrons, olives', [890, 2390], ['fromage']],
-   ['Fermière', 'Sauce tomate, poulet, champignons, persillade, tomates cerises, herbes de Provence, olives', [890, 2490], []],
-   ['Spicy', 'Sauce tomate, mozzarella, poulet mariné épicé, poivrons verts, huile pimentée, olives', [990, 2490], ['epice']],
-   ['Buffalo', 'Sauce tomate, mozzarella, viande hachée assaisonnée, chorizo, cheddar, olives', [990, 2690], ['epice']],
-   ['Moussaka', 'Sauce tomate, mozzarella, viande hachée marinée, aubergine, tomate, parmesan, olives', [990, 2690], []],
-   ['Napolitaine', 'Sauce tomate, mozzarella, anchois, câpres, oignons caramélisés, herbes de Provence', [1090, 2690], ['mer']],
-   ['Burrata', 'Sauce tomate, pesto, mozzarella, tomates cerises, burrata entière, roquette, pastrami, parmesan, crème balsamique', [1890, 3090], ['fromage', 'chef']]
+  [['Marguerite', 'Sauce tomate, mozza, cheddar, olives', [490, 1390], ['veg']],
+   ['Veggie', 'Sauce tomate, mozza, aubergines, courgettes, poivrons au four, champignons frais, tomate cerise, oignons caramélisés', [690, 1690], ['veg']],
+   ['Thon', 'Sauce tomate, mozza, thon, poivrons, oignons, olives', [790, 1790], ['mer']],
+   ['Orientale', 'Sauce tomate, mozza, merguez, poivrons, oignons, olives', [790, 1990], ['epice']],
+   ['Reine', 'Sauce tomate, mozza, lardons, champignons frais, olives', [790, 1990], []],
+   ['4 Fromages', 'Sauce tomate, mozza, boursin, cheddar, camembert, olives', [890, 1990], ['veg', 'fromage']],
+   ['Chorizo', 'Sauce tomate, mozza, cheddar, chorizo, oignons caramélisés, poivrons, olives', [890, 2290], ['epice']],
+   ['Pastrami', 'Sauce tomate, mozza, bœuf pastrami, tomate cerise, camembert, roquefort, poivrons, olives', [890, 2390], ['fromage']],
+   ['Fermière', 'Sauce tomate, poulet, champignons frais, persillade, tomate cerise, herbes de Provence, olives', [890, 2490], []],
+   ['Spicy', 'Sauce tomate, mozza, poulet épicé, poivrons, huile piquante, olives', [990, 2490], ['epice']],
+   ['Buffalo', 'Sauce tomate, mozza, viande hachée, chorizo, cheddar, olives', [990, 2690], ['epice']],
+   ['Moussaka', 'Sauce tomate, mozza, viande hachée marinée, aubergines au four, tomate, parmesan, olives', [990, 2690], []],
+   ['Napolitaine', 'Sauce tomate, mozza, anchois à l\'huile d\'olive, câpres, oignons caramélisés, herbes de Provence', [1090, 2690], ['mer']],
+   ['Burrata', 'Sauce tomate, pesto, mozza, tomate cerise, huile de basilic, boule de burrata, roquette, pastrami, parmesan, gouda fumé, vinaigre balsamique', [1890, 3090], ['fromage', 'chef']]
   ].forEach(function (x, i) { P.push({ id: 't' + i, cat: 'Base tomate', nom: x[0], desc: x[1], img: 'img3d/t' + i + '.jpg', tailles: T(x[2]), extra: SUPP, tags: x[3], moitie: 'tomate' }); });
-  [['Chèvre miel', 'Crème, mozzarella, noix, chèvre, miel, olives', [890, 2090], ['veg', 'fromage']],
-   ['Boursin', 'Crème, mozzarella, jambon de dinde, boursin, oignons confits, persil, champignons, poivrons, olives', [990, 2390], []],
-   ['Gruyère', 'Crème, mozzarella, poulet, gruyère, oignons rouges, tomates cerises, sauce blanche', [990, 2390], ['fromage']],
-   ["L'Escoffier", 'Crème, champignons frais, jambon de dinde, camembert, poivrons', [990, 2390], []],
-   ['6 Fromages', 'Crème, mozzarella, emmental, roquefort, edam, cheddar, camembert, olives', [990, 2490], ['veg', 'fromage']],
-   ['Chef Pepito', 'Crème, mozzarella, poivrons rôtis, gruyère fumé, lamelles de viande, champignons, viande hachée marinée, olives', [990, 2490], ['chef']],
-   ['Boisée', 'Crème, mozzarella, poulet, poivrons, champignons, persillade, sauce fromagère, olives', [990, 2490], []],
-   ['Pizza Crispy', 'Crème, mozzarella, poulet croustillant, sauce fromagère, tomates cerises, olives', [1090, 2590], []],
-   ['Saumon', 'Crème, mozzarella, saumon fumé, boursin, oignons confits, citron, olives, roquette', [1190, 2690], ['mer']],
-   ['Océane', 'Crème, mozzarella, crevettes, saumon fumé, persillade, citron, olives', [1290, 2890], ['mer']],
-   ['Bresaola', 'Mozzarella, bresaola, roquette, tomates cerises, cornichons, olives noires, petits piments doux, perles de mozzarella au pesto, parmesan, crème balsamique', [1990, 3190], ['chef']],
-   ['Pêcheur', 'Crème, mozzarella, calamars, crevettes, moules, pesto, citron, olives', [1990, 3190], ['mer', 'chef']]
+  [['Chèvre miel', 'Crème fraîche, mozza, noix, emmental, cheddar, chèvre, miel, olives', [890, 2090], ['veg', 'fromage']],
+   ['Boursin', 'Crème fraîche, mozza, jambon, lardons, boursin, oignons confits, persillade, champignons frais, poivrons cuits, olives', [990, 2390], []],
+   ['Gruyère', 'Crème fraîche, mozza, poulet, tranches de gruyère, oignons, olives', [990, 2390], ['fromage']],
+   ["L'Escoffier", 'Crème fraîche, champignons frais, jambon, camembert, poivrons colorés', [990, 2390], []],
+   ['6 Fromages', 'Crème fraîche, mozza, emmental, roquefort, fromage rouge, cheddar, édam, camembert, olives', [990, 2490], ['veg', 'fromage']],
+   ['Chef Pepito', 'Crème fraîche, mozza, poivrons au four, gruyère fumé, lardons, champignons frais, viande hachée marinée, olives', [990, 2490], ['chef']],
+   ['Boisée', 'Crème fraîche, mozza, poulet, poivrons colorés, champignons frais, persillade, sauce fromagère maison, olives', [990, 2490], []],
+   ['Pizza Crispy', 'Crème fraîche, mozza, poulet crispy, sauce fromagère, tomate cerise, olives', [1090, 2590], []],
+   ['Saumon', 'Crème fraîche, mozza, saumon fumé, boursin, oignons confits, citron, olives', [1190, 2690], ['mer']],
+   ['Océane', 'Crème fraîche, mozza, crevettes, saumon fumé, persillade, citron, olives', [1290, 2890], ['mer']],
+   ['Bresaola', 'Crème fraîche, mozza, cornichons, oignons caramélisés, roquette, bresaola artisanale, parmesan, tomate cerise, sauce pesto, crème de vinaigre balsamique, billes de mozzarella', [1990, 3190], ['chef']],
+   ['Pêcheur', 'Crème fraîche, mozza, calamar frais, crevettes, moules, sauce pesto, citron, olives', [1990, 3190], ['mer', 'chef']]
   ].forEach(function (x, i) { P.push({ id: 'c' + i, cat: 'Base crème', nom: x[0], desc: x[1], img: 'img3d/c' + i + '.jpg', tailles: T(x[2]), extra: SUPP, tags: x[3], moitie: 'creme' }); });
-  [['Poulet', 'Poulet, pommes de terre, poivrons, fromage fondant', 600, 0, []], ['Viande', 'Viande hachée, pommes de terre, poivrons, oignons, fromage fondant', 650, 1, []],
-   ['Cheezy', 'Généreusement fromagé, sauce fromagère', 650, 0, ['fromage']], ['Spicy', 'Version relevée, sauce piquante', 650, 1, ['epice']],
-   ['Montagnard', 'Version montagnarde, fromage fondu', 700, 1, ['fromage']], ['Hot-dog', 'Saucisses de bœuf, fromage, sauces', 700, 1, []], ['Fusion', 'Le mélange poulet et viande', 700, 0, []]
-  ].forEach(function (x, i) { P.push({ id: 'z' + i, cat: 'Pizzouich', nom: 'Pizzouich ' + x[0], desc: 'Le sandwich-pizza cuit au feu de bois · ' + x[1], img: 'img3d/z' + x[3] + '.jpg', prix: x[2], tags: x[4] }); });
-  P.push({ id: 'h0', cat: 'Tartines', nom: 'Tartine Hot-dog', desc: 'Pâte au feu de bois, saucisses de bœuf, champignons, poivrons, oignons, cheddar, ketchup et moutarde', img: 'img3d/h0.jpg', prix: 700, tags: [] });
-  [['Rustique', 'Poulet mariné grillé, légumes grillés, maïs, œufs, laitue, tomates, vinaigrette', 790, []],
-   ['César', 'Laitue romaine, poulet grillé, croûtons, parmesan, sauce César', 790, []],
-   ['Gourmet Toast', 'Roquette, laitue, burrata, mozzarella, tomates cerises, pesto, roquefort, toasts', 1200, ['veg', 'fromage']],
-   ['Terre et Mer', 'Roquette, laitue, pesto, moules, calamars, crevettes, pastrami, citron, concombre', 1390, ['mer']]
+  [['Poulet', 'Sauce fromagère, poulet, patates, oignons, poivrons, fromage', 600, 0, []], ['Viande', 'Sauce fromagère, viande hachée, patates, poivrons, oignons', 650, 1, []],
+   ['Cheezy', 'Camembert, boursin, cheddar, mozza, patates, emmental, champignons frais', 650, 0, ['fromage']], ['Spicy', 'Sauce fromagère, poulet épicé, patates sautées au four, poivrons, oignons', 650, 1, ['epice']],
+   ['Montagnard', 'Camembert, lardons, jambon, cheddar, mozza, champignons, sauce fromagère', 700, 1, ['fromage']], ['Hot-dog', 'Hot-dog artisanal, poivrons, oignons, champignons, cheddar, sauce ketchup', 700, 1, []], ['Fusion', 'Mozza, sauce fromagère, merguez, patates, poulet grillé, pastrami, champignons, persillade', 700, 0, []]
+  ].forEach(function (x, i) { P.push({ id: 'z' + i, cat: 'Pizzouich', nom: 'Pizzouich ' + x[0], desc: x[1], img: 'img3d/z' + x[3] + '.jpg', prix: x[2], tags: x[4] }); });
+  P.push({ id: 'h0', cat: 'Tartines', nom: 'Tartine Hot-dog', desc: 'Sauce tomate, hot-dog, champignons, poivrons colorés, oignons, cheddar, sauce ketchup, moutarde', img: 'img3d/h0.jpg', prix: 700, tags: [] });
+  [['Rustique', 'Poulet mariné, légumes grillés, maïs, œuf, salade fraîche, lamelles de tomate, vinaigrette maison onctueuse', 790, []],
+   ['César', 'Laitue fraîche, lamelles de poulet grillé, croûtons dorés, copeaux de parmesan, sauce César onctueuse', 790, []],
+   ['Gourmet Toast', 'Roquette, laitue, burrata, pousse de mozzarella, tomates cerises, pesto, roquefort, tartine', 1200, ['veg', 'fromage']],
+   ['Terre et Mer', 'Roquette, laitue, pesto, moules, calamar, pastrami, crevettes, citron, concombre', 1390, ['mer']]
   ].forEach(function (x, i) { P.push({ id: 's' + i, cat: 'Salades', nom: 'Salade ' + x[0], desc: x[1], img: 'img3d/s' + i + '.jpg', prix: x[2], tags: x[3] }); });
 
   // ----- Stockage + synchronisation -----

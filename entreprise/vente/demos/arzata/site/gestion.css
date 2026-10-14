@@ -1,7 +1,7 @@
 /* Espace gérant Arzata Pizza : application de gestion (tableau de bord, cuisine, caisse, comptabilité, menu, réglages).
    Thème clair unique, choisi pour la lisibilité en cuisine et en caisse. Barre latérale sur ordinateur, barre d'onglets en bas sur téléphone. */
 .g{--bg:#F4F2EC;--carte:#FFFFFF;--encre:#1A1F1B;--encre2:#565C55;--encre3:#5F645C;--trait:#E5E1D6;--trait2:#EFECE4;
-  --rouge:#B3122A;--rouge-f:#FDECEC;--navy:#143A2C;--vert:#0B7A48;--vert-f:#E4F5EC;--ambre:#8F5E00;--ambre-f:#FFF3D6;--bleu:#2F5BEA;--bleu-f:#EAF0FF;
+  --rouge:#C62F2B;--rouge-f:#FDECEC;--navy:#0D3B2F;--vert:#0B7A48;--vert-f:#E4F5EC;--ambre:#8F5E00;--ambre-f:#FFF3D6;--bleu:#2F5BEA;--bleu-f:#EAF0FF;
   --f:"DM Sans",ui-sans-serif,system-ui,sans-serif;--f-t:"Fraunces",Georgia,serif;--f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   position:fixed;inset:0;z-index:300;background:var(--bg);color:var(--encre);font-family:var(--f);font-size:15px;line-height:1.45;color-scheme:light;
   display:grid;grid-template-columns:248px minmax(0,1fr);grid-template-rows:minmax(0,1fr);-webkit-font-smoothing:antialiased}
