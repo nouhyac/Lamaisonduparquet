@@ -27,6 +27,10 @@ langues, fonctions, 3D, rédaction des textes, photos et vidéos, délai.
 
 ⭐ = formule mise en avant (la plus demandée).
 
+## Le Standard Dzign (inclus dans toutes les formules)
+Démo à son nom avant de signer · design haut de gamme et visuels 3D · français + arabe · tout modifiable par le client · accessibilité 0 défaut · tests sur téléphone et ordinateur · référencement Google · formation et vidéo de lancement. Détail : `QUALITE.md`.
+Décision du 14/10 : **on garde nos prix** (plus élevés que la concurrence) et on les justifie par un niveau de finition supérieur sur chaque projet.
+
 ## 3. Hébergement et suivi (mensuel, optionnel)
 Le client peut aussi héberger lui-même son site ; on lui livre alors tous les fichiers.
 

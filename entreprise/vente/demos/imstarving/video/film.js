@@ -42,7 +42,7 @@ const D=__dirname,TMP=D+'/fr';const U='http://localhost:8795/';const w=ms=>new P
  await clk(K,'.g-nav [data-p="accueil"]');await w(900);
  await clk(K,'[data-pause="ain"]');mark('pause');await w(2200);
  await clk(K,'[data-pause="ain"]');await w(800);
- await on(5);
+ await on(5);await clk(C,'#b-langue');await scroll(C,0,400);
  await clk(K,'.g-nav [data-p="caisse"]');await w(1700);
  await clk(K,'.g-nav [data-p="compta"]');await w(400);await clk(K,'[data-per="30"]');await w(1800);
  await clk(K,'.g-nav [data-p="livraisons"]');await w(1500);
@@ -52,6 +52,6 @@ const D=__dirname,TMP=D+'/fr';const U='http://localhost:8795/';const w=ms=>new P
  await cdp.send('Page.stopScreencast');
  const liste=[];frames.forEach((f,i)=>{const n=path.join(TMP,'f'+String(i).padStart(5,'0')+'.jpg');fs.writeFileSync(n,Buffer.from(f.data,'base64'));const d=i<frames.length-1?frames[i+1].t-f.t:0.1;liste.push("file '"+n+"'",'duration '+Math.max(0.001,d).toFixed(4))});
  fs.writeFileSync(D+'/t0.txt',String(frames[0].t));liste.push("file '"+path.join(TMP,'f'+String(frames.length-1).padStart(5,'0')+'.jpg')+"'");fs.writeFileSync(TMP+'/l.txt',liste.join('\n'));
- execSync(`ffmpeg -loglevel error -y -f concat -safe 0 -i ${TMP}/l.txt -vf "scale=1080:1920:flags=lanczos,fps=30,format=yuv420p" -c:v libx264 -crf 19 -preset slow -movflags +faststart ${D}/brut3.mp4`);
+ execSync(`ffmpeg -loglevel error -y -f concat -safe 0 -i ${TMP}/l.txt -vf "scale=1080:1920:flags=lanczos,fps=30,format=yuv420p" -c:v libx264 -crf 19 -preset slow -movflags +faststart ${D}/brut4.mp4`);
  console.log(frames.length,(frames[frames.length-1].t-frames[0].t).toFixed(1)+'s',errs);
  await b.close()})();
