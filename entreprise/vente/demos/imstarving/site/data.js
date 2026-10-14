@@ -57,8 +57,8 @@
 
   // Prix et disponibilités modifiés depuis le back-office
   function menu() {
-    var dispo = lire('ims-dispo', {}), prix = lire('ims-prix', {});
-    return P.map(function (p) {
+    var dispo = lire('ims-dispo', {}), prix = lire('ims-prix', {}), C = lire('ims-carte', null) || P;
+    return C.map(function (p) {
       var q = JSON.parse(JSON.stringify(p));
       if (prix[p.id]) { if (q.tailles) q.tailles.forEach(function (t, i) { if (prix[p.id][i] != null) t[1] = prix[p.id][i]; }); else if (prix[p.id][0] != null) q.prix = prix[p.id][0]; }
       if (q.tailles) q.prix = q.tailles[0][1];
@@ -71,13 +71,14 @@
 
   // Commandes d'exemple : la journée a déjà commencé quand on ouvre la démo
   function amorcer() {
+    if (lire('ims-mode', 'demo') === 'prod') { if (!lire('ims-cmds', null)) { ecrire('ims-cmds', []); ecrire('ims-no', 1); } return; }
     if (lire('ims-v', 0) !== 6) { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep', 'ims-service', 'ims-z', 'ims-charges', 'ims-promo'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); ecrire('ims-v', 6); }
     if (lire('ims-cmds', null)) return;
     var now = Date.now(), d = new Date(); d.setHours(11, 40, 0, 0); if (d.getTime() > now - 60 * 60000) d.setDate(d.getDate() - 1);
     var base = d.getTime(), cmds = [], no = 1;
     var modes = ['place', 'emporter', 'livraison'], noms = ['Amine', 'Sara', 'Karim', 'Lina', 'Yacine', 'Nour', 'Rayan', 'Inès', 'Walid', 'Meriem'];
     var choix = [['crg6', 1], ['smc', 3], ['tac3', 1], ['stv4', 0], ['crg0', 1], ['bur2', 1], ['smb', 1], ['san4', 1], ['pat2', 0], ['tac0', 0], ['crg2', 0], ['stv1', 1]];
-    var M = menu();
+    var M = P.map(function (p) { var q = JSON.parse(JSON.stringify(p)); if (q.tailles) q.prix = q.tailles[0][1]; return q; });
     var span = Math.max(30, Math.min(600, (now - base) / 60000 - 25));
     for (var k = 0; k < 26; k++) {
       var t = base + (span * (k / 26) + (k * 7) % 11) * 60000;
@@ -98,10 +99,23 @@
   }
 
   // Les deux restaurants (bio Instagram)
-  var RESTOS = [
-    { id: 'bab', nom: 'Bab Ezzouar', ouv: 11, ferm: 23, h: '11h – 23h', tel: '0659 56 46 11', maps: "https://www.google.com/maps/search/I'm+Starving+Food+Bab+Ezzouar" },
-    { id: 'ain', nom: 'Aïn Allah', ouv: 11, ferm: 26, h: '11h – 02h', tel: '07 97 88 38 97', maps: "https://www.google.com/maps/search/I'm+Starving+Food+Ain+Allah" }
-  ];
+  // Configuration de l'établissement, modifiable par le gérant (Réglages › Établissement)
+  var CONF0 = {
+    nom: "I'm Starving", slogan: 'Frais · Généreux · Fait pour toi', insta: 'imstarvingfood',
+    restos: [{ id: 'bab', nom: 'Bab Ezzouar', ouv: 11, ferm: 23, tel: '0659 56 46 11', adresse: 'Bab Ezzouar' }, { id: 'ain', nom: 'Aïn Allah', ouv: 11, ferm: 26, tel: '07 97 88 38 97', adresse: 'Aïn Allah' }],
+    cats: ['Crogers', 'Smash', 'Burgers', 'Tacos', 'Starvation', 'Sandwichs', 'Pâtes'],
+    pins: { gerant: '0328', cuisine: '1111', caisse: '2222' }
+  };
+  function config() { var c = lire('ims-config', null) || {}, o = JSON.parse(JSON.stringify(CONF0)); for (var k in c) if (c[k] != null) o[k] = c[k]; for (var q in CONF0.pins) if (!o.pins[q]) o.pins[q] = CONF0.pins[q]; return o; }
+  function heure(n) { n = n % 24; return (n < 10 ? '0' : '') + n + 'h'; }
+  var RESTOS = [], CATS = [];
+  function appliquerConfig() {
+    var c = config(); RESTOS.length = 0; CATS.length = 0;
+    c.restos.forEach(function (r) { RESTOS.push({ id: r.id, nom: r.nom, ouv: +r.ouv, ferm: +r.ferm, tel: r.tel, adresse: r.adresse || r.nom, h: heure(+r.ouv).replace(/^0/, '') + ' – ' + heure(+r.ferm), maps: 'https://www.google.com/maps/search/' + encodeURIComponent(c.nom + ' ' + (r.adresse || r.nom)) }); });
+    c.cats.forEach(function (x) { CATS.push(x); });
+  }
+  appliquerConfig();
+  abonnes.push(function (t) { if (t === 'ims-config') appliquerConfig(); });
   function ouvert(r, d) { d = d || new Date(); var h = d.getHours() + d.getMinutes() / 60; return (h >= r.ouv && h < Math.min(24, r.ferm)) || (r.ferm > 24 && h < r.ferm - 24); }
   function resto(id) { return RESTOS.find(function (r) { return r.id === id; }) || RESTOS[0]; }
   // Réception des commandes : le restaurant choisit ses canaux (back-office › Réception)
@@ -109,7 +123,7 @@
   function reception() { var r = lire('ims-recep', {}); var o = {}; for (var k in RECEP0) o[k] = r[k] === undefined ? RECEP0[k] : r[k]; return o; }
   function texteBon(c) {
     var r = resto(c.resto), m = c.mode === 'place' ? 'Sur place · table ' + c.table : c.mode === 'emporter' ? 'À emporter · ' + c.heure : 'Livraison · ' + c.adresse;
-    return '🍔 *I\'M STARVING ' + r.nom.toUpperCase() + '*\nCommande *' + '#' + String(c.no).padStart(3, '0') + '* · ' + m + '\n\n' +
+    return '🍔 *' + config().nom.toUpperCase() + ' · ' + r.nom.toUpperCase() + '*\nCommande *' + '#' + String(c.no).padStart(3, '0') + '* · ' + m + '\n\n' +
       c.lignes.map(function (l) { return l.q + '× ' + l.nom + (l.det.length ? ' (' + l.det.join(', ') + ')' : '') + ' · ' + (l.px * l.q) + ' DA'; }).join('\n') +
       '\n\n*Total : ' + c.total + ' DA* · ' + (c.mode === 'livraison' ? 'paiement à la livraison' : 'paiement au comptoir') + '\nClient : ' + c.nom + ' · ' + c.tel;
   }
@@ -120,7 +134,16 @@
     service: service, majService: function (o) { ecrire('ims-service', o); signaler('ims-service'); },
     reception: reception, majReception: function (o) { ecrire('ims-recep', o); signaler('ims-recep'); signaler('ims-service'); }, texteBon: texteBon, lienWa: lienWa,
     RESTOS: RESTOS, resto: resto, ouvert: ouvert,
-    CATS: ['Crogers', 'Smash', 'Burgers', 'Tacos', 'Starvation', 'Sandwichs', 'Pâtes'],
+    CATS: CATS, config: config,
+    majConfig: function (o) { ecrire('ims-config', o); appliquerConfig(); signaler('ims-config'); signaler('ims-menu'); },
+    catalogue: function () { return JSON.parse(JSON.stringify(lire('ims-carte', null) || P)); },
+    majCatalogue: function (L) { ecrire('ims-carte', L); signaler('ims-menu'); },
+    mode: function () { return lire('ims-mode', 'demo'); },
+    // Remise au client : on vide les commandes, les clients et les statistiques ; le menu et les réglages restent
+    miseEnService: function () { ecrire('ims-mode', 'prod'); ecrire('ims-cmds', []); ecrire('ims-no', 1); ['ims-z', 'ims-service', 'ims-promo'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); signaler('ims-cmds'); signaler('ims-menu'); signaler('ims-service'); },
+    modeDemo: function () { ecrire('ims-mode', 'demo'); ['ims-cmds', 'ims-no'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); },
+    sauvegarde: function () { var o = {}; ['ims-config', 'ims-carte', 'ims-dispo', 'ims-prix', 'ims-recep', 'ims-charges', 'ims-promo'].forEach(function (k) { var v = lire(k, null); if (v !== null) o[k] = v; }); return JSON.stringify({ app: 'dzign-resto', v: 1, date: new Date().toISOString(), data: o }); },
+    restaurer: function (txt) { var j = JSON.parse(txt); if (!j || j.app !== 'dzign-resto') throw new Error('format'); for (var k in j.data) ecrire(k, j.data[k]); appliquerConfig(); ['ims-config', 'ims-menu', 'ims-recep'].forEach(signaler); },
     menu: menu, lire: lire, ecrire: ecrire, amorcer: amorcer,
     commandes: function () { return lire('ims-cmds', []); },
     enregistrer: function (cmds) { ecrire('ims-cmds', cmds); signaler('ims-cmds'); },
@@ -129,7 +152,7 @@
     majPromo: function (o) { ecrire('ims-promo', o); signaler('ims-menu'); },
     majMenu: function (dispo, prix) { ecrire('ims-dispo', dispo); ecrire('ims-prix', prix); signaler('ims-menu'); },
     surChangement: surChangement,
-    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep', 'ims-service', 'ims-z', 'ims-charges', 'ims-promo'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); amorcer(); signaler('ims-cmds'); signaler('ims-menu'); signaler('ims-recep'); signaler('ims-service'); },
+    reinitialiser: function () { ['ims-cmds', 'ims-no', 'ims-dispo', 'ims-prix', 'ims-recep', 'ims-service', 'ims-z', 'ims-charges', 'ims-promo', 'ims-config', 'ims-carte', 'ims-mode'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} }); appliquerConfig(); amorcer(); signaler('ims-config'); signaler('ims-cmds'); signaler('ims-menu'); signaler('ims-recep'); signaler('ims-service'); },
     fmt: function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' DA'; },
     numero: function (n) { return '#' + String(n).padStart(3, '0'); }
   };

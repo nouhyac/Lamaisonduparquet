@@ -1,7 +1,11 @@
 // Espace gérant I'm Starving : une seule application pour la cuisine, la caisse, la comptabilité et la gestion.
 // Elle s'ouvre par-dessus le site client (même page, donc tout reste synchronisé) ou seule (gestion.html).
 (function () {
-  var IMS = window.IMS, fmt = IMS.fmt, CODE = '0328';
+  var IMS = window.IMS, fmt = IMS.fmt;
+  // Trois accès : le gérant voit tout ; la cuisine et la caisse ne voient que leur poste
+  var ROLES = { gerant: { nom: 'Gérant', pages: null }, cuisine: { nom: 'Cuisine', pages: ['cuisine', 'livraisons', 'menu', 'plus'] }, caisse: { nom: 'Caisse', pages: ['caisse', 'cuisine', 'livraisons', 'clients', 'plus'] } };
+  function role() { var r = lireS('ims-role', 'gerant'); return ROLES[r] ? r : 'gerant'; }
+  function permis(p) { var x = ROLES[role()].pages; return !x || x.indexOf(p) >= 0; }
   function $(s, r) { return (r || document).querySelector(s); }
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -18,6 +22,7 @@
   function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   function hist(r, decal) {
     var d = new Date(Date.now() - 6 * 3600e3); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() - decal);
+    if (IMS.mode() === 'prod') { var key = jour(d.getTime() + 6 * 3600e3), L = IMS.commandes().filter(function (c) { return (c.resto || 'bab') === r && jour(c.t) === key; }), m = { place: 0, emporter: 0, livraison: 0 }; L.forEach(function (c) { m[c.mode]++; }); return { n: L.length, ca: L.reduce(function (a, c) { return a + c.total; }, 0), d: d, mix: m }; }
     var R = rng(Math.floor(d.getTime() / 864e5) * 31 + (r === 'ain' ? 7 : 3)), dow = d.getDay();
     var f = dow === 4 ? 1.25 : dow === 5 ? 1.35 : dow === 6 ? 1.12 : 1, n = Math.round((r === 'ain' ? 13 : 18) * f * (0.86 + R() * 0.28)), p = 1760 + Math.round(R() * 280);
     return { n: n, ca: Math.round(n * p / 50) * 50, d: d, mix: { place: Math.round(n * .38), emporter: Math.round(n * .34), livraison: n - Math.round(n * .38) - Math.round(n * .34) } };
@@ -61,7 +66,7 @@
       '<nav class="g-nav">' + PAGES.filter(function (p) { return p[0] !== 'plus'; }).map(function (p) { return '<button data-p="' + p[0] + '">' + I[p[0]] + '<span>' + p[1] + '</span></button>'; }).join('') + '</nav>' +
       '<div class="bas"><button data-act="verrou">🔒 Verrouiller</button><button class="retour" data-act="fermer">← Retour au site client</button></div></aside>' +
       '<div class="g-main"><header class="g-haut"><div><h1 id="g-titre">Tableau de bord</h1><div class="date" id="g-date"></div></div>' +
-      '<div class="droite"><select class="g-sel" id="g-resto" aria-label="Restaurant"><option value="tous">Les 2 restaurants</option><option value="bab">Bab Ezzouar</option><option value="ain">Aïn Allah</option></select>' +
+      '<div class="droite"><select class="g-sel" id="g-resto" aria-label="Restaurant"></select>' +
       '<button class="g-pil masque" id="g-son" aria-pressed="false">🔔 Sonnerie</button><span class="g-horloge" id="g-heure"></span>' +
       '<button class="g-x" data-p="reglages" aria-label="Réglages">⚙</button><button class="g-x" data-act="fermer" aria-label="Retour au site client">✕</button></div></header>' +
       '<div class="g-corps" id="g-corps"></div></div>' +
@@ -69,7 +74,6 @@
       '<div class="g-tip" id="g-tip" hidden></div>';
     document.body.appendChild(root);
     corps = $('#g-corps', root);
-    $('#g-resto', root).value = st.resto;
     $('#g-resto', root).onchange = function () { st.resto = this.value; try { localStorage.setItem('ims-g-resto', st.resto); } catch (e) {} rendre(); };
     $('#g-son', root).onclick = function () { try { ctx = ctx || new (window.AudioContext || window.webkitAudioContext)(); ctx.resume(); } catch (e) {} st.son = !st.son; this.setAttribute('aria-pressed', st.son); this.textContent = st.son ? '🔔 Sonnerie active' : '🔔 Sonnerie'; if (st.son) sonner(); };
     root.addEventListener('click', clic);
@@ -87,12 +91,12 @@
     var v = document.createElement('div'); v.className = 'g-verrou'; var code = '';
     v.innerHTML = '<div class="boite"><img src="img/logo.jpg" alt=""><h1>Espace gérant</h1><p>I\'m Starving · réservé à l\'équipe</p><div class="pts">' + '<i></i>'.repeat(4) + '</div><div class="err" aria-live="polite"></div>' +
       '<div class="pave">' + ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map(function (k) { return k ? '<button data-k="' + k + '" aria-label="' + (k === '⌫' ? 'Effacer' : k) + '">' + k + '</button>' : '<span></span>'; }).join('') + '</div>' +
-      '<p>Code de démonstration : <b style="color:#fff">' + CODE + '</b></p>' + (st.autonome ? '' : '<button class="quit">Retour au site client</button>') + '</div>';
+      (IMS.mode() === 'demo' ? '<p>Démo · gérant <b style="color:#fff">' + IMS.config().pins.gerant + '</b> · cuisine <b style="color:#fff">' + IMS.config().pins.cuisine + '</b> · caisse <b style="color:#fff">' + IMS.config().pins.caisse + '</b></p>' : '<p>Saisissez votre code personnel.</p>') + (st.autonome ? '' : '<button class="quit">Retour au site client</button>') + '</div>';
     root.appendChild(v);
     function pts() { $$('.pts i', v).forEach(function (e, i) { e.className = i < code.length ? 'p' : ''; }); }
     function k(x) {
       if (x === '⌫') code = code.slice(0, -1); else if (code.length < 4) code += x; pts();
-      if (code.length === 4) { if (code === CODE) { ecrireS('ims-acces', '1'); v.remove(); document.removeEventListener('keydown', kb); verifier(); rendre(); } else { $('.err', v).textContent = 'Code incorrect'; code = ''; setTimeout(function () { pts(); $('.err', v).textContent = ''; }, 900); } }
+      if (code.length === 4) { var P = IMS.config().pins, rl = Object.keys(P).filter(function (k) { return P[k] === code; })[0]; if (rl) { ecrireS('ims-acces', '1'); ecrireS('ims-role', rl); if (!permis(st.page)) st.page = ROLES[rl].pages ? ROLES[rl].pages[0] : 'accueil'; v.remove(); document.removeEventListener('keydown', kb); verifier(); rendre(); } else { $('.err', v).textContent = 'Code incorrect'; code = ''; setTimeout(function () { pts(); $('.err', v).textContent = ''; }, 900); } }
     }
     function kb(e) { if (/^[0-9]$/.test(e.key)) k(e.key); if (e.key === 'Backspace') k('⌫'); }
     v.addEventListener('click', function (e) { var b = e.target.closest('[data-k]'); if (b) k(b.dataset.k); if (e.target.closest('.quit')) fermer(); });
@@ -113,7 +117,7 @@
 
   // ----- Nouvelles commandes : sonnerie, alerte, bon imprimé -----
   function sonner() { if (!st.son || !ctx) return; var n = ctx.currentTime; [0, .18, .36].forEach(function (dt, i) { var o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.value = [988, 1320, 1568][i]; g.gain.setValueAtTime(.0001, n + dt); g.gain.exponentialRampToValueAtTime(.25, n + dt + .02); g.gain.exponentialRampToValueAtTime(.0001, n + dt + .3); o.connect(g).connect(ctx.destination); o.start(n + dt); o.stop(n + dt + .35); }); }
-  function toast(t) { var e = document.createElement('div'); e.className = 'g-toast'; e.innerHTML = '<i></i><span>' + t + '</span>'; root.appendChild(e); setTimeout(function () { e.remove(); }, 3600); }
+  function toast(t) { $$('.g-toast', root).forEach(function (x) { x.remove(); }); var e = document.createElement('div'); e.className = 'g-toast'; e.innerHTML = '<i></i><span>' + t + '</span>'; root.appendChild(e); setTimeout(function () { e.remove(); }, 3600); }
   function verifier() {
     if (lireS('ims-acces', '') !== '1') return;
     var L = toutes(), nv = L.filter(function (c) { return c.no > st.dernier; });
@@ -129,9 +133,14 @@
   function rendre(doux) {
     if (!root || root.hidden) return;
     var nouv = filtrer(toutes()).filter(function (c) { return c.st === 'nouv'; }).length;
+    if (!permis(st.page)) st.page = ROLES[role()].pages ? ROLES[role()].pages[0] : 'accueil';
+    if (st.resto !== 'tous' && !IMS.RESTOS.some(function (r) { return r.id === st.resto; })) st.resto = 'tous';
+    $('#g-resto', root).innerHTML = '<option value="tous">' + (IMS.RESTOS.length > 1 ? 'Tous les restaurants' : IMS.RESTOS[0].nom) + '</option>' + (IMS.RESTOS.length > 1 ? IMS.RESTOS.map(function (r) { return '<option value="' + r.id + '"' + (st.resto === r.id ? ' selected' : '') + '>' + esc(r.nom) + '</option>'; }).join('') : '');
+    $('#g-resto', root).value = st.resto;
+    $$('.g-nav [data-p], .g-tabbar [data-p], .g-haut [data-p]', root).forEach(function (b) { b.hidden = !permis(b.dataset.p); });
     $$('[data-p]', root).forEach(function (b) { if (b.classList.contains('g-x')) return; b.setAttribute('aria-current', (b.dataset.p === st.page || (b.closest('.g-tabbar') && b.dataset.p === 'plus' && TAB.indexOf(st.page) < 0)) ? 'page' : 'false'); var p = $('.pas', b); if (p) p.remove(); if (b.dataset.p === 'cuisine' && nouv) b.insertAdjacentHTML('beforeend', '<span class="pas">' + nouv + '</span>'); if (b.dataset.p === 'livraisons' && aLivrer()) b.insertAdjacentHTML('beforeend', '<span class="pas">' + aLivrer() + '</span>'); });
     $('#g-titre', root).textContent = PAGES.filter(function (p) { return p[0] === st.page; })[0][1];
-    var d = new Date(); $('#g-date', root).textContent = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' · ' + (st.resto === 'tous' ? 'Bab Ezzouar et Aïn Allah' : IMS.resto(st.resto).nom);
+    var d = new Date(); $('#g-date', root).textContent = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' · ' + (st.resto === 'tous' ? IMS.RESTOS.map(function (r) { return r.nom; }).join(' et ') : IMS.resto(st.resto).nom) + ' · session ' + ROLES[role()].nom + (IMS.mode() === 'demo' ? ' · démo' : '');
     horloge();
     var y = corps.scrollTop;
     corps.innerHTML = '<div class="g-page">' + ({ accueil: pAccueil, cuisine: pCuisine, livraisons: pLivraisons, caisse: pCaisse, compta: pCompta, clients: pClients, marketing: pMarketing, menu: pMenu, reglages: pReglages, plus: pPlus })[st.page]() + '</div>';
@@ -141,7 +150,8 @@
   }
 
   // ----- Graphique en barres (une série, ou deux empilées : Bab Ezzouar / Aïn Allah) -----
-  var COUL = { bab: '#0B1640', ain: '#D7262D' };
+  var PAL = ['#0B1640', '#D7262D', '#2F5BEA', '#12955A', '#B97A05'];
+  function coul(id) { var i = IMS.RESTOS.findIndex(function (r) { return r.id === id; }); return PAL[Math.max(0, i) % PAL.length]; }
   function graphe(D, o) {
     o = o || {}; var etroit = innerWidth < 700, W = etroit ? 360 : 640, H = Math.round((o.h || 220) * (etroit ? .8 : 1)), ml = 44, mb = 24, mt = 8, n = D.length || 1;
     var max = Math.max.apply(null, D.map(function (d) { return d.parts ? d.parts.reduce(function (a, p) { return a + p.v; }, 0) : d.v; }).concat([1]));
@@ -161,7 +171,7 @@
     return s + '</svg>';
   }
   function court(v) { return v >= 1e6 ? (v / 1e6).toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' M' : v >= 1e3 ? Math.round(v / 1e3) + ' k' : v; }
-  function legende() { return st.resto === 'tous' ? '<div class="g-leg"><span><i style="background:' + COUL.bab + '"></i>Bab Ezzouar</span><span><i style="background:' + COUL.ain + '"></i>Aïn Allah</span></div>' : ''; }
+  function legende() { return st.resto === 'tous' && IMS.RESTOS.length > 1 ? '<div class="g-leg">' + IMS.RESTOS.map(function (r) { return '<span><i style="background:' + coul(r.id) + '"></i>' + esc(r.nom) + '</span>'; }).join('') + '</div>' : ''; }
 
   // ----- Page : tableau de bord -----
   function pAccueil() {
@@ -169,7 +179,7 @@
     var hier = restos().reduce(function (a, r) { var h = hist(r.id, 1); a.ca += h.ca; a.n += h.n; return a; }, { ca: 0, n: 0 });
     var fin = T.filter(function (c) { return c.fin; }), prep = fin.length ? Math.round(fin.reduce(function (a, c) { return a + (c.fin - c.t); }, 0) / fin.length / 60000) : 0;
     var heures = new Date().getHours(), part = Math.max(.15, Math.min(1, ((heures < 6 ? heures + 24 : heures) - 11) / 15));
-    function cmp(a, b) { var p = pct(a, b * part); return '<em class="' + (p >= 0 ? 'haut' : 'bas') + '">' + (p >= 0 ? '▲ +' : '▼ ') + p + ' % vs hier à la même heure</em>'; }
+    function cmp(a, b) { if (!b) return '<em>Pas encore d\'historique pour comparer</em>'; var p = pct(a, b * part); return '<em class="' + (p >= 0 ? 'haut' : 'bas') + '">' + (p >= 0 ? '▲ +' : '▼ ') + p + ' % vs hier à la même heure</em>'; }
     var S = IMS.service(), A = toutes();
     var srv = restos().map(function (r) {
       var o = S[r.id], L = A.filter(function (c) { return (c.resto || 'bab') === r.id; }), cours = L.filter(function (c) { return c.st !== 'fin'; }).length, ret = L.filter(function (c) { return (c.st === 'nouv' || c.st === 'prep') && age(c) > 15; }).length, ouv = IMS.ouvert(r);
@@ -179,7 +189,7 @@
         '<div class="l"><span>En cours : <b style="color:var(--encre)">' + cours + '</b></span><span>En retard : <b style="color:' + (ret ? 'var(--rouge)' : 'var(--encre)') + '">' + ret + '</b></span></div></div>';
     }).join('');
     var h0 = 11, h1 = Math.max(h0 + 1, (heures < 6 ? heures + 24 : heures)), D = [];
-    for (var h = h0; h <= h1; h++) { var hx = h % 24; D.push({ l: hx + 'h', parts: restos().map(function (r) { return { n: r.nom, c: COUL[r.id], v: T.filter(function (c) { return (c.resto || 'bab') === r.id && new Date(c.t).getHours() === hx; }).reduce(function (a, c) { return a + c.total; }, 0) }; }) }); }
+    for (var h = h0; h <= h1; h++) { var hx = h % 24; D.push({ l: hx + 'h', parts: restos().map(function (r) { return { n: r.nom, c: coul(r.id), v: T.filter(function (c) { return (c.resto || 'bab') === r.id && new Date(c.t).getHours() === hx; }).reduce(function (a, c) { return a + c.total; }, 0) }; }) }); }
     var att = filtrer(A).filter(function (c) { return c.st === 'nouv' || c.st === 'prete'; }).sort(function (a, b) { return a.t - b.t; });
     return '<div class="g-grille g-k4">' +
       kpi('Chiffre du jour', fmt(ca), cmp(ca, hier.ca)) + kpi('Commandes', n, cmp(n, hier.n)) + kpi('Panier moyen', fmt(n ? ca / n : 0), '<em>Hier : ' + fmt(hier.n ? hier.ca / hier.n : 0) + '</em>') + kpi('Préparation moyenne', prep + ' min', '<em>Objectif : 15 min</em>') + '</div>' +
@@ -279,7 +289,7 @@
   function pCompta() {
     var nb = st.per === 'jour' ? 1 : st.per === '7' ? 7 : 30, R = restos(), T = filtrer(duJour(toutes())), jours = [];
     for (var i = nb - 1; i >= 0; i--) {
-      var parts = R.map(function (r) { if (i === 0) { var X = T.filter(function (c) { return (c.resto || 'bab') === r.id; }); return { n: r.nom, c: COUL[r.id], v: X.reduce(function (a, c) { return a + c.total; }, 0), k: X.length }; } var h = hist(r.id, i); return { n: r.nom, c: COUL[r.id], v: h.ca, k: h.n }; });
+      var parts = R.map(function (r) { if (i === 0) { var X = T.filter(function (c) { return (c.resto || 'bab') === r.id; }); return { n: r.nom, c: coul(r.id), v: X.reduce(function (a, c) { return a + c.total; }, 0), k: X.length }; } var h = hist(r.id, i); return { n: r.nom, c: coul(r.id), v: h.ca, k: h.n }; });
       var d = new Date(Date.now() - 6 * 3600e3); d.setDate(d.getDate() - i); jours.push({ l: i === 0 ? 'Auj.' : J[d.getDay()] + ' ' + d.getDate(), parts: parts, d: d });
     }
     var ca = 0, n = 0; jours.forEach(function (j) { j.parts.forEach(function (p) { ca += p.v; n += p.k; }); });
@@ -287,9 +297,9 @@
     var mix = { place: 0, emporter: 0, livraison: 0 }; T.forEach(function (c) { mix[c.mode] += c.total; });
     var top = {}; T.forEach(function (c) { c.lignes.forEach(function (l) { top[l.nom] = top[l.nom] || { q: 0, v: 0 }; top[l.nom].q += l.q; top[l.nom].v += l.px * l.q; }); });
     var TOP = Object.keys(top).map(function (k) { return [k, top[k].q, top[k].v]; }).sort(function (a, b) { return b[2] - a[2]; }).slice(0, 6), tm = TOP.length ? TOP[0][2] : 1;
-    var parR = R.map(function (r) { var v = jours.reduce(function (a, j) { return a + j.parts.filter(function (p) { return p.n === r.nom; })[0].v; }, 0); return [r.nom, v, COUL[r.id]]; }), mr = Math.max.apply(null, parR.map(function (x) { return x[1]; }).concat([1]));
+    var parR = R.map(function (r) { var v = jours.reduce(function (a, j) { return a + j.parts.filter(function (p) { return p.n === r.nom; })[0].v; }, 0); return [r.nom, v, coul(r.id)]; }), mr = Math.max.apply(null, parR.map(function (x) { return x[1]; }).concat([1]));
     st.jours = jours;
-    var graph = nb === 1 ? (function () { var D = [], hn = new Date().getHours(), h1 = Math.max(12, hn < 6 ? hn + 24 : hn); for (var h = 11; h <= h1; h++) { var hx = h % 24; D.push({ l: hx + 'h', parts: R.map(function (r) { return { n: r.nom, c: COUL[r.id], v: T.filter(function (c) { return (c.resto || 'bab') === r.id && new Date(c.t).getHours() === hx; }).reduce(function (a, c) { return a + c.total; }, 0) }; }) }); } return graphe(D, { f: fmt, court: true, titre: 'Chiffre d\'affaires par heure', lab: function (d, i) { return D.length > 10 && i % 2 ? '' : d.l; } }); })()
+    var graph = nb === 1 ? (function () { var D = [], hn = new Date().getHours(), h1 = Math.max(12, hn < 6 ? hn + 24 : hn); for (var h = 11; h <= h1; h++) { var hx = h % 24; D.push({ l: hx + 'h', parts: R.map(function (r) { return { n: r.nom, c: coul(r.id), v: T.filter(function (c) { return (c.resto || 'bab') === r.id && new Date(c.t).getHours() === hx; }).reduce(function (a, c) { return a + c.total; }, 0) }; }) }); } return graphe(D, { f: fmt, court: true, titre: 'Chiffre d\'affaires par heure', lab: function (d, i) { return D.length > 10 && i % 2 ? '' : d.l; } }); })()
       : graphe(jours, { f: fmt, court: true, h: 240, titre: 'Chiffre d\'affaires par jour', lab: function (d, i) { return nb === 7 ? d.l : (i % 5 === 4 || i === nb - 1 ? d.l : ''); } });
     return '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div class="g-seg">' + [['jour', 'Aujourd\'hui'], ['7', '7 jours'], ['30', '30 jours']].map(function (p) { return '<button data-per="' + p[0] + '" aria-pressed="' + (st.per === p[0]) + '">' + p[1] + '</button>'; }).join('') + '</div><button class="g-pil" data-act="exportc">Copier le rapport pour Excel</button></div>' +
       '<div class="g-grille g-k4">' + kpi('Chiffre d\'affaires', fmt(ca), '<em>' + (nb === 1 ? 'Aujourd\'hui' : 'Sur ' + nb + ' jours') + '</em>') + kpi('Commandes', n.toLocaleString('fr-FR'), '<em>' + Math.round(n / nb) + ' par jour</em>') + kpi('Panier moyen', fmt(n ? ca / n : 0), '') + kpi('Bénéfice estimé', fmt(ben), '<em class="' + (ben >= 0 ? 'haut' : 'bas') + '">Marge ' + (ca ? Math.round(ben / ca * 100) : 0) + ' %</em>') + '</div>' +
@@ -341,7 +351,7 @@
   function clients() {
     var M = {};
     filtrer(toutes()).forEach(function (c) { var k = String(c.tel).replace(/\s/g, ''); var x = M[k] = M[k] || { nom: c.nom, tel: c.tel, n: 0, total: 0, der: 0, r: {} }; x.n++; x.total += c.total; x.der = Math.max(x.der, c.t); x.r[c.resto || 'bab'] = 1; });
-    return Object.keys(M).map(function (k) { var x = M[k], anc = 2 + hachage(k) % 17; x.n += anc; x.total += anc * (1700 + hachage(k + 'p') % 400); return x; }).sort(function (a, b) { return b.total - a.total; });
+    return Object.keys(M).map(function (k) { var x = M[k], anc = IMS.mode() === 'demo' ? 2 + hachage(k) % 17 : 0; x.n += anc; x.total += anc * (1700 + hachage(k + 'p') % 400); return x; }).sort(function (a, b) { return b.total - a.total; });
   }
   function pClients() {
     var C = clients(), q = (st.qc || '').toLowerCase(), X = C.filter(function (c) { return !q || (c.nom + ' ' + c.tel).toLowerCase().indexOf(q) >= 0; }), fid = C.filter(function (c) { return c.n >= 10; }).length;
@@ -372,22 +382,81 @@
 
   // ----- Page : plus (téléphone) -----
   function pPlus() {
-    return '<div class="g-grille g-k2">' + [['livraisons', 'Livraisons', 'Livreurs, courses en route'], ['clients', 'Clients et fidélité', 'Fichier clients, récompenses'], ['marketing', 'Marketing', 'Plat du jour, bannière, WhatsApp'], ['menu', 'Menu', 'Ruptures et prix'], ['reglages', 'Réglages', 'Réception, imprimante, QR codes']].map(function (x) {
+    return '<div class="g-grille g-k2">' + [['livraisons', 'Livraisons', 'Livreurs, courses en route'], ['clients', 'Clients et fidélité', 'Fichier clients, récompenses'], ['marketing', 'Marketing', 'Plat du jour, bannière, WhatsApp'], ['menu', 'Menu', 'Ruptures et prix'], ['reglages', 'Réglages', 'Établissement, équipe, mise en service']].filter(function (x) { return permis(x[0]); }).map(function (x) {
       return '<button class="g-carte" data-p="' + x[0] + '" style="text-align:left;display:grid;gap:8px;cursor:pointer"><span style="width:40px;height:40px;border-radius:11px;background:var(--trait2);display:grid;place-items:center">' + I[x[0]].replace('<svg', '<svg style="width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"') + '</span><b style="font-size:16px">' + x[1] + '</b><span class="g-sous">' + x[2] + '</span></button>';
     }).join('') + '</div>' + (st.autonome ? '' : '<button class="g-btn rg" data-act="fermer" style="padding:15px">← Retour au site client</button>');
   }
 
   // ----- Page : menu -----
   function pMenu() {
-    var M = IMS.menu(), q = st.q.trim().toLowerCase(), X = M.filter(function (p) { return q ? (p.nom + ' ' + p.desc).toLowerCase().indexOf(q) >= 0 : p.cat === st.cat; }), off = M.filter(function (p) { return !p.dispo; }).length;
-    return '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between"><input class="g-rech" id="g-q" type="search" placeholder="Rechercher un plat…" value="' + esc(st.q) + '" aria-label="Rechercher un plat"><span class="g-sous">' + M.length + ' plats · ' + (off ? '<b style="color:var(--rouge)">' + off + ' en rupture</b>' : 'tout est disponible') + ' · les changements apparaissent tout de suite sur le site</span></div>' +
+    var M = IMS.menu(), CB = IMS.catalogue(), q = st.q.trim().toLowerCase(), X = M.filter(function (p) { return q ? (p.nom + ' ' + p.desc).toLowerCase().indexOf(q) >= 0 : p.cat === st.cat; }), off = M.filter(function (p) { return !p.dispo; }).length;
+    return '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="g-btn" data-act="addplat">+ Ajouter un plat</button><button class="g-pil" data-act="cats">Catégories</button></div>' +
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between"><input class="g-rech" id="g-q" type="search" placeholder="Rechercher un plat…" value="' + esc(st.q) + '" aria-label="Rechercher un plat"><span class="g-sous">' + M.length + ' plats · ' + (off ? '<b style="color:var(--rouge)">' + off + ' en rupture</b>' : 'tout est disponible') + ' · les changements apparaissent tout de suite sur le site</span></div>' +
       (q ? '' : '<div class="g-cats">' + IMS.CATS.map(function (c) { return '<button data-cat="' + c + '" aria-pressed="' + (st.cat === c) + '">' + c + '</button>'; }).join('') + '</div>') +
       '<div class="g-carte" style="padding-block:6px">' + (X.map(function (p) {
-        var px = p.tailles ? p.tailles : [['Prix', p.prix]];
+        var bp = CB.filter(function (x) { return x.id === p.id; })[0] || p, px = bp.tailles ? bp.tailles : [['Prix', bp.prix]];
         return '<div class="g-prod' + (p.dispo ? '' : ' off') + '"><img src="' + p.img + '" alt=""><div><div class="n">' + esc(p.nom) + '</div><div class="d">' + (p.dispo ? 'En vente' : 'Rupture : affiché « épuisé » sur le site') + '</div></div>' +
           '<div class="g-prix">' + px.map(function (t, i) { return '<label>' + esc(t[0].split(' ·')[0]) + '<input type="number" min="0" step="50" value="' + t[1] + '" data-pid="' + p.id + '" data-i="' + i + '" aria-label="Prix ' + esc(p.nom + ' ' + t[0]) + '"></label>'; }).join('') + '</div>' +
-          '<button class="g-sw" role="switch" aria-checked="' + p.dispo + '" data-dispo="' + p.id + '" aria-label="Disponible"><i></i></button></div>';
+          '<span style="display:flex;gap:10px;align-items:center"><button class="g-pil" data-edit="' + p.id + '">Modifier</button><button class="g-sw" role="switch" aria-checked="' + p.dispo + '" data-dispo="' + p.id + '" aria-label="Disponible"><i></i></button></span></div>';
       }).join('') || '<div class="g-vide">Aucun plat trouvé.</div>') + '</div>';
+  }
+
+  // ----- Éditeur de plat -----
+  function editerPlat(id) {
+    var C = IMS.catalogue(), p = id ? C.filter(function (x) { return x.id === id; })[0] : null, nv = !p;
+    p = p || { id: 'p' + Date.now().toString(36), cat: st.cat, nom: '', desc: '', img: 'img/logo.jpg', tailles: [['Simple', 500], ['Double', 700]] };
+    var T = p.tailles ? p.tailles.slice() : [['Prix unique', p.prix || 0]], img = p.img, ex = p.extra && p.extra[0] ? p.extra[0] : ['', 0];
+    function lignesT() { return T.map(function (t, i) { return '<div style="display:grid;grid-template-columns:minmax(0,1fr) 110px auto;gap:8px;align-items:center"><input class="g-rech" style="max-width:none" data-tl="' + i + '" value="' + esc(t[0]) + '" placeholder="Taille (ex. Double)"><input class="g-rech" type="number" min="0" step="50" data-tp="' + i + '" value="' + t[1] + '"><button class="g-pil" data-tx="' + i + '" aria-label="Retirer">✕</button></div>'; }).join(''); }
+    var v = modale(nv ? 'Ajouter un plat' : 'Modifier « ' + esc(p.nom) + ' »',
+      '<div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center"><img id="e-img" src="' + img + '" alt="" style="width:96px;height:96px;border-radius:14px;object-fit:cover;background:#0B1640"><label class="g-pil" style="justify-self:start;cursor:pointer">📷 Changer la photo<input type="file" accept="image/*" id="e-file" hidden></label></div>' +
+      '<label class="g-sous" style="display:grid;gap:5px;font-weight:700">Nom<input class="g-rech" style="max-width:none" id="e-nom" value="' + esc(p.nom) + '" placeholder="Ex. Croger Royal"></label>' +
+      '<label class="g-sous" style="display:grid;gap:5px;font-weight:700">Description<input class="g-rech" style="max-width:none" id="e-desc" value="' + esc(p.desc) + '" placeholder="Ingrédients"></label>' +
+      '<label class="g-sous" style="display:grid;gap:5px;font-weight:700">Catégorie<select class="g-sel" id="e-cat">' + IMS.CATS.map(function (c) { return '<option' + (c === p.cat ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('') + '</select></label>' +
+      '<div style="display:grid;gap:8px"><b style="font-size:14px">Tailles et prix (DA)</b><div id="e-t" style="display:grid;gap:8px">' + lignesT() + '</div><button class="g-pil" style="justify-self:start" data-tadd>+ Ajouter une taille</button></div>' +
+      '<div style="display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:8px"><input class="g-rech" style="max-width:none" id="e-exn" value="' + esc(ex[0]) + '" placeholder="Supplément (optionnel)"><input class="g-rech" type="number" min="0" step="50" id="e-exp" value="' + (ex[1] || '') + '" placeholder="Prix"></div>' +
+      '<div class="act">' + (nv ? '' : '<button class="g-btn cl" data-supp style="color:var(--rouge)">Supprimer</button>') + '<button class="g-btn" data-save>' + (nv ? 'Ajouter au menu' : 'Enregistrer') + '</button></div>',
+      function (v) {
+        function lire() { $$('[data-tl]', v).forEach(function (e) { T[+e.dataset.tl][0] = e.value; }); $$('[data-tp]', v).forEach(function (e) { T[+e.dataset.tp][1] = Math.max(0, +e.value || 0); }); }
+        $('#e-file', v).addEventListener('change', function () { var f = this.files && this.files[0]; if (!f) return; var r = new FileReader(); r.onload = function () { var im = new Image(); im.onload = function () { var c = document.createElement('canvas'), z = 480; c.width = z; c.height = z; var k = Math.max(z / im.width, z / im.height), w = im.width * k, h = im.height * k; c.getContext('2d').drawImage(im, (z - w) / 2, (z - h) / 2, w, h); img = c.toDataURL('image/jpeg', .8); $('#e-img', v).src = img; }; im.src = r.result; }; r.readAsDataURL(f); });
+        v.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-tadd],[data-tx],[data-save],[data-supp]'); if (!b) return; lire();
+          if (b.hasAttribute('data-tadd')) { T.push(['', 0]); $('#e-t', v).innerHTML = lignesT(); return; }
+          if (b.dataset.tx != null) { if (T.length > 1) T.splice(+b.dataset.tx, 1); $('#e-t', v).innerHTML = lignesT(); return; }
+          var L = IMS.catalogue();
+          if (b.hasAttribute('data-supp')) { if (b.dataset.ok !== '1') { b.dataset.ok = '1'; b.textContent = 'Confirmer la suppression'; return; } L = L.filter(function (x) { return x.id !== p.id; }); IMS.majCatalogue(L); v.remove(); toast('Plat supprimé du menu'); rendre(true); return; }
+          var nom = $('#e-nom', v).value.trim(); if (!nom) { $('#e-nom', v).focus(); return toast('Indiquez le nom du plat'); }
+          var q = { id: p.id, cat: $('#e-cat', v).value, nom: nom, desc: $('#e-desc', v).value.trim(), img: img };
+          var TT = T.filter(function (t) { return t[1] > 0; }); if (!TT.length) return toast('Indiquez au moins un prix');
+          if (TT.length === 1 && (!TT[0][0].trim() || /unique/i.test(TT[0][0]))) q.prix = TT[0][1]; else q.tailles = TT.map(function (t) { return [t[0].trim() || 'Taille', t[1]]; });
+          var exn = $('#e-exn', v).value.trim(), exp = +$('#e-exp', v).value || 0; if (exn && exp) q.extra = [[exn, exp]];
+          var i = L.findIndex(function (x) { return x.id === p.id; }); if (i >= 0) L[i] = q; else L.push(q);
+          var P = IMS.lire('ims-prix', {}); delete P[p.id]; IMS.ecrire('ims-prix', P);
+          IMS.majCatalogue(L); st.cat = q.cat; v.remove(); toast(nv ? 'Plat ajouté : visible tout de suite sur le site' : 'Plat mis à jour sur le site'); rendre(true);
+        });
+      });
+  }
+  function editerCats() {
+    var K = IMS.CATS.slice(), anc = K.slice();
+    function liste() { return K.map(function (c, i) { return '<div style="display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:6px;align-items:center"><input class="g-rech" style="max-width:none" data-ck="' + i + '" value="' + esc(c) + '"><button class="g-pil" data-up="' + i + '" aria-label="Monter">↑</button><button class="g-pil" data-dn="' + i + '" aria-label="Descendre">↓</button><button class="g-pil" data-cx="' + i + '" aria-label="Supprimer">✕</button></div>'; }).join(''); }
+    modale('Catégories du menu', '<p class="g-sous">L\'ordre ici est celui des onglets du site. Une catégorie supprimée envoie ses plats dans la première.</p><div id="c-l" style="display:grid;gap:8px">' + liste() + '</div><button class="g-pil" style="justify-self:start" data-cadd>+ Ajouter une catégorie</button><div class="act"><button class="g-btn" data-csave>Enregistrer</button></div>',
+      function (v) {
+        var map = anc.map(function (c, i) { return i; });
+        function lire() { $$('[data-ck]', v).forEach(function (e) { K[+e.dataset.ck] = e.value.trim(); }); }
+        v.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-up],[data-dn],[data-cx],[data-cadd],[data-csave]'); if (!b) return; lire();
+          function sw(a, c) { if (c < 0 || c >= K.length) return; var t = K[a]; K[a] = K[c]; K[c] = t; t = map[a]; map[a] = map[c]; map[c] = t; }
+          if (b.dataset.up != null) sw(+b.dataset.up, +b.dataset.up - 1);
+          else if (b.dataset.dn != null) sw(+b.dataset.dn, +b.dataset.dn + 1);
+          else if (b.dataset.cx != null) { if (K.length > 1) { K.splice(+b.dataset.cx, 1); map.splice(+b.dataset.cx, 1); } }
+          else if (b.hasAttribute('data-cadd')) { K.push('Nouvelle catégorie'); map.push(-1); }
+          else {
+            var ren = {}; map.forEach(function (o, i) { if (o >= 0) ren[anc[o]] = K[i]; });
+            var L = IMS.catalogue(); L.forEach(function (p) { p.cat = ren[p.cat] || K[0]; }); IMS.majCatalogue(L);
+            var C = IMS.config(); C.cats = K.filter(Boolean); IMS.majConfig(C); st.cat = C.cats[0]; v.remove(); toast('Catégories mises à jour sur le site'); rendre(true); return;
+          }
+          $('#c-l', v).innerHTML = liste();
+        });
+      });
   }
 
   // ----- Page : réglages -----
@@ -396,7 +465,22 @@
     function ligne(ic, t, p, droite, x) { return '<div class="g-reg"><span class="ic">' + ic + '</span><div><b>' + t + '</b><p>' + p + '</p></div>' + (droite || '<span></span>') + (x ? '<div class="x">' + x + '</div>' : '') + '</div>'; }
     function sw(k) { return '<button class="g-sw" role="switch" aria-checked="' + !!o[k] + '" data-rk="' + k + '" aria-label="Activer"><i></i></button>'; }
     function seg(k, V) { return '<div class="g-seg">' + V.map(function (v) { return '<button data-rs="' + k + '" data-v="' + v[0] + '" aria-pressed="' + (String(o[k]) === String(v[0])) + '">' + v[1] + '</button>'; }).join('') + '</div>'; }
-    return '<div class="g-carte"><h2>Réception des commandes <small>activez autant de canaux que vous voulez</small></h2>' +
+    var C = IMS.config(), demo = IMS.mode() === 'demo', HO = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], HF = [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+    function hsel(k, i, v, L) { return '<select class="g-sel" data-r="' + i + '" data-rf="' + k + '">' + L.map(function (h) { return '<option value="' + h + '"' + (+v === h ? ' selected' : '') + '>' + ((h % 24) < 10 ? '0' : '') + (h % 24) + 'h' + (h >= 24 ? ' (nuit)' : '') + '</option>'; }).join('') + '</select>'; }
+    return '<div class="g-carte" style="border:2px solid ' + (demo ? 'var(--ambre)' : 'var(--vert)') + '"><h2>' + (demo ? '🧪 Mode démonstration' : '✅ Plateforme en service') + ' <span class="g-badge ' + (demo ? 'a' : 'v') + '">' + (demo ? 'Données d\'exemple' : 'Vos vraies données') + '</span></h2>' +
+      (demo ? '<p class="g-sous" style="margin-bottom:12px">Les commandes, clients et statistiques affichés sont des exemples. Le jour de la remise, un clic remet tous les compteurs à zéro : commandes, numéros (#001), caisse, clôtures, clients, statistiques. <b>Votre menu, vos prix, vos restaurants et vos réglages sont conservés.</b></p><button class="g-btn rg" data-act="service">Mettre en service : compteurs à zéro</button>'
+        : '<p class="g-sous" style="margin-bottom:12px">Toutes les données affichées sont réelles. Les statistiques et la comptabilité se construisent jour après jour.</p><button class="g-pil" data-act="demo">Revenir aux données de démonstration</button>') + '</div>' +
+      '<div class="g-carte"><h2>Établissement <button class="g-btn" data-act="saveconf">Enregistrer</button></h2>' +
+      '<div class="g-grille g-k3" style="margin-bottom:14px">' + [['nom', 'Nom affiché'], ['slogan', 'Slogan'], ['insta', 'Instagram (sans @)']].map(function (f) { return '<label class="g-sous" style="display:grid;gap:5px;font-weight:700">' + f[1] + '<input class="g-rech" style="max-width:none" data-cf="' + f[0] + '" value="' + esc(C[f[0]]) + '"></label>'; }).join('') + '</div>' +
+      C.restos.map(function (r, i) { return '<div class="g-reg" style="grid-template-columns:auto minmax(0,1fr)"><span class="ic">📍</span><div class="g-grille" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px">' +
+        '<label class="g-sous" style="display:grid;gap:4px;font-weight:700">Nom<input class="g-rech" data-r="' + i + '" data-rf="nom" value="' + esc(r.nom) + '"></label><label class="g-sous" style="display:grid;gap:4px;font-weight:700">Téléphone<input class="g-rech" data-r="' + i + '" data-rf="tel" value="' + esc(r.tel) + '"></label>' +
+        '<label class="g-sous" style="display:grid;gap:4px;font-weight:700">Adresse (Google Maps)<input class="g-rech" data-r="' + i + '" data-rf="adresse" value="' + esc(r.adresse || r.nom) + '"></label><label class="g-sous" style="display:grid;gap:4px;font-weight:700">Ouverture' + hsel('ouv', i, r.ouv, HO) + '</label><label class="g-sous" style="display:grid;gap:4px;font-weight:700">Fermeture' + hsel('ferm', i, r.ferm, HF) + '</label>' +
+        (C.restos.length > 1 ? '<button class="g-lien" style="color:var(--rouge);justify-self:start;align-self:end;padding-bottom:10px" data-delr="' + i + '">Supprimer ce restaurant</button>' : '') + '</div></div>'; }).join('') +
+      '<button class="g-pil" data-act="addr" style="margin-top:12px">+ Ajouter un restaurant</button></div>' +
+      '<div class="g-carte"><h2>Équipe et accès <button class="g-btn" data-act="savepins">Enregistrer</button></h2>' +
+      [['gerant', '👑', 'Gérant', 'Accès complet : tableau de bord, caisse, comptabilité, clients, marketing, réglages.'], ['cuisine', '👨‍🍳', 'Cuisine', 'Uniquement la cuisine, les livraisons et les ruptures du menu.'], ['caisse', '🧾', 'Caisse', 'Caisse, encaissements, cuisine, livraisons et fichier clients. Pas de comptabilité.']].map(function (x) {
+        return ligne(x[1], x[2], x[3], '<input class="g-rech" style="width:96px;text-align:center;letter-spacing:.3em;font-weight:800" inputmode="numeric" maxlength="4" data-pin="' + x[0] + '" value="' + esc(C.pins[x[0]]) + '" aria-label="Code ' + x[2] + '">'); }).join('') + '</div>' +
+      '<div class="g-carte"><h2>Réception des commandes <small>activez autant de canaux que vous voulez</small></h2>' +
       ligne('📺', 'Écran cuisine', 'Commandes en direct sur la tablette, avec sonnerie.', sw('ecran')) +
       ligne('🧾', 'Bons imprimés automatiquement', 'Chaque commande sort en bon sur l\'imprimante de la caisse (USB, réseau ou Bluetooth).', sw('bons'), seg('copies', [[1, '1 copie'], [2, '2 copies'], [3, '3 copies']]) + ' ' + seg('format', [['58', '58 mm'], ['80', '80 mm']])) +
       ligne('💬', 'WhatsApp du restaurant', 'Chaque commande arrive aussi en message WhatsApp : Bab Ezzouar 0659 56 46 11 · Aïn Allah 07 97 88 38 97.', sw('whatsapp')) +
@@ -408,7 +492,7 @@
       '</div>' +
       '<div class="g-carte"><h2>Restaurants</h2>' + IMS.RESTOS.map(function (r) { var ouv = IMS.ouvert(r); return ligne('📍', r.nom, r.h + ' · ' + r.tel, '<span class="g-badge ' + (ouv ? 'v' : 'n') + '">' + (ouv ? 'Ouvert' : 'Fermé') + '</span>'); }).join('') + '</div>' +
       '<div class="g-carte"><h2>QR codes des tables <span style="display:flex;gap:8px;flex-wrap:wrap"><select class="g-sel" id="g-qrr" aria-label="Restaurant">' + IMS.RESTOS.map(function (r) { return '<option value="' + r.id + '"' + (st.qrR === r.id ? ' selected' : '') + '>' + r.nom + '</option>'; }).join('') + '</select><select class="g-sel" id="g-qrn" aria-label="Nombre de tables">' + [8, 12, 16, 20].map(function (k) { return '<option' + (st.qrN === k ? ' selected' : '') + '>' + k + '</option>'; }).join('') + '</select></span></h2><p class="g-sous" style="margin-bottom:12px">À imprimer et poser sur chaque table : le client scanne, commande, et le numéro de table arrive avec la commande.</p><div class="g-qr" id="g-qr"></div></div>' +
-      '<div class="g-carte"><h2>Sécurité et démo</h2>' + ligne('🔒', 'Code d\'accès', 'Le code protège l\'espace gérant. Code actuel : ' + CODE + '.', '<button class="g-pil" data-act="verrou">Verrouiller</button>') + ligne('↺', 'Réinitialiser la démo', 'Remet les commandes, le menu et les réglages comme au départ.', '<button class="g-pil rouge" data-act="reinit">Réinitialiser</button>') + '</div>';
+      '<div class="g-carte"><h2>Sauvegarde et sécurité</h2>' + ligne('💾', 'Sauvegarde', 'Copie complète du menu, des prix, des restaurants et des réglages, à garder ou à transférer sur un autre appareil.', '<span style="display:flex;gap:8px;flex-wrap:wrap"><button class="g-pil" data-act="backup">Copier</button><button class="g-pil" data-act="restore">Restaurer</button></span>') + ligne('🔒', 'Verrouiller', 'Ferme la session : le code sera redemandé.', '<button class="g-pil" data-act="verrou">Verrouiller</button>') + (demo ? ligne('↺', 'Réinitialiser la démo', 'Remet la démonstration comme au départ (menu, réglages, commandes).', '<button class="g-pil rouge" data-act="reinit">Réinitialiser</button>') : '') + '</div>';
   }
   var qrLib = null;
   function qr() {
@@ -437,8 +521,19 @@
       if (a === 'numeros') return copierTexte(clients().map(function (c) { return c.nom + '\t' + c.tel; }).join('\n'), 'Numéros copiés : ' + clients().length + ' clients');
       if (a === 'copiermsg') return copierTexte($('#g-msg', root).textContent, 'Message copié : collez-le dans WhatsApp');
       if (a === 'test') return voirBon({ no: 0, resto: st.resto === 'ain' ? 'ain' : 'bab', t: Date.now(), mode: 'emporter', heure: 'Test', nom: 'Test imprimante', tel: '-', adresse: '', lignes: [{ q: 1, nom: 'Bon de test', det: [], px: 0 }], total: 0 }, false);
+      if (a === 'addplat') return editerPlat(null);
+      if (a === 'cats') return editerCats();
+      if (a === 'service') return modale('Mettre la plateforme en service', '<p>On remet à zéro : <b>commandes, numérotation (#001), caisse et clôtures, fichier clients, statistiques et comptabilité</b>.</p><p>On garde : <b>menu, prix, photos, restaurants, horaires, codes d\'accès et réglages</b>.</p><div class="act"><button class="g-btn cl" data-fermer>Annuler</button><button class="g-btn rg" data-go>Confirmer la mise en service</button></div>', function (v) { v.addEventListener('click', function (e) { if (!e.target.closest('[data-go]')) return; IMS.miseEnService(); st.dernier = 0; v.remove(); toast('Plateforme en service : compteurs à zéro'); st.page = 'accueil'; rendre(); }); });
+      if (a === 'demo') { IMS.modeDemo(); st.dernier = maxNo(); toast('Données de démonstration rechargées'); rendre(); return; }
+      if (a === 'saveconf') { var C = IMS.config(); $$('[data-cf]', root).forEach(function (e) { C[e.dataset.cf] = e.value.trim(); }); $$('[data-rf]', root).forEach(function (e) { var r = C.restos[+e.dataset.r]; r[e.dataset.rf] = e.dataset.rf === 'ouv' || e.dataset.rf === 'ferm' ? +e.value : e.value.trim(); }); IMS.majConfig(C); toast('Établissement enregistré : le site est à jour'); rendre(true); return; }
+      if (a === 'addr') { var C2 = IMS.config(); C2.restos.push({ id: 'r' + Date.now().toString(36), nom: 'Nouveau restaurant', ouv: 11, ferm: 23, tel: '', adresse: '' }); IMS.majConfig(C2); rendre(true); return; }
+      if (a === 'savepins') { var C3 = IMS.config(), ok = true, vus = {}; $$('[data-pin]', root).forEach(function (e) { var v = e.value.trim(); if (!/^\d{4}$/.test(v) || vus[v]) ok = false; vus[v] = 1; C3.pins[e.dataset.pin] = v; }); if (!ok) return toast('Chaque code : 4 chiffres, tous différents'); IMS.majConfig(C3); toast('Codes d\'accès enregistrés'); return; }
+      if (a === 'backup') return copierTexte(IMS.sauvegarde(), 'Sauvegarde copiée : gardez-la dans vos notes ou un e-mail');
+      if (a === 'restore') return modale('Restaurer une sauvegarde', '<p class="g-sous">Collez ici le texte de la sauvegarde.</p><textarea class="g-rech" style="max-width:none;min-height:140px;font-family:var(--f-m);font-size:12px" id="r-txt"></textarea><div class="act"><button class="g-btn" data-rest>Restaurer</button></div>', function (v) { v.addEventListener('click', function (e) { if (!e.target.closest('[data-rest]')) return; try { IMS.restaurer($('#r-txt', v).value); v.remove(); toast('Sauvegarde restaurée'); rendre(); } catch (x) { toast('Ce texte n\'est pas une sauvegarde valide'); } }); });
       if (a === 'reinit') { IMS.reinitialiser(); st.dernier = maxNo(); toast('Démo réinitialisée'); rendre(); return; }
     }
+    if ((b = e.target.closest('[data-edit]'))) return editerPlat(b.dataset.edit);
+    if ((b = e.target.closest('[data-delr]'))) { var Cd = IMS.config(); if (Cd.restos.length > 1) { Cd.restos.splice(+b.dataset.delr, 1); IMS.majConfig(Cd); if (st.resto !== 'tous' && !IMS.RESTOS.some(function (r) { return r.id === st.resto; })) st.resto = 'tous'; toast('Restaurant retiré'); rendre(true); } return; }
     if ((b = e.target.closest('[data-st]'))) return majStatut(+b.dataset.no, b.dataset.st);
     if ((b = e.target.closest('[data-confier]'))) return choisirLivreur(+b.dataset.confier);
     if ((b = e.target.closest('[data-livree]'))) { var Lv = toutes(); Lv.forEach(function (c) { if (c.no === +b.dataset.livree) c.livree = Date.now(); }); IMS.enregistrer(Lv); toast(IMS.numero(+b.dataset.livree) + ' livrée'); rendre(true); return; }
@@ -460,7 +555,7 @@
     var t = e.target;
     if (t.id === 'g-pplat') { var po = IMS.promo(); po.plat = t.value; IMS.majPromo(po); rendre(true); return; }
     if (t.id === 'g-ptxt') { var pt = IMS.promo(); pt.texte = t.value; IMS.majPromo(pt); toast('Bannière mise à jour'); rendre(true); return; }
-    if (t.dataset && t.dataset.pid) { var P = IMS.lire('ims-prix', {}); P[t.dataset.pid] = P[t.dataset.pid] || []; P[t.dataset.pid][+t.dataset.i] = Math.max(0, +t.value || 0); IMS.majMenu(IMS.lire('ims-dispo', {}), P); toast('Prix mis à jour sur le site'); return; }
+    if (t.dataset && t.dataset.pid) { var L = IMS.catalogue(), x = L.filter(function (p) { return p.id === t.dataset.pid; })[0], val = Math.max(0, +t.value || 0); if (x) { if (x.tailles) x.tailles[+t.dataset.i][1] = val; else x.prix = val; var P = IMS.lire('ims-prix', {}); delete P[x.id]; IMS.ecrire('ims-prix', P); IMS.majCatalogue(L); toast('Prix mis à jour sur le site'); } return; }
     if (t.id === 'g-qrn') { st.qrN = +t.value; qr(); }
     if (t.id === 'g-qrr') { st.qrR = t.value; qr(); }
   }

@@ -223,7 +223,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <section class="heros">
     <img src="img3d/hero.jpg" alt="Croger : burger dans un croissant, steak, cheddar fondant">
     <div class="wrap">
-      <span class="sur">Fast food · Bab Ezzouar · Aïn Allah</span>
+      <span class="sur" id="sur-hero">Fast food · Bab Ezzouar · Aïn Allah</span>
       <h1><span class="script">le burger dans un croissant</span>Le Croger</h1>
       <p>Croissant feuilleté, steak haché, fromage qui coule. Commandez en ligne : sur place, à emporter ou en livraison, sans appeler.</p>
       <div class="actions"><a class="btn" href="#menu">Commander maintenant</a><a class="btn ligne" href="#signatures">Nos signatures</a></div>
@@ -276,7 +276,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     </div>
   </div></section>
 </main>
-<footer><div class="wrap"><a class="logo" href="#haut"><img src="img/logo.jpg" alt=""><b>I'M <i>STARVING</i></b></a><span>Frais · Généreux · Fait pour toi</span><span>Site réalisé par Dzign Studio</span></div></footer>
+<footer><div class="wrap"><a class="logo" href="#haut"><img src="img/logo.jpg" alt=""><b>I'M <i>STARVING</i></b></a><span id="slogan-pied">Frais · Généreux · Fait pour toi</span><span>Site réalisé par Dzign Studio</span></div></footer>
 
 <div class="flottant"><button class="btn" id="b-flot"><span>Voir mon panier · <span id="nb-flot">0</span></span><span id="tot-flot">0 DA</span></button></div>
 <div class="voile" id="voile" hidden></div>
@@ -298,8 +298,9 @@ $('ticker').innerHTML=Array(2).fill(['Frais','Généreux','Fait pour toi','Croge
 
 function plat(id){return M.find(function(p){return p.id===id})}
 function signatures(){
-  var S=[['crg6','01','img3d/crg6.jpg'],['smc','02','img3d/smc.jpg'],['stv4','03','img3d/stv4.jpg']];
-  $('sigs').innerHTML=S.map(function(s){var p=plat(s[0]);return '<article class="sig"><img src="'+s[2]+'" alt="'+p.nom+'"><div class="in"><span class="no">'+s[1]+'</span><h3>'+p.nom+'</h3><p>'+p.desc+'</p><div class="bas"><span class="prix"><small>dès</small>'+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé</span>')+'</div></div></article>'}).join('');
+  var ids=['crg6','smc','stv4'].filter(function(i){return plat(i)});M.forEach(function(p){if(ids.length<3&&ids.indexOf(p.id)<0)ids.push(p.id)});
+  var S=ids.map(function(id,i){return [id,'0'+(i+1)]});
+  $('sigs').innerHTML=S.map(function(s){var p=plat(s[0]);return '<article class="sig"><img src="'+p.img+'" alt="'+p.nom+'"><div class="in"><span class="no">'+s[1]+'</span><h3>'+p.nom+'</h3><p>'+p.desc+'</p><div class="bas"><span class="prix"><small>dès</small>'+(p.promo?'<s>'+fmt(p.avant)+'</s> ':'')+fmt(p.prix)+'</span>'+(p.dispo?'<button class="plus" data-id="'+p.id+'" aria-label="Ajouter '+p.nom+'">+</button>':'<span class="rupt">Épuisé</span>')+'</div></div></article>'}).join('');
 }
 function onglets(){$('onglets').innerHTML=IMS.CATS.map(function(c){return '<button aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>'}).join('');
   $('onglets').querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;onglets();grille()}})}
@@ -363,7 +364,8 @@ function montrerSuivi(){
   $('t-pied').innerHTML='<div class="total"><span>Total</span><span>'+fmt(c.total)+'</span></div><button class="btn ligne" id="b-autre">Nouvelle commande</button>';
   $('b-autre').onclick=function(){suivi=null;try{sessionStorage.removeItem('ims-suivi')}catch(e){}fermer()};
 }
-IMS.surChangement(function(t){M=IMS.menu();signatures();grille();if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi()});
+function infosConfig(){var c=IMS.config();$('sur-hero').textContent='Fast food · '+IMS.RESTOS.map(function(r){return r.nom}).join(' · ');$('slogan-pied').textContent=c.slogan;if(IMS.CATS.indexOf(cat)<0)cat=IMS.CATS[0];onglets();adresses()}
+IMS.surChangement(function(t){M=IMS.menu();if(t==='ims-config')infosConfig();signatures();grille();if(!$('tiroir').hidden&&vue==='suivi')montrerSuivi()});
 function adresses(){$('adresses').innerHTML=IMS.RESTOS.map(function(r){var o=IMS.ouvert(r);return '<div class="carto"><h3>'+r.nom+'</h3><span class="etat'+(o?'':' ferme')+'"><i></i>'+(o?'Ouvert maintenant':'Fermé pour le moment')+' · '+r.h+'</span><div class="tel">'+r.tel+'</div><div class="actions" style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="'+r.maps+'" target="_blank" rel="noopener">Itinéraire</a><a class="btn ligne" href="tel:'+r.tel.replace(/\s/g,'')+'">Appeler</a></div></div>'}).join('')}
 // Espace gérant : application de gestion ouverte dans la même page (tout reste synchronisé)
 document.addEventListener('click',function(e){var b=e.target.closest('[data-ouvrir]');if(b)IMSG.ouvrir({page:b.dataset.ouvrir})});
@@ -377,7 +379,7 @@ function etatGerant(){var L=IMS.commandes(),n=L.filter(function(c){return c.st==
 IMS.surChangement(function(t){etatGerant();if(t==='ims-service'&&!$('tiroir').hidden&&vue==='panier')montrerPanier()});
 function promoBand(){var o=IMS.promo(),e=$('promo-band');if(o.actif&&o.banniere&&o.texte){e.textContent='🔥 '+o.texte;e.hidden=false}else e.hidden=true}
 IMS.surChangement(function(){promoBand()});
-signatures();onglets();grille();compte();adresses();etatGerant();promoBand();setInterval(adresses,60000);
+infosConfig();signatures();onglets();grille();compte();adresses();etatGerant();promoBand();setInterval(adresses,60000);
 if(mt){toast('Table '+table+' : bienvenue !')}
 })();
 </script>
