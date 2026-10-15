@@ -51,6 +51,7 @@ description: Community manager et responsable pubs Meta de La Maison du Parquet 
 - Vidéos : `ads/pub/film-50s-pub-v3.mp4` est la version à jour (WhatsApp 0794, sans « représentant »).
 
 ## Pubs et boosts Meta
+- **Objectif n°1 des pubs (consigne du client, 15/10) : faire venir les clients au showroom de Dar El Beïda**, pas vendre en ligne. Fin de vidéo = vraie photo du showroom + adresse (Cité ONAB, Lot 148, Dar El Beïda) + horaires + « Réservez votre visite » 0794 70 93 23. Pas de fin « envoyez vos m² / devis en ligne ». Version en cours : `ads/pub3/` (A français, B darija).
 - **Campagne en cours, identifiants et historique : `ads/PUB-META-EN-COURS.md`** (à lire avant tout bilan ou toute modification).
 - Compte publicitaire `act_2860172500875914` (« Sofiane Yacoubi »), **facturé en €**. Il faut convertir le budget que le client donne en $.
 - Page « La maison du parquet EGGER » `108020917397215`, Instagram @la.maison.du.parquett `17841429516584815`. Intérêt « Décoration intérieure » : `6002920953955`.
