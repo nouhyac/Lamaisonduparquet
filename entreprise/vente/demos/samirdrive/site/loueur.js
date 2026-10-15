@@ -27,7 +27,7 @@ function alertes(){
   for(const r of S.resas.filter(r=>r.statut==='attente'&&r.alerte))a.push({g:true,t:`${r.id} · ${nomC(r.c)} figure sur la liste noire`});
   return a;
 }
-const item=(r,extra='')=>{const v=V(r.v);return `<div class="g-item">${auto(v.forme,v.coul,'mini')}<div class="tx"><b>${esc(nomC(r.c))}${r.alerte?' <span class="st st-annulee">Liste noire</span>':''}</b><small>${v.nom} · ${r.id} · ${LIEUX[r.lieu].c}${r.vol?' · vol '+esc(r.vol):''}</small></div>${extra}</div>`};
+const item=(r,extra='')=>{const v=V(r.v);return `<div class="g-item">${vis(v,'mini')}<div class="tx"><b>${esc(nomC(r.c))}${r.alerte?' <span class="st st-annulee">Liste noire</span>':''}</b><small>${v.nom} · ${r.id} · ${LIEUX[r.lieu].c}${r.vol?' · vol '+esc(r.vol):''}</small></div>${extra}</div>`};
 
 /* ---------- Tableau de bord ---------- */
 function pAccueil(){
@@ -67,7 +67,7 @@ function pPlanning(){
   let h=`<div class="pl" style="grid-template-columns:${cols}"><div class="c h nomv">Voiture</div>`;
   for(let i=0;i<N;i++){const d=J(D0+i),x=parse(d);h+=`<div class="c h ${i===-D0?'auj':''}">${JOURS[x.getDay()].slice(0,3)}<br>${x.getDate()}</div>`}
   for(const v of S.flotte){
-    h+=`<div class="c nomv">${auto(v.forme,v.coul)}<div><b>${v.nom}</b><small>${v.plaque}</small></div></div>`;
+    h+=`<div class="c nomv">${vis(v)}<div><b>${v.nom}</b><small>${v.plaque}</small></div></div>`;
     for(let i=0;i<N;i++){
       let bars='';
       if(i===0){const deb=J(D0),fin=J(D0+N);
@@ -138,7 +138,7 @@ function pFlotte(){
   $('g-main').innerHTML=`<div class="g-tete"><div><h1>Flotte & entretien</h1><p>Kilométrage, vidanges, assurances, contrôles techniques et prix affichés sur le site.</p></div></div>
   <div class="fl">${S.flotte.map(v=>{const pct=Math.min(100,Math.max(0,100-(v.vid-v.km)/100));const enLoc=S.resas.find(r=>r.v===v.id&&r.statut==='encours');
     const da=ecart(iso(AUJ),v.assur),dc=ecart(iso(AUJ),v.ct),ca=S.resas.filter(r=>r.v===v.id&&r.statut!=='annulee').reduce((s,r)=>s+montant(r),0);
-    return `<div class="flv"><div class="haut">${auto(v.forme,v.coul)}<div><b>${v.nom}</b><br><small class="gris">${v.plaque} · ${v.annee} · ${v.coulN}</small><br>${v.entretien?'<span class="st st-entretien">Au garage</span>':enLoc?'<span class="st st-encours">En location</span>':'<span class="st st-terminee">Au parking</span>'}</div></div>
+    return `<div class="flv"><div class="haut">${vis(v)}<div><b>${v.nom}</b><br><small class="gris">${v.plaque} · ${v.annee} · ${v.coulN}</small><br>${v.entretien?'<span class="st st-entretien">Au garage</span>':enLoc?'<span class="st st-encours">En location</span>':'<span class="st st-terminee">Au parking</span>'}</div></div>
     <dl><dt>Kilométrage</dt><dd>${nb(v.km)} km</dd><dt>Prochaine vidange</dt><dd>${nb(v.vid)} km</dd></dl>
     <div class="jauge" role="img" aria-label="Avancement vers la vidange : ${Math.round(pct)} %"><i style="width:${pct}%"></i></div>
     <dl><dt>Assurance</dt><dd class="${da<30?'rouge-t':''}">${dcourt(v.assur)} ${parse(v.assur).getFullYear()}</dd><dt>Contrôle technique</dt><dd class="${dc<30?'rouge-t':''}">${dcourt(v.ct)} ${parse(v.ct).getFullYear()}</dd><dt>Caution</dt><dd>${fmt(v.caution)}</dd><dt>Chiffre généré</dt><dd>${fmt(ca)}</dd></dl>

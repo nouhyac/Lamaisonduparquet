@@ -44,18 +44,24 @@ const OPTS={
 const REMISES=[[30,.25,'30 jours et +'],[15,.15,'15 à 29 jours'],[7,.10,'7 à 14 jours'],[3,.05,'3 à 6 jours']];
 const KM_JOUR=250, PRIX_KM=20, PRIX_8E=1200, JEUNE=700, AGE_MIN=21, PERMIS_MIN=2;
 
-/* ---------- Flotte (d'après le TikTok @samirdrive8, modèles et prix à confirmer) ---------- */
+/* ---------- Flotte réelle (photos et vidéos envoyées par Samir, modèles à confirmer) ---------- */
+const GX3={mod:'gx3',nom:'Geely GX3 Pro',cat:'SUV',gamme:'Éco',forme:'suv',boite:'Manuelle',carbu:'Essence',moteur:'1.5 L 102 ch',conso:'6,5 L/100',coffre:'330 L',places:5,portes:5,prix:7000,caution:60000,ageMin:21,annee:2026,equip:['Écran tactile','Caméra de recul','Bluetooth','Climatisation'],neuf:true};
 const FLOTTE0=[
-  {id:'v1',nom:'Renault Mégane Sedan',cat:'Berline',gamme:'Confort',forme:'berline',coul:'#18181B',coulN:'Noire',boite:'Automatique',carbu:'Diesel',moteur:'1.5 dCi 115 ch',conso:'4,6 L/100',coffre:'503 L',places:5,portes:4,prix:8500,caution:60000,ageMin:23,annee:2023,plaque:'04812 123 16',km:48200,vid:50000,assur:J(140),ct:J(210),equip:['Écran 9" et GPS','Caméra de recul','Régulateur de vitesse','Apple CarPlay / Android Auto'],chef:true},
-  {id:'v2',nom:'Volkswagen Tiguan',cat:'SUV',gamme:'Premium',forme:'suv',coul:'#C2B28F',coulN:'Sable',boite:'Automatique',carbu:'Essence',moteur:'1.5 eTSI 150 ch',conso:'6,2 L/100',coffre:'652 L',places:5,portes:5,prix:16000,caution:120000,ageMin:25,annee:2025,plaque:'05115 125 16',km:9800,vid:15000,assur:J(300),ct:J(700),equip:['Écran 12,9"','Signature lumineuse LED','Caméra de recul','Régulateur adaptatif','Apple CarPlay sans fil'],chef:true},
-  {id:'v3',nom:'Volkswagen T-Roc',cat:'SUV',gamme:'Premium',forme:'suv',coul:'#A3242A',coulN:'Rouge',boite:'Automatique',carbu:'Essence',moteur:'1.5 eTSI 150 ch',conso:'6,0 L/100',coffre:'445 L',places:5,portes:5,prix:13500,caution:100000,ageMin:25,annee:2025,plaque:'05244 125 16',km:12400,vid:15000,assur:J(280),ct:J(690),equip:['Feux arrière LED traversants','Écran tactile','Caméra de recul','Apple CarPlay / Android Auto']},
-  {id:'v4',nom:'Volkswagen T-Cross',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#EDEDEA',coulN:'Blanche',boite:'Automatique',carbu:'Essence',moteur:'1.0 TSI 110 ch',conso:'5,8 L/100',coffre:'455 L',places:5,portes:5,prix:10000,caution:80000,ageMin:23,annee:2023,plaque:'05028 123 16',km:36400,vid:40000,assur:J(22),ct:J(160),equip:['Radar de recul','Climatisation automatique','Apple CarPlay / Android Auto']},
-  {id:'v5',nom:'Geely GX3 Pro',cat:'SUV',gamme:'Éco',forme:'suv',coul:'#A2A7AC',coulN:'Gris argent',boite:'Manuelle',carbu:'Essence',moteur:'1.5 L 102 ch',conso:'6,5 L/100',coffre:'330 L',places:5,portes:5,prix:7000,caution:60000,ageMin:21,annee:2026,plaque:'05842 126 16',km:3100,vid:10000,assur:J(350),ct:J(1090),equip:['Écran tactile','Caméra de recul','Bluetooth'],neuf:true},
-  {id:'v6',nom:'Seat Ibiza',cat:'Citadine',gamme:'Éco',forme:'citadine',coul:'#F2F2EF',coulN:'Blanche',boite:'Manuelle',carbu:'Essence',moteur:'1.0 TSI 95 ch',conso:'5,4 L/100',coffre:'355 L',places:5,portes:5,prix:6500,caution:50000,ageMin:21,annee:2023,plaque:'05347 123 16',km:42900,vid:43500,assur:J(95),ct:J(240),equip:['Feux full LED','Apple CarPlay / Android Auto','Bluetooth']},
-  {id:'v7',nom:'Volkswagen Polo',cat:'Citadine',gamme:'Éco',forme:'citadine',coul:'#1F2226',coulN:'Noire',boite:'Automatique',carbu:'Essence',moteur:'1.0 TSI 95 ch',conso:'5,5 L/100',coffre:'351 L',places:5,portes:5,prix:7000,caution:50000,ageMin:21,annee:2022,plaque:'03911 122 16',km:61800,vid:70000,assur:J(55),ct:J(12),equip:['Écran tactile','Radar de recul','Bluetooth']},
-  {id:'v8',nom:'Dacia Duster',cat:'SUV',gamme:'Éco',forme:'suv',coul:'#EEEEEA',coulN:'Blanche',boite:'Manuelle',carbu:'Diesel',moteur:'1.5 dCi 115 ch',conso:'5,0 L/100',coffre:'478 L',places:5,portes:5,prix:8000,caution:70000,ageMin:21,annee:2022,plaque:'02961 122 16',km:68300,vid:70000,assur:J(130),ct:J(75),equip:['Barres de toit','GPS','Climatisation']},
-  {id:'v9',nom:'Dacia Logan',cat:'Berline',gamme:'Éco',forme:'berline',coul:'#5E6166',coulN:'Gris foncé',boite:'Manuelle',carbu:'Diesel',moteur:'1.5 dCi 95 ch',conso:'4,5 L/100',coffre:'528 L',places:5,portes:4,prix:5000,caution:40000,ageMin:21,annee:2021,plaque:'01455 121 16',km:98300,vid:100000,assur:J(70),ct:J(80),equip:['Grand coffre 528 L','Climatisation','Bluetooth']}
+  {id:'v1',mod:'arkana',nom:'Renault Arkana E-Tech',version:'Esprit Alpine',cat:'SUV',gamme:'Premium',forme:'suv',coul:'#121214',coulN:'Noir étoilé',boite:'Automatique',carbu:'Hybride essence',moteur:'1.6 E-Tech 145 ch',conso:'4,8 L/100',coffre:'438 L',places:5,portes:5,prix:15000,caution:120000,ageMin:25,annee:2024,plaque:'505392 124 16',km:21400,vid:30000,assur:J(140),ct:J(560),img:'arkana-1',photos:['arkana-1','arkana-3','arkana-2','arkana-4','arkana-int'],equip:['Finition Esprit Alpine','Sellerie Alpine surpiqûres bleues','Écran 9,3" et GPS','Caméra de recul','Jantes 19"','Apple CarPlay / Android Auto'],chef:true},
+  {id:'v2',mod:'jetour',nom:'Jetour X50',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#A9C9D8',coulN:'Bleu glacier',boite:'Automatique',carbu:'Essence',moteur:'1.5 T 156 ch',conso:'6,9 L/100',coffre:'430 L',places:5,portes:5,prix:9500,caution:80000,ageMin:23,annee:2025,plaque:'06494 3125 16',km:14200,vid:15000,assur:J(22),ct:J(700),img:'jetour-2',photos:['jetour-2','jetour-1'],equip:['Écran tactile 12,3"','Signature lumineuse LED','Caméra de recul','Démarrage sans clé']},
+  {id:'v3',mod:'tera',nom:'Volkswagen Tera',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#C2B28F',coulN:'Beige sable',boite:'Automatique',carbu:'Essence',moteur:'1.0 TSI 116 ch',conso:'5,9 L/100',coffre:'350 L',places:5,portes:5,prix:11000,caution:90000,ageMin:23,annee:2025,plaque:'511567 125 16',km:8700,vid:15000,assur:J(300),ct:J(690),img:'tiguan',photos:['tiguan'],equip:['Bandeau lumineux LED','Logo avant éclairé','Écran tactile','Apple CarPlay / Android Auto']},
+  {id:'v4',mod:'tcross',nom:'Volkswagen T-Cross',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#EDEDEA',coulN:'Blanc pur',boite:'Automatique',carbu:'Essence',moteur:'1.0 TSI 110 ch',conso:'5,8 L/100',coffre:'455 L',places:5,portes:5,prix:10000,caution:80000,ageMin:23,annee:2023,plaque:'502855 123 31',km:36400,vid:40000,assur:J(95),ct:J(160),img:'tcross',photos:['tcross'],equip:['Radar de recul','Climatisation automatique','Apple CarPlay / Android Auto']},
+  {...GX3,id:'v5',coul:'#2B3A4E',coulN:'Bleu nuit',plaque:'529585 126 16',km:4100,vid:10000,assur:J(350),ct:J(1090),img:'geely-bleu',photos:['geely-bleu']},
+  {...GX3,id:'v6',coul:'#EEEEEA',coulN:'Blanc',plaque:'532697 126 16',km:3200,vid:10000,assur:J(352),ct:J(1092),img:'geely-blanc',photos:['geely-blanc']},
+  {...GX3,id:'v7',coul:'#4B5257',coulN:'Gris anthracite',plaque:'525699 126 16',km:9600,vid:10000,assur:J(340),ct:J(1080),img:'geely-gris',photos:['geely-gris']},
+  {...GX3,id:'v8',coul:'#A2A7AC',coulN:'Argent',plaque:'531424 126 16',km:5800,vid:10000,assur:J(346),ct:J(1086),img:'geely-argent',photos:['geely-argent']},
+  {id:'v9',mod:'ibiza',nom:'Seat Ibiza',cat:'Citadine',gamme:'Éco',forme:'citadine',coul:'#F2F2EF',coulN:'Blanche',boite:'Manuelle',carbu:'Essence',moteur:'1.0 TSI 95 ch',conso:'5,4 L/100',coffre:'355 L',places:5,portes:5,prix:6500,caution:50000,ageMin:21,annee:2023,plaque:'053475 123 16',km:42900,vid:43500,assur:J(70),ct:J(12),img:'ibiza',photos:['ibiza'],equip:['Feux full LED','Apple CarPlay / Android Auto','Bluetooth','Climatisation']}
 ];
+const photo=x=>'img/flotte/'+x+'.jpg';
+/* Visuel d'une voiture : sa vraie photo, sinon une silhouette */
+function vis(v,cls=''){return v.img?`<img class="vis ${cls}" src="${photo(v.img)}" alt="" loading="lazy">`:auto(v.forme,v.coul,cls)}
+/* Modèles = voitures regroupées (ex. 4 Geely GX3 Pro) */
+function modeles(){const m={};for(const v of S.flotte){(m[v.mod]=m[v.mod]||{mod:v.mod,u:[]}).u.push(v)}return Object.values(m).map(x=>({...x,v:x.u[0]}))}
 
 /* ---------- Conditions générales de location ---------- */
 const CGL=[
@@ -87,7 +93,7 @@ function devis({v,d1,h1='10:00',d2,h2='10:00',lieu='agence',retour='agence',opts
 }
 
 /* ---------- État partagé (localStorage) ---------- */
-const CLE='sd-v3';
+const CLE='sd-v5';
 let S;
 function conducteur(nom,prenom,tel,naiss,datePermis,extra={}){return{nom,prenom,tel,naiss,datePermis,piece:'CNI',numPiece:'1'+chiffres(tel).slice(-8)+'7',permis:'P'+chiffres(tel).slice(-7),pays:'Algérie',adresse:'Alger',email:'',...extra}}
 function resa0(){
@@ -96,17 +102,17 @@ function resa0(){
     return {id,v,c,d1,h1:'10:00',d2,h2:'10:00',lieu,retour,opts,prot,statut,cree:J(Math.min(ecart(iso(AUJ),d1),0)-2),total:dv.total,caution:dv.caution,franchise:dv.franchise,docs:{permis:true,piece:true},docsOk:statut!=='attente',sign:true,source:'site',...extra};
   };
   return [
-    mk('SD-1041','v2',conducteur('Benali','Karim','0550 12 34 56','1986-04-12','2006-09-01'),J(-3),J(0),'aeroport','aeroport',['siege'],'serenite','encours',{vol:'AH 1021',edlD:{km:9450,carbu:8,photos:4,dom:[{x:46,y:300,t:'Rayure'}]},paye:true}),
-    mk('SD-1042','v1',conducteur('Hamidi','Nadia','0661 45 78 12','1991-11-03','2012-05-20'),J(-1),J(2),'agence','agence',[],'confort','encours',{edlD:{km:47950,carbu:8,photos:4,dom:[]},paye:true}),
-    mk('SD-1043','v6',conducteur('Merad','Yacine','0770 98 11 02','2002-02-18','2021-03-10'),J(0),J(5),'aeroport','agence',['kmi'],'essentielle','confirmee',{vol:'TU 702'}),
+    mk('SD-1041','v1',conducteur('Benali','Karim','0550 12 34 56','1986-04-12','2006-09-01'),J(-3),J(0),'aeroport','aeroport',['siege'],'serenite','encours',{vol:'AH 1021',edlD:{km:21100,carbu:8,photos:4,dom:[{x:46,y:300,t:'Rayure'}]},paye:true}),
+    mk('SD-1042','v2',conducteur('Hamidi','Nadia','0661 45 78 12','1991-11-03','2012-05-20'),J(-1),J(2),'agence','agence',[],'confort','encours',{edlD:{km:13950,carbu:8,photos:4,dom:[]},paye:true}),
+    mk('SD-1043','v9',conducteur('Merad','Yacine','0770 98 11 02','2002-02-18','2021-03-10'),J(0),J(5),'aeroport','agence',['kmi'],'essentielle','confirmee',{vol:'TU 702'}),
     mk('SD-1044','v4',conducteur('Kaci','Amel','0555 32 19 87','1988-07-25','2009-01-15'),J(6),J(12),'domicile','domicile',['siege','cond'],'confort','confirmee',{adr:'Cité 200 logements, bât. 12, Bab Ezzouar'}),
-    mk('SD-1045','v7',conducteur('Lounis','Sofiane','0699 21 43 65','1999-05-30','2019-08-08'),J(9),J(11),'agence','agence',[],'essentielle','attente',{docs:{permis:true,piece:false}}),
-    mk('SD-1046','v5',conducteur('Ait Ouali','Mourad','+33 6 12 45 78 90','1979-03-14','1998-06-02',{piece:'Passeport',pays:'France',adresse:'Lyon, France',email:'m.aitouali@exemple.fr'}),J(10),J(40),'aeroport','aeroport',['siege','kmi'],'serenite','attente',{vol:'AF 1854',note:'Diaspora, vacances d\'un mois en famille'}),
-    mk('SD-1047','v9',conducteur('Bouzid','Riad','0551 76 54 32','1984-10-09','2004-12-12'),J(-8),J(-2),'agence','agence',[],'essentielle','terminee',{edlD:{km:97700,carbu:8,photos:4,dom:[]},edlR:{km:98300,carbu:6,photos:4,dom:[]},sup:2400,paye:true}),
-    mk('SD-1048','v2',conducteur('Cherif','Lina','0662 88 44 10','1993-01-21','2014-04-04'),J(5),J(8),'aeroport','aeroport',['plein'],'confort','confirmee',{vol:'AH 2002'}),
-    mk('SD-1049','v8',conducteur('Entreprise BTP Nour','Hichem (gérant)','023 55 66 77','1975-06-06','1996-02-02',{piece:'Registre de commerce'}),J(-12),J(18),'agence','agence',['kmi'],'confort','encours',{edlD:{km:66100,carbu:8,photos:4,dom:[]},paye:true,note:'Location longue durée, facture entreprise'}),
+    mk('SD-1045','v5',conducteur('Lounis','Sofiane','0699 21 43 65','1999-05-30','2019-08-08'),J(9),J(11),'agence','agence',[],'essentielle','attente',{docs:{permis:true,piece:false}}),
+    mk('SD-1046','v6',conducteur('Ait Ouali','Mourad','+33 6 12 45 78 90','1979-03-14','1998-06-02',{piece:'Passeport',pays:'France',adresse:'Lyon, France',email:'m.aitouali@exemple.fr'}),J(10),J(40),'aeroport','aeroport',['siege','kmi'],'serenite','attente',{vol:'AF 1854',note:'Diaspora, vacances d\'un mois en famille'}),
+    mk('SD-1047','v8',conducteur('Bouzid','Riad','0551 76 54 32','1984-10-09','2004-12-12'),J(-8),J(-2),'agence','agence',[],'essentielle','terminee',{edlD:{km:5200,carbu:8,photos:4,dom:[]},edlR:{km:5800,carbu:6,photos:4,dom:[]},sup:2400,paye:true}),
+    mk('SD-1048','v3',conducteur('Cherif','Lina','0662 88 44 10','1993-01-21','2014-04-04'),J(5),J(8),'aeroport','aeroport',['plein'],'confort','confirmee',{vol:'AH 2002'}),
+    mk('SD-1049','v7',conducteur('Entreprise BTP Nour','Hichem (gérant)','023 55 66 77','1975-06-06','1996-02-02',{piece:'Registre de commerce'}),J(-12),J(18),'agence','agence',['kmi'],'confort','encours',{edlD:{km:4300,carbu:8,photos:4,dom:[]},paye:true,note:'Location longue durée, facture entreprise'}),
     mk('SD-1050','v1',conducteur('Saadi','Mehdi','0560 13 57 91','1997-09-17','2018-11-30'),J(4),J(7),'domicile','agence',[],'essentielle','attente',{adr:'Rue des Frères Bouadou, Bir Mourad Raïs'}),
-    mk('SD-1051','v3',conducteur('Zerrouki','Imane','0540 77 31 09','1990-12-02','2011-07-19'),J(1),J(3),'agence','agence',[],'serenite','confirmee'),
+    mk('SD-1051','v1',conducteur('Zerrouki','Imane','0540 77 31 09','1990-12-02','2011-07-19'),J(12),J(14),'agence','agence',[],'serenite','confirmee'),
   ];
 }
 function charger(){try{S=JSON.parse(localStorage.getItem(CLE))}catch(e){S=null}

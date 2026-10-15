@@ -3,14 +3,14 @@
 const AR={sous:'كراء السيارات',n_flotte:'سياراتنا',n_prot:'الحماية',n_cond:'الشروط',n_contact:'اتصل بنا',mares:'حجزي',reserver:'احجز',
 h_sur:'كراء السيارات · الجزائر',h_1:'سيارتك في انتظارك',h_2:'في المطار.',h_p:'اختر تواريخك، شاهد السعر الدقيق فوراً واحجز في دقيقتين. نسلمك المفاتيح في مطار الجزائر أو في الوكالة أو أمام بيتك.',at1:'سيارات حديثة',at2:'توصيل إلى المطار',at3:'لا دفع عبر الإنترنت',
 r_lieu:'الاستلام',r_retour:'الإرجاع',r_d1:'تاريخ الانطلاق',r_d2:'تاريخ الرجوع',r_h:'الساعة',r_go:'عرض السيارات',
-f_sur:'الأسطول',f_t:'اختر سيارتك',f_p:'السعر اليومي يشمل التأمين الشامل و250 كم في اليوم والمساعدة 24/24.',c_tout:'الكل',c_cit:'سيارات المدينة',c_ber:'سيدان',c_suv:'رباعية الدفع',c_prem:'فاخرة',c_auto:'ناقل أوتوماتيكي',tri:'ترتيب',tri1:'السعر تصاعدياً',tri2:'السعر تنازلياً',
+f_sur:'الأسطول',f_t:'اختر سيارتك',f_p:'السعر اليومي يشمل التأمين الشامل و250 كم في اليوم والمساعدة 24/24.',c_tout:'الكل',c_cit:'سيارات المدينة',c_ber:'سيدان',c_suv:'رباعية الدفع',c_prem:'فاخرة',c_auto:'ناقل أوتوماتيكي',tri:'ترتيب',tri0:'الموصى بها',tri1:'السعر تصاعدياً',tri2:'السعر تنازلياً',
 e_sur:'بسيط وسريع',e_t:'احجز في دقيقتين',e1:'تواريخك',e1p:'أين ومتى تستلم السيارة. نعرض فقط السيارات المتوفرة مع السعر الإجمالي.',e2:'حمايتك',e2p:'أساسية أو راحة أو طمأنينة: أنت تختار مبلغ التحمل.',e3:'وثائقك',e3p:'صورة الرخصة وبطاقة التعريف من هاتفك: تسليم المفاتيح في 5 دقائق.',e4:'توقيع وتأكيد',e4p:'توقع بإصبعك ونؤكد عبر واتساب في 15 دقيقة. الدفع عند الاستلام.',
 pr_sur:'الحماية',pr_t:'سافر براحة بال',pr_p:'التأمين الشامل مشمول دائماً. الحماية تحدد أقصى ما تدفعه عند الضرر.',
 s_sur:'خدماتنا',s_t:'نأتي إليك',a_sur:'مطار الجزائر',a_t:'المفاتيح عند خروجك من الطائرة',a_p:'أعطنا رقم رحلتك: نتابع وصولك والسيارة تنتظرك أمام المحطة.',a1:'تسليم المفاتيح في المطار 24/24',a2:'متابعة رحلتك بدون تكاليف عند التأخير',a3:'الإرجاع في المطار قبل سفرك',
 l_sur:'مدة طويلة والجالية',l_t:'شهر أو أكثر؟ السعر ينخفض.',l_p:'للأفراد والشركات والجالية في العطلة.',l_n:'التخفيض يطبق تلقائياً عند الحجز.',
 cd_sur:'شروط الكراء',cd_t:'واضح منذ البداية',cd_p:'هذا هو الأساس. الشروط الكاملة تقرأ وتقبل قبل كل حجز.',cd_btn:'قراءة الشروط العامة كاملة',
 q_sur:'أسئلة شائعة',q_t:'كل ما تحتاج معرفته',q1:'هل يجب الدفع عبر الإنترنت؟',q1r:'لا. تحجز مجاناً وتدفع عند استلام المفاتيح نقداً أو عبر بريدي موب.',q2:'أعيش في الخارج، هل يمكنني الكراء؟',q2r:'نعم، بجواز سفرك ورخصة بلد إقامتك.',q3:'ماذا لو تأخرت رحلتي؟',q3r:'لا شيء: نتابع رحلتك والسيارة تنتظرك بدون تكاليف.',q4:'هل يمكنني الإلغاء أو التعديل؟',q4r:'نعم مجاناً حتى 24 ساعة قبل الانطلاق.',q5:'في حالة عطب أو حادث؟',q5r:'اتصل بنا 24/24. المساعدة مشمولة وسيارة بديلة حسب التوفر.',
-ct_sur:'اتصل بنا',ct_t:'سؤال؟ نرد بسرعة.',ct_tel:'الهاتف',ct_ag:'الوكالة',ct_aero:'المطار',ct_aero2:'التسليم في المطار 24/24',ct_wa:'راسلنا على واتساب'};
+ct_sur:'اتصل بنا',ct_t:'سؤال؟ نرد بسرعة.',ct_tel:'الهاتف',ct_ag:'الوكالة',ct_aero:'المطار',ct_aero2:'التسليم في المطار 24/24',ct_wa:'راسلنا على واتساب',v_sur:'حقيقي',v_t:'سياراتنا، صورناها بأنفسنا',v_p:'لا صور كتالوج: هذه سياراتنا كما ستستلمها.'};
 const FR={};let ar=false;
 const t=(k,fr)=>ar&&AR[k]?AR[k]:fr;
 function appliquerLangue(){
@@ -24,7 +24,7 @@ const lieuN=k=>ar?LIEUX[k].ar:LIEUX[k].n;
 
 /* ================= Recherche ================= */
 const R={lieu:'aeroport',retour:'aeroport',d1:J(1),h1:'10:00',d2:J(4),h2:'10:00'};
-const F={cat:'',auto:false,tri:'prix'};
+const F={cat:'',auto:false,tri:'reco'};
 function remplirLieux(){
   for(const id of['r-lieu','r-retour']){const s=$(id),val=id==='r-lieu'?R.lieu:R.retour;
     s.innerHTML=Object.keys(LIEUX).map(k=>`<option value="${k}" ${k===val?'selected':''}>${lieuN(k)}${LIEUX[k].f?' (+'+fmt(LIEUX[k].f)+')':''}</option>`).join('')}
@@ -52,22 +52,26 @@ const IC={
   places:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>',
   coffre:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>'
 };
+const CHOIX={};/* couleur choisie par modèle */
+function uniteAffichee(m){const libres=m.u.filter(v=>libre(v.id,R.d1,R.d2)),ch=V(CHOIX[m.mod]);return ch&&ch.mod===m.mod?ch:(libres[0]||m.u[0])}
+const pastilles=(m,cur,attr='data-coul')=>m.u.length>1?`<div class="pastilles" role="group" aria-label="Couleur">${m.u.map(v=>{const ok=libre(v.id,R.d1,R.d2);return `<button type="button" ${attr}="${v.id}" aria-pressed="${v.id===cur.id}" class="${ok?'':'occ'}" title="${v.coulN}${ok?'':' · réservée à ces dates'}"><i style="background:${v.coul}"></i><span>${v.coulN}</span></button>`}).join('')}</div>`:`<span class="coul"><i style="background:${cur.coul}"></i>${cur.coulN}</span>`;
 function rendreFlotte(){
-  let l=S.flotte.filter(v=>(!F.cat||v.cat===F.cat||v.gamme===F.cat)&&(!F.auto||v.boite==='Automatique'));
-  l.sort((a,b)=>F.tri==='prix'?a.prix-b.prix:b.prix-a.prix);
-  l.sort((a,b)=>libre(b.id,R.d1,R.d2)-libre(a.id,R.d1,R.d2));
+  let l=modeles().filter(({v})=>(!F.cat||v.cat===F.cat||v.gamme===F.cat)&&(!F.auto||v.boite==='Automatique'));
+  l.sort((a,b)=>F.tri==='reco'?((b.v.chef?2:b.v.neuf?1:0)-(a.v.chef?2:a.v.neuf?1:0)||b.v.prix-a.v.prix):F.tri==='prix'?a.v.prix-b.v.prix:b.v.prix-a.v.prix);
+  const nbLibres=m=>m.u.filter(v=>libre(v.id,R.d1,R.d2)).length;
+  l.sort((a,b)=>(nbLibres(b)>0)-(nbLibres(a)>0));
   if(!l.length){$('grille').innerHTML=`<p class="vide">${t('x_aucune','Aucune voiture ne correspond à ces filtres.')}</p>`;return}
-  $('grille').innerHTML=l.map(v=>{
-    const ok=libre(v.id,R.d1,R.d2),dv=devis({v,...R}),pl=ok?null:prochainLibre(v.id,R.d1);
-    return `<article class="auto ${ok?'':'pris'}" aria-labelledby="n-${v.id}">
-      <button class="scene" type="button" data-fiche="${v.id}" aria-label="${t('x_voir','Voir la fiche')} ${v.nom}">${auto(v.forme,v.coul)}<span class="badge ${ok?'b-ok':'b-non'}">${ok?t('x_libre','Disponible'):t('x_pris','Déjà réservée')}</span>${v.neuf?`<span class="b-chef">${t('x_neuve','Neuve')} ${v.annee}</span>`:v.chef?`<span class="b-chef">★ ${t('x_top','Coup de cœur')}</span>`:''}</button>
+  $('grille').innerHTML=l.map(m=>{
+    const v=uniteAffichee(m),n=nbLibres(m),ok=libre(v.id,R.d1,R.d2),dv=devis({v,...R}),pl=n?null:m.u.map(u=>prochainLibre(u.id,R.d1)).filter(Boolean).sort()[0];
+    return `<article class="auto ${n?'':'pris'}" aria-labelledby="n-${m.mod}">
+      <button class="scene photo" type="button" data-fiche="${v.id}" aria-label="${t('x_voir','Voir la fiche')} ${v.nom}">${vis(v)}<span class="badge ${n?'b-ok':'b-non'}">${n?(m.u.length>1?n+' '+t('x_dispos','disponibles'):t('x_libre','Disponible')):t('x_pris','Déjà réservée')}</span>${v.chef?`<span class="b-chef">★ ${t('x_top','Coup de cœur')}</span>`:v.neuf?`<span class="b-chef">${t('x_neuve','Neuve')} ${v.annee}</span>`:''}${v.photos&&v.photos.length>1?`<span class="b-ph">📷 ${v.photos.length}</span>`:''}</button>
       <div class="corps">
-        <div><span class="cat">${v.gamme} · ${v.cat} · ${v.annee}</span><h3 id="n-${v.id}">${v.nom}</h3><span class="coul"><i style="background:${v.coul}"></i>${v.coulN}</span></div>
+        <div><span class="cat">${v.gamme} · ${v.cat} · ${v.annee}</span><h3 id="n-${m.mod}">${v.nom}${v.version?` <small>${v.version}</small>`:''}</h3>${pastilles(m,v)}</div>
         <ul class="specs"><li>${IC.boite}${v.boite}</li><li>${IC.carbu}${v.carbu}</li><li>${IC.places}${v.places} places</li><li>${IC.coffre}${v.coffre}</li></ul>
         <div class="prixl"><div><div class="p">${fmt(v.prix)} <small>/ ${t('x_jour','jour')}</small></div>
-          ${ok?`<div class="tot">${t('x_total','Total')} ${jours(dv.j)} : <b>${fmt(dv.total)}</b></div>`:`<div class="libre">${pl?t('x_librele','Libre à partir du')+' '+dcourt(pl):t('x_indispo','Indisponible')}</div>`}</div>
-          <button class="btn btn-or" type="button" data-resa="${v.id}" ${ok?'':'disabled'} aria-label="${t('reserver','Réserver')} ${v.nom}">${t('reserver','Réserver')}</button></div>
-        <button class="lien-fiche" type="button" data-fiche="${v.id}">${t('x_details','Équipements, conditions et calendrier')} →</button>
+          ${n?`<div class="tot">${t('x_total','Total')} ${jours(dv.j)} : <b>${fmt(dv.total)}</b></div>`:`<div class="libre">${pl?t('x_librele','Libre à partir du')+' '+dcourt(pl):t('x_indispo','Indisponible')}</div>`}</div>
+          <button class="btn btn-or" type="button" data-resa="${ok?v.id:(m.u.find(u=>libre(u.id,R.d1,R.d2))||v).id}" ${n?'':'disabled'} aria-label="${t('reserver','Réserver')} ${v.nom}">${t('reserver','Réserver')}</button></div>
+        <button class="lien-fiche" type="button" data-fiche="${v.id}">${t('x_details','Photos, équipements, conditions et calendrier')} →</button>
       </div></article>`}).join('');
 }
 function rendreProtos(){
@@ -80,13 +84,15 @@ function rendreProtos(){
 
 /* ================= Fiche voiture ================= */
 function fiche(vid){
-  const v=V(vid),ok=libre(v.id,R.d1,R.d2),dv=devis({v,...R});
+  const v=V(vid),m=modeles().find(x=>x.mod===v.mod),ok=libre(v.id,R.d1,R.d2),dv=devis({v,...R});CHOIX[v.mod]=v.id;
   let cal='';const deb=parse(J(0));const dec=(deb.getDay()+6)%7;
   for(let i=0;i<dec;i++)cal+='<span></span>';
   for(let i=0;i<35-dec;i++){const d=J(i),occ=!libre(v.id,d,J(i+1)),sel=d>=R.d1&&d<R.d2;cal+=`<span class="${occ?'occ':''} ${sel?'sel':''}" title="${dlong(d)}${occ?' · réservée':''}">${parse(d).getDate()}</span>`}
-  $('fiche').innerHTML=`<header><div><span class="sur">${v.gamme} · ${v.cat}</span><h2 id="fi-titre">${v.nom} <small>${v.annee}</small></h2></div><button class="fermer" type="button" data-ferme aria-label="${t('x_fermer','Fermer')}">×</button></header>
+  const ph=v.photos||[];
+  $('fiche').innerHTML=`<header><div><span class="sur">${v.gamme} · ${v.cat}</span><h2 id="fi-titre">${v.nom}${v.version?' '+v.version:''} <small>${v.annee}</small></h2></div><button class="fermer" type="button" data-ferme aria-label="${t('x_fermer','Fermer')}">×</button></header>
   <div class="in" tabindex="0">
-    <div class="fi-scene">${auto(v.forme,v.coul)}<span class="coul"><i style="background:${v.coul}"></i>${v.coulN}</span></div>
+    ${ph.length?`<div class="galerie"><img id="gal-img" src="${photo(ph[0])}" alt="${v.nom} ${v.coulN}">${ph.length>1?`<div class="vignettes">${ph.map((x,i)=>`<button type="button" data-gal="${x}" aria-pressed="${i===0}" aria-label="Photo ${i+1}"><img src="${photo(x)}" alt=""></button>`).join('')}</div>`:''}<span class="vraie">${t('x_vraie','Photo réelle de la voiture')}</span></div>`:`<div class="fi-scene">${auto(v.forme,v.coul)}</div>`}
+    <div class="fi-coul"><span class="lab">${t('x_coul','Couleur')}</span>${pastilles(m,v,'data-fcoul')}</div>
     <div class="fi-specs">
       <div><small>Moteur</small><b>${v.moteur}</b></div><div><small>Boîte</small><b>${v.boite}</b></div><div><small>Carburant</small><b>${v.carbu}</b></div>
       <div><small>Consommation</small><b>${v.conso}</b></div><div><small>Coffre</small><b>${v.coffre}</b></div><div><small>Places / portes</small><b>${v.places} / ${v.portes}</b></div>
@@ -95,11 +101,11 @@ function fiche(vid){
       <div><h3>Équipements</h3><ul class="coche">${[...v.equip,...(v.equip.some(e=>/climatisation/i.test(e))?[]:['Climatisation'])].map(e=>`<li>${e}</li>`).join('')}</ul></div>
       <div><h3>Conditions pour cette voiture</h3><dl class="fi-dl"><dt>Âge minimum</dt><dd>${v.ageMin} ans · permis 2 ans</dd><dt>Caution</dt><dd>${fmt(v.caution)} <small>(${fmt(v.caution*.5)} avec Sérénité)</small></dd><dt>Franchise</dt><dd>de ${fmt(v.caution)} à 0 DA selon la protection</dd><dt>Kilométrage</dt><dd>${KM_JOUR} km / jour inclus</dd><dt>Carburant</dt><dd>Même niveau au retour</dd></dl></div>
     </div>
-    <div><h3>Disponibilités sur 5 semaines</h3><div class="cal" aria-label="Calendrier des disponibilités">${['L','M','M','J','V','S','D'].map(x=>`<b>${x}</b>`).join('')}${cal}</div>
+    <div><h3>Disponibilités sur 5 semaines${m.u.length>1?' · '+v.coulN:''}</h3><div class="cal" aria-label="Calendrier des disponibilités">${['L','M','M','J','V','S','D'].map(x=>`<b>${x}</b>`).join('')}${cal}</div>
       <p class="leg"><i class="l-libre"></i>Libre <i class="l-occ"></i>Réservée <i class="l-sel"></i>Vos dates</p></div>
   </div>
   <footer><div><span class="t">${fmt(dv.total)}</span><small>${jours(dv.j)} · ${dcourt(R.d1)} → ${dcourt(R.d2)}</small></div><button class="btn btn-or" type="button" data-resa="${v.id}" ${ok?'':'disabled'}>${ok?t('x_cette','Réserver cette voiture'):t('x_pris','Déjà réservée')}</button></footer>`;
-  $('fiche').showModal();
+  if(!$('fiche').open)$('fiche').showModal();
 }
 
 /* ================= Tunnel de réservation ================= */
@@ -118,7 +124,7 @@ function ouvrirTunnel(vid){
 function prog(){$('prog').innerHTML=ETAPES.map((n,i)=>`<li class="${i+1<T.e?'fait':''} ${i+1===T.e?'cour':''}" ${i+1===T.e?'aria-current="step"':''}><span>${i+1<T.e?'✓':i+1}</span>${n}</li>`).join('')}
 function recap(){
   const v=V(T.v),d=devis({...T,v,naiss:T.c.naiss}),P=PROTECTIONS[T.prot];
-  $('tu-recap').innerHTML=`<div class="rc-auto">${auto(v.forme,v.coul)}<div><b>${v.nom}</b><small>${v.boite} · ${v.carbu}</small></div></div>
+  $('tu-recap').innerHTML=`<div class="rc-auto">${vis(v)}<div><b>${v.nom}</b><small>${v.coulN} · ${v.boite} · ${v.carbu}</small></div></div>
     <div class="rc-trajet"><div><small>${t('r_d1','Départ')}</small><b>${dlong(T.d1)} · ${T.h1}</b><span>${lieuN(T.lieu)}</span></div><div><small>${t('r_d2','Retour')}</small><b>${dlong(T.d2)} · ${T.h2}</b><span>${lieuN(T.retour)}</span></div></div>
     <div class="calc">
       <div><span>${fmt(v.prix)} × ${jours(d.j)}</span><span>${fmt(d.base)}</span></div>
@@ -149,6 +155,7 @@ function etape(n){
       <div class="champ"><label for="t-d2">${t('r_d2','Retour')}</label><input type="date" id="t-d2" value="${T.d2}" min="${T.d1}"></div>
       <div class="champ"><label for="t-h2">${t('r_h','Heure')}</label><select id="t-h2">${heures()}</select></div>
     </div>
+    ${(()=>{const m=modeles().find(x=>x.mod===v.mod);return m.u.length>1?`<div class="champ"><span class="lab">Couleur</span><div class="pastilles" role="group" aria-label="Couleur">${m.u.map(u=>{const ok=libre(u.id,T.d1,T.d2);return `<button type="button" data-tcoul="${u.id}" aria-pressed="${u.id===T.v}" class="${ok?'':'occ'}" ${ok?'':'disabled'} title="${u.coulN}${ok?'':' · réservée'}"><i style="background:${u.coul}"></i><span>${u.coulN}</span></button>`}).join('')}</div></div>`:''})()}
     <div class="champ" id="b-vol" ${T.lieu==='aeroport'?'':'hidden'}><label for="t-vol">${t('x_vol','Numéro de vol (on suit votre arrivée)')}</label><input id="t-vol" value="${esc(T.vol)}" placeholder="ex. AH 1021" autocomplete="off"></div>
     <div class="champ" id="b-adr" ${T.lieu==='domicile'||T.retour==='domicile'?'':'hidden'}><label for="t-adr">${t('x_adr','Adresse de livraison')}</label><input id="t-adr" value="${esc(T.adr)}" placeholder="Cité, bâtiment, rue, commune" autocomplete="street-address"><span class="aide" id="t-adr-e"></span></div>
     <div class="alerte-d" id="t-dispo" role="status"></div>`;
@@ -239,7 +246,7 @@ function signature(){
   c.onpointerup=c.onpointercancel=()=>{if(des){des=false;T.sign=c.toDataURL('image/png');$('t-err').textContent=''}};
   $('sig-x').onclick=()=>{x.clearRect(0,0,c.width,c.height);T.sign=null;$('sig-ph').hidden=false};
 }
-function photo(input){
+function photoDoc(input){
   const f=input.files[0],k=input.dataset.doc;if(!f)return;
   const rd=new FileReader();rd.onload=()=>{const im=new Image();im.onload=()=>{const m=900,s=Math.min(1,m/Math.max(im.width,im.height)),cv=document.createElement('canvas');cv.width=im.width*s;cv.height=im.height*s;cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
     T.docs[k]=cv.toDataURL('image/jpeg',.72);const lb=$('lb-'+k);lb.classList.add('ok');lb.querySelector('.doc-ic,img')?.remove();lb.insertAdjacentHTML('afterbegin',`<img src="${T.docs[k]}" alt="">`);lb.querySelector('small').textContent='Reçu ✓ · toucher pour changer'};im.src=rd.result};rd.readAsDataURL(f);
@@ -304,6 +311,10 @@ document.addEventListener('click',e=>{
   const b=e.target.closest('button,a');if(!b)return;
   if(b.dataset.ferme!==undefined){b.closest('dialog').close();return}
   if(b.dataset.fiche){fiche(b.dataset.fiche);return}
+  if(b.dataset.coul){CHOIX[V(b.dataset.coul).mod]=b.dataset.coul;rendreFlotte();document.querySelector(`[data-coul="${b.dataset.coul}"]`)?.focus();return}
+  if(b.dataset.fcoul){fiche(b.dataset.fcoul);return}
+  if(b.dataset.gal){$('gal-img').src=photo(b.dataset.gal);b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));return}
+  if(b.dataset.tcoul){lireEtape();T.v=b.dataset.tcoul;etape(1);return}
   if(b.dataset.resa){ouvrirTunnel(b.dataset.resa);return}
   if(b.dataset.cgl!==undefined){ouvrirCGL();return}
   if(b.dataset.suivi){const r=S.resas.find(x=>x.id===b.dataset.suivi);$('tunnel').close();ouvrirMaResa(r.id,r.c.tel);return}
@@ -315,7 +326,7 @@ document.addEventListener('click',e=>{
   if(b.id==='tu-prec'){lireEtape();etape(T.e-1);return}
 });
 $('tunnel').addEventListener('change',e=>{
-  if(e.target.dataset.doc){photo(e.target);return}
+  if(e.target.dataset.doc){photoDoc(e.target);return}
   if(!T||!$('tu-form').contains(e.target))return;lireEtape();
   if(e.target.id&&e.target.id.startsWith('c'))erreur(e.target.id,'');
   if(T.e===3&&e.target.value==='cond'&&!e.target.checked)T.c2={prenom:'',nom:'',naiss:'',permis:'',datePermis:''};

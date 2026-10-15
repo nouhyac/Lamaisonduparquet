@@ -44,7 +44,7 @@
           <li><b>0 DA</b><span data-t="at3">à payer en ligne</span></li>
         </ul>
       </div>
-      <div class="hero-vis"><img src="img/logo.jpg" alt="Renault Mégane noire, voiture phare de Samir Drive"></div>
+      <figure class="hero-photo"><img src="img/flotte/arkana-1.jpg" alt="Renault Arkana Esprit Alpine noire de Samir Drive, sur le parking de l'aéroport d'Alger"><img class="hp-logo" src="img/logo.jpg" alt=""><figcaption><b>Renault Arkana Esprit Alpine</b><span>Photo réelle · aéroport d'Alger</span></figcaption></figure>
     </div>
     <div class="wrap r">
       <form class="recherche" id="recherche" aria-label="Rechercher une voiture">
@@ -78,10 +78,21 @@
         <button class="chip" type="button" id="f-auto" aria-pressed="false" data-t="c_auto">Boîte automatique</button>
         <span class="sep"></span>
         <label class="sr" for="tri" data-t="tri">Trier</label>
-        <select id="tri"><option value="prix" data-t="tri1">Prix croissant</option><option value="-prix" data-t="tri2">Prix décroissant</option></select>
+        <select id="tri"><option value="reco" data-t="tri0">Recommandées</option><option value="prix" data-t="tri1">Prix croissant</option><option value="-prix" data-t="tri2">Prix décroissant</option></select>
       </div>
       <p class="resume-dates" id="resume-dates" aria-live="polite"></p>
       <div class="grille" id="grille"></div>
+    </div>
+  </section>
+
+  <section class="bloc" id="videos" aria-labelledby="t-videos">
+    <div class="wrap">
+      <div class="tete"><div><span class="sur" data-t="v_sur">En vrai</span><h2 id="t-videos" data-t="v_t">Nos voitures, filmées par nous</h2></div><p data-t="v_p">Pas de photos de catalogue : ce sont nos voitures, telles que vous les recevrez.</p></div>
+      <div class="videos">
+        <figure><video src="video/arkana-montage.mp4" poster="video/arkana-montage.jpg" controls muted playsinline preload="none" aria-label="Vidéo de la Renault Arkana Esprit Alpine"></video><figcaption>Renault Arkana Esprit Alpine</figcaption></figure>
+        <figure><video src="video/arkana-aeroport.mp4" poster="video/arkana-aeroport.jpg" controls muted playsinline preload="none" aria-label="Remise des clés à l'aéroport d'Alger"></video><figcaption>Remise des clés à l'aéroport d'Alger</figcaption></figure>
+        <figure><video src="video/flotte-geely.mp4" poster="video/flotte-geely.jpg" controls muted playsinline preload="none" aria-label="Nos Geely GX3 Pro 2026"></video><figcaption>Nos Geely GX3 Pro 2026 neuves</figcaption></figure>
+      </div>
     </div>
   </section>
 

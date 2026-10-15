@@ -607,3 +607,46 @@ body.ar .panneau{inset:0 auto 0 0}
 @media(max-width:860px){#g-raz{display:none}.g-side .bas button{white-space:nowrap;padding:8px 10px}}
 @media(max-width:860px){.g-side{min-width:0}}
 .t-scroll{position:relative}
+
+/* ================= V3 : vraies photos ================= */
+img.vis{display:block;width:100%;height:100%;object-fit:cover}
+.auto .scene.photo{aspect-ratio:4/3;background:#0c0c0d;overflow:hidden}
+.auto .scene.photo::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(10,10,11,.85));left:0;right:0;bottom:0;border-radius:0}
+.auto .scene.photo img{position:absolute;inset:0;transition:transform .5s}
+.auto:hover .scene.photo img{transform:scale(1.04)}
+.auto.pris .scene.photo img{filter:grayscale(.7) brightness(.6)}
+.b-ph{position:absolute;bottom:12px;inset-inline-end:12px;z-index:2;font-size:12px;font-weight:700;background:rgba(10,10,11,.7);border-radius:99px;padding:4px 10px}
+.auto h3 small{font:600 13px var(--f);color:var(--or)}
+.pastilles{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pastilles button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--noir4);background:var(--noir);border-radius:99px;padding:4px 10px 4px 5px;cursor:pointer;font-size:12px;color:var(--gris)}
+.pastilles button i{width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 1px rgba(255,255,255,.35)}
+.pastilles button[aria-pressed="true"]{border-color:var(--or);color:var(--creme)}
+.pastilles button.occ{opacity:.5;text-decoration:line-through}
+.pastilles button:disabled{cursor:not-allowed}
+.hero-photo{position:relative;margin:0;justify-self:center;width:100%;max-width:560px}
+.hero-photo>img:first-child{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:28px;box-shadow:0 0 0 1px rgba(212,175,97,.45),0 40px 120px rgba(212,175,97,.16),var(--ombre)}
+.hero-photo::before{content:"";position:absolute;inset:-14px;border-radius:36px;border:1px dashed rgba(212,175,97,.3);pointer-events:none}
+.hp-logo{position:absolute;top:-22px;inset-inline-end:-18px;width:96px;height:96px;border-radius:50%;box-shadow:0 0 0 3px var(--noir),0 12px 30px rgba(0,0,0,.6)}
+.hero-photo figcaption{position:absolute;inset-inline-start:18px;bottom:18px;background:rgba(10,10,11,.78);backdrop-filter:blur(8px);border:1px solid rgba(212,175,97,.35);border-radius:14px;padding:10px 14px}
+.hero-photo figcaption b{display:block;font-size:14px}
+.hero-photo figcaption span{font-size:12px;color:var(--or2)}
+@media(max-width:900px){.hero-photo{order:-1;max-width:460px}.hp-logo{width:72px;height:72px;top:-16px;inset-inline-end:-8px}}
+.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.videos figure{margin:0;display:grid;gap:10px}
+.videos video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:22px;background:#000;border:1px solid var(--noir4)}
+.videos figcaption{font-weight:600;color:var(--gris);font-size:14px;text-align:center}
+@media(max-width:760px){.videos{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.videos figure{scroll-snap-align:center}}
+.galerie{position:relative;display:grid;gap:10px}
+.galerie>img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;background:#000}
+.vignettes{display:flex;gap:8px;overflow-x:auto}
+.vignettes button{flex:none;width:86px;height:64px;padding:0;border-radius:12px;overflow:hidden;border:2px solid transparent;cursor:pointer;background:none;opacity:.7}
+.vignettes button[aria-pressed="true"]{border-color:var(--or);opacity:1}
+.vignettes img{width:100%;height:100%;object-fit:cover}
+.vraie{position:absolute;top:12px;inset-inline-start:12px;font-size:11px;font-weight:700;background:rgba(10,10,11,.75);color:var(--or2);border-radius:99px;padding:4px 10px;letter-spacing:.04em}
+.fi-coul{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fi-coul .pastilles{margin:0}
+.fi-coul .lab{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
+.rc-auto img.vis{width:120px;height:80px;border-radius:12px;flex:none}
+.g-item img.vis.mini,.g-item .mini{width:84px;height:58px;border-radius:10px;flex:none}
+.pl .nomv img.vis{width:64px;height:44px;border-radius:8px;flex:none}
+.flv .haut img.vis{width:120px;height:84px;border-radius:12px;flex:none}
