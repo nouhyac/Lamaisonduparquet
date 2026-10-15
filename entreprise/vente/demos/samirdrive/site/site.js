@@ -64,7 +64,7 @@ function rendreFlotte(){
   $('grille').innerHTML=l.map(m=>{
     const v=uniteAffichee(m),n=nbLibres(m),ok=libre(v.id,R.d1,R.d2),dv=devis({v,...R}),pl=n?null:m.u.map(u=>prochainLibre(u.id,R.d1)).filter(Boolean).sort()[0];
     return `<article class="auto ${n?'':'pris'}" aria-labelledby="n-${m.mod}">
-      <button class="scene photo" type="button" data-fiche="${v.id}" aria-label="${t('x_voir','Voir la fiche')} ${v.nom}">${vis(v)}<span class="badge ${n?'b-ok':'b-non'}">${n?(m.u.length>1?n+' '+t('x_dispos','disponibles'):t('x_libre','Disponible')):t('x_pris','Déjà réservée')}</span>${v.chef?`<span class="b-chef">★ ${t('x_top','Coup de cœur')}</span>`:v.neuf?`<span class="b-chef">${t('x_neuve','Neuve')} ${v.annee}</span>`:''}${v.photos&&v.photos.length>1?`<span class="b-ph">📷 ${v.photos.length}</span>`:''}</button>
+      <button class="scene photo" type="button" data-fiche="${v.id}" aria-label="${t('x_voir','Voir la fiche')} ${v.nom}">${vis(v)}<span class="badge ${n?'b-ok':'b-non'}">${n?(m.u.length>1?n+' '+t('x_dispos','disponibles'):t('x_libre','Disponible')):t('x_pris','Déjà réservée')}</span>${v.chef?`<span class="b-chef">★ ${t('x_top','Coup de cœur')}</span>`:v.neuf?`<span class="b-chef">${t('x_neuve','Neuve')} ${v.annee}</span>`:''}${v.photos&&v.photos.length>1?`<span class="b-ph">📷 ${v.photos.length}</span>`:''}${v.photoInt?`<span class="b-int">Intérieur</span>`:''}</button>
       <div class="corps">
         <div><span class="cat">${v.gamme} · ${v.cat} · ${v.annee}</span><h3 id="n-${m.mod}">${v.nom}${v.version?` <small>${v.version}</small>`:''}</h3>${pastilles(m,v)}</div>
         <ul class="specs"><li>${IC.boite}${v.boite}</li><li>${IC.carbu}${v.carbu}</li><li>${IC.places}${v.places} places</li><li>${IC.coffre}${v.coffre}</li></ul>
@@ -91,7 +91,7 @@ function fiche(vid){
   const ph=v.photos||[];
   $('fiche').innerHTML=`<header><div><span class="sur">${v.gamme} · ${v.cat}</span><h2 id="fi-titre">${v.nom}${v.version?' '+v.version:''} <small>${v.annee}</small></h2></div><button class="fermer" type="button" data-ferme aria-label="${t('x_fermer','Fermer')}">×</button></header>
   <div class="in" tabindex="0">
-    ${ph.length?`<div class="galerie"><img id="gal-img" src="${photo(ph[0])}" alt="${v.nom} ${v.coulN}">${ph.length>1?`<div class="vignettes">${ph.map((x,i)=>`<button type="button" data-gal="${x}" aria-pressed="${i===0}" aria-label="Photo ${i+1}"><img src="${photo(x)}" alt=""></button>`).join('')}</div>`:''}<span class="vraie">${t('x_vraie','Photo réelle de la voiture')}</span></div>`:`<div class="fi-scene">${auto(v.forme,v.coul)}</div>`}
+    ${ph.length?`<div class="galerie"><img id="gal-img" src="${photo(ph[0])}" alt="${v.nom} ${v.coulN}">${ph.length>1?`<div class="vignettes">${ph.map((x,i)=>`<button type="button" data-gal="${x}" aria-pressed="${i===0}" aria-label="Photo ${i+1}"><img src="${photo(x)}" alt=""></button>`).join('')}</div>`:''}<span class="vraie">${t('x_vraie','Photos réelles de la voiture')}</span></div>`:`<div class="fi-scene">${auto(v.forme,v.coul)}</div>`}
     <div class="fi-coul"><span class="lab">${t('x_coul','Couleur')}</span>${pastilles(m,v,'data-fcoul')}</div>
     <div class="fi-specs">
       <div><small>Moteur</small><b>${v.moteur}</b></div><div><small>Boîte</small><b>${v.boite}</b></div><div><small>Carburant</small><b>${v.carbu}</b></div>
@@ -347,4 +347,4 @@ $('wa-contact').href=`https://wa.me/${WA}?text=${encodeURIComponent('Bonjour Sam
 $('tarifs').innerHTML=REMISES.slice().reverse().map(r=>`<div class="tarif"><b>-${r[1]*100} %</b><span>${r[2]}</span></div>`).join('');
 const MOTS=['Livraison aéroport 24 h/24','Assurance tous risques incluse','Voitures récentes et entretenues','Annulation gratuite 24 h avant','Réponse en 15 minutes','Paiement à la remise des clés'];
 $('defile').innerHTML=[...MOTS,...MOTS].map(m=>`<span>${m}</span>`).join('');
-remplirLieux();infoDuree();rendreFlotte();rendreProtos();etincelles();
+$('nbv').textContent=S.flotte.length;remplirLieux();infoDuree();rendreFlotte();rendreProtos();etincelles();

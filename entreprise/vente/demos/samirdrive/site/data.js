@@ -45,22 +45,25 @@ const REMISES=[[30,.25,'30 jours et +'],[15,.15,'15 à 29 jours'],[7,.10,'7 à 1
 const KM_JOUR=250, PRIX_KM=20, PRIX_8E=1200, JEUNE=700, AGE_MIN=21, PERMIS_MIN=2;
 
 /* ---------- Flotte réelle (photos et vidéos envoyées par Samir, modèles à confirmer) ---------- */
-const GX3={mod:'gx3',nom:'Geely GX3 Pro',cat:'SUV',gamme:'Éco',forme:'suv',boite:'Manuelle',carbu:'Essence',moteur:'1.5 L 102 ch',conso:'6,5 L/100',coffre:'330 L',places:5,portes:5,prix:7000,caution:60000,ageMin:21,annee:2026,equip:['Écran tactile','Caméra de recul','Bluetooth','Climatisation'],neuf:true};
+const GX3={mod:'x3pro',nom:'Livan X3 Pro',cat:'SUV',gamme:'Éco',forme:'suv',boite:'Manuelle',carbu:'Essence',moteur:'1.5 L 102 ch',conso:'6,5 L/100',coffre:'330 L',places:5,portes:5,prix:7000,caution:60000,ageMin:21,annee:2026,equip:['Écran tactile','Caméra de recul','Bluetooth','Climatisation'],neuf:true};
 const FLOTTE0=[
-  {id:'v1',mod:'arkana',nom:'Renault Arkana E-Tech',version:'Esprit Alpine',cat:'SUV',gamme:'Premium',forme:'suv',coul:'#121214',coulN:'Noir étoilé',boite:'Automatique',carbu:'Hybride essence',moteur:'1.6 E-Tech 145 ch',conso:'4,8 L/100',coffre:'438 L',places:5,portes:5,prix:15000,caution:120000,ageMin:25,annee:2024,plaque:'505392 124 16',km:21400,vid:30000,assur:J(140),ct:J(560),img:'arkana-1',photos:['arkana-1','arkana-3','arkana-2','arkana-4','arkana-int'],equip:['Finition Esprit Alpine','Sellerie Alpine surpiqûres bleues','Écran 9,3" et GPS','Caméra de recul','Jantes 19"','Apple CarPlay / Android Auto'],chef:true},
+  {id:'v1',mod:'arkana',nom:'Renault Arkana E-Tech',version:'Esprit Alpine',cat:'SUV',gamme:'Premium',forme:'suv',coul:'#121214',coulN:'Noir étoilé',boite:'Automatique',carbu:'Hybride essence',moteur:'1.6 E-Tech 145 ch',conso:'4,8 L/100',coffre:'438 L',places:5,portes:5,prix:15000,caution:120000,ageMin:25,annee:2024,plaque:'505392 124 16',km:21400,vid:30000,assur:J(140),ct:J(560),img:'arkana-1',photos:['arkana-1','arkana-pano','arkana-garage','arkana-3','arkana-rue','arkana-int2','arkana-2'],equip:['Finition Esprit Alpine','Toit panoramique en verre','Sellerie Alpine surpiqûres bleues','Écran 9,3" et GPS','Caméra de recul','Jantes 19"','Apple CarPlay / Android Auto'],chef:true},
   {id:'v2',mod:'jetour',nom:'Jetour X50',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#A9C9D8',coulN:'Bleu glacier',boite:'Automatique',carbu:'Essence',moteur:'1.5 T 156 ch',conso:'6,9 L/100',coffre:'430 L',places:5,portes:5,prix:9500,caution:80000,ageMin:23,annee:2025,plaque:'06494 3125 16',km:14200,vid:15000,assur:J(22),ct:J(700),img:'jetour-2',photos:['jetour-2','jetour-1'],equip:['Écran tactile 12,3"','Signature lumineuse LED','Caméra de recul','Démarrage sans clé']},
-  {id:'v3',mod:'tera',nom:'Volkswagen Tera',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#C2B28F',coulN:'Beige sable',boite:'Automatique',carbu:'Essence',moteur:'1.0 TSI 116 ch',conso:'5,9 L/100',coffre:'350 L',places:5,portes:5,prix:11000,caution:90000,ageMin:23,annee:2025,plaque:'511567 125 16',km:8700,vid:15000,assur:J(300),ct:J(690),img:'tiguan',photos:['tiguan'],equip:['Bandeau lumineux LED','Logo avant éclairé','Écran tactile','Apple CarPlay / Android Auto']},
+  {id:'v3',mod:'tharu',nom:'Volkswagen Tharu XR',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#B9B2A2',coulN:'Gris sable',boite:'Automatique',carbu:'Essence',moteur:'1.5 TSI 160 ch',conso:'6,3 L/100',coffre:'445 L',places:5,portes:5,prix:11000,caution:90000,ageMin:23,annee:2025,plaque:'511567 125 16',km:8700,vid:15000,assur:J(300),ct:J(690),img:'tharu-av',photos:['tharu-av','tharu-ar'],equip:['Bandeau lumineux LED avant et arrière','Logo avant éclairé','Barres de toit','Écran tactile','Apple CarPlay / Android Auto']},
   {id:'v4',mod:'tcross',nom:'Volkswagen T-Cross',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#EDEDEA',coulN:'Blanc pur',boite:'Automatique',carbu:'Essence',moteur:'1.0 TSI 110 ch',conso:'5,8 L/100',coffre:'455 L',places:5,portes:5,prix:10000,caution:80000,ageMin:23,annee:2023,plaque:'502855 123 31',km:36400,vid:40000,assur:J(95),ct:J(160),img:'tcross',photos:['tcross'],equip:['Radar de recul','Climatisation automatique','Apple CarPlay / Android Auto']},
-  {...GX3,id:'v5',coul:'#2B3A4E',coulN:'Bleu nuit',plaque:'529585 126 16',km:4100,vid:10000,assur:J(350),ct:J(1090),img:'geely-bleu',photos:['geely-bleu']},
-  {...GX3,id:'v6',coul:'#EEEEEA',coulN:'Blanc',plaque:'532697 126 16',km:3200,vid:10000,assur:J(352),ct:J(1092),img:'geely-blanc',photos:['geely-blanc']},
-  {...GX3,id:'v7',coul:'#4B5257',coulN:'Gris anthracite',plaque:'525699 126 16',km:9600,vid:10000,assur:J(340),ct:J(1080),img:'geely-gris',photos:['geely-gris']},
-  {...GX3,id:'v8',coul:'#A2A7AC',coulN:'Argent',plaque:'531424 126 16',km:5800,vid:10000,assur:J(346),ct:J(1086),img:'geely-argent',photos:['geely-argent']},
+  {...GX3,id:'v5',coul:'#2B3A4E',coulN:'Bleu nuit',plaque:'529585 126 16',km:4100,vid:10000,assur:J(350),ct:J(1090),img:'livan-bleu',photos:['livan-bleu']},
+  {...GX3,id:'v6',coul:'#EEEEEA',coulN:'Blanc',plaque:'532697 126 16',km:3200,vid:10000,assur:J(352),ct:J(1092),img:'livan-blanc',photos:['livan-blanc']},
+  {...GX3,id:'v7',coul:'#4B5257',coulN:'Gris anthracite',plaque:'525699 126 16',km:9600,vid:10000,assur:J(340),ct:J(1080),img:'livan-gris',photos:['livan-gris']},
+  {...GX3,id:'v8',coul:'#A2A7AC',coulN:'Argent',plaque:'531424 126 16',km:5800,vid:10000,assur:J(346),ct:J(1086),img:'livan-argent',photos:['livan-argent','livan-argent-ar']},
+  {id:'v10',mod:'coolray',nom:'Geely Coolray',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#9DA3AA',coulN:'Gris titane',boite:'Automatique',carbu:'Essence',moteur:'1.5 T 177 ch',conso:'6,4 L/100',coffre:'330 L',places:5,portes:5,prix:10500,caution:90000,ageMin:23,annee:2025,plaque:'500466 125 16',km:11800,vid:15000,assur:J(260),ct:J(680),img:'coolray',photos:['coolray'],equip:['Écran tactile 10,25"','Caméra de recul','Démarrage sans clé','Apple CarPlay / Android Auto']},
+  {id:'v11',mod:'tcross',nom:'Volkswagen T-Cross',cat:'SUV',gamme:'Confort',forme:'suv',coul:'#DCD8CE',coulN:'Gris perle',boite:'Automatique',carbu:'Essence',moteur:'1.0 TSI 110 ch',conso:'5,8 L/100',coffre:'455 L',places:5,portes:5,prix:10000,caution:80000,ageMin:23,annee:2021,plaque:'036205 121 16',km:58200,vid:60000,assur:J(48),ct:J(130),img:'tcross-2',photos:['tcross-2'],equip:['Radar de recul','Climatisation automatique','Apple CarPlay / Android Auto']},
+  {id:'v12',mod:'polo',nom:'Volkswagen Polo',cat:'Citadine',gamme:'Éco',forme:'citadine',coul:'#EDEDEA',coulN:'Blanche',boite:'Manuelle',carbu:'Essence',moteur:'1.0 TSI 95 ch',conso:'5,5 L/100',coffre:'351 L',places:5,portes:5,prix:6500,caution:50000,ageMin:21,annee:2021,plaque:'à confirmer',km:64300,vid:70000,assur:J(110),ct:J(200),img:'polo-int',photos:['polo-int'],equip:['Compteurs numériques','Écran tactile','Volant cuir multifonction','Bluetooth','Climatisation'],photoInt:true},
   {id:'v9',mod:'ibiza',nom:'Seat Ibiza',cat:'Citadine',gamme:'Éco',forme:'citadine',coul:'#F2F2EF',coulN:'Blanche',boite:'Manuelle',carbu:'Essence',moteur:'1.0 TSI 95 ch',conso:'5,4 L/100',coffre:'355 L',places:5,portes:5,prix:6500,caution:50000,ageMin:21,annee:2023,plaque:'053475 123 16',km:42900,vid:43500,assur:J(70),ct:J(12),img:'ibiza',photos:['ibiza'],equip:['Feux full LED','Apple CarPlay / Android Auto','Bluetooth','Climatisation']}
 ];
 const photo=x=>'img/flotte/'+x+'.jpg';
 /* Visuel d'une voiture : sa vraie photo, sinon une silhouette */
 function vis(v,cls=''){return v.img?`<img class="vis ${cls}" src="${photo(v.img)}" alt="" loading="lazy">`:auto(v.forme,v.coul,cls)}
-/* Modèles = voitures regroupées (ex. 4 Geely GX3 Pro) */
+/* Modèles = voitures regroupées (ex. 4 Livan X3 Pro) */
 function modeles(){const m={};for(const v of S.flotte){(m[v.mod]=m[v.mod]||{mod:v.mod,u:[]}).u.push(v)}return Object.values(m).map(x=>({...x,v:x.u[0]}))}
 
 /* ---------- Conditions générales de location ---------- */
@@ -93,7 +96,7 @@ function devis({v,d1,h1='10:00',d2,h2='10:00',lieu='agence',retour='agence',opts
 }
 
 /* ---------- État partagé (localStorage) ---------- */
-const CLE='sd-v5';
+const CLE='sd-v6';
 let S;
 function conducteur(nom,prenom,tel,naiss,datePermis,extra={}){return{nom,prenom,tel,naiss,datePermis,piece:'CNI',numPiece:'1'+chiffres(tel).slice(-8)+'7',permis:'P'+chiffres(tel).slice(-7),pays:'Algérie',adresse:'Alger',email:'',...extra}}
 function resa0(){
