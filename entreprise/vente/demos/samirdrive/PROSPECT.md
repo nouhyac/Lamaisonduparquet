@@ -8,12 +8,14 @@
 - Voitures vues sur TikTok (à confirmer) : VW T-Cross blanc, Seat Ibiza blanche, SUV gris (Geely GX3 Pro ?), VW Tiguan beige récent, Renault Mégane noire, Clio rouge, Dacia/berline grise, VW noire.
 - À demander : liste exacte de la flotte, prix par jour, caution, kilométrage inclus, frais de livraison aéroport/domicile, Instagram/Facebook, horaires.
 
-## Ce qui est prêt (sans crédit)
-- **Démo** (privée, à partager depuis le menu Partager) : https://claude.ai/artifact/HSvJ4UrYi7temdtN65qgxC
-- Côté client : recherche par dates et lieu (agence, aéroport, livraison à domicile), voitures disponibles uniquement, prix total calculé (remises 3 j -5 %, 7 j -10 %, 15 j -15 %, 30 j -25 %), options (siège bébé, 2e conducteur, km illimité, plein), numéro de vol, réservation + message WhatsApp pré-rempli, français / arabe.
-- Espace loueur (code **0328**) : tableau de bord du jour (départs, retours, demandes), planning de la flotte sur 3 semaines, réservations (confirmer + WhatsApp client, remise des clés avec état des lieux 4 photos + carburant + km, retour avec calcul des suppléments km/carburant, caution), réservation par téléphone, flotte (vidange, assurance, contrôle technique avec alertes, prix modifiable, mise au garage), caisse (encaissé, reste, cautions, chiffre par voiture).
-- Tests : 0 erreur téléphone + ordinateur, accessibilité 0 défaut sur 9 écrans.
-- Prix et voitures **provisoires** (marqués « à confirmer » dans la démo).
+## Ce qui est prêt (V2, sans crédit)
+- **Démo** (partagée par lien) : https://claude.ai/artifact/HSvJ4UrYi7temdtN65qgxC · espace loueur code **0328**.
+- Flotte (d'après la capture TikTok, à confirmer) : Renault Mégane Sedan, VW Tiguan 2025 sable, VW T-Roc 2025 rouge, VW T-Cross blanc, Geely GX3 Pro 2026 gris, Seat Ibiza blanche, VW Polo noire, Dacia Duster blanc, Dacia Logan grise. TikTok bloque la liste des vidéos sans compte : demander la liste exacte au client.
+- **Site client** : recherche par lieu (agence, aéroport T1, domicile), dates et heures (location par 24 h, tolérance 59 min), voitures libres uniquement, fiche voiture (moteur, conso, coffre, équipements, conditions, calendrier 5 semaines), comparatif des protections, conditions de location claires, FAQ, FR/AR.
+- **Réservation en 5 étapes** (comme Sixt/Europcar) : trajet → protection (Essentielle incluse / Confort +15 % franchise /2 / Sérénité +28 % franchise 0, caution réduite) → options (siège bébé, rehausseur, 2e conducteur, km illimité, plein prépayé) → conducteur (infos obligatoires : identité, naissance, téléphone, pièce + n°, permis + n° + date + pays, adresse ; contrôles âge 21/23/25 ans selon gamme, permis 2 ans, jeune conducteur +700 DA/j ; photos permis recto/verso + pièce ; 2e conducteur) → vérification + CGL + certification + signature au doigt → bon de réservation + WhatsApp. « Ma réservation » : suivi et annulation gratuite > 24 h.
+- **Conditions générales** complètes (13 articles : conducteur, documents, caution, franchise, km, carburant, retards, interdits, accident, amendes, annulation, restitution, données personnelles loi 18-07). À valider avec Samir.
+- **Espace loueur** : tableau de bord (départs/retours/retards, demandes, alertes, liste noire), planning 3 semaines, réservations (dossier complet avec documents et signature, vérification des papiers, confirmation + message WhatsApp), **contrat de location** imprimable, **état des lieux** sur schéma de la voiture (rayure/bosse/impact) + 4 photos + carburant + km, retour avec comparaison des dommages, suppléments km/carburant et retenue sur caution plafonnée à la franchise, réservation par téléphone, **fichier clients** (historique, chiffre, note, liste noire), flotte (vidange, assurance, CT, prix, garage), caisse.
+- Tests : 0 erreur téléphone + ordinateur sur tout le parcours, accessibilité 0 défaut sur 21 écrans.
 
 ## À faire quand les crédits Higgsfield seront rechargés (≈ 15-20 crédits)
 - Remplacer les silhouettes par des rendus studio de chaque voiture (fond noir et or, comme le logo).
