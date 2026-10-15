@@ -1,0 +1,10 @@
+{
+"arkana":{"titre":["Renault Arkana","E-Tech"],"version":"Esprit Alpine","prix":15000,"points":[["arkana-pano","Toit panoramique"],["arkana-int","Sellerie Alpine"],["arkana-2","Hybride automatique"]]},
+"jetour":{"titre":["Jetour X50"],"prix":9500,"points":[["jetour-1","SUV spacieux"],["jetour-2","Signature LED"]]},
+"tharu":{"titre":["Volkswagen","Tharu XR"],"prix":11000,"points":[["tharu-av","Bandeau lumineux"],["tharu-ar","SUV récent"]]},
+"tcross":{"titre":["Volkswagen","T-Cross"],"prix":10000,"points":[["tcross","Blanc pur"],["tcross-2","ou gris perle"]]},
+"livan":{"titre":["Livan X3 Pro"],"version":"4 couleurs","prix":7000,"points":[["livan-blanc","Blanc"],["livan-gris","Gris anthracite"],["livan-argent","Argent"]]},
+"coolray":{"titre":["Geely Coolray"],"prix":10500,"points":[["coolray-ar","SUV sportif"],["coolray-int","Écran tactile"]]},
+"ibiza":{"titre":["Seat Ibiza"],"version":"FR","prix":6500,"points":[["ibiza-34","Finition FR"],["ibiza-feux","Feux LED"],["ibiza-ar","Petit prix"]]},
+"polo":{"titre":["Volkswagen Polo"],"prix":6500,"points":[["polo-cote","Toit ouvrant"],["polo-34","Petit prix"]]}
+}

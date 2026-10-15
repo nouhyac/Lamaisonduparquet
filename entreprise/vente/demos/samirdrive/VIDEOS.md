@@ -1,4 +1,6 @@
-# Vidéos Samir Drive (à produire après l'achat des crédits Higgsfield)
+# Vidéos Samir Drive
+
+**FAIT le 16/10** : `videos/pub-samir-drive.mp4` (32 s), 8 vidéos `videos/samir-drive-<modèle>.mp4` (13 s, prix provisoires), et côté Dzign `campagne/location/pub-dzign-location.mp4` + `campagne/location/dzign-website-promo.mp4`. Sources et scripts : `videos/sources/` (changer les prix dans `cars.json`, relancer `python3 voiture.py arkana jetour …`, aucun crédit).
 
 Référence donnée le 15/10 : pub CarJet (https://youtu.be/uoNtUcuQPDw, 33 s).
 

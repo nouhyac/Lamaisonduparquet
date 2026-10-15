@@ -1,6 +1,6 @@
 /* Samir Drive · site client */
 /* ================= Langue ================= */
-const AR={sous:'كراء السيارات',n_flotte:'سياراتنا',n_prot:'الحماية',n_cond:'الشروط',n_contact:'اتصل بنا',mares:'حجزي',reserver:'احجز',
+const AR={x_studio:'السيارة الحقيقية، في تصوير استوديو',x_vraie:'صورة حقيقية للسيارة',sous:'كراء السيارات',n_flotte:'سياراتنا',n_prot:'الحماية',n_cond:'الشروط',n_contact:'اتصل بنا',mares:'حجزي',reserver:'احجز',
 h_sur:'كراء السيارات · الجزائر',h_1:'سيارتك في انتظارك',h_2:'في المطار.',h_p:'اختر تواريخك، شاهد السعر الدقيق فوراً واحجز في دقيقتين. نسلمك المفاتيح في مطار الجزائر أو في الوكالة أو أمام بيتك.',at1:'سيارات حديثة',at2:'توصيل إلى المطار',at3:'لا دفع عبر الإنترنت',
 r_lieu:'الاستلام',r_retour:'الإرجاع',r_d1:'تاريخ الانطلاق',r_d2:'تاريخ الرجوع',r_h:'الساعة',r_go:'عرض السيارات',
 f_sur:'الأسطول',f_t:'اختر سيارتك',f_p:'السعر اليومي يشمل التأمين الشامل و{km} كم في اليوم والمساعدة 24/24.',ct_hor:'أوقات العمل',c_tout:'الكل',c_cit:'سيارات المدينة',c_ber:'سيدان',c_suv:'رباعية الدفع',c_prem:'فاخرة',c_auto:'ناقل أوتوماتيكي',tri:'ترتيب',tri0:'الموصى بها',tri1:'السعر تصاعدياً',tri2:'السعر تنازلياً',
@@ -92,6 +92,7 @@ function rendreProtos(){
 }
 
 /* ================= Fiche voiture ================= */
+const labPh=x=>/-studio$/.test(x)?t('x_studio','La vraie voiture, mise en scène studio'):t('x_vraie','Photo réelle de la voiture');
 function fiche(vid){
   const v=V(vid),m=modeles().find(x=>x.mod===v.mod),ok=libre(v.id,R.d1,R.d2),dv=devis({v,...R});CHOIX[v.mod]=v.id;
   let cal='';const deb=parse(J(0));const dec=(deb.getDay()+6)%7;
@@ -100,7 +101,7 @@ function fiche(vid){
   const ph=v.photos||[];
   $('fiche').innerHTML=`<header><div><span class="sur">${v.gamme} · ${v.cat}</span><h2 id="fi-titre">${v.nom}${v.version?' '+v.version:''} <small>${v.annee}</small></h2></div><button class="fermer" type="button" data-ferme aria-label="${t('x_fermer','Fermer')}">×</button></header>
   <div class="in" tabindex="0">
-    ${ph.length?`<div class="galerie"><img id="gal-img" src="${photo(ph[0])}" alt="${v.nom} ${v.coulN}">${ph.length>1?`<div class="vignettes">${ph.map((x,i)=>`<button type="button" data-gal="${x}" aria-pressed="${i===0}" aria-label="Photo ${i+1}"><img src="${photo(x)}" alt=""></button>`).join('')}</div>`:''}<span class="vraie">${t('x_vraie','Photos réelles de la voiture')}</span></div>`:`<div class="fi-scene">${auto(v.forme,v.coul)}</div>`}
+    ${ph.length?`<div class="galerie"><img id="gal-img" src="${photo(ph[0])}" alt="${v.nom} ${v.coulN}">${ph.length>1?`<div class="vignettes">${ph.map((x,i)=>`<button type="button" data-gal="${x}" aria-pressed="${i===0}" aria-label="Photo ${i+1}"><img src="${photo(x)}" alt=""></button>`).join('')}</div>`:''}<span class="vraie" id="gal-lab">${labPh(ph[0])}</span></div>`:`<div class="fi-scene">${auto(v.forme,v.coul)}</div>`}
     <div class="fi-coul"><span class="lab">${t('x_coul','Couleur')}</span>${pastilles(m,v,'data-fcoul')}</div>
     <div class="fi-specs">
       <div><small>Moteur</small><b>${v.moteur}</b></div><div><small>Boîte</small><b>${v.boite}</b></div><div><small>Carburant</small><b>${v.carbu}</b></div>
@@ -322,7 +323,7 @@ document.addEventListener('click',e=>{
   if(b.dataset.fiche){fiche(b.dataset.fiche);return}
   if(b.dataset.coul){CHOIX[V(b.dataset.coul).mod]=b.dataset.coul;rendreFlotte();document.querySelector(`[data-coul="${b.dataset.coul}"]`)?.focus();return}
   if(b.dataset.fcoul){fiche(b.dataset.fcoul);return}
-  if(b.dataset.gal){$('gal-img').src=photo(b.dataset.gal);b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));return}
+  if(b.dataset.gal){$('gal-img').src=photo(b.dataset.gal);$('gal-lab').textContent=labPh(b.dataset.gal);b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));return}
   if(b.dataset.tcoul){lireEtape();T.v=b.dataset.tcoul;etape(1);return}
   if(b.dataset.resa){ouvrirTunnel(b.dataset.resa);return}
   if(b.dataset.cgl!==undefined){ouvrirCGL();return}

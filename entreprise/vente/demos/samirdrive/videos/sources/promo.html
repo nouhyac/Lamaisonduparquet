@@ -1,0 +1,72 @@
+<!doctype html><meta charset="utf-8"><style>
+@font-face{font-family:D;src:url(file:///usr/share/fonts/opentype/inter/InterDisplay-Bold.otf);font-weight:700}
+@font-face{font-family:D;src:url(file:///usr/share/fonts/opentype/inter/InterDisplay-Medium.otf);font-weight:500}
+@font-face{font-family:D;src:url(file:///usr/share/fonts/opentype/inter/InterDisplay-Black.otf);font-weight:900}
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#ECEBE8;font-family:D,sans-serif;color:#16161A}
+.sc{position:absolute;inset:0;opacity:0;transition:opacity .45s}.sc.on{opacity:1}
+.shot{background-size:cover;background-position:top center;border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.08)}
+.titre{position:absolute;left:90px;font-size:64px;font-weight:700;letter-spacing:.01em;line-height:1.05;text-transform:uppercase}
+.titre small{display:block;font-size:26px;font-weight:500;letter-spacing:.32em;color:#8B7A55;margin-bottom:18px}
+.titre i{font-style:normal;color:#A88A4A}
+.ligne{height:3px;width:0;background:#B8975A;margin-top:26px;transition:width .9s .3s cubic-bezier(.2,.8,.2,1)}.on .ligne{width:140px}
+.mt{opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.2,.8,.2,1)}.on .mt{opacity:1;transform:none}
+/* 1 : grille isométrique */
+.iso{position:absolute;left:50%;top:50%;width:2600px;height:2600px;margin:-1300px;transform:rotateX(52deg) rotateZ(-32deg);display:grid;grid-template-columns:repeat(4,1fr);gap:46px;transform-style:preserve-3d}
+.iso .shot{aspect-ratio:16/10;width:100%}
+.persp{position:absolute;inset:0;perspective:2200px}
+.pill{white-space:nowrap;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:22px;padding:56px 80px;text-align:center;box-shadow:0 40px 90px rgba(0,0,0,.2)}
+.pill b{display:block;font-size:76px;font-weight:900;letter-spacing:.04em}.pill span{display:block;margin-top:16px;font-size:30px;font-weight:500;color:#777;letter-spacing:.06em}
+.pill .url{display:inline-block;margin-top:26px;border:1.5px solid #ddd;border-radius:99px;padding:10px 30px;font-size:26px;color:#555}
+/* ordi */
+.lap{position:absolute;width:980px;left:50px}
+.lap .ec{background:#1b1b1d;border-radius:26px 26px 6px 6px;padding:22px;box-shadow:0 50px 100px rgba(0,0,0,.25)}
+.lap .ec div{aspect-ratio:16/10;background-size:cover;background-position:top center;border-radius:4px}
+.lap .base{height:30px;margin:0 -50px;background:linear-gradient(#cfcfd2,#9d9da2);border-radius:0 0 30px 30px}
+.tel{position:absolute;width:330px;aspect-ratio:9/19.5;background:#111;border-radius:52px;padding:14px;box-shadow:0 50px 90px rgba(0,0,0,.28)}
+.tel div{width:100%;height:100%;border-radius:40px;background-size:cover;background-position:top center}
+.fl{animation:flotte 6s ease-in-out infinite}@keyframes flotte{50%{transform:translateY(-22px)}}
+.defile{transition:background-position 3.2s ease-in-out}.on .defile{background-position:bottom center}
+.end{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;text-align:center}
+.end .z{font-size:200px;font-weight:900;letter-spacing:-.04em;line-height:.8}
+.end .z small{display:block;font-size:34px;letter-spacing:.7em;font-weight:500;margin-top:30px;color:#8B7A55;text-indent:.7em}
+.puce{border:1.5px solid #C9B387;border-radius:99px;padding:14px 30px;font-size:30px;font-weight:500;color:#5A4A2A;background:#F6F1E6}
+</style>
+<!-- 1 -->
+<div class="sc" id="s1"><div class="persp"><div class="iso" id="iso"></div></div>
+ <div class="pill mt"><b>DZIGN STUDIO</b><span>Sites & plateformes sur mesure</span><div class="url">dzignstudio.store</div></div></div>
+<!-- 2 : design -->
+<div class="sc" id="s2"><div class="titre mt" style="top:200px"><small>01 — Design</small>Un design<br><i>qui impressionne</i><div class="ligne"></div></div>
+ <div class="shot mt" style="position:absolute;left:90px;top:640px;width:900px;height:560px;background-image:url(shots/pf-1.jpg);transition-delay:.2s"></div>
+ <div class="shot mt" style="position:absolute;left:300px;top:1130px;width:700px;height:440px;background-image:url(shots/pf-4.jpg);transition-delay:.45s"></div>
+ <div class="shot mt" style="position:absolute;left:60px;top:1330px;width:420px;height:262px;background-image:url(shots/pf-7.jpg);transition-delay:.7s"></div></div>
+<!-- 3 : ordi -->
+<div class="sc" id="s3"><div class="titre mt" style="top:200px"><small>02 — Ordinateur</small>Présentation<br><i>parfaite</i><div class="ligne"></div></div>
+ <div class="lap mt fl" style="top:720px"><div class="ec"><div class="defile" style="background-image:url(shots/dz-hero.jpg)"></div></div><div class="base"></div></div>
+ <div class="shot mt" style="position:absolute;left:640px;top:1330px;width:380px;height:238px;background-image:url(shots/pf-5.jpg);transition-delay:.4s"></div></div>
+<!-- 4 : mobile -->
+<div class="sc" id="s4"><div class="titre mt" style="top:200px"><small>03 — Téléphone</small>Version<br><i>mobile</i><div class="ligne"></div></div>
+ <div class="tel mt fl" style="left:120px;top:640px"><div class="defile" style="background-image:url(shots/pm-6.jpg)"></div></div>
+ <div class="tel mt fl" style="left:630px;top:760px;transition-delay:.25s;animation-delay:-2s"><div class="defile" style="background-image:url(shots/pm-4.jpg)"></div></div>
+ <div class="tel mt fl" style="left:375px;top:1100px;transition-delay:.5s;animation-delay:-4s;width:300px"><div style="background-image:url(shots/sm-home.jpg)"></div></div></div>
+<!-- 5 : plateforme -->
+<div class="sc" id="s5"><div class="titre mt" style="top:200px"><small>04 — Plateforme</small>Réservation<br>& <i>espace gérant</i><div class="ligne"></div></div>
+ <div class="lap mt" style="top:640px"><div class="ec"><div style="background-image:url(shots/sd-planning.jpg)"></div></div><div class="base"></div></div>
+ <div class="tel mt fl" style="left:90px;top:1180px;width:270px;transition-delay:.3s"><div style="background-image:url(shots/sm-protec.jpg)"></div></div>
+ <div class="shot mt" style="position:absolute;left:400px;top:1330px;width:600px;height:375px;background-image:url(shots/sd-gerant.jpg);transition-delay:.55s"></div></div>
+<!-- 6 : multi -->
+<div class="sc" id="s6"><div class="persp"><div class="iso" id="iso2" style="transform:rotateX(52deg) rotateZ(28deg)"></div></div>
+ <div class="titre mt" style="top:170px;background:#fff;padding:40px 50px;border-radius:20px;box-shadow:0 30px 70px rgba(0,0,0,.15)"><small>05 — Sur mesure</small>Restaurant, boutique,<br>location, <i>clinique…</i></div>
+ <div class="lap mt fl" style="top:1100px;left:150px;width:780px"><div class="ec"><div style="background-image:url(shots/sd-home.jpg)"></div></div><div class="base"></div></div></div>
+<!-- 7 : fin -->
+<div class="sc end" id="s7"><div class="z mt">DZIGN<small>STUDIO</small></div>
+ <div class="mt" style="font-size:52px;font-weight:700;transition-delay:.3s">Votre site, à votre nom.</div>
+ <div class="mt" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;padding:0 60px;transition-delay:.55s"><span class="puce">Démo gratuite</span><span class="puce">Maquette satisfaite ou remboursée</span></div>
+ <div class="mt" style="font-size:40px;font-weight:700;color:#8B7A55;transition-delay:.8s">dzignstudio.store</div></div>
+<script>
+const P=['pf-1','pf-3','pf-4','pf-5','pf-6','pf-7','sd-home','sd-flotte','dz-hero','sd-planning','pf-1','pf-4','pf-6','sd-gerant','pf-5','pf-3'];
+for(const id of ['iso','iso2'])document.getElementById(id).innerHTML=P.concat(P).map(p=>`<div class="shot" style="background-image:url(shots/${p}.jpg)"></div>`).join('');
+const T=[['s1',0],['s2',3.6],['s3',7.4],['s4',11.2],['s5',15.0],['s6',18.8],['s7',22.6]];
+const t0=performance.now();
+for(const [id,t] of T)setTimeout(()=>{document.querySelectorAll('.sc').forEach(s=>s.classList.toggle('on',s.id===id))},t*1000+150);
+(function a(){const t=(performance.now()-t0)/1000;document.getElementById('iso').style.transform=`rotateX(52deg) rotateZ(-32deg) translate(${-t*40}px,${t*30}px)`;document.getElementById('iso2').style.transform=`rotateX(52deg) rotateZ(28deg) translate(${t*35}px,${-t*25}px)`;requestAnimationFrame(a)})();
+</script>
