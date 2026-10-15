@@ -31,6 +31,7 @@
     </div>
   </nav>
 
+  <div class="annonce" id="annonce" role="status" hidden></div>
   <header class="hero" id="haut">
     <canvas id="etincelles" aria-hidden="true"></canvas>
     <div class="wrap">
@@ -67,7 +68,7 @@
     <div class="wrap">
       <div class="tete">
         <div><span class="sur" data-t="f_sur">La flotte</span><h2 id="t-flotte" data-t="f_t">Choisissez votre voiture</h2></div>
-        <p data-t="f_p">Prix par jour avec assurance tous risques, 250 km par jour et assistance 24 h/24. Plus vous louez longtemps, moins vous payez.</p>
+        <p data-t="f_p">Prix par jour avec assurance tous risques, {km} km par jour et assistance 24 h/24. Plus vous louez longtemps, moins vous payez.</p>
       </div>
       <div class="filtres" role="group" aria-label="Filtrer les voitures">
         <button class="chip" type="button" data-cat="" aria-pressed="true" data-t="c_tout">Toutes</button>
@@ -143,11 +144,11 @@
     <div class="wrap">
       <div class="tete"><div><span class="sur" data-t="cd_sur">Conditions de location</span><h2 id="t-cond" data-t="cd_t">Clair dès le départ</h2></div><p data-t="cd_p">Pas de petites lignes : voici l'essentiel. Les conditions complètes sont à lire et à accepter avant chaque réservation.</p></div>
       <div class="regles">
-        <div class="regle"><span class="ic" aria-hidden="true">🪪</span><h3>21 ans · permis 2 ans</h3><p>23 ans pour la gamme Confort, 25 ans pour la gamme Premium. Supplément jeune conducteur de 21 à 24 ans.</p></div>
+        <div class="regle"><span class="ic" aria-hidden="true">🪪</span><h3 data-t="rg1">{age} ans · permis {permis} ans</h3><p data-t="rg2">23 ans pour la gamme Confort, 25 ans pour la gamme Premium. Supplément jeune conducteur de {age} à 24 ans ({jeune} par jour).</p></div>
         <div class="regle"><span class="ic" aria-hidden="true">📄</span><h3>Originaux obligatoires</h3><p>Carte d'identité ou passeport, et permis de conduire. Diaspora : passeport et permis du pays de résidence.</p></div>
         <div class="regle"><span class="ic" aria-hidden="true">🔒</span><h3>Caution rendue au retour</h3><p>En espèces ou chèque certifié, selon la voiture. Réduite jusqu'à 50 % avec la protection Sérénité.</p></div>
         <div class="regle"><span class="ic" aria-hidden="true">⛽</span><h3>Même niveau de carburant</h3><p>Rendez la voiture comme vous l'avez reçue, ou prenez le plein prépayé.</p></div>
-        <div class="regle"><span class="ic" aria-hidden="true">🛣️</span><h3>250 km par jour inclus</h3><p>Au-delà, 20 DA par km. Ou kilométrage illimité en option.</p></div>
+        <div class="regle"><span class="ic" aria-hidden="true">🛣️</span><h3 data-t="rg3">{km} km par jour inclus</h3><p data-t="rg4">Au-delà, {prixKm} par km. Ou kilométrage illimité en option.</p></div>
         <div class="regle"><span class="ic" aria-hidden="true">⏱️</span><h3>59 minutes de tolérance</h3><p>La location se compte par 24 h. Prolongation possible sur WhatsApp, selon disponibilité.</p></div>
       </div>
       <button class="btn btn-ligne" type="button" data-cgl style="margin-top:26px" data-t="cd_btn">Lire les conditions générales complètes</button>
@@ -172,9 +173,10 @@
       <div class="tete"><div><span class="sur" data-t="ct_sur">Contact</span><h2 id="t-contact" data-t="ct_t">Une question ? On répond vite.</h2></div></div>
       <div class="contact">
         <div class="c">
-          <div class="ligne-c"><span class="ic" aria-hidden="true">☎</span><div><small data-t="ct_tel">Téléphone</small><b>0555 05 24 70</b></div></div>
-          <div class="ligne-c"><span class="ic" aria-hidden="true">✆</span><div><small>WhatsApp</small><b>0550 35 45 30</b></div></div>
-          <div class="ligne-c"><span class="ic" aria-hidden="true">⌖</span><div><small data-t="ct_ag">Agence</small><b>Bordj El Kiffan, Alger</b></div></div>
+          <div class="ligne-c"><span class="ic" aria-hidden="true">☎</span><div><small data-t="ct_tel">Téléphone</small><b data-t="ag_tel">{tel}</b></div></div>
+          <div class="ligne-c"><span class="ic" aria-hidden="true">✆</span><div><small>WhatsApp</small><b data-t="ag_wa">{wa}</b></div></div>
+          <div class="ligne-c"><span class="ic" aria-hidden="true">⌖</span><div><small data-t="ct_ag">Agence</small><b data-t="ag_adr">{adresse}</b></div></div>
+          <div class="ligne-c"><span class="ic" aria-hidden="true">◷</span><div><small data-t="ct_hor">Horaires</small><b data-t="ag_hor">{horaires}</b></div></div>
           <div class="ligne-c"><span class="ic" aria-hidden="true">✈</span><div><small data-t="ct_aero">Aéroport</small><b data-t="ct_aero2">Livraison au terminal, 24 h/24</b></div></div>
           <div class="ligne-act"><a class="btn btn-wa" id="wa-contact" target="_blank" rel="noopener" data-t="ct_wa">Écrire sur WhatsApp</a></div>
         </div>

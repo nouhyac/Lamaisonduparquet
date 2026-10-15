@@ -1,5 +1,9 @@
 /* Samir Drive · données, règles de prix et outils communs (site client + espace loueur) */
-const WA='213550354530', TEL='0555 05 24 70', WA_AFF='0550 35 45 30', PIN='0328';
+const PIN='0328';
+/* Infos de l'agence et règles : modifiables par le gérant (Réglages) */
+const AG={nom:'Samir Drive',tel:'0555 05 24 70',wa:'0550 35 45 30',adresse:'Bordj El Kiffan, Alger',horaires:'7j/7 de 8 h à 22 h · aéroport 24 h/24',annonce:''};
+const RG={km:250,prixKm:20,prix8e:1200,jeune:700,ageMin:21,permis:2};
+Object.defineProperties(window,{TEL:{get:()=>AG.tel},WA_AFF:{get:()=>AG.wa},WA:{get:()=>telInt(AG.wa)},KM_JOUR:{get:()=>RG.km},PRIX_KM:{get:()=>RG.prixKm},PRIX_8E:{get:()=>RG.prix8e},JEUNE:{get:()=>RG.jeune},AGE_MIN:{get:()=>RG.ageMin},PERMIS_MIN:{get:()=>RG.permis}});
 const $=id=>document.getElementById(id);
 const pad=n=>String(n).padStart(2,'0');
 const iso=x=>x.getFullYear()+'-'+pad(x.getMonth()+1)+'-'+pad(x.getDate());
@@ -42,7 +46,7 @@ const OPTS={
   plein:{n:"Plein d'essence prépayé",ar:'خزان ممتلئ مسبق الدفع',d:'Rendez la voiture sans faire le plein',p:6500,jour:false}
 };
 const REMISES=[[30,.25,'30 jours et +'],[15,.15,'15 à 29 jours'],[7,.10,'7 à 14 jours'],[3,.05,'3 à 6 jours']];
-const KM_JOUR=250, PRIX_KM=20, PRIX_8E=1200, JEUNE=700, AGE_MIN=21, PERMIS_MIN=2;
+
 
 /* ---------- Flotte réelle (photos et vidéos envoyées par Samir, modèles à confirmer) ---------- */
 const GX3={mod:'x3pro',nom:'Livan X3 Pro',cat:'SUV',gamme:'Éco',forme:'suv',boite:'Manuelle',carbu:'Essence',moteur:'1.5 L 102 ch',conso:'6,5 L/100',coffre:'330 L',places:5,portes:5,prix:7000,caution:60000,ageMin:21,annee:2026,equip:['Écran tactile','Caméra de recul','Bluetooth','Climatisation'],neuf:true};
@@ -60,28 +64,30 @@ const FLOTTE0=[
   {id:'v12',mod:'polo',nom:'Volkswagen Polo',cat:'Citadine',gamme:'Éco',forme:'citadine',coul:'#EDEDEA',coulN:'Blanche',boite:'Manuelle',carbu:'Essence',moteur:'1.0 TSI 95 ch',conso:'5,5 L/100',coffre:'351 L',places:5,portes:5,prix:6500,caution:50000,ageMin:21,annee:2021,plaque:'à confirmer',km:64300,vid:70000,assur:J(110),ct:J(200),img:'polo-34',photos:['polo-34','polo-cote','polo-int'],equip:['Toit ouvrant panoramique','Compteurs numériques','Écran tactile','Volant cuir multifonction','Bluetooth','Climatisation']},
   {id:'v9',mod:'ibiza',nom:'Seat Ibiza',version:'FR',cat:'Citadine',gamme:'Éco',forme:'citadine',coul:'#F2F2EF',coulN:'Blanche',boite:'Manuelle',carbu:'Essence',moteur:'1.0 TSI 95 ch',conso:'5,4 L/100',coffre:'355 L',places:5,portes:5,prix:6500,caution:50000,ageMin:21,annee:2023,plaque:'053475 123 16',km:42900,vid:43500,assur:J(70),ct:J(12),img:'ibiza-av',photos:['ibiza-av','ibiza-34','ibiza-feux','ibiza-ar','ibiza-av2','ibiza'],equip:['Finition FR sportive','Double sortie d\'échappement','Feux full LED','Apple CarPlay / Android Auto','Bluetooth','Climatisation']}
 ];
-const photo=x=>'img/flotte/'+x+'.jpg';
+const photo=x=>String(x).startsWith('data:')?x:'img/flotte/'+x+'.jpg';
 /* Visuel d'une voiture : sa vraie photo, sinon une silhouette */
 function vis(v,cls=''){return v.img?`<img class="vis ${cls}" src="${photo(v.img)}" alt="" loading="lazy">`:auto(v.forme,v.coul,cls)}
 /* Modèles = voitures regroupées (ex. 4 Livan X3 Pro) */
-function modeles(){const m={};for(const v of S.flotte){(m[v.mod]=m[v.mod]||{mod:v.mod,u:[]}).u.push(v)}return Object.values(m).map(x=>({...x,v:x.u[0]}))}
+function modeles(tout){const m={};for(const v of S.flotte){if(!tout&&v.cache)continue;(m[v.mod]=m[v.mod]||{mod:v.mod,u:[]}).u.push(v)}return Object.values(m).map(x=>({...x,v:x.u[0]}))}
 
 /* ---------- Conditions générales de location ---------- */
 const CGL=[
- ['Le conducteur',`Avoir au moins <b>21 ans</b> (23 ans pour la gamme Confort, 25 ans pour la gamme Premium) et un <b>permis B depuis au moins 2 ans</b>, en cours de validité. Entre 21 et 24 ans, un supplément jeune conducteur de ${fmt(JEUNE)} par jour s'applique. Seuls les conducteurs inscrits au contrat peuvent conduire.`],
- ['Documents à présenter',`Les <b>originaux</b> : carte d'identité nationale ou passeport, et permis de conduire. Pour la diaspora : passeport et permis du pays de résidence (permis international conseillé). Les copies envoyées en ligne accélèrent la remise des clés mais ne remplacent pas les originaux.`],
- ['La caution',`Demandée à la remise des clés, en espèces ou par chèque certifié. Son montant dépend de la voiture et de la protection choisie. Elle est rendue au retour après l'état des lieux, ou sous 7 jours au plus tard si une infraction doit être vérifiée.`],
- ['Assurance et franchise',`Assurance tous risques incluse. En cas de dommage, le locataire paie au maximum la <b>franchise</b> de sa protection (Essentielle : montant de la caution · Confort : moitié · Sérénité : 0 DA). Non couverts : conduite sous l'effet de l'alcool ou de stupéfiants, conducteur non déclaré, usage hors route, clés laissées dans la voiture, négligence grave. Pneus, jantes et vitres : couverts seulement avec Sérénité.`],
- ['Kilométrage',`${KM_JOUR} km par jour de location sont inclus. Au-delà : ${PRIX_KM} DA par kilomètre. Avec l'option kilométrage illimité, vous roulez sans compter.`],
- ['Carburant',`La voiture est remise avec un niveau de carburant noté à l'état des lieux et doit être rendue au même niveau. Chaque huitième manquant est facturé ${fmt(PRIX_8E)}, sauf option plein prépayé.`],
- ['Horaires et retards',`La location se compte par tranches de 24 heures, avec <b>59 minutes de tolérance</b> au retour. Au-delà, une journée supplémentaire est facturée. Pour prolonger, prévenez-nous sur WhatsApp avant la fin de la location, selon disponibilité.`],
- ['Utilisation interdite',`Sortir du territoire algérien, sous-louer ou prêter la voiture, transporter des passagers contre rémunération, tracter, participer à des courses, conduire sur piste ou plage. Interdit de fumer à bord (nettoyage facturé 3 000 DA). Animaux uniquement en cage de transport.`],
- ['Accident, panne ou vol',`Prévenez-nous immédiatement au ${TEL}, remplissez un constat amiable et déposez plainte en cas de vol ou d'agression. Assistance 24 h/24. Une voiture de remplacement est proposée selon disponibilité. Ne faites réparer la voiture nulle part sans notre accord.`],
- ['Amendes et infractions',`Les amendes, retraits de points et frais de fourrière pendant la location sont à la charge du locataire.`],
- ['Annulation et modification',`Gratuites jusqu'à 24 h avant le départ, par WhatsApp ou depuis « Ma réservation ». Aucun paiement n'est demandé en ligne : vous réglez à la remise des clés, en espèces ou par BaridiMob.`],
- ['Restitution',`Au lieu et à l'heure prévus au contrat, en présence d'un agent. Un état des lieux contradictoire avec photos est fait au départ et au retour. Les dommages nouveaux sont retenus sur la caution, dans la limite de la franchise.`],
- ['Données personnelles',`Vos informations servent uniquement à établir le contrat de location et sont protégées conformément à la loi 18-07 relative à la protection des données personnelles. Elles ne sont jamais revendues.`]
+ ['Le conducteur',"Avoir au moins <b>{age} ans</b> (23 ans pour la gamme Confort, 25 ans pour la gamme Premium) et un <b>permis B depuis au moins {permis} ans</b>, en cours de validité. Entre {age} et 24 ans, un supplément jeune conducteur de {jeune} par jour s'applique. Seuls les conducteurs inscrits au contrat peuvent conduire."],
+ ['Documents à présenter',"Les <b>originaux</b> : carte d'identité nationale ou passeport, et permis de conduire. Pour la diaspora : passeport et permis du pays de résidence (permis international conseillé). Les copies envoyées en ligne accélèrent la remise des clés mais ne remplacent pas les originaux."],
+ ['La caution',"Demandée à la remise des clés, en espèces ou par chèque certifié. Son montant dépend de la voiture et de la protection choisie. Elle est rendue au retour après l'état des lieux, ou sous 7 jours au plus tard si une infraction doit être vérifiée."],
+ ['Assurance et franchise',"Assurance tous risques incluse. En cas de dommage, le locataire paie au maximum la <b>franchise</b> de sa protection (Essentielle : montant de la caution · Confort : moitié · Sérénité : 0 DA). Non couverts : conduite sous l'effet de l'alcool ou de stupéfiants, conducteur non déclaré, usage hors route, clés laissées dans la voiture, négligence grave. Pneus, jantes et vitres : couverts seulement avec Sérénité."],
+ ['Kilométrage',"{km} km par jour de location sont inclus. Au-delà : {prixKm} par kilomètre. Avec l'option kilométrage illimité, vous roulez sans compter."],
+ ['Carburant',"La voiture est remise avec un niveau de carburant noté à l'état des lieux et doit être rendue au même niveau. Chaque huitième manquant est facturé {prix8e}, sauf option plein prépayé."],
+ ['Horaires et retards',"La location se compte par tranches de 24 heures, avec <b>59 minutes de tolérance</b> au retour. Au-delà, une journée supplémentaire est facturée. Pour prolonger, prévenez-nous sur WhatsApp avant la fin de la location, selon disponibilité."],
+ ['Utilisation interdite',"Sortir du territoire algérien, sous-louer ou prêter la voiture, transporter des passagers contre rémunération, tracter, participer à des courses, conduire sur piste ou plage. Interdit de fumer à bord (nettoyage facturé 3 000 DA). Animaux uniquement en cage de transport."],
+ ['Accident, panne ou vol',"Prévenez-nous immédiatement au {tel}, remplissez un constat amiable et déposez plainte en cas de vol ou d'agression. Assistance 24 h/24. Une voiture de remplacement est proposée selon disponibilité. Ne faites réparer la voiture nulle part sans notre accord."],
+ ['Amendes et infractions',"Les amendes, retraits de points et frais de fourrière pendant la location sont à la charge du locataire."],
+ ['Annulation et modification',"Gratuites jusqu'à 24 h avant le départ, par WhatsApp ou depuis « Ma réservation ». Aucun paiement n'est demandé en ligne : vous réglez à la remise des clés, en espèces ou par BaridiMob."],
+ ['Restitution',"Au lieu et à l'heure prévus au contrat, en présence d'un agent. Un état des lieux contradictoire avec photos est fait au départ et au retour. Les dommages nouveaux sont retenus sur la caution, dans la limite de la franchise."],
+ ['Données personnelles',"Vos informations servent uniquement à établir le contrat de location et sont protégées conformément à la loi 18-07 relative à la protection des données personnelles. Elles ne sont jamais revendues."]
 ];
+/* Conditions avec les valeurs du moment ({km}, {jeune}… remplacés automatiquement) */
+function cgl(){const T={age:RG.ageMin,permis:RG.permis,jeune:fmt(RG.jeune),km:nb(RG.km),prixKm:fmt(RG.prixKm),prix8e:fmt(RG.prix8e),tel:AG.tel};return CGL.map(([h,p])=>[h,p.replace(/\{(\w+)\}/g,(m,k)=>k in T?T[k]:m)])}
 
 /* ---------- Prix ---------- */
 function devis({v,d1,h1='10:00',d2,h2='10:00',lieu='agence',retour='agence',opts=[],prot='essentielle',naiss=''}){
@@ -96,7 +102,7 @@ function devis({v,d1,h1='10:00',d2,h2='10:00',lieu='agence',retour='agence',opts
 }
 
 /* ---------- État partagé (localStorage) ---------- */
-const CLE='sd-v6';
+const CLE='sd-v7';
 let S;
 function conducteur(nom,prenom,tel,naiss,datePermis,extra={}){return{nom,prenom,tel,naiss,datePermis,piece:'CNI',numPiece:'1'+chiffres(tel).slice(-8)+'7',permis:'P'+chiffres(tel).slice(-7),pays:'Algérie',adresse:'Alger',email:'',...extra}}
 function resa0(){
@@ -118,8 +124,11 @@ function resa0(){
     mk('SD-1051','v1',conducteur('Zerrouki','Imane','0540 77 31 09','1990-12-02','2011-07-19'),J(12),J(14),'agence','agence',[],'serenite','confirmee'),
   ];
 }
+const CONF0=JSON.parse(JSON.stringify({AG,RG,LIEUX,OPTS,PROTECTIONS,REMISES,CGL}));
+function conf(){return JSON.parse(JSON.stringify({AG,RG,LIEUX,OPTS,PROTECTIONS,REMISES,CGL}))}
+function appliquerConf(c){Object.assign(AG,c.AG);Object.assign(RG,c.RG);for(const k in c.LIEUX)Object.assign(LIEUX[k],c.LIEUX[k]);for(const k in c.OPTS)Object.assign(OPTS[k],c.OPTS[k]);for(const k in c.PROTECTIONS)Object.assign(PROTECTIONS[k],c.PROTECTIONS[k]);REMISES.splice(0,REMISES.length,...c.REMISES);CGL.splice(0,CGL.length,...c.CGL)}
 function charger(){try{S=JSON.parse(localStorage.getItem(CLE))}catch(e){S=null}
-  if(!S||!S.flotte)S={flotte:JSON.parse(JSON.stringify(FLOTTE0)),resas:resa0(),seq:1052,noire:['0699876543'],notes:{}}}
+  if(!S||!S.flotte)S={flotte:JSON.parse(JSON.stringify(FLOTTE0)),resas:resa0(),seq:1052,noire:['0699876543'],notes:{}};appliquerConf(S.conf||CONF0)}
 function sauver(){try{localStorage.setItem(CLE,JSON.stringify(S))}catch(e){try{S.resas.forEach(r=>{if(r.docs){delete r.docs.img}});localStorage.setItem(CLE,JSON.stringify(S))}catch(_){}}}
 function diffuser(){try{new BroadcastChannel('sd').postMessage('maj')}catch(e){}}
 const V=id=>S.flotte.find(v=>v.id===id);

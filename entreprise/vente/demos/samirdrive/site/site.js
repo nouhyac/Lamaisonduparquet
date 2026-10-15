@@ -3,7 +3,7 @@
 const AR={sous:'كراء السيارات',n_flotte:'سياراتنا',n_prot:'الحماية',n_cond:'الشروط',n_contact:'اتصل بنا',mares:'حجزي',reserver:'احجز',
 h_sur:'كراء السيارات · الجزائر',h_1:'سيارتك في انتظارك',h_2:'في المطار.',h_p:'اختر تواريخك، شاهد السعر الدقيق فوراً واحجز في دقيقتين. نسلمك المفاتيح في مطار الجزائر أو في الوكالة أو أمام بيتك.',at1:'سيارات حديثة',at2:'توصيل إلى المطار',at3:'لا دفع عبر الإنترنت',
 r_lieu:'الاستلام',r_retour:'الإرجاع',r_d1:'تاريخ الانطلاق',r_d2:'تاريخ الرجوع',r_h:'الساعة',r_go:'عرض السيارات',
-f_sur:'الأسطول',f_t:'اختر سيارتك',f_p:'السعر اليومي يشمل التأمين الشامل و250 كم في اليوم والمساعدة 24/24.',c_tout:'الكل',c_cit:'سيارات المدينة',c_ber:'سيدان',c_suv:'رباعية الدفع',c_prem:'فاخرة',c_auto:'ناقل أوتوماتيكي',tri:'ترتيب',tri0:'الموصى بها',tri1:'السعر تصاعدياً',tri2:'السعر تنازلياً',
+f_sur:'الأسطول',f_t:'اختر سيارتك',f_p:'السعر اليومي يشمل التأمين الشامل و{km} كم في اليوم والمساعدة 24/24.',ct_hor:'أوقات العمل',c_tout:'الكل',c_cit:'سيارات المدينة',c_ber:'سيدان',c_suv:'رباعية الدفع',c_prem:'فاخرة',c_auto:'ناقل أوتوماتيكي',tri:'ترتيب',tri0:'الموصى بها',tri1:'السعر تصاعدياً',tri2:'السعر تنازلياً',
 e_sur:'بسيط وسريع',e_t:'احجز في دقيقتين',e1:'تواريخك',e1p:'أين ومتى تستلم السيارة. نعرض فقط السيارات المتوفرة مع السعر الإجمالي.',e2:'حمايتك',e2p:'أساسية أو راحة أو طمأنينة: أنت تختار مبلغ التحمل.',e3:'وثائقك',e3p:'صورة الرخصة وبطاقة التعريف من هاتفك: تسليم المفاتيح في 5 دقائق.',e4:'توقيع وتأكيد',e4p:'توقع بإصبعك ونؤكد عبر واتساب في 15 دقيقة. الدفع عند الاستلام.',
 pr_sur:'الحماية',pr_t:'سافر براحة بال',pr_p:'التأمين الشامل مشمول دائماً. الحماية تحدد أقصى ما تدفعه عند الضرر.',
 s_sur:'خدماتنا',s_t:'نأتي إليك',a_sur:'مطار الجزائر',a_t:'المفاتيح عند خروجك من الطائرة',a_p:'أعطنا رقم رحلتك: نتابع وصولك والسيارة تنتظرك أمام المحطة.',a1:'تسليم المفاتيح في المطار 24/24',a2:'متابعة رحلتك بدون تكاليف عند التأخير',a3:'الإرجاع في المطار قبل سفرك',
@@ -14,11 +14,20 @@ ct_sur:'اتصل بنا',ct_t:'سؤال؟ نرد بسرعة.',ct_tel:'الهات
 const FR={};let ar=false;
 const t=(k,fr)=>ar&&AR[k]?AR[k]:fr;
 function appliquerLangue(){
-  document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(!(k in FR))FR[k]=el.textContent;el.textContent=ar&&AR[k]?AR[k]:FR[k]});
+  document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(!(k in FR))FR[k]=el.textContent;el.textContent=tok(ar&&AR[k]?AR[k]:FR[k])});
+  majInfos();
   document.documentElement.lang=ar?'ar':'fr';document.documentElement.dir=ar?'rtl':'ltr';
   document.body.classList.toggle('ar',ar);$('lang').textContent=ar?'Français':'العربية';
   remplirLieux();rendreFlotte();infoDuree();rendreProtos();
 }
+/* Valeurs réglées par le gérant, insérées dans les textes */
+function tok(x){const T={km:nb(RG.km),prixKm:fmt(RG.prixKm),age:RG.ageMin,permis:RG.permis,jeune:fmt(RG.jeune),tel:AG.tel,wa:AG.wa,adresse:AG.adresse,horaires:AG.horaires};return String(x).replace(/\{(\w+)\}/g,(m,k)=>k in T?T[k]:m)}
+function majInfos(){
+  const an=$('annonce');an.textContent=AG.annonce||'';an.hidden=!AG.annonce;
+  $('wa-contact').href=`https://wa.me/${WA}?text=${encodeURIComponent('Bonjour '+AG.nom+', je voudrais louer une voiture.')}`;
+  $('tarifs').innerHTML=REMISES.slice().sort((a,b)=>a[0]-b[0]).map(r=>`<div class="tarif"><b>-${Math.round(r[1]*100)} %</b><span>${r[2]}</span></div>`).join('');
+}
+function majSite(){$('nbv').textContent=S.flotte.filter(v=>!v.cache).length;if(LIEUX[R.lieu].off)R.lieu=Object.keys(LIEUX).find(k=>!LIEUX[k].off);if(LIEUX[R.retour].off)R.retour=R.lieu;appliquerLangue()}
 const jours=n=>n+' '+(n>1?t('x_jours','jours'):t('x_jour','jour'));
 const lieuN=k=>ar?LIEUX[k].ar:LIEUX[k].n;
 
@@ -27,7 +36,7 @@ const R={lieu:'aeroport',retour:'aeroport',d1:J(1),h1:'10:00',d2:J(4),h2:'10:00'
 const F={cat:'',auto:false,tri:'reco'};
 function remplirLieux(){
   for(const id of['r-lieu','r-retour']){const s=$(id),val=id==='r-lieu'?R.lieu:R.retour;
-    s.innerHTML=Object.keys(LIEUX).map(k=>`<option value="${k}" ${k===val?'selected':''}>${lieuN(k)}${LIEUX[k].f?' (+'+fmt(LIEUX[k].f)+')':''}</option>`).join('')}
+    s.innerHTML=Object.keys(LIEUX).filter(k=>!LIEUX[k].off).map(k=>`<option value="${k}" ${k===val?'selected':''}>${lieuN(k)}${LIEUX[k].f?' (+'+fmt(LIEUX[k].f)+')':''}</option>`).join('')}
 }
 const heures=()=>{let h='';for(let i=0;i<24;i++)for(const m of['00','30'])h+=`<option>${pad(i)}:${m}</option>`;return h};
 function infoDuree(){
@@ -148,8 +157,8 @@ function etape(n){
   T.e=n;prog();const f=$('tu-form'),v=V(T.v);
   if(n===1){f.innerHTML=`<h3>${t('x_e1','Où et quand ?')}</h3>
     <div class="grille2">
-      <div class="champ"><label for="t-lieu">${t('r_lieu','Prise en charge')}</label><select id="t-lieu">${Object.keys(LIEUX).map(k=>`<option value="${k}" ${k===T.lieu?'selected':''}>${lieuN(k)}${LIEUX[k].f?' (+'+fmt(LIEUX[k].f)+')':''}</option>`).join('')}</select></div>
-      <div class="champ"><label for="t-retour">${t('r_retour','Restitution')}</label><select id="t-retour">${Object.keys(LIEUX).map(k=>`<option value="${k}" ${k===T.retour?'selected':''}>${lieuN(k)}${LIEUX[k].f?' (+'+fmt(LIEUX[k].f)+')':''}</option>`).join('')}</select></div>
+      <div class="champ"><label for="t-lieu">${t('r_lieu','Prise en charge')}</label><select id="t-lieu">${Object.keys(LIEUX).filter(k=>!LIEUX[k].off).map(k=>`<option value="${k}" ${k===T.lieu?'selected':''}>${lieuN(k)}${LIEUX[k].f?' (+'+fmt(LIEUX[k].f)+')':''}</option>`).join('')}</select></div>
+      <div class="champ"><label for="t-retour">${t('r_retour','Restitution')}</label><select id="t-retour">${Object.keys(LIEUX).filter(k=>!LIEUX[k].off).map(k=>`<option value="${k}" ${k===T.retour?'selected':''}>${lieuN(k)}${LIEUX[k].f?' (+'+fmt(LIEUX[k].f)+')':''}</option>`).join('')}</select></div>
       <div class="champ"><label for="t-d1">${t('r_d1','Départ')}</label><input type="date" id="t-d1" value="${T.d1}" min="${iso(AUJ)}"></div>
       <div class="champ"><label for="t-h1">${t('r_h','Heure')}</label><select id="t-h1">${heures()}</select></div>
       <div class="champ"><label for="t-d2">${t('r_d2','Retour')}</label><input type="date" id="t-d2" value="${T.d2}" min="${T.d1}"></div>
@@ -166,7 +175,7 @@ function etape(n){
       return `<label class="cp ${p.pop?'pop':''}"><input type="radio" name="prot" value="${k}" ${T.prot===k?'checked':''}>${p.pop?`<span class="pop-b">${t('x_pop','La plus choisie')}</span>`:''}<b class="cp-n">${p.n}</b><span class="cp-p">${pj?'+ '+fmt(pj)+' / '+t('x_jour','jour'):t('x_incl','Incluse')}</span>
       <span class="cp-f"><small>Franchise</small><b>${fmt(fr)}</b></span><span class="cp-f"><small>Caution</small><b>${fmt(ca)}</b></span><ul>${p.lignes.map(l=>`<li>${l}</li>`).join('')}</ul></label>`}).join('')}</div>`}
   if(n===3){const d=devis({...T,v});f.innerHTML=`<h3>${t('x_e3','Options')}</h3><p class="sous-t">Tout est préparé avant votre arrivée.</p><fieldset><legend class="sr">Options</legend>
-    ${Object.entries(OPTS).map(([k,o])=>`<label class="opt"><input type="checkbox" value="${k}" ${T.opts.includes(k)?'checked':''}><span>${ar?o.ar:o.n}<small>${o.d}</small></span><b>+${fmt(o.p)}${o.jour?' / '+t('x_jour','jour'):''}</b></label>`).join('')}</fieldset>`}
+    ${Object.entries(OPTS).filter(([k,o])=>!o.off).map(([k,o])=>`<label class="opt"><input type="checkbox" value="${k}" ${T.opts.includes(k)?'checked':''}><span>${ar?o.ar:o.n}<small>${o.d}</small></span><b>+${fmt(o.p)}${o.jour?' / '+t('x_jour','jour'):''}</b></label>`).join('')}</fieldset>`}
   if(n===4){const c=T.c,c2=T.c2;f.innerHTML=`<h3>${t('x_e4','Le conducteur principal')}</h3><p class="sous-t">Informations obligatoires pour établir le contrat de location. Elles doivent correspondre à vos papiers.</p>
     <div class="grille3">
       <div class="champ"><label for="c-civ">Civilité</label><select id="c-civ"><option ${c.civ==='M.'?'selected':''}>M.</option><option ${c.civ==='Mme'?'selected':''}>Mme</option></select></div>
@@ -275,7 +284,7 @@ function confirmer(){
 /* ================= CGL & Ma réservation ================= */
 function ouvrirCGL(){
   $('cgl').innerHTML=`<header><div><span class="sur">Samir Drive</span><h2 id="cgl-titre">Conditions générales de location</h2></div><button class="fermer" type="button" data-ferme aria-label="Fermer">×</button></header>
-  <div class="in cgl" tabindex="0">${CGL.map(([h,p],i)=>`<section><h3><span>${pad(i+1)}</span>${h}</h3><p>${p}</p></section>`).join('')}<p class="petit">Version de démonstration, à valider avec Samir Drive avant mise en ligne.</p></div>
+  <div class="in cgl" tabindex="0">${cgl().map(([h,p],i)=>`<section><h3><span>${pad(i+1)}</span>${h}</h3><p>${p}</p></section>`).join('')}<p class="petit">Version de démonstration, à valider avec Samir Drive avant mise en ligne.</p></div>
   <footer><span></span><button class="btn btn-or" type="button" data-ferme>J'ai compris</button></footer>`;
   $('cgl').showModal();
 }
@@ -343,8 +352,6 @@ document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if
 charger();
 $('r-h1').innerHTML=$('r-h2').innerHTML=heures();$('r-h1').value=R.h1;$('r-h2').value=R.h2;
 $('r-d1').min=iso(AUJ);$('r-d1').value=R.d1;$('r-d2').value=R.d2;
-$('wa-contact').href=`https://wa.me/${WA}?text=${encodeURIComponent('Bonjour Samir Drive, je voudrais louer une voiture.')}`;
-$('tarifs').innerHTML=REMISES.slice().reverse().map(r=>`<div class="tarif"><b>-${r[1]*100} %</b><span>${r[2]}</span></div>`).join('');
 const MOTS=['Livraison aéroport 24 h/24','Assurance tous risques incluse','Voitures récentes et entretenues','Annulation gratuite 24 h avant','Réponse en 15 minutes','Paiement à la remise des clés'];
 $('defile').innerHTML=[...MOTS,...MOTS].map(m=>`<span>${m}</span>`).join('');
-$('nbv').textContent=S.flotte.length;remplirLieux();infoDuree();rendreFlotte();rendreProtos();etincelles();
+majSite();etincelles();

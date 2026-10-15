@@ -5,7 +5,8 @@ const PAGES=[
   ['resas','Réservations','<path d="M9 5h11M9 12h11M9 19h11M4 5h.01M4 12h.01M4 19h.01"/>'],
   ['clients','Clients','<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/>'],
   ['flotte','Flotte & entretien','<path d="M5 17h14M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0M3 17v-5l2-5h11l3 5h2v5"/>'],
-  ['caisse','Caisse','<rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/>']
+  ['caisse','Caisse','<rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/>'],
+  ['reglages','Réglages','<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>']
 ];
 let page='accueil',filtreResa='tous',rechC='';
 const STL={attente:'Nouvelle demande',confirmee:'Confirmée',encours:'En location',terminee:'Terminée',annulee:'Annulée'};
@@ -16,7 +17,7 @@ function nav(){
   const n=S.resas.filter(r=>r.statut==='attente').length;
   $('g-nav').innerHTML=PAGES.map(([k,l,ic])=>`<button type="button" data-page="${k}" ${k===page?'aria-current="page"':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg><span class="lib">${l}</span>${k==='resas'&&n?`<span class="pas" aria-label="${n} nouvelles demandes">${n}</span>`:''}</button>`).join('');
 }
-function aller(p){page=p;nav();({accueil:pAccueil,planning:pPlanning,resas:pResas,clients:pClients,flotte:pFlotte,caisse:pCaisse})[p]();$('g-main').focus({preventScroll:true});scrollTo(0,0)}
+function aller(p){page=p;nav();({accueil:pAccueil,planning:pPlanning,resas:pResas,clients:pClients,flotte:pFlotte,caisse:pCaisse,reglages:pReglages})[p]();$('g-main').focus({preventScroll:true});scrollTo(0,0)}
 function alertes(){
   const a=[];for(const v of S.flotte){
     const rk=v.vid-v.km;if(rk<1500)a.push({g:rk<500,t:`${v.nom} · vidange ${rk<=0?'dépassée':'dans '+nb(rk)+' km'}`});
@@ -135,15 +136,15 @@ function ficheClient(k){
 }
 /* ---------- Flotte ---------- */
 function pFlotte(){
-  $('g-main').innerHTML=`<div class="g-tete"><div><h1>Flotte & entretien</h1><p>Kilométrage, vidanges, assurances, contrôles techniques et prix affichés sur le site.</p></div></div>
+  $('g-main').innerHTML=`<div class="g-tete"><div><h1>Flotte & entretien</h1><p>Ajoutez, modifiez ou retirez vos voitures : le site se met à jour tout de suite.</p></div><button class="g-btn or" type="button" data-edit="">+ Ajouter une voiture</button></div>
   <div class="fl">${S.flotte.map(v=>{const pct=Math.min(100,Math.max(0,100-(v.vid-v.km)/100));const enLoc=S.resas.find(r=>r.v===v.id&&r.statut==='encours');
     const da=ecart(iso(AUJ),v.assur),dc=ecart(iso(AUJ),v.ct),ca=S.resas.filter(r=>r.v===v.id&&r.statut!=='annulee').reduce((s,r)=>s+montant(r),0);
-    return `<div class="flv"><div class="haut">${vis(v)}<div><b>${v.nom}</b><br><small class="gris">${v.plaque} · ${v.annee} · ${v.coulN}</small><br>${v.entretien?'<span class="st st-entretien">Au garage</span>':enLoc?'<span class="st st-encours">En location</span>':'<span class="st st-terminee">Au parking</span>'}</div></div>
+    return `<div class="flv"><div class="haut">${vis(v)}<div><b>${v.nom}</b><br><small class="gris">${v.plaque} · ${v.annee} · ${v.coulN}</small><br>${v.cache?'<span class="st st-annulee">Masquée du site</span> ':''}${v.entretien?'<span class="st st-entretien">Au garage</span>':enLoc?'<span class="st st-encours">En location</span>':'<span class="st st-terminee">Au parking</span>'}</div></div>
     <dl><dt>Kilométrage</dt><dd>${nb(v.km)} km</dd><dt>Prochaine vidange</dt><dd>${nb(v.vid)} km</dd></dl>
     <div class="jauge" role="img" aria-label="Avancement vers la vidange : ${Math.round(pct)} %"><i style="width:${pct}%"></i></div>
     <dl><dt>Assurance</dt><dd class="${da<30?'rouge-t':''}">${dcourt(v.assur)} ${parse(v.assur).getFullYear()}</dd><dt>Contrôle technique</dt><dd class="${dc<30?'rouge-t':''}">${dcourt(v.ct)} ${parse(v.ct).getFullYear()}</dd><dt>Caution</dt><dd>${fmt(v.caution)}</dd><dt>Chiffre généré</dt><dd>${fmt(ca)}</dd></dl>
     <div class="prix-ed"><label for="px-${v.id}">Prix / jour</label><input id="px-${v.id}" type="number" min="1000" step="500" value="${v.prix}"><button class="g-btn pt" type="button" data-px="${v.id}">Enregistrer</button></div>
-    <div class="ligne-btn"><button class="g-btn pt clair" type="button" data-vid="${v.id}">Vidange faite</button><button class="g-btn pt clair" type="button" data-gar="${v.id}">${v.entretien?'Sortie du garage':'Mettre au garage'}</button></div></div>`}).join('')}</div>`;
+    <div class="ligne-btn"><button class="g-btn pt" type="button" data-edit="${v.id}">Modifier</button><button class="g-btn pt clair" type="button" data-vid="${v.id}">Vidange faite</button><button class="g-btn pt clair" type="button" data-gar="${v.id}">${v.entretien?'Sortie du garage':'Mettre au garage'}</button></div></div>`}).join('')}</div>`;
 }
 /* ---------- Caisse ---------- */
 function pCaisse(){
@@ -230,7 +231,7 @@ function contrat(id){const r=S.resas.find(x=>x.id===id),v=V(r.v),d=devis({...r,v
     <section><h3 class="h4">Prix</h3><table class="dc-t"><tr><td>Location ${d.j} j × ${fmt(v.prix)}</td><td>${fmt(d.base)}</td></tr>${d.remise?`<tr><td>Remise longue durée</td><td>-${fmt(d.remise)}</td></tr>`:''}<tr><td>Protection ${PROTECTIONS[r.prot].n}</td><td>${fmt(d.protT)}</td></tr>${r.opts.map(o=>`<tr><td>${OPTS[o].n}</td><td>${fmt(OPTS[o].jour?OPTS[o].p*d.j:OPTS[o].p)}</td></tr>`).join('')}${d.liv?`<tr><td>Livraison / restitution</td><td>${fmt(d.liv)}</td></tr>`:''}${d.jeune?`<tr><td>Jeune conducteur</td><td>${fmt(d.jeune)}</td></tr>`:''}<tr class="tt"><td>Total TTC</td><td>${fmt(r.total)}</td></tr></table>
       <p>Caution : <b>${fmt(r.caution)}</b> · Franchise : <b>${fmt(r.franchise)}</b></p></section></div>
     <section><h3 class="h4">État des lieux au départ</h3><div class="dc-edl">${dessus(r.edlD?.dom||[])}<p>${r.edlD?(r.edlD.dom.length?r.edlD.dom.map(x=>x.t+' '+zone(x)).join(' · '):'Aucun dommage constaté au départ.')+' · 4 photos jointes au dossier.':'À remplir à la remise des clés.'}</p></div></section>
-    <section class="dc-cgl"><h3 class="h4">Conditions générales (extrait)</h3><ol>${CGL.slice(0,8).map(([h,p])=>`<li><b>${h}.</b> ${p}</li>`).join('')}</ol><p>Le locataire reconnaît avoir lu et accepté l'intégralité des conditions générales de location.</p></section>
+    <section class="dc-cgl"><h3 class="h4">Conditions générales (extrait)</h3><ol>${cgl().slice(0,8).map(([h,p])=>`<li><b>${h}.</b> ${p}</li>`).join('')}</ol><p>Le locataire reconnaît avoir lu et accepté l'intégralité des conditions générales de location.</p></section>
     <div class="dc-sig"><div><small>Le locataire (lu et approuvé)</small>${r.sign?`<img src="${r.sign}" alt="Signature du locataire">`:'<span class="trait"></span>'}</div><div><small>Pour Samir Drive</small><span class="tampon">SAMIR DRIVE<br>Bordj El Kiffan</span></div></div>
   </article>`;
   C.showModal();
@@ -251,9 +252,84 @@ function ajoutTel(){
     S.resas.push({id:'SD-'+(S.seq++),v:$('a-v').value,c:{civ:'',prenom:pre,nom,tel:$('a-tel').value,naiss:'',datePermis:'',piece:'CNI',numPiece:'à saisir',permis:'à saisir',pays:'Algérie',adresse:'à saisir'},d1:$('a-d1').value,h1:'10:00',d2:$('a-d2').value,h2:'10:00',lieu:$('a-l').value,retour:$('a-l').value,opts:[],prot:$('a-p').value,statut:'confirmee',cree:iso(AUJ),total:d.total,caution:d.caution,franchise:d.franchise,docs:{},docsOk:false,source:'téléphone'});
     sauver();diffuser();M.close();toast('Réservation ajoutée au planning');aller(page)}
 }
+/* ---------- Éditeur de voiture ---------- */
+const slug=x=>String(x).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+let PH=[];
+function editVoiture(id){
+  const neuf=!id,v=neuf?{id:'v'+(Math.max(0,...S.flotte.map(x=>+x.id.slice(1)||0))+1),nom:'',version:'',cat:'SUV',gamme:'Éco',forme:'suv',coul:'#EDEDEA',coulN:'Blanche',boite:'Manuelle',carbu:'Essence',moteur:'',conso:'',coffre:'',places:5,portes:5,prix:6000,caution:50000,ageMin:21,annee:new Date().getFullYear(),plaque:'',km:0,vid:10000,assur:J(365),ct:J(730),photos:[],equip:['Climatisation']}:V(id);
+  PH=[...(v.photos||[])];
+  const f=(k,l,type='text',attr='')=>`<div class="champ"><label for="e-${k}">${l}</label><input id="e-${k}" type="${type}" value="${esc(v[k]??'')}" ${attr}></div>`;
+  const sel=(k,l,opts)=>`<div class="champ"><label for="e-${k}">${l}</label><select id="e-${k}">${opts.map(o=>`<option ${o===v[k]?'selected':''}>${o}</option>`).join('')}</select></div>`;
+  modale(neuf?'Ajouter une voiture':'Modifier · '+esc(v.nom),`
+    <h3 class="m-h">Photos <small class="gris">la 1re est la photo principale</small></h3><div class="e-photos" id="e-photos"></div>
+    <label class="g-btn clair pt e-ajph"><input type="file" accept="image/*" multiple class="sr" id="e-file">+ Ajouter des photos</label>
+    <h3 class="m-h">La voiture</h3>
+    <div class="grille3">${f('nom','Modèle (ex. Renault Clio 5)','text','required')}${f('version','Finition (facultatif)')}${f('annee','Année','number','min="1990" max="2035"')}
+      ${sel('cat','Catégorie',['Citadine','Berline','SUV','Monospace','Utilitaire'])}${sel('gamme','Gamme',['Éco','Confort','Premium'])}${sel('forme','Silhouette (si pas de photo)',['citadine','berline','suv'])}
+      ${f('coulN','Couleur (nom)')}<div class="champ"><label for="e-coul">Couleur (pastille)</label><input id="e-coul" type="color" value="${esc(v.coul)}"></div>${f('plaque','Immatriculation')}
+      ${sel('boite','Boîte',['Manuelle','Automatique'])}${sel('carbu','Carburant',['Essence','Diesel','Hybride essence','GPL','Électrique'])}${f('moteur','Moteur (ex. 1.5 dCi 115 ch)')}
+      ${f('conso','Consommation')}${f('coffre','Coffre')}${f('places','Places','number','min="2" max="9"')}</div>
+    <div class="champ"><label for="e-equip">Équipements (un par ligne)</label><textarea id="e-equip" rows="4">${esc((v.equip||[]).join('\n'))}</textarea></div>
+    <h3 class="m-h">Prix et conditions</h3>
+    <div class="grille3">${f('prix','Prix par jour (DA)','number','min="1000" step="500"')}${f('caution','Caution (DA)','number','min="0" step="1000"')}${f('ageMin','Âge minimum','number','min="18" max="30"')}</div>
+    <h3 class="m-h">Entretien</h3>
+    <div class="grille3">${f('km','Kilométrage actuel','number','min="0"')}${f('vid','Prochaine vidange (km)','number','min="0"')}${f('assur','Fin d\'assurance','date')}${f('ct','Contrôle technique','date')}</div>
+    <div class="e-opts"><label class="opt"><input type="checkbox" id="e-chef" ${v.chef?'checked':''}><span>Coup de cœur (mise en avant)</span></label><label class="opt"><input type="checkbox" id="e-neuf" ${v.neuf?'checked':''}><span>Badge « Neuve »</span></label><label class="opt"><input type="checkbox" id="e-cache" ${v.cache?'checked':''}><span>Masquer du site (sans la supprimer)</span></label></div>
+    ${neuf?'':`<details class="e-suppr"><summary>Supprimer cette voiture</summary><p>La voiture disparaît du site et du planning. Ses anciennes locations restent dans la caisse.</p><button class="g-btn rouge pt" type="button" id="e-del">Supprimer définitivement</button></details>`}
+    <p class="err" id="e-err" role="alert"></p>`,
+    `<button class="g-btn clair" type="button" data-ferme>Annuler</button><button class="g-btn or" type="button" id="e-ok">${neuf?'Ajouter la voiture':'Enregistrer'}</button>`,true);
+  majPhotos();
+  $('e-file').onchange=e=>{[...e.target.files].forEach(fl=>{const rd=new FileReader();rd.onload=()=>{const im=new Image();im.onload=()=>{const m=1100,k=Math.min(1,m/Math.max(im.width,im.height)),cv=document.createElement('canvas');cv.width=im.width*k;cv.height=im.height*k;cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);PH.push(cv.toDataURL('image/jpeg',.78));majPhotos()};im.src=rd.result};rd.readAsDataURL(fl)});e.target.value=''};
+  if($('e-del'))$('e-del').onclick=()=>{if(S.resas.some(r=>r.v===v.id&&['attente','confirmee','encours'].includes(r.statut))){$('e-err').textContent='Impossible : cette voiture a des réservations en cours ou à venir. Masquez-la plutôt.';return}
+    S.flotte=S.flotte.filter(x=>x.id!==v.id);sauver();diffuser();M.close();toast(v.nom+' supprimée');pFlotte()};
+  $('e-ok').onclick=()=>{
+    const g=k=>$('e-'+k).value.trim(),n=k=>+$('e-'+k).value||0;
+    if(g('nom').length<3){$('e-err').textContent='Indiquez le modèle de la voiture.';$('e-nom').focus();return}
+    if(n('prix')<1000){$('e-err').textContent='Le prix par jour doit être d\'au moins 1 000 DA.';$('e-prix').focus();return}
+    const o=neuf?v:V(v.id);
+    Object.assign(o,{nom:g('nom'),version:g('version'),annee:n('annee'),cat:g('cat'),gamme:g('gamme'),forme:g('forme'),coulN:g('coulN')||'—',coul:$('e-coul').value,plaque:g('plaque'),boite:g('boite'),carbu:g('carbu'),moteur:g('moteur')||'—',conso:g('conso')||'—',coffre:g('coffre')||'—',places:n('places')||5,portes:o.portes||5,
+      equip:$('e-equip').value.split('\n').map(x=>x.trim()).filter(Boolean),prix:n('prix'),caution:n('caution'),ageMin:n('ageMin')||21,km:n('km'),vid:n('vid'),assur:g('assur')||o.assur,ct:g('ct')||o.ct,chef:$('e-chef').checked,neuf:$('e-neuf').checked,cache:$('e-cache').checked,photos:[...PH],img:PH[0]||null});
+    o.mod=slug(o.nom);
+    if(neuf)S.flotte.push(o);
+    sauver();diffuser();M.close();toast(neuf?o.nom+' ajoutée au site':'Modifications enregistrées · le site est à jour');pFlotte();
+  };
+}
+function majPhotos(){$('e-photos').innerHTML=PH.length?PH.map((x,i)=>`<figure class="e-ph"><img src="${photo(x)}" alt="Photo ${i+1}">${i===0?'<span>Principale</span>':''}<div><button type="button" data-phg="${i}" aria-label="Avancer la photo ${i+1}" ${i===0?'disabled':''}>←</button><button type="button" data-phd="${i}" aria-label="Retirer la photo ${i+1}">✕</button></div></figure>`).join(''):'<p class="g-vide">Aucune photo : une silhouette s\'affichera sur le site.</p>'}
+
+/* ---------- Réglages ---------- */
+function pReglages(){
+  const c=(id,l,val,type='text',attr='')=>`<div class="champ"><label for="${id}">${l}</label><input id="${id}" type="${type}" value="${esc(val)}" ${attr}></div>`;
+  $('g-main').innerHTML=`<div class="g-tete"><div><h1>Réglages</h1><p>Tout ce que vos clients voient sur le site. Changez, enregistrez : c'est en ligne tout de suite.</p></div><button class="g-btn or" type="button" id="r-ok">Enregistrer les réglages</button></div>
+  <div class="r-grille">
+    <section class="g-carte"><h2>Votre agence</h2><div class="grille2">${c('r-nom','Nom',AG.nom)}${c('r-tel','Téléphone',AG.tel,'tel')}${c('r-wa','WhatsApp (reçoit les réservations)',AG.wa,'tel')}${c('r-adr','Adresse',AG.adresse)}</div>${c('r-hor','Horaires',AG.horaires)}
+      <div class="champ"><label for="r-ann">Bandeau d'annonce en haut du site (vide = caché)</label><input id="r-ann" value="${esc(AG.annonce)}" placeholder="Ex. Promo été : -10 % sur les SUV jusqu'au 31 août"></div></section>
+    <section class="g-carte"><h2>Règles de location</h2><div class="grille2">${c('r-km','Kilomètres inclus par jour',RG.km,'number','min="0" step="10"')}${c('r-pkm','Prix du km en plus (DA)',RG.prixKm,'number','min="0"')}${c('r-p8','Carburant manquant, par 1/8 (DA)',RG.prix8e,'number','min="0" step="100"')}${c('r-jeune','Supplément jeune conducteur / jour (DA)',RG.jeune,'number','min="0" step="100"')}${c('r-age','Âge minimum',RG.ageMin,'number','min="18" max="30"')}${c('r-perm','Ancienneté du permis (ans)',RG.permis,'number','min="0" max="10"')}</div></section>
+    <section class="g-carte"><h2>Lieux et frais de livraison</h2>${Object.entries(LIEUX).map(([k,l])=>`<div class="r-ligne"><label class="opt"><input type="checkbox" id="r-l-${k}-on" ${l.off?'':'checked'}><span>Proposer</span></label>${c('r-l-'+k+'-n','Nom affiché',l.n)}${c('r-l-'+k+'-f','Frais (DA)',l.f,'number','min="0" step="100"')}</div>`).join('')}</section>
+    <section class="g-carte"><h2>Options</h2>${Object.entries(OPTS).map(([k,o])=>`<div class="r-ligne r-opt"><label class="opt"><input type="checkbox" id="r-o-${k}-on" ${o.off?'':'checked'}><span>Proposer</span></label>${c('r-o-'+k+'-n','Nom',o.n)}${c('r-o-'+k+'-p','Prix (DA)',o.p,'number','min="0" step="100"')}<label class="opt"><input type="checkbox" id="r-o-${k}-j" ${o.jour?'checked':''}><span>Par jour</span></label></div>`).join('')}</section>
+    <section class="g-carte"><h2>Protections</h2>${Object.entries(PROTECTIONS).map(([k,p])=>`<div class="r-ligne">${c('r-p-'+k+'-n','Nom',p.n)}${c('r-p-'+k+'-t','Prix en % du prix/jour',Math.round(p.taux*100),'number','min="0" max="100"')}${c('r-p-'+k+'-f','Franchise en % de la caution',Math.round(p.fr*100),'number','min="0" max="100"')}${c('r-p-'+k+'-c','Caution demandée en %',Math.round((p.cau||1)*100),'number','min="0" max="100"')}</div>`).join('')}</section>
+    <section class="g-carte"><h2>Remises longue durée</h2>${REMISES.slice().sort((a,b)=>a[0]-b[0]).map((r,i)=>`<div class="r-ligne">${c('r-r-'+i+'-j','À partir de (jours)',r[0],'number','min="1"')}${c('r-r-'+i+'-p','Remise (%)',Math.round(r[1]*100),'number','min="0" max="90"')}</div>`).join('')}</section>
+    <section class="g-carte r-large"><h2>Conditions générales de location</h2><p class="petit gris">Les mots entre accolades se remplacent tout seuls par vos réglages : {km}, {prixKm}, {prix8e}, {age}, {permis}, {jeune}, {tel}.</p>
+      ${CGL.map(([h,p],i)=>`<details class="r-cgl"><summary>${pad(i+1)} · ${esc(h)}</summary>${c('r-c-'+i+'-h','Titre',h)}<div class="champ"><label for="r-c-${i}-p">Texte</label><textarea id="r-c-${i}-p" rows="4">${esc(p)}</textarea></div></details>`).join('')}</section>
+  </div>
+  <div class="r-pied"><button class="g-btn clair" type="button" id="r-raz">Revenir aux réglages d'origine</button><button class="g-btn or" type="button" id="r-ok2">Enregistrer les réglages</button></div>`;
+  const ok=()=>{const v=id=>$(id).value.trim(),n=id=>+$(id).value||0;
+    if(chiffres(v('r-wa')).length<9){toast('Numéro WhatsApp incomplet');$('r-wa').focus();return}
+    Object.assign(AG,{nom:v('r-nom')||'Samir Drive',tel:v('r-tel'),wa:v('r-wa'),adresse:v('r-adr'),horaires:v('r-hor'),annonce:v('r-ann')});
+    Object.assign(RG,{km:n('r-km'),prixKm:n('r-pkm'),prix8e:n('r-p8'),jeune:n('r-jeune'),ageMin:n('r-age')||18,permis:n('r-perm')});
+    for(const k in LIEUX)Object.assign(LIEUX[k],{off:!$('r-l-'+k+'-on').checked,n:v('r-l-'+k+'-n')||LIEUX[k].n,f:n('r-l-'+k+'-f')});
+    if(Object.values(LIEUX).every(l=>l.off))LIEUX.agence.off=false;
+    for(const k in OPTS)Object.assign(OPTS[k],{off:!$('r-o-'+k+'-on').checked,n:v('r-o-'+k+'-n')||OPTS[k].n,p:n('r-o-'+k+'-p'),jour:$('r-o-'+k+'-j').checked});
+    for(const k in PROTECTIONS)Object.assign(PROTECTIONS[k],{n:v('r-p-'+k+'-n')||PROTECTIONS[k].n,taux:n('r-p-'+k+'-t')/100,fr:n('r-p-'+k+'-f')/100,cau:n('r-p-'+k+'-c')/100});
+    const rem=REMISES.map((r,i)=>{const j=n('r-r-'+i+'-j')||1,p=n('r-r-'+i+'-p')/100;return [j,p,j+' jours et +']}).sort((a,b)=>b[0]-a[0]);
+    rem.forEach((r,i)=>{const sup=rem[i-1];r[2]=sup?`${r[0]} à ${sup[0]-1} jours`:`${r[0]} jours et +`});REMISES.splice(0,REMISES.length,...rem);
+    CGL.forEach((x,i)=>{x[0]=v('r-c-'+i+'-h')||x[0];x[1]=$('r-c-'+i+'-p').value.trim()||x[1]});
+    S.conf=conf();sauver();diffuser();toast('Réglages enregistrés · le site est à jour');pReglages()};
+  $('r-ok').onclick=$('r-ok2').onclick=ok;
+  $('r-raz').onclick=()=>{appliquerConf(JSON.parse(JSON.stringify(CONF0)));delete S.conf;sauver();diffuser();toast('Réglages d\'origine rétablis');pReglages()};
+}
 let tt;function toast(m){const x=$('toast');x.textContent=m;x.classList.add('vu');clearTimeout(tt);tt=setTimeout(()=>x.classList.remove('vu'),2800)}
 function entrer(){document.body.classList.add('loueur');aller(page)}
-function sortir(){document.body.classList.remove('loueur');rendreFlotte()}
+function sortir(){document.body.classList.remove('loueur');majSite()}
 
 document.addEventListener('click',e=>{
   const b=e.target.closest('button,a');if(!b)return;
@@ -276,9 +352,12 @@ document.addEventListener('click',e=>{
   if(b.dataset.type){TYPE=b.dataset.type;b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));return}
   if(b.dataset.deldom){DOM.splice(+b.dataset.deldom,1);majSchema();onDom&&onDom();return}
   if(b.dataset.px){const v=V(b.dataset.px),n=+$('px-'+v.id).value;if(n>=1000){v.prix=n;sauver();diffuser();toast('Prix mis à jour sur le site : '+fmt(n)+' / jour')}return}
+  if(b.dataset.edit!==undefined){editVoiture(b.dataset.edit);return}
+  if(b.dataset.phd){PH.splice(+b.dataset.phd,1);majPhotos();return}
+  if(b.dataset.phg){const i=+b.dataset.phg;[PH[i-1],PH[i]]=[PH[i],PH[i-1]];majPhotos();return}
   if(b.dataset.vid){const v=V(b.dataset.vid);v.vid=v.km+10000;sauver();toast('Vidange enregistrée · prochaine à '+nb(v.vid)+' km');pFlotte();return}
   if(b.dataset.gar){const v=V(b.dataset.gar);v.entretien=!v.entretien;sauver();diffuser();toast(v.entretien?v.nom+' au garage : retirée du site':v.nom+' de nouveau disponible');pFlotte();return}
 });
 $('f-pin').addEventListener('submit',e=>{e.preventDefault();if($('pin-in').value===PIN){ss.set('sd-ok','1');$('pin').close();entrer()}else{$('pin-err').textContent='Code incorrect';$('pin-in').select()}});
-try{new BroadcastChannel('sd').onmessage=()=>{charger();if(document.body.classList.contains('loueur'))aller(page);else rendreFlotte()}}catch(e){}
+try{new BroadcastChannel('sd').onmessage=()=>{charger();if(document.body.classList.contains('loueur'))aller(page);else majSite()}}catch(e){}
 if(location.hash==='#loueur'&&ss.get('sd-ok'))entrer();
