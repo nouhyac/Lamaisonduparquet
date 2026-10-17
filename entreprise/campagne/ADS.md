@@ -1,3 +1,11 @@
+# ▶️ 17/10 : boost 40 € de `location/dzign-website-promo.mp4` (en attendant le compte pub)
+- Publier la vidéo en Reel (Instagram + Facebook), puis **Booster** depuis le Reel.
+- Objectif : **Plus de messages** › WhatsApp 0549 50 68 57.
+- Audience : Algérie, 25-55 ans, intérêts petite entreprise / entrepreneuriat / commerce de détail / restaurant (ou audience automatique si l'option n'est pas proposée).
+- Budget : 40 € sur 7 jours (≈ 5,70 €/jour). Ne rien toucher pendant 3 jours.
+- Si le bouton Booster refuse le paiement : c'est le même blocage que le compte 2860172500875914 (vérification du moyen de paiement), pas un nouveau problème. Ne pas créer de nouveau compte pub.
+- Bon résultat : coût par conversation < 1 €. Chaque conversation reçoit le message de réponse type (voir SUIVI).
+
 # ▶️ LANCEMENT DU 14/10 : 2 pubs à 25 $ (plan validé)
 
 Pas « en similaire » : les 2 vidéos ne parlent pas aux mêmes personnes et ne finissent pas pareil, donc chacune a **sa cible et sa destination**. Même budget, même durée, pour pouvoir les comparer.
