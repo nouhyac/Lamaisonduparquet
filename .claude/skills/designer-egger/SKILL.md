@@ -38,6 +38,15 @@ Ne rien générer tant qu'un point bloquant manque (couleur surtout).
 - Pour modifier un rendu validé : le passer en référence et ne changer **qu'une chose**.
 - **Relire chaque image** avant envoi : cotes plausibles, nombre de portes, couleurs, LED conformes. Sinon refaire avant d'envoyer.
 
+## 4 bis. Niveau excellence (pas « réalisation banale »)
+Une chambre ou une cuisine « tout greige, tout plat » est banale. Toujours :
+- **Contraste de matières** : bois chêne (H1357 / H1176…) + uni mat (U705 / U702…), jamais une seule teinte partout.
+- **Un élément signature par pièce** : tête de lit capitonnée encadrée chêne, portes rainurées, verre/miroir bronze, colonne ouverte en bois.
+- **Poignées** : barres noires longues ou profils intégrés, alignées.
+- **Sol** : parquet chêne (notre produit) dès que possible.
+- **Mise en scène des rendus** : linge superposé, plaid, plantes, livres, céramiques, tapis, lumière chaude. Pièce finie, jamais de cartons.
+- **Format client (style Youcef)** : vertical 3:4, un meuble par image, carte blanche + barre rouge (`ads/meubles/chambre-H1357-U705/label.py`).
+
 ## 5. Livrables pour le client
 - **Plan coté** (vue de dessus + élévations) avant ou avec les rendus.
 - 4K : vue d'ensemble + une vue par meuble + avant/après sur la photo réelle.
