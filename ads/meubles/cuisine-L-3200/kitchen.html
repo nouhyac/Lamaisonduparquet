@@ -1,0 +1,198 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#000;overflow:hidden}</style></head><body>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from './RoomEnvironment.js';
+import { RoundedBoxGeometry } from './RoundedBoxGeometry.js';
+import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './jsm/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from './jsm/postprocessing/OutputPass.js';
+
+const W = innerWidth, H = innerHeight;
+const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+r.setPixelRatio(1); r.setSize(W, H);
+r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 0.82;
+r.outputColorSpace = THREE.SRGBColorSpace;
+r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(r.domElement);
+
+const sc = new THREE.Scene();
+sc.background = new THREE.Color(0xeeeae4);
+const pm = new THREE.PMREMGenerator(r);
+sc.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+sc.environmentIntensity = 0.4;
+
+// ---------- materials (EGGER proposal) ----------
+const TL = new THREE.TextureLoader();
+function tex(f, rep) { const t = TL.load(f); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; if (rep) t.repeat.set(rep[0], rep[1]); t.anisotropy = 8; return t; }
+const oakT = tex('oakv.jpg', [1.0, 0.5]);
+const M = {
+  bas:   new THREE.MeshStandardMaterial({ color: 0xc5bcaf, roughness: 0.55 }),            // U702 gris cachemire
+  oak:   new THREE.MeshStandardMaterial({ map: oakT, color: 0xffffff, roughness: 0.6 }),   // H1145 chêne Bardolino
+  blanc: new THREE.MeshStandardMaterial({ color: 0xf4f2ee, roughness: 0.5 }),               // W1000 blanc premium
+  caisson: new THREE.MeshStandardMaterial({ color: 0xece9e3, roughness: 0.7 }),
+  plan:  new THREE.MeshStandardMaterial({ color: 0x2b2b2d, roughness: 0.35, metalness: 0.05 }),
+  credence: new THREE.MeshStandardMaterial({ color: 0xe9e6e0, roughness: 0.25 }),
+  noir:  new THREE.MeshStandardMaterial({ color: 0x0d0d0e, roughness: 0.25, metalness: 0.2 }),
+  verre: new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.08, metalness: 0.3 }),
+  inox:  new THREE.MeshStandardMaterial({ color: 0xb9bcbf, roughness: 0.25, metalness: 0.9 }),
+  plinthe: new THREE.MeshStandardMaterial({ color: 0x3a3836, roughness: 0.6 }),
+  mur:   new THREE.MeshStandardMaterial({ color: 0xf1eee9, roughness: 0.95 }),
+  sol:   new THREE.MeshStandardMaterial({ map: tex('floor.jpg', [5, 5]), roughness: 0.55 }),
+  led:   new THREE.MeshBasicMaterial({ color: 0xffd7a0 }),
+};
+M.sol.map.rotation = Math.PI / 2;
+
+const G = new THREE.Group(); sc.add(G);
+function bx(x0, y0, z0, x1, y1, z1, mat, round = 0, opts = {}) {
+  const dx = x1 - x0, dy = y1 - y0, dz = z1 - z0;
+  const geo = round ? new RoundedBoxGeometry(dx, dy, dz, 2, round) : new THREE.BoxGeometry(dx, dy, dz);
+  const m = new THREE.Mesh(geo, mat); m.position.set((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
+  m.castShadow = opts.cast !== false; m.receiveShadow = true; G.add(m); return m;
+}
+// oak texture with vertical grain on fronts facing z (UV u=x, v=y default -> rotate texture for x-faces handled by repeat)
+const GAP = 3, T = 19;
+const PL = 120, CAR = 720, TOP = 38, BASE_TOP = PL + CAR + TOP;   // 878
+const WU0 = 1450, WU1 = 2170, TOPROW1 = 2620, CEIL = 2700;
+
+// fronts helpers: front facing +z at plane z, spanning x0..x1, y0..y1
+function frontZ(x0, x1, y0, y1, z, mat, gola = true) {
+  bx(x0 + GAP / 2, y0 + GAP / 2, z, x1 - GAP / 2, y1 - GAP / 2, z + T, mat, 1.5);
+}
+function frontX(z0, z1, y0, y1, x, mat) {
+  bx(x, y0 + GAP / 2, z0 + GAP / 2, x + T, y1 - GAP / 2, z1 - GAP / 2, mat, 1.5);
+}
+function golaZ(x0, x1, y, z) { bx(x0, y - 22, z - 30, x1, y, z + 2, M.noir, 0, { cast: false }); }
+function golaX(z0, z1, y, x) { bx(x - 30, y - 22, z0, x + 2, y, z1, M.noir, 0, { cast: false }); }
+
+// ---------- room ----------
+const RX = 3200, RZ = 3300;
+bx(-200, -20, -200, RX + 600, 0, RZ + 1500, M.sol, 0, { cast: false });
+bx(-200, 0, -120, RX + 600, CEIL, 0, M.mur, 0, { cast: false });        // back wall
+bx(-120, 0, 0, 0, CEIL, RZ + 1500, M.mur, 0, { cast: false });          // left wall
+
+
+// ---------- BACK RUN (front +z), depth 600 ----------
+const D = 600, FZ = D;          // fronts at z=600
+bx(0, 0, 0, 3200, PL, D - 60, M.plinthe);                                 // plinth recessed
+bx(0, PL, 0, 3200, PL + CAR, D, M.caisson);                               // carcasses
+// worktop back run + left run
+bx(0, PL + CAR, 0, 3200, BASE_TOP, D + 20, M.plan, 2);
+// credence band (between worktop and wall units)
+bx(0, BASE_TOP, -2, 3200, WU0, 12, M.credence, 0, { cast: false });
+// units: angle 0-600 (blind), plaque 600-1200 drawers, 1200-1700 door, evier 1700-2500, LV 2500-3100, filler 3100-3200
+const yA = PL, yB = PL + CAR - 30;
+golaZ(600, 3100, PL + CAR, FZ);
+// drawers under hob (3)
+[[yA, yA + 290], [yA + 290, yA + 480], [yA + 480, yB]].forEach(([a, b]) => frontZ(600, 1200, a, b, FZ, M.bas));
+frontZ(1200, 1700, yA, yB, FZ, M.bas);
+frontZ(1700, 2100, yA, yB, FZ, M.bas); frontZ(2100, 2500, yA, yB, FZ, M.bas);
+frontZ(2500, 3100, yA, yB, FZ, M.bas);                                    // integrated dishwasher panel
+frontZ(3100, 3200, yA, PL + CAR, FZ, M.bas);                              // filler
+// hob (black glass) on 600-1200
+bx(640, BASE_TOP, 60, 1160, BASE_TOP + 6, 560, M.verre, 0, { cast: false });
+for (const [cx, cz, rr] of [[780, 190, 95], [1020, 190, 80], [780, 430, 80], [1020, 430, 95]]) {
+  const ring = new THREE.Mesh(new THREE.RingGeometry(rr - 4, rr, 48), new THREE.MeshBasicMaterial({ color: 0x555555 }));
+  ring.rotation.x = -Math.PI / 2; ring.position.set(cx, BASE_TOP + 7, cz); G.add(ring);
+}
+// sink 1700-2500 : inox basin + tap
+bx(1850, BASE_TOP - 1, 90, 2350, BASE_TOP + 3, 520, M.inox, 6, { cast: false });
+bx(1880, BASE_TOP - 160, 115, 2320, BASE_TOP + 1, 495, M.noir, 0, { cast: false });
+const tap = new THREE.Group();
+const tm = M.inox;
+const c1 = new THREE.Mesh(new THREE.CylinderGeometry(18, 22, 300, 24), tm); c1.position.set(2100, BASE_TOP + 150, 60); tap.add(c1);
+const c2 = new THREE.Mesh(new THREE.TorusGeometry(110, 14, 16, 32, Math.PI), tm); c2.position.set(2100, BASE_TOP + 300, 170); c2.rotation.y = Math.PI / 2; tap.add(c2);
+tap.traverse(o => { if (o.isMesh) o.castShadow = true; }); G.add(tap);
+
+// ---------- WALL UNITS back wall (depth 350) ----------
+const WD = 350;
+bx(0, WU0, 0, 3100, WU1, WD - T, M.caisson);
+// corner 0-600 (oak), hood 600-1200, niche 1200-1500 (open), 1500-2300, 2300-3100
+frontZ(0, 600, WU0, WU1, WD - T, M.oak);
+// hood unit: door 1550-2170 + steel underside
+frontZ(600, 1200, WU0 + 110, WU1, WD - T, M.oak);
+bx(610, WU0, 20, 1190, WU0 + 108, WD, M.inox, 3);
+// open niche 300 with 2 shelves (oak inside)
+bx(1200, WU0, 0, 1500, WU1, 8, M.oak, 0, { cast: false });
+for (const y of [WU0 + 240, WU0 + 480]) bx(1205, y, 8, 1495, y + 19, WD - 10, M.oak);
+bx(1200, WU0, 0, 1206, WU1, WD, M.oak); bx(1494, WU0, 0, 1500, WU1, WD, M.oak);
+frontZ(1500, 1900, WU0, WU1, WD - T, M.oak); frontZ(1900, 2300, WU0, WU1, WD - T, M.oak);
+frontZ(2300, 2700, WU0, WU1, WD - T, M.oak); frontZ(2700, 3100, WU0, WU1, WD - T, M.oak);
+// top row 450 white lift-up doors
+bx(0, WU1, 0, 3100, TOPROW1, WD - T, M.caisson);
+for (const [a, b] of [[0, 600], [600, 1200], [1200, 1900], [1900, 2500], [2500, 3100]]) frontZ(a, b, WU1, TOPROW1, WD - T, M.blanc);
+bx(0, TOPROW1, 0, 3100, CEIL, WD, M.blanc, 0, { cast: false });           // bandeau to ceiling
+// LED strip under wall units
+bx(20, WU0 - 4, WD - 60, 3080, WU0, WD - 40, M.led, 0, { cast: false });
+
+// ---------- LEFT RUN (front +x), x 0..600, z 600..1600 base, filler, columns ----------
+const FX = D;
+bx(0, 0, D, D - 60, PL, 1750, M.plinthe);
+bx(0, PL, D, D, PL + CAR, 1750, M.caisson);
+bx(0, PL + CAR, D + 20, D + 20, BASE_TOP, 1750, M.plan, 2);
+bx(-2, BASE_TOP, D, 12, WU0, 1750, M.credence, 0, { cast: false });
+golaX(D + 20, 1600, PL + CAR, FX);
+frontX(D + 20, 1100, yA, yB, FX, M.bas); frontX(1100, 1600, yA, yB, FX, M.bas);
+frontX(1600, 1750, yA, PL + CAR, FX, M.bas);                              // filler 150
+// wall units left above base (z 600-1750)
+bx(0, WU0, D - 250, WD - T, WU1, 1750, M.caisson);
+frontX(D, 1175, WU0, WU1, WD - T, M.oak); frontX(1175, 1750, WU0, WU1, WD - T, M.oak);
+bx(0, WU1, D - 250, WD - T, TOPROW1, 1750, M.caisson);
+frontX(D, 1175, WU1, TOPROW1, WD - T, M.blanc); frontX(1175, 1750, WU1, TOPROW1, WD - T, M.blanc);
+bx(0, TOPROW1, D - 250, WD, CEIL, 1750, M.blanc, 0, { cast: false });
+bx(WD - 60, WU0 - 4, D + 10, WD - 40, WU0, 1740, M.led, 0, { cast: false });
+
+// tall columns: oven 1750-2390 (640), fridge 2390-3090 (700); depth 640
+const CD = 640;
+bx(0, 0, 1750, CD - 60, PL, 3090, M.plinthe);
+bx(0, PL, 1750, CD, TOPROW1, 3090, M.caisson);
+bx(0, TOPROW1, 1750, CD, CEIL, 3090, M.blanc, 0, { cast: false });
+// oven column
+frontX(1750, 2390, PL, PL + 480, CD, M.bas);                                    // drawer
+bx(CD, PL + 500, 1770, CD + 22, PL + 1090, 2370, M.verre, 4);                   // oven 590
+bx(CD + 18, PL + 1020, 1800, CD + 30, PL + 1035, 2340, M.inox, 3);              // oven handle
+bx(CD, PL + 1100, 1770, CD + 22, PL + 1480, 2370, M.verre, 4);                  // microwave 380
+frontX(1750, 2390, PL + 1500, WU1, CD, M.bas);
+frontX(1750, 2390, WU1, TOPROW1, CD, M.blanc);
+// integrated fridge
+frontX(2390, 3090, PL, PL + 700, CD, M.bas);                                    // freezer
+frontX(2390, 3090, PL + 700, WU1, CD, M.bas);                                   // fridge door
+frontX(2390, 3090, WU1, TOPROW1, CD, M.blanc);
+// vertical black bar handles on columns
+for (const z of [2405, 2405]) { }
+bx(CD + 19, PL + 760, 2400, CD + 34, PL + 1460, 2420, M.noir, 3);
+bx(CD + 19, PL + 300, 2400, CD + 34, PL + 640, 2420, M.noir, 3);
+bx(CD + 19, PL + 1540, 1760, CD + 34, PL + 1900, 1780, M.noir, 3);
+// side panel end of columns
+bx(0, 0, 3090, CD + 20, CEIL, 3110, M.bas, 2);
+
+// ---------- lights ----------
+sc.add(new THREE.HemisphereLight(0xffffff, 0xd8cfc2, 0.55));
+const sun = new THREE.DirectionalLight(0xfff3e6, 1.9);
+sun.position.set(5200, 4200, 5200); sun.target.position.set(1400, 600, 1200); sc.add(sun.target);
+sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+const sc2 = sun.shadow.camera; sc2.left = -3500; sc2.right = 3500; sc2.top = 3500; sc2.bottom = -3500; sc2.near = 100; sc2.far = 15000;
+sun.shadow.bias = -0.0004; sun.shadow.radius = 4; sc.add(sun);
+// warm LED wash on credence
+for (let x = 300; x < 3100; x += 700) { const p = new THREE.PointLight(0xffc98a, 60000, 1200, 2); p.position.set(x, WU0 - 40, 260); sc.add(p); }
+for (let z = 800; z < 1750; z += 600) { const p = new THREE.PointLight(0xffc98a, 60000, 1200, 2); p.position.set(260, WU0 - 40, z); sc.add(p); }
+
+// ---------- camera + post ----------
+const cam = new THREE.PerspectiveCamera(42, W / H, 10, 60000);
+const comp = new EffectComposer(r);
+comp.addPass(new RenderPass(sc, cam));
+comp.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.18, 0.4, 0.985));
+comp.addPass(new OutputPass());
+const target = new THREE.Vector3(1300, 1250, 1100);
+window.renderAt = (az, el, dist, tx, ty, tz, fov) => {
+  if (tx !== undefined) target.set(tx, ty, tz);
+  if (fov) { cam.fov = fov; cam.updateProjectionMatrix(); }
+  const a = az * Math.PI / 180, e = el * Math.PI / 180;
+  cam.position.set(target.x + dist * Math.cos(e) * Math.sin(a), target.y + dist * Math.sin(e), target.z + dist * Math.cos(e) * Math.cos(a));
+  cam.lookAt(target); comp.render(); return true;
+};
+const q = new URLSearchParams(location.search);
+setTimeout(() => { window.renderAt(+(q.get('az') || 45), +(q.get('el') || 14), +(q.get('d') || 4200)); window.ready = true; }, 800);
+</script></body></html>
