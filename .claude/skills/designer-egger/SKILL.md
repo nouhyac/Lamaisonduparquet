@@ -52,6 +52,14 @@ Une chambre ou une cuisine « tout greige, tout plat » est banale. Toujours :
 - Maquette three.js : aucune pièce ne doit en chevaucher une autre (caissons, bandeaux, socles *entre* les montants), sinon rayures/moiré à l'écran.
 - Avant d'envoyer : relire chaque vue contre le croquis (cotes, nombre de portes, poignées, position des meubles, fenêtre, radiateur) et lister à part ce qui vient d'une **hypothèse** (non écrit sur le croquis).
 
+## 4 quater. Leçons du 20/10 (chambre H1357/U705) — ne plus jamais refaire
+- **Budget crédits par projet** : annoncer le budget total avant de commencer (ex. « cuisine : ~10 crédits ») et ne jamais le dépasser sans accord. Le client a d'autres projets à faire avec le même solde.
+- **Une consigne courte = reformuler en 1 ligne avant d'agir** (« je change X sur l'image Y, rien d'autre, coût Z ») quand elle peut se lire de 2 façons. Si 2 lectures coûtent des crédits : demander, ne pas deviner.
+- **« Une seule couleur »** = tout le meuble dans le même décor (côtés, bandeau, socle, dessus, portes). **« Portes sur toute la longueur »** = portes d'un seul morceau du sol au plafond, sans bandeau ni portes hautes.
+- **Une seule version à jour** : quand une image est corrigée, supprimer l'ancienne du dossier et nommer clairement la nouvelle (`FINAL-…`). Le client renvoie souvent une vieille image : vérifier la date/étiquette avant de « corriger » ce qui l'est déjà.
+- **Retouche ciblée** : pour un détail, éditer la photo existante (1 image, ~1 crédit) au lieu de relancer une série.
+- **Quand le client dit « arrête »** : ne plus lancer aucun outil, répondre en 2 lignes.
+
 ## 5. Livrables pour le client
 - **Plan coté** (vue de dessus + élévations) avant ou avec les rendus.
 - 4K : vue d'ensemble + une vue par meuble + avant/après sur la photo réelle.
