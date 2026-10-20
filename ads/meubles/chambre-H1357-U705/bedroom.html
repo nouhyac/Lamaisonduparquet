@@ -74,19 +74,19 @@ wall(-WT, 0, ZA - WT, 700, CEIL, ZA); wall(1650, 0, ZA - WT, X0, CEIL, ZA); wall
 const ceil = bx(-300, CEIL, -300, XR + 400, CEIL + 20, ZB + 400, new THREE.MeshStandardMaterial({ color: 0xf0ece6, emissive: 0x7d7872, roughness: 0.9 }), 0, { cast: false });
 // radiator on TV wall
 bx(2250, 150, 30, 2850, 750, 110, M.radi);
-for (let x = 2270; x < 2850; x += 50) bx(x, 160, 108, x + 30, 740, 116, M.radi);
+for (let y = 190; y < 740; y += 70) bx(2260, y, 110, 2840, y + 8, 114, new THREE.MeshStandardMaterial({ color: 0xe2e2e0, roughness: 0.6 }), 0, { cast: false });
 
 // ---------- WARDROBE 2490 on alcove left wall (front +x), depth 620 ----------
 // z: 1260..3750 : side 70 | bay 1110 | middle 130 | bay 1110 | side 70
 const WD = 620, z0 = ZA, Hb = 50, Hd = 1980, Hband = 110, Htop = 570, Hcap = 50;
 const y1 = Hb, y2 = y1 + Hd, y3 = y2 + Hband, y4 = y3 + Htop, y5 = y4 + Hcap;  // 50,2030,2140,2710,2760
-bx(0, 0, z0, WD - 30, y5, ZB, M.caisson);                                      // carcass
+bx(0, y1, z0 + 70, WD - 30, y4, ZB - 70, M.caisson);                           // carcass
 bx(0, 0, z0, WD + T, y5, z0 + 70, M.oak, 2);                                   // side 70
 bx(0, 0, ZB - 70, WD + T, y5, ZB, M.oak, 2);                                   // side 70
-bx(0, 0, z0 + 70 + 1110, WD + T, y5, z0 + 70 + 1110 + 130, M.oak, 2);          // middle 130
-bx(0, 0, z0, WD + T, y1, ZB, M.oak);                                           // base
-bx(0, y2, z0, WD + T, y3, ZB, M.oak, 2);                                       // band 110
-bx(0, y4, z0, WD + T, y5, ZB, M.oak, 2);                                       // top cap
+bx(0, y1, z0 + 70 + 1110, WD + T, y2, z0 + 70 + 1110 + 130, M.oak, 2); bx(0, y3, z0 + 70 + 1110, WD + T, y4, z0 + 70 + 1110 + 130, M.oak, 2); // middle 130
+bx(0, 0, z0 + 70, WD + T, y1, ZB - 70, M.oak);                                 // base
+bx(0, y2, z0 + 70, WD + T, y3, ZB - 70, M.oak, 2);                             // band 110
+bx(0, y4, z0 + 70, WD + T, y5, ZB - 70, M.oak, 2);                             // top cap
 for (const b0 of [z0 + 70, z0 + 70 + 1110 + 130]) {
   frontPX(b0, b0 + 555, y1, y2, WD, M.u705); frontPX(b0 + 555, b0 + 1110, y1, y2, WD, M.u705);
   frontPX(b0, b0 + 555, y3, y4, WD, M.u705); frontPX(b0 + 555, b0 + 1110, y3, y4, WD, M.u705);
@@ -96,18 +96,18 @@ for (const b0 of [z0 + 70, z0 + 70 + 1110 + 130]) {
 
 // ---------- ARMOIRE 2 portes 900 (top-right corner, front +z), depth 600 ----------
 const AX0 = XR - 900, AD = 600;
-bx(AX0, 0, 0, XR, y5, AD - 30, M.caisson);
+bx(AX0 + 70, y1, 0, XR - 70, y4, AD - 30, M.caisson);
 bx(AX0, 0, 0, AX0 + 70, y5, AD + T, M.oak, 2); bx(XR - 70, 0, 0, XR, y5, AD + T, M.oak, 2);
-bx(AX0, 0, 0, XR, y1, AD + T, M.oak); bx(AX0, y2, 0, XR, y3, AD + T, M.oak, 2); bx(AX0, y4, 0, XR, y5, AD + T, M.oak, 2);
+bx(AX0 + 70, 0, 0, XR - 70, y1, AD + T, M.oak); bx(AX0 + 70, y2, 0, XR - 70, y3, AD + T, M.oak, 2); bx(AX0 + 70, y4, 0, XR - 70, y5, AD + T, M.oak, 2);
 frontPZ(AX0 + 70, AX0 + 450, y1, y2, AD, M.u705); frontPZ(AX0 + 450, XR - 70, y1, y2, AD, M.u705);
 frontPZ(AX0 + 70, AX0 + 450, y3, y4, AD, M.u705); frontPZ(AX0 + 450, XR - 70, y3, y4, AD, M.u705);
 bx(AX0 + 425, 900, AD + T, AX0 + 437, 1600, AD + T + 16, M.noir, 3); bx(AX0 + 463, 900, AD + T, AX0 + 475, 1600, AD + T + 16, M.noir, 3);
 
 // ---------- MEUBLE TV 2100 (suspended), x AX0-2100 .. AX0, depth 400 ----------
 const TX0 = AX0 - 2100, TD = 400, TY0 = 300, TY1 = 760;
-bx(TX0, TY0, 0, AX0, TY1, TD - 25, M.caisson);
+bx(TX0 + 25, TY0 + 25, 0, AX0 - 25, TY1 - 25, TD - 25, M.caisson);
 bx(TX0, TY1 - 25, 0, AX0, TY1, TD, M.oak, 2);                  // oak top
-bx(TX0, TY0, 0, TX0 + 25, TY1, TD, M.oak, 2); bx(AX0 - 25, TY0, 0, AX0, TY1, TD, M.oak, 2);
+bx(TX0, TY0 + 25, 0, TX0 + 25, TY1 - 25, TD, M.oak, 2); bx(AX0 - 25, TY0 + 25, 0, AX0, TY1 - 25, TD, M.oak, 2);
 bx(TX0, TY0, 0, AX0, TY0 + 25, TD, M.oak, 2);
 for (let k = 0; k < 3; k++) frontPZ(TX0 + 25 + k * 683.3, TX0 + 25 + (k + 1) * 683.3, TY0 + 25, TY1 - 25, TD - 25 - T + T, M.u705);
 // TV
