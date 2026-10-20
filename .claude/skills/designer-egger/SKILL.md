@@ -31,7 +31,7 @@ Ne rien générer tant qu'un point bloquant manque (couleur surtout).
 - LED : seulement si demandé ; profil alu encastré, jamais une bande visible.
 
 ## 4. Rendus Higgsfield (gpt_image_2_5, variant sunburst)
-- Qualité **max, 4K**, ≈ 15 crédits/image. Vérifier le solde avant (`balance`).
+- **Coût par défaut : ~1 crédit par photo** (gpt_image_2_5 `quality: medium` ≈ 0,5 crédit, ou `high` 2k ≈ 2,75). **Jamais `max`/4K (15 crédits) sans accord explicite du client.** Vérifier le solde avant (`balance`) et annoncer le coût.
 - Toujours partir de la **photo réelle** de la pièce (image_references) pour que la géométrie, la fenêtre et la lumière soient les siennes.
 - Un rendu = une vue précise et cohérente avec le plan (pas de meubles inventés, pas de pièce imaginaire).
 - Prompt : pièce réelle + cotes + décors EGGER décrits (teinte, veinage, structure) + quincaillerie + lumière + « no text, no logos, no people ».
