@@ -103,45 +103,71 @@ frontPZ(AX0 + 70, AX0 + 450, y1, y2, AD, M.u705); frontPZ(AX0 + 450, XR - 70, y1
 frontPZ(AX0 + 70, AX0 + 450, y3, y4, AD, M.u705); frontPZ(AX0 + 450, XR - 70, y3, y4, AD, M.u705);
 bx(AX0 + 425, 900, AD + T, AX0 + 437, 1600, AD + T + 16, M.noir, 3); bx(AX0 + 463, 900, AD + T, AX0 + 475, 1600, AD + T + 16, M.noir, 3);
 
-// ---------- MEUBLE TV 2100 (suspended), x AX0-2100 .. AX0, depth 400 ----------
-const TX0 = AX0 - 2100, TD = 400, TY0 = 300, TY1 = 760;
-bx(TX0 + 25, TY0 + 25, 0, AX0 - 25, TY1 - 25, TD - 25, M.caisson);
-bx(TX0, TY1 - 25, 0, AX0, TY1, TD, M.oak, 2);                  // oak top
-bx(TX0, TY0 + 25, 0, TX0 + 25, TY1 - 25, TD, M.oak, 2); bx(AX0 - 25, TY0 + 25, 0, AX0, TY1 - 25, TD, M.oak, 2);
-bx(TX0, TY0, 0, AX0, TY0 + 25, TD, M.oak, 2);
-for (let k = 0; k < 3; k++) frontPZ(TX0 + 25 + k * 683.3, TX0 + 25 + (k + 1) * 683.3, TY0 + 25, TY1 - 25, TD - 25 - T + T, M.u705);
-// TV
-bx(TX0 + 450, 1150, 30, TX0 + 1650, 1830, 70, M.ecran, 4);
-const v1 = new THREE.Mesh(new THREE.CylinderGeometry(60, 50, 220, 32), new THREE.MeshStandardMaterial({ color: 0xe5ded2, roughness: 0.5 })); v1.position.set(TX0 + 1850, TY1 + 110, 200); v1.castShadow = true; G.add(v1);
+// LED material (warm indirect light lines)
+const LED = new THREE.MeshBasicMaterial({ color: 0xffd9a8 });
+const ledLight = (x, y, z, k = 40000, d = 1400) => { const p = new THREE.PointLight(0xffc98a, k, d, 2); p.position.set(x, y, z); sc.add(p); };
 
-// ---------- BED 1800 x 2000, headboard on bottom wall, + nightstands 500 ----------
+// ---------- TV WALL: full-height fluted oak panel H1357 + floating TV unit all U705 ----------
+const TX0 = AX0 - 2100, TD = 400, TY0 = 300, TY1 = 760;
+bx(TX0 - 20, 0, 0, AX0, CEIL, 18, M.caisson, 0, { cast: false });                         // panel backing
+for (let x = TX0 - 20; x < AX0; x += 60) bx(x + 4, 0, 18, x + 56, CEIL, 38, M.oak, 0, { cast: false }); // vertical oak flutes
+bx(TX0, TY0, 38, AX0 - 10, TY1, TD, M.caisson);
+bx(TX0, TY1 - 25, 38, AX0 - 10, TY1, TD + T, M.u705, 2);                   // U705 top
+bx(TX0, TY0, 38, AX0 - 10, TY0 + 25, TD + T, M.u705, 2);                   // U705 bottom
+bx(TX0, TY0 + 25, 38, TX0 + 25, TY1 - 25, TD + T, M.u705); bx(AX0 - 35, TY0 + 25, 38, AX0 - 10, TY1 - 25, TD + T, M.u705);
+for (let k = 0; k < 3; k++) frontPZ(TX0 + 25 + k * 676.7, TX0 + 25 + (k + 1) * 676.7, TY0 + 25, TY1 - 25, TD, M.u705);
+bx(TX0 + 40, TY0 - 6, 120, AX0 - 50, TY0 - 2, 300, LED, 0, { cast: false });              // LED under floating unit
+for (let x = TX0 + 300; x < AX0; x += 600) ledLight(x, TY0 - 60, 250, 25000, 900);
+// TV
+bx(TX0 + 450, 1150, 40, TX0 + 1650, 1830, 80, M.ecran, 4);
+const v1 = new THREE.Mesh(new THREE.CylinderGeometry(60, 50, 220, 32), new THREE.MeshStandardMaterial({ color: 0xe5ded2, roughness: 0.5 })); v1.position.set(TX0 + 1850, TY1 + 110, 220); v1.castShadow = true; G.add(v1);
+// plinth LED under the 2490 wardrobe and the 900 armoire
+bx(WD - 10, 30, z0 + 75, WD + 4, 42, ZB - 75, LED, 0, { cast: false });
+bx(AX0 + 75, 30, AD - 10, XR - 75, 42, AD + 4, LED, 0, { cast: false });
+ledLight(WD + 200, 120, 2500, 30000, 1200); ledLight(AX0 + 450, 120, AD + 200, 20000, 900);
+
+// ---------- BED 1800 x 2000 + full-width headboard wall (bed + nightstands) ----------
 const BX0 = 2400, BX1 = 4200, BZ1 = ZB, BZ0 = ZB - 2000;
-bx(BX0, 0, BZ0, BX1, 320, BZ1 - 60, M.u705, 8);                         // bed base U705
-bx(BX0 + 30, 320, BZ0 + 30, BX1 - 30, 560, BZ1 - 80, M.linge, 30);      // mattress + duvet
-bx(BX0 + 10, 330, BZ0 + 10, BX1 - 10, 580, BZ0 + 650, M.plaid, 20);     // throw at foot
-for (const x of [BX0 + 120, BX0 + 940]) bx(x, 560, BZ1 - 520, x + 740, 740, BZ1 - 120, M.coussin, 60);
-bx(BX0 - 60, 0, ZB - 80, BX1 + 60, 1150, ZB, M.oak, 6);                 // oak headboard
-for (let x = BX0; x < BX1; x += 225) bx(x + 4, 380, ZB - 92, x + 221, 1120, ZB - 78, M.oak, 4);   // vertical oak ribs
-// nightstands 500 (U705 drawer, oak top), posés
-for (const nx of [BX0 - 520, BX1 + 20]) {
-  bx(nx, 0, ZB - 420, nx + 500, 450, ZB - 20, M.caisson);
-  bx(nx, 450, ZB - 430, nx + 500, 475, ZB - 10, M.oak, 2);
-  frontNZ(nx + 5, nx + 495, 220, 445, ZB - 420 + 0, M.u705); // drawer (faces -z)
-  bx(nx + 5, 0, ZB - 420, nx + 495, 60, ZB - 405, M.oak);
-  bx(nx + 200, 330, ZB - 440 - T, nx + 300, 342, ZB - 428 - T, M.noir, 2);
-  const lamp = new THREE.Mesh(new THREE.CylinderGeometry(90, 110, 200, 32), new THREE.MeshStandardMaterial({ color: 0xfaf3e6, emissive: 0xffd9a0, emissiveIntensity: 0.6, roughness: 0.8 }));
-  lamp.position.set(nx + 250, 640, ZB - 220); G.add(lamp);
-  bx(nx + 240, 475, ZB - 230, nx + 260, 540, ZB - 210, M.noir);
-  const pl = new THREE.PointLight(0xffc98a, 50000, 1600, 2); pl.position.set(nx + 250, 650, ZB - 260); sc.add(pl);
+const HW0 = BX0 - 560, HW1 = BX1 + 560, HH = 1350;
+bx(HW0, 0, ZB - 40, HW1, HH, ZB, M.oak, 2);                                                // oak wall panel H1357
+for (let x = HW0 + 400; x < HW1 - 100; x += 466) bx(x - 3, 0, ZB - 44, x + 3, HH, ZB - 39, M.noir, 0, { cast: false }); // panel joints
+bx(HW0, HH, ZB - 60, HW1, HH + 20, ZB, M.oak, 2);                                          // top shelf/cap
+bx(HW0 + 20, HH - 4, ZB - 58, HW1 - 20, HH, ZB - 44, LED, 0, { cast: false });              // LED wash up the wall
+for (let x = HW0 + 300; x < HW1; x += 700) ledLight(x, HH + 80, ZB - 120, 22000, 1100);
+bx(BX0 - 20, 330, ZB - 120, BX1 + 20, 1150, ZB - 40, M.u705, 30);                          // upholstered U705 headboard
+bx(BX0, 0, BZ0, BX1, 320, BZ1 - 120, M.u705, 8);                                           // bed base U705
+bx(BX0 + 30, 320, BZ0 + 30, BX1 - 30, 560, BZ1 - 140, M.linge, 30);
+bx(BX0 + 10, 330, BZ0 + 10, BX1 - 10, 580, BZ0 + 650, M.plaid, 20);
+for (const x of [BX0 + 120, BX0 + 940]) bx(x, 560, BZ1 - 560, x + 740, 760, BZ1 - 160, M.coussin, 60);
+// wall sconces
+for (const sx of [HW0 + 280, HW1 - 280]) { bx(sx - 15, 1000, ZB - 60, sx + 15, 1060, ZB - 40, M.noir, 2); bx(sx - 35, 960, ZB - 170, sx + 35, 1030, ZB - 60, M.noir, 10); ledLight(sx, 950, ZB - 200, 30000, 1200); }
+// nightstands 500, posés: U705 drawer on top + open oak niche below (with LED)
+for (const nx of [BX0 - 540, BX1 + 40]) {
+  const nz0 = ZB - 460, nz1 = ZB - 40;
+  bx(nx, 0, nz0, nx + 19, 470, nz1, M.u705); bx(nx + 481, 0, nz0, nx + 500, 470, nz1, M.u705);   // sides
+  bx(nx + 19, 0, nz0, nx + 481, 60, nz1, M.u705);                                                 // base
+  bx(nx + 19, 60, nz1 - 19, nx + 481, 290, nz1, M.oak);                                           // niche back oak
+  bx(nx + 19, 60, nz0 + 40, nx + 481, 62, nz1 - 19, M.oak, 0, { cast: false });                    // niche floor oak
+  bx(nx + 30, 282, nz0 + 60, nx + 470, 286, nz1 - 40, LED, 0, { cast: false });                    // niche LED
+  ledLight(nx + 250, 200, nz0 + 120, 8000, 500);
+  bx(nx + 19, 290, nz0 + 19, nx + 481, 450, nz1, M.caisson);
+  frontNZ(nx + 21, nx + 479, 292, 448, nz0 + 19, M.u705);                                           // drawer
+  bx(nx + 190, 360, nz0 - 4, nx + 310, 372, nz0 + 2, M.noir, 2);
+  bx(nx, 450, nz0, nx + 500, 470, nz1, M.u705, 2);                                                 // top
+  const plant = new THREE.Mesh(new THREE.CylinderGeometry(55, 45, 120, 24), new THREE.MeshStandardMaterial({ color: 0xe6e0d6, roughness: 0.6 }));
+  plant.position.set(nx + 140, 530, nz0 + 200); plant.castShadow = true; G.add(plant);
+  const leaves = new THREE.Mesh(new THREE.SphereGeometry(110, 16, 12), new THREE.MeshStandardMaterial({ color: 0x5d7552, roughness: 0.8 }));
+  leaves.position.set(nx + 140, 660, nz0 + 200); leaves.scale.set(1, 0.8, 1); leaves.castShadow = true; G.add(leaves);
 }
 
-// ---------- DESK on right wall (front -x), z 2490..3750, depth 600 ----------
+// ---------- DESK niche on right wall: oak back panel + floating shelves with LED, U705 floating desk ----------
 const DZ0 = 2490, DZ1 = ZB, DD = 600, DXf = XR - DD;
-bx(DXf, 730, DZ0, XR, 768, DZ1, M.oak, 2);                                  // oak top 38
-bx(DXf + 20, 0, DZ0, XR, 730, DZ0 + 25, M.oak);                             // oak leg panel
-bx(DXf, 0, DZ1 - 430, XR, 730, DZ1, M.caisson);                             // drawer block 430
-for (const [a, b] of [[20, 250], [250, 490], [490, 725]]) frontNX(DZ1 - 430, DZ1, a, b, DXf, M.u705);
-bx(DXf + 200, 1350, DZ0 + 60, XR, 1375, DZ1 - 60, M.oak, 2);                // shelf above desk
+bx(XR - 20, 0, DZ0, XR, 2400, DZ1, M.oak, 0, { cast: false });                               // oak back panel
+bx(XR - 420, 0, DZ0 - 20, XR, 2400, DZ0, M.oak, 2);                                          // oak side panel
+bx(XR - 420, 2400, DZ0 - 20, XR, 2420, DZ1, M.oak, 2);                                       // oak top
+bx(DXf, 700, DZ0, XR - 20, 760, DZ1, M.u705, 3);                                              // floating desk top U705 (60 mm)
+frontNX(DZ0 + 20, DZ0 + 640, 702, 758, DXf, M.u705); frontNX(DZ0 + 640, DZ1 - 20, 702, 758, DXf, M.u705);   // 2 thin drawers
+for (const y of [1300, 1720]) { bx(XR - 300, y, DZ0, XR - 20, y + 38, DZ1, M.oak, 2); bx(XR - 290, y - 4, DZ0 + 20, XR - 30, y, DZ1 - 20, LED, 0, { cast: false }); ledLight(XR - 150, y - 60, (DZ0 + DZ1) / 2, 15000, 900); }
 const chair = new THREE.Group();
 const fab = new THREE.MeshStandardMaterial({ color: 0xcfc4b4, roughness: 0.95 });
 const cx = DXf - 330, cz = DZ0 + 380;
