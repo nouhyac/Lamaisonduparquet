@@ -81,12 +81,12 @@ for (let y = 190; y < 740; y += 70) bx(2260, y, 110, 2840, y + 8, 114, new THREE
 const WD = 620, z0 = ZA, Hb = 50, Hd = 1980, Hband = 110, Htop = 570, Hcap = 50;
 const y1 = Hb, y2 = y1 + Hd, y3 = y2 + Hband, y4 = y3 + Htop, y5 = y4 + Hcap;  // 50,2030,2140,2710,2760
 bx(0, y1, z0 + 70, WD - 30, y4, ZB - 70, M.caisson);                           // carcass
-bx(0, 0, z0, WD + T, y5, z0 + 70, M.oak, 2);                                   // side 70
-bx(0, 0, ZB - 70, WD + T, y5, ZB, M.oak, 2);                                   // side 70
-bx(0, y1, z0 + 70 + 1110, WD + T, y2, z0 + 70 + 1110 + 130, M.oak, 2); bx(0, y3, z0 + 70 + 1110, WD + T, y4, z0 + 70 + 1110 + 130, M.oak, 2); // middle 130
-bx(0, 0, z0 + 70, WD + T, y1, ZB - 70, M.oak);                                 // base
-bx(0, y2, z0 + 70, WD + T, y3, ZB - 70, M.oak, 2);                             // band 110
-bx(0, y4, z0 + 70, WD + T, y5, ZB - 70, M.oak, 2);                             // top cap
+bx(0, 0, z0, WD + T, y5, z0 + 70, M.u705, 2);                                   // side 70
+bx(0, 0, ZB - 70, WD + T, y5, ZB, M.u705, 2);                                   // side 70
+bx(0, y1, z0 + 70 + 1110, WD + T, y2, z0 + 70 + 1110 + 130, M.u705, 2); bx(0, y3, z0 + 70 + 1110, WD + T, y4, z0 + 70 + 1110 + 130, M.u705, 2); // middle 130
+bx(0, 0, z0 + 70, WD + T, y1, ZB - 70, M.u705);                                 // base
+bx(0, y2, z0 + 70, WD + T, y3, ZB - 70, M.u705, 2);                             // band 110
+bx(0, y4, z0 + 70, WD + T, y5, ZB - 70, M.u705, 2);                             // top cap
 for (const b0 of [z0 + 70, z0 + 70 + 1110 + 130]) {
   frontPX(b0, b0 + 555, y1, y2, WD, M.u705); frontPX(b0 + 555, b0 + 1110, y1, y2, WD, M.u705);
   frontPX(b0, b0 + 555, y3, y4, WD, M.u705); frontPX(b0 + 555, b0 + 1110, y3, y4, WD, M.u705);
