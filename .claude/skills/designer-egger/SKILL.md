@@ -47,6 +47,11 @@ Une chambre ou une cuisine « tout greige, tout plat » est banale. Toujours :
 - **Mise en scène des rendus** : linge superposé, plaid, plantes, livres, céramiques, tapis, lumière chaude. Pièce finie, jamais de cartons.
 - **Format client (style Youcef)** : vertical 3:4, un meuble par image, carte blanche + barre rouge (`ads/meubles/chambre-H1357-U705/label.py`).
 
+## 4 ter. Zéro erreur avant de dépenser des crédits
+- Ordre imposé : **3D gratuite → le client vérifie → seulement ensuite Higgsfield**. Ne jamais lancer de rendus payants avant sa validation.
+- Maquette three.js : aucune pièce ne doit en chevaucher une autre (caissons, bandeaux, socles *entre* les montants), sinon rayures/moiré à l'écran.
+- Avant d'envoyer : relire chaque vue contre le croquis (cotes, nombre de portes, poignées, position des meubles, fenêtre, radiateur) et lister à part ce qui vient d'une **hypothèse** (non écrit sur le croquis).
+
 ## 5. Livrables pour le client
 - **Plan coté** (vue de dessus + élévations) avant ou avec les rendus.
 - 4K : vue d'ensemble + une vue par meuble + avant/après sur la photo réelle.
