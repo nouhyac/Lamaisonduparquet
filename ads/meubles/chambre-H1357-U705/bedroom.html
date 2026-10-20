@@ -83,12 +83,12 @@ const y1 = Hb, y2 = y1 + Hd, y3 = y2 + Hband, y4 = y3 + Htop, y5 = y4 + Hcap;  /
 bx(0, y1, z0 + 70, WD - 30, y4, ZB - 70, M.caisson);                           // carcass
 bx(0, 0, z0, WD + T, y5, z0 + 70, M.u705, 2);                                   // side 70
 bx(0, 0, ZB - 70, WD + T, y5, ZB, M.u705, 2);                                   // side 70
-bx(0, y1, z0 + 70 + 1110, WD + T, y4, z0 + 70 + 1110 + 130, M.u705, 2); // middle 130
+bx(0, y1, z0 + 70 + 1110, WD + T, y5, z0 + 70 + 1110 + 130, M.u705, 2); // middle 130
 bx(0, 0, z0 + 70, WD + T, y1, ZB - 70, M.u705);                                 // base
 
-bx(0, y4, z0 + 70, WD + T, y5, ZB - 70, M.u705, 2);                             // top cap
+bx(0, y4, z0 + 70, WD - 30, y5, ZB - 70, M.caisson);                           // top inside (hidden)
 for (const b0 of [z0 + 70, z0 + 70 + 1110 + 130]) {
-  frontPX(b0, b0 + 555, y1, y4, WD, M.u705); frontPX(b0 + 555, b0 + 1110, y1, y4, WD, M.u705);
+  frontPX(b0, b0 + 555, y1, y5, WD, M.u705); frontPX(b0 + 555, b0 + 1110, y1, y5, WD, M.u705);
   // long black bar handles
   bx(WD + T, 900, b0 + 530, WD + T + 16, 1600, b0 + 542, M.noir, 3); bx(WD + T, 900, b0 + 568, WD + T + 16, 1600, b0 + 580, M.noir, 3);
 }
@@ -97,8 +97,8 @@ for (const b0 of [z0 + 70, z0 + 70 + 1110 + 130]) {
 const AX0 = XR - 900, AD = 600;
 bx(AX0 + 70, y1, 0, XR - 70, y4, AD - 30, M.caisson);
 bx(AX0, 0, 0, AX0 + 70, y5, AD + T, M.u705, 2); bx(XR - 70, 0, 0, XR, y5, AD + T, M.u705, 2);
-bx(AX0 + 70, 0, 0, XR - 70, y1, AD + T, M.u705); bx(AX0 + 70, y4, 0, XR - 70, y5, AD + T, M.u705, 2);
-frontPZ(AX0 + 70, AX0 + 450, y1, y4, AD, M.u705); frontPZ(AX0 + 450, XR - 70, y1, y4, AD, M.u705);
+bx(AX0 + 70, 0, 0, XR - 70, y1, AD + T, M.u705); bx(AX0 + 70, y4, 0, XR - 70, y5, AD - 30, M.caisson);
+frontPZ(AX0 + 70, AX0 + 450, y1, y5, AD, M.u705); frontPZ(AX0 + 450, XR - 70, y1, y5, AD, M.u705);
 bx(AX0 + 425, 900, AD + T, AX0 + 437, 1600, AD + T + 16, M.noir, 3); bx(AX0 + 463, 900, AD + T, AX0 + 475, 1600, AD + T + 16, M.noir, 3);
 
 // LED material (warm indirect light lines)
