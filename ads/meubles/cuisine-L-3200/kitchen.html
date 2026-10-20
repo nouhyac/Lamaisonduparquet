@@ -9,11 +9,13 @@ import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from './jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from './jsm/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from './jsm/postprocessing/OutputPass.js';
+import { GTAOPass } from './jsm/postprocessing/GTAOPass.js';
+import { SMAAPass } from './jsm/postprocessing/SMAAPass.js';
 
 const W = innerWidth, H = innerHeight;
 const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
 r.setPixelRatio(1); r.setSize(W, H);
-r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 0.82;
+r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 0.74;
 r.outputColorSpace = THREE.SRGBColorSpace;
 r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild(r.domElement);
@@ -33,13 +35,13 @@ const M = {
   oak:   new THREE.MeshStandardMaterial({ map: oakT, color: 0xffffff, roughness: 0.6 }),   // H1145 chêne Bardolino
   blanc: new THREE.MeshStandardMaterial({ color: 0xf4f2ee, roughness: 0.5 }),               // W1000 blanc premium
   caisson: new THREE.MeshStandardMaterial({ color: 0xece9e3, roughness: 0.7 }),
-  plan:  new THREE.MeshStandardMaterial({ color: 0x2b2b2d, roughness: 0.35, metalness: 0.05 }),
-  credence: new THREE.MeshStandardMaterial({ color: 0xe9e6e0, roughness: 0.25 }),
+  plan:  new THREE.MeshStandardMaterial({ map: tex('stone.jpg', [3, 1]), roughness: 0.32, metalness: 0.05 }),
+  credence: new THREE.MeshStandardMaterial({ map: tex('marble.jpg'), roughness: 0.18 }),
   noir:  new THREE.MeshStandardMaterial({ color: 0x0d0d0e, roughness: 0.25, metalness: 0.2 }),
   verre: new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.08, metalness: 0.3 }),
   inox:  new THREE.MeshStandardMaterial({ color: 0xb9bcbf, roughness: 0.25, metalness: 0.9 }),
   plinthe: new THREE.MeshStandardMaterial({ color: 0x3a3836, roughness: 0.6 }),
-  mur:   new THREE.MeshStandardMaterial({ color: 0xf1eee9, roughness: 0.95 }),
+  mur:   new THREE.MeshStandardMaterial({ color: 0xe6dfd5, roughness: 0.95 }),
   sol:   new THREE.MeshStandardMaterial({ map: tex('floor.jpg', [5, 5]), roughness: 0.55 }),
   led:   new THREE.MeshBasicMaterial({ color: 0xffd7a0 }),
 };
@@ -168,11 +170,25 @@ bx(CD + 19, PL + 1540, 1760, CD + 34, PL + 1900, 1780, M.noir, 3);
 // side panel end of columns
 bx(0, 0, 3090, CD + 20, CEIL, 3110, M.bas, 2);
 
+
+// ---------- ceiling, spots, decor ----------
+const ceil = bx(-200, CEIL, -200, RX + 600, CEIL + 20, RZ + 1500, new THREE.MeshStandardMaterial({ color: 0xf0ece6, emissive: 0x7d7872, roughness: 0.9 }), 0, { cast: false });
+const spotM = new THREE.MeshBasicMaterial({ color: 0xfff1dc });
+for (const [x, z] of [[900, 1300], [1900, 1300], [2700, 1300], [900, 2300], [1900, 2300]]) {
+  const d = new THREE.Mesh(new THREE.CircleGeometry(45, 32), spotM); d.rotation.x = Math.PI / 2; d.position.set(x, CEIL - 1, z); G.add(d);
+  const pl = new THREE.PointLight(0xfff0dc, 90000, 3200, 2); pl.position.set(x, CEIL - 80, z); sc.add(pl);
+}
+const ceram = new THREE.MeshStandardMaterial({ color: 0xe8e2d8, roughness: 0.4 });
+const wood = new THREE.MeshStandardMaterial({ map: oakT, roughness: 0.5 });
+const v1 = new THREE.Mesh(new THREE.CylinderGeometry(70, 55, 230, 32), ceram); v1.position.set(2850, BASE_TOP + 115, 220); v1.castShadow = true; G.add(v1);
+const v2 = new THREE.Mesh(new THREE.CylinderGeometry(45, 40, 150, 32), new THREE.MeshStandardMaterial({ color: 0x2a2a2a, roughness: 0.35 })); v2.position.set(2990, BASE_TOP + 75, 260); v2.castShadow = true; G.add(v2);
+const board = bx(1300, BASE_TOP + 2, 60, 1620, BASE_TOP + 420, 82, wood); board.rotation.x = -0.14; board.position.z = 95;
+
 // ---------- lights ----------
 sc.add(new THREE.HemisphereLight(0xffffff, 0xd8cfc2, 0.55));
-const sun = new THREE.DirectionalLight(0xfff3e6, 1.9);
+const sun = new THREE.DirectionalLight(0xfff3e6, 1.5);
 sun.position.set(5200, 4200, 5200); sun.target.position.set(1400, 600, 1200); sc.add(sun.target);
-sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+sun.castShadow = true; sun.shadow.mapSize.set(4096, 4096);
 const sc2 = sun.shadow.camera; sc2.left = -3500; sc2.right = 3500; sc2.top = 3500; sc2.bottom = -3500; sc2.near = 100; sc2.far = 15000;
 sun.shadow.bias = -0.0004; sun.shadow.radius = 4; sc.add(sun);
 // warm LED wash on credence
@@ -183,10 +199,17 @@ for (let z = 800; z < 1750; z += 600) { const p = new THREE.PointLight(0xffc98a,
 const cam = new THREE.PerspectiveCamera(42, W / H, 10, 60000);
 const comp = new EffectComposer(r);
 comp.addPass(new RenderPass(sc, cam));
-comp.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.18, 0.4, 0.985));
+const ao = new GTAOPass(sc, cam, W, H);
+ao.updateGtaoMaterial({ radius: 700, distanceExponent: 1.2, thickness: 400, scale: 1.6, samples: 24 });
+ao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 6, rings: 2, samples: 16 });
+ao.blendIntensity = 1.0;
+comp.addPass(ao);
+comp.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.12, 0.4, 0.99));
 comp.addPass(new OutputPass());
+comp.addPass(new SMAAPass(W, H));
 const target = new THREE.Vector3(1300, 1250, 1100);
-window.renderAt = (az, el, dist, tx, ty, tz, fov) => {
+window.renderAt = (az, el, dist, tx, ty, tz, fov, noCeil) => {
+  ceil.visible = !noCeil && el < 35;
   if (tx !== undefined) target.set(tx, ty, tz);
   if (fov) { cam.fov = fov; cam.updateProjectionMatrix(); }
   const a = az * Math.PI / 180, e = el * Math.PI / 180;
