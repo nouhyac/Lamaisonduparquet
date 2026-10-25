@@ -1,3 +1,21 @@
+# ▶️ 25/10 : 2 pubs à 20 € chacune (à monter à la main, quota Adspirer épuisé jusqu'au 02/11)
+Prérequis : compte pub 2860172500875914 réactivé (vérification du moyen de paiement faite). Sinon rien ne partira.
+2 campagnes séparées (objectifs différents). Budget **global** 20 € sur **7 jours** chacune (si le compte est en dollars : 23 $). Ne rien toucher pendant 3 jours.
+
+| | Pub A · Restaurateurs | Pub B · La dame (sites pour tous) |
+|---|---|---|
+| Vidéo | `plateforme/pub-plateforme-40s.mp4` (+ `plateforme/exemple-client.mp4` dans la même pub) | `videos/pub-50s-avatar.mp4` (+ `posts/post-4-fr.jpg`) |
+| Objectif | Interactions › Applications de messagerie › WhatsApp 0549 50 68 57 | Trafic › Site web, optimisation « Clics sur le lien » (pas de pixel) |
+| Audience | Algérie · 23-55 ans · intérêts restaurant, restauration rapide, pizzeria, café, propriétaire de petite entreprise | Algérie · 25-55 ans · Advantage+ |
+| Placements | Advantage+ | Advantage+ |
+| Lien / message | Message pré-rempli : « Bonjour, je veux ma démo gratuite de plateforme pour mon restaurant. » | https://dzignstudio.store/#essai |
+| Titre · bouton | « Démo gratuite à votre nom » · Envoyer un message WhatsApp | « Votre site en 10 secondes » · En savoir plus |
+| Bon résultat à J+3 | conversation < 1 € | clic < 0,15 € et CTR > 1 % |
+
+Texte A : Pendant le rush, chaque appel manqué est une commande perdue. 📞❌ Avec votre plateforme, vos clients commandent sans appeler et votre cuisine reçoit tout, en direct. ✅ Démo gratuite à votre nom ✅ Maquette satisfaite ou remboursée ✅ Paiement 50 % au début, 50 % à la livraison. 👉 Écrivez-nous sur WhatsApp.
+Texte B : Tapez le nom de votre entreprise : votre futur site apparaît en 10 secondes. 😮 Gratuit, sans engagement. Sites vitrines, boutiques, plateformes, à partir de 30 000 DA. ✅ Maquette satisfaite ou remboursée ✅ Paiement 50/50 ✅ -20 % pour nos 5 premiers clients.
+Règle : aucun lieu dans les textes (ne pas reprendre « conçu à Alger » des anciens textes plus bas).
+
 # ▶️ LANCEMENT DU 14/10 : 2 pubs à 25 $ (plan validé)
 
 Pas « en similaire » : les 2 vidéos ne parlent pas aux mêmes personnes et ne finissent pas pareil, donc chacune a **sa cible et sa destination**. Même budget, même durée, pour pouvoir les comparer.
