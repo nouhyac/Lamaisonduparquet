@@ -1,3 +1,10 @@
+# ✅ 25/10 (23 h 54) : PUB LANCÉE, 40 € sur une seule pub (Interactions › conversations par message)
+- Compte pub 2860172500875914 (débloqué), 1 campagne / 1 ensemble / 1 pub « Nouvelle publicité de Interactions », statut « Traitement en cours » (examen Meta).
+- L'utilisateur·rice a mis les 40 € sur cette seule pub au lieu de 2 × 20 € : OK (petit budget = mieux concentré). La pub B (dame) n'est pas lancée.
+- À vérifier : numéro WhatsApp choisi (0549 50 68 57 attendu, Meta proposait l'ancien 0794 70 93 23).
+- Faire « Faire vérifier votre compte » (vérification de l'annonceur, gratuite) pour éviter une mise en pause.
+- Ne rien toucher 3 jours. J+3 (28/10) : coût par conversation (bon si < 1 €), envoyer une capture.
+
 # ▶️ 25/10 : 2 pubs à 20 € chacune (à monter à la main, quota Adspirer épuisé jusqu'au 02/11)
 Prérequis : compte pub 2860172500875914 réactivé (vérification du moyen de paiement faite). Sinon rien ne partira.
 2 campagnes séparées (objectifs différents). Budget **global** 20 € sur **7 jours** chacune (si le compte est en dollars : 23 $). Ne rien toucher pendant 3 jours.
