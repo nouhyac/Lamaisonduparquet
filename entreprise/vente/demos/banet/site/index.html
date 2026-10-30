@@ -16,10 +16,10 @@
   <a class="evitement" href="#carte" data-t="a11y.aller_carte">Aller à la carte</a>
 
   <!-- Bandeau démo (discret) -->
-  <div class="bandeau-demo">
+  <aside class="bandeau-demo" aria-label="Démo">
     <p><span data-t="demo.bandeau">Démo réalisée par Dzign Studio pour Banet el Baraka</span></p>
     <a href="gestion.html" class="bandeau-demo__lien" data-t="demo.espace">Espace gérant</a>
-  </div>
+  </aside>
 
   <!-- En-tête -->
   <header class="entete" id="entete">
@@ -34,7 +34,7 @@
       <a href="#infos" data-t="nav.infos">Infos</a>
     </nav>
     <div class="entete__actions">
-      <button class="btn-suivi" id="btnSuivi" type="button" hidden>
+      <button class="btn-suivi" id="btnSuivi" type="button" hidden aria-label="Ma commande" data-t-aria="suivi.ma_commande">
         <span class="point-vivant" aria-hidden="true"></span><span data-t="suivi.ma_commande">Ma commande</span>
       </button>
       <button class="btn-langue" id="btnLangue" type="button" lang="ar">العربية</button>
@@ -75,7 +75,7 @@
         <p class="section-tete__texte" data-t="self.texte">Les plats maison préparés aujourd’hui. Disponibles au self et en livraison selon la journée.</p>
       </div>
       <div class="self__une" id="selfUne"></div>
-      <div class="self__liste" id="selfListe" role="list"></div>
+      <ul class="self__liste" id="selfListe"></ul>
     </section>
 
     <!-- La carte -->
@@ -175,7 +175,7 @@
           </fieldset>
         </div>
 
-        <aside class="devis__recap" aria-labelledby="titreRecap">
+        <div class="devis__recap">
           <div class="recap-carte">
             <h3 id="titreRecap" data-t="dv.recap">Votre estimation</h3>
             <dl id="dvRecap" class="recap-lignes"></dl>
@@ -189,7 +189,7 @@
             <p class="erreur" id="dvErreur" role="alert"></p>
             <button class="btn btn--or btn--grand btn--bloc" type="submit" data-t="dv.envoyer">Envoyer ma demande</button>
           </div>
-        </aside>
+        </div>
       </form>
     </section>
 

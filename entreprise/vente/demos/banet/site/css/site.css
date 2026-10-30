@@ -103,11 +103,13 @@
 @media (min-width: 700px) { .une { grid-template-columns: 200px 1fr; padding: 16px; gap: 24px; } .une h3 { font-size: 30px; } }
 
 .self__liste {
+  list-style: none;
   display: grid; grid-auto-flow: column; grid-auto-columns: 158px; gap: 12px;
   overflow-x: auto; padding: 6px 16px 14px; scroll-snap-type: x mandatory; scrollbar-width: thin;
   max-width: 1212px; margin: 0 auto;
 }
-.self-item { scroll-snap-align: start; background: var(--blanc); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 8px; text-align: start; cursor: pointer; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 1px 2px rgba(58, 36, 22, .06); transition: transform .2s, box-shadow .2s; }
+.self__liste > li { display: flex; scroll-snap-align: start; }
+.self-item { width: 100%; background: var(--blanc); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 8px; text-align: start; cursor: pointer; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 1px 2px rgba(58, 36, 22, .06); transition: transform .2s, box-shadow .2s; }
 .self-item:hover { transform: translateY(-2px); box-shadow: var(--ombre); }
 .self-item__media { position: relative; aspect-ratio: 1; border-radius: var(--rayon-s); overflow: hidden; background: #fff; container-type: inline-size; }
 .self-item__media img { width: 100%; height: 100%; object-fit: cover; }
@@ -409,4 +411,25 @@
   #zoneImpression td { padding: 5px 0; border-bottom: 1px solid #ccc; }
   #zoneImpression td:last-child { text-align: end; }
   #zoneImpression .logo-imp { width: 90px; height: 90px; }
+}
+
+/* ---------- Ajustements ---------- */
+.suivi__tete, .conf__tete { padding-inline-end: 72px; }
+.conf__tete { padding-inline-start: 72px; }
+.suivi__tete .num, .conf__tete .num { white-space: nowrap; line-height: 1.1; margin: 2px 0 6px; }
+@media (max-width: 640px) {
+  .bandeau-demo { flex-wrap: nowrap; justify-content: space-between; font-size: 11.5px; padding: 5px 12px; text-align: start; gap: 8px; }
+  .bandeau-demo p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .bandeau-demo__lien { flex: none; padding: 3px 10px; }
+}
+@media (min-width: 900px) { .barre-panier { display: none; } }
+
+.btn-langue .court { display: none; }
+@media (max-width: 480px) {
+  .btn-langue .long { display: none; }
+  .btn-langue .court { display: inline; }
+  .btn-langue { width: 44px; padding: 0; }
+  .marque { flex: 1; }
+  .marque__nom { overflow: hidden; text-overflow: ellipsis; }
+  .entete { gap: 8px; padding-inline: 12px; }
 }

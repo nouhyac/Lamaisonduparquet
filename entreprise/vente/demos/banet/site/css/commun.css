@@ -66,7 +66,7 @@ body {
   overflow-x: hidden;
 }
 [dir="rtl"] body { font-family: var(--f-ar-texte); }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 button, input, select, textarea { font: inherit; color: inherit; }
 a { color: var(--bronze-fonce); }
 h1, h2, h3, h4 { font-family: var(--f-titre); font-weight: 650; line-height: 1.12; margin: 0; letter-spacing: -.01em; }
