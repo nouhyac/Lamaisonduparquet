@@ -541,6 +541,7 @@
       cases += '<button type="button" class="cal-g__jour ' + cls + '" data-cal-jour="' + iso + '" aria-label="' + esc(B.dateLongue(iso) + (c ? ' · ' + c + ' ' + L('couverts', 'طبق') : '')) + '"><span class="j">' + j + '</span>' +
         (c ? '<span class="c">' + c + ' ' + L('couv.', 'ط.') + '</span>' : '') + evs.slice(0, 2).map((d) => '<span class="e">' + esc(B.nom(T.evenements.find((e) => e.id === d.type))) + '</span>').join('') + '</button>';
     }
+    const prochains = devis.filter((d) => d.date >= auj && d.statut !== 'realisee').sort((a, b) => a.date.localeCompare(b.date)).slice(0, 6);
     const depasses = Object.keys(couverts).filter((k) => couverts[k] > T.capacite && k >= auj);
     let detail = '';
     if (ui.calJour) {
@@ -551,7 +552,9 @@
     }
     return (depasses.length ? '<p class="alerte-g" style="margin-bottom:12px">' + L('Capacité dépassée', 'تجاوز الطاقة') + ' (' + T.capacite + ') : ' + depasses.map((k) => esc(B.dateCourte(k)) + ' (' + couverts[k] + ')').join(', ') + '</p>' : '') +
       '<section class="carte-g"><header><button type="button" class="btn btn--ligne btn--petit" data-cal-g="-1" aria-label="' + L('Mois précédent', 'الشهر السابق') + '">' + (B.langue === 'ar' ? '›' : '‹') + '</button><h2 style="text-transform:capitalize">' + esc(new Date(an, mo, 1).toLocaleDateString(loc, { month: 'long', year: 'numeric' })) + '</h2><button type="button" class="btn btn--ligne btn--petit" data-cal-g="1" aria-label="' + L('Mois suivant', 'الشهر التالي') + '">' + (B.langue === 'ar' ? '‹' : '›') + '</button></header>' +
-      '<div class="cal-g">' + cases + '</div><p class="aide" style="margin-top:10px">' + L('Capacité journalière : ', 'الطاقة اليومية: ') + T.capacite + ' ' + L('couverts. Touchez un jour pour voir le détail ou le bloquer.', 'طبق. المسوا يومًا لعرض التفاصيل أو حجبه.') + '</p></section>' + detail;
+      '<div class="cal-g">' + cases + '</div><p class="aide" style="margin-top:10px">' + L('Capacité journalière : ', 'الطاقة اليومية: ') + T.capacite + ' ' + L('couverts. Touchez un jour pour voir le détail ou le bloquer.', 'طبق. المسوا يومًا لعرض التفاصيل أو حجبه.') + '</p></section>' + detail +
+      '<section class="carte-g section-g"><header><h2>' + L('Prochains événements', 'المناسبات القادمة') + '</h2></header>' +
+      (prochains.length ? '<div class="liste-g liste-g--2">' + prochains.map(carteDevis).join('') + '</div>' : '<p class="vide-g">—</p>') + '</section>';
   }
   function vueReglagesTraiteur() {
     const T = lire.traiteur();
@@ -721,7 +724,7 @@
       '<div style="align-self:end"><button class="btn btn--plein" type="submit">' + L('Enregistrer', 'حفظ') + '</button></div></form></section>' +
       '<section class="carte-g"><h2>' + L('Prochaine commande offerte', 'الطلب القادم مجاني') + '</h2>' + (proches.length ? '<ul class="tops" style="margin-top:10px">' + proches.map((c) => '<li><span>' + esc(c.nom) + ' · <span dir="ltr">' + esc(c.tel) + '</span></span><span>' + c.nb + '</span></li>').join('') + '</ul>' : '<p class="vide-g">—</p>') + '</section></div>' +
       '<section class="carte-g"><header><h2>' + L('Fichier clients', 'ملف الزبائن') + ' (' + liste.length + ')</h2><input class="input" id="rechClient" type="search" placeholder="' + L('Nom ou téléphone…', 'الاسم أو الهاتف…') + '" value="' + esc(ui.rechercheClient) + '" aria-label="' + L('Rechercher un client', 'بحث عن زبون') + '"></header>' +
-      '<div class="defile"><table class="tableau-g"><thead><tr><th>' + L('Client', 'الزبون') + '</th><th>' + L('Téléphone', 'الهاتف') + '</th><th>' + L('Commandes', 'الطلبات') + '</th><th>' + L('Total', 'المجموع') + '</th><th>' + L('Fidélité', 'الوفاء') + '</th><th></th></tr></thead><tbody>' +
+      '<div class="defile"><table class="tableau-g"><thead><tr><th>' + L('Client', 'الزبون') + '</th><th>' + L('Téléphone', 'الهاتف') + '</th><th>' + L('Commandes', 'الطلبات') + '</th><th>' + L('Total', 'المجموع') + '</th><th>' + L('Fidélité', 'الوفاء') + '</th><th><span class="sr">WhatsApp</span></th></tr></thead><tbody>' +
       liste.map((c) => '<tr><td><strong>' + esc(c.nom) + '</strong><br><span class="aide">' + (c.derniere ? L('Dernière : ', 'آخر طلب: ') + new Date(c.derniere).toLocaleDateString('fr-FR') : '') + '</span></td><td dir="ltr">' + esc(c.tel) + '</td><td>' + c.nb + '</td><td>' + prix(c.total) + '</td><td>' + (c.nb % seuil) + ' / ' + seuil + (Math.floor(c.nb / seuil) ? ' · ' + Math.floor(c.nb / seuil) + ' ' + L('offerte(s)', 'مجانية') : '') + '</td>' +
         '<td><a class="btn btn--wa btn--petit" target="_blank" rel="noopener" href="' + B.lienWhatsApp(B.telInternational(c.tel), L('Bonjour ', 'السلام عليكم ') + c.nom + ', ') + '" aria-label="WhatsApp ' + esc(c.nom) + '">' + ICO.wa + '</a></td></tr>').join('') +
       '</tbody></table></div></section>';
@@ -742,7 +745,7 @@
       ch('instagram', 'Instagram', R.instagram) + ch('delaiLivraison', L('Délai de livraison annoncé (min)', 'مدة التوصيل المعلنة (دقيقة)'), R.delaiLivraison) +
       ch('ouverture', L('Ouverture', 'الفتح'), R.ouverture, ' type="time"') + ch('fermeture', L('Fermeture', 'الإغلاق'), R.fermeture, ' type="time"') +
       ch('livreurs', L('Livreurs (séparés par des virgules)', 'عمال التوصيل (مفصولون بفواصل)'), R.livreurs.join(', ')) + '</section>' +
-      '<section class="carte-g"><h2>' + L('Zones et frais de livraison', 'مناطق ورسوم التوصيل') + '</h2><div class="defile"><table class="tableau-g" style="min-width:620px"><thead><tr><th>' + L('Zone (FR)', 'المنطقة (فرنسية)') + '</th><th>' + L('Zone (AR)', 'المنطقة (عربية)') + '</th><th>' + L('Frais', 'الرسوم') + '</th><th>' + L('Minimum', 'الحد الأدنى') + '</th><th>' + L('Temps (min)', 'المدة (د)') + '</th><th></th></tr></thead><tbody>' +
+      '<section class="carte-g"><h2>' + L('Zones et frais de livraison', 'مناطق ورسوم التوصيل') + '</h2><div class="defile"><table class="tableau-g" style="min-width:620px"><thead><tr><th>' + L('Zone (FR)', 'المنطقة (فرنسية)') + '</th><th>' + L('Zone (AR)', 'المنطقة (عربية)') + '</th><th>' + L('Frais', 'الرسوم') + '</th><th>' + L('Minimum', 'الحد الأدنى') + '</th><th>' + L('Temps (min)', 'المدة (د)') + '</th><th><span class="sr">' + L('Actions', 'إجراءات') + '</span></th></tr></thead><tbody>' +
       Z.map((z, i) => '<tr><td><input name="z' + i + 'fr" value="' + esc(z.fr) + '" aria-label="' + L('Zone (FR)', 'المنطقة (فرنسية)') + '"></td><td><input name="z' + i + 'ar" value="' + esc(z.ar) + '" dir="rtl" aria-label="' + L('Zone (AR)', 'المنطقة (عربية)') + '"></td><td><input name="z' + i + 'frais" type="number" min="0" step="50" value="' + z.frais + '" aria-label="' + L('Frais', 'الرسوم') + '"></td><td><input name="z' + i + 'min" type="number" min="0" step="100" value="' + z.min + '" aria-label="' + L('Minimum', 'الحد الأدنى') + '"></td><td><input name="z' + i + 'temps" value="' + esc(z.temps) + '" aria-label="' + L('Temps', 'المدة') + '"></td><td><button type="button" class="btn btn--ligne btn--petit" data-zone-suppr="' + i + '" aria-label="' + L('Supprimer la zone', 'حذف المنطقة') + '">✕</button></td></tr>').join('') +
       '</tbody></table></div><button type="button" class="btn btn--ligne btn--petit" data-zone-ajout style="margin-top:10px">+ ' + L('Ajouter une zone', 'إضافة منطقة') + '</button></section>' +
       '<section class="carte-g formulaire formulaire--2"><h2 class="large">' + L('Codes PIN', 'الرموز السرية') + '</h2>' +

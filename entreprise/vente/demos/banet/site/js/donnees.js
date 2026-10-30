@@ -52,7 +52,7 @@
   p('mtouem', 'maison', 'Mtouem', 'المثوّم', 700, { tags: M, dfr: 'Boulettes de viande hachée à l’ail, en sauce.', dar: 'كويرات اللحم المفروم بالثوم في المرق.' });
   p('rechta', 'maison', 'Rechta', 'الرشتة', 600, { tags: M, estime: true, dfr: 'Rechta maison en sauce.', dar: 'رشتة البيت بالمرق.' });
   p('berkoukes', 'maison', 'Berkoukes', 'البركوكس', 600, { tags: M, estime: true, self: false, dfr: 'Berkoukes maison mijoté en sauce.', dar: 'بركوكس البيت مطهو في المرق.' });
-  p('djolbana', 'maison', 'Djolbana', 'الجلبانة', 600, { tags: M, estime: true, dfr: 'Petits pois mijotés en sauce.', dar: 'جلبانة مطهوة في المرق.' });
+  p('djolbana', 'maison', 'Djelbana', 'الجلبانة', 600, { tags: M, estime: true, dfr: 'Petits pois mijotés en sauce.', dar: 'جلبانة مطهوة في المرق.' });
   p('dolma', 'maison', 'Légumes farcis (Dolma)', 'الدولمة', 700, { tags: M, estime: true, dfr: 'Légumes farcis, recette maison.', dar: 'خضر محشية على طريقة البيت.' });
   p('tajine-olives', 'maison', 'Tajine de poulet aux olives', 'طاجين الزيتون بالدجاج', 700, { tags: M, estime: true, photo: false, self: false, dfr: 'Poulet et olives en sauce.', dar: 'دجاج وزيتون في المرق.' });
   p('muhammar', 'maison', 'Muhammar', 'المحمّر', 700, { tags: M, estime: true, photo: false, self: false, dfr: 'Muhammar, recette maison.', dar: 'المحمّر على طريقة البيت.' });
@@ -308,7 +308,9 @@
     const n = paniers.length;
     const commandes = [];
     for (let i = 0; i < n; i++) {
-      const cree = Math.round(t0 + ((maintenant - 8 * 60e3 - t0) * Math.pow(i / (n - 1), 0.9)));
+      let cree = Math.round(t0 + ((maintenant - 50 * 60e3 - t0) * Math.pow(i / (n - 1), 0.9)));
+      // les 6 dernières commandes sont récentes (cuisine et livraison en cours)
+      if (n - i <= 6) cree = maintenant - ((n - i) * 7 - 4) * 60e3;
       const [nom, tel] = clients[i];
       const mode = modes[i % modes.length];
       const zone = mode === 'livraison' ? zonesPoids[i % zonesPoids.length] : '';

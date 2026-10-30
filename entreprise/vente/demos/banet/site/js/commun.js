@@ -24,13 +24,25 @@
   let canal = null;
   try { canal = new BroadcastChannel('bnb-synchro'); } catch (e) { canal = null; }
   function ecrire(cle, valeur) {
-    try { localStorage.setItem(PREFIXE + cle, JSON.stringify(valeur)); } catch (e) { /* quota plein : on ignore */ }
-    if (canal) canal.postMessage({ cle });
+    const brut = JSON.stringify(valeur);
+    try { localStorage.setItem(PREFIXE + cle, brut); } catch (e) { /* quota plein : on ignore */ }
+    if (canal) canal.postMessage({ cle, brut });
   }
   const abonnes = [];
   function surChangement(fn) { abonnes.push(fn); }
   function prevenir(cle) { abonnes.forEach((fn) => { try { fn(cle); } catch (e) { console.warn(e); } }); }
-  if (canal) canal.onmessage = (ev) => prevenir(ev.data && ev.data.cle);
+  /* Entre deux onglets, le message BroadcastChannel peut arriver AVANT que
+     localStorage soit à jour dans cet onglet : on attend la nouvelle valeur
+     (quelques millisecondes) avant de prévenir l'interface. */
+  if (canal) canal.onmessage = (ev) => {
+    const d = ev.data || {};
+    let essais = 0;
+    (function attendre() {
+      let actuel = null; try { actuel = localStorage.getItem(PREFIXE + d.cle); } catch (e) { /* rien */ }
+      if (d.brut === undefined || actuel === d.brut || essais++ > 40) prevenir(d.cle);
+      else setTimeout(attendre, 25);
+    })();
+  };
   // secours si BroadcastChannel n'existe pas (vieux navigateurs)
   window.addEventListener('storage', (ev) => { if (!canal && ev.key && ev.key.startsWith(PREFIXE)) prevenir(ev.key.slice(PREFIXE.length)); });
 
