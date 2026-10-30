@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wood Pecker Draria · Restaurant</title>
+  <meta name="description" content="Wood Pecker Draria : pizzas, poissons, grillades, pâtes et desserts à Draria. Commande en ligne, réservation de table et anniversaires.">
+  <meta name="theme-color" content="#0b0a08">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Poiret+One&family=Manrope:wght@400;500;600;700&family=Cairo:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="evitement" href="#carte" data-t="aller-carte">Aller à la carte</a>
+
+  <!-- Bandeau démo -->
+  <div class="bandeau-demo">
+    <p><span data-t="demo">Démo réalisée par Dzign Studio pour Wood Pecker Draria</span></p>
+    <a class="lien-gerant" href="gestion.html" data-t="espace-gerant">Espace gérant</a>
+  </div>
+
+  <!-- En-tête -->
+  <header class="entete" id="haut">
+    <div class="entete-in">
+      <a class="marque" href="#accueil" aria-label="Wood Pecker Draria">
+        <span class="marque-logo" id="logo-entete"></span>
+        <span class="marque-nom">Wood Pecker <small>Draria</small></span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale" data-t-aria="nav">
+        <a href="#du-jour" data-t="nav-jour">Du jour</a>
+        <a href="#carte" data-t="nav-carte">La carte</a>
+        <a href="#reserver" data-t="nav-reserver">Réserver</a>
+        <a href="#anniversaires" data-t="nav-anniv">Anniversaires</a>
+        <a href="#infos" data-t="nav-infos">Infos</a>
+      </nav>
+      <div class="entete-actions">
+        <div class="langues" role="group" aria-label="Langue / اللغة">
+          <button type="button" data-lang-btn="fr" lang="fr">FR</button>
+          <button type="button" data-lang-btn="ar" lang="ar">العربية</button>
+        </div>
+        <button type="button" class="btn-panier" id="ouvrir-panier" aria-haspopup="dialog">
+          <span id="ico-panier"></span><span class="sr-only" data-t="panier">Panier</span>
+          <span class="pastille" id="nb-panier" aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="accueil">
+    <!-- ================= HÉROS ================= -->
+    <section class="heros" aria-labelledby="titre-heros">
+      <div class="deco-frise haut" aria-hidden="true"></div>
+      <div class="heros-in">
+        <div class="heros-texte">
+          <p class="statut" id="statut" aria-live="polite"></p>
+          <h1 id="titre-heros" class="heros-titre">
+            <span class="ligne1">Wood</span>
+            <span class="ligne2">Pecker</span>
+            <span class="ligne3" data-t="draria">Draria</span>
+          </h1>
+          <p class="accroche" data-t="accroche">Goûtez la différence</p>
+          <p class="heros-sous" data-t="heros-sous">Pizzas, poissons, grillades, pâtes et desserts : commandez en livraison, à emporter ou réservez votre table.</p>
+          <div class="heros-boutons">
+            <a class="btn btn-degrade" href="#carte" data-t="commander">Commander</a>
+            <a class="btn btn-or" href="#reserver" data-t="reserver-table">Réserver une table</a>
+            <a class="btn btn-ligne" id="btn-appel" href="tel:0770172579"><span id="ico-tel"></span><span data-t="appeler">Appeler</span></a>
+          </div>
+        </div>
+        <div class="heros-visuel">
+          <div class="medaillon">
+            <img src="img/logo-wp.png" alt="Logo Wood Pecker Draria" data-t-alt="alt-logo" width="320" height="320">
+          </div>
+          <div class="couverts" aria-hidden="true">
+            <svg viewBox="0 0 120 120" width="120" height="120"><defs><linearGradient id="gc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7a541"/><stop offset="1" stop-color="#d65fc8"/></linearGradient></defs>
+              <g fill="none" stroke="url(#gc)" stroke-width="2.4" stroke-linecap="round"><path d="M28 14 q-12 0 -12 20 q0 16 12 18 q12 -2 12 -18 q0 -20 -12 -20 z M28 52 v56"/><path d="M52 14 v26 q0 10 8 12 v56 M60 14 v24 M68 14 v26 q0 10 -8 12"/><path d="M92 14 q-12 20 -6 44 l6 4 v46 M92 14 v48"/></g></svg>
+          </div>
+        </div>
+      </div>
+      <div class="deco-frise bas" aria-hidden="true"></div>
+    </section>
+
+    <!-- ================= DU JOUR ================= -->
+    <section class="du-jour sombre" id="du-jour" aria-labelledby="titre-jour">
+      <div class="conteneur">
+        <header class="titre-section">
+          <span class="ornement" aria-hidden="true"></span>
+          <h2 id="titre-jour" data-t="titre-jour">Aujourd'hui chez Wood Pecker</h2>
+          <span class="ornement" aria-hidden="true"></span>
+        </header>
+        <div class="jour-grille">
+          <article class="carte-jour" aria-labelledby="t-pdj">
+            <figure class="cadre-photo">
+              <img src="img/plat-du-jour-tableau.jpg" alt="Le tableau « Plat du jour » dans la salle Wood Pecker" data-t-alt="alt-tableau" width="700" height="1458" loading="lazy">
+            </figure>
+            <div class="carte-jour-corps">
+              <p class="surtitre" data-t="pdj-sur">Choisi par le chef</p>
+              <h3 id="t-pdj" data-t="pdj">Plat du jour</h3>
+              <ul class="liste-jour" id="liste-pdj"></ul>
+            </div>
+          </article>
+          <article class="carte-jour" aria-labelledby="t-poisson">
+            <figure class="cadre-photo">
+              <img src="img/etal-poissons.jpg" alt="L'étal de poissons frais de Wood Pecker : dorades, loups, crevettes, calamars" data-t-alt="alt-etal" width="1179" height="1380" loading="lazy">
+            </figure>
+            <div class="carte-jour-corps">
+              <p class="surtitre" data-t="poisson-sur">Arrivage</p>
+              <h3 id="t-poisson" data-t="poisson">Poisson frais du jour</h3>
+              <div id="bloc-poisson"></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CARTE ================= -->
+    <section class="carte-menu papier" id="carte" aria-labelledby="titre-carte">
+      <div class="conteneur">
+        <header class="titre-section">
+          <span class="ornement" aria-hidden="true"></span>
+          <h2 id="titre-carte" data-t="titre-carte">La carte</h2>
+          <span class="ornement" aria-hidden="true"></span>
+        </header>
+        <p class="intro-carte" data-t="intro-carte">Toute notre carte, à commander en livraison, à emporter ou sur place. Paiement à la livraison ou au comptoir.</p>
+      </div>
+      <div class="barre-carte" id="barre-carte">
+        <div class="conteneur barre-in">
+          <label class="recherche">
+            <span id="ico-loupe"></span>
+            <span class="sr-only" data-t="rechercher">Rechercher un plat</span>
+            <input type="search" id="recherche" data-t-ph="rechercher-ph" placeholder="Rechercher : pizza, entrecôte, tiramisu…" autocomplete="off">
+          </label>
+          <div class="onglets" id="onglets" role="tablist" aria-label="Catégories" data-t-aria="categories"></div>
+        </div>
+      </div>
+      <div class="conteneur" id="contenu-carte" aria-live="polite"></div>
+    </section>
+
+    <!-- ================= RÉSERVATION ================= -->
+    <section class="reserver sombre" id="reserver" aria-labelledby="titre-res">
+      <div class="conteneur deux-col">
+        <div class="col-texte">
+          <header class="titre-section gauche">
+            <h2 id="titre-res" data-t="titre-res">Réserver une table</h2>
+          </header>
+          <p data-t="res-intro">Notre salle accueille familles et amis. Choisissez votre créneau : l'équipe confirme votre réservation par téléphone ou WhatsApp.</p>
+          <figure class="cadre-photo large">
+            <img src="img/salle.jpg" alt="La salle de Wood Pecker Draria : banquettes crème et tables en bois" data-t-alt="alt-salle" width="1179" height="384" loading="lazy">
+          </figure>
+        </div>
+        <form class="formulaire" id="form-res" novalidate>
+          <div class="ligne-champs">
+            <label><span data-t="date">Date</span><input type="date" id="res-date" required></label>
+            <label><span data-t="heure">Heure</span><select id="res-heure" required></select></label>
+          </div>
+          <div class="ligne-champs">
+            <label><span data-t="personnes">Nombre de personnes</span><input type="number" id="res-pers" min="1" max="40" value="4" required></label>
+            <label><span data-t="bebe">Chaises bébé</span><input type="number" id="res-bebe" min="0" max="6" value="0"></label>
+          </div>
+          <label><span data-t="occasion">Occasion</span>
+            <select id="res-occasion">
+              <option value="" data-t="occ-aucune">Aucune en particulier</option>
+              <option value="anniversaire" data-t="occ-anniv">Anniversaire</option>
+              <option value="famille" data-t="occ-famille">Repas de famille</option>
+              <option value="amis" data-t="occ-amis">Entre amis</option>
+              <option value="affaires" data-t="occ-affaires">Repas d'affaires</option>
+            </select>
+          </label>
+          <div class="ligne-champs">
+            <label><span data-t="nom">Nom</span><input type="text" id="res-nom" autocomplete="name" required></label>
+            <label><span data-t="tel">Téléphone</span><input type="tel" id="res-tel" autocomplete="tel" inputmode="tel" placeholder="0770 00 00 00" required></label>
+          </div>
+          <label><span data-t="remarque">Remarque</span><textarea id="res-remarque" rows="2"></textarea></label>
+          <label class="case"><input type="checkbox" id="res-precommande"> <span data-t="precommande">Précommander des plats (joindre mon panier actuel)</span></label>
+          <p class="aide" id="res-precommande-info"></p>
+          <p class="erreur" id="res-erreur" role="alert"></p>
+          <button class="btn btn-degrade" type="submit" data-t="envoyer-res">Envoyer ma demande</button>
+          <div class="confirmation" id="res-ok" hidden></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= ANNIVERSAIRES ================= -->
+    <section class="anniv papier" id="anniversaires" aria-labelledby="titre-anniv">
+      <div class="conteneur deux-col">
+        <div class="col-texte">
+          <header class="titre-section gauche">
+            <h2 id="titre-anniv" data-t="titre-anniv">Anniversaires & groupes d'enfants</h2>
+          </header>
+          <p data-t="anniv-intro">Fêtez l'anniversaire de votre enfant chez nous avec nos menus enfants, servis avec un cadeau surprise + boisson. Envoyez votre demande, nous vous rappelons pour tout organiser.</p>
+          <ul class="menus-enfants" id="liste-menus-enfants"></ul>
+        </div>
+        <form class="formulaire clair" id="form-anniv" novalidate>
+          <div class="ligne-champs">
+            <label><span data-t="nb-enfants">Nombre d'enfants</span><input type="number" id="an-enfants" min="1" max="60" value="10" required></label>
+            <label><span data-t="nb-adultes">Adultes accompagnants</span><input type="number" id="an-adultes" min="0" max="60" value="2"></label>
+          </div>
+          <div class="ligne-champs">
+            <label><span data-t="date">Date</span><input type="date" id="an-date" required></label>
+            <label><span data-t="heure">Heure</span><select id="an-heure" required></select></label>
+          </div>
+          <label><span data-t="menu-enfant">Menu enfant</span><select id="an-menu"></select></label>
+          <label><span data-t="gateau">Dessert par enfant</span><select id="an-dessert"></select></label>
+          <div class="ligne-champs">
+            <label><span data-t="nom">Nom</span><input type="text" id="an-nom" autocomplete="name" required></label>
+            <label><span data-t="tel">Téléphone</span><input type="tel" id="an-tel" inputmode="tel" placeholder="0550 00 00 00" required></label>
+          </div>
+          <label><span data-t="remarque">Remarque</span><textarea id="an-remarque" rows="2" data-t-ph="anniv-ph" placeholder="Prénom et âge de l'enfant…"></textarea></label>
+          <div class="estimation" id="an-estimation" aria-live="polite"></div>
+          <p class="erreur" id="an-erreur" role="alert"></p>
+          <button class="btn btn-noir" type="submit" data-t="envoyer-anniv">Envoyer la demande</button>
+          <div class="confirmation" id="an-ok" hidden></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= INFOS ================= -->
+    <section class="infos sombre" id="infos" aria-labelledby="titre-infos">
+      <div class="conteneur">
+        <header class="titre-section">
+          <span class="ornement" aria-hidden="true"></span>
+          <h2 id="titre-infos" data-t="titre-infos">Nous trouver</h2>
+          <span class="ornement" aria-hidden="true"></span>
+        </header>
+        <div class="infos-grille">
+          <div class="galerie">
+            <figure class="cadre-photo"><img src="img/enseigne.jpg" alt="L'enseigne Wood Pecker Draria" data-t-alt="alt-enseigne" width="308" height="195" loading="lazy"></figure>
+            <figure class="cadre-photo"><img src="img/facade.jpg" alt="L'entrée du restaurant et sa mascotte pivert" data-t-alt="alt-facade" width="387" height="256" loading="lazy"></figure>
+            <figure class="cadre-photo"><img src="img/pizza-garnie.jpg" alt="Une pizza Wood Pecker garnie part par part" data-t-alt="alt-pizza" width="388" height="431" loading="lazy"></figure>
+          </div>
+          <div class="infos-liste">
+            <div class="bloc-info">
+              <h3 data-t="adresse">Adresse</h3>
+              <p data-t="adresse-txt">Draria, Alger</p>
+              <a class="lien-or" id="lien-maps" href="https://maps.app.goo.gl/wPDHLPoe8TCSVfmo9" target="_blank" rel="noopener"><span id="ico-maps"></span><span data-t="itineraire">Itinéraire Google Maps</span></a>
+            </div>
+            <div class="bloc-info">
+              <h3 data-t="telephones">Téléphones</h3>
+              <p class="tels" id="tels"></p>
+            </div>
+            <div class="bloc-info">
+              <h3 data-t="horaires">Horaires</h3>
+              <table class="horaires" id="table-horaires"></table>
+            </div>
+            <div class="bloc-info">
+              <h3 data-t="suivez">Suivez-nous</h3>
+              <p class="reseaux">
+                <a class="lien-or" href="https://www.instagram.com/woodpecker.draria/" target="_blank" rel="noopener"><span id="ico-ig"></span>@woodpecker.draria</a>
+                <a class="lien-or" href="https://www.facebook.com/search/top?q=WoodPecker%20Draria" target="_blank" rel="noopener"><span id="ico-fb"></span>WoodPecker Draria</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <div class="conteneur pied-in">
+      <span class="pied-logo" id="logo-pied"></span>
+      <p>Wood Pecker Draria · <span data-t="accroche">Goûtez la différence</span></p>
+      <p class="pied-demo"><span data-t="demo">Démo réalisée par Dzign Studio pour Wood Pecker Draria</span> · <a href="gestion.html" data-t="espace-gerant">Espace gérant</a></p>
+    </div>
+  </footer>
+
+  <!-- Bouton de suivi flottant -->
+  <button type="button" class="suivi-flottant" id="suivi-flottant" hidden></button>
+
+  <!-- Fenêtre : options d'un plat -->
+  <dialog class="fenetre" id="dlg-options" aria-labelledby="opt-titre">
+    <form method="dialog" class="fenetre-in" id="form-options"></form>
+  </dialog>
+
+  <!-- Tiroir : panier, commande, suivi -->
+  <dialog class="tiroir" id="dlg-panier" aria-labelledby="panier-titre">
+    <div class="tiroir-in" id="tiroir-contenu"></div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/i18n-site.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
