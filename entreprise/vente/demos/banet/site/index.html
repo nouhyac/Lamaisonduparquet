@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Banet el Baraka · Restaurant & Traiteur à Oran</title>
+  <meta name="description" content="Banet el Baraka (بنة البركة), restaurant à Oran : plats traditionnels en self et fast-food. Commande en livraison, à emporter ou sur place, et traiteur pour vos événements.">
+  <meta name="theme-color" content="#3A2416">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Manrope:wght@400;500;700;800&family=Reem+Kufi:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body class="page-site">
+  <a class="evitement" href="#carte" data-t="a11y.aller_carte">Aller à la carte</a>
+
+  <!-- Bandeau démo (discret) -->
+  <div class="bandeau-demo">
+    <p><span data-t="demo.bandeau">Démo réalisée par Dzign Studio pour Banet el Baraka</span></p>
+    <a href="gestion.html" class="bandeau-demo__lien" data-t="demo.espace">Espace gérant</a>
+  </div>
+
+  <!-- En-tête -->
+  <header class="entete" id="entete">
+    <a class="marque" href="#haut" aria-label="Banet el Baraka — accueil">
+      <span class="marque__logo" data-logo="icone"></span>
+      <span class="marque__nom">Banet el Baraka<small lang="ar">بنة البركة</small></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale" data-t-aria="nav.aria">
+      <a href="#self" data-t="nav.self">Le self</a>
+      <a href="#carte" data-t="nav.carte">La carte</a>
+      <a href="#traiteur" data-t="nav.traiteur">Traiteur</a>
+      <a href="#infos" data-t="nav.infos">Infos</a>
+    </nav>
+    <div class="entete__actions">
+      <button class="btn-suivi" id="btnSuivi" type="button" hidden>
+        <span class="point-vivant" aria-hidden="true"></span><span data-t="suivi.ma_commande">Ma commande</span>
+      </button>
+      <button class="btn-langue" id="btnLangue" type="button" lang="ar">العربية</button>
+      <button class="btn-panier" id="btnPanier" type="button" aria-label="Panier" data-t-aria="panier.titre">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 7a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span class="pastille" id="nbPanier">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="haut">
+    <!-- Héros -->
+    <section class="heros" aria-labelledby="titreHeros">
+      <div class="heros__texte">
+        <p class="surtitre" id="accroche">Plats traditionnels en self &amp; fast-food · Oran</p>
+        <h1 id="titreHeros">Banet el Baraka <span class="h1-ar" lang="ar">بنة البركة</span></h1>
+        <p class="heros__intro" data-t="heros.intro">Le self de plats traditionnels algériens et le fast-food, au même endroit. Sur place, à emporter, en livraison, et en traiteur pour vos événements.</p>
+        <div class="heros__actions">
+          <a class="btn btn--plein btn--grand" href="#carte" data-t="heros.commander">Commander</a>
+          <a class="btn btn--ligne btn--grand" href="#traiteur" data-t="heros.traiteur">Traiteur &amp; événements</a>
+        </div>
+        <ul class="heros__infos">
+          <li id="etatOuverture" class="etat"></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span id="delaiLivraison"></span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 9 17 20 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="heros.yassir">Aussi sur Yassir</span></li>
+        </ul>
+      </div>
+      <figure class="heros__visuel">
+        <img src="img/banniere.jpg" width="960" height="524" alt="La salle de Banet el Baraka avec leur enseigne, et sur la table un tacos, une pizza, un burger et un sandwich" data-t-alt="heros.alt" fetchpriority="high">
+      </figure>
+    </section>
+
+    <!-- Le self du jour -->
+    <section class="self" id="self" aria-labelledby="titreSelf">
+      <div class="section-tete">
+        <p class="surtitre" data-t="self.surtitre">Self traditionnel</p>
+        <h2 id="titreSelf" data-t="self.titre">Le self du jour</h2>
+        <p class="section-tete__texte" data-t="self.texte">Les plats maison préparés aujourd’hui. Disponibles au self et en livraison selon la journée.</p>
+      </div>
+      <div class="self__une" id="selfUne"></div>
+      <div class="self__liste" id="selfListe" role="list"></div>
+    </section>
+
+    <!-- La carte -->
+    <section class="carte" id="carte" aria-labelledby="titreCarte">
+      <div class="section-tete">
+        <p class="surtitre" data-t="carte.surtitre">Fast-food &amp; fait maison</p>
+        <h2 id="titreCarte" data-t="carte.titre">La carte</h2>
+      </div>
+      <div class="carte__outils">
+        <label class="recherche">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="sr" data-t="carte.rechercher">Rechercher un plat</span>
+          <input type="search" id="recherche" placeholder="Rechercher un plat…" data-t-ph="carte.rechercher_ph" autocomplete="off">
+        </label>
+        <div class="filtres" role="group" aria-label="Filtres" data-t-aria="carte.filtres">
+          <button type="button" class="puce" data-filtre="maison" aria-pressed="false" data-t="tag.maison">Fait maison</button>
+          <button type="button" class="puce" data-filtre="epice" aria-pressed="false" data-t="tag.epice">Épicé</button>
+          <button type="button" class="puce" data-filtre="vege" aria-pressed="false" data-t="tag.vege">Végétarien</button>
+        </div>
+      </div>
+      <nav class="onglets" id="onglets" aria-label="Catégories" data-t-aria="carte.categories"></nav>
+      <div id="carteContenu" class="carte__contenu"></div>
+      <p class="carte__vide" id="carteVide" hidden data-t="carte.vide">Aucun plat ne correspond à votre recherche.</p>
+    </section>
+
+    <!-- Traiteur & événements -->
+    <section class="traiteur" id="traiteur" aria-labelledby="titreTraiteur">
+      <div class="traiteur__intro">
+        <div class="traiteur__intro-texte">
+          <p class="surtitre surtitre--clair" data-t="tr.surtitre">Traiteur &amp; événements</p>
+          <h2 id="titreTraiteur" data-t="tr.titre">Vos fêtes, avec les plats de la maison</h2>
+          <p data-t="tr.texte">Mariages, fiançailles, sbouâ, tahara, iftars et repas d’entreprise : nos plats préparés en grande quantité, en formule par personne ou en plateaux à la pièce. Votre devis s’affiche tout de suite.</p>
+          <ul class="evenements" id="evenements"></ul>
+        </div>
+        <figure class="traiteur__photo">
+          <img src="img/mariage2.jpg" width="900" height="600" loading="lazy" alt="Tables dressées pour une réception" data-t-alt="tr.photo_alt">
+          <figcaption data-t="tr.photo_legende">Photo d’ambiance</figcaption>
+        </figure>
+      </div>
+
+      <div class="formules" id="formules"></div>
+      <p class="formules__note" data-t="tr.formules_note">Formules indicatives, ajustées avec vous selon le nombre d’invités et vos envies.</p>
+
+      <!-- Configurateur de devis -->
+      <form class="devis" id="formDevis" novalidate aria-labelledby="titreDevis">
+        <div class="devis__etapes">
+          <h3 id="titreDevis" class="devis__titre" data-t="dv.titre">Votre devis en 1 minute</h3>
+
+          <fieldset class="bloc">
+            <legend><span class="num">1</span><span data-t="dv.evenement">Type d’événement</span></legend>
+            <div class="choix-puces" id="dvTypes"></div>
+          </fieldset>
+
+          <fieldset class="bloc">
+            <legend><span class="num">2</span><span data-t="dv.date">Date et heure</span></legend>
+            <div class="calendrier" id="dvCalendrier"></div>
+            <p class="aide" id="dvDateInfo" aria-live="polite"></p>
+            <div class="champs-ligne">
+              <label class="champ"><span data-t="dv.heure">Heure de service</span>
+                <input type="time" id="dvHeure" value="19:00" required></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="bloc">
+            <legend><span class="num">3</span><span data-t="dv.invites">Nombre d’invités</span></legend>
+            <div class="invites">
+              <input type="range" id="dvInvitesRange" min="20" max="500" step="10" value="100" aria-label="Nombre d’invités" data-t-aria="dv.invites">
+              <label class="invites__nombre"><input type="number" id="dvInvites" min="20" max="500" value="100" inputmode="numeric" aria-label="Nombre d’invités" data-t-aria="dv.invites"><span data-t="dv.personnes">personnes</span></label>
+            </div>
+            <p class="aide" id="dvRemiseInfo"></p>
+          </fieldset>
+
+          <fieldset class="bloc">
+            <legend><span class="num">4</span><span data-t="dv.menu">Formule ou plateaux</span></legend>
+            <div class="segment" role="radiogroup" aria-label="Type de commande" data-t-aria="dv.menu">
+              <label><input type="radio" name="dvMode" value="formule" checked><span data-t="dv.mode_formule">Formule par personne</span></label>
+              <label><input type="radio" name="dvMode" value="plateaux"><span data-t="dv.mode_plateaux">Plateaux à la pièce</span></label>
+            </div>
+            <div id="dvFormules" class="dv-formules"></div>
+            <div id="dvPlateaux" class="dv-plateaux" hidden></div>
+          </fieldset>
+
+          <fieldset class="bloc">
+            <legend><span class="num">5</span><span data-t="dv.services">Services</span></legend>
+            <p class="aide" data-t="dv.services_aide">Services proposés à titre indicatif, à confirmer avec vous.</p>
+            <div id="dvOptions" class="dv-options"></div>
+          </fieldset>
+
+          <fieldset class="bloc">
+            <legend><span class="num">6</span><span data-t="dv.coordonnees">Vos coordonnées</span></legend>
+            <div class="champs-grille">
+              <label class="champ"><span data-t="f.nom">Nom et prénom</span><input id="dvNom" autocomplete="name" required></label>
+              <label class="champ"><span data-t="f.tel">Téléphone</span><input id="dvTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="05 / 06 / 07 …" required></label>
+              <label class="champ champ--large"><span data-t="dv.lieu">Lieu ou salle</span><input id="dvLieu" required></label>
+              <label class="champ champ--large"><span data-t="dv.remarques">Remarques, allergies</span><textarea id="dvRemarques" rows="3"></textarea></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <aside class="devis__recap" aria-labelledby="titreRecap">
+          <div class="recap-carte">
+            <h3 id="titreRecap" data-t="dv.recap">Votre estimation</h3>
+            <dl id="dvRecap" class="recap-lignes"></dl>
+            <div class="recap-total">
+              <span data-t="dv.total">Total estimé</span>
+              <strong id="dvTotal">0 DA</strong>
+            </div>
+            <p class="recap-pp" id="dvParPers"></p>
+            <p class="recap-acompte" id="dvAcompte"></p>
+            <p class="recap-mention" data-t="dv.mention">Acompte au restaurant ou par BaridiMob, solde le jour J. Le prix final est confirmé par le restaurant.</p>
+            <p class="erreur" id="dvErreur" role="alert"></p>
+            <button class="btn btn--or btn--grand btn--bloc" type="submit" data-t="dv.envoyer">Envoyer ma demande</button>
+          </div>
+        </aside>
+      </form>
+    </section>
+
+    <!-- Infos pratiques -->
+    <section class="infos" id="infos" aria-labelledby="titreInfos">
+      <div class="section-tete">
+        <p class="surtitre" data-t="infos.surtitre">Nous trouver</p>
+        <h2 id="titreInfos" data-t="infos.titre">Infos pratiques</h2>
+      </div>
+      <div class="infos__grille" id="infosGrille"></div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <span class="pied__logo" data-logo></span>
+    <p>© <span id="annee"></span> Banet el Baraka · <span data-t="pied.ville">Oran</span></p>
+    <p class="pied__demo"><span data-t="demo.bandeau">Démo réalisée par Dzign Studio pour Banet el Baraka</span> · <a href="gestion.html" data-t="demo.espace">Espace gérant</a></p>
+  </footer>
+
+  <!-- Barre panier (mobile) -->
+  <button class="barre-panier" id="barrePanier" type="button" hidden>
+    <span class="barre-panier__nb" id="barreNb">0</span>
+    <span data-t="panier.voir">Voir le panier</span>
+    <strong id="barreTotal">0 DA</strong>
+  </button>
+
+  <!-- Fiche plat -->
+  <dialog class="modale modale--fiche" id="fiche" aria-labelledby="ficheNom"></dialog>
+  <!-- Panier + tunnel de commande -->
+  <dialog class="modale modale--panier" id="panier" aria-labelledby="panierTitre"></dialog>
+  <!-- Suivi de commande -->
+  <dialog class="modale modale--suivi" id="suivi" aria-labelledby="suiviTitre"></dialog>
+  <!-- Confirmation de devis -->
+  <dialog class="modale modale--devis" id="confDevis" aria-labelledby="confTitre"></dialog>
+
+  <script src="js/donnees.js"></script>
+  <script src="js/textes.js"></script>
+  <script src="js/commun.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
