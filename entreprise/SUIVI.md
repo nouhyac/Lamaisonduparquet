@@ -36,6 +36,7 @@ et d'applications. Les clients sont trouvés grâce aux réseaux sociaux
 | 2026-10-13 | **Dans les vidéos et textes de marque, on parle au nom de l'entreprise : « nous »** (pas « je » / « moi »). |
 | 2026-10-13 | **Priorité absolue : 5 clients en urgence** (fond de roulement). Plan → `vente/URGENCE-5-CLIENTS.md` (entourage + parrainage 3 000 DA, messages privés, porte-à-porte, groupes Facebook, pub 6 $/j). Budget pub : 54 $. |
 | 2026-10-13 | **Aucune localisation dans les vidéos/pubs** (pas d'« Alger », « Algérie »). Pub 50 s corrigée : « à Alger », « partout en Algérie », « Tout est conçu à Alger » retirés, nouvel écran de fin sans « conçu à Alger » (bouton « Voir mon site gratuit »). |
+| 2026-10-30 | **Démos prospects = exemples pour convaincre d'acheter** : présentation propre et finie (pas de mentions « à confirmer » visibles), uniquement leurs vrais plats/infos ; après l'acompte de 50 %, on ajuste tout pour la réalisation (liste dans PROSPECT.md). |
 | 2026-10-12 | Expertises mises en avant : design, 3D, développement web, plateformes, marketing digital. |
 
 ## ▶️ Reprise de la prochaine session
