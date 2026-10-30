@@ -230,7 +230,7 @@ details.tableau summary { cursor: pointer; font-size: 13px; font-weight: 700; co
 .tableau-g th { text-align: start; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--texte-doux); padding: 8px 6px; border-bottom: 1.5px solid var(--trait); }
 .tableau-g td { padding: 8px 6px; border-bottom: 1px solid var(--trait); vertical-align: middle; }
 .tableau-g input { min-height: 38px; padding: 6px 8px; border: 1.5px solid rgba(92, 68, 51, .3); border-radius: 8px; width: 100%; background: var(--blanc); font-size: 14px; }
-.defile { overflow-x: auto; }
+.defile { overflow-x: auto; position: relative; }
 .alerte-g { padding: 12px 14px; border-radius: var(--rayon-s); background: var(--rouge-fond); color: #7E2520; font-weight: 700; font-size: 14px; }
 .info-g { padding: 12px 14px; border-radius: var(--rayon-s); background: var(--bleu-fond); color: #1E3F59; font-weight: 600; font-size: 14px; }
 .vide-g { text-align: center; padding: 26px 10px; color: var(--texte-doux); font-weight: 600; }
