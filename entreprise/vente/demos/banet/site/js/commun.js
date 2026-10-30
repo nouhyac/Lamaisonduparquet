@@ -11,7 +11,7 @@
   'use strict';
 
   const D = window.BNB_DONNEES;
-  const VERSION = '1';
+  const VERSION = '2'; // à incrémenter quand les données de démo changent
   const PREFIXE = 'bnb-';
 
   /* ---------------- Stockage ---------------- */
