@@ -150,7 +150,7 @@ window.BNB_TEXTES = {
   'tr.photo_alt': { fr: 'Tables dressées pour une réception', ar: 'طاولات مجهزة لحفل استقبال' },
   'tr.photo_legende': { fr: 'Photo d’ambiance', ar: 'صورة توضيحية' },
   'tr.formules_note': { fr: 'Formules indicatives, ajustées avec vous selon le nombre d’invités et vos envies.', ar: 'صيغ إرشادية تُعدَّل معكم حسب عدد المدعوين ورغباتكم.' },
-  'tr.formule_ex': { fr: 'Formule exemple', ar: 'صيغة مقترحة' },
+  'tr.formule_ex': { fr: 'Formule', ar: 'صيغة' },
   'tr.par_pers': { fr: '/ pers.', ar: '/ للشخص' },
   'tr.choisir': { fr: 'Choisir cette formule', ar: 'اختيار هذه الصيغة' },
   'tr.plateaux': { fr: 'Plateaux à la pièce', ar: 'صوانٍ بالقطعة' },
@@ -171,7 +171,7 @@ window.BNB_TEXTES = {
   'dv.mode_formule': { fr: 'Formule par personne', ar: 'صيغة للشخص' },
   'dv.mode_plateaux': { fr: 'Plateaux à la pièce', ar: 'صوانٍ بالقطعة' },
   'dv.services': { fr: 'Services', ar: 'الخدمات' },
-  'dv.services_aide': { fr: 'Services proposés à titre indicatif, à confirmer avec vous.', ar: 'خدمات مقترحة بشكل إرشادي، تُؤكَّد معكم.' },
+  'dv.services_aide': { fr: 'Nos services pour votre événement.', ar: 'خدماتنا لمناسبتكم.' },
   'dv.coordonnees': { fr: 'Vos coordonnées', ar: 'معلوماتكم' },
   'dv.lieu': { fr: 'Lieu ou salle', ar: 'المكان أو القاعة' },
   'dv.remarques': { fr: 'Remarques, allergies', ar: 'ملاحظات، حساسية' },
@@ -205,7 +205,7 @@ window.BNB_TEXTES = {
   'infos.itineraire': { fr: 'Itinéraire Google Maps', ar: 'المسار على خرائط Google' },
   'infos.tel': { fr: 'Téléphone', ar: 'الهاتف' },
   'infos.horaires': { fr: 'Horaires', ar: 'أوقات العمل' },
-  'infos.tous_jours': { fr: 'Tous les jours (horaires à confirmer)', ar: 'كل يوم (الأوقات تُؤكَّد لاحقًا)' },
+  'infos.tous_jours': { fr: 'Tous les jours', ar: 'كل يوم' },
   'infos.suivre': { fr: 'Nous suivre', ar: 'تابعونا' },
   'pied.ville': { fr: 'Oran', ar: 'وهران' }
 };
