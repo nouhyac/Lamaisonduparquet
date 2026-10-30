@@ -698,10 +698,11 @@
       p = { id: nid, photo: '', estime: false }; carte.plats.push(p);
     }
     const tags = ['maison', 'epice', 'vege'].filter((t) => f.elements['tag-' + t].checked);
+    const ancienPrix = p.prix;
     Object.assign(p, { fr: v('fr'), ar: v('ar') || v('fr'), cat: v('cat'), prix: Math.max(0, Number(v('prix')) || 0), dfr: v('dfr'), dar: v('dar'), tags, dispo: f.elements.dispo.checked });
     if (tags.includes('maison')) { if (p.self === undefined) p.self = true; } else delete p.self;
     if (photoTemp) p.photo = photoTemp;
-    p.estime = id ? p.estime && false : false; // un prix saisi par le gérant n'est plus « estimé »
+    if (p.prix !== ancienPrix) p.estime = false; // un prix fixé par le gérant n'est plus « estimé »
     B.ecrire('carte', carte); $('#modale').close(); B.toast(L('Plat enregistré', 'تم حفظ الطبق'), 'ok'); rendre(true);
   }
 
