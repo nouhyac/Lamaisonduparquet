@@ -48,7 +48,7 @@
     sHours: 'Horaires', sClosed: 'Fermé', sOrdering: 'Commande en ligne', sCollect: 'Commander à l\'avance & retrait au comptoir', sTable: 'Commande à table (QR)',
     sDelivery: 'Livraison', sZones: 'Zones de livraison', sZoneName: 'Nom de la zone', sFee: 'Frais', sMin: 'Minimum de commande en livraison',
     sLoyalty: 'Fidélité : boissons pour 1 offerte', sWhatsapp: 'Numéro WhatsApp de BREW (ex. 213550000000)', sPins: 'Codes PIN', sPinErr: 'Chaque PIN doit faire 4 chiffres et être différent.',
-    sReset: 'Mise en service', sResetTxt: 'Efface les commandes, réservations, cartes de fidélité, inscriptions et clôtures d\'exemple. La carte, les prix et les réglages sont conservés.',
+    sReset: 'Mise en service', sResetTxt: 'Efface toute l\'activité enregistrée (commandes, réservations, cartes de fidélité, inscriptions, clôtures). La carte, les prix et les réglages sont conservés.',
     sResetBtn: 'Remettre à zéro pour l\'ouverture', sResetConfirm: 'Confirmer la remise à zéro ?', sResetDone: 'Activité remise à zéro. Prêt pour l\'ouverture !',
     sApplyAll: 'Appliquer à tous les jours', yes: 'Oui', no: 'Non', newOrderToast: 'Nouvelle commande',
     newZone: 'Nouvelle zone', gSave: 'Enregistrer les codes'
@@ -88,7 +88,7 @@
     sHours: 'أوقات العمل', sClosed: 'مغلق', sOrdering: 'الطلب عبر الإنترنت', sCollect: 'الطلب المسبق والاستلام من الكونتوار', sTable: 'الطلب من الطاولة (QR)',
     sDelivery: 'التوصيل', sZones: 'مناطق التوصيل', sZoneName: 'اسم المنطقة', sFee: 'الرسوم', sMin: 'الحدّ الأدنى للطلب مع التوصيل',
     sLoyalty: 'الوفاء: عدد المشروبات مقابل مشروب مجاني', sWhatsapp: 'رقم واتساب BREW (مثال 213550000000)', sPins: 'الرموز السرية', sPinErr: 'كل رمز من 4 أرقام ومختلف عن الآخرين.',
-    sReset: 'التشغيل الفعلي', sResetTxt: 'يمسح الطلبات والحجوزات وبطاقات الوفاء والتسجيلات والإغلاقات التجريبية. تبقى القائمة والأسعار والإعدادات.',
+    sReset: 'التشغيل الفعلي', sResetTxt: 'يمسح كل النشاط المسجّل (الطلبات، الحجوزات، بطاقات الوفاء، التسجيلات، الإغلاقات). تبقى القائمة والأسعار والإعدادات.',
     sResetBtn: 'إعادة التعيين للافتتاح', sResetConfirm: 'تأكيد إعادة التعيين؟', sResetDone: 'تمّت إعادة التعيين. جاهزون للافتتاح!',
     sApplyAll: 'تطبيق على كل الأيام', yes: 'نعم', no: 'لا', newOrderToast: 'طلب جديد',
     newZone: 'منطقة جديدة', gSave: 'حفظ الرموز'
