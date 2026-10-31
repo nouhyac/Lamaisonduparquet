@@ -99,7 +99,7 @@ html[dir="rtl"] .panneau h2, html[dir="rtl"] .h-col { letter-spacing: 0; }
 .g-total { display: flex; justify-content: space-between; align-items: baseline; margin: 6px 0; }
 .g-total b { font-family: var(--f-titre); font-size: 1.3rem; color: var(--or-clair); }
 .g-total.petit { font-size: .9rem; color: var(--texte-doux); }
-.table-defile { overflow-x: auto; }
+.table-defile { overflow-x: auto; max-width: 100%; position: relative; } /* relative : garde les .sr-only absolus dans le conteneur défilant */
 
 /* ---------- Tableau de bord ---------- */
 .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }

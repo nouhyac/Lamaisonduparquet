@@ -46,7 +46,7 @@
     $('#modeDeliveryCard').hidden = !s.delivery;
     // horaires du jour
     const h = s.hours[new Date().getDay()];
-    $('#openHours').textContent = h.closed ? t('closed') : I.hourLabel(h.open) + ' – ' + I.hourLabel(h.close);
+    $('#openHours').textContent = h.closed ? t('closed') : I.range(h.open, h.close);
     $('#openState').textContent = isOpenNow() ? t('openNow') : t('closedNow');
     // compte à rebours si une date d'ouverture est saisie
     clearInterval(cdTimer);
@@ -239,6 +239,7 @@
     $('#cartBar').hidden = tt.count === 0;
     $('#cartBarN').textContent = tt.count;
     $('#cartBarTotal').textContent = money(tt.total);
+    $('#trackPill').classList.toggle('is-low', tt.count === 0);
   }
   function slots() {
     const s = S.settings(), d = new Date(), h = s.hours[d.getDay()], out = [];
@@ -370,7 +371,7 @@
     const lbl = { received: 'stReceived', preparing: 'stPreparing', ready: 'stReady' };
     const mins = Math.max(0, Math.round((Date.now() - o.createdAt) / 60000));
     let html = '<button type="button" class="x" data-close aria-label="' + esc(t('close')) + '">×</button><div class="tk"><h2 id="trackTitle">' + esc(t('trackTitle')) + '</h2>' +
-      '<p class="tk__num">' + esc(t('order')) + ' #' + String(o.num).padStart(3, '0') + ' · ' + esc(o.name) + ' · ' + (o.mode === 'table' ? 'Table ' + o.table : o.mode === 'delivery' ? esc(t('modeDelivery')) : esc(t('modeCollect')) + (o.pickup ? ' · ' + esc(t('pickupAt')) + ' ' + o.pickup : '')) +
+      '<p class="tk__num">' + esc(t('order')) + ' ' + I.ltr('#' + String(o.num).padStart(3, '0')) + ' · ' + esc(o.name) + ' · ' + (o.mode === 'table' ? 'Table ' + o.table : o.mode === 'delivery' ? esc(t('modeDelivery')) : esc(t('modeCollect')) + (o.pickup ? ' · ' + esc(t('pickupAt')) + ' ' + o.pickup : '')) +
       ' · ' + esc(t('since')) + ' ' + mins + ' min</p>';
     if (st === 'cancelled') html += '<p class="ct__soon">' + esc(t('stCancelled')) + '</p>';
     else html += '<ol class="tk__steps" aria-label="' + esc(t('trackTitle')) + '">' + order.map((k, i) => '<li class="' + (i < idx || st === 'done' || (i === idx && k === 'ready') ? 'is-done' : i === idx ? 'is-now' : '') + '"' + (i === idx ? ' aria-current="step"' : '') + '>' + esc(t(lbl[k])) + '</li>').join('') + '</ol>';
@@ -381,7 +382,7 @@
     html += '<div class="tk__stations">' + Object.keys(o.st).map(k => '<div><b>' + esc(t(k)) + '</b>' + esc(o.st[k] === 'ready' ? t('ready') + ' ✓' : o.st[k] === 'doing' ? t('inProgress') : t('waiting')) + '</div>').join('') + '</div>';
     html += '<p class="tk__lines">' + o.lines.map(l => l.qty + ' × ' + esc(l.name) + (l.opts && l.opts.length ? ' (' + l.opts.map(x => esc(L(x))).join(', ') + ')' : '') + (l.parts ? ' — ' + l.parts.map(p => esc(p.name)).join(' · ') : '')).join('<br>') +
       '<br><strong>' + esc(t('total')) + ' : ' + money(o.total) + '</strong></p>';
-    html += '<div class="tk__acts"><a class="btn btn--line" target="_blank" rel="noopener" href="' + waUrl(t('waText') + ' #' + String(o.num).padStart(3, '0') + ' (' + o.name + ')') + '">' + esc(t('whatsapp')) + '</a>' +
+    html += '<div class="tk__acts"><a class="btn btn--line" target="_blank" rel="noopener" href="' + waUrl(t('waText') + ' ' + I.ltr('#' + String(o.num).padStart(3, '0')) + ' (' + o.name + ')') + '">' + esc(t('whatsapp')) + '</a>' +
       '<button type="button" class="btn" data-close>' + esc(t('newOrder')) + '</button></div></div>';
     $('#trackIn').innerHTML = html;
     $('#trackIn').dataset.status = st;
@@ -397,10 +398,11 @@
   function renderTrackPill() {
     const o = activeOrder(), pill = $('#trackPill');
     pill.hidden = !o;
+    pill.classList.toggle('is-low', $('#cartBar').hidden);
     if (!o) return;
     const ready = S.orderStatus(o) === 'ready';
     pill.classList.toggle('is-ready', ready);
-    $('#trackPillTxt').textContent = ready ? t('readyMsg') : t('trackOpen') + ' #' + String(o.num).padStart(3, '0');
+    $('#trackPillTxt').textContent = ready ? t('readyMsg') : t('trackOpen') + ' ' + I.ltr('#' + String(o.num).padStart(3, '0'));
     pill.dataset.id = o.id;
   }
   /* Notification quand le bar / la cuisine passe la commande en « prête » */
@@ -410,7 +412,7 @@
       const o = list.find(x => x.id === id);
       if (o && S.orderStatus(o) === 'ready' && !readyNotified[id]) {
         readyNotified[id] = true; S.write('readyNotified', readyNotified, true);
-        toast(t('readyMsg') + ' #' + String(o.num).padStart(3, '0'), true);
+        toast(t('readyMsg') + ' ' + I.ltr('#' + String(o.num).padStart(3, '0')), true);
         try { navigator.vibrate && navigator.vibrate([120, 60, 120]); } catch (e) { }
         document.title = '✅ ' + t('readyMsg') + ' — BREW';
       }
@@ -455,7 +457,7 @@
     const s = S.settings(), today = new Date().getDay(), days = t('days');
     const order = [6, 0, 1, 2, 3, 4, 5]; // semaine algérienne : samedi → vendredi
     const same = s.hours.every(h => h.open === s.hours[0].open && h.close === s.hours[0].close && h.closed === s.hours[0].closed);
-    const txt = (h) => h.closed ? t('closed') : I.hourLabel(h.open) + ' – ' + I.hourLabel(h.close);
+    const txt = (h) => h.closed ? t('closed') : I.range(h.open, h.close);
     $('#hoursList').innerHTML = same
       ? '<dt>' + esc(t('everyDay')) + '</dt><dd>' + txt(s.hours[0]) + '</dd>'
       : order.map(d => '<dt' + (d === today ? ' class="is-today"' : '') + '>' + esc(days[d]) + '</dt><dd' + (d === today ? ' class="is-today"' : '') + '>' + txt(s.hours[d]) + '</dd>').join('');

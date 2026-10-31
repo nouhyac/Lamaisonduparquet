@@ -12,7 +12,7 @@
   'use strict';
   const D = window.WPK_DATA;
   const PREFIXE = 'wpk-';
-  const VERSION = 4; // à incrémenter si la structure de la carte par défaut change
+  const VERSION = 5; // à incrémenter si la structure de la carte par défaut change
 
   /* ------------------------------------------------------------------
      1. Stockage + synchronisation

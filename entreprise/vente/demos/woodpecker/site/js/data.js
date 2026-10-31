@@ -47,7 +47,7 @@
     p('of8', 'froides', 'Salade Mechwia', 'سلطة مشوية', 300),
 
     /* ===== Entrées chaudes ===== */
-    p('oc1', 'chaudes', 'Gratin aux crevettes', 'غراتان بالجمبري', 1000, { desc: { fr: 'Crevettes fraîches', ar: 'جمبري طازج' } }),
+    p('oc1', 'chaudes', 'Gratin aux crevettes (frais)', 'غراتان بالجمبري (طازج)', 1000),
     p('oc2', 'chaudes', 'Gratins au choix', 'غراتان حسب الاختيار', 700, { choix: { fr: 'Garniture', ar: 'الحشوة', opts: [['Poulet mariné', 'دجاج متبل'], ['Viande', 'لحم']] } }),
     p('oc3', 'chaudes', 'Soupe de légumes', 'شوربة خضر', 600),
     p('oc4', 'chaudes', 'Soupe de poisson', 'شوربة سمك', 700),

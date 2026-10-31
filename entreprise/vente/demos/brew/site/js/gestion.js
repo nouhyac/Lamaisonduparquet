@@ -180,7 +180,7 @@
 
   /* ---------- Utilitaires ---------- */
   const isToday = (ts) => S.dayKey(ts) === S.dayKey();
-  const num = (o) => '#' + String(o.num).padStart(3, '0');
+  const num = (o) => I.ltr('#' + String(o.num).padStart(3, '0'));
   const statusLbl = { received: 'stReceived', preparing: 'stPreparing', ready: 'stReady', done: 'stDone', cancelled: 'stCancelled' };
   const pill = (o) => { const s = S.orderStatus(o); return '<span class="pill pill--' + s + '">' + esc(t(statusLbl[s])) + '</span>'; };
   function where(o) {

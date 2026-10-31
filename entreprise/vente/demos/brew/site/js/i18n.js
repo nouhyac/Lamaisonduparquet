@@ -177,5 +177,9 @@
   const L = (o, base) => o[(base || '') + lang] || o[(base || '') + 'fr'] || '';
   const hourLabel = (hm) => { const [h, m] = hm.split(':'); return lang === 'ar' ? (+h) + ':' + m : (+h) + ' h' + (m !== '00' ? ' ' + m : ''); };
 
-  window.BREW_I18N = { T, t, setLang, apply, money, hhmm, esc, L, hourLabel, get lang() { return lang; } };
+  /* Isole un fragment gauche→droite (n° de commande, plage horaire) dans un texte arabe */
+  const ltr = (x) => lang === 'ar' ? '\u2066' + x + '\u2069' : x;
+  const range = (a, b) => ltr(hourLabel(a) + ' – ' + hourLabel(b));
+
+  window.BREW_I18N = { T, t, setLang, apply, money, hhmm, esc, L, hourLabel, ltr, range, get lang() { return lang; } };
 })();

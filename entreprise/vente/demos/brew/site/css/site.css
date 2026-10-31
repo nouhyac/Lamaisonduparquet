@@ -236,6 +236,7 @@ html[dir="rtl"] .hours h3 { font-weight: 800; }
 .cartbar__n { display: grid; place-items: center; min-width: 30px; height: 30px; border-radius: 50%; background: var(--cream); color: var(--ink); }
 @media (min-width: 760px) { .cartbar { inset-inline: auto 24px; width: 360px; } html[dir="rtl"] .cartbar { inset-inline: 24px auto; } }
 .trackpill { position: fixed; z-index: 36; inset-inline-start: 12px; bottom: 80px; display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 16px; border-radius: 999px; background: var(--matcha-d); color: #fff; border: 0; font-weight: 700; box-shadow: var(--shadow); }
+.trackpill.is-low { bottom: 16px; inset-inline-start: auto; inset-inline-end: 12px; }
 .trackpill.is-ready { background: var(--fraise-d); animation: pulse 1.4s ease infinite; }
 @keyframes pulse { 50% { transform: scale(1.05); } }
 
