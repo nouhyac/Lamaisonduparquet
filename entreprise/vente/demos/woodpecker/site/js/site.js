@@ -36,11 +36,42 @@
     nb: () => panier.lignes().reduce((s, l) => s + l.qte, 0),
     vider() { panier.sauver([]); }
   };
+  let dernierNb = null;
   function majCompteur() {
     const n = panier.nb();
-    $('#nb-panier').textContent = n;
-    $('#nb-panier').classList.toggle('vide', n === 0);
+    const p = $('#nb-panier');
+    p.textContent = n;
+    p.classList.toggle('vide', n === 0);
+    // Le compteur pulse quand il augmente
+    if (dernierNb !== null && n > dernierNb) { p.classList.remove('pulse'); void p.offsetWidth; p.classList.add('pulse'); }
+    dernierNb = n;
+    // Barre panier collante (mobile)
+    $('#barre-panier').hidden = n === 0;
+    $('#bp-nb').textContent = n;
+    $('#bp-total').textContent = W.prix(panier.sousTotal());
+    document.body.classList.toggle('a-panier', n > 0);
   }
+
+  /* Petite animation « ajout au panier » : une pastille or vole vers l'icône panier */
+  function animerAjout(depuis) {
+    if (!depuis || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cible = window.matchMedia('(max-width: 900px)').matches && !$('#barre-panier').hidden ? $('#bp-nb') : $('#ouvrir-panier');
+    const a = depuis.getBoundingClientRect(), b = cible.getBoundingClientRect();
+    if (!a.width || !b.width) return;
+    const v = document.createElement('span');
+    v.className = 'vol-panier';
+    v.style.left = (a.left + a.width / 2 - 9) + 'px';
+    v.style.top = (a.top + a.height / 2 - 9) + 'px';
+    document.body.appendChild(v);
+    const dx = b.left + b.width / 2 - (a.left + a.width / 2), dy = b.top + b.height / 2 - (a.top + a.height / 2);
+    v.animate([
+      { transform: 'translate(0,0) scale(1)', opacity: 1 },
+      { transform: 'translate(' + dx * 0.5 + 'px,' + (dy * 0.5 - 60) + 'px) scale(1.15)', opacity: 1, offset: 0.5 },
+      { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.4)', opacity: .2 }
+    ], { duration: 650, easing: 'cubic-bezier(.5,0,.3,1)' }).onfinish = () => v.remove();
+  }
+  let dernierBouton = null;
+  document.addEventListener('pointerdown', ev => { const b = ev.target.closest('.btn-ajout, .btn-mini, #opt-valider, .btn-sign'); if (b) dernierBouton = b; }, true);
 
   /* ------------------------------------------------------------------
      Icônes et logos statiques
@@ -102,6 +133,30 @@
   }
 
   /* ------------------------------------------------------------------
+     Les signatures : uniquement les produits qui portent leur nom
+     ------------------------------------------------------------------ */
+  const SIGNATURES = ['pz19', 'pz20', 'of7', 'me4', 'co2'];
+  function rendreSignatures() {
+    const C = W.carte();
+    const plats = SIGNATURES.map(id => C.plats.find(p => p.id === id)).filter(Boolean);
+    $('#sign-grille').innerHTML = plats.map((p, i) => {
+      const cat = C.categories.find(c => c.id === p.cat);
+      const prix = p.tailles
+        ? '<span class="sign-prix"><small>Mini</small> ' + W.prix(p.tailles.mini) + ' <i aria-hidden="true">·</i> <small>Méga</small> ' + W.prix(p.tailles.mega) + '</span>'
+        : '<span class="sign-prix">' + W.prix(p.prix) + '</span>';
+      return '<article class="sign' + (i < 2 ? ' sign-grande' : '') + (p.dispo ? '' : ' indispo') + '">' +
+        '<span class="sign-coin" aria-hidden="true"></span>' +
+        '<div class="sign-picto" aria-hidden="true">' + W.picto(p.icone || cat.icone, i < 2 ? 84 : 64) + '</div>' +
+        '<p class="surtitre">' + t('signature') + ' · ' + esc(W.nomL(cat)) + '</p>' +
+        '<h3>' + esc(W.nomL(p)) + '</h3>' + (ar() ? '<p class="plat-nom-fr" lang="fr" dir="ltr">' + esc(p.fr) + '</p>' : '') +
+        (p.desc ? '<p class="sign-desc">' + esc(W.nomL(p.desc)) + '</p>' : '') +
+        '<div class="sign-pied">' + prix +
+        (p.dispo ? '<button type="button" class="btn btn-degrade btn-sign" data-plat="' + p.id + '">' + t('commander') + '</button>' : '<span class="etiquette-indispo">' + t('indispo') + '</span>') +
+        '</div></article>';
+    }).join('');
+  }
+
+  /* ------------------------------------------------------------------
      La carte : onglets collants, recherche, cartes typographiques
      ------------------------------------------------------------------ */
   const sansAccents = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -123,7 +178,7 @@
     const desc = plat.desc ? W.nomL(plat.desc) : '';
     const visuel = plat.photo
       ? '<div class="plat-photo"><img src="' + esc(plat.photo) + '" alt="' + esc(nom) + '" loading="lazy"></div>'
-      : '<div class="plat-picto" aria-hidden="true">' + W.picto(cat.icone, 34) + '</div>';
+      : '<div class="plat-picto" aria-hidden="true">' + W.picto(plat.icone || cat.icone, 36) + '</div>';
     const besoinOptions = plat.tailles || plat.choix || plat.sauce;
     let corps = '';
     if (plat.tailles) {
@@ -154,12 +209,13 @@
 
   function noteCategorie(cat, C) {
     if (cat.id === 'pizzas') {
-      return '<p class="note-cat">' + t('tailles-pizza') + ' · ' + t('olives-note') + '</p>';
+      const nP = C.plats.filter(p => p.cat === 'pizzas').length;
+      return '<p class="note-cat">' + t('pizza-bandeau').replace('{n}', nP).replace('{s}', C.supplements.length) + ' · ' + t('olives-note') + '</p>';
     }
     if (cat.id === 'viandes' || cat.id === 'volailles') {
       return '<p class="note-cat"><strong>' + t('sauces-titre') + ' :</strong> ' + C.sauces.map(s => esc(W.nomL(s))).join(', ') + ' · ' + W.prix(W.reglages().prixSauce) + '</p>';
     }
-    if (cat.id === 'enfant') return '<p class="note-cat cadeau">' + W.picto('cadeau', 18) + ' ' + t('enfant-note') + '</p>';
+    if (cat.id === 'enfant') return '<p class="note-cat cadeau"><span class="ruban">' + W.picto('cadeau', 22) + ' ' + t('enfant-note') + '</span></p>';
     return '';
   }
 
@@ -178,10 +234,13 @@
         sansAccents(p.fr + ' ' + p.ar + ' ' + (p.pre || '') + ' ' + (p.desc ? p.desc.fr + ' ' + p.desc.ar : '') + ' ' + cat.fr + ' ' + cat.ar).includes(q)));
       if (!plats.length) return;
       total += plats.length;
-      html += '<section class="categorie" id="cat-' + cat.id + '" aria-labelledby="h-' + cat.id + '">' +
-        '<header class="cat-entete"><span class="cat-picto" aria-hidden="true">' + W.picto(cat.icone, 30) + '</span>' +
-        '<h3 id="h-' + cat.id + '">' + esc(W.nomL(cat)) + '</h3><span class="cat-filet" aria-hidden="true"></span></header>' +
-        noteCategorie(cat, C) +
+      const photo = cat.id === 'pizzas' ? '<figure class="cat-photo"><img src="img/pizza-garnie.jpg" alt="' + esc(t('alt-pizza')) + '" width="388" height="431" loading="lazy"></figure>' : '';
+      html += '<section class="categorie cat-' + cat.id + '" id="cat-' + cat.id + '" aria-labelledby="h-' + cat.id + '">' +
+        '<header class="cat-bandeau' + (photo ? ' avec-photo' : '') + '">' +
+          '<span class="cat-grand-picto" aria-hidden="true">' + W.picto(cat.icone, 56) + '</span>' +
+          '<div class="cat-titre"><p class="cat-nb">' + plats.length + ' ' + (ar() ? 'طبق' : (plats.length > 1 ? 'plats' : 'plat')) + '</p>' +
+          '<h3 id="h-' + cat.id + '">' + esc(W.nomL(cat)) + '</h3>' + noteCategorie(cat, C) + '</div>' + photo +
+        '</header>' +
         '<div class="grille-plats">' + plats.map(p => carteHTML(p, cat)).join('') + '</div>' +
         (cat.id === 'pizzas' ? tableauSupplements(C) : '') +
         '</section>';
@@ -218,7 +277,9 @@
   /* ------------------------------------------------------------------
      Fenêtre d'options d'un plat
      ------------------------------------------------------------------ */
+  let origineOptions = null;
   function ouvrirOptions(plat) {
+    origineOptions = dernierBouton;
     const C = W.carte();
     const R = W.reglages();
     const D = window.WPK_DATA;
@@ -303,6 +364,7 @@
       ligne.pu = W.prixLigne(plat, { taille: ligne.taille, supps: o.supps, sauce: plat.sauce === 'option' ? ligne.sauce : '' }, C);
       panier.ajouter(ligne);
       $('#dlg-options').close();
+      animerAjout(origineOptions);
       W.toast(W.nomL(plat) + ' · ' + t('ajoute'));
     };
     maj();
@@ -311,6 +373,7 @@
 
   function ajouterDirect(plat) {
     panier.ajouter({ id: plat.id, nom: plat.fr, ar: plat.ar, pre: plat.pre || '', cat: plat.cat, qte: 1, pu: plat.prix });
+    animerAjout(dernierBouton);
     W.toast(W.nomL(plat) + ' · ' + t('ajoute'));
   }
 
@@ -689,7 +752,7 @@
   function appliquerTout() {
     W.appliquerLangue(T);
     $$('[data-t-alt]').forEach(i => { i.alt = t(i.dataset.tAlt); });
-    majStatut(); rendreJour(); rendreOnglets(); rendreCarte(); rendreInfos();
+    majStatut(); rendreSignatures(); rendreJour(); rendreOnglets(); rendreCarte(); rendreInfos();
     initAnniversaire(); majFlottant();
     remplirHeures($('#res-heure'), $('#res-date').value);
     if ($('#res-ok').dataset.id) afficherConfirmationRes($('#res-ok').dataset.id);
@@ -702,6 +765,7 @@
   function brancher() {
     $$('[data-lang-btn]').forEach(b => b.addEventListener('click', () => { W.ecrire('langue', b.dataset.langBtn); appliquerTout(); }));
     $('#ouvrir-panier').addEventListener('click', () => ouvrirTiroir('panier'));
+    $('#barre-panier-btn').addEventListener('click', () => ouvrirTiroir('panier'));
     $('#suivi-flottant').addEventListener('click', ev => ouvrirTiroir('suivi', ev.currentTarget.dataset.id));
     $('#recherche').addEventListener('input', ev => { filtre = ev.target.value; rendreCarte(); });
 
@@ -715,7 +779,7 @@
       const j = ev.target.closest('[data-ajout-jour]');
       if (j) {
         const p = W.jour().plats.find(x => x.id === j.dataset.ajoutJour);
-        if (p) { panier.ajouter({ id: p.id, nom: p.fr, ar: p.ar, cat: 'jour', qte: 1, pu: p.prix }); W.toast(W.nomL(p) + ' · ' + t('ajoute')); }
+        if (p) { panier.ajouter({ id: p.id, nom: p.fr, ar: p.ar, cat: 'jour', qte: 1, pu: p.prix }); animerAjout(j); W.toast(W.nomL(p) + ' · ' + t('ajoute')); }
       }
       const o = ev.target.closest('.onglet');
       if (o) {
@@ -747,10 +811,11 @@
     W.surChangement(cle => {
       if (cle === 'commandes') { majFlottant(); if (tiroir().open && vue === 'suivi') rendreTiroir(); }
       if (cle === 'jour') rendreJour();
-      if (cle === 'carte') { rendreOnglets(); rendreCarte(); initAnniversaire(); }
+      if (cle === 'carte') { rendreSignatures(); rendreOnglets(); rendreCarte(); initAnniversaire(); }
       if (cle === 'reglages') { majStatut(); rendreInfos(); rendreCarte(); }
       if (cle === 'reservations' && $('#res-ok').dataset.id) afficherConfirmationRes($('#res-ok').dataset.id);
       if (cle === 'panier') majCompteur();
+      if (cle === 'reglages' || cle === 'carte') majCompteur();
     });
     setInterval(majStatut, 60e3);
   }

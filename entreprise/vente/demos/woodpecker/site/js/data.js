@@ -15,7 +15,7 @@
     { id: 'froides',  fr: 'Entrées froides',    ar: 'مقبلات باردة',      icone: 'salade' },
     { id: 'chaudes',  fr: 'Entrées chaudes',    ar: 'مقبلات ساخنة',      icone: 'soupe' },
     { id: 'pasta',    fr: 'Nos pasta',          ar: 'الباستا',           icone: 'pasta' },
-    { id: 'viandes',  fr: 'Nos viandes',        ar: 'اللحوم',            icone: 'viande' },
+    { id: 'viandes',  fr: 'Nos viandes',        ar: 'اللحوم',            icone: 'grill' },
     { id: 'volailles',fr: 'Nos volailles',      ar: 'الدواجن',           icone: 'volaille' },
     { id: 'pizzas',   fr: 'Pizzas',             ar: 'البيتزا',           icone: 'pizza' },
     { id: 'menus',    fr: 'Soufflés & menus',   ar: 'سوفليه ووجبات',     icone: 'burger' },
@@ -170,6 +170,10 @@
     p('bc5', 'chaudesb', 'Thé maison', 'شاي البيت', 100),
     p('bc6', 'chaudesb', 'Lait chaud', 'حليب ساخن', 100)
   ];
+
+  /* Illustration propre à certains plats (sinon celle de la catégorie) */
+  const ICONES_PLATS = { of5: 'poisson', oc4: 'poisson', pa4: 'poisson', me1: 'souffle', me2: 'burger', me3: 'tacos', me4: 'tacos', en1: 'grill', en2: 'volaille', en3: 'pizza', en4: 'burger', co1: 'jus', de08: 'salade' };
+  PLATS.forEach(p => { if (ICONES_PLATS[p.id]) p.icone = ICONES_PLATS[p.id]; else if (p.jus) p.icone = 'jus'; });
 
   /* ---------- Suppléments pizza (prix Simple / Méga) ---------- */
   const SUPPLEMENTS = [

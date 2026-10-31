@@ -12,7 +12,7 @@
   'use strict';
   const D = window.WPK_DATA;
   const PREFIXE = 'wpk-';
-  const VERSION = 3; // à incrémenter si la structure de la carte par défaut change
+  const VERSION = 4; // à incrémenter si la structure de la carte par défaut change
 
   /* ------------------------------------------------------------------
      1. Stockage + synchronisation
@@ -227,25 +227,30 @@
 
   // Pictogrammes au trait (or) par catégorie : système visuel sans photo
   const PICTOS = {
-    pizza: '<path d="M8 12 Q24 4 40 12 L24 44 Z"/><path d="M10.5 16 Q24 9 37.5 16"/><circle cx="20" cy="20" r="2.2"/><circle cx="28" cy="22" r="2.2"/><circle cx="24" cy="31" r="2.2"/>',
-    salade: '<path d="M6 24 h36 q-2 14 -18 16 q-16 -2 -18 -16 z"/><path d="M14 24 q-2 -10 8 -12 q2 6 -2 12"/><path d="M24 24 q2 -12 12 -10 q-2 8 -8 10"/>',
-    soupe: '<path d="M6 24 h36 q-2 14 -18 16 q-16 -2 -18 -16 z"/><path d="M17 18 q-3 -4 0 -8 q3 -4 0 -8"/><path d="M25 18 q-3 -4 0 -8 q3 -4 0 -8"/><path d="M33 18 q-3 -4 0 -8 q3 -4 0 -8"/>',
-    pasta: '<ellipse cx="24" cy="32" rx="19" ry="8"/><path d="M14 30 q10 -6 20 0 M16 34 q8 -4 16 0"/><path d="M32 6 v16 M29 6 v8 q0 4 3 4 q3 0 3 -4 v-8"/>',
-    viande: '<path d="M10 20 q2 -12 16 -12 q14 0 14 12 q0 16 -16 18 q-16 0 -14 -18 z"/><circle cx="28" cy="20" r="4"/><path d="M16 28 q6 2 12 0"/>',
-    volaille: '<path d="M30 8 q12 2 10 14 q-2 10 -14 10 l-8 8"/><path d="M30 8 q-12 0 -12 12 q0 8 8 12"/><path d="M18 40 l-4 4 M14 38 l-6 2 M20 42 l-2 6"/>',
-    burger: '<path d="M8 22 q0 -14 16 -14 q16 0 16 14 z"/><path d="M6 27 h36"/><path d="M8 32 h32 q0 8 -8 8 h-16 q-8 0 -8 -8 z"/><circle cx="18" cy="15" r="1"/><circle cx="26" cy="13" r="1"/><circle cx="31" cy="17" r="1"/>',
-    cadeau: '<rect x="8" y="20" width="32" height="22" rx="2"/><path d="M6 14 h36 v6 h-36 z"/><path d="M24 14 v28"/><path d="M24 14 q-10 -10 -12 -2 q0 4 12 2 q10 -10 12 -2 q0 4 -12 2"/>',
-    gateau: '<path d="M8 40 h32 v-14 h-32 z"/><path d="M8 32 q4 3 8 0 q4 3 8 0 q4 3 8 0 q4 3 8 0"/><path d="M24 26 v-8"/><path d="M24 18 q-3 -4 0 -8 q3 4 0 8"/>',
-    cocktail: '<path d="M8 8 h32 l-16 18 z"/><path d="M24 26 v14 M16 42 h16"/><circle cx="34" cy="10" r="4"/><path d="M30 4 l-6 10"/>',
-    shake: '<path d="M14 14 h20 l-3 30 h-14 z"/><path d="M12 14 q12 -8 24 0"/><path d="M26 8 l6 -6"/><path d="M16 24 h16"/>',
-    bouteille: '<path d="M20 4 h8 v8 q6 4 6 12 v18 q0 2 -2 2 h-16 q-2 0 -2 -2 v-18 q0 -8 6 -12 z"/><path d="M14 26 h20"/>',
-    tasse: '<path d="M8 18 h26 v12 q0 10 -13 10 q-13 0 -13 -10 z"/><path d="M34 21 q8 0 8 6 q0 6 -8 6"/><path d="M15 12 q-2 -3 0 -6 M21 12 q-2 -3 0 -6 M27 12 q-2 -3 0 -6"/><path d="M6 44 h32"/>',
-    poisson: '<path d="M6 24 q12 -14 28 0 q-16 14 -28 0 z"/><path d="M34 24 l8 -8 v16 z"/><circle cx="14" cy="22" r="1.6"/><path d="M20 18 q3 6 0 12"/>',
+    pizza: '<path d="M6 10 Q24 2 42 10 L26 44 Q24 47 22 44 Z"/><path d="M8.5 15 Q24 8 39.5 15"/><circle cx="18" cy="20" r="2.6"/><circle cx="29" cy="21" r="2.6"/><circle cx="23" cy="30" r="2.4"/><path d="M15 26 l2 2 M31 28 l-2 2 M22 37 l2 1"/>',
+    salade: '<path d="M5 24 h38 q-1 15 -19 17 q-18 -2 -19 -17 z"/><path d="M10 24 q0 -9 8 -11 q3 5 -1 11"/><path d="M20 24 q2 -12 11 -12 q0 8 -6 12"/><circle cx="35" cy="19" r="4"/><path d="M14 44 h20"/>',
+    soupe: '<path d="M5 25 h38 q-1 14 -19 16 q-18 -2 -19 -16 z"/><path d="M12 44 h24"/><path d="M16 19 q-3 -4 0 -8 q3 -4 0 -8"/><path d="M24 19 q-3 -4 0 -8 q3 -4 0 -8"/><path d="M32 19 q-3 -4 0 -8 q3 -4 0 -8"/><path d="M38 25 l7 -10"/>',
+    pasta: '<ellipse cx="24" cy="33" rx="20" ry="9"/><ellipse cx="24" cy="32" rx="13" ry="5"/><path d="M15 31 q9 -6 18 0 M17 34 q7 -4 14 0"/><path d="M34 4 v18 M31 4 v8 q0 4 3 4 q3 0 3 -4 v-8"/>',
+    grill: '<path d="M7 22 q2 -12 17 -12 q16 0 17 12 q0 15 -18 17 q-17 -1 -16 -17 z"/><path d="M14 18 l6 6 M20 14 l12 12 M27 13 l8 8 M13 26 l6 6"/><circle cx="31" cy="30" r="3"/>',
+    volaille: '<path d="M30 6 q13 3 10 16 q-3 11 -15 10 l-8 8"/><path d="M30 6 q-13 1 -12 14 q1 8 7 12"/><path d="M17 40 q-5 -1 -6 3 q0 4 4 3 q-1 4 3 4 q4 -1 3 -6"/><path d="M27 14 q4 -2 7 1"/>',
+    poisson: '<path d="M5 24 q13 -15 29 0 q-16 15 -29 0 z"/><path d="M34 24 l9 -9 v18 z"/><circle cx="13" cy="22" r="1.8"/><path d="M19 17 q4 7 0 14"/><path d="M24 19 q2 5 0 10 M28 20 q2 4 0 8"/>',
+    souffle: '<path d="M6 34 q0 -22 18 -22 q18 0 18 22 z"/><path d="M6 34 h36"/><path d="M10 29 l2 -3 M15 22 l3 -2 M22 17.5 h3 M30 18 l2 2 M36 24 l2 3"/><path d="M4 40 h40"/>',
+    burger: '<path d="M8 21 q0 -13 16 -13 q16 0 16 13 z"/><path d="M6 26 q4 -3 8 0 q4 3 8 0 q4 -3 8 0 q4 3 8 0 q3 -2 4 0"/><path d="M7 30 h34"/><path d="M8 34 h32 q0 7 -7 7 h-18 q-7 0 -7 -7 z"/><circle cx="17" cy="14" r="1"/><circle cx="24" cy="12" r="1"/><circle cx="31" cy="15" r="1"/>',
+    tacos: '<path d="M8 12 h32 l-3 28 h-26 z"/><path d="M8 12 l16 10 l16 -10"/><path d="M14 30 q3 -3 6 0 q3 3 6 0 q3 -3 6 0"/><path d="M13 36 h22"/><circle cx="19" cy="25" r="1.2"/><circle cx="29" cy="25" r="1.2"/>',
+    cadeau: '<rect x="8" y="20" width="32" height="22" rx="2"/><path d="M6 14 h36 v6 h-36 z"/><path d="M24 14 v28"/><path d="M24 14 q-10 -10 -12 -2 q0 4 12 2 q10 -10 12 -2 q0 4 -12 2"/><path d="M8 30 h32"/>',
+    gateau: '<path d="M6 40 V26 L40 14 V40 Z"/><path d="M6 26 H40 M6 33 H40"/><path d="M40 14 q-6 -2 -10 3 q-4 -4 -9 2"/><circle cx="33" cy="9" r="3"/>',
+    cocktail: '<path d="M7 8 h34 l-17 19 z"/><path d="M12 13.5 h24"/><path d="M24 27 v14 M15 43 h18"/><circle cx="35" cy="9" r="5"/><path d="M35 4 v10 M30 9 h10"/><path d="M27 2 l-5 12"/>',
+    jus: '<path d="M14 12 h20 l-3 32 h-14 z"/><path d="M15 21 h18"/><path d="M26 12 l5 -9"/><circle cx="34" cy="12" r="5"/><path d="M34 7 v10 M29 12 h10"/><path d="M19 28 v8 M24 30 v8"/>',
+    shake: '<path d="M15 18 h18 l-3 26 h-12 z"/><path d="M13 18 q0 -6 5 -6 q1 -5 6 -5 q5 0 6 5 q5 0 5 6 z"/><circle cx="24" cy="5" r="2"/><path d="M29 10 l6 -8"/><path d="M17 28 h14"/>',
+    bouteille: '<path d="M20 4 h8 v8 q6 4 6 12 v18 q0 2 -2 2 h-16 q-2 0 -2 -2 v-18 q0 -8 6 -12 z"/><path d="M14 26 h20 M14 36 h20"/><path d="M20 4 h8"/>',
+    tasse: '<path d="M8 18 h26 v12 q0 10 -13 10 q-13 0 -13 -10 z"/><path d="M34 21 q8 0 8 6 q0 6 -8 6"/><path d="M15 12 q-2 -3 0 -6 M21 12 q-2 -3 0 -6 M27 12 q-2 -3 0 -6"/><path d="M4 44 h36"/>',
+    cloche: '<path d="M6 36 q0 -18 18 -18 q18 0 18 18 z"/><path d="M3 36 h42 M8 40 h32"/><circle cx="24" cy="15" r="2.5"/><path d="M14 30 q1 -6 6 -8"/>',
     etoile: '<path d="M24 4 l5 11 l12 -2 l-7 10 l7 10 l-12 -2 l-5 11 l-5 -11 l-12 2 l7 -10 l-7 -10 l12 2 z"/>'
   };
+
   function picto(nom, taille, classe) {
     const t = taille || 40;
-    return '<svg class="picto ' + (classe || '') + '" width="' + t + '" height="' + t + '" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (PICTOS[nom] || PICTOS.etoile) + '</svg>';
+    return '<svg class="picto ' + (classe || '') + '" width="' + t + '" height="' + t + '" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (PICTOS[nom] || PICTOS.etoile) + '</svg>';
   }
 
   /* Étoile art déco à 6 branches (deux triangles entrelacés) */
@@ -296,11 +301,13 @@
   function toast(texte, type) {
     let zone = document.getElementById('toasts');
     if (!zone) { zone = document.createElement('div'); zone.id = 'toasts'; zone.setAttribute('role', 'status'); zone.setAttribute('aria-live', 'polite'); document.body.appendChild(zone); }
+    zone.innerHTML = ''; // un seul toast à la fois : le nouveau remplace l'ancien
+    clearTimeout(toast.minuteur);
     const t = document.createElement('div');
     t.className = 'toast ' + (type || '');
     t.textContent = texte;
     zone.appendChild(t);
-    setTimeout(() => { t.classList.add('sort'); setTimeout(() => t.remove(), 400); }, 3200);
+    toast.minuteur = setTimeout(() => { t.classList.add('sort'); setTimeout(() => t.remove(), 400); }, 2600);
   }
 
   /* Libellé d'une ligne de commande (nom + options) dans la langue active */

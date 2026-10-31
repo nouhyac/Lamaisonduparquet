@@ -69,6 +69,12 @@
           </div>
         </div>
         <div class="heros-visuel">
+          <!-- Composition PC : la façade réelle dans un cadre art déco + médaillon du logo -->
+          <figure class="heros-photo">
+            <span class="cadre-deco" aria-hidden="true"></span>
+            <img src="img/facade.jpg" alt="L'entrée du restaurant Wood Pecker Draria et sa mascotte pivert" data-t-alt="alt-facade" width="387" height="256">
+            <figcaption><span data-t="draria">Draria</span> · <span data-t="depuis-salle">Salle familiale · Livraison · À emporter</span></figcaption>
+          </figure>
           <div class="medaillon">
             <img src="img/logo-wp.png" alt="Logo Wood Pecker Draria" data-t-alt="alt-logo" width="320" height="320">
           </div>
@@ -79,6 +85,19 @@
         </div>
       </div>
       <div class="deco-frise bas" aria-hidden="true"></div>
+    </section>
+
+    <!-- ================= SIGNATURES ================= -->
+    <section class="signatures" id="signatures" aria-labelledby="titre-sign">
+      <div class="conteneur">
+        <header class="titre-section">
+          <span class="ornement" aria-hidden="true"></span>
+          <h2 id="titre-sign" data-t="titre-sign">Les signatures Wood Pecker</h2>
+          <span class="ornement" aria-hidden="true"></span>
+        </header>
+        <p class="intro-sign" data-t="intro-sign">Les créations qui portent notre nom, à retrouver uniquement chez nous.</p>
+        <div class="sign-grille" id="sign-grille"></div>
+      </div>
     </section>
 
     <!-- ================= DU JOUR ================= -->
@@ -263,6 +282,11 @@
       <p class="pied-demo"><span data-t="demo">Démo réalisée par Dzign Studio pour Wood Pecker Draria</span> · <a href="gestion.html" data-t="espace-gerant">Espace gérant</a></p>
     </div>
   </footer>
+
+  <!-- Barre panier collante (mobile) -->
+  <div class="barre-panier" id="barre-panier" hidden>
+    <button type="button" id="barre-panier-btn"><span class="bp-nb" id="bp-nb">0</span><span class="bp-txt" data-t="voir-commande">Voir la commande</span><b class="bp-total" id="bp-total"></b></button>
+  </div>
 
   <!-- Bouton de suivi flottant -->
   <button type="button" class="suivi-flottant" id="suivi-flottant" hidden></button>
