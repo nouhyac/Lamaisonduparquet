@@ -2,6 +2,7 @@
 window.T_SITE = {
   'aller-carte': ['Aller à la carte', 'الانتقال إلى القائمة'],
   'demo': ['Démo réalisée par Dzign Studio pour Wood Pecker Draria', 'نسخة تجريبية من إنجاز Dzign Studio لمطعم وود بيكر الدرارية'],
+  'demo-aria': ['Démo', 'نسخة تجريبية'],
   'espace-gerant': ['Espace gérant', 'فضاء المسيّر'],
   'nav': ['Navigation principale', 'التصفح الرئيسي'],
   'nav-jour': ['Du jour', 'طبق اليوم'],

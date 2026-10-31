@@ -56,7 +56,7 @@ html[dir="rtl"] .heros-titre .ligne3 { letter-spacing: 0; font-family: 'Reem Kuf
 .heros-visuel { position: relative; display: grid; place-items: center; min-height: 360px; }
 .medaillon { width: min(340px, 78vw); aspect-ratio: 1; border-radius: 50%; padding: 12px; background: conic-gradient(from 0deg, var(--or), #8a6a2a, var(--or-clair), #8a6a2a, var(--or)); box-shadow: 0 0 0 10px var(--noir), 0 0 0 11px var(--ligne-sombre), 0 30px 60px -20px rgba(217, 180, 106, .35); }
 .medaillon img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #fff; }
-.couverts { position: absolute; inset-inline-end: -6px; bottom: 0; opacity: .9; }
+.couverts { position: absolute; inset-inline-end: -30px; bottom: -20px; opacity: .9; }
 
 /* ---------- Sections ---------- */
 section.sombre { background: var(--noir); padding: 72px 0; }
@@ -64,7 +64,7 @@ section.papier { background: var(--creme); color: var(--encre); padding: 72px 0;
 section.papier::before, section.papier::after { content: ''; position: absolute; inset-inline: 0; height: 10px; background: repeating-linear-gradient(90deg, var(--or-fonce) 0 18px, transparent 18px 24px); opacity: .5; }
 section.papier::before { top: 14px; } section.papier::after { bottom: 14px; }
 .titre-section { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 34px; text-align: center; }
-.titre-section h2 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: var(--or-clair); }
+.titre-section h2 { min-width: 0; font-size: clamp(1.6rem, 3.6vw, 2.4rem); text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: var(--or-clair); }
 html[dir="rtl"] .titre-section h2 { letter-spacing: 0; }
 .papier .titre-section h2 { color: var(--encre); }
 .papier .ornement { color: var(--or-fonce); }
@@ -79,7 +79,7 @@ html[dir="rtl"] .surtitre { letter-spacing: 0; font-size: .9rem; }
 
 /* ---------- Du jour ---------- */
 .jour-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-.carte-jour { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 24px; border: 1px solid var(--ligne-sombre); border-radius: var(--rayon); background: linear-gradient(160deg, var(--noir-3), var(--noir-2)); align-items: start; }
+.carte-jour { min-width: 0; display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 24px; border: 1px solid var(--ligne-sombre); border-radius: var(--rayon); background: linear-gradient(160deg, var(--noir-3), var(--noir-2)); align-items: start; }
 .carte-jour .cadre-photo { aspect-ratio: 3 / 4; max-width: 200px; }
 .carte-jour h3 { font-size: 1.6rem; text-transform: uppercase; letter-spacing: .08em; color: var(--or-clair); margin-bottom: 14px; }
 html[dir="rtl"] .carte-jour h3 { letter-spacing: 0; }
@@ -297,7 +297,7 @@ html[dir="rtl"] .tiroir-entete h2 { letter-spacing: 0; }
   .heros-sous { margin-inline: auto; }
   .heros-titre .ligne2 { margin-inline-start: 0; }
   .couverts { display: none; }
-  .jour-grille, .deux-col, .infos-grille { grid-template-columns: 1fr; }
+  .jour-grille, .deux-col, .infos-grille { grid-template-columns: minmax(0, 1fr); }
   .barre-in { flex-direction: column; align-items: stretch; gap: 8px; }
   .recherche { flex: none; }
   .barre-carte { top: 60px; }
@@ -309,7 +309,7 @@ html[dir="rtl"] .tiroir-entete h2 { letter-spacing: 0; }
   .marque-logo svg { width: 38px; height: 38px; }
   .langues button { padding: 6px 8px; }
   section.sombre, section.papier { padding: 54px 0; }
-  .carte-jour { grid-template-columns: 1fr; padding: 18px; }
+  .carte-jour { grid-template-columns: minmax(0, 1fr); padding: 18px; }
   .carte-jour .cadre-photo { max-width: none; aspect-ratio: 16 / 10; }
   .heros-titre .ligne1, .heros-titre .ligne2 { letter-spacing: .1em; }
   .heros-boutons .btn { flex: 1 1 100%; }
@@ -317,11 +317,35 @@ html[dir="rtl"] .tiroir-entete h2 { letter-spacing: 0; }
   .formulaire { padding: 18px; }
   .grille-plats { grid-template-columns: 1fr; }
   .choix-tailles { grid-template-columns: repeat(2, 1fr); }
-  .ornement i { width: 22px; }
-  .titre-section { gap: 8px; }
+  .titre-section .ornement { display: none; }
+  .titre-section h2 { letter-spacing: .08em; overflow-wrap: anywhere; }
   .fenetre { width: 100%; margin: auto 0 0; }
   .fenetre-in { border-radius: 18px 18px 0 0; max-height: 92dvh; }
 }
 @media (max-width: 380px) {
   .marque-nom small { display: none; }
+}
+
+/* ---------- Cartes de plats : mise en page compacte (picto à côté du nom) ---------- */
+.plat { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; align-content: start; }
+.plat-picto { margin: 0; width: 46px; height: 46px; }
+.plat-photo { grid-column: 1 / -1; }
+.plat-photo + .plat-corps { grid-column: 1 / -1; }
+.plat-pied { grid-column: 1 / -1; align-self: end; }
+.plat-pizza .grille-tailles { margin-inline-start: -60px; }
+.carte-jour .cadre-photo img { object-position: center top; }
+@media (max-width: 600px) {
+  .plat { padding: 12px 14px; }
+  .plat-picto { width: 40px; height: 40px; border-radius: 10px; }
+  .plat-picto .picto { width: 28px; height: 28px; }
+  .plat-pied { margin-top: 10px; padding-top: 8px; }
+  .grille-plats { gap: 10px; }
+}
+.recherche .ico { top: 50%; transform: translateY(-50%); }
+@media (max-width: 600px) {
+  .plat:not(.plat-pizza) { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .plat:not(.plat-pizza) .plat-pied { grid-column: 3; grid-row: 1; flex-direction: column; align-items: flex-end; justify-content: flex-start; gap: 6px; margin: 0; padding: 0; border: 0; }
+  .plat:not(.plat-pizza) .plat-prix { font-size: 1rem; white-space: nowrap; }
+  .plat:not(.plat-pizza) .btn-ajout { min-height: 38px; padding: 0 12px; }
+  .plat::before { display: none; }
 }

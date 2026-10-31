@@ -35,9 +35,18 @@
     }
   }
   function surChangement(fn) { ecouteurs.push(fn); }
-  if (canal) canal.onmessage = ev => ecouteurs.forEach(f => f(ev.data && ev.data.cle, false));
+  /* Un message BroadcastChannel peut arriver avant que localStorage soit
+     visible dans cet onglet : on regroupe les signaux (canal + évènement
+     « storage ») et on prévient les écouteurs 60 ms après le dernier. */
+  const enAttente = {};
+  function signalExterne(cle) {
+    if (!cle) return;
+    clearTimeout(enAttente[cle]);
+    enAttente[cle] = setTimeout(() => ecouteurs.forEach(f => f(cle, false)), 60);
+  }
+  if (canal) canal.onmessage = ev => signalExterne(ev.data && ev.data.cle);
   window.addEventListener('storage', ev => {
-    if (ev.key && ev.key.indexOf(PREFIXE) === 0 && !canal) ecouteurs.forEach(f => f(ev.key.slice(PREFIXE.length), false));
+    if (ev.key && ev.key.indexOf(PREFIXE) === 0) signalExterne(ev.key.slice(PREFIXE.length));
   });
   function clone(v) { return v == null ? v : JSON.parse(JSON.stringify(v)); }
 

@@ -75,7 +75,7 @@ html[dir="rtl"] .btn { letter-spacing: 0; text-transform: none; font-size: 1rem;
 .btn-or { background: var(--or); color: #1a1408; }
 .btn-ligne { border-color: var(--or); color: var(--or-clair); background: transparent; }
 .btn-noir { background: var(--encre); color: var(--creme); }
-.btn-wa { background: #1f8f52; color: #fff; }
+.btn-wa { background: #157a43; color: #fff; }
 .btn-rouge { background: #a61f1f; color: #fff; }
 .btn.large { width: 100%; }
 .btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; }
