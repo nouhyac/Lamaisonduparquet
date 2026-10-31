@@ -61,7 +61,8 @@
 
     const ordres = MODELES.map((m, i) => {
       const [prenom, tel, mode, zoneNom, lignes, statut] = m;
-      const cree = Math.round(debut + pas * i + (i % 3) * 4 * 60e3);
+      // Les commandes encore en cours datent des 30 dernières minutes (minuteurs réalistes)
+      const cree = statut === 'livree' ? Math.round(debut + pas * i + (i % 3) * 4 * 60e3) : now - (MODELES.length - i) * 5 * 60e3 - 60e3;
       const L = lignes.map(([id, q, o]) => ligne(c, id, q, o));
       const sousTotal = L.reduce((s, l) => s + l.total, 0);
       const zone = R.zones.find(z => z.nom === zoneNom);
@@ -70,7 +71,7 @@
       const hist = {}; let t = cree;
       for (const e of etapes) {
         if (mode !== 'livraison' && e === 'livraison') continue;
-        hist[e] = t; t += (e === 'recue' ? 3 : e === 'preparation' ? 18 : 12) * 60e3;
+        hist[e] = Math.min(t, now - 30e3); t += (e === 'recue' ? 3 : e === 'preparation' ? (statut === 'livree' ? 18 : 9) : statut === 'livree' ? 12 : 4) * 60e3;
         if (e === statut) break;
       }
       const n = 1001 + i;
