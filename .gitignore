@@ -1,0 +1,16 @@
+lamaisonduparquet-hostinger.zip
+ads/build/seg/
+ads/build/out/
+ads/build/clips/
+ads/build/chk/
+ads/build/vo/
+ads/build/seg2/
+ads/build/seg3/
+ads/build/clips3/
+ads/motion/out/
+ads/motion/frames/
+ads/motion/chk/
+ads/v50/*.mp4
+ads/visuels-sarl-myf.zip
+ads/visuels-lot2-sarl-myf.zip
+!ads/pub/*.mp4
