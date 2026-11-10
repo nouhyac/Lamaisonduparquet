@@ -11,7 +11,7 @@ Tout est filmé sur notre vraie plateforme, sous une marque neutre « Forno ». 
 | `affiche-1.jpg` | « Pas un simple site. Tout votre restaurant en ligne. » |
 | `affiche-2.jpg` | « Pendant le rush, votre téléphone sonne… » (la meilleure pour la pub image) |
 | `affiche-3.jpg` | « Une plateforme. Tout votre service. » (liste des fonctions) |
-| `affiche-4.jpg` | Offre : -20 % Fondateurs, dès 300 000 DA, 50/50, satisfait ou remboursé |
+| `affiche-4.jpg` | Offre : -20 % Fondateurs, Plateforme commerçants à partir de 80 000 DA, 0 DA avant d'avoir vu sa démo, 50/50, satisfait ou remboursé (⚠️ image à régénérer depuis `sources/affiches.html` : le JPG actuel montre encore l'ancien prix) |
 
 ## Ordre de publication
 1. **Ce soir** : `exemple-client.mp4` en Reel (Instagram + Facebook) + en story. Texte A.
@@ -33,7 +33,7 @@ Démo gratuite à votre nom · Maquette satisfaite ou remboursée.
 ## La pub : WhatsApp ou site ?
 **Recommandation : WhatsApp directement** (« Click-to-WhatsApp »).
 - Le pixel Meta n'est pas installé sur le site : une pub vers le site ne peut pas apprendre qui nous contacte. Une pub WhatsApp, si : Meta optimise sur les **conversations commencées**.
-- Les restaurateurs répondent sur WhatsApp, pas sur des formulaires. Une offre à 300 000 DA se vend en conversation.
+- Les restaurateurs répondent sur WhatsApp, pas sur des formulaires. Une offre à partir de 80 000 DA (Plateforme commerçants) se vend en conversation.
 - La règle « choisir son offre avant WhatsApp » est respectée : la pub ne parle que d'une seule offre, la Plateforme restaurant.
 - Le site reste dans la bio et sur les affiches (dzignstudio.store) pour ceux qui veulent voir avant d'écrire.
 

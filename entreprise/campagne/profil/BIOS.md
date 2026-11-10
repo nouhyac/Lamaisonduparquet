@@ -31,12 +31,12 @@ Dzign Studio est un studio digital haut de gamme basé à Alger.
 Nous créons des sites web, des boutiques en ligne, des expériences 3D et des applications au niveau des plus grandes marques, pour les entreprises de toute l'Algérie.
 
 ✅ Votre site en aperçu en 10 secondes, puis une maquette sous 72 h
-✅ 50 % au lancement, 50 % seulement après avoir vu votre site terminé (BaridiMob)
+✅ 0 DA avant d'avoir vu votre site : démo gratuite à votre nom, puis 50 % à la validation et 50 % à la livraison (BaridiMob)
 ✅ Nom de domaine et email pro inclus
 ✅ Sites en arabe, en français et en anglais
 ✅ Tout à distance, sans déplacement
 
-Formules : Impact, Signature, Commerce, Immersion, Plateforme.
+Formules : Site vitrine (à partir de 20 000 DA), Boutique en ligne (50 000 DA), Plateforme commerçants (80 000 DA), Application (150 000 DA).
 Choisissez votre offre sur notre site, votre message WhatsApp est prêt.
 ```
 - **Téléphone / WhatsApp** : 0549 50 68 57

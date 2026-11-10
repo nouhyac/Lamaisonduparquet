@@ -38,7 +38,8 @@ const R = {
     ['function logo(opts) {', MONO_MC],
     ...LIEUX, ...TEL,
   ],
-  dzign: [...LIEUX, [/\.dz\b/g, '.com']],
+  dzign: [[/élégance algérienne,/g, 'élégance'], [/dans les 58 wilayas/g, 'à domicile'], [/Robes kabyles/g, 'Robes de fête'], [/Robe kabyle/g, 'Robe brodée'],
+    [/Atelier à Tlemcen · Showroom à Alger/g, 'Atelier · Showroom'], [/Wilaya de livraison/g, 'Zone de livraison'], ...LIEUX, [/\.dz\b/g, '.com']],
 };
 // images remplacées
 const IMG = {

@@ -23,7 +23,7 @@
 - **Dossier PDF 4 pages + devis** : `dossier/Proposition-ArzataPizza-DzignStudio.pdf`.
 
 ## Prix
-**150 000 DA** proposés à Arzata le 14/10 (réponse attendue le 15/10). Devis : 187 500 DA de prestations, -20 % Fondateurs. Acompte 75 000 DA à la signature (BaridiMob), solde 75 000 DA à la livraison. Service client 24h/24, 7j/7 pendant 12 mois et hébergement de la 1re année inclus. Vidéo de lancement offerte. Pas de formule mensuelle.
+**150 000 DA** proposés à Arzata le 14/10 (réponse attendue le 15/10). Devis : 187 500 DA de prestations, -20 % Fondateurs. Acompte 75 000 DA à la validation de la démo (BaridiMob), solde 75 000 DA à la livraison (site en ligne) ; option paiement en une fois −5 % = 142 500 DA. Grille du 2026-11-10 : Plateforme commerçants à partir de 80 000 DA, ce devis reste au-dessus (fonctions en plus). Service client 24h/24, 7j/7 pendant 12 mois et hébergement de la 1re année inclus. Vidéo de lancement offerte. Pas de formule mensuelle.
 
 ## Ordre d'envoi
 1. Partager la démo (menu Partager › « Tout le monde avec le lien »).
@@ -52,9 +52,9 @@ Tout est modifiable par vous : recettes, photos, prix, horaires, frais de livrai
 
 Message 3 (prix)
 
-C'est une plateforme complète, pas un simple site : commande en ligne, four, caisse, comptabilité, livraison sur Alger avec suivi du livreur, en français et en arabe.
+C'est notre Plateforme commerçants, pas un simple site : commande en ligne, four, caisse, comptabilité, livraison sur Alger avec suivi du livreur, en français et en arabe.
 Pour Arzata, on vous fait le tarif Fondateurs : 150 000 DA.
-Vous payez 75 000 DA au démarrage et 75 000 DA à la livraison, en 3 semaines.
+Vous avez déjà vu votre démo sans rien payer. Vous payez 75 000 DA seulement quand vous la validez, et 75 000 DA à la livraison, une fois la plateforme en ligne, en 3 semaines. Ou en une fois avec -5 % : 142 500 DA.
 Inclus : le service client 24h/24 et 7j/7 pendant 12 mois, l'hébergement de la première année, et une vidéo de lancement pour vos réseaux.
 Et la maquette est satisfaite ou remboursée. Je vous envoie le dossier complet ?
 

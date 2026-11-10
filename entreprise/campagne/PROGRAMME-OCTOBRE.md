@@ -62,7 +62,7 @@ Démo gratuite, maquette satisfaite ou remboursée. Écrivez-nous sur WhatsApp �
 #restaurant #pizzeria #fastfood #DzignStudio
 
 **J7 · Post « Paiement 50/50 »**
-Zéro risque pour vous : 50 % pour commencer, 50 % quand votre site est terminé. 🤝
+Zéro risque pour vous : 0 DA avant d'avoir vu votre site, 50 % quand la démo vous convainc, 50 % quand votre site est en ligne. 🤝
 Et si la maquette ne vous plaît pas, nous vous remboursons.
 #confiance #entrepreneur #siteweb #DzignStudio
 
@@ -73,7 +73,7 @@ Mobilier, déco, mode, immobilier : on donne vie à vos produits.
 #3D #ecommerce #design #DzignStudio
 
 **J9 · Post « Nos formules »**
-Du site vitrine à la plateforme complète, il y a une formule pour chaque projet. 📋
+Site vitrine dès 20 000 DA, boutique en ligne, plateforme commerçants, application : il y a une formule pour chaque projet. 📋
 Prix « à partir de », devis clair, paiement 50/50. Toutes nos formules sur le site, lien en bio.
 #siteweb #formules #DzignStudio
 
@@ -84,6 +84,6 @@ Démo gratuite, maquette satisfaite ou remboursée, -20 % pour nos premiers clie
 #entrepreneur #digital #DzignStudio
 
 ## Réponses rapides (commentaires et messages)
-- **« C'est combien ? »** → Ça dépend de votre projet : nos formules commencent à partir de 30 000 DA, et la plateforme restaurant complète sur devis. Envoyez-nous le nom de votre activité, on vous prépare une démo gratuite. 💬
+- **« C'est combien ? »** → Ça dépend de votre projet : un site vitrine, c'est à partir de 20 000 DA, et la plateforme restaurant complète (commande en ligne + espace gérant) à partir de 80 000 DA. Envoyez-nous le nom de votre activité, on vous prépare une démo gratuite. 💬
 - **« Vous êtes où ? »** → Nous travaillons partout en Algérie, tout se fait à distance : démo, maquette, paiement BaridiMob 50/50.
 - **Restaurateur intéressé** → Bonjour et merci ! Nous préparons votre démo gratuite : votre carte, vos prix et votre logo, sur votre propre plateforme. Envoyez-nous le nom de votre restaurant et une photo de votre menu (ou votre Instagram). Vous la recevez avant de vous engager, et la maquette est satisfaite ou remboursée.

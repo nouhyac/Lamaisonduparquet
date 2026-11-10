@@ -70,12 +70,12 @@ Heures de départ conseillées : **entre 20 h et 22 h** (à ajuster selon tes st
 **AR** : يديرونه بأيديهم. ثم يشترون. 🛋️ أداة التخصيص ثلاثية الأبعاد، على موقعك، لمنتجاتك.
 
 ### Post 6 · Paiement 50/50
-**FR** : Vous voyez votre site avant de payer le solde. 50 % au lancement par BaridiMob, 50 % après avoir vu le site terminé. Tout à distance, partout en Algérie.
-**AR** : ترى موقعك قبل دفع الباقي. 50% عند الانطلاق عبر BaridiMob، و50% بعد رؤية الموقع جاهزاً. كل شيء عن بُعد، في كل أنحاء الجزائر.
+**FR** : Vous voyez votre site gratuitement avant de payer quoi que ce soit. 50 % par BaridiMob quand la démo vous convainc, 50 % une fois votre site en ligne. Tout à distance, partout en Algérie.
+**AR** : ترى موقعك مجاناً قبل أن تدفع أي شيء. 50% عبر BaridiMob عند الموافقة على العرض التجريبي، و50% بعد إطلاق موقعك. كل شيء عن بُعد، في كل أنحاء الجزائر.
 
 ### Post 7 · Nos formules
-**FR** : Impact, Signature, Commerce, Immersion, Plateforme. Nom de domaine et email pro inclus. Quelle formule pour votre entreprise ? Dites-le-nous en commentaire. 👇
-**AR** : Impact، Signature، Commerce، Immersion، Plateforme. اسم النطاق والبريد المهني مشمولان. أي باقة تناسب مؤسستك؟ أخبرونا في التعليقات. 👇
+**FR** : Site vitrine, Boutique en ligne, Plateforme commerçants, Application : à partir de 20 000 DA. Nom de domaine et email pro inclus. Quelle formule pour votre entreprise ? Dites-le-nous en commentaire. 👇
+**AR** : موقع تعريفي، متجر إلكتروني، منصّة التجّار، تطبيق: ابتداءً من 20 000 دج. اسم النطاق والبريد المهني مشمولان. أي باقة تناسب مؤسستك؟ أخبرونا في التعليقات. 👇
 
 ### Post 8 · Pourquoi Dzign
 **FR** : Un site ordinaire ou un site Dzign ? La différence se voit, et elle se ressent dans vos ventes.

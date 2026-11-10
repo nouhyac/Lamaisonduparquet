@@ -52,6 +52,10 @@ const taper = async (p, sel, txt) => { await p.evaluate(s => { const e = documen
   await w(800);
   await g.evaluate(() => { const a = [...document.querySelectorAll('.barre-laterale button, .barre-laterale a')].find(x => x.textContent.trim().startsWith('Cuisine')); a && a.click(); });
   await w(800);
+  // cuisine aérée : une commande par colonne, les autres déjà servies
+  await rg.evaluate(() => { const L = JSON.parse(localStorage.getItem('wpk-commandes')); const vu = {}; L.slice().reverse().forEach(c => { if (['recue', 'preparation', 'prete'].includes(c.statut)) { if (vu[c.statut]) { c.statut = 'livree'; c.hist.livree = Date.now(); } vu[c.statut] = 1; } }); localStorage.setItem('wpk-commandes', JSON.stringify(L)); });
+  await g.reload(); await w(1200);
+  if (!(await g.evaluate(() => !!document.querySelector('.cuisine')))) { await g.evaluate(() => { const a = [...document.querySelectorAll('.barre-laterale button, .barre-laterale a')].find(x => x.textContent.trim().startsWith('Cuisine')); a && a.click(); }); await w(800); }
   // même état de départ des deux côtés
   await versClient(); await t.reload(); await w(1800);
   if (DBG) { await t.screenshot({ path: O + '/d0.png' }); await g.screenshot({ path: O + '/d0g.png' }); }
@@ -62,9 +66,9 @@ const taper = async (p, sel, txt) => { await p.evaluate(s => { const e = documen
   await w(1200);
   // 1. le client va aux pizzas
   mark('scroll');
-  const y = await t.evaluate(() => { const e = document.querySelector('[data-plat="pz19"]').closest('.plat'); return e.getBoundingClientRect().top + scrollY - 240; });
+  const y = await t.evaluate(() => { const e = document.querySelector('article.plat[data-id="pz19"]'); return e.getBoundingClientRect().top + scrollY - 240; });
   await lisse(t, y, 1600); await w(500);
-  mark('choisir'); await tap(t, '[data-plat="pz19"]'); await w(900);
+  mark('choisir'); await tap(t, 'article.plat[data-id="pz19"] [data-plat]'); await w(900);
   if (DBG) await t.screenshot({ path: O + '/d1.png' });
   await tap(t, '#form-options input[name="taille"][value="semi"]'); await w(450);
   await tap(t, '#form-options input[name="taille"][value="mega"]'); await w(500);

@@ -28,7 +28,7 @@ Texte à coller :
 En échange : votre avis et le droit de montrer votre site dans notre portfolio.
 
 ✅ Maquette en 72 h
-✅ 50 % au lancement, 50 % seulement après avoir vu votre site terminé
+✅ 0 DA avant d'avoir vu votre site, 50 % seulement une fois convaincu
 ✅ Nom de domaine + email pro inclus
 ✅ Tout à distance, partout en Algérie
 

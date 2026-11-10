@@ -306,7 +306,7 @@ body.verrou{overflow:hidden}
 .formule h3{font-size:1.7rem;font-weight:700}
 .pastille{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--noir);background:var(--or);padding:4px 10px;border-radius:999px;white-space:nowrap}
 .pour{color:var(--gris);font-size:.92rem}
-.formule ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem}
+.formule ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;align-content:start;font-size:.95rem}
 .formule li{padding-inline-start:22px;position:relative}
 .formule li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:10px;height:1px;background:var(--or)}
 .prix{border-top:1px solid var(--ligne);padding-top:18px;display:grid;gap:2px}
@@ -380,7 +380,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 .offre:has(input:focus-visible){outline:2px solid var(--or);outline-offset:2px}
 .offre::after{content:"";position:absolute;top:14px;inset-inline-end:14px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--ligne)}
 .offre:has(input:checked)::after{border-color:var(--or);background:radial-gradient(circle,var(--or) 0 45%,transparent 50%)}
-.offre b{font-family:var(--f-display);font-size:1.15rem}
+.offre b{font-family:var(--f-display);font-size:1.15rem;padding-inline-end:28px}
 .offre .px{color:var(--or);font-weight:600;font-variant-numeric:tabular-nums;font-size:.95rem}
 .offre small{color:var(--gris);font-size:.82rem;line-height:1.4}
 :root[lang="ar"] .offre b{font-family:var(--f-display)}
@@ -1214,6 +1214,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <script>
 (function(){
   var racine=document.documentElement,btn=document.getElementById('langue'),barre=document.getElementById('progression');
+  if(!racine.lang)racine.lang='fr';
   window.DZ=window.DZ||{lang:'fr',cb:[]};
   function appliquer(l){
     DZ.lang=l;var ar=l==='ar';

@@ -33,7 +33,7 @@ async function smooth(p,dy,dur){await p.evaluate(async([dy,dur])=>{const y0=scro
  if(S==='portfolio'){await smooth(p,420,1600);await w(700);await smooth(p,520,1800);await w(800);}
  if(S==='3d'){const box=await (await p.$('#vitrine3d canvas')||await p.$('#vitrine3d')).boundingBox();const cx=box.x+box.width/2,cy=box.y+Math.min(box.height/2,300);await p.mouse.move(cx,cy);await p.mouse.down();for(let i=0;i<45;i++){await p.mouse.move(cx-i*5,cy+Math.sin(i/9)*6);await w(20)}await p.mouse.up();await w(1800);}
  if(D){await p.mouse.move(195,600);await p.mouse.wheel(0,350);await w(900);await p.mouse.wheel(0,450);await w(1100);}
- if(S==='offre'){await smooth(p,300,1000);await w(400);const e=await p.$('[data-offre="Signature"]');await e.scrollIntoViewIfNeeded();await w(400);await e.click();await w(1800);await smooth(p,0,10);await w(1500);}
+ if(S==='offre'){await smooth(p,300,1000);await w(400);const e=await p.$('[data-offre="plateforme"]');await e.scrollIntoViewIfNeeded();await w(400);await e.click();await w(1800);await smooth(p,0,10);await w(1500);}
  await cdp.send('Page.stopScreencast');await w(200);await b.close();
  const liste=[];frames.forEach((f,i)=>{const n=path.join(TMP,'f'+String(i).padStart(5,'0')+'.jpg');fs.writeFileSync(n,Buffer.from(f.data,'base64'));const d=i<frames.length-1?frames[i+1].t-f.t:0.1;liste.push("file '"+n+"'",'duration '+Math.max(0.001,d).toFixed(4))});
  liste.push("file '"+path.join(TMP,'f'+String(frames.length-1).padStart(5,'0')+'.jpg')+"'");fs.writeFileSync(TMP+'/l.txt',liste.join('\n'));

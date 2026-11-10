@@ -19,8 +19,8 @@ Prérequis : compte pub 2860172500875914 réactivé (vérification du moyen de p
 | Titre · bouton | « Démo gratuite à votre nom » · Envoyer un message WhatsApp | « Votre site en 10 secondes » · En savoir plus |
 | Bon résultat à J+3 | conversation < 1 € | clic < 0,15 € et CTR > 1 % |
 
-Texte A : Pendant le rush, chaque appel manqué est une commande perdue. 📞❌ Avec votre plateforme, vos clients commandent sans appeler et votre cuisine reçoit tout, en direct. ✅ Démo gratuite à votre nom ✅ Maquette satisfaite ou remboursée ✅ Paiement 50 % au début, 50 % à la livraison. 👉 Écrivez-nous sur WhatsApp.
-Texte B : Tapez le nom de votre entreprise : votre futur site apparaît en 10 secondes. 😮 Gratuit, sans engagement. Sites vitrines, boutiques, plateformes, à partir de 30 000 DA. ✅ Maquette satisfaite ou remboursée ✅ Paiement 50/50 ✅ -20 % pour nos 5 premiers clients.
+Texte A : Pendant le rush, chaque appel manqué est une commande perdue. 📞❌ Avec votre plateforme, vos clients commandent sans appeler et votre cuisine reçoit tout, en direct. ✅ Démo gratuite à votre nom ✅ Maquette satisfaite ou remboursée ✅ 0 DA avant d'avoir vu votre site, 50 % à la validation, 50 % à la livraison. 👉 Écrivez-nous sur WhatsApp.
+Texte B : Tapez le nom de votre entreprise : votre futur site apparaît en 10 secondes. 😮 Gratuit, sans engagement. Sites vitrines à partir de 20 000 DA, boutiques en ligne, plateformes commerçants et applications. ✅ Satisfait ou remboursé ✅ 0 DA avant d'avoir vu votre site ✅ -20 % pour nos 5 premiers clients.
 Règle : aucun lieu dans les textes (ne pas reprendre « conçu à Alger » des anciens textes plus bas).
 
 # ▶️ LANCEMENT DU 14/10 : 2 pubs à 25 $ (plan validé)
@@ -102,7 +102,7 @@ Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du d
 **Texte principal A (bénéfice)**
 Votre entreprise mérite un site à la hauteur de votre travail. ✨
 Sites web, boutiques en ligne, 3D et applications, conçus à Alger au niveau des plus grandes marques.
-✅ Maquette en 72 h, satisfaite ou remboursée · ✅ 50 % payés seulement après avoir vu votre site · ✅ Tout à distance
+✅ Maquette en 72 h, satisfaite ou remboursée · ✅ 0 DA avant d'avoir vu votre site, 50 % seulement une fois convaincu · ✅ Tout à distance
 👉 Voyez votre site en 10 secondes sur notre page.
 
 **Texte principal B (curiosité)**
