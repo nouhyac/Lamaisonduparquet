@@ -71,7 +71,7 @@ def fond(ecran, assomb=.30):
 yy, xx = np.mgrid[0:H, 0:W]
 VIG = (1 - 0.55 * np.clip(((xx - W / 2) / (W * .75)) ** 2 + ((yy - H * .45) / (H * .62)) ** 2, 0, 1))[..., None].astype(np.float32)
 GOLD = (np.exp(-(((xx - W / 2) / 520.) ** 2 + ((yy - H * .42) / 760.) ** 2))[..., None] * np.array([34, 26, 12], np.float32)).astype(np.float32)
-GRAIN = [rng.normal(0, 5.0, (H // 2, W // 2, 1)).astype(np.float32).repeat(2, 0).repeat(2, 1) for _ in range(6)]
+GRAIN = [rng.normal(0, 3.2, (H // 2, W // 2, 1)).astype(np.float32).repeat(2, 0).repeat(2, 1) for _ in range(6)]
 
 _ov = {}
 def ov(nom):
@@ -99,23 +99,25 @@ def zoom(img, z):
     return np.asarray(Image.fromarray(img[y0:y0 + h, x0:x0 + w].astype(np.uint8)).resize((W, H), Image.BILINEAR)).astype(np.float32)
 
 # ---------------------------------------------------------------- scènes
-def scene_tel(src, ss, vit, dur, ovs, tel, pre=None):
+def scene_tel(src, ss, vit, dur, ovs, tel, pre=None, lg=True):
     L = Lecteur(src, ss, 780, 1688, dur * vit)
     def f(k, t):
         e = L.get(int(t * vit * FPS)); img = fond(e)
         if pre: pre(img, t)
-        tel.poser(img, e); logo(img)
+        tel.poser(img, e)
+        if lg: logo(img)
         for o in ovs: poser_ov(img, *o[:1], t, *o[1:])
         return img
     return dur, f
 
-def scene_cuisine(ss, vit, dur, ovs):
+def scene_cuisine(ss, vit, dur, ovs, lg=True):
     Lc = Lecteur(REC + '/cuisine.mp4', ss, 2160, 1350, dur * vit); Lt = Lecteur(REC + '/tel.mp4', ss, 780, 1688, dur * vit)
     ordi = Ordi(40, 440, 1000, 625); tel = Tel(626, 1000, 372, r=40, b=12)
     def f(k, t):
         n = int(t * vit * FPS); c = Lc.get(n); e = Lt.get(n)
         img = fond(c, .26)
-        ordi.poser(img, c[0:1125, 360:2160]); tel.poser(img, e); logo(img)
+        ordi.poser(img, c[0:1125, 360:2160]); tel.poser(img, e)
+        if lg: logo(img)
         for o in ovs: poser_ov(img, *o[:1], t, *o[1:])
         return img
     return dur, f
@@ -139,7 +141,8 @@ def scene_fin(dur):
     return dur, f
 
 def dernier(scn):
-    dur, f = scn; return f(0, dur - 1 / FPS)
+    dur, f = scn; img = f(0, dur - 1 / FPS)
+    return np.asarray(Image.fromarray(np.clip(img, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(16))).astype(np.float32) * .5
 
 # ---------------------------------------------------------------- vidéos
 def video_A():
@@ -148,7 +151,7 @@ def video_A():
     S.append(scene_tel(REC + '/tel.mp4', 0.0, 1.0, 2.4, [('a-hook', 0, 2.4, 0, .15), ('a-hook2', .65, 2.4, .2, .15, 18)], tel))
     S.append(scene_tel(REC + '/tel.mp4', 2.4, 2.0, 6.4, [('a-lab1', 0, 6.4)], tel))
     S.append(scene_cuisine(15.2, 1.6, 6.1, [('a-lab2', 0, 3.0), ('a-lab3', 3.0, 6.1)]))
-    base = dernier(scene_cuisine(15.2, 1.6, 6.1, [])) * .45
+    base = dernier(scene_cuisine(15.2, 1.6, 6.1, [], lg=False))
     S.append(scene_carte(base, 4.4, [('a-offre1', 0, 2.0), ('a-offre2', 2.0, 4.4)]))
     S.append(scene_carte(base, 2.9, [('a-cta', 0, 2.9)], 1.06, 1.1))
     S.append(scene_fin(2.6))
@@ -162,7 +165,7 @@ def video_B():
     S.append(scene_tel(REC + '/tel.mp4', 1.6, 2.3, 2.4, [('b-resto', 0, 2.4)], tel))
     S.append(scene_tel(REC + '/cafe.mp4', 0.7, 1.9, 3.0, [('b-cafe', 0, 3.0)], tel))
     S.append(scene_tel(REC + '/boutique.mp4', 0.6, 1.55, 2.6, [('b-boutique', 0, 2.6)], tel))
-    base = dernier(scene_tel(REC + '/boutique.mp4', 0.6, 1.55, 2.6, [], tel)) * .42
+    base = dernier(scene_tel(REC + '/boutique.mp4', 0.6, 1.55, 2.6, [], tel, lg=False))
     S.append(scene_carte(base, 4.3, [('b-offres1', 0, .45, .2, 0), ('b-offres2', .45, .9, 0, 0, 0), ('b-offres3', .9, 1.35, 0, 0, 0), ('b-offres4', 1.35, 1.8, 0, 0, 0), ('b-offres5', 1.8, 4.3, 0, .18, 0)]))
     S.append(scene_carte(base, 2.6, [('b-cta', 0, 2.6)], 1.06, 1.1))
     S.append(scene_fin(2.1))
@@ -179,7 +182,7 @@ cfg = {'L': L, 'bpm': 112, 'mus': [0.0, L - 2.2], 'fin': L, 'dense': False,
 json.dump(cfg, open(OUT + '.son.json', 'w'))
 subprocess.run(['python3', os.path.join(D, 'son.py'), OUT + '.son.json', OUT + '.wav'], check=True)
 enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-', '-i', OUT + '.wav',
-                        '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-maxrate', '9M', '-bufsize', '18M', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '160k', '-af', 'afade=t=out:st=%.2f:d=0.6' % (total - .6),
+                        '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', '7M', '-bufsize', '14M', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '160k', '-af', 'afade=t=out:st=%.2f:d=0.6' % (total - .6),
                         '-shortest', '-movflags', '+faststart', OUT], stdin=subprocess.PIPE)
 prec = None; k = 0
 for si, (d, f) in enumerate(S):
