@@ -4,7 +4,7 @@ const O = process.env.OV || path.join(__dirname, 'ov'); fs.mkdirSync(O, { recurs
 const CSS = `html,body{margin:0;background:transparent;width:1080px;height:1920px;overflow:hidden;font-family:'Hanken Grotesk'}
 em{font-style:normal;color:#C8A96A}
 .hook{position:absolute;left:0;right:0;top:150px;text-align:center}
-.hook span{display:inline-block;font-family:Syne;font-weight:800;font-size:68px;line-height:1.08;letter-spacing:-.02em;color:#F5F3EE;background:rgba(11,11,15,.78);padding:24px 40px 28px;border-radius:24px;border:1.5px solid rgba(200,169,106,.6)}
+.hook span{display:inline-block;font-family:Syne;font-weight:800;font-size:60px;line-height:1.1;letter-spacing:-.02em;color:#F5F3EE;background:rgba(11,11,15,.78);padding:24px 40px 28px;border-radius:24px;border:1.5px solid rgba(200,169,106,.6)}
 .pill{position:absolute;left:0;right:0;text-align:center}
 .pill span{display:inline-block;font-family:Syne;font-weight:800;font-size:46px;color:#0B0B0F;background:#C8A96A;padding:14px 36px 18px;border-radius:999px;box-shadow:0 12px 40px rgba(0,0,0,.45)}
 .lab{position:absolute;left:0;right:0;top:175px;text-align:center}
@@ -39,8 +39,8 @@ const offres = n => '<div class="carte" style="top:330px"><p class="sur">Nos 4 o
   `</div><p class="${n < 5 ? 'cache' : ''}" style="margin-top:34px"><em>Démo gratuite à votre nom</em><br>Satisfait ou remboursé</p></div>`;
 const S = {
   // ---- Vidéo A (restaurants)
-  'a-hook': '<div class="hook"><span>Vos clients commandent<br>sur <em>VOTRE site.</em></span></div>',
-  'a-hook2': '<div class="pill" style="top:395px"><span>Sans commission.</span></div>',
+  'a-hook': '<div class="hook"><span style="white-space:nowrap">Vos clients<br>commandent sur<br><em>VOTRE site.</em></span></div>',
+  'a-hook2': '<div class="pill" style="top:448px"><span>Sans commission.</span></div>',
   'a-lab1': '<div class="lab"><span><b class="num">1</b>Le client commande<br><em>depuis son téléphone</em></span></div>',
   'a-lab2': '<div class="lab" style="top:150px"><span><b class="num">2</b>La commande arrive<br><em>direct en cuisine</em></span></div>',
   'a-lab3': '<div class="lab" style="top:150px"><span><b class="num">3</b>Le client suit<br><em>sa commande en direct</em></span></div>',
@@ -49,19 +49,26 @@ const S = {
   'a-cta': '<div class="carte" style="top:470px"><h2 style="font-size:66px">Envoyez-nous<br><em>le nom de votre restaurant</em><br>sur WhatsApp</h2><p>Votre démo est prête en 24 h.</p><div class="wa">' + WA + '0549 50 68 57</div></div>',
   'fin': '<div class="fin"><div class="logo">d<b>z</b>ign</div><div class="st">STUDIO</div><div class="url">dzignstudio.store</div><div class="tel">WhatsApp · 0549 50 68 57</div></div>',
   // ---- Vidéo B (tous commerces)
-  'b-hook': '<div class="hook"><span>Votre site<br>à partir de <em>20 000 DA</em></span></div>',
-  'b-hook2': '<div class="pill" style="top:395px"><span>Vous payez après l\'avoir vu.</span></div>',
+  'b-hook': '<div class="hook"><span><span style="all:unset;white-space:nowrap">Votre site à partir de</span><br><em style="white-space:nowrap;font-size:92px">20 000 DA</em></span></div>',
+  'b-hook2': '<div class="pill" style="top:448px"><span>Vous payez après l\'avoir vu.</span></div>',
   'b-resto': '<div class="lab"><span><em>Restaurant</em><small>Commandes en ligne · suivi en direct</small></span></div>',
   'b-cafe': '<div class="lab"><span><em>Coffee shop</em><small>Click &amp; collect · commande à table</small></span></div>',
   'b-boutique': '<div class="lab"><span><em>Boutique</em><small>Catalogue · panier · livraison</small></span></div>',
   'b-offres1': offres(1), 'b-offres2': offres(2), 'b-offres3': offres(3), 'b-offres4': offres(4), 'b-offres5': offres(5),
   'b-cta': '<div class="carte" style="top:470px"><h2 style="font-size:66px">Envoyez-nous<br><em>le nom de votre commerce</em><br>sur WhatsApp</h2><p>Démo gratuite à votre nom en 24 h.</p><div class="wa">' + WA + '0549 50 68 57</div></div>',
   // ---- Vidéo C (présentatrice) : nouveau badge paiement
-  'c-paiement': '<div class="badge" style="top:250px"><span><em>0 DA</em> avant de voir<br>votre site<small>50 % à la validation · 50 % à la livraison</small></span></div>',
+  'c-paiement': '<div class="badge" style="top:236px"><span style="min-width:700px;background:#0B0B0F;padding:34px 40px 52px;font-size:52px"><em>Zéro DA</em> avant de voir<br>votre site<small>50 % à la validation · 50 % à la livraison</small></span></div>',
+  'c-fin': '<div class="cfin"><div class="logo">d<b>z</b>ign</div><div class="st">STUDIO</div><h1 style="font-size:64px"><span style="white-space:nowrap">Votre site à partir de</span><br><em style="white-space:nowrap;font-size:96px">20 000 DA</em></h1><div class="cpill">Vous payez seulement <b>après l\'avoir vu</b></div><div class="cbtn">Envoyez le nom de votre commerce</div><div class="cwa">WhatsApp · 0549 50 68 57</div></div>',
 };
 const CSSC = `.badge{position:absolute;left:0;right:0;text-align:center}
 .badge span{display:inline-block;font-family:Syne;font-weight:800;font-size:60px;line-height:1.12;letter-spacing:-.02em;color:#F5F3EE;background:rgba(11,11,15,.74);padding:20px 36px 24px;border-radius:22px;border:1.5px solid rgba(200,169,106,.6)}
 .badge em{font-style:normal;color:#C8A96A}
+.cfin{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#F5F3EE;background:radial-gradient(ellipse 70% 45% at 50% 42%,#2a2418 0%,#14120f 45%,#0B0B0F 80%)}
+.cfin .logo{font-size:200px;text-shadow:none}.cfin .st{margin:6px 0 70px}
+.cfin h1{font-family:Syne;font-weight:800;font-size:72px;line-height:1.12;margin:0 0 46px;letter-spacing:-.02em}
+.cpill{border:2px solid rgba(200,169,106,.6);border-radius:999px;padding:16px 34px;font-size:36px;color:#E9E4D8;margin-bottom:46px;font-weight:600}.cpill b{color:#C8A96A}
+.cbtn{background:#C8A96A;color:#0B0B0F;font-weight:700;font-size:44px;border-radius:999px;padding:26px 60px;margin-bottom:46px}
+.cwa{font-size:38px;font-weight:600;color:#E9E4D8}
 .badge small{display:block;font-family:'Hanken Grotesk';font-weight:600;font-size:30px;letter-spacing:.04em;color:#E9E4D8;margin-top:8px}`;
 (async () => {
   const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
