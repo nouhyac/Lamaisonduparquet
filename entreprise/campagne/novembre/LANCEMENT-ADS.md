@@ -55,3 +55,13 @@ Les 3 vidéos sont incluses dans `site-dzign-vite.zip` (dossier `medias/pub/`). 
 - **Jour 5** : Reel vidéo C.
   « Votre futur site, vous le voyez avant de payer. Satisfait ou remboursé. Lien en bio 👆 »
 - **Stories** chaque jour : `story-4-offres.png` ou `story-avant-apres.png` + sticker « Lien » vers WhatsApp.
+
+
+## État technique (10/11/2026, préparé par Claude via Adspirer)
+- Vidéos hébergées (URL publiques pour Meta) :
+  - A : https://d2ol7oe51mr4n9.cloudfront.net/user_3JPKw7KurgibUrSl10ze2MBzkwC/5f467f94-44e5-4de6-b3ab-548e805af1b2.mp4
+  - B : https://d2ol7oe51mr4n9.cloudfront.net/user_3JPKw7KurgibUrSl10ze2MBzkwC/55e3971c-7ef3-49ac-8cca-84bc7580d6b7.mp4
+  - C : https://d2ol7oe51mr4n9.cloudfront.net/user_3JPKw7KurgibUrSl10ze2MBzkwC/818cd43e-3ae5-4531-99a8-b21d16807dbd.mp4
+- Compte pub 2860172500875914 · Page dzignstudio 1351003898100489 · Instagram @dzignstudio16 17841423685595226.
+- Ciblages trouvés : Restaurant management 6003209775430 · Pizzerias 6819483565627 · restaurants rapides 6003398056603 · comportement Small business owners 6002714898572.
+- **Blocage Meta (création refusée, code 2446885)** : le WhatsApp lié à la Page est un compte **personnel**. Il faut **WhatsApp Business** sur le 0549 50 68 57 et le relier à la Page dzignstudio (Facebook › Page › Paramètres › WhatsApp). Ensuite Claude crée les 3 pubs en pause (3 appels Adspirer ; quota gratuit : 4 restants ce mois-ci).
