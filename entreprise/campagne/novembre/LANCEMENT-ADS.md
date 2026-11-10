@@ -34,6 +34,12 @@ Texte principal n°2 · titre « Démo gratuite à votre nom en 24 h ».
 - **J+7 : bilan final** avant de remettre de l'argent.
 - Chaque nom de commerce reçu → démo à son nom en 24 h → appel vidéo de 10 min → closing (voir `vente/PLAN-VENTE-NOVEMBRE.md`).
 
+## Vidéos en ligne pour Meta (après la mise en ligne du paquet)
+Les 3 vidéos sont incluses dans `site-dzign-vite.zip` (dossier `medias/pub/`). Une fois le site téléversé, Adspirer les envoie à Meta depuis :
+- https://dzignstudio.store/medias/pub/video-A-restaurants.mp4
+- https://dzignstudio.store/medias/pub/video-B-tous-commerces.mp4
+- https://dzignstudio.store/medias/pub/video-C-presentatrice.mp4
+
 ## Indispensable avant de lancer
 1. **WhatsApp Business** sur le 0549 50 68 57 + message d'accueil automatique (texte dans `CAMPAGNE.md`).
 2. **Hostinger renouvelé** (le plan se termine le 12/11/2026) : sinon la pub envoie vers un site coupé.
