@@ -30,7 +30,7 @@ const tapEl=async(p,fn)=>{const ok=await p.evaluate(`(()=>{const e=(${fn})();if(
   const fin=await filmer(c,p,'boutique',780,1688);await w(900);
   await p.evaluate(()=>new Promise(r=>{const v=document.getElementById('vue');const y0=v.scrollTop,t0=performance.now();const y=y0+560;(function g(t){const k=Math.min(1,(t-t0)/1400);v.scrollTop=y0+(y-y0)*(k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2);k<1?requestAnimationFrame(g):r()})(t0)}));await w(400);
   if(DBG)await p.screenshot({path:O+'/v1.png'});
-  await tapEl(p,"()=>[...document.querySelectorAll('#vue button, #vue [data-a]')].find(x=>/Ajouter au panier/.test(x.textContent)&&x.getBoundingClientRect().top>150&&x.getBoundingClientRect().bottom<840)");await w(1500);
+  await tapEl(p,"()=>[...document.querySelectorAll('button,a,span,div')].filter(x=>x.textContent.trim()==='Ajouter au panier'&&x.children.length===0)[2]");await w(1500);
   if(DBG)await p.screenshot({path:O+'/v2.png'});
   await fin();await c.close()}
  await b.close()})();
