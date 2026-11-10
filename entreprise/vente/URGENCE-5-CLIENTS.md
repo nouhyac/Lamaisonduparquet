@@ -1,8 +1,8 @@
 # Plan « 5 clients en urgence » (démarré le 13/10/2026)
 
 Objectif : **5 clients signés en 10 jours** pour constituer un fond de roulement.
-Offre poussée : **Impact** (page unique, dès 30 000 DA → **24 000 DA** avec -20 % Fondateurs) et **Signature** (dès 80 000 DA → 64 000 DA).
-Acompte 50 % à la signature = trésorerie immédiate. 5 × Impact = **60 000 DA d'acomptes**, 120 000 DA au total.
+Offre poussée (grille du 2026-11-10) : **Site vitrine** (à partir de 20 000 DA → **16 000 DA** avec -20 % Fondateurs) et **Plateforme commerçants** (à partir de 80 000 DA → **64 000 DA**), recommandée aux restaurants, locations et services.
+Démo gratuite à leur nom (0 DA avant d'avoir vu leur site), puis acompte de 50 % à la validation de la démo = trésorerie rapide. Ex. 3 Sites vitrines + 2 Plateformes au tarif Fondateurs = 176 000 DA au total, dont **88 000 DA d'acomptes**.
 Livraison rapide : je prépare des modèles par métier (resto, boutique, beauté, immobilier, santé, sport) pour livrer en 48-72 h.
 
 ## Les 5 leviers (gratuits sauf la pub)
@@ -40,7 +40,7 @@ Voici le site : dzignstudio.store
 ### Porte-à-porte (30 secondes, téléphone en main)
 1. « Bonjour, je suis [prénom], je crée des sites internet ici à Alger. Je peux vous montrer quelque chose en 10 secondes ? »
 2. Tape le nom du commerce sur dzignstudio.store/#essai, choisis le métier, montre l'écran.
-3. « Voilà, ça pourrait être votre site, avec votre propre adresse. Pour les 5 premiers c'est -20 %, à partir de 24 000 DA, et si la maquette ne vous plaît pas on vous rembourse. »
+3. « Voilà, ça pourrait être votre site, avec votre propre adresse. La démo à votre nom est gratuite : vous ne payez rien avant de l'avoir vue. Pour les 5 premiers c'est -20 %, à partir de 16 000 DA, et si la maquette ne vous plaît pas on vous rembourse. »
 4. « Je vous envoie le lien sur WhatsApp ? » → récupérer le numéro (objectif de la visite).
 
 ### Publication dans les groupes Facebook (entrepreneurs, commerçants, Alger)
@@ -48,7 +48,7 @@ Voici le site : dzignstudio.store
 Bonjour à tous 👋
 Je viens de lancer Dzign Studio, un studio de création de sites internet à Alger.
 Pour vous faire une idée, tapez le nom de votre commerce sur notre site : votre futur site apparaît en 10 secondes, gratuitement 👉 dzignstudio.store
-🎁 -20 % pour nos 5 premiers clients · maquette satisfaite ou remboursée · paiement 50 % au début, 50 % à la fin.
+🎁 -20 % pour nos 5 premiers clients · démo gratuite à votre nom, 0 DA avant d'avoir vu votre site · 50 % à la validation, 50 % à la livraison · satisfait ou remboursé.
 Je réponds à toutes les questions en commentaire 🙂
 ```
 (Lire les règles du groupe avant ; certains n'acceptent la pub qu'un jour précis.)

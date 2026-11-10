@@ -1,7 +1,8 @@
 # Kit de vente Dzign Studio
 
 Le client arrive sur WhatsApp avec un message déjà rempli (offre + prix + nom + activité).
-Objectif : **répondre vite, obtenir un appel découverte, envoyer le devis sous 24 h, encaisser l'acompte.**
+Objectif : **répondre vite, obtenir un appel découverte, montrer la démo gratuite à son nom, envoyer le devis sous 24 h, encaisser l'acompte à la validation de la démo.**
+Phrase clé : « Vous voyez votre site gratuitement avant de payer quoi que ce soit, et vous ne payez la moitié qu'une fois convaincu. »
 
 ---
 
@@ -33,13 +34,13 @@ Nous sommes disponibles du samedi au jeudi, de 9 h à 19 h. Nous vous répondons
 | Raccourci | Message |
 |-----------|---------|
 | `/bonjour` | Bonjour [prénom] 👋 Merci pour votre intérêt pour la formule [offre]. Pour vous proposer le bon devis, je vous propose un appel découverte gratuit de 15 minutes. Quel moment vous arrange aujourd'hui ou demain ? |
-| `/offres` | Nos formules : Impact dès 30 000 DA (page unique) · Signature dès 80 000 DA (site vitrine) · Commerce dès 150 000 DA (boutique) · Immersion dès 250 000 DA (3D) · Plateforme dès 300 000 DA (application, service client 24h/24 7j/7 pendant 12 mois inclus). Nom de domaine et email pro inclus. Le prix final dépend de votre projet. |
+| `/offres` | Nos formules : Site vitrine à partir de 20 000 DA (présenter votre activité) · Boutique en ligne à partir de 50 000 DA (catalogue, panier, paiement à la livraison) · Plateforme commerçants à partir de 80 000 DA (commande ou réservation en ligne + espace gérant : restaurants, locations, services) · Application à partir de 150 000 DA (sur mesure). Nom de domaine et email pro offerts la 1re année, service client inclus. Démo gratuite à votre nom avant de payer quoi que ce soit. Le prix final dépend de votre projet. |
 | `/delai` | Vous voyez la maquette sous 72 h. Un site vitrine est prêt en 7 à 14 jours, une boutique en 2 à 3 semaines. |
-| `/paiement` | 50 % par BaridiMob au lancement, 50 % seulement après avoir vu votre site terminé. Tout se fait à distance. |
-| `/garantie` | Vous ne prenez aucun risque : maquette satisfaite ou remboursée. Si, après 2 séries de retouches, la maquette ne vous convainc pas, nous vous remboursons tout votre acompte. |
+| `/paiement` | 0 DA avant d'avoir vu votre site : la démo à votre nom est gratuite. Ensuite 50 % par BaridiMob quand vous validez la démo, et 50 % à la livraison, une fois votre site en ligne. Vous préférez payer en une fois ? −5 %. Tout se fait à distance. |
+| `/garantie` | Vous ne prenez aucun risque : satisfait ou remboursé. Si, après 2 séries de retouches, la maquette ne vous convainc pas, nous vous remboursons tout votre acompte. Une fois la maquette validée, on passe à la fabrication. |
 | `/exemples` | Voici nos sites de démonstration : https://dzignstudio.store/#portfolio · et une réalisation en ligne : https://www.lamaisonduparquet.org |
 | `/fondateurs` | Bonne nouvelle : il reste [X] places dans notre Programme Fondateurs, -20 % sur votre formule en échange de votre avis et du droit de montrer votre site. |
-| `/devis` | Voici votre devis 📄 Il est valable 15 jours. Pour lancer le projet : acompte de 50 % par BaridiMob, et votre maquette arrive sous 72 h. |
+| `/devis` | Voici votre devis 📄 Il est valable 15 jours. Si la démo vous plaît : acompte de 50 % par BaridiMob (ou −5 % en payant en une fois), et votre maquette arrive sous 72 h. Le solde se paie à la livraison, une fois le site en ligne. |
 | `/baridimob` | Pour l'acompte par BaridiMob : [RIP / numéro de compte CCP à compléter]. Merci de m'envoyer la capture du paiement, je lance votre projet dans la foulée. |
 | `/merci` | Merci pour votre confiance 🙏 Votre projet démarre aujourd'hui. Je reviens vers vous sous 72 h avec votre maquette. |
 
@@ -47,7 +48,7 @@ Nous sommes disponibles du samedi au jeudi, de 9 h à 19 h. Nous vous répondons
 `Nouveau` · `Appel prévu` · `Devis envoyé` · `Acompte reçu` · `En production` · `Livré` · `Fondateur`
 
 ### Catalogue WhatsApp
-Créer 5 articles (Impact, Signature, Commerce, Immersion, Plateforme) avec le prix « à partir de » et une image du portfolio.
+Créer 4 articles (Site vitrine, Boutique en ligne, Plateforme commerçants, Application) avec le prix « à partir de » et une image du portfolio.
 
 ---
 
@@ -68,7 +69,7 @@ Créer 5 articles (Impact, Signature, Commerce, Immersion, Plateforme) avec le p
    - Pour quand en avez-vous besoin ?
    - « La formule [offre] démarre à [prix]. Selon ce que vous m'avez dit, on sera plutôt autour de [fourchette]. Ça correspond à ce que vous aviez prévu ? »
 5. **Conclusion (3 min)**
-   - Rappeler : maquette sous 72 h, 50 % seulement après avoir vu le site, **maquette satisfaite ou remboursée**.
+   - Rappeler : démo gratuite à son nom (0 DA avant d'avoir vu le site), 50 % seulement à la validation de la démo, 50 % à la livraison une fois le site en ligne, **satisfait ou remboursé**, −5 % en option s'il paie en une fois.
    - « Je vous envoie le devis aujourd'hui avant [heure]. »
    - Si Fondateur : rappeler la remise de 20 % et qu'il reste [X] places.
 
@@ -96,12 +97,12 @@ Créer 5 articles (Impact, Signature, Commerce, Immersion, Plateforme) avec le p
 
 ---
 
-## 4. Après la signature
-1. Acompte 50 % reçu (capture BaridiMob) → étiquette `Acompte reçu`.
+## 4. Après la validation de la démo
+1. Acompte 50 % reçu (capture BaridiMob ; ou 100 % −5 % si le client choisit de payer en une fois) → étiquette `Acompte reçu`.
 2. Réserver le nom de domaine du client.
 3. Maquette sous 72 h → validation du style.
-4. Fabrication → présentation du site terminé (lien de prévisualisation).
-5. Solde 50 % → mise en ligne sur Hostinger → courte formation → étiquette `Livré`.
+4. Fabrication → mise en ligne sur Hostinger (nom de domaine du client).
+5. Solde 50 % à la livraison, site en ligne → courte formation → étiquette `Livré`.
 6. Demander l'avis (et l'autorisation de montrer le site pour les Fondateurs).
 7. Proposer l'abonnement Care / Care+.
 

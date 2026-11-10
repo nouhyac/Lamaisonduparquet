@@ -1,4 +1,4 @@
-# Offre Dzign Studio : version 3 (haut de gamme)
+# Offre Dzign Studio : version 4 (grille du 2026-11-10)
 
 ## 1. Positionnement
 **Dzign Studio, studio digital haut de gamme basé à Alger.**
@@ -19,20 +19,20 @@ langues, fonctions, 3D, rédaction des textes, photos et vidéos, délai.
 
 | Formule | Pour qui | Contenu | À partir de |
 |---------|----------|---------|-------------|
-| **Impact** | Lancer une offre, un événement, un produit | Une page unique premium, animée, avec WhatsApp, carte et formulaire, pensée pour les pubs | 30 000 DA |
-| **Signature** ⭐ | Commerces, professions libérales, entreprises | Site vitrine sur mesure (jusqu'à 6 pages), animations, 2 langues, Google Maps, référencement | 80 000 DA |
-| **Commerce** | Vendeurs, marques, boutiques | Boutique en ligne, paiement à la livraison, frais par wilaya, BaridiMob/CIB/Edahabia en option, suivi des commandes | 150 000 DA |
-| **Immersion** | Immobilier, mobilier, mode, automobile, événementiel, marques premium | Site avec expérience 3D : produit en 3D à faire tourner, configurateur, visite virtuelle | 250 000 DA |
-| **Plateforme** | Startups, entreprises, projets ambitieux | Application web ou mobile, réservation, espace client, marketplace, tableau de bord | Sur devis, dès 300 000 DA (paiement en une fois, service client 24h/24 7j/7 pendant 12 mois inclus) |
+| **Site vitrine** | Commerces, professions libérales, entreprises | Site sur mesure pour présenter l'activité : pages, galerie photos, Google Maps, WhatsApp, français + arabe, référencement de base | 20 000 DA |
+| **Boutique en ligne** | Vendeurs, marques, boutiques | Catalogue, panier, paiement à la livraison, frais par wilaya, suivi des commandes, gestion des produits par le client (BaridiMob/CIB/Edahabia en option) | 50 000 DA |
+| **Plateforme commerçants** ⭐ | Restaurants, location de voitures, services sur réservation | Commande ou réservation en ligne + espace gérant : commandes en direct, cuisine / caisse / livreur, planning, fidélité, carte et prix modifiables. C'est ce que montrent nos démos (restaurants, location de voitures). Service client 24h/24, 7j/7 pendant 12 mois inclus | 80 000 DA |
+| **Application** | Startups, entreprises, projets ambitieux | Application sur mesure (web ou mobile installable), espace client, notifications, tableau de bord. Service client 24h/24, 7j/7 pendant 12 mois inclus | 150 000 DA |
 
-⭐ = formule mise en avant (la plus demandée).
+⭐ = formule mise en avant, badge « Recommandée » (jamais « la plus choisie »).
+Grille décidée le 2026-11-10 : elle remplace toutes les anciennes formules. La 3D n'est plus une formule : c'est une option (voir § 4).
 
 ## Le Standard Dzign (inclus dans toutes les formules)
 Démo à son nom avant de signer · design haut de gamme et visuels 3D · français + arabe · tout modifiable par le client · accessibilité 0 défaut · tests sur téléphone et ordinateur · référencement Google · formation et vidéo de lancement. Détail : `QUALITE.md`.
 Décision du 14/10 : **on garde nos prix** (plus élevés que la concurrence) et on les justifie par un niveau de finition supérieur sur chaque projet.
 
-## Règle de vente des plateformes (décision du 14/10)
-**Pas de formule mensuelle : vente en une fois, 50 % à la signature, 50 % à la livraison.** Pour rassurer le client, on inclut un **service client 24h/24, 7j/7 pendant 12 mois** (WhatsApp et téléphone, on règle tout) + l'hébergement de la première année.
+## Règle de vente (toutes formules)
+**Pas de formule mensuelle : le site se paie en une fois, en deux temps (voir § 5).** Service client inclus : pour la Plateforme commerçants et l'Application, **service client 24h/24, 7j/7 pendant 12 mois** (WhatsApp et téléphone, on règle tout) + l'hébergement de la première année ; pour le Site vitrine et la Boutique, réponse sur WhatsApp dans la journée. Nom de domaine + email pro offerts la 1re année dans toutes les formules.
 
 ## 3. Hébergement et suivi (mensuel, optionnel)
 Le client peut aussi héberger lui-même son site ; on lui livre alors tous les fichiers.
@@ -47,20 +47,26 @@ Le client peut aussi héberger lui-même son site ; on lui livre alors tous les 
 |--------|---------|-------------|
 | **Lancement Pub** | Création des visuels et vidéos, réglage et suivi des pubs Facebook, Instagram et TikTok pendant 1 mois (budget pub à part) | 35 000 DA |
 | **Visuels 3D** | Rendus et vidéos 3D des produits pour les réseaux et le site | 20 000 DA |
+| **Expérience 3D sur le site** | Produit ou bâtiment en 3D à faire tourner, configurateur, visite virtuelle (immobilier, mobilier, mode, automobile) | Sur devis |
 | **Google Local** | Fiche Google optimisée, avis, référencement local | 10 000 DA |
 
-## 5. Paiement et déroulement
+## 5. Paiement et déroulement (conditions du 2026-11-10)
+Phrase clé : **« Vous voyez votre site gratuitement avant de payer quoi que ce soit, et vous ne payez la moitié qu'une fois convaincu. »**
+AR : « ترى موقعك مجاناً قبل أن تدفع أي شيء، ولا تدفع النصف إلا بعد أن تقتنع. »
+
 1. **Appel découverte gratuit** (WhatsApp ou téléphone) : on comprend le besoin.
-2. **Devis clair**, fixé avant de commencer.
-3. **Acompte de 50 % par BaridiMob** : le projet démarre.
+2. **Démo / maquette à son nom, gratuite : 0 DA avant d'avoir vu son site.** Devis clair, fixé avant de commencer.
+3. **50 % par BaridiMob à la validation de la démo** : la réalisation démarre.
 4. **Maquette sous 72 h** : le client valide le style (2 séries de retouches incluses).
-   **Garantie « Maquette satisfaite ou remboursée »** : si, après 2 séries de retouches, le client n'est toujours pas convaincu par la maquette, on lui rembourse l'intégralité de l'acompte (50 %) et on s'arrête là. Une fois la maquette validée, la garantie ne s'applique plus : on fabrique le site et le client paie le solde à la livraison.
+   **Garantie « satisfait ou remboursé »** : si, après les retouches, le client n'est toujours pas convaincu par la maquette, on lui rembourse l'intégralité de l'acompte (50 %) et on s'arrête là. Une fois la maquette validée, la garantie ne s'applique plus.
 5. **Fabrication** du site.
-6. **Présentation du site terminé** sur une adresse de prévisualisation → **solde de 50 % par BaridiMob**.
-7. **Mise en ligne** sur l'hébergement définitif et le nom de domaine, puis courte formation du client.
+6. **Livraison : le site est mis en ligne** sur l'hébergement définitif et le nom de domaine → **solde de 50 % par BaridiMob**.
+7. Courte **formation** du client, puis service client.
+
+**Option paiement en une fois : −5 %** (au choix du client, jamais imposé), réglé à la validation de la démo.
 
 ## 6. Programme Fondateurs (lancement)
-**5 places seulement** : -20 % sur toutes les formules, en échange d'un avis
+**5 places seulement** : -20 % sur toutes les formules (Site vitrine dès 16 000 DA, Boutique dès 40 000 DA, Plateforme commerçants dès 64 000 DA, Application dès 120 000 DA), en échange d'un avis
 client et du droit de montrer le projet dans notre portfolio.
 Effet recherché : de la rareté (haut de gamme) plutôt qu'une promo « bradée ».
 

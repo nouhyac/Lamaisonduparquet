@@ -332,6 +332,7 @@ body.verrou{overflow:hidden}
 .prix small{color:var(--gris);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
 .prix span{font-family:var(--f-display);font-size:1.8rem;font-weight:700;font-variant-numeric:tabular-nums}
 .prix span sup{font-size:.85rem;color:var(--or);margin-left:4px;vertical-align:.6em}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .note-prix{margin-top:24px;color:var(--gris);font-size:.92rem;max-width:70ch}
 .promesse{margin:0 0 28px;padding:16px 20px;border-inline-start:3px solid var(--or);background:color-mix(in srgb,var(--or) 8%,var(--noir));border-radius:6px;color:var(--ivoire);font-size:1.02rem;max-width:72ch}
 .promesse small{display:block;color:var(--gris);font-size:.88rem;margin-top:6px}
@@ -508,6 +509,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   </div>
 </header>
 
+<main id="contenu">
 <div class="defile" aria-hidden="true">
   <div class="defile-piste">
     <span data-ar="مواقع إلكترونية &lt;i&gt;&lt;/i&gt; تجارب &lt;em&gt;3D&lt;/em&gt; &lt;i&gt;&lt;/i&gt; متاجر إلكترونية &lt;i&gt;&lt;/i&gt; تطبيقات &lt;i&gt;&lt;/i&gt; هوية بصرية &lt;i&gt;&lt;/i&gt; إعلانات &lt;em&gt;Meta و TikTok&lt;/em&gt; &lt;i&gt;&lt;/i&gt; الظهور على Google &lt;i&gt;&lt;/i&gt;">Sites web <i></i> Expériences <em>3D</em> <i></i> E-commerce <i></i> Applications <i></i> Identité de marque <i></i> Publicité <em>Meta &amp; TikTok</em> <i></i> Référencement Google <i></i></span>
@@ -659,7 +661,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     </div>
     <div class="table-scroll">
       <table class="compare">
-        <thead><tr><th></th><th data-ar="موقع عادي">Un site ordinaire</th><th data-ar="موقع من Dzign">Un site Dzign</th></tr></thead>
+        <thead><tr><th><span class="vh" data-ar="المقارنة">Critère</span></th><th data-ar="موقع عادي">Un site ordinaire</th><th data-ar="موقع من Dzign">Un site Dzign</th></tr></thead>
         <tbody>
           <tr><td data-ar="عنوان الموقع">Adresse du site</td><td data-ar="عنوان عام مشترك مع المنصّة">Une adresse générique, partagée avec la plateforme</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;اسم نطاق خاص بك وبريد مهني باسمك"><span class="ok-or">✓</span>Votre propre nom de domaine et votre email pro à votre nom</td></tr>
           <tr><td data-ar="قبل التوقيع">Avant de signer</td><td data-ar="لقطات شاشة">Des captures d'écran</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;معاينة موقعك في 10 ثوانٍ، ثم نموذج أولي خلال 72 ساعة"><span class="ok-or">✓</span>Votre site en aperçu en 10 secondes, puis une maquette sous 72 h</td></tr>
@@ -811,17 +813,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     </form>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
-    <span data-ar="© 2026 Dzign Studio · الجزائر العاصمة، الجزائر · &lt;span dir=&quot;ltr&quot;&gt;+&lt;bdi dir=&quot;ltr&quot;&gt;213 794&lt;/bdi&gt; 70 93 23&lt;/span&gt;">© 2026 Dzign Studio · Alger, Algérie · +213 549 50 68 57</span>
+    <span data-ar="© 2026 Dzign Studio · الجزائر العاصمة، الجزائر · &lt;span dir=&quot;ltr&quot;&gt;+&lt;bdi dir=&quot;ltr&quot;&gt;213 549&lt;/bdi&gt; 50 68 57&lt;/span&gt;">© 2026 Dzign Studio · Alger, Algérie · +213 549 50 68 57</span>
     <span class="ar" lang="ar" data-ar="L&#x27;excellence digitale, made in DZ.">تميّز رقمي، صُنع في الجزائر</span>
   </div>
 </footer>
 
+<aside aria-label="WhatsApp">
 <a class="wa-flottant" href="https://wa.me/213549506857" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.500-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>
 </a>
+</aside>
+
+
 
 <div class="choix" id="choix" role="dialog" aria-modal="true" aria-labelledby="choix-titre" hidden>
   <form class="choix-boite" id="choix-form" novalidate>
