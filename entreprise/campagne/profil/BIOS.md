@@ -9,7 +9,7 @@
 ✨ Sites web, 3D & e-commerce haut de gamme
 📍 Alger · 100 % à distance
 📲 WhatsApp 0549 50 68 57
-🎁 -20 % · 5 premiers clients
+🎁 Démo gratuite à votre nom
 👇 Votre site en 10 s
 ```
 - **Lien** : `https://dzignstudio.store/#essai` ✅ en ligne

@@ -113,13 +113,10 @@ section.bloc{padding-block:clamp(72px,10vw,128px);position:relative;z-index:2}
 .titre-bloc h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700;letter-spacing:-.03em}
 .titre-bloc p{color:var(--gris);max-width:60ch}
 
-/* Fondateurs */
+/* Bandeau promesse */
 .fondateurs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px 26px;border:1px solid color-mix(in srgb,var(--or) 45%,transparent);border-radius:6px;background:linear-gradient(90deg,color-mix(in srgb,var(--or) 10%,var(--noir)),var(--noir))}
 .fondateurs strong{color:var(--or)}
-.places{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--gris)}
-.places i{width:12px;height:12px;border-radius:50%;border:1px solid var(--or);display:inline-block;animation:pulse 2.4s ease-in-out infinite}
-.places i:nth-child(2){animation-delay:.2s}.places i:nth-child(3){animation-delay:.4s}.places i:nth-child(4){animation-delay:.6s}.places i:nth-child(5){animation-delay:.8s}
-@keyframes pulse{50%{background:color-mix(in srgb,var(--or) 60%,transparent)}}
+.bandeau-offre{font-size:.9rem;color:var(--gris)}
 
 /* Démo 3D */
 .demo3d{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
@@ -520,8 +517,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" style="padding-block:48px 0">
   <div class="wrap">
     <div class="fondateurs">
-      <p data-ar="&lt;strong&gt;برنامج المؤسسين&lt;/strong&gt;: خصم &lt;bdi dir=&quot;ltr&quot;&gt;20%&lt;/bdi&gt; على جميع الباقات لأول 5 زبائن."><strong>Programme Fondateurs</strong> : -20 % sur toutes les formules pour nos 5 premiers clients.</p>
-      <div class="places" aria-label="5 places disponibles sur 5"><i></i><i></i><i></i><i></i><i></i> <span data-ar="5 أماكن متبقية">5 places restantes</span></div>
+      <p data-ar="&lt;strong&gt;&lt;bdi dir=&quot;ltr&quot;&gt;0&lt;/bdi&gt; دج قبل أن ترى موقعك&lt;/strong&gt;: العرض التجريبي باسمك مجاني."><strong>0 DA avant d'avoir vu votre site</strong> : la démo à votre nom est gratuite.</p>
+      <p class="bandeau-offre" data-ar="خصم &lt;bdi dir=&quot;ltr&quot;&gt;5%&lt;/bdi&gt; إن دفعت مرة واحدة · الاستضافة واسم النطاق والبريد المهني مجاناً في السنة الأولى">−5 % si vous payez en une fois · hébergement, nom de domaine et email pro offerts la 1re année</p>
     </div>
   </div>
 </section>
@@ -718,7 +715,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <button type="button" class="btn btn-ligne btn-petit" data-offre="application" data-ar="اختر هذه الباقة">Choisir cette offre</button>
       </article>
     </div>
-    <div class="inclus"><b data-ar="مشمول في كل الباقات">Inclus dans toutes les formules</b><span data-ar="اسم نطاق خاص بك (&lt;bdi dir=&quot;ltr&quot;&gt;.com&lt;/bdi&gt; أو &lt;bdi dir=&quot;ltr&quot;&gt;.dz&lt;/bdi&gt;)، السنة الأولى مجاناً">Votre propre nom de domaine (.com ou .dz), 1re année offerte</span><span data-ar="بريدك المهني، مثل &lt;bdi dir=&quot;ltr&quot;&gt;contact@votre-entreprise.com&lt;/bdi&gt;">Votre email pro, comme contact@votre-entreprise.com</span><span data-ar="شهادة أمان https">Certificat de sécurité https</span><span data-ar="بطاقة Google Maps">Fiche Google Maps</span><span data-ar="النموذج: راضٍ أو نعيد لك أموالك">Maquette satisfaite ou remboursée</span><span data-ar="خدمة العملاء على واتساب">Service client sur WhatsApp</span></div>
+    <div class="inclus"><b data-ar="مشمول في كل الباقات">Inclus dans toutes les formules</b><span data-ar="الاستضافة واسم نطاق خاص بك (&lt;bdi dir=&quot;ltr&quot;&gt;.com&lt;/bdi&gt; أو &lt;bdi dir=&quot;ltr&quot;&gt;.dz&lt;/bdi&gt;) مجاناً في السنة الأولى">Hébergement et nom de domaine (.com ou .dz) offerts la 1re année</span><span data-ar="بريدك المهني، مثل &lt;bdi dir=&quot;ltr&quot;&gt;contact@votre-entreprise.com&lt;/bdi&gt;">Votre email pro, comme contact@votre-entreprise.com</span><span data-ar="شهادة أمان https">Certificat de sécurité https</span><span data-ar="بطاقة Google Maps">Fiche Google Maps</span><span data-ar="النموذج: راضٍ أو نعيد لك أموالك">Maquette satisfaite ou remboursée</span><span data-ar="خدمة العملاء على واتساب">Service client sur WhatsApp</span></div>
     <p class="note-prix" data-ar="يختلف السعر النهائي حسب التصميم، وعدد الصفحات أو المنتجات، واللغات، والوظائف، و3D، وكتابة النصوص، والصور، والمدة.">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la 3D, la rédaction des textes, les photos et le délai.</p>
   </div>
 </section>
@@ -746,12 +743,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section class="bloc" style="padding-top:0">
   <div class="wrap duo">
     <div>
-      <h3 data-ar="الاستضافة والمتابعة">Hébergement et suivi</h3>
-      <p class="intro" data-ar="اختياري. يبقى موقعك سريعاً وآمناً ومحدّثاً.">Optionnel. Votre site reste rapide, sécurisé et à jour.</p>
+      <h3 data-ar="بعد السنة الأولى">Après la 1re année</h3>
+      <p class="intro" data-ar="الاستضافة واسم النطاق والبريد المهني مجاناً في السنة الأولى. بعدها دفعة واحدة في السنة، دون اشتراك شهري.">Hébergement, nom de domaine et email pro sont offerts la 1re année. Ensuite, un seul paiement par an, sans abonnement mensuel.</p>
       <div class="table-scroll">
         <table class="tableau">
-          <tr><th>Care</th><td data-ar="استضافة سريعة، https، نسخ احتياطية، تحديثات، مراقبة">Hébergement rapide, https, sauvegardes, mises à jour, surveillance</td><td class="montant" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;5 000&lt;/bdi&gt; دج/شهرياً">5 000 DA/mois</td></tr>
-          <tr><th>Care+</th><td data-ar="Care، مع تعديلات غير محدودة، تقرير الزيارات وتحسين الظهور">Care, plus modifications illimitées, rapport de visites et référencement</td><td class="montant" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;15 000&lt;/bdi&gt; دج/شهرياً">15 000 DA/mois</td></tr>
+          <tr><th data-ar="التجديد السنوي">Renouvellement annuel</th><td data-ar="الاستضافة، اسم النطاق، البريد المهني، النسخ الاحتياطية، https">Hébergement, nom de domaine, email pro, sauvegardes, https</td><td class="montant" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;10 000&lt;/bdi&gt; دج/سنوياً">10 000 DA/an</td></tr>
+          <tr><th data-ar="المتابعة+">Suivi+</th><td data-ar="التجديد، مع تعديلات صغيرة غير محدودة وتقرير الزيارات">Renouvellement, plus petites modifications illimitées et rapport de visites</td><td class="montant" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;25 000&lt;/bdi&gt; دج/سنوياً">25 000 DA/an</td></tr>
         </table>
       </div>
     </div>
@@ -760,10 +757,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <p class="intro" data-ar="لتحويل موقعك إلى آلة لجلب الزبائن.">Pour transformer votre site en machine à clients.</p>
       <div class="table-scroll">
         <table class="tableau">
-          <tr><th data-ar="إطلاق الإعلانات">Lancement Pub</th><td data-ar="تصاميم وفيديوهات وإدارة إعلاناتك لمدة شهر (ميزانية الإعلان منفصلة)">Visuels, vidéos et gestion de vos pubs pendant 1 mois (budget pub à part)</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;35 000&lt;/bdi&gt; دج">dès 35 000 DA</td></tr>
-          <tr><th data-ar="تصاميم 3D">Visuels 3D</th><td data-ar="صور وفيديوهات 3D لمنتجاتك">Rendus et vidéos 3D de vos produits</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;20 000&lt;/bdi&gt; دج">dès 20 000 DA</td></tr>
+          <tr><th data-ar="إطلاق الإعلانات">Lancement Pub</th><td data-ar="تصاميم وفيديوهات وإدارة إعلاناتك لمدة شهر (ميزانية الإعلان منفصلة)">Visuels, vidéos et gestion de vos pubs pendant 1 mois (budget pub à part)</td><td class="montant" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;15 000&lt;/bdi&gt; دج">15 000 DA</td></tr>
+          <tr><th data-ar="تصاميم 3D">Visuels 3D</th><td data-ar="صور وفيديوهات 3D لمنتجاتك">Rendus et vidéos 3D de vos produits</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;10 000&lt;/bdi&gt; دج">dès 10 000 DA</td></tr>
           <tr><th data-ar="تجربة 3D على الموقع">Expérience 3D sur le site</th><td data-ar="منتج أو مبنى ثلاثي الأبعاد قابل للتدوير، أداة تخصيص أو زيارة افتراضية">Produit ou bâtiment en 3D à faire tourner, configurateur ou visite virtuelle</td><td class="montant" data-ar="حسب عرض السعر">Sur devis</td></tr>
-          <tr><th>Google Local</th><td data-ar="بطاقة Google محسّنة، تقييمات وظهور محلي">Fiche Google optimisée, avis et référencement local</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;10 000&lt;/bdi&gt; دج">dès 10 000 DA</td></tr>
+          <tr><th>Google Local</th><td data-ar="بطاقة Google محسّنة، تقييمات وظهور محلي">Fiche Google optimisée, avis et référencement local</td><td class="montant" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;5 000&lt;/bdi&gt; دج">5 000 DA</td></tr>
         </table>
       </div>
     </div>
@@ -783,7 +780,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <details><summary data-ar="كيف يتم الدفع؟">Comment se passe le paiement ?</summary><p data-ar="ترى موقعك مجاناً قبل أن تدفع أي شيء، ولا تدفع النصف إلا بعد أن تقتنع. &lt;bdi dir=&quot;ltr&quot;&gt;0&lt;/bdi&gt; دج قبل أن ترى موقعك: العرض التجريبي باسمك مجاني. بعدها &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عبر BaridiMob عند الموافقة على العرض، و&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عند التسليم بعد إطلاق موقعك. تفضّل الدفع مرة واحدة؟ لك خصم &lt;bdi dir=&quot;ltr&quot;&gt;5%&lt;/bdi&gt;. لا اشتراك إجباري، وكل شيء عن بُعد.">Vous voyez votre site gratuitement avant de payer quoi que ce soit, et vous ne payez la moitié qu'une fois convaincu. 0 DA avant d'avoir vu votre site : la démo à votre nom est gratuite. Ensuite, 50 % par BaridiMob quand vous validez la démo, et 50 % à la livraison, une fois votre site en ligne. Vous préférez payer en une fois ? Vous avez −5 %. Pas d'abonnement obligatoire, tout se fait à distance.</p></details>
       <details><summary data-ar="وإذا لم يعجبني النموذج؟">Et si la maquette ne me plaît pas ?</summary><p data-ar="نعدّلها حتى جولتين. إذا لم تقتنع بعد ذلك، نعيد لك الدفعة الأولى (&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt;) كاملة ونتوقف هنا. لا تخاطر بشيء.">Nous la retouchons jusqu'à 2 fois. Si vous n'êtes toujours pas convaincu, nous vous remboursons l'intégralité de votre acompte de 50 % et on s'arrête là. Vous ne prenez aucun risque.</p></details>
       <details><summary data-ar="هل يصبح الموقع ملكي؟">Le site m'appartient-il ?</summary><p data-ar="نعم. يُسجَّل اسم النطاق باسمك، وبعد دفع الباقي يصبح الموقع ومحتواه ملكاً لك.">Oui. Le nom de domaine est enregistré à votre nom et, une fois le solde réglé, le site et ses contenus sont à vous.</p></details>
-      <details><summary data-ar="هل يمكنني تعديل موقعي لاحقاً؟">Puis-je modifier mon site ensuite ?</summary><p data-ar="نعم. التعديلات الصغيرة غير محدودة مع اشتراك Care+. ودون اشتراك، ننجزها عند الطلب حسب عرض سعر.">Oui. Les petites modifications sont illimitées avec l'abonnement Care+. Sans abonnement, nous les faisons à la demande, sur devis.</p></details>
+      <details><summary data-ar="هل يمكنني تعديل موقعي لاحقاً؟">Puis-je modifier mon site ensuite ?</summary><p data-ar="نعم. التعديلات الصغيرة غير محدودة مع المتابعة+ (&lt;bdi dir=&quot;ltr&quot;&gt;25 000&lt;/bdi&gt; دج سنوياً). وإلا ننجزها عند الطلب حسب عرض سعر. في المتجر أو المنصّة، تغيّر منتجاتك وقائمتك وأسعارك بنفسك.">Oui. Les petites modifications sont illimitées avec le Suivi+ (25 000 DA par an). Sinon, nous les faisons à la demande, sur devis. Pour une boutique ou une plateforme, vous changez vous-même vos produits, votre carte et vos prix.</p></details>
+      <details><summary data-ar="كم يكلّف الموقع بعد السنة الأولى؟">Combien ça coûte après la 1re année ?</summary><p data-ar="في السنة الأولى، الاستضافة واسم النطاق والبريد المهني مجاناً. بعدها، التجديد بـ &lt;bdi dir=&quot;ltr&quot;&gt;10 000&lt;/bdi&gt; دج سنوياً (الاستضافة، النطاق، البريد، النسخ الاحتياطية، https)، أو &lt;bdi dir=&quot;ltr&quot;&gt;25 000&lt;/bdi&gt; دج سنوياً مع المتابعة+. دون أي اشتراك شهري.">La 1re année, l'hébergement, le nom de domaine et l'email pro sont offerts. Ensuite, le renouvellement est de 10 000 DA par an (hébergement, domaine, email, sauvegardes, https), ou 25 000 DA par an avec le Suivi+. Aucun abonnement mensuel.</p></details>
       <details><summary data-ar="ليست لدي نصوص ولا صور، هل هذه مشكلة؟">Je n'ai ni textes ni photos, est-ce un problème ?</summary><p data-ar="لا. يمكننا كتابة نصوصك بالعربية والفرنسية والإنجليزية، وإنشاء تصاميمك: صور، ومجسّمات وفيديوهات 3D.">Non. Nous pouvons rédiger vos textes en arabe, en français et en anglais, et créer vos visuels : photos, rendus et vidéos 3D.</p></details>
       <details><summary data-ar="هل تعملون خارج الجزائر العاصمة؟">Travaillez-vous en dehors d'Alger ?</summary><p data-ar="نعم، في كل أنحاء الجزائر. المكالمة، النموذج، الدفع والتسليم: كل شيء عن بُعد.">Oui, partout en Algérie. Appel, maquette, paiement et livraison : tout se fait à distance.</p></details>
     </div>

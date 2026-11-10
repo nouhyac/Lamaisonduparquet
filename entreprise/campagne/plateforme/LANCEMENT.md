@@ -11,12 +11,12 @@ Tout est filmé sur notre vraie plateforme, sous une marque neutre « Forno ». 
 | `affiche-1.jpg` | « Pas un simple site. Tout votre restaurant en ligne. » |
 | `affiche-2.jpg` | « Pendant le rush, votre téléphone sonne… » (la meilleure pour la pub image) |
 | `affiche-3.jpg` | « Une plateforme. Tout votre service. » (liste des fonctions) |
-| `affiche-4.jpg` | Offre : -20 % Fondateurs, Plateforme commerçants à partir de 80 000 DA, 0 DA avant d'avoir vu sa démo, 50/50, satisfait ou remboursé (⚠️ image à régénérer depuis `sources/affiches.html` : le JPG actuel montre encore l'ancien prix) |
+| `affiche-4-ANCIEN-PRIX.jpg` | ⛔ **Ne pas publier** : ancienne offre (-20 % Fondateurs, dès 300 000 DA). La source `sources/affiches.html` est corrigée (Plateforme commerçants à partir de 80 000 DA, démo gratuite, 50/50) mais l'image n'a pas pu être régénérée (captures `sources/cap/` absentes, à refaire avec `cap.js`). |
 
 ## Ordre de publication
 1. **Ce soir** : `exemple-client.mp4` en Reel (Instagram + Facebook) + en story. Texte A.
 2. **Juste après** : lancer la pub (ci-dessous).
-3. **Demain** : `affiche-1.jpg` en post. **J+2** : `exemple-cuisine.mp4` en Reel. **J+3** : carrousel `affiche-2` → `affiche-3` → `affiche-4`.
+3. **Demain** : `affiche-1.jpg` en post. **J+2** : `exemple-cuisine.mp4` en Reel. **J+3** : carrousel `affiche-2` → `affiche-3` (sans l'affiche 4 tant qu'elle n'est pas régénérée).
 
 ## Textes des publications
 **Texte A (Reel exemple-client)**

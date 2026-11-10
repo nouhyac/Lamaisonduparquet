@@ -39,13 +39,13 @@ Nous sommes disponibles du samedi au jeudi, de 9 h à 19 h. Nous vous répondons
 | `/paiement` | 0 DA avant d'avoir vu votre site : la démo à votre nom est gratuite. Ensuite 50 % par BaridiMob quand vous validez la démo, et 50 % à la livraison, une fois votre site en ligne. Vous préférez payer en une fois ? −5 %. Tout se fait à distance. |
 | `/garantie` | Vous ne prenez aucun risque : satisfait ou remboursé. Si, après 2 séries de retouches, la maquette ne vous convainc pas, nous vous remboursons tout votre acompte. Une fois la maquette validée, on passe à la fabrication. |
 | `/exemples` | Voici nos sites de démonstration : https://dzignstudio.store/#portfolio · et une réalisation en ligne : https://www.lamaisonduparquet.org |
-| `/fondateurs` | Bonne nouvelle : il reste [X] places dans notre Programme Fondateurs, -20 % sur votre formule en échange de votre avis et du droit de montrer votre site. |
+| `/uneFois` | Bon à savoir : si vous préférez payer en une fois à la validation de la démo, vous avez −5 % sur votre formule. C'est au choix, jamais imposé. |
 | `/devis` | Voici votre devis 📄 Il est valable 15 jours. Si la démo vous plaît : acompte de 50 % par BaridiMob (ou −5 % en payant en une fois), et votre maquette arrive sous 72 h. Le solde se paie à la livraison, une fois le site en ligne. |
 | `/baridimob` | Pour l'acompte par BaridiMob : [RIP / numéro de compte CCP à compléter]. Merci de m'envoyer la capture du paiement, je lance votre projet dans la foulée. |
 | `/merci` | Merci pour votre confiance 🙏 Votre projet démarre aujourd'hui. Je reviens vers vous sous 72 h avec votre maquette. |
 
 ### Étiquettes (pour suivre chaque client)
-`Nouveau` · `Appel prévu` · `Devis envoyé` · `Acompte reçu` · `En production` · `Livré` · `Fondateur`
+`Nouveau` · `Appel prévu` · `Devis envoyé` · `Acompte reçu` · `En production` · `Livré` · `Payé en une fois`
 
 ### Catalogue WhatsApp
 Créer 4 articles (Site vitrine, Boutique en ligne, Plateforme commerçants, Application) avec le prix « à partir de » et une image du portfolio.
@@ -71,13 +71,13 @@ Créer 4 articles (Site vitrine, Boutique en ligne, Plateforme commerçants, App
 5. **Conclusion (3 min)**
    - Rappeler : démo gratuite à son nom (0 DA avant d'avoir vu le site), 50 % seulement à la validation de la démo, 50 % à la livraison une fois le site en ligne, **satisfait ou remboursé**, −5 % en option s'il paie en une fois.
    - « Je vous envoie le devis aujourd'hui avant [heure]. »
-   - Si Fondateur : rappeler la remise de 20 % et qu'il reste [X] places.
+   - Rappeler l'option −5 % s'il préfère payer en une fois, et que l'hébergement, le domaine et l'email sont offerts la 1re année (ensuite 10 000 DA/an).
 
 **Après l'appel** : remplir la fiche client, envoyer le devis **le jour même**, étiquette `Devis envoyé`, relance à J+2 si pas de réponse.
 
 ### Relances
 - **J+2** : « Bonjour [prénom], avez-vous pu regarder le devis ? Je peux ajuster une partie si besoin. »
-- **J+5** : « Petit rappel : votre place Fondateur à -20 % est réservée jusqu'à [date]. »
+- **J+5** : « Petit rappel : votre démo est prête et ne vous engage à rien. Vous ne payez la moitié qu'une fois convaincu. »
 - **J+10** : « Je clôture votre dossier cette semaine. Si le projet est toujours d'actualité, je reste disponible. »
 
 ---
@@ -92,7 +92,7 @@ Créer 4 articles (Site vitrine, Boutique en ligne, Plateforme commerçants, App
 - Nom de domaine souhaité
 - Délai souhaité
 - Budget annoncé
-- Programme Fondateur : oui / non
+- Paiement : en deux fois (50/50) / en une fois (−5 %)
 - Prochaine étape et date
 
 ---
@@ -103,8 +103,8 @@ Créer 4 articles (Site vitrine, Boutique en ligne, Plateforme commerçants, App
 3. Maquette sous 72 h → validation du style.
 4. Fabrication → mise en ligne sur Hostinger (nom de domaine du client).
 5. Solde 50 % à la livraison, site en ligne → courte formation → étiquette `Livré`.
-6. Demander l'avis (et l'autorisation de montrer le site pour les Fondateurs).
-7. Proposer l'abonnement Care / Care+.
+6. Demander l'avis et l'autorisation de montrer le site dans notre portfolio.
+7. Expliquer l'après 1re année : renouvellement annuel 10 000 DA/an ou Suivi+ 25 000 DA/an (pas d'abonnement mensuel).
 
 ## Modèle de devis
 `vente/devis-modele.html` → exporté en PDF : `vente/devis-modele.pdf`. Remplacer les champs entre crochets.

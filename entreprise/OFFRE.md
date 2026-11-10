@@ -29,26 +29,26 @@ Grille décidée le 2026-11-10 : elle remplace toutes les anciennes formules. La
 
 ## Le Standard Dzign (inclus dans toutes les formules)
 Démo à son nom avant de signer · design haut de gamme et visuels 3D · français + arabe · tout modifiable par le client · accessibilité 0 défaut · tests sur téléphone et ordinateur · référencement Google · formation et vidéo de lancement. Détail : `QUALITE.md`.
-Décision du 14/10 : **on garde nos prix** (plus élevés que la concurrence) et on les justifie par un niveau de finition supérieur sur chaque projet.
+Décision du 10/11 : nouvelle grille, des prix d'entrée bas (dès 20 000 DA) ; on justifie la valeur par la démo gratuite et le niveau de finition, sans remise de lancement.
 
 ## Règle de vente (toutes formules)
-**Pas de formule mensuelle : le site se paie en une fois, en deux temps (voir § 5).** Service client inclus : pour la Plateforme commerçants et l'Application, **service client 24h/24, 7j/7 pendant 12 mois** (WhatsApp et téléphone, on règle tout) + l'hébergement de la première année ; pour le Site vitrine et la Boutique, réponse sur WhatsApp dans la journée. Nom de domaine + email pro offerts la 1re année dans toutes les formules.
+**Pas de formule mensuelle : le site se paie en une fois, en deux temps (voir § 5).** Service client inclus : pour la Plateforme commerçants et l'Application, **service client 24h/24, 7j/7 pendant 12 mois** (WhatsApp et téléphone, on règle tout) ; pour le Site vitrine et la Boutique, réponse sur WhatsApp dans la journée. **Hébergement + nom de domaine + email pro offerts la 1re année dans toutes les formules.** Seule remise : **−5 % pour un paiement en une fois**.
 
-## 3. Hébergement et suivi (mensuel, optionnel)
-Le client peut aussi héberger lui-même son site ; on lui livre alors tous les fichiers.
+## 3. Après la 1re année (paiement annuel, sans abonnement mensuel)
+La 1re année, hébergement, nom de domaine et email pro sont offerts. Ensuite, le client choisit un renouvellement annuel, ou héberge lui-même son site (on lui livre alors tous les fichiers).
 
-| Abonnement | Contenu | Prix |
-|------------|---------|------|
-| **Care** | Hébergement professionnel rapide, certificat de sécurité (https), sauvegardes, mises à jour, surveillance | 5 000 DA/mois |
-| **Care+** | Care + petites modifications illimitées + rapport de visites mensuel + amélioration du référencement | 15 000 DA/mois |
+| Formule annuelle | Contenu | Prix |
+|------------------|---------|------|
+| **Renouvellement annuel** | Hébergement, nom de domaine, email pro, sauvegardes, certificat https | 10 000 DA/an |
+| **Suivi+** | Renouvellement + petites modifications illimitées + rapport de visites | 25 000 DA/an |
 
 ## 4. Options marketing (pour vendre plus)
 | Option | Contenu | À partir de |
 |--------|---------|-------------|
-| **Lancement Pub** | Création des visuels et vidéos, réglage et suivi des pubs Facebook, Instagram et TikTok pendant 1 mois (budget pub à part) | 35 000 DA |
-| **Visuels 3D** | Rendus et vidéos 3D des produits pour les réseaux et le site | 20 000 DA |
+| **Lancement Pub** | Création des visuels et vidéos, réglage et suivi des pubs Facebook, Instagram et TikTok pendant 1 mois (budget pub à part) | 15 000 DA |
+| **Visuels 3D** | Rendus et vidéos 3D des produits pour les réseaux et le site | 10 000 DA |
 | **Expérience 3D sur le site** | Produit ou bâtiment en 3D à faire tourner, configurateur, visite virtuelle (immobilier, mobilier, mode, automobile) | Sur devis |
-| **Google Local** | Fiche Google optimisée, avis, référencement local | 10 000 DA |
+| **Google Local** | Fiche Google optimisée, avis, référencement local | 5 000 DA |
 
 ## 5. Paiement et déroulement (conditions du 2026-11-10)
 Phrase clé : **« Vous voyez votre site gratuitement avant de payer quoi que ce soit, et vous ne payez la moitié qu'une fois convaincu. »**
@@ -65,10 +65,8 @@ AR : « ترى موقعك مجاناً قبل أن تدفع أي شيء، ولا
 
 **Option paiement en une fois : −5 %** (au choix du client, jamais imposé), réglé à la validation de la démo.
 
-## 6. Programme Fondateurs (lancement)
-**5 places seulement** : -20 % sur toutes les formules (Site vitrine dès 16 000 DA, Boutique dès 40 000 DA, Plateforme commerçants dès 64 000 DA, Application dès 120 000 DA), en échange d'un avis
-client et du droit de montrer le projet dans notre portfolio.
-Effet recherché : de la rareté (haut de gamme) plutôt qu'une promo « bradée ».
+## 6. Remise
+**Programme Fondateurs (−20 %) supprimé le 2026-11-10** : les prix sont déjà bas. La seule remise est **−5 % pour un paiement en une fois** (ex. Plateforme commerçants 80 000 DA : 40 000 + 40 000, ou 76 000 DA en une fois).
 
 ## 7. Messages pour les pubs
 - FR : « Votre marque mérite un site d'exception. Conçu à Alger, au niveau mondial. »
@@ -77,4 +75,3 @@ Effet recherché : de la rareté (haut de gamme) plutôt qu'une promo « bradée
 
 ## À valider
 - [ ] Les prix « à partir de » te conviennent ?
-- [ ] Programme Fondateurs à 5 places, OK ?

@@ -93,7 +93,6 @@ td select{padding:6px 8px;font-size:.88rem}
           <select id="couleur"><option value="or">Or</option><option value="emeraude">Émeraude</option><option value="bordeaux">Bordeaux</option><option value="bleu">Bleu nuit</option><option value="corail">Corail</option><option value="rose" selected>Rose</option></select>
         </label>
       </div>
-      <label for="places">Places Fondateurs restantes<input id="places" type="number" min="0" max="5" value="5"></label>
       <p class="note">L'exemple « Pâtisserie Yasmine » est là pour te montrer le résultat. Remplace-le par ton vrai prospect.</p>
       <div class="actions"><button class="btn plein" type="submit">Ajouter à mon suivi</button><button class="btn discret" type="button" id="vider">Nouveau prospect</button></div>
     </form>
@@ -147,16 +146,16 @@ td select{padding:6px 8px;font-size:.88rem}
 
   function lienDe(nom,metier,couleur){return BASE+'?apercu='+encodeURIComponent(nom)+'&metier='+metier+'&couleur='+couleur+'#essai'}
   function maj(){
-    var nom=$('nom').value.trim()||'Votre entreprise',g=$('gerant').value.trim(),moi=$('moi').value.trim()||'[ton prénom]',ou=$('ou').value,pl=$('places').value||'5';
+    var nom=$('nom').value.trim()||'Votre entreprise',g=$('gerant').value.trim(),moi=$('moi').value.trim()||'[ton prénom]',ou=$('ou').value;
     var url=lienDe(nom,$('metier').value,$('couleur').value);
     $('lien').textContent=url;$('ouvrir').href=url;
     var salut='Bonjour'+(g?' '+g:'')+' 👋';
     var vu=ou==='Bouche-à-oreille'?'On m\'a parlé de '+nom:'J\'ai découvert '+nom+' sur '+ou;
-    $('m1').textContent=salut+'\n\nJe suis '+moi+', de Dzign Studio, un studio de création de sites web à Alger. '+vu+' et j\'ai pris 2 minutes pour imaginer votre site internet :\n\n👉 '+url+'\n\nC\'est un aperçu gratuit, à votre nom. Si vous l\'aimez, je peux en faire votre vrai site en 7 jours, avec votre propre nom de domaine. Vous ne payez rien avant de l\'avoir vu : la moitié seulement une fois convaincu, le reste une fois le site en ligne. Satisfait ou remboursé.\n\nNos 5 premiers clients ont -20 %. Bonne journée !';
+    $('m1').textContent=salut+'\n\nJe suis '+moi+', de Dzign Studio, un studio de création de sites web à Alger. '+vu+' et j\'ai pris 2 minutes pour imaginer votre site internet :\n\n👉 '+url+'\n\nC\'est un aperçu gratuit, à votre nom. Si vous l\'aimez, je peux en faire votre vrai site en 7 jours, avec votre propre nom de domaine. Vous ne payez rien avant de l\'avoir vu : la moitié seulement une fois convaincu, le reste une fois le site en ligne. Satisfait ou remboursé.\n\nBonne journée !';
     $('m2').textContent=salut+'\n\nAvez-vous eu le temps de regarder l\'aperçu de votre site ?\n👉 '+url+'\n\nJe peux changer la couleur, les textes ou le style en 2 minutes si vous voulez voir autre chose. Je reste disponible pour un appel de 15 minutes sur WhatsApp, gratuit et sans engagement 🙂';
-    $('m3').textContent=salut+'\n\nDernier petit message de ma part : il reste '+pl+' place'+(pl>1?'s':'')+' à -20 % dans notre programme Fondateurs, et j\'ai pensé à '+nom+' en premier.\n\nSi le moment n\'est pas idéal, aucun souci, je vous souhaite une belle continuation. Votre aperçu reste disponible ici : '+url;
+    $('m3').textContent=salut+'\n\nDernier petit message de ma part : la démo de '+nom+' est prête et ne vous engage à rien. Vous ne payez la moitié qu\'une fois convaincu, et −5 % si vous réglez en une fois.\n\nSi le moment n\'est pas idéal, aucun souci, je vous souhaite une belle continuation. Votre aperçu reste disponible ici : '+url;
   }
-  ['moi','nom','gerant','ou','metier','couleur','places'].forEach(function(id){$(id).addEventListener('input',maj);$(id).addEventListener('change',maj)});
+  ['moi','nom','gerant','ou','metier','couleur'].forEach(function(id){$(id).addEventListener('input',maj);$(id).addEventListener('change',maj)});
   $('moi').addEventListener('change',function(){ecrire('dz-moi',$('moi').value.trim())});
 
   function toast(t){var e=$('toast');e.textContent=t;e.hidden=false;clearTimeout(e._t);e._t=setTimeout(function(){e.hidden=true},1600)}

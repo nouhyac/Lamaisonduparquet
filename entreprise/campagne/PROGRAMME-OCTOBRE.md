@@ -10,10 +10,10 @@ Règles : on parle en « nous », pas de lieu, prix en « à partir de », garan
 | **J0 · mar. 14** (ce soir) | Reel « Le client commande » | `plateforme/exemple-client.mp4` | Le Reel en story + sticker lien WhatsApp « Ma démo gratuite » |
 | **J1 · mer. 15** | Post « Pas un simple site » | `plateforme/affiche-1.jpg` | Sondage : « Vos clients peuvent-ils commander en ligne chez vous ? Oui / Pas encore » |
 | **J2 · jeu. 16** | Reel « Côté cuisine » | `plateforme/exemple-cuisine.mp4` | Coulisses : capture de l'écran cuisine + « Ça sonne à chaque commande 🔔 » |
-| **J3 · ven. 17** | Carrousel « Le rush » (3 images) | `plateforme/affiche-2.jpg` → `affiche-3.jpg` → `affiche-4.jpg` | Boîte à questions : « Une question sur votre futur site ? » |
+| **J3 · ven. 17** | Carrousel « Le rush » (3 images) | `plateforme/affiche-2.jpg` → `affiche-3.jpg` (affiche 4 retirée : ancien prix) | Boîte à questions : « Une question sur votre futur site ? » |
 | **J4 · sam. 18** | Reel « Votre site en 10 secondes » | `videos/video-2-fr.mp4` (TikTok : `video-2-ar.mp4`) | Repartage d'un commentaire ou d'une réponse au sondage |
 | **J5 · dim. 19** | Post « Votre site en 10 s » | `posts/post-4-fr.jpg` | Lien vers l'aperçu gratuit dzignstudio.store/#essai |
-| **J6 · lun. 20** | Reel « La pub » | `plateforme/pub-plateforme-40s.mp4` | « Places Fondateurs : il en reste… » (compte à rebours) |
+| **J6 · lun. 20** | Reel « La pub » | `plateforme/pub-plateforme-40s.mp4` | « Votre démo gratuite à votre nom » (question en story) |
 | **J7 · mar. 21** | Post « Paiement 50/50 » | `posts/post-6-fr.jpg` | Quiz : « Combien de commandes perdez-vous par appel manqué ? » |
 | **J8 · mer. 22** | Reel « Démo 3D » | `videos/video-3-fr.mp4` (TikTok : `video-3-ar.mp4`) | Coulisses : « On prépare une démo pour un restaurant 👀 » (sans le nom) |
 | **J9 · jeu. 23** | Post « Nos formules » | `posts/post-7-fr.jpg` | Lien vers les formules du site |
@@ -42,7 +42,7 @@ C'est ça, une vraie plateforme. Écrivez-nous pour voir la vôtre 💬
 **J3 · Carrousel « Le rush »**
 Pendant le rush, chaque appel manqué est une commande perdue. 📞❌
 Avec votre plateforme, vos clients commandent sans appeler, même quand toute l'équipe est occupée.
-Programme Fondateurs : -20 % pour nos premiers clients, paiement 50/50, maquette satisfaite ou remboursée.
+Démo gratuite à votre nom, 0 DA avant de la voir, paiement 50/50, satisfait ou remboursé.
 #restaurant #fastfood #commandeenligne #DzignStudio
 
 **J4 · Reel « Votre site en 10 secondes »**
@@ -79,7 +79,7 @@ Prix « à partir de », devis clair, paiement 50/50. Toutes nos formules sur le
 
 **J10 · Post « Prêt à briller ? »**
 Votre entreprise mérite d'être vue. ✨
-Démo gratuite, maquette satisfaite ou remboursée, -20 % pour nos premiers clients. On commence quand vous voulez.
+Démo gratuite, maquette satisfaite ou remboursée, −5 % si vous payez en une fois. On commence quand vous voulez.
 Écrivez-nous sur WhatsApp 💬
 #entrepreneur #digital #DzignStudio
 

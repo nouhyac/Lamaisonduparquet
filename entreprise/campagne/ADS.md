@@ -20,7 +20,7 @@ Prérequis : compte pub 2860172500875914 réactivé (vérification du moyen de p
 | Bon résultat à J+3 | conversation < 1 € | clic < 0,15 € et CTR > 1 % |
 
 Texte A : Pendant le rush, chaque appel manqué est une commande perdue. 📞❌ Avec votre plateforme, vos clients commandent sans appeler et votre cuisine reçoit tout, en direct. ✅ Démo gratuite à votre nom ✅ Maquette satisfaite ou remboursée ✅ 0 DA avant d'avoir vu votre site, 50 % à la validation, 50 % à la livraison. 👉 Écrivez-nous sur WhatsApp.
-Texte B : Tapez le nom de votre entreprise : votre futur site apparaît en 10 secondes. 😮 Gratuit, sans engagement. Sites vitrines à partir de 20 000 DA, boutiques en ligne, plateformes commerçants et applications. ✅ Satisfait ou remboursé ✅ 0 DA avant d'avoir vu votre site ✅ -20 % pour nos 5 premiers clients.
+Texte B : Tapez le nom de votre entreprise : votre futur site apparaît en 10 secondes. 😮 Gratuit, sans engagement. Sites vitrines à partir de 20 000 DA, boutiques en ligne, plateformes commerçants et applications. ✅ Satisfait ou remboursé ✅ 0 DA avant d'avoir vu votre site
 Règle : aucun lieu dans les textes (ne pas reprendre « conçu à Alger » des anciens textes plus bas).
 
 # ▶️ LANCEMENT DU 14/10 : 2 pubs à 25 $ (plan validé)
@@ -36,7 +36,7 @@ Pas « en similaire » : les 2 vidéos ne parlent pas aux mêmes personnes et ne
 | Audience | Algérie · 23-55 ans · intérêts : restaurant, restauration rapide, pizzeria, café, propriétaire de petite entreprise, administrateurs de pages Facebook | Algérie · 25-55 ans · **Advantage+** (Meta cherche seul) |
 | Budget | **25 $ en budget global, sur 7 jours** (≈ 3,6 $/jour) | **25 $ en budget global, sur 7 jours** |
 | Placements | Advantage+ (Reels, Stories, Fil) | Advantage+ |
-| Texte principal | « Pendant le rush, chaque appel manqué est une commande perdue. Avec votre plateforme, vos clients commandent sans appeler, votre cuisine reçoit tout. Démo gratuite à votre nom · Maquette satisfaite ou remboursée. » | « Tapez le nom de votre entreprise : votre futur site apparaît en 10 secondes. Gratuit. Paiement 50/50 · Maquette satisfaite ou remboursée · -20 % pour nos premiers clients. » |
+| Texte principal | « Pendant le rush, chaque appel manqué est une commande perdue. Avec votre plateforme, vos clients commandent sans appeler, votre cuisine reçoit tout. Démo gratuite à votre nom · Maquette satisfaite ou remboursée. » | « Tapez le nom de votre entreprise : votre futur site apparaît en 10 secondes. Gratuit. Paiement 50/50 · Maquette satisfaite ou remboursée · 0 DA avant d'avoir vu votre site. » |
 | Titre / bouton | « Démo gratuite à votre nom » · Envoyer un message WhatsApp | « Votre site en 10 secondes » · En savoir plus |
 
 **Pourquoi 2 pubs séparées et pas « similaires »** : un restaurateur et un commerçant ne réagissent pas aux mêmes images ; et la vidéo de la femme renvoie au site (aperçu en 10 s), celle de la plateforme à WhatsApp. Si on leur donne les mêmes réglages, Meta montre la vidéo restaurant à n'importe qui et on paie des vues inutiles.
@@ -63,7 +63,7 @@ Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du d
 - **1 seule campagne, 1 seul ensemble** (avec un petit budget, mieux vaut ne pas le diviser) : objectif **Trafic**, Algérie, 25-55 ans, **audience Advantage+** (Meta cherche seul), placements Advantage+.
 - **Budget : 6 $/jour pendant 7 jours = 42 $**. On garde **12 $ de réserve** pour pousser la meilleure pub ensuite.
 - **3 pubs** dans l'ensemble :
-  1. **`videos/pub-50s-avatar.mp4`** (51 s, la pub principale : femme qui parle + ralentis + vrai site filmé dans un téléphone + garantie + -20 %)
+  1. **`videos/pub-50s-avatar.mp4`** (51 s, la pub principale : femme qui parle + ralentis + vrai site filmé dans un téléphone + garantie + -20 %) ⚠️ contient l'ancien « -20 % Fondateurs » supprimé le 10/11 : utiliser la version mise à jour de `campagne/novembre/`
   2. `videos/pub-23s-fr.mp4` (démo du site en 10 s)
   3. `posts/post-4-fr.jpg` (image, la moins chère)
 - **Lien** : https://dzignstudio.store/#essai · **Bouton** : « En savoir plus » · **Texte** : texte A ci-dessous, avec « Maquette satisfaite ou remboursée ».
@@ -82,7 +82,7 @@ Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du d
 - **Durée du test** : 7 jours, sans rien toucher les 3 premiers jours.
 - **Budget total du test** : environ 70 $.
 
-**Campagne 2 · Relance (après 1 à 2 semaines)** : personnes ayant visité le site ou vu 50 % d'une vidéo, sur 30 jours. Publicités : Post 2 (Programme Fondateurs) + Vidéo 1. Budget : 3 $ / jour.
+**Campagne 2 · Relance (après 1 à 2 semaines)** : personnes ayant visité le site ou vu 50 % d'une vidéo, sur 30 jours. Publicités : Post 2 (Démo gratuite) + Vidéo 1. Budget : 3 $ / jour.
 
 ## Vidéos de pub montées (2026-10-13)
 - `videos/pub-50s-fr.mp4` (49 s) : Z doré → aperçu « 10 secondes » → 3D → écran de fin. Pour le fil d'actualité Facebook/Instagram.
@@ -96,7 +96,7 @@ Tout en français. Les vidéos et posts utilisés sont les versions **-fr** du d
 | P2 | `videos/video-3-fr.mp4` · La 3D | Effet « waouh », rare en Algérie |
 | P3 | `videos/video-1-fr.mp4` · Le Z doré | Image de marque haut de gamme |
 | P4 | `posts/post-4-fr.jpg` · Votre site en 10 s | Version image, moins chère à diffuser |
-| P5 | `posts/post-2-fr.jpg` · -20 % Fondateurs | Urgence : 5 places |
+| P5 | `posts/post-2-fr.jpg` · Démo gratuite, 0 DA avant de voir son site | Zéro risque |
 
 ## Textes
 **Texte principal A (bénéfice)**
@@ -110,11 +110,11 @@ Et si vous voyiez votre site… avant même de nous appeler ? 😮
 Tapez le nom de votre entreprise sur notre site : votre site apparaît, à votre nom, sur votre propre domaine. Gratuit, sans engagement.
 
 **Texte principal C (urgence)**
-🎁 Programme Fondateurs : -20 % sur toutes nos formules pour nos 5 premiers clients.
-Sites vitrines, boutiques avec paiement à la livraison, sites en 3D. Partout en Algérie, 100 % à distance.
-Il reste 5 places.
+🎁 Votre site en démo gratuite, à votre nom : 0 DA avant de l'avoir vu.
+Sites vitrines dès 20 000 DA, boutiques avec paiement à la livraison, plateformes pour commerçants. Partout en Algérie, 100 % à distance.
+Vous ne payez la moitié qu'une fois convaincu.
 
-**Titres** (à tester) : « Votre site en 10 secondes » · « -20 % pour les 5 premiers » · « Un site d'exception, conçu à Alger »
+**Titres** (à tester) : « Votre site en 10 secondes » · « 0 DA avant de voir votre site » · « Un site d'exception, conçu à Alger »
 **Description** : « Maquette en 72 h · Satisfait ou remboursé »
 **Bouton** : « En savoir plus »
 **Lien** : https://dzignstudio.store/#essai (P1, P4) · https://dzignstudio.store/#formules (P5) · https://dzignstudio.store (P2, P3)

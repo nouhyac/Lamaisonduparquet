@@ -31,12 +31,12 @@ Aucun projet ne sort sans avoir coché **toute** cette liste. Elle sert aussi d'
 ## 6. Sécurité et fiabilité
 - Accès par rôle (gérant / employés) avec codes ou comptes séparés.
 - Sauvegarde et restauration des réglages ; mise en service avec **remise à zéro** des données de démonstration.
-- HTTPS, sauvegardes automatiques avec l'abonnement Care.
+- HTTPS et sauvegardes automatiques, inclus la 1re année puis avec le renouvellement annuel.
 
 ## 7. Livraison « clé en main »
 - Formation (1 h), guide d'utilisation, QR codes imprimables, fiches Google Maps optimisées.
 - **Vidéo de lancement** pour les réseaux du client.
-- Suivi après livraison (Care / Care+) et rapport mensuel.
+- Suivi après livraison : service client inclus, puis renouvellement annuel ou Suivi+ (modifications et rapport de visites).
 
 ## Avant chaque envoi au client
 - [ ] Démo testée sur téléphone et ordinateur, 0 erreur

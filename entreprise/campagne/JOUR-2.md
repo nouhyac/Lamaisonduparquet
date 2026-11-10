@@ -1,5 +1,7 @@
 # Jour 2 · Programme Fondateurs
 
+> ⚠️ **Programme Fondateurs (−20 %) supprimé le 2026-11-10** : ne plus republier ce post. Remplacé par le post « Démo gratuite » (voir `CAMPAGNE.md`, Post 2).
+
 ## 1. Matin (5 min) · Regarder le jour 1
 Instagram, TikTok, Facebook : vues de la vidéo 1, likes, abonnés, messages reçus.
 Répondre à tous les commentaires et messages encore sans réponse.

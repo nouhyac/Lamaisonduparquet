@@ -1,6 +1,6 @@
 # Campagne de lancement Dzign Studio
 
-**Objectif** : faire connaître Dzign Studio en Algérie et remplir les **5 places du Programme Fondateurs**.
+**Objectif** : faire connaître Dzign Studio en Algérie et décrocher nos premiers clients grâce à la démo gratuite à leur nom.
 **Réseaux** : Instagram, TikTok, Facebook (le n°1 en Algérie).
 **Action demandée partout** : aller sur le site (lien en bio), choisir son offre, arriver sur WhatsApp.
 
@@ -21,7 +21,7 @@ Heures de départ conseillées : **entre 20 h et 22 h** (à ajuster selon tes st
 | Jour | Instagram + Facebook | TikTok |
 |------|----------------------|--------|
 | J1 | Vidéo 1 (Reel) + Post 1 « Ouvert » | Vidéo 1 FR |
-| J2 | Post 2 « Programme Fondateurs » | — |
+| J2 | Post 2 « Démo gratuite » | — |
 | J3 | Vidéo 2 (Reel) | Vidéo 2 FR |
 | J4 | Post 3 « La Maison du Parquet » | Vidéo 1 AR |
 | J5 | Post 4 « Votre site en 10 s » | — |
@@ -38,8 +38,8 @@ Heures de départ conseillées : **entre 20 h et 22 h** (à ajuster selon tes st
 ## Légendes
 
 ### Vidéo 1 · Le Z doré
-**FR** : Votre entreprise mérite un site d'exception. ✨ Sites web, expériences 3D, boutiques en ligne et applications, conçus à Alger au niveau des plus grandes marques. -20 % pour nos 5 premiers clients : choisissez votre offre, lien en bio.
-**AR** : مؤسستك تستحق موقعاً استثنائياً. ✨ مواقع إلكترونية، تجارب 3D، متاجر وتطبيقات، مصمَّمة في الجزائر بمستوى كبرى العلامات. خصم 20% لأول 5 زبائن: اختر باقتك، الرابط في البايو.
+**FR** : Votre entreprise mérite un site d'exception. ✨ Sites web, expériences 3D, boutiques en ligne et applications, conçus à Alger au niveau des plus grandes marques. Démo gratuite à votre nom : choisissez votre offre, lien en bio.
+**AR** : مؤسستك تستحق موقعاً استثنائياً. ✨ مواقع إلكترونية، تجارب 3D، متاجر وتطبيقات، مصمَّمة في الجزائر بمستوى كبرى العلامات. عرض تجريبي مجاني باسمك: اختر باقتك، الرابط في البايو.
 
 ### Vidéo 2 · Votre site en 10 secondes
 **FR** : Tapez le nom de votre entreprise… et voyez votre site apparaître. 😮 À votre nom, sur votre propre domaine, en arabe et en français. Essayez gratuitement : lien en bio.
@@ -53,9 +53,9 @@ Heures de départ conseillées : **entre 20 h et 22 h** (à ajuster selon tes st
 **FR** : Dzign Studio ouvre ses portes à Alger. 🏛️ Notre mission : donner aux entreprises algériennes des sites dignes des plus grandes marques. Visitez nos 8 sites de démonstration : lien en bio.
 **AR** : Dzign Studio يفتح أبوابه في الجزائر العاصمة. 🏛️ مهمتنا: مواقع للمؤسسات الجزائرية بمستوى كبرى العلامات. زوروا مواقعنا التجريبية الثمانية: الرابط في البايو.
 
-### Post 2 · Programme Fondateurs
-**FR** : 5 places. -20 % sur toutes nos formules. En échange : votre avis et le droit de montrer votre site. Les premiers arrivés seront les premiers servis. 👉 Lien en bio.
-**AR** : 5 أماكن فقط. خصم 20% على جميع باقاتنا. مقابل رأيك والسماح لنا بعرض موقعك. الأولوية للأسبق. 👉 الرابط في البايو.
+### Post 2 · Démo gratuite
+**FR** : 0 DA avant d'avoir vu votre site. Nous préparons une démo à votre nom, gratuitement. Vous ne payez la moitié qu'une fois convaincu, et −5 % si vous réglez en une fois. 👉 Lien en bio.
+**AR** : 0 دج قبل أن ترى موقعك. نجهّز لك عرضاً تجريبياً باسمك مجاناً. لا تدفع النصف إلا بعد أن تقتنع، وخصم 5% إن دفعت مرة واحدة. 👉 الرابط في البايو.
 
 ### Post 3 · La Maison du Parquet
 **FR** : Réalisation 🔨 La Maison du Parquet : comparateur avant/après, calculateur de cartons, réservation au showroom. Un site qui vend, même la nuit. Voir le site en ligne : lien en bio.

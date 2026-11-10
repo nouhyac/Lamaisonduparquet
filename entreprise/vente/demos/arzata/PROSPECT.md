@@ -53,7 +53,7 @@ Tout est modifiable par vous : recettes, photos, prix, horaires, frais de livrai
 Message 3 (prix)
 
 C'est notre Plateforme commerçants, pas un simple site : commande en ligne, four, caisse, comptabilité, livraison sur Alger avec suivi du livreur, en français et en arabe.
-Pour Arzata, on vous fait le tarif Fondateurs : 150 000 DA.
+Pour Arzata, tout compris : 150 000 DA.
 Vous avez déjà vu votre démo sans rien payer. Vous payez 75 000 DA seulement quand vous la validez, et 75 000 DA à la livraison, une fois la plateforme en ligne, en 3 semaines. Ou en une fois avec -5 % : 142 500 DA.
 Inclus : le service client 24h/24 et 7j/7 pendant 12 mois, l'hébergement de la première année, et une vidéo de lancement pour vos réseaux.
 Et la maquette est satisfaite ou remboursée. Je vous envoie le dossier complet ?
