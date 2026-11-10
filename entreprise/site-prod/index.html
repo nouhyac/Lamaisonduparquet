@@ -17,7 +17,7 @@
 <!-- Pixel Meta : remplacer VOTRE_PIXEL_ID puis retirer les commentaires autour du script.
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','VOTRE_PIXEL_ID');fbq('track','PageView');</script>
 -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Dzign Studio","url":"https://dzignstudio.store/","image":"https://dzignstudio.store/medias/partage.jpg","telephone":"+213549506857","areaServed":"DZ","address":{"@type":"PostalAddress","addressLocality":"Alger","addressCountry":"DZ"},"priceRange":"30 000 DA - 300 000 DA","description":"Studio digital haut de gamme : sites web, 3D, boutiques en ligne et applications."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Dzign Studio","url":"https://dzignstudio.store/","image":"https://dzignstudio.store/medias/partage.jpg","telephone":"+213549506857","areaServed":"DZ","address":{"@type":"PostalAddress","addressLocality":"Alger","addressCountry":"DZ"},"priceRange":"À partir de 20 000 DA","description":"Studio digital haut de gamme : sites vitrines, boutiques en ligne, plateformes commerçants et applications.","hasOfferCatalog":{"@type":"OfferCatalog","name":"Formules Dzign Studio","itemListElement":[{"@type":"Offer","name":"Site vitrine","description":"Site sur mesure pour présenter votre activité : pages, galerie, Google Maps, WhatsApp, français et arabe, référencement de base.","url":"https://dzignstudio.store/#formules","priceCurrency":"DZD","priceSpecification":{"@type":"PriceSpecification","minPrice":20000,"priceCurrency":"DZD"}},{"@type":"Offer","name":"Boutique en ligne","description":"Catalogue, panier, paiement à la livraison, frais par wilaya, suivi des commandes, gestion des produits.","url":"https://dzignstudio.store/#formules","priceCurrency":"DZD","priceSpecification":{"@type":"PriceSpecification","minPrice":50000,"priceCurrency":"DZD"}},{"@type":"Offer","name":"Plateforme commerçants","description":"Commande ou réservation en ligne et espace gérant (commandes en direct, cuisine, caisse, livreur, planning, fidélité) pour restaurants, locations et services.","url":"https://dzignstudio.store/#formules","priceCurrency":"DZD","priceSpecification":{"@type":"PriceSpecification","minPrice":80000,"priceCurrency":"DZD"}},{"@type":"Offer","name":"Application","description":"Application sur mesure, web ou mobile installable, avec espace client, notifications et tableau de bord.","url":"https://dzignstudio.store/#formules","priceCurrency":"DZD","priceSpecification":{"@type":"PriceSpecification","minPrice":150000,"priceCurrency":"DZD"}}]}}</script>
 <title>Dzign Studio</title>
 <meta name="description" content="Dzign Studio, studio digital haut de gamme à Alger : sites web, expériences 3D, boutiques en ligne et applications. Votre site en aperçu en 10 secondes.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230B0B0F%27/%3E%3Cpath d=%27M16 16h32v7L27 41h21v7H16v-7l21-18H16z%27 fill=%27%23C8A96A%27/%3E%3C/svg%3E">
@@ -315,12 +315,13 @@ body.verrou{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.d-hero>img,.d-livreur,.d-jauge i{animation:none}}
 
 /* Formules */
-.formules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
-@media (min-width:1000px){.formules{grid-template-columns:repeat(6,1fr)}.formule{grid-column:span 2}.formule:nth-child(n+4){grid-column:span 3}}
+.formules{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+@media (min-width:700px){.formules{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1180px){.formules{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.formule{padding:30px 22px}.formule h3{font-size:1.45rem}}
 .formule{border:1px solid var(--ligne);border-radius:6px;padding:32px 28px;display:grid;gap:18px;grid-template-rows:auto auto 1fr auto;min-width:0;background:var(--noir);transition:border-color .25s,transform .25s}
 .formule:hover{border-color:var(--or);transform:translateY(-6px)}
 .formule.vedette{border-color:var(--or);background:linear-gradient(180deg,color-mix(in srgb,var(--or) 11%,var(--noir)),var(--noir) 60%)}
-.formule-tete{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.formule-tete{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 12px}
 .formule h3{font-size:1.7rem;font-weight:700}
 .pastille{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--noir);background:var(--or);padding:4px 10px;border-radius:999px;white-space:nowrap}
 .pour{color:var(--gris);font-size:.92rem}
@@ -332,6 +333,9 @@ body.verrou{overflow:hidden}
 .prix span{font-family:var(--f-display);font-size:1.8rem;font-weight:700;font-variant-numeric:tabular-nums}
 .prix span sup{font-size:.85rem;color:var(--or);margin-left:4px;vertical-align:.6em}
 .note-prix{margin-top:24px;color:var(--gris);font-size:.92rem;max-width:70ch}
+.promesse{margin:0 0 28px;padding:16px 20px;border-inline-start:3px solid var(--or);background:color-mix(in srgb,var(--or) 8%,var(--noir));border-radius:6px;color:var(--ivoire);font-size:1.02rem;max-width:72ch}
+.promesse small{display:block;color:var(--gris);font-size:.88rem;margin-top:6px}
+.hero-promesse{color:var(--ivoire);max-width:52ch;font-size:.98rem;padding-inline-start:14px;border-inline-start:2px solid var(--or)}
 
 /* Déroulement */
 .etapes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:36px 28px;counter-reset:etape}
@@ -384,7 +388,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 .choix-tete{display:flex;justify-content:space-between;align-items:start;gap:16px}
 .choix-tete h2{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:700;letter-spacing:-.02em}
 .choix-tete p{color:var(--gris);margin-top:6px;font-size:.95rem}
-.choix-offres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;border:0;margin:0;padding:0}
+.choix-offres{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;border:0;margin:0;padding:0}
+@media (min-width:560px){.choix-offres{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .choix-offres legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .offre{position:relative;display:grid;gap:4px;text-transform:none;letter-spacing:0;font-size:1rem;color:var(--ivoire);padding:16px 16px 14px;border:1px solid var(--ligne);border-radius:10px;cursor:pointer;background:var(--noir);transition:border-color .2s,background .2s,transform .2s}
 .offre:hover{border-color:color-mix(in srgb,var(--or) 60%,transparent);transform:translateY(-2px)}
@@ -449,6 +454,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 .plat-liste li b{color:var(--or);font-family:var(--f-display)}
 .plat-liste small{display:block;color:var(--gris);font-size:.92rem}
 .plat-actions{display:flex;flex-wrap:wrap;gap:12px}
+.plat-prix{margin:0 0 24px;color:var(--ivoire)}
+.plat-prix b{color:var(--or)}
 #plateforme h2{font-size:clamp(32px,4.4vw,56px)}
 @media (max-width:900px){.plat{grid-template-columns:1fr}}
 </style>
@@ -487,12 +494,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <h1 data-ar="التميّز الرقمي، &lt;span class=&quot;or-brille&quot;&gt;صُنع في الجزائر.&lt;/span&gt;">L'excellence digitale, <span class="or-brille">made in DZ.</span></h1>
       <p class="ar" lang="ar" data-ar="L&#x27;excellence digitale, made in DZ.">تميّز رقمي، صُنع في الجزائر</p>
       <p class="hero-sous" data-ar="مواقع إلكترونية، تجارب ثلاثية الأبعاد، متاجر إلكترونية وتطبيقات. نصمّمها في الجزائر بمستوى كبرى العلامات العالمية، لتجلب لك الزبائن.">Sites web, expériences 3D, boutiques en ligne et applications. Conçus à Alger, au niveau des plus grandes marques, pour vous apporter des clients.</p>
+      <p class="hero-promesse" data-ar="ترى موقعك مجاناً قبل أن تدفع أي شيء، ولا تدفع النصف إلا بعد أن تقتنع.">Vous voyez votre site gratuitement avant de payer quoi que ce soit, et vous ne payez la moitié qu'une fois convaincu.</p>
       <div class="hero-actions">
         <a class="btn btn-or" href="https://wa.me/213549506857" target="_blank" rel="noopener" data-ar="حدّثنا عن مشروعك">Parler de mon projet</a>
         <a class="btn btn-ligne" href="#portfolio" data-ar="زُر مواقعنا الثمانية">Visiter nos 8 sites</a>
       </div>
       <div class="hero-chiffres">
-        <div><b data-ar="72 ساعة">72 h</b><span data-ar="لرؤية نموذج موقعك، راضٍ أو نعيد لك أموالك">pour voir votre maquette, satisfait ou remboursé</span></div>
+        <div><b data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;0&lt;/bdi&gt; دج">0 DA</b><span data-ar="قبل أن ترى موقعك">avant d'avoir vu votre site</span></div><div><b data-ar="72 ساعة">72 h</b><span data-ar="لرؤية نموذج موقعك، راضٍ أو نعيد لك أموالك">pour voir votre maquette, satisfait ou remboursé</span></div>
         <div><b data-ar="3 لغات">3 langues</b><span data-ar="العربية، الفرنسية، الإنجليزية">arabe, français, anglais</span></div>
         <div><b data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;100%&lt;/bdi&gt;">100 %</b><span data-ar="عن بُعد، في كل أنحاء الجزائر">à distance, partout en Algérie</span></div>
       </div>
@@ -571,8 +579,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <li><b>03</b><span data-ar="توصيل متابَع مباشرة &lt;small&gt;مناطق وأسعار، فضاء للموصل، والزبون يرى طلبه يتقدّم&lt;/small&gt;">Livraison suivie en direct<small>Zones et frais, espace livreur, le client voit sa commande avancer</small></span></li>
         <li><b>04</b><span data-ar="الصندوق، المحاسبة والزبائن &lt;small&gt;تحصيل، تذكرة Z، الأرباح، الوفاء والعروض&lt;/small&gt;">Caisse, comptabilité et fichier clients<small>Encaissement, ticket Z, bénéfice estimé, fidélité et promotions</small></span></li>
       </ul>
+      <p class="plat-prix" data-ar="منصّة التجّار: &lt;b&gt;ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;80 000&lt;/bdi&gt; دج&lt;/b&gt;. للمطاعم، وأيضاً لكراء السيارات والخدمات بالحجز. عرض تجريبي مجاني باسمك، &lt;bdi dir=&quot;ltr&quot;&gt;0&lt;/bdi&gt; دج قبل أن تراه.">Plateforme commerçants : <b>à partir de 80 000 DA</b>. Pour les restaurants, mais aussi la location de voitures et les services sur réservation. Démo gratuite à votre nom, 0 DA avant de l'avoir vue.</p>
       <div class="plat-actions">
-        <button type="button" class="btn btn-or" data-offre="Plateforme" data-ar="أريد عرضي التجريبي">Je veux ma démo</button>
+        <button type="button" class="btn btn-or" data-offre="plateforme" data-ar="أريد عرضي التجريبي">Je veux ma démo</button>
         <a class="btn btn-ligne" href="#formules" data-ar="الباقات والأسعار">Voir les formules</a>
       </div>
     </div>
@@ -614,7 +623,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <li data-ar="الأثاث، الأزياء، السيارات: إبراز كل تفاصيل المنتج">Mobilier, mode, automobile : montrer chaque détail du produit</li>
         <li data-ar="المتاجر: تأثير مبهر يدفع إلى الشراء">Boutiques : un effet « waouh » qui fait vendre</li>
       </ul>
-      <div><a class="btn btn-or" href="#formules" data-ar="اكتشف باقة Immersion">Voir la formule Immersion</a></div>
+      <div><a class="btn btn-or" href="#formules" data-ar="اكتشف الباقات وخيار 3D">Voir les formules et l'option 3D</a></div>
     </div>
     <div class="vitrine3d" id="vitrine3d" aria-label="Modèle 3D interactif d'un immeuble de standing">
       <span class="etiquette" data-ar="مجسّم 3D مباشر">Modèle 3D en direct</span>
@@ -654,10 +663,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <tbody>
           <tr><td data-ar="عنوان الموقع">Adresse du site</td><td data-ar="عنوان عام مشترك مع المنصّة">Une adresse générique, partagée avec la plateforme</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;اسم نطاق خاص بك وبريد مهني باسمك"><span class="ok-or">✓</span>Votre propre nom de domaine et votre email pro à votre nom</td></tr>
           <tr><td data-ar="قبل التوقيع">Avant de signer</td><td data-ar="لقطات شاشة">Des captures d'écran</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;معاينة موقعك في 10 ثوانٍ، ثم نموذج أولي خلال 72 ساعة"><span class="ok-or">✓</span>Votre site en aperçu en 10 secondes, puis une maquette sous 72 h</td></tr>
-          <tr><td data-ar="الدفع">Paiement</td><td data-ar="غالباً المبلغ كاملاً مسبقاً">Souvent la totalité à l'avance</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عند الانطلاق، و&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; فقط بعد رؤية الموقع جاهزاً، والنموذج مضمون أو نعيد لك أموالك، كل ذلك عن بُعد عبر BaridiMob"><span class="ok-or">✓</span>50 % au départ, 50 % seulement après avoir vu le site terminé, maquette satisfaite ou remboursée, tout à distance par BaridiMob</td></tr>
+          <tr><td data-ar="السعر">Prix</td><td data-ar="غير واضح حتى النهاية">Flou jusqu'au bout</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;معلنة، ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;20 000&lt;/bdi&gt; دج، وتُثبَّت في عرض السعر قبل البدء"><span class="ok-or">✓</span>Affichés, à partir de 20 000 DA, et fixés dans le devis avant de commencer</td></tr>
+          <tr><td data-ar="الدفع">Paiement</td><td data-ar="غالباً المبلغ كاملاً مسبقاً">Souvent la totalité à l'avance</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;&lt;bdi dir=&quot;ltr&quot;&gt;0&lt;/bdi&gt; دج قبل أن ترى موقعك، &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عند الموافقة على العرض التجريبي، و&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; بعد إطلاق الموقع، راضٍ أو نعيد لك أموالك، كل ذلك عن بُعد عبر BaridiMob"><span class="ok-or">✓</span>0 DA avant d'avoir vu votre site, 50 % à la validation de la démo, 50 % une fois le site en ligne, satisfait ou remboursé, tout à distance par BaridiMob</td></tr>
           <tr><td data-ar="التصميم">Design</td><td data-ar="قالب سبق رؤيته في مكان آخر">Un modèle déjà vu ailleurs</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;تصميم حسب الطلب، حركات، 3D"><span class="ok-or">✓</span>Création sur mesure, animations, 3D</td></tr>
           <tr><td data-ar="اللغات">Langues</td><td data-ar="لغة واحدة، أو ترجمة آلية">Une seule, ou une traduction automatique</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;العربية والفرنسية والإنجليزية، بتنسيق عربي متقن"><span class="ok-or">✓</span>Arabe, français, anglais, mise en page arabe soignée</td></tr>
           <tr><td data-ar="البيع عبر الإنترنت">Vente en ligne</td><td data-ar="استمارة بسيطة">Un simple formulaire</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;الدفع عند الاستلام، رسوم التوصيل حسب الولاية، BaridiMob"><span class="ok-or">✓</span>Paiement à la livraison, frais par wilaya, BaridiMob</td></tr>
+          <tr><td data-ar="الطلبيات والحجوزات">Commandes et réservations</td><td data-ar="بالهاتف، وتُدوَّن باليد">Par téléphone, notées à la main</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;طلب أو حجز عبر الإنترنت، مع فضاء للمسيّر: المطبخ، الصندوق، الموصّل، جدول المواعيد"><span class="ok-or">✓</span>Commande ou réservation en ligne, avec un espace gérant : cuisine, caisse, livreur, planning</td></tr>
           <tr><td data-ar="الزبائن">Clients</td><td data-ar="يُسلَّم الموقع وينتهي الأمر">Le site est livré, et c'est tout</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;إعلانات وفيديوهات وظهور على Google لجلب الزبائن"><span class="ok-or">✓</span>Pubs, vidéos et référencement pour faire venir des clients</td></tr>
           <tr><td data-ar="التنقّل">Déplacements</td><td data-ar="مواعيد في الوكالة">Rendez-vous en agence</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;لا حاجة: كل شيء عن بُعد، في كل أنحاء الجزائر"><span class="ok-or">✓</span>Aucun : tout se fait à distance, partout en Algérie</td></tr>
           <tr><td data-ar="تواصل معنا">Contact</td><td data-ar="مقسّم هاتفي أو بريد إلكتروني">Un standard ou un email</td><td data-ar="&lt;span class=&quot;ok-or&quot;&gt;✓&lt;/span&gt;محاور واحد، مباشرة على واتساب"><span class="ok-or">✓</span>Un seul interlocuteur, directement sur WhatsApp</td></tr>
@@ -674,44 +685,38 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <h2 data-ar="اختر مستوى طموحك.">Choisissez votre niveau d'ambition.</h2>
       <p data-ar="أسعار انطلاق تقريبية. يتحدد السعر النهائي حسب المستوى المطلوب، ويُثبَّت قبل بدء العمل.">Prix de départ indicatifs. Le devis final dépend du niveau demandé, et il est fixé avant de commencer.</p>
     </div>
+    <p class="promesse" data-ar="&lt;b&gt;ترى موقعك مجاناً قبل أن تدفع أي شيء، ولا تدفع النصف إلا بعد أن تقتنع.&lt;/b&gt;&lt;small&gt;&lt;bdi dir=&quot;ltr&quot;&gt;0&lt;/bdi&gt; دج قبل رؤية عرضك التجريبي · &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عند الموافقة · &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; بعد إطلاق الموقع · خصم &lt;bdi dir=&quot;ltr&quot;&gt;5%&lt;/bdi&gt; إن فضّلت الدفع مرة واحدة.&lt;/small&gt;"><b>Vous voyez votre site gratuitement avant de payer quoi que ce soit, et vous ne payez la moitié qu'une fois convaincu.</b><small>0 DA avant de voir votre démo · 50 % à la validation · 50 % une fois le site en ligne · −5 % si vous préférez payer en une fois.</small></p>
     <div class="formules">
       <article class="formule">
-        <div class="formule-tete"><h3>Impact</h3></div>
-        <p class="pour" data-ar="لإطلاق عرض أو منتج أو حدث.">Lancer une offre, un produit ou un événement.</p>
-        <ul><li data-ar="صفحة واحدة راقية ومتحركة">Une page unique premium et animée</li><li data-ar="واتساب، خريطة واستمارة">WhatsApp, carte et formulaire</li><li data-ar="مصمّمة لإعلاناتك">Pensée pour vos publicités</li></ul>
-        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;30 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">30 000<sup>DA</sup></span></div>
-        <button type="button" class="btn btn-ligne btn-petit" data-offre="Impact" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+        <div class="formule-tete"><h3 data-ar="موقع تعريفي">Site vitrine</h3></div>
+        <p class="pour" data-ar="لتقديم نشاطك: المحلات، المهن الحرة، الشركات.">Pour présenter votre activité : commerces, professions libérales, entreprises.</p>
+        <ul><li data-ar="موقع حسب الطلب بعدة صفحات">Site sur mesure, plusieurs pages</li><li data-ar="معرض صور، Google Maps وواتساب">Galerie photos, Google Maps et WhatsApp</li><li data-ar="بالفرنسية والعربية">En français et en arabe</li><li data-ar="ظهور أساسي على Google">Référencement Google de base</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;20 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">20 000<sup>DA</sup></span></div>
+        <button type="button" class="btn btn-ligne btn-petit" data-offre="vitrine" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+      </article>
+      <article class="formule">
+        <div class="formule-tete"><h3 data-ar="متجر إلكتروني">Boutique en ligne</h3></div>
+        <p class="pour" data-ar="لبيع منتجاتك: البائعون والعلامات والمتاجر.">Pour vendre vos produits : vendeurs, marques et boutiques.</p>
+        <ul><li data-ar="كتالوج وسلة تسوق">Catalogue et panier</li><li data-ar="الدفع عند الاستلام، رسوم حسب الولاية">Paiement à la livraison, frais par wilaya</li><li data-ar="متابعة الطلبيات">Suivi des commandes</li><li data-ar="تدير منتجاتك وأسعارك بنفسك">Vous gérez vos produits et vos prix</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;50 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">50 000<sup>DA</sup></span></div>
+        <button type="button" class="btn btn-ligne btn-petit" data-offre="boutique" data-ar="اختر هذه الباقة">Choisir cette offre</button>
       </article>
       <article class="formule vedette">
-        <div class="formule-tete"><h3>Signature</h3><span class="pastille" data-ar="موصى بها">Recommandée</span></div>
-        <p class="pour" data-ar="المحلات، المهن الحرة، الشركات.">Commerces, professions libérales, entreprises.</p>
-        <ul><li data-ar="موقع تعريفي حسب الطلب، حتى 6 صفحات">Site vitrine sur mesure, jusqu'à 6 pages</li><li data-ar="حركات ولغتان">Animations et 2 langues</li><li data-ar="Google Maps والظهور في محركات البحث">Google Maps et référencement</li></ul>
+        <div class="formule-tete"><h3 data-ar="منصّة التجّار">Plateforme commerçants</h3><span class="pastille" data-ar="موصى بها">Recommandée</span></div>
+        <p class="pour" data-ar="المطاعم، كراء السيارات، الخدمات: زبائنك يطلبون أو يحجزون عبر الإنترنت.">Restaurants, location de voitures, services : vos clients commandent ou réservent en ligne.</p>
+        <ul><li data-ar="طلب أو حجز عبر الإنترنت">Commande ou réservation en ligne</li><li data-ar="فضاء المسيّر: الطلبيات مباشرة، المطبخ، الصندوق، الموصّل">Espace gérant : commandes en direct, cuisine, caisse, livreur</li><li data-ar="جدول المواعيد، الوفاء، القائمة والأسعار قابلة للتعديل">Planning, fidélité, carte et prix modifiables</li><li data-ar="خدمة عملاء 24/24، 7/7 لمدة 12 شهرًا">Service client 24h/24, 7j/7 (12 mois)</li></ul>
         <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;80 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">80 000<sup>DA</sup></span></div>
-        <button type="button" class="btn btn-or btn-petit" data-offre="Signature" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+        <button type="button" class="btn btn-or btn-petit" data-offre="plateforme" data-ar="اختر هذه الباقة">Choisir cette offre</button>
       </article>
       <article class="formule">
-        <div class="formule-tete"><h3>Commerce</h3></div>
-        <p class="pour" data-ar="البائعون والعلامات والمتاجر.">Vendeurs, marques et boutiques.</p>
-        <ul><li data-ar="متجر إلكتروني متكامل">Boutique en ligne complète</li><li data-ar="الدفع عند الاستلام، رسوم حسب الولاية">Paiement à la livraison, frais par wilaya</li><li data-ar="BaridiMob وCIB والذهبية كخيار">BaridiMob, CIB et Edahabia en option</li></ul>
-        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;150 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">150 000<sup>DA</sup></span></div>
-        <button type="button" class="btn btn-ligne btn-petit" data-offre="Commerce" data-ar="اختر هذه الباقة">Choisir cette offre</button>
-      </article>
-      <article class="formule">
-        <div class="formule-tete"><h3>Immersion</h3></div>
-        <p class="pour" data-ar="العقار، الأثاث، الأزياء، السيارات، العلامات الراقية.">Immobilier, mobilier, mode, automobile, marques premium.</p>
-        <ul><li data-ar="منتجات أو مبانٍ ثلاثية الأبعاد قابلة للتدوير">Produits ou bâtiments en 3D à faire tourner</li><li data-ar="أداة تخصيص أو زيارة افتراضية">Configurateur ou visite virtuelle</li><li data-ar="فيديوهات 3D لشبكاتك الاجتماعية">Vidéos 3D pour vos réseaux</li></ul>
-        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;250 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">250 000<sup>DA</sup></span></div>
-        <button type="button" class="btn btn-ligne btn-petit" data-offre="Immersion" data-ar="اختر هذه الباقة">Choisir cette offre</button>
-      </article>
-      <article class="formule">
-        <div class="formule-tete"><h3>Plateforme</h3></div>
+        <div class="formule-tete"><h3 data-ar="تطبيق">Application</h3></div>
         <p class="pour" data-ar="الشركات الناشئة والمؤسسات والمشاريع الطموحة.">Startups, entreprises et projets ambitieux.</p>
-        <ul><li data-ar="تطبيق ويب أو هاتف">Application web ou mobile</li><li data-ar="حجوزات، فضاء الزبائن، منصّة بيع">Réservation, espace client, marketplace</li><li data-ar="لوحة تحكم حسب الطلب">Tableau de bord sur mesure</li><li data-ar="خدمة عملاء 24/24، 7/7 لمدة 12 شهرًا">Service client 24h/24, 7j/7 (12 mois)</li></ul>
-        <div class="prix"><small data-ar="حسب عرض السعر، ابتداءً من">Sur devis, dès</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;300 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">300 000<sup>DA</sup></span></div>
-        <button type="button" class="btn btn-ligne btn-petit" data-offre="Plateforme" data-ar="اختر هذه الباقة">Choisir cette offre</button>
+        <ul><li data-ar="تطبيق حسب الطلب، ويب أو هاتف قابل للتثبيت">Application sur mesure, web ou mobile installable</li><li data-ar="فضاء الزبائن والإشعارات">Espace client et notifications</li><li data-ar="لوحة تحكم حسب الطلب">Tableau de bord sur mesure</li><li data-ar="خدمة عملاء 24/24، 7/7 لمدة 12 شهرًا">Service client 24h/24, 7j/7 (12 mois)</li></ul>
+        <div class="prix"><small data-ar="ابتداءً من">À partir de</small><span data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;150 000&lt;/bdi&gt;&lt;sup&gt;دج&lt;/sup&gt;">150 000<sup>DA</sup></span></div>
+        <button type="button" class="btn btn-ligne btn-petit" data-offre="application" data-ar="اختر هذه الباقة">Choisir cette offre</button>
       </article>
     </div>
-    <div class="inclus"><b data-ar="مشمول في كل الباقات">Inclus dans toutes les formules</b><span data-ar="اسم نطاق خاص بك (&lt;bdi dir=&quot;ltr&quot;&gt;.com&lt;/bdi&gt; أو &lt;bdi dir=&quot;ltr&quot;&gt;.dz&lt;/bdi&gt;)، السنة الأولى مجاناً">Votre propre nom de domaine (.com ou .dz), 1re année offerte</span><span data-ar="بريدك المهني، مثل &lt;bdi dir=&quot;ltr&quot;&gt;contact@votre-entreprise.com&lt;/bdi&gt;">Votre email pro, comme contact@votre-entreprise.com</span><span data-ar="شهادة أمان https">Certificat de sécurité https</span><span data-ar="بطاقة Google Maps">Fiche Google Maps</span><span data-ar="النموذج: راضٍ أو نعيد لك أموالك">Maquette satisfaite ou remboursée</span></div>
+    <div class="inclus"><b data-ar="مشمول في كل الباقات">Inclus dans toutes les formules</b><span data-ar="اسم نطاق خاص بك (&lt;bdi dir=&quot;ltr&quot;&gt;.com&lt;/bdi&gt; أو &lt;bdi dir=&quot;ltr&quot;&gt;.dz&lt;/bdi&gt;)، السنة الأولى مجاناً">Votre propre nom de domaine (.com ou .dz), 1re année offerte</span><span data-ar="بريدك المهني، مثل &lt;bdi dir=&quot;ltr&quot;&gt;contact@votre-entreprise.com&lt;/bdi&gt;">Votre email pro, comme contact@votre-entreprise.com</span><span data-ar="شهادة أمان https">Certificat de sécurité https</span><span data-ar="بطاقة Google Maps">Fiche Google Maps</span><span data-ar="النموذج: راضٍ أو نعيد لك أموالك">Maquette satisfaite ou remboursée</span><span data-ar="خدمة العملاء على واتساب">Service client sur WhatsApp</span></div>
     <p class="note-prix" data-ar="يختلف السعر النهائي حسب التصميم، وعدد الصفحات أو المنتجات، واللغات، والوظائف، و3D، وكتابة النصوص، والصور، والمدة.">Le prix final varie selon le design, le nombre de pages ou de produits, les langues, les fonctions, la 3D, la rédaction des textes, les photos et le délai.</p>
   </div>
 </section>
@@ -720,18 +725,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   <div class="wrap">
     <div class="titre-bloc">
       <p class="eyebrow" data-ar="مراحل العمل">Déroulement</p>
-      <h2 data-ar="ترى موقعك قبل دفع الباقي.">Vous voyez votre site avant de payer le solde.</h2>
+      <h2 data-ar="ترى موقعك قبل أن تدفع أي شيء.">Vous voyez votre site avant de payer quoi que ce soit.</h2>
       <p data-ar="كل شيء يتم عن بُعد، أينما كنت في الجزائر: مكالمة على واتساب، نموذج على الإنترنت، دفع عبر BaridiMob، ثم إطلاق الموقع. دون أي تنقّل.">Tout se fait à distance, où que vous soyez en Algérie : appel sur WhatsApp, maquette en ligne, paiement par BaridiMob, mise en ligne. Aucun déplacement.</p>
     </div>
     <ol class="etapes">
       <li><h3 data-ar="مكالمة تعارف">Appel découverte</h3><p data-ar="مجانية، على واتساب أو بالهاتف، دون تنقّل. نفهم احتياجك.">Gratuit, sur WhatsApp ou par téléphone, sans vous déplacer. On comprend votre besoin.</p></li>
-      <li><h3 data-ar="عرض سعر واضح">Devis clair</h3><p data-ar="سعر ثابت قبل البدء. بلا مفاجآت.">Un prix fixé avant de commencer. Aucune surprise.</p></li>
-      <li class="paiement"><h3 data-ar="دفعة أولى &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt;">Acompte de 50 %</h3><span class="badge-baridi">BaridiMob</span><p data-ar="تُدفع عن بُعد من هاتفك. ينطلق المشروع فور استلامها.">Payé à distance depuis votre téléphone. Le projet démarre dès réception.</p></li>
+      <li><h3 data-ar="عرض تجريبي مجاني">Démo gratuite</h3><span class="badge-baridi" data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;0&lt;/bdi&gt; دج">0 DA</span><p data-ar="نجهّز عرضاً تجريبياً باسمك، مع سعر واضح وثابت. لا تدفع شيئاً قبل أن ترى موقعك.">Nous préparons une démo à votre nom, avec un devis clair et fixe. Vous ne payez rien avant d'avoir vu votre site.</p></li>
+      <li class="paiement"><h3 data-ar="دفعة أولى &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt;">Acompte de 50 %</h3><span class="badge-baridi">BaridiMob</span><p data-ar="عند الموافقة على العرض التجريبي، تدفع عن بُعد من هاتفك وتنطلق الأشغال.">Quand la démo vous convainc, vous le payez à distance depuis votre téléphone et la réalisation démarre.</p></li>
       <li><h3 data-ar="نموذج خلال 72 ساعة">Maquette sous 72 h</h3><p data-ar="توافق على الأسلوب قبل التنفيذ. غير مقتنع بعد جولتين من التعديلات؟ نعيد لك الدفعة الأولى.">Vous validez le style avant la fabrication. Pas convaincu après 2 séries de retouches ? On vous rembourse l'acompte.</p></li>
       <li><h3 data-ar="التنفيذ">Fabrication</h3><p data-ar="تصميم، برمجة، 3D، نصوص وتحسين.">Design, développement, 3D, textes et optimisation.</p></li>
-      <li class="paiement"><h3 data-ar="العرض والدفعة الثانية">Présentation et solde</h3><span class="badge-baridi">BaridiMob</span><p data-ar="تكتشف موقعك جاهزاً على الإنترنت، ثم تدفع &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; المتبقية عن بُعد.">Vous découvrez votre site terminé en ligne, puis réglez les 50 % restants à distance.</p></li>
-      <li><h3 data-ar="الإطلاق">Mise en ligne</h3><p data-ar="استضافة نهائية، اسم النطاق، وتكوين قصير.">Hébergement définitif, nom de domaine et courte formation.</p></li>
+      <li class="paiement"><h3 data-ar="الإطلاق والدفعة الثانية">Mise en ligne et solde</h3><span class="badge-baridi">BaridiMob</span><p data-ar="يصبح موقعك متاحاً على اسم نطاقك، ثم تدفع &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; المتبقية عن بُعد.">Votre site est en ligne sur votre nom de domaine, puis vous réglez les 50 % restants à distance.</p></li>
+      <li><h3 data-ar="التكوين والمتابعة">Formation et suivi</h3><p data-ar="تكوين قصير، وخدمة العملاء على واتساب بعد الإطلاق.">Courte formation, puis service client sur WhatsApp après le lancement.</p></li>
     </ol>
+    <p class="note-prix" data-ar="تفضّل الدفع مرة واحدة؟ تستفيد من خصم &lt;bdi dir=&quot;ltr&quot;&gt;5%&lt;/bdi&gt;. الأمر اختياري، ولا نفرضه أبداً.">Vous préférez payer en une fois ? Vous bénéficiez de −5 %. C'est au choix, jamais imposé.</p>
   </div>
 </section>
 
@@ -754,6 +760,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
         <table class="tableau">
           <tr><th data-ar="إطلاق الإعلانات">Lancement Pub</th><td data-ar="تصاميم وفيديوهات وإدارة إعلاناتك لمدة شهر (ميزانية الإعلان منفصلة)">Visuels, vidéos et gestion de vos pubs pendant 1 mois (budget pub à part)</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;35 000&lt;/bdi&gt; دج">dès 35 000 DA</td></tr>
           <tr><th data-ar="تصاميم 3D">Visuels 3D</th><td data-ar="صور وفيديوهات 3D لمنتجاتك">Rendus et vidéos 3D de vos produits</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;20 000&lt;/bdi&gt; دج">dès 20 000 DA</td></tr>
+          <tr><th data-ar="تجربة 3D على الموقع">Expérience 3D sur le site</th><td data-ar="منتج أو مبنى ثلاثي الأبعاد قابل للتدوير، أداة تخصيص أو زيارة افتراضية">Produit ou bâtiment en 3D à faire tourner, configurateur ou visite virtuelle</td><td class="montant" data-ar="حسب عرض السعر">Sur devis</td></tr>
           <tr><th>Google Local</th><td data-ar="بطاقة Google محسّنة، تقييمات وظهور محلي">Fiche Google optimisée, avis et référencement local</td><td class="montant" data-ar="ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;10 000&lt;/bdi&gt; دج">dès 10 000 DA</td></tr>
         </table>
       </div>
@@ -769,8 +776,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <p data-ar="سؤال آخر؟ راسلنا على واتساب، نرد عليك في نفس اليوم.">Une autre question ? Écrivez-nous sur WhatsApp, nous répondons dans la journée.</p>
     </div>
     <div class="faq">
-      <details open><summary data-ar="كم من الوقت أحتاج للحصول على موقعي؟">Combien de temps pour avoir mon site ?</summary><p data-ar="ترى النموذج خلال 72 ساعة. الموقع التعريفي يكون جاهزاً خلال 7 إلى 14 يوماً، والمتجر خلال 2 إلى 3 أسابيع. أما التطبيق فتُحدَّد مدته في عرض السعر.">Vous voyez la maquette sous 72 h. Un site vitrine est prêt en 7 à 14 jours, une boutique en 2 à 3 semaines. Pour une application, le délai est fixé dans le devis.</p></details>
-      <details><summary data-ar="كيف يتم الدفع؟">Comment se passe le paiement ?</summary><p data-ar="&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عبر BaridiMob عند الانطلاق، و&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; فقط بعد رؤية موقعك جاهزاً على الإنترنت. كل شيء يتم عن بُعد، دون تنقّل.">50 % par BaridiMob au lancement, 50 % seulement après avoir vu votre site terminé en ligne. Tout se fait à distance, sans déplacement.</p></details>
+      <details open><summary data-ar="أي باقة أختار؟">Quelle formule choisir ?</summary><p data-ar="الموقع التعريفي (ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;20 000&lt;/bdi&gt; دج) لتقديم نشاطك. المتجر الإلكتروني (ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;50 000&lt;/bdi&gt; دج) لبيع منتجاتك. منصّة التجّار (ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;80 000&lt;/bdi&gt; دج) إذا كان زبائنك يطلبون أو يحجزون: مطعم، كراء سيارات، خدمات. التطبيق (ابتداءً من &lt;bdi dir=&quot;ltr&quot;&gt;150 000&lt;/bdi&gt; دج) لمشروع حسب الطلب. مازلت متردداً؟ مكالمة التعارف مجانية.">Le Site vitrine (à partir de 20 000 DA) pour présenter votre activité. La Boutique en ligne (à partir de 50 000 DA) pour vendre vos produits. La Plateforme commerçants (à partir de 80 000 DA) si vos clients commandent ou réservent : restaurant, location de voitures, services. L'Application (à partir de 150 000 DA) pour un projet sur mesure. Vous hésitez ? L'appel découverte est gratuit.</p></details>
+      <details><summary data-ar="كم من الوقت أحتاج للحصول على موقعي؟">Combien de temps pour avoir mon site ?</summary><p data-ar="ترى النموذج خلال 72 ساعة. الموقع التعريفي يكون جاهزاً خلال 7 إلى 14 يوماً، والمتجر أو منصّة التجّار خلال 2 إلى 4 أسابيع. أما التطبيق فتُحدَّد مدته في عرض السعر.">Vous voyez la maquette sous 72 h. Un site vitrine est prêt en 7 à 14 jours, une boutique ou une plateforme commerçants en 2 à 4 semaines. Pour une application, le délai est fixé dans le devis.</p></details>
+      <details><summary data-ar="كيف يتم الدفع؟">Comment se passe le paiement ?</summary><p data-ar="ترى موقعك مجاناً قبل أن تدفع أي شيء، ولا تدفع النصف إلا بعد أن تقتنع. &lt;bdi dir=&quot;ltr&quot;&gt;0&lt;/bdi&gt; دج قبل أن ترى موقعك: العرض التجريبي باسمك مجاني. بعدها &lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عبر BaridiMob عند الموافقة على العرض، و&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt; عند التسليم بعد إطلاق موقعك. تفضّل الدفع مرة واحدة؟ لك خصم &lt;bdi dir=&quot;ltr&quot;&gt;5%&lt;/bdi&gt;. لا اشتراك إجباري، وكل شيء عن بُعد.">Vous voyez votre site gratuitement avant de payer quoi que ce soit, et vous ne payez la moitié qu'une fois convaincu. 0 DA avant d'avoir vu votre site : la démo à votre nom est gratuite. Ensuite, 50 % par BaridiMob quand vous validez la démo, et 50 % à la livraison, une fois votre site en ligne. Vous préférez payer en une fois ? Vous avez −5 %. Pas d'abonnement obligatoire, tout se fait à distance.</p></details>
       <details><summary data-ar="وإذا لم يعجبني النموذج؟">Et si la maquette ne me plaît pas ?</summary><p data-ar="نعدّلها حتى جولتين. إذا لم تقتنع بعد ذلك، نعيد لك الدفعة الأولى (&lt;bdi dir=&quot;ltr&quot;&gt;50%&lt;/bdi&gt;) كاملة ونتوقف هنا. لا تخاطر بشيء.">Nous la retouchons jusqu'à 2 fois. Si vous n'êtes toujours pas convaincu, nous vous remboursons l'intégralité de votre acompte de 50 % et on s'arrête là. Vous ne prenez aucun risque.</p></details>
       <details><summary data-ar="هل يصبح الموقع ملكي؟">Le site m'appartient-il ?</summary><p data-ar="نعم. يُسجَّل اسم النطاق باسمك، وبعد دفع الباقي يصبح الموقع ومحتواه ملكاً لك.">Oui. Le nom de domaine est enregistré à votre nom et, une fois le solde réglé, le site et ses contenus sont à vous.</p></details>
       <details><summary data-ar="هل يمكنني تعديل موقعي لاحقاً؟">Puis-je modifier mon site ensuite ?</summary><p data-ar="نعم. التعديلات الصغيرة غير محدودة مع اشتراك Care+. ودون اشتراك، ننجزها عند الطلب حسب عرض سعر.">Oui. Les petites modifications sont illimitées avec l'abonnement Care+. Sans abonnement, nous les faisons à la demande, sur devis.</p></details>
@@ -785,7 +793,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     <div class="contact-gauche">
       <p class="eyebrow" data-ar="تواصل معنا">Contact</p>
       <h2 data-ar="مشروعك يستحق &lt;span class=&quot;or-brille&quot;&gt;الاستثنائي.&lt;/span&gt;">Votre projet mérite <span class="or-brille">l'exceptionnel.</span></h2>
-      <p style="color:var(--gris);max-width:46ch" data-ar="راسلنا على واتساب، نرد عليك في نفس اليوم. مكالمة التعارف مجانية.">Écrivez-nous sur WhatsApp, on vous répond dans la journée. L'appel découverte est gratuit.</p>
+      <p style="color:var(--gris);max-width:46ch" data-ar="راسلنا على واتساب، نرد عليك في نفس اليوم. مكالمة التعارف والعرض التجريبي باسمك مجانيان.">Écrivez-nous sur WhatsApp, on vous répond dans la journée. L'appel découverte et la démo à votre nom sont gratuits.</p>
       <div class="numero"><span id="numero" dir="ltr">+213 549 50 68 57</span><button class="btn btn-ligne btn-petit" type="button" id="copier" data-ar="نسخ">Copier</button></div>
       <div><a class="btn btn-or" href="https://wa.me/213549506857" target="_blank" rel="noopener" data-ar="افتح واتساب">Ouvrir WhatsApp</a></div>
     </div>
@@ -794,7 +802,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
       <label for="activite"><span data-ar="نشاطك">Votre activité</span><input id="activite" name="activite" placeholder="Ex. : restaurant à Hydra" data-ar-ph="مثال: مطعم في حيدرة"></label>
       <label for="formule"><span data-ar="الباقة التي تهمّك">Formule qui vous intéresse</span>
         <select id="formule" name="formule">
-          <option value="" selected disabled data-ar="اختر باقة">Choisissez une offre</option><option>Impact</option><option>Signature</option><option>Commerce</option><option>Immersion</option><option>Plateforme</option>
+          <option value="" selected disabled data-ar="اختر باقة">Choisissez une offre</option><option value="vitrine" data-ar="موقع تعريفي">Site vitrine</option><option value="boutique" data-ar="متجر إلكتروني">Boutique en ligne</option><option value="plateforme" data-ar="منصّة التجّار">Plateforme commerçants</option><option value="application" data-ar="تطبيق">Application</option>
         </select>
       </label>
       <label for="message"><span data-ar="مشروعك في بضع كلمات">Votre projet en quelques mots</span><textarea id="message" name="message" placeholder="Ce que vous voulez, vos délais, vos exemples préférés…" data-ar-ph="ما تريده، المدة، أمثلتك المفضلة…"></textarea></label>
@@ -971,6 +979,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <script>
 (function(){
   var M='medias/', WA='213549506857';
+  // Grille d'offres (2026-11-10), partagée avec la fenêtre « Choisissez votre offre »
+  window.DZ_OFFRES=[
+    {id:'vitrine',fr:'Site vitrine',ar:'موقع تعريفي',prix:20000,dFr:'Site sur mesure pour présenter votre activité',dAr:'موقع حسب الطلب لتقديم نشاطك'},
+    {id:'boutique',fr:'Boutique en ligne',ar:'متجر إلكتروني',prix:50000,dFr:'Catalogue, panier, paiement à la livraison',dAr:'كتالوج، سلة، الدفع عند الاستلام'},
+    {id:'plateforme',fr:'Plateforme commerçants',ar:'منصّة التجّار',prix:80000,dFr:'Commande ou réservation en ligne + espace gérant',dAr:'طلب أو حجز عبر الإنترنت + فضاء المسيّر',reco:true},
+    {id:'application',fr:'Application',ar:'تطبيق',prix:150000,dFr:'Application web ou mobile sur mesure',dAr:'تطبيق ويب أو هاتف حسب الطلب'}
+  ];
+  function nomOffre(x){var o=DZ_OFFRES.filter(function(f){return f.id===x.formule})[0];return (enAr()?o.ar:o.fr)+(x.opt3d?' + 3D':'')}
   window.DZ=window.DZ||{lang:'fr',cb:[]};
   function enAr(){return DZ.lang==='ar'}
   var AR_S={resto:['مطعم','FR · عربي'],boutique:['متجر أزياء','سلة تسوق فعّالة'],immo:['ترقية عقارية','مجسّم 3D'],kenza:['أثاث وديكور','أداة تخصيص 3D'],clinique:['صحة','مواعيد عبر الإنترنت'],sport:['قاعة رياضة','جدول تفاعلي'],beaute:['معهد تجميل','حجز'],wesla:['تطبيق توصيل','تطبيق']};
@@ -984,7 +1000,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   function jours(n){var noms=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],r=[],d=new Date();for(var i=1;r.length<n;i++){var x=new Date(d.getTime()+i*864e5);if(x.getDay()!==5)r.push(noms[x.getDay()]+' '+x.getDate())}return r}
 
   var SITES=[
-  {id:'resto',nom:'Dar Lbahdja',secteur:'Restaurant',formule:'Signature',url:'darlbahdja.dz',img:'resto-salle.jpg',badge:'FR · عربي',
+  {id:'resto',nom:'Dar Lbahdja',secteur:'Restaurant',formule:'plateforme',url:'darlbahdja.dz',img:'resto-salle.jpg',badge:'FR · عربي',
    theme:'--d-bg:#0F1F19;--d-fg:#F3E9DA;--d-acc:#D98E5F;--d-on:#13261F;--d-surf:#14291F;--d-mute:#B9AC98;--d-line:rgba(243,233,218,.14);--d-ft:"Cormorant Garamond",Georgia,serif;--d-fw:600;--d-r:999px;--d-champ:#0F1F19',
    rendu:function(c,s){
      var ar=s.lang==='ar',T=ar?{menu:['القائمة','قصتنا','الحجز'],sur:'مطبخ عاصمي أصيل · القصبة',h1:'نكهات القصبة، بلمسة راقية',p:'وصفات عائلية متوارثة، في ديكور عاصمي ساحر.',cta:'احجز طاولتك',voir:'اكتشف القائمة',carte:'قائمتنا',t:['مقبلات','أطباق رئيسية','حلويات'],hist:'قصتنا',histp:'منذ ثلاثة أجيال، نطبخ بنفس الحب ونفس التوابل. كل طبق يحكي حكاية الجزائر العاصمة.',resa:'احجز طاولة',date:'التاريخ',heure:'الساعة',pers:'عدد الأشخاص',env:'تأكيد الحجز',ok:'شكراً! تم تسجيل حجزك. سنؤكد لك عبر واتساب.',adr:'القصبة السفلى، الجزائر العاصمة · 12:00 - 23:00'}
@@ -1000,7 +1016,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
      pied(c,T.adr);
    }},
 
-  {id:'boutique',nom:'Lalla Couture',secteur:'Boutique de mode',formule:'Commerce',url:'lallacouture.dz',img:'caftan-blanc.jpg',badge:'Panier actif',
+  {id:'boutique',nom:'Lalla Couture',secteur:'Boutique de mode',formule:'boutique',url:'lallacouture.dz',img:'caftan-blanc.jpg',badge:'Panier actif',
    theme:'--d-bg:#F6EFEA;--d-fg:#2B1B1E;--d-acc:#8C2F45;--d-on:#ffffff;--d-surf:#FFFFFF;--d-mute:#7A6266;--d-line:rgba(43,27,30,.12);--d-ft:"Cormorant Garamond",Georgia,serif;--d-fw:600;--d-r:2px;--d-rc:4px;--d-voile:linear-gradient(90deg,rgba(43,27,30,.75),rgba(43,27,30,.05) 70%)',
    rendu:function(c,s){
      s.items=s.items||[];
@@ -1019,7 +1035,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
      pied(c,'Atelier à Tlemcen · Showroom à Alger');
    }},
 
-  {id:'immo',nom:'Les Terrasses d\'Hydra',secteur:'Promotion immobilière',formule:'Immersion',url:'terrasses-hydra.dz',img:'immeuble.jpg',badge:'Maquette 3D',
+  {id:'immo',nom:'Les Terrasses d\'Hydra',secteur:'Promotion immobilière',formule:'vitrine',opt3d:true,url:'terrasses-hydra.dz',img:'immeuble.jpg',badge:'Maquette 3D',
    theme:'--d-bg:#0A1020;--d-fg:#EAF0FA;--d-acc:#D4B26A;--d-on:#0A1020;--d-surf:#111A30;--d-mute:#9AA8C2;--d-line:rgba(234,240,250,.12);--d-ft:"Syne",sans-serif;--d-fw:700;--d-ls:-.02em;--d-r:6px;--d-champ:#0A1020;--d-voile:linear-gradient(90deg,rgba(8,14,32,.9),rgba(8,14,32,.1) 70%)',
    rendu:function(c,s){
      var A=[['F3','105 à 120 m²','Terrasse 25 m², vue baie','32 000 000'],['F4','135 à 150 m²','Terrasse 40 m², 2 salles de bain','45 000 000'],['F5','180 à 210 m²','Terrasse 70 m², suite parentale','62 000 000']];
@@ -1031,7 +1047,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
      pied(c,'Bureau de vente : Hydra, Alger');
    }},
 
-  {id:'kenza',nom:'Maison Kenza',secteur:'Mobilier et décoration',formule:'Immersion',url:'maisonkenza.dz',img:'fauteuil.jpg',badge:'Configurateur 3D',
+  {id:'kenza',nom:'Maison Kenza',secteur:'Mobilier et décoration',formule:'boutique',opt3d:true,url:'maisonkenza.dz',img:'fauteuil.jpg',badge:'Configurateur 3D',
    theme:'--d-bg:#EFEAE2;--d-fg:#2A2622;--d-acc:#8C6A43;--d-on:#ffffff;--d-surf:#F7F3EC;--d-mute:#776D63;--d-line:rgba(42,38,34,.12);--d-ft:"Cormorant Garamond",Georgia,serif;--d-fw:600;--d-r:2px;--d-rc:6px',
    rendu:function(c,s){
      var T=[['Bouclette ivoire','#FFFFFF'],['Terracotta','#C9714B'],['Vert sauge','#8FA58A'],['Bleu nuit','#3D4F7A'],['Moutarde','#D3A63A']];
@@ -1042,7 +1058,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
      pied(c,'Showroom : Chéraga, Alger');
    }},
 
-  {id:'clinique',nom:'Clinique Dentaire Les Pins',secteur:'Santé',formule:'Signature',url:'clinique-lespins.dz',img:'clinique.jpg',badge:'Rendez-vous en ligne',
+  {id:'clinique',nom:'Clinique Dentaire Les Pins',secteur:'Santé',formule:'plateforme',url:'clinique-lespins.dz',img:'clinique.jpg',badge:'Rendez-vous en ligne',
    theme:'--d-bg:#F7FAF8;--d-fg:#17312A;--d-acc:#2E7D6B;--d-on:#ffffff;--d-surf:#FFFFFF;--d-mute:#5E7A72;--d-line:rgba(23,49,42,.12);--d-ft:"Hanken Grotesk",sans-serif;--d-fw:600;--d-ls:-.02em;--d-r:12px;--d-rc:16px;--d-ri:10px;--d-voile:linear-gradient(90deg,rgba(14,40,34,.8),rgba(14,40,34,.05) 70%)',
    rendu:function(c,s){
      var S=[['Implants dentaires','Pose et couronne, garantie 10 ans','dès 90 000 DA'],['Blanchiment','Résultat visible en 1 séance','dès 25 000 DA'],['Aligneurs invisibles','Orthodontie discrète, adultes et ados','dès 180 000 DA'],['Soins des enfants','Accueil doux et ludique','dès 2 500 DA']];
@@ -1055,7 +1071,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
      pied(c,'Ben Aknoun, Alger · Sam - Jeu, 9 h - 18 h');
    }},
 
-  {id:'sport',nom:'Atlas Fitness',secteur:'Salle de sport',formule:'Signature',url:'atlasfitness.dz',img:'sport.jpg',badge:'Planning interactif',
+  {id:'sport',nom:'Atlas Fitness',secteur:'Salle de sport',formule:'plateforme',url:'atlasfitness.dz',img:'sport.jpg',badge:'Planning interactif',
    theme:'--d-bg:#0C0C0C;--d-fg:#F2F2F2;--d-acc:#FF9F1C;--d-on:#0C0C0C;--d-surf:#151515;--d-mute:#9A9A9A;--d-line:rgba(255,255,255,.1);--d-ft:"Syne",sans-serif;--d-fw:800;--d-ls:-.03em;--d-r:4px;--d-rc:6px;--d-champ:#0C0C0C',
    rendu:function(c,s){
      var D={Sam:[['08:00','Cross training','Yacine'],['18:00','Boxe','Karim'],['20:00','Yoga','Lina']],Dim:[['07:00','Cardio HIIT','Sofia'],['19:00','Musculation guidée','Yacine']],Lun:[['08:00','Pilates','Lina'],['18:30','Cross training','Karim'],['20:00','Boxe','Karim']],Mar:[['07:00','Cardio HIIT','Sofia'],['19:00','Yoga','Lina']],Mer:[['08:00','Cross training','Yacine'],['18:30','Pilates','Lina']],Jeu:[['10:00','Stretching','Sofia'],['17:00','Boxe','Karim']]};
@@ -1068,7 +1084,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
      pied(c,'Hydra, Alger');
    }},
 
-  {id:'beaute',nom:'Rose & Or',secteur:'Institut de beauté',formule:'Signature',url:'roseetor.dz',img:'beaute.jpg',badge:'Réservation',
+  {id:'beaute',nom:'Rose & Or',secteur:'Institut de beauté',formule:'plateforme',url:'roseetor.dz',img:'beaute.jpg',badge:'Réservation',
    theme:'--d-bg:#FBF3F1;--d-fg:#3A2328;--d-acc:#B76E85;--d-on:#ffffff;--d-surf:#FFFFFF;--d-mute:#8A6C72;--d-line:rgba(58,35,40,.12);--d-ft:"Cormorant Garamond",Georgia,serif;--d-fw:600;--d-r:999px;--d-rc:18px;--d-voile:linear-gradient(90deg,rgba(58,35,40,.7),rgba(58,35,40,.05) 70%)',
    rendu:function(c,s){
      var P=[['Brushing','45 min','2 500 DA'],['Coloration','2 h','dès 6 000 DA'],['Soin visage éclat','1 h','5 000 DA'],['Hammam et gommage','1 h 30','4 000 DA'],['Maquillage mariée','Essai inclus','dès 15 000 DA']];
@@ -1080,7 +1096,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
      pied(c,'Dely Ibrahim, Alger · Mar - Dim');
    }},
 
-  {id:'wesla',nom:'Wesla',secteur:'Application de livraison',formule:'Plateforme',url:'wesla.app',img:'appli.jpg',badge:'Application',
+  {id:'wesla',nom:'Wesla',secteur:'Application de livraison',formule:'application',url:'wesla.app',img:'appli.jpg',badge:'Application',
    theme:'--d-bg:#FFF6F2;--d-fg:#1A0E14;--d-acc:#E2335B;--d-on:#ffffff;--d-surf:#FFFFFF;--d-mute:#7A5F66;--d-line:rgba(26,14,20,.1);--d-ft:"Syne",sans-serif;--d-fw:800;--d-ls:-.03em;--d-r:14px;--d-rc:18px',
    rendu:function(c,s){
      return nav(c,['Comment ça marche','Restaurants','Devenir livreur'],'<span class="d-btn petit">Télécharger</span>')+
@@ -1094,7 +1110,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
   // Grille du portfolio
   var grille=document.getElementById('grille-portfolio');
-  function rendreGrille(){grille.innerHTML=SITES.map(function(x,i){return '<button type="button" class="site-carte" data-i="'+i+'"><img src="'+M+x.img+'" alt="" loading="lazy"><span class="badge">'+(enAr()?AR_S[x.id][1]:x.badge)+'</span><span class="info"><span class="secteur">'+secteurDe(x)+' · '+x.formule+'</span><h3>'+esc(x.nom)+'</h3><span class="visiter">'+(enAr()?'زُر الموقع <span aria-hidden="true">←</span>':'Visiter le site <span aria-hidden="true">→</span>')+'</span></span></button>'}).join('')}
+  function rendreGrille(){grille.innerHTML=SITES.map(function(x,i){return '<button type="button" class="site-carte" data-i="'+i+'"><img src="'+M+x.img+'" alt="" loading="lazy"><span class="badge">'+(enAr()?AR_S[x.id][1]:x.badge)+'</span><span class="info"><span class="secteur">'+secteurDe(x)+' · '+nomOffre(x)+'</span><h3>'+esc(x.nom)+'</h3><span class="visiter">'+(enAr()?'زُر الموقع <span aria-hidden="true">←</span>':'Visiter le site <span aria-hidden="true">→</span>')+'</span></span></button>'}).join('')}
   rendreGrille();
   grille.addEventListener('click',function(e){var b=e.target.closest('.site-carte');if(b)ouvrir(+b.dataset.i)});
 
@@ -1111,7 +1127,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     document.getElementById('v-titre').textContent=c.nom+' · '+secteurDe(x);
     document.getElementById('v-url').textContent=perso&&perso.id===x.id?perso.url:x.url;
     var msg=enAr()?(perso&&perso.id===x.id?'مرحباً Dzign Studio، أنا '+perso.nom+'. شاهدت معاينة موقعي ('+secteurDe(x)+') وأريد إطلاقه.':'مرحباً Dzign Studio، أريد موقعاً مثل «'+x.nom+'» ('+secteurDe(x)+').'):(perso&&perso.id===x.id?'Bonjour Dzign Studio, je suis '+perso.nom+'. J\'ai vu l\'aperçu de mon site ('+x.secteur+') et je veux le lancer.':'Bonjour Dzign Studio, je veux un site comme « '+x.nom+' » ('+x.secteur+').');
-    var vc=document.getElementById('v-commander');vc.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);vc.dataset.offre=x.formule;vc.dataset.contexte=perso&&perso.id===x.id?'perso|'+perso.nom+'|'+secteurDe(x):'demo|'+x.nom+'|'+secteurDe(x);
+    var vc=document.getElementById('v-commander');vc.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);vc.dataset.offre=x.formule;vc.dataset.contexte=(perso&&perso.id===x.id?'perso|'+perso.nom+'|'+secteurDe(x):'demo|'+x.nom+'|'+secteurDe(x))+(x.opt3d?'|3d':'');
     var bandeau=document.getElementById('v-perso');
     if(perso&&perso.id===x.id){bandeau.hidden=false;bandeau.innerHTML=enAr()?'<span>معاينة مخصّصة لـ <b>'+esc(perso.nom)+'</b>، على عنوانك الخاص <b dir="ltr">'+esc(perso.url)+'</b> مع البريد <b dir="ltr">contact@'+esc(perso.url)+'</b>. يمكن أن يكون هذا موقعك خلال 7 أيام.</span>':'<span>Aperçu personnalisé pour <b>'+esc(perso.nom)+'</b>, sur votre propre adresse <b>'+esc(perso.url)+'</b> avec l\'email <b>contact@'+esc(perso.url)+'</b>. Ce site peut être le vôtre en 7 jours.</span>'}else bandeau.hidden=true;
     if(x.id==='kenza')kenza3d(s);else arreter3d();
@@ -1236,19 +1252,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <script>
 (function(){
   var WA='213549506857';
-  var OFFRES=[
-    ['Impact',30000,'Une page premium pour lancer une offre ou un produit','صفحة راقية لإطلاق عرض أو منتج'],
-    ['Signature',80000,'Site vitrine sur mesure, animé, 2 langues','موقع تعريفي حسب الطلب، متحرك، بلغتين'],
-    ['Commerce',150000,'Boutique en ligne, paiement à la livraison','متجر إلكتروني، الدفع عند الاستلام'],
-    ['Immersion',250000,'Site avec 3D, configurateur, visite virtuelle','موقع بتقنية 3D، أداة تخصيص، زيارة افتراضية'],
-    ['Plateforme',300000,'Application web ou mobile sur mesure','تطبيق ويب أو هاتف حسب الطلب']
-  ];
+  var OFFRES=window.DZ_OFFRES;
   var M=document.getElementById('choix'),F=document.getElementById('choix-form'),zone=document.getElementById('choix-offres');
   var envoyer=document.getElementById('choix-envoyer'),erreur=document.getElementById('choix-erreur'),ctxEl=document.getElementById('choix-contexte');
   var etat={contexte:'',message:''},retour=null;
   function ar(){return window.DZ&&DZ.lang==='ar'}
   function nb(n){return n.toLocaleString('fr-FR').replace(/\u202f|\u00a0/g,' ')}
-  function prix(o){return ar()?(o[0]==='Plateforme'?'حسب عرض السعر، ابتداءً من ':'ابتداءً من ')+'<bdi dir="ltr">'+nb(o[1])+'</bdi> دج':(o[0]==='Plateforme'?'Sur devis, dès ':'Dès ')+nb(o[1])+' DA'}
+  function prix(o){return ar()?'ابتداءً من <bdi dir="ltr">'+nb(o.prix)+'</bdi> دج':'À partir de '+nb(o.prix)+' DA'}
   function choisie(){var r=F.querySelector('input[name="offre"]:checked');return r?r.value:''}
   function maj(){var ok=!!choisie();envoyer.setAttribute('aria-disabled',ok?'false':'true');if(ok)erreur.hidden=true}
   function textes(){
@@ -1260,18 +1270,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     document.getElementById('choix-l-act').textContent=a?'نشاطك (اختياري)':'Votre activité (facultatif)';
     document.getElementById('choix-nom').placeholder=a?'مثال: أمين ب.':'Ex. : Amine B.';
     document.getElementById('choix-activite').placeholder=a?'مثال: مطعم في حيدرة':'Ex. : restaurant à Hydra';
-    document.getElementById('choix-note').textContent=a?'الأسعار تقريبية؛ يُثبَّت السعر النهائي في عرض السعر بعد مكالمة التعارف المجانية.':'Prix indicatifs : le prix final est fixé dans le devis, après l\'appel découverte gratuit.';
+    document.getElementById('choix-note').textContent=a?'0 دج قبل أن ترى موقعك: العرض التجريبي باسمك مجاني. الأسعار تقريبية، ويُثبَّت السعر النهائي في عرض السعر.':'0 DA avant d\'avoir vu votre site : la démo à votre nom est gratuite. Prix indicatifs, le prix final est fixé dans le devis.';
     envoyer.textContent=a?'تابع على واتساب':'Continuer sur WhatsApp';
     var v=choisie();
     zone.querySelectorAll('.offre').forEach(function(x){x.remove()});
     OFFRES.forEach(function(o){
       var l=document.createElement('label');l.className='offre';
-      l.innerHTML='<input type="radio" name="offre" value="'+o[0]+'"'+(o[0]===v?' checked':'')+'><b>'+o[0]+'</b><span class="px">'+prix(o)+'</span><small>'+(a?o[3]:o[2])+'</small>';
+      l.innerHTML='<input type="radio" name="offre" value="'+o.id+'"'+(o.id===v?' checked':'')+'><b>'+(a?o.ar:o.fr)+'</b><span class="px">'+prix(o)+'</span><small>'+(a?o.dAr:o.dFr)+(o.reco?(a?' · موصى بها':' · Recommandée'):'')+'</small>';
       zone.appendChild(l);
     });
     var c=etat.contexte,t='';
     if(c==='lmdp')t=a?'مرجعك: موقع La Maison du Parquet':'Référence : le site de La Maison du Parquet';
-    else if(c.indexOf('demo|')===0){var d=c.split('|');t=a?'مرجعك: الموقع التجريبي «'+d[1]+'» ('+d[2]+')':'Référence : le site de démonstration « '+d[1]+' » ('+d[2]+')'}
+    else if(c.indexOf('demo|')===0){var d=c.split('|');t=(a?'مرجعك: الموقع التجريبي «'+d[1]+'» ('+d[2]+')':'Référence : le site de démonstration « '+d[1]+' » ('+d[2]+')')+(d[3]==='3d'?(a?' + خيار تجربة 3D':' + option Expérience 3D'):'')}
     else if(c.indexOf('perso|')===0){var q=c.split('|');t=a?'مرجعك: معاينة موقع «'+q[1]+'» ('+q[2]+')':'Référence : l\'aperçu de votre site « '+q[1]+' » ('+q[2]+')'}
     ctxEl.textContent=t;ctxEl.hidden=!t;
     maj();
@@ -1298,17 +1308,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
     e.preventDefault();
     var v=choisie(),a=ar();
     if(!v){erreur.textContent=a?'اختر باقة للمتابعة.':'Choisissez une offre pour continuer.';erreur.hidden=false;zone.querySelector('input').focus();return}
-    var o=OFFRES.filter(function(x){return x[0]===v})[0];
+    var o=OFFRES.filter(function(x){return x.id===v})[0];
     var nom=document.getElementById('choix-nom').value.trim(),act=document.getElementById('choix-activite').value.trim();
-    var px=(o[0]==='Plateforme'?(a?'حسب عرض السعر، ابتداءً من ':'sur devis, dès '):(a?'ابتداءً من ':'à partir de '))+nb(o[1])+(a?' دج':' DA');
-    var lignes=a?['مرحباً Dzign Studio 👋','الباقة المختارة: '+o[0]+' ('+px+')']:['Bonjour Dzign Studio 👋','Offre choisie : '+o[0]+' ('+px+')'];
+    var px=(a?'ابتداءً من ':'à partir de ')+nb(o.prix)+(a?' دج':' DA');
+    var lignes=a?['مرحباً Dzign Studio 👋','الباقة المختارة: '+o.ar+' ('+px+')']:['Bonjour Dzign Studio 👋','Offre choisie : '+o.fr+' ('+px+')'];
     if(nom)lignes.push((a?'الاسم: ':'Nom : ')+nom);
     if(act)lignes.push((a?'النشاط: ':'Activité : ')+act);
     if(!ctxEl.hidden)lignes.push(ctxEl.textContent);
     if(etat.message)lignes.push((a?'المشروع: ':'Projet : ')+etat.message);
-    lignes.push(a?'أودّ حجز مكالمة التعارف المجانية.':'Je souhaite réserver mon appel découverte gratuit.');
+    lignes.push(a?'أودّ حجز مكالمة التعارف المجانية ورؤية العرض التجريبي المجاني باسمي.':'Je souhaite réserver mon appel découverte gratuit et voir ma démo gratuite à mon nom.');
     var url='https://wa.me/'+WA+'?text='+encodeURIComponent(lignes.join('\n'));
-    if(window.fbq)fbq('track','Contact',{content_name:o[0]});
+    if(window.fbq)fbq('track','Contact',{content_name:o.fr});
     var lien=document.createElement('a');lien.href=url;lien.target='_blank';lien.rel='noopener';lien.dataset.direct='1';
     document.body.appendChild(lien);lien.click();lien.remove();
     fermer();
