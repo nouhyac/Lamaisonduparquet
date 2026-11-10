@@ -1,16 +1,16 @@
-# Lancement des 3 pubs · novembre (budget 200 $)
+# Lancement des 3 pubs · novembre (budget 130 $)
 
 ## Budget
-- 200 $ ≈ 170 € au taux du jour (environ 0,85 € pour 1 $, à vérifier sur ta banque). Le compte publicitaire est en **euros**.
-- On engage **165 €** et on garde ≈ 5 € de marge pour les frais de change de la carte.
+- 130 $ ≈ 110 € au taux du jour (environ 0,85 € pour 1 $, à vérifier sur ta banque). Le compte publicitaire est en **euros**. Le reste du budget sert à payer Adspirer et Hostinger.
+- On engage **105 €** et on garde ≈ 5 € de marge pour les frais de change de la carte.
 - **Durée : 7 jours**, les 3 pubs lancées en même temps, chacune avec son propre budget (pas de budget partagé), pour pouvoir comparer.
 
 | Pub | Vidéo | Pour qui | Budget global | Par jour |
 |---|---|---|---|---|
-| **1 · Restaurants** | `video-A-restaurants.mp4` | Restaurateurs | **65 €** | ≈ 9,30 € |
-| **2 · Tous commerces** | `video-B-tous-commerces.mp4` | Commerçants, petites entreprises | **55 €** | ≈ 7,90 € |
-| **3 · Présentatrice** | `video-C-presentatrice.mp4` | Large (Meta cherche seul) | **45 €** | ≈ 6,40 € |
-| | | **Total** | **165 €** | ≈ 23,60 € |
+| **1 · Restaurants** | `video-A-restaurants.mp4` | Restaurateurs | **42 €** | 6 € |
+| **2 · Tous commerces** | `video-B-tous-commerces.mp4` | Commerçants, petites entreprises | **35 €** | 5 € |
+| **3 · Présentatrice** | `video-C-presentatrice.mp4` | Large (Meta cherche seul) | **28 €** | 4 € |
+| | | **Total** | **105 €** | 15 € |
 
 ## Réglages communs
 - Objectif : **Interactions › Applications de messagerie › WhatsApp** (numéro **0549 50 68 57**, à connecter s'il n'apparaît pas : Meta proposait encore l'ancien 0794 70 93 23).
