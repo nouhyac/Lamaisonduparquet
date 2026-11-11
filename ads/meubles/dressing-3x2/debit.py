@@ -17,8 +17,9 @@ FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 FONTB = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 
 # ---------- Cotes (mm) ----------
+MODE = os.environ.get("MODE", "L")   # "L" : dressing en L ; "meuble" : un seul meuble 3 m × 2 m de haut
 EP = 17                      # panneau mélaminé 17 mm
-H = 2580                     # hauteur des meubles (plafond 2600, jeu 20)
+H = 2580 if MODE == "L" else 2000   # hauteur des meubles
 SOCLE = 80                   # plinthe
 DF = 580                     # profondeur meuble mur du fond (3 m)
 DG = 400                     # profondeur meuble mur gauche (2 m)
@@ -29,6 +30,8 @@ Z_RANGEE = 2150              # tablette de la rangée haute (mur du fond)
 SHEET = (2800, 2070)         # format panneau
 TRAIT, ROGNE = 4, 10
 DECOR = "EGGER U156 ST9 Beige sable 17 mm"
+TITRE = "DRESSING EN L 3 × 2 m" if MODE == "L" else "MEUBLE DRESSING 3 m × 2 m (H)"
+NOM = "Dressing-3x2" if MODE == "L" else "Meuble-3m-x-2m"
 
 P = []   # (module, pièce, x0, y0, z0, dx, dy, dz, chant_ml_par_pièce, chant_txt)
 
@@ -70,12 +73,12 @@ def construire():
         m = f"Fond {rep}"
         box(m, "Plinthe", a, DF - 37, 0, W, EP, SOCLE)
         box(m, "Fond bas (tablette fixe)", a, 0, SOCLE, W, DF, EP, W / 1000, "1 chant (avant)")
-        box(m, "Tablette rangée haute (fixe)", a, 0, Z_RANGEE, W, DF, EP, W / 1000, "1 chant (avant)")
+        if MODE == "L": box(m, "Tablette rangée haute (fixe)", a, 0, Z_RANGEE, W, DF, EP, W / 1000, "1 chant (avant)")
         box(m, "Dessus", a, 0, H - EP, W, DF, EP, W / 1000, "1 chant (avant)")
         box(m, "Traverse de fixation murale", a, 0, H - EP - 100, W, EP, 100)
         q("Ruban LED 24 V + profil alu (ml)", round(W / 1000, 2)); q("Taquets étagère", 0)
         if rep == "A":
-            box(m, "Tablette mi-hauteur (fixe)", a, 0, 1120, W, DF, EP, W / 1000, "1 chant (avant)")
+            box(m, "Tablette mi-hauteur (fixe)", a, 0, 1120 if MODE == "L" else 960, W, DF, EP, W / 1000, "1 chant (avant)")
             q(f"Tringle ovale alu noir {W - 2} mm", 2); q("Support de tringle", 4)
         if rep == "B":
             for z in (410, 740, 1070, 1400, 1730):
@@ -88,6 +91,8 @@ def construire():
             for k in range(4): tiroir(m, "x", a, W, SOCLE + EP + k * 245, 500, DF)
             q("Coulisses à billes 500 mm sortie totale (paire)", 4); q("Poignée noire 128 mm", 4)
             q(f"Tringle ovale alu noir {W - 2} mm", 1); q("Support de tringle", 2)
+    if MODE != "L":
+        q("Équerre de fixation murale", 6); q("Driver LED 24 V 30 W + interrupteur", 1); return
     # ===== Mur gauche (retour) =====
     y = Y_RET0; comps = []
     for i, (rep, nom, w) in enumerate([("E", "3 tiroirs + étagères", 650), ("F", "Chaussures", None)]):
@@ -183,7 +188,7 @@ def fiches(rows, nb_feuilles, out):
     for pi, pg in enumerate(pages):
         im = Image.new("RGB", (W, Hh), "white"); d = ImageDraw.Draw(im)
         d.rectangle([60, 60, 72, 140], fill=(226, 0, 26))
-        d.text((90, 58), "DRESSING EN L 3 × 2 m · LISTE DE COUPE", font=ft, fill=(0, 0, 0))
+        d.text((90, 58), TITRE + " · LISTE DE COUPE", font=ft, fill=(0, 0, 0))
         d.text((90, 108), f"{DECOR} · cotes finies en mm · page {pi + 1}/{len(pages)}", font=f, fill=(80, 80, 80))
         cx = [60, 150, 400, 870, 990, 1100, 1170, 1430]
         hd = ["Rep.", "Module", "Pièce", "Long.", "Larg.", "Qté", "Chant", "ml"]
@@ -208,21 +213,21 @@ def fiche_quincaillerie(out, nb_feuilles, tot_ch):
     f, fb, ft = ImageFont.truetype(FONT, 24), ImageFont.truetype(FONTB, 24), ImageFont.truetype(FONTB, 38)
     W, Hh = 1654, 2339; im = Image.new("RGB", (W, Hh), "white"); d = ImageDraw.Draw(im)
     d.rectangle([60, 60, 72, 140], fill=(226, 0, 26))
-    d.text((90, 58), "DRESSING 3 × 2 m · FOURNITURES ET MONTAGE", font=ft, fill=(0, 0, 0))
+    d.text((90, 58), TITRE + " · FOURNITURES ET MONTAGE", font=ft, fill=(0, 0, 0))
     y = 190
     lignes = [(f"Panneau {DECOR} {SHEET[0]}×{SHEET[1]}", f"{nb_feuilles}"), ("Chant ABS 1 mm assorti U156 (ml)", f"{tot_ch * 1.1:.0f}")]
     lignes += [(k, f"{v:g}") for k, v in Q.items() if v]
     for k, v in lignes:
         d.text((80, y), "•  " + k, font=f, fill=(20, 20, 20)); d.text((1400, y), v, font=fb, fill=(0, 0, 0)); y += 46
     y += 30; d.text((60, y), "Règles de montage", font=fb, fill=(226, 0, 26)); y += 50
-    for t in ["Montants pleine hauteur 2580, posés au sol ; fonds bas, tablettes fixes et dessus ENTRE les montants.",
+    for t in [f"Montants pleine hauteur {H}, posés au sol ; fonds bas, tablettes fixes et dessus ENTRE les montants.",
               "Assemblage : vis Confirmat 7×50 (3 par liaison) ou tourillons + excentriques.",
               "Étagères mobiles : 2 mm de jeu en largeur, 20 mm en retrait de l'avant ; taquets 5 mm.",
               "Tiroirs : coulisses à billes (12,5 mm par côté) → caisson = largeur intérieure − 26 mm.",
               "Plinthe en retrait de 20 mm ; LED dans un profil alu sous chaque tablette haute.",
               "Fixation : traverse haute vissée au mur (chevilles) + 2 équerres par montant de rive.",
               "Pas de fond : le meuble se pose contre le mur peint. Option fond HDF 3 mm sur demande.",
-              "Vérifier sur place : plafond (2600 supposé), aplombs, prises et interrupteur LED."]:
+              "Vérifier sur place : mesures des murs, aplombs, prises et interrupteur LED."]:
         d.text((80, y), "–  " + t, font=f, fill=(40, 40, 40)); y += 44
     d.text((60, Hh - 80), "SARL MYF · Panneaux EGGER · lamaisonduparquet.org · WhatsApp 0794 70 93 23", font=f, fill=(90, 90, 90))
     p = os.path.join(out, "fiche-fournitures.png"); im.save(p); return p
@@ -255,7 +260,7 @@ def excel(rows, nb, path):
     from openpyxl.styles import Font, PatternFill
     wb = Workbook(); ws = wb.active; ws.title = "Liste de coupe"
     Hf, HF = Font(bold=True, color="FFFFFF"), PatternFill("solid", fgColor="1A1A1A")
-    ws.append([f"Dressing en L 3 × 2 m · liste de coupe · {DECOR} · cotes finies en mm"]); ws["A1"].font = Font(bold=True, size=14)
+    ws.append([f"{TITRE} · liste de coupe · {DECOR} · cotes finies en mm"]); ws["A1"].font = Font(bold=True, size=14)
     ws.append([]); ws.append(["Repère", "Module", "Pièce", "Longueur", "Largeur", "Épaisseur", "Qté", "Chant ABS 1 mm", "Chant (ml)", "Surface (m²)"])
     for c in ws[3]: c.font, c.fill = Hf, HF
     for r in rows:
@@ -272,9 +277,12 @@ def excel(rows, nb, path):
         if v: wq.append([k, v])
     wq.column_dimensions["A"].width = 60
     wh = wb.create_sheet("Hypothèses")
-    for k, v in [("Pièce", "3,00 m (mur du fond) × 2,00 m (mur gauche), plafond 2,60 m"), ("Meuble du fond", f"3000 × {DF} × {H} : A double penderie 1000 · B étagères 500 · C penderie 800 · D 4 tiroirs + penderie 615"),
+    hyp = [("Meuble", f"3000 de long × {H} de haut × {DF} de profondeur, posé contre un mur : A double penderie 1000 · B étagères 500 · C penderie 800 · D 4 tiroirs + penderie 615")] if MODE != "L" else []
+    rows_h = hyp + [("Pièce", "3,00 m (mur du fond) × 2,00 m (mur gauche), plafond 2,60 m"), ("Meuble du fond", f"3000 × {DF} × {H} : A double penderie 1000 · B étagères 500 · C penderie 800 · D 4 tiroirs + penderie 615"),
                  ("Retour gauche", f"1350 × {DG} × {H} (de 600 à 1950) : E 3 tiroirs + étagères 650 · F chaussures 649"), ("Panneau", f"{EP} mm, {SHEET[0]}×{SHEET[1]}, trait {TRAIT}, rognage {ROGNE}"),
-                 ("Ouvert", "dressing sans portes, sans fond ; LED sous tablettes hautes"), ("À vérifier", "mesures réelles des murs et du plafond avant découpe")]:
+                 ("Ouvert", "dressing sans portes, sans fond ; LED sous tablettes hautes"), ("À vérifier", "mesures réelles des murs et du plafond avant découpe")]
+    if MODE != "L": rows_h = [r for r in rows_h if r[0] not in ("Pièce", "Meuble du fond", "Retour gauche")]
+    for k, v in rows_h:
         wh.append([k, v])
     wh.column_dimensions["A"].width = 18; wh.column_dimensions["B"].width = 110
     wb.save(path)
@@ -287,7 +295,7 @@ if __name__ == "__main__":
     pages = fiches(rows, len(sheets), OUT) + [fiche_quincaillerie(OUT, len(sheets), tot_ch)]
     cal = Image.open(os.path.join(OUT, "calepinage.png")).convert("RGB")
     imgs = [Image.open(p).convert("RGB") for p in pages] + [cal]
-    imgs[0].save(os.path.join(OUT, "Dressing-3x2-debit.pdf"), save_all=True, append_images=imgs[1:], resolution=200)
-    dae(os.path.join(OUT, "dressing-3x2.dae"))
-    excel(rows, len(sheets), os.path.join(OUT, "debit-dressing.xlsx"))
+    imgs[0].save(os.path.join(OUT, f"{NOM}-debit.pdf"), save_all=True, append_images=imgs[1:], resolution=200)
+    dae(os.path.join(OUT, f"{NOM.lower()}.dae"))
+    excel(rows, len(sheets), os.path.join(OUT, f"debit-{NOM.lower()}.xlsx"))
     print("pièces:", sum(r[5] for r in rows), "lignes:", len(rows), "panneaux:", len(sheets), "chant ml:", round(tot_ch, 1))
