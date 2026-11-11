@@ -27,9 +27,9 @@ LONG_FOND = 3000
 COLS_FOND = [("A", "Double penderie", 1000), ("B", "Étagères", 500), ("C", "Penderie longue", 800), ("D", "Tiroirs + penderie", None)]
 Y_RET0, Y_RET1 = 600, 1950   # retour mur gauche : de 600 (devant le meuble du fond) à 1950 (50 mm de la sortie)
 Z_RANGEE = 2150              # tablette de la rangée haute (mur du fond)
-SHEET = (2800, 2070)         # format panneau
+SHEET = (3200, 2080)         # format panneau de l'atelier (proche SketchUp)
 TRAIT, ROGNE = 4, 10
-DECOR = "EGGER U156 ST9 Beige sable 17 mm"
+DECOR = "Panneau mélaminé 17 mm teinte beige sable (U156)"
 TITRE = "DRESSING EN L 3 × 2 m" if MODE == "L" else "MEUBLE DRESSING 3 m × 2 m (H)"
 NOM = "Dressing-3x2" if MODE == "L" else "Meuble-3m-x-2m"
 
@@ -205,7 +205,7 @@ def fiches(rows, nb_feuilles, out):
             for t in [f"Total : {tot_p} pièces · chant ABS 1 mm ≈ {tot_ch:.1f} ml (+10 % = {tot_ch * 1.1:.0f} ml)",
                       f"Panneaux : {nb_feuilles} × {SHEET[0]}×{SHEET[1]} mm en {DECOR} (voir calepinage)"]:
                 d.text((60, y), t, font=fb, fill=(0, 0, 0)); y += 38
-        d.text((60, Hh - 80), "SARL MYF · Panneaux EGGER · lamaisonduparquet.org · WhatsApp 0794 70 93 23", font=f, fill=(90, 90, 90))
+        d.text((60, Hh - 80), "SARL MYF · lamaisonduparquet.org · WhatsApp 0794 70 93 23", font=f, fill=(90, 90, 90))
         p = os.path.join(out, f"fiche-{pi + 1}.png"); im.save(p); paths.append(p)
     return paths
 
@@ -215,7 +215,7 @@ def fiche_quincaillerie(out, nb_feuilles, tot_ch):
     d.rectangle([60, 60, 72, 140], fill=(226, 0, 26))
     d.text((90, 58), TITRE + " · FOURNITURES ET MONTAGE", font=ft, fill=(0, 0, 0))
     y = 190
-    lignes = [(f"Panneau {DECOR} {SHEET[0]}×{SHEET[1]}", f"{nb_feuilles}"), ("Chant ABS 1 mm assorti U156 (ml)", f"{tot_ch * 1.1:.0f}")]
+    lignes = [(f"Panneau {DECOR} {SHEET[0]}×{SHEET[1]}", f"{nb_feuilles}"), ("Chant ABS 1 mm assorti (ml)", f"{tot_ch * 1.1:.0f}")]
     lignes += [(k, f"{v:g}") for k, v in Q.items() if v]
     for k, v in lignes:
         d.text((80, y), "•  " + k, font=f, fill=(20, 20, 20)); d.text((1400, y), v, font=fb, fill=(0, 0, 0)); y += 46
@@ -229,7 +229,7 @@ def fiche_quincaillerie(out, nb_feuilles, tot_ch):
               "Pas de fond : le meuble se pose contre le mur peint. Option fond HDF 3 mm sur demande.",
               "Vérifier sur place : mesures des murs, aplombs, prises et interrupteur LED."]:
         d.text((80, y), "–  " + t, font=f, fill=(40, 40, 40)); y += 44
-    d.text((60, Hh - 80), "SARL MYF · Panneaux EGGER · lamaisonduparquet.org · WhatsApp 0794 70 93 23", font=f, fill=(90, 90, 90))
+    d.text((60, Hh - 80), "SARL MYF · lamaisonduparquet.org · WhatsApp 0794 70 93 23", font=f, fill=(90, 90, 90))
     p = os.path.join(out, "fiche-fournitures.png"); im.save(p); return p
 
 def dae(path):

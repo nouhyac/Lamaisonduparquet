@@ -60,6 +60,11 @@ Une chambre ou une cuisine « tout greige, tout plat » est banale. Toujours :
 - **Retouche ciblée** : pour un détail, éditer la photo existante (1 image, ~1 crédit) au lieu de relancer une série.
 - **Quand le client dit « arrête »** : ne plus lancer aucun outil, répondre en 2 lignes.
 
+## 4 quinquies. Fabrication atelier (débit)
+- Les meubles de l'atelier sont faits en **panneau mélaminé 17 mm, d'une autre source qu'EGGER**, au format **3200 × 2080**. Ne pas écrire « EGGER » sur une liste de coupe ni sur un devis atelier.
+- Construction en **caissons séparés** : 2 côtés par module ; tablettes entre les côtés (largeur = module − 34) ; tablettes 20 mm moins profondes que les côtés.
+- Générateur de liste de coupe : `ads/meubles/dressing-3x2/debit.py`. La méthode de chiffrage (prix coûtant, sans bénéfice) est dans le skill `proforma-myf`.
+
 ## 5. Livrables pour le client
 - **Plan coté** (vue de dessus + élévations) avant ou avec les rendus.
 - 4K : vue d'ensemble + une vue par meuble + avant/après sur la photo réelle.

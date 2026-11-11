@@ -39,3 +39,47 @@ Le modèle `devis/proforma.cjs` reproduit la proforma papier N 037/2026 : en-tê
 - Conseils à rappeler quand c'est utile :
   - facturer des cartons entiers ;
   - ajouter RC, NIF, NIS, article d'imposition, RIB et durée de validité (à faire valider par le comptable).
+
+## Devis meubles sur mesure (dressing, placard, cuisine) : méthode de l'atelier
+Modèle de référence : brouillon du 11/11/2026, dressing en L 3 × 2 m.
+
+### Panneaux
+- **Panneau mélaminé 17 mm, d'une autre source qu'EGGER.** Ne jamais écrire « EGGER » sur ces devis, ni sur leurs listes de coupe. La teinte peut être citée (ex. « teinte beige sable U156 »).
+- Format retenu : **3200 × 2080 mm**. C'est le format le plus proche dans SketchUp, et il donne bien les 6 panneaux du brouillon.
+- Prix : **10 000 DA le panneau**.
+
+### Construction
+L'atelier fabrique des **caissons séparés**, un par module :
+- 2 côtés pleine hauteur par caisson : 4 modules = 8 côtés.
+- Tablettes, fond et dessus **entre les côtés** : largeur = module − 2 × 17. Par exemple 900 → 866, 700 → 666, 600 → 566.
+- Profondeur des tablettes = profondeur des côtés − 20. Par exemple 580 → 560, 500 → 480.
+
+Liste de coupe type, au format `longueur × largeur × quantité` :
+- 2600 × 580 × 8 ;
+- 866 × 560 × 4 ;
+- 666 × 560 × 12 ;
+- 566 × 560 × 5 ;
+- 2600 × 500 × 4 ;
+- 666 × 480 × 8 ;
+- 566 × 480 × 7.
+
+### Chiffrage
+Le chiffrage est au **prix coûtant, sans bénéfice**. Ajouter la marge seulement si l'utilisateur la donne.
+
+Exemple du dressing en L :
+
+| Poste | Montant |
+|---|---|
+| Panneaux : 6 × 10 000 DA | 60 000 DA |
+| Chant : 200 ml | 15 000 DA |
+| Glissières : 7 | 7 000 DA |
+| Poste noté 19 000 (quincaillerie / façonnage, à faire préciser) | 19 000 DA |
+| **Total coûtant** | **101 000 DA** |
+
+Repère pour un **meuble droit de 3 m linéaire** : **64 100 DA** coûtant.
+
+### Avant d'envoyer
+Toujours montrer à l'utilisateur :
+- le détail des postes ;
+- le total coûtant ;
+- puis le total avec la marge qu'il indique.
