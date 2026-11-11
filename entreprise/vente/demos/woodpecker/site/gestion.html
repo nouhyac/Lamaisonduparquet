@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Espace gérant · Wood Pecker Draria</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0a08">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=Cairo:wght@400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/gestion.css">
+</head>
+<body class="gestion">
+  <!-- Écran de connexion par code PIN -->
+  <main class="connexion" id="connexion" aria-labelledby="titre-connexion">
+    <div class="connexion-carte">
+      <span class="connexion-logo" id="logo-connexion"></span>
+      <h1 id="titre-connexion"><span data-t="espace">Espace gérant</span><small>Wood Pecker Draria</small></h1>
+      <form id="form-pin" autocomplete="off">
+        <label for="pin" data-t="code">Code PIN</label>
+        <input id="pin" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]*" autocomplete="off" aria-describedby="pin-aide">
+        <div class="pave" id="pave"></div>
+        <p class="erreur" id="pin-erreur" role="alert"></p>
+      </form>
+      <p class="aide" id="pin-aide" data-t="codes-demo">Démo : gérant 0328 · cuisine 1111 · caisse 2222 · livreur 3333</p>
+      <div class="connexion-pied">
+        <div class="langues" role="group" aria-label="Langue / اللغة">
+          <button type="button" data-lang-btn="fr" lang="fr">FR</button>
+          <button type="button" data-lang-btn="ar" lang="ar">العربية</button>
+        </div>
+        <a class="lien-or" href="index.html" data-t="voir-site">Voir le site client</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Application -->
+  <div class="app" id="app" hidden>
+    <aside class="barre-laterale" aria-label="Menu de gestion" data-t-aria="menu-gestion">
+      <div class="bl-marque"><span id="logo-app"></span><span>Wood Pecker<small data-t="espace">Espace gérant</small></span></div>
+      <nav class="bl-nav" id="nav-gestion"></nav>
+    </aside>
+    <div class="zone">
+      <header class="barre-haut">
+        <h1 id="titre-page"></h1>
+        <div class="bh-actions">
+          <span class="horloge" id="horloge" aria-label="Heure"></span>
+          <span class="role-badge" id="role-badge"></span>
+          <button type="button" class="btn-icone" id="btn-son" aria-pressed="true"></button>
+          <div class="langues" role="group" aria-label="Langue / اللغة">
+            <button type="button" data-lang-btn="fr" lang="fr">FR</button>
+            <button type="button" data-lang-btn="ar" lang="ar">العربية</button>
+          </div>
+          <button type="button" class="btn-icone" id="btn-sortir"></button>
+        </div>
+      </header>
+      <main class="contenu" id="vue" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <!-- Ticket 80 mm (impression) -->
+  <div id="ticket" aria-hidden="true"></div>
+
+  <!-- Fenêtre générique -->
+  <dialog class="fenetre-g" id="dlg-g" aria-labelledby="dlg-g-titre"><div class="fenetre-g-in" id="dlg-g-contenu"></div></dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/i18n-gestion.js"></script>
+  <script src="js/gestion.js"></script>
+</body>
+</html>

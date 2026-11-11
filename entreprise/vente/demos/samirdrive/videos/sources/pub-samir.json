@@ -1,0 +1,110 @@
+{
+"nom": "pub-samir-drive",
+"fonds": {
+"f1.png": "k1.png"
+},
+"segs": [
+{
+"t": "plein",
+"src": "rec/a-samir.webm",
+"ss": 0.15,
+"d": 1.9
+},
+{
+"t": "ia",
+"src": "v1.mp4",
+"d": 3.3
+},
+{
+"t": "tel",
+"src": "rec/b-samir.webm",
+"ss": 2.3,
+"d": 5.4,
+"fond": "f1.png"
+},
+{
+"t": "ia",
+"src": "v2.mp4",
+"d": 1.6,
+"z": 0.05
+},
+{
+"t": "va",
+"src": "va.mp4",
+"d": 3.2
+},
+{
+"t": "plein",
+"src": "rec/montage.webm",
+"ss": 0.25,
+"d": 3.2
+},
+{
+"t": "tel",
+"src": "rec/c-samir.webm",
+"ss": 1.3,
+"x": 1.5,
+"d": 4.0,
+"fond": "f1.png"
+},
+{
+"t": "ia",
+"src": "v3.mp4",
+"d": 2.8
+},
+{
+"t": "ia",
+"src": "v4.mp4",
+"d": 2.2,
+"z": 0.02
+},
+{
+"t": "plein",
+"src": "rec/fin-samir.webm",
+"ss": 0.3,
+"d": 4.4
+}
+],
+"caps": [
+{
+"a": 2.3,
+"b": 5.1,
+"sur": "Aéroport d'Alger",
+"txt": "Votre voiture\nvous attend déjà."
+},
+{
+"a": 5.5,
+"b": 10.5,
+"pos": "haut",
+"taille": 58,
+"sur": "Samir Drive",
+"txt": "Le prix exact, tout de suite."
+},
+{
+"a": 12.5,
+"b": 15.3,
+"sur": "Renault Arkana E-Tech hybride",
+"txt": "Esprit Alpine"
+},
+{
+"a": 18.9,
+"b": 22.5,
+"pos": "haut",
+"taille": 58,
+"sur": "Réservé en 2 minutes",
+"txt": "Signé du doigt."
+},
+{
+"a": 22.9,
+"b": 25.3,
+"sur": "Livraison aéroport 24 h/24",
+"txt": "Les clés vous\nattendent à l'arrivée."
+},
+{
+"a": 25.6,
+"b": 27.5,
+"sur": "Assurance incluse",
+"txt": "0 DA à payer\nen ligne."
+}
+]
+}

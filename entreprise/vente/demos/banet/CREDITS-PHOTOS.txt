@@ -1,0 +1,14 @@
+Crédits photos — démo Banet el Baraka (Dzign Studio)
+=====================================================
+
+Photos du restaurant (leur Instagram @banetelbaraka / fiche Yassir) :
+- site/img/logo.png : logo d'origine (référence ; le site utilise une recréation SVG fidèle)
+- site/img/banniere.jpg : bannière du restaurant
+- site/img/carte/*.jpg : photos des plats de leur carte
+
+Photo d'illustration (Unsplash, licence Unsplash, usage libre, attribution non obligatoire) :
+- site/img/mariage2.jpg : https://unsplash.com/ (images.unsplash.com/photo-1680695779444-24fc71296e66)
+  Photo d'ambiance de la section Traiteur (tables dressées, aucun plat visible),
+  marquée « Photo d'ambiance » sur le site. À remplacer par une vraie photo d'événement du restaurant.
+
+Toutes les autres photos Unsplash ont été retirées : aucune image de plat qui ne vienne pas du restaurant.

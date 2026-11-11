@@ -1,0 +1,59 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Hanken+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0B0B0F;color:#F5F3EE;font-family:'Hanken Grotesk',sans-serif}
+.s{position:absolute;inset:0;opacity:0;transition:opacity .45s}.s.on{opacity:1}
+.fond{background:radial-gradient(900px 800px at 20% 0%,rgba(200,169,106,.22),transparent 60%),radial-gradient(900px 900px at 100% 100%,rgba(14,124,90,.25),transparent 60%),#0B0B0F}
+.logo{position:absolute;left:60px;top:60px;font-family:Syne;font-weight:800;font-size:46px;z-index:20}.logo b{color:#C8A96A}.logo small{font-family:'Hanken Grotesk';font-size:15px;letter-spacing:.32em;margin-left:8px;color:#A9A6A0}
+h1{font-family:Syne;font-weight:800;font-size:76px;line-height:1.02;margin:0;letter-spacing:-.01em}h1 em{font-style:normal;color:#C8A96A}
+.cap{position:absolute;left:60px;right:60px;bottom:150px;z-index:30;text-align:center;font-weight:800;font-size:46px;line-height:1.2;text-shadow:0 4px 20px rgba(0,0,0,.9)}
+.cap span{background:rgba(11,11,15,.82);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:6px 18px;border-radius:12px}
+.cap b{color:#C8A96A}
+/* 1 hook */
+#s1{background:#070709}
+#s1 .tel{position:absolute;left:50%;top:430px;width:300px;height:300px;margin-left:-150px;border-radius:50%;background:#C62F2B;display:grid;place-items:center;font-size:150px;box-shadow:0 0 0 0 rgba(198,47,43,.6);animation:son 0.9s infinite}
+@keyframes son{0%{box-shadow:0 0 0 0 rgba(198,47,43,.7);transform:rotate(-8deg)}50%{transform:rotate(8deg)}100%{box-shadow:0 0 0 70px rgba(198,47,43,0);transform:rotate(-8deg)}}
+#s1 .notifs{position:absolute;left:90px;right:90px;top:820px;display:grid;gap:18px}
+#s1 .n{background:#1B1B22;border:1px solid #2A2A33;border-radius:26px;padding:24px 28px;font-size:34px;font-weight:700;display:flex;gap:18px;align-items:center;opacity:0;transform:translateY(30px);transition:all .4s}
+#s1 .n.on{opacity:1;transform:none}#s1 .n i{font-style:normal;color:#FF6B5E}#s1 .n small{margin-left:auto;color:#8B887F;font-size:26px}
+/* 2 reveal */
+#s2 img{position:absolute;left:-200px;top:600px;width:1480px;transform-origin:50% 40%}
+#s2.on img{animation:zoom 5s ease-out both}@keyframes zoom{from{transform:scale(1.15)}to{transform:scale(1)}}
+#s2 .t{position:absolute;left:60px;right:60px;top:200px}
+/* 3 phone */
+.cadre{position:absolute;left:50%;top:260px;width:600px;margin-left:-300px;height:1300px;border-radius:84px;background:#000;padding:18px;box-shadow:0 50px 140px rgba(0,0,0,.8),0 0 0 3px #2A2A33}
+.cadre .v{width:564px;height:1264px;border-radius:68px;overflow:hidden;background:#F3ECDE}
+.cadre iframe{width:390px;height:874px;border:0;transform:scale(1.4462);transform-origin:0 0}
+/* 4 kitchen */
+.tab{position:absolute;left:40px;top:380px;width:1000px;height:650px;border-radius:30px;background:#111;padding:16px;border:2px solid #2A2A33;box-shadow:0 50px 140px rgba(0,0,0,.8)}
+.tab .v{width:966px;height:616px;border-radius:14px;overflow:hidden}
+.tab iframe{width:1280px;height:816px;border:0;transform:scale(.7547);transform-origin:0 0}
+.flash{position:absolute;left:40px;top:380px;width:1000px;height:650px;border-radius:30px;box-shadow:0 0 0 8px #C8A96A,0 0 120px rgba(200,169,106,.8);opacity:0;transition:opacity .25s}.flash.on{opacity:1}
+.lab{position:absolute;left:60px;top:220px;font-size:26px;letter-spacing:.2em;font-weight:800;color:#C8A96A}
+/* 5 */
+#s5 .a{position:absolute;left:60px;top:300px;width:470px;border-radius:52px;background:#000;padding:12px;transform:rotate(-3deg)}#s5 .a img{width:100%;display:block;border-radius:42px}
+#s5 .b{position:absolute;left:470px;top:560px;width:580px;border-radius:18px;background:#111;padding:10px;border:2px solid #2A2A33;transform:rotate(2deg)}#s5 .b img{width:100%;display:block;border-radius:8px}
+/* 6 offer */
+#s6 .t{position:absolute;left:60px;right:60px;top:300px;display:grid;gap:34px}
+.carte{background:#15151B;border:1.5px solid #2A2A33;border-radius:34px;padding:38px 42px;display:grid;gap:10px;opacity:0;transform:translateX(-60px);transition:all .5s}.carte.on{opacity:1;transform:none}
+.carte b{font-family:Syne;font-size:50px;line-height:1.05}.carte span{font-size:32px;color:#A9A6A0}.carte.or{border-color:#C8A96A;background:linear-gradient(135deg,rgba(200,169,106,.18),#15151B)}
+/* 7 cta */
+#s7{display:grid;place-content:center;justify-items:center;text-align:center;gap:40px;padding:80px}
+#s7 .wa{display:inline-flex;align-items:center;gap:22px;background:#25D366;color:#06210f;font-weight:800;font-size:46px;border-radius:999px;padding:30px 56px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{transform:scale(1.05)}}
+#s7 .big{font-family:Syne;font-weight:800;font-size:150px;letter-spacing:-.03em}#s7 .big b{color:#C8A96A}
+#s7 p{font-size:34px;color:#A9A6A0;margin:0}
+</style></head><body>
+<div class="logo">d<b>z</b>ign<small>STUDIO</small></div>
+<section class="s" id="s1"><div class="tel">📞</div><div class="notifs"><div class="n" id="n1"><i>✕</i>Appel manqué<small>20:41</small></div><div class="n" id="n2"><i>✕</i>Appel manqué<small>20:43</small></div><div class="n" id="n3"><i>✕</i>Appel manqué<small>20:44</small></div><div class="n" id="n4"><i>✕</i>3 commandes perdues ce soir</div></div></section>
+<section class="s fond" id="s2"><div class="t"><h1 style="font-size:60px">Pas un simple site.<br><em>Votre plateforme complète.</em></h1></div><img src="cap/plateforme.jpg"></section>
+<section class="s fond" id="s3"><div class="lab">LE CLIENT COMMANDE</div><div class="cadre"><div class="v"><iframe id="c" src="about:blank"></iframe></div></div></section>
+<section class="s fond" id="s4"><div class="lab">LA CUISINE REÇOIT</div><div class="tab"><div class="v"><iframe id="k" src="about:blank"></iframe></div></div><div class="flash" id="flash"></div></section>
+<section class="s fond" id="s5"><div class="lab">LIVRAISON · CAISSE · COMPTABILITÉ</div><div class="a"><img src="cap/tel-four.jpg"></div><div class="b"><img src="cap/pc-compta.jpg"></div></section>
+<section class="s fond" id="s6"><div class="t"><h1 style="font-size:70px">On vous montre<br><em>avant de payer.</em></h1>
+ <div class="carte or" id="o1"><b>Démo gratuite à votre nom</b><span>Votre menu, vos prix, votre logo, avant de vous engager</span></div>
+ <div class="carte" id="o2"><b>Maquette satisfaite ou remboursée</b><span>Paiement 50 / 50, rien à risquer</span></div>
+ <div class="carte" id="o3"><b>-20 % Programme Fondateurs</b><span>Pour nos premiers clients</span></div></div></section>
+<section class="s fond" id="s7"><div class="big">d<b>z</b>ign</div><h1 style="font-size:64px">Votre démo gratuite<br><em>vous attend.</em></h1><div class="wa">💬 Écrivez-nous sur WhatsApp</div><p>Réponse rapide · dzignstudio.store</p></section>
+<div class="cap" id="cap"></div>
+</body></html>

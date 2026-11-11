@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BREW — Coffee & Brunch</title>
+  <meta name="description" content="BREW — Coffee & Brunch : carte, commande à l'avance, commande à table, formule brunch, fidélité et réservation.">
+  <meta name="theme-color" content="#2B201C">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Baloo+Bhaijaan+2:wght@600;800&family=Cairo:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+
+  <!-- Bandeau discret de la démo -->
+  <aside class="demo-bar" aria-label="Dzign Studio">
+    <span class="demo-bar__txt" data-i18n="demo">Démo réalisée par Dzign Studio pour BREW</span>
+    <div class="demo-bar__view" role="group" aria-labelledby="viewLbl">
+      <span id="viewLbl" class="demo-bar__lbl" data-i18n="demoView">Aperçu du site :</span>
+      <button type="button" class="seg" data-view="soon" data-i18n="viewSoon">Avant l'ouverture</button>
+      <button type="button" class="seg" data-view="open" data-i18n="viewOpen">Ouvert</button>
+    </div>
+    <a class="demo-bar__mgr" href="gestion.html" data-i18n="manager">Espace gérant</a>
+  </aside>
+
+  <!-- En-tête -->
+  <header class="top" id="top">
+    <div class="wrap top__in">
+      <a class="brand" href="#main" data-i18n-aria="home" aria-label="BREW — accueil">
+        <span class="brand__mark" data-logo="mark"></span>
+        <span class="brand__word" data-logo="word"></span>
+      </a>
+      <nav class="nav" aria-label="Navigation">
+        <a href="#carte" data-i18n="navMenu">La carte</a>
+        <a href="#formule" data-i18n="navBrunch">Formule Brunch</a>
+        <a href="#fidelite" data-i18n="navLoyalty">Fidélité</a>
+        <a href="#reserver" data-i18n="navBook">Réserver</a>
+        <a href="#infos" data-i18n="navInfo">Infos</a>
+      </nav>
+      <div class="top__actions">
+        <button type="button" class="btn-lang" id="langBtn" data-i18n-aria="langLabel" aria-label="Afficher le site en arabe"><span data-i18n="lang">العربية</span></button>
+        <button type="button" class="btn-cart" id="cartBtn" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Zm3 0V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="sr" data-i18n="cart">Panier</span>
+          <span class="btn-cart__n" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Commande à table (QR) -->
+  <div class="table-banner" id="tableBanner" hidden>
+    <div class="wrap table-banner__in">
+      <span class="table-banner__num" id="tableNum">Table 5</span>
+      <span><strong data-i18n="tableBanner">Vous commandez depuis la table</strong> · <span data-i18n="tableHint">Votre commande arrive directement au bar et en cuisine.</span></span>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Héros -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="wrap hero__in">
+        <div class="hero__txt">
+          <img class="hero__logo" src="img/logo.png" width="640" height="640" alt="Logo BREW" data-i18n-alt="logoAlt">
+          <p class="kicker kicker--light" data-i18n="heroKicker">Coffee shop</p>
+          <h1 class="hero__title" id="heroTitle">Coffee &amp; Brunch</h1>
+          <p class="hero__lead" data-i18n="heroLead">Signature Drinks, cafés chauds et glacés, Matcha Bar, milkshakes, et un brunch salé, sucré ou healthy.</p>
+
+          <!-- Mode « ouverture prochaine » -->
+          <div class="soon" id="soonBox">
+            <p class="soon__title" id="soonTitle" data-i18n="soonTitle">Ouverture très bientôt</p>
+            <div class="countdown" id="countdown" hidden></div>
+            <p class="soon__txt" data-i18n="soonText">Laissez votre numéro : on vous prévient dès que les portes ouvrent.</p>
+            <form class="notify" id="notifyForm" novalidate>
+              <label class="sr" for="nName" data-i18n="notifyName">Prénom (facultatif)</label>
+              <input id="nName" name="name" autocomplete="given-name" data-i18n-ph="notifyName" placeholder="Prénom (facultatif)">
+              <label class="sr" for="nPhone" data-i18n="notifyPhone">Téléphone / WhatsApp</label>
+              <input id="nPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required data-i18n-ph="notifyPhone" placeholder="Téléphone / WhatsApp">
+              <button class="btn btn--cream" type="submit" data-i18n="notifyBtn">Prévenez-moi à l'ouverture</button>
+              <p class="form-msg" id="notifyMsg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <!-- Mode « ouvert » -->
+          <div class="open-box" id="openBox" hidden>
+            <p class="open-box__state"><span class="dot" aria-hidden="true"></span><span id="openState">Ouvert aujourd'hui</span> · <span id="openHours"></span></p>
+            <div class="hero__ctas">
+              <a class="btn btn--cream" href="#carte" data-i18n="ctaOrder">Commander</a>
+              <a class="btn btn--ghost" href="#reserver" data-i18n="ctaBook">Réserver un brunch</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <figure class="arch">
+            <img src="img/sac-brew-recadre.jpg" width="390" height="436" alt="Le sac kraft BREW tendu de main en main" data-i18n-alt="photoAlt">
+          </figure>
+          <span class="sticker sticker--a" data-art="iced:sky"></span>
+          <span class="sticker sticker--b" data-art="croissant:pistache"></span>
+          <span class="sticker sticker--c" data-art="icedmatcha:fraise"></span>
+        </div>
+      </div>
+      <div class="checks" aria-hidden="true"></div>
+    </section>
+
+    <!-- Bandeau défilant des catégories -->
+    <div class="ribbon" aria-hidden="true"><div class="ribbon__track" id="ribbon"></div></div>
+
+    <!-- Signature Drinks -->
+    <section class="sig" aria-labelledby="sigTitle">
+      <div class="wrap">
+        <p class="kicker" data-i18n="sigKicker">À goûter en premier</p>
+        <h2 class="h2" id="sigTitle" data-i18n="sigTitle">BREW Signature Drinks</h2>
+        <div class="sig__grid" id="sigGrid"></div>
+      </div>
+    </section>
+
+    <!-- Carte -->
+    <section class="menu" id="carte" aria-labelledby="menuTitle">
+      <div class="wrap">
+        <p class="kicker" data-i18n="menuKicker">Carte de lancement</p>
+        <h2 class="h2" id="menuTitle" data-i18n="menuTitle">La carte</h2>
+      </div>
+      <div class="menu__bar">
+        <div class="wrap">
+          <div class="menu__tools">
+            <div class="search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <label class="sr" for="q" data-i18n="searchLabel">Rechercher dans la carte</label>
+              <input id="q" type="search" autocomplete="off" data-i18n-ph="search" placeholder="Rechercher un produit…">
+            </div>
+            <div class="filters" id="filters" role="group" aria-label="Filtres"></div>
+          </div>
+          <nav class="cats" id="cats" aria-label="Catégories"></nav>
+        </div>
+      </div>
+      <div class="wrap">
+        <div id="menuList" class="menu__list"></div>
+        <p class="empty" id="noResult" hidden data-i18n="noResult">Aucun produit ne correspond à votre recherche.</p>
+      </div>
+    </section>
+
+    <!-- Formule Brunch -->
+    <section class="formule" id="formule" aria-labelledby="fTitle">
+      <div class="wrap formule__in">
+        <div class="formule__head">
+          <p class="kicker" data-i18n="fKicker">Le bon plan du matin</p>
+          <h2 class="h2" id="fTitle" data-i18n="fTitle">Formule Brunch</h2>
+          <p class="lead" data-i18n="fLead">Un plat de brunch + une boisson chaude classique + un jus d'orange frais.</p>
+          <div class="formule__price">
+            <span class="formule__now" id="fNow">—</span>
+            <span class="formule__was"><span data-i18n="fInstead">au lieu de</span> <s id="fWas">—</s></span>
+          </div>
+          <button type="button" class="btn" id="fAdd" data-i18n="fAdd">Ajouter la formule</button>
+        </div>
+        <div class="formule__steps">
+          <fieldset class="step">
+            <legend><span class="step__n">1</span> <span data-i18n="fStep1">Votre plat</span></legend>
+            <div class="pick pick--dish" id="fDish"></div>
+          </fieldset>
+          <fieldset class="step">
+            <legend><span class="step__n">2</span> <span data-i18n="fStep2">Votre boisson chaude</span></legend>
+            <div class="pick pick--drink" id="fDrink"></div>
+          </fieldset>
+          <div class="step step--juice">
+            <span class="step__n">3</span>
+            <span class="step__art" data-art="juice:citrus"></span>
+            <strong>Fresh Orange Juice</strong>
+            <span class="tag" data-i18n="fIncluded">inclus</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modes de commande -->
+    <section class="modes" aria-labelledby="modesTitle">
+      <div class="wrap">
+        <h2 class="h2" id="modesTitle" data-i18n="modesTitle">Commandez comme vous voulez</h2>
+        <div class="modes__grid">
+          <article class="mode"><span class="mode__art" data-art="frappe:caramel"></span><h3 data-i18n="mCollect">Commander à l'avance</h3><p data-i18n="mCollectTxt"></p></article>
+          <article class="mode"><span class="mode__art" data-art="plate:matcha"></span><h3 data-i18n="mTable">À table, par QR code</h3><p data-i18n="mTableTxt"></p></article>
+          <article class="mode" id="modeDeliveryCard"><span class="mode__art" data-art="brioche:passion"></span><h3 data-i18n="mDelivery">Livraison</h3><p data-i18n="mDeliveryTxt"></p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fidélité -->
+    <section class="loyal" id="fidelite" aria-labelledby="lTitle">
+      <div class="wrap loyal__in">
+        <div>
+          <p class="kicker kicker--light" data-i18n="lKicker">Carte de fidélité</p>
+          <h2 class="h2 h2--light" id="lTitle" data-i18n="lTitle">Vos boissons comptent</h2>
+          <p class="lead lead--light" id="lLead"></p>
+          <form class="inline-form" id="loyalForm" novalidate>
+            <label class="sr" for="lPhone" data-i18n="yourPhone">Téléphone</label>
+            <input id="lPhone" type="tel" inputmode="tel" autocomplete="tel" data-i18n-ph="yourPhone" placeholder="Téléphone">
+            <button class="btn btn--cream" type="submit" data-i18n="lCheck">Voir ma carte</button>
+          </form>
+          <p class="form-msg form-msg--light" id="loyalMsg" role="status" aria-live="polite"></p>
+        </div>
+        <div class="stampcard" id="stampCard" aria-live="polite">
+          <div class="stampcard__top"><span data-logo="word-dark" class="stampcard__word"></span><span class="stampcard__count" id="stampCount"></span></div>
+          <div class="stamps" id="stamps"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Réservation -->
+    <section class="book" id="reserver" aria-labelledby="bTitle">
+      <div class="wrap book__in">
+        <div>
+          <p class="kicker" data-i18n="bKicker">Brunch entre amis</p>
+          <h2 class="h2" id="bTitle" data-i18n="bTitle">Réserver une table</h2>
+          <p class="lead" data-i18n="bLead"></p>
+          <div class="book__art" data-art="burrata:matcha"></div>
+        </div>
+        <div class="card">
+          <form id="bookForm" class="form-grid" novalidate>
+            <div class="field"><label for="bDate" data-i18n="bDate">Date</label><input id="bDate" type="date" required></div>
+            <div class="field"><label for="bTime" data-i18n="bTime">Heure</label><select id="bTime" required></select></div>
+            <div class="field"><label for="bPeople" data-i18n="bPeople">Personnes</label>
+              <div class="stepper"><button type="button" data-step="-1" data-i18n-aria="less" aria-label="Moins">−</button><output id="bPeople">2</output><button type="button" data-step="1" data-i18n-aria="more" aria-label="Plus">+</button></div></div>
+            <div class="field"><label for="bName" data-i18n="yourName">Prénom</label><input id="bName" autocomplete="given-name" required></div>
+            <div class="field field--full"><label for="bPhone" data-i18n="yourPhone">Téléphone</label><input id="bPhone" type="tel" inputmode="tel" autocomplete="tel" required></div>
+            <div class="field field--full"><label for="bNote" data-i18n="note">Une précision ? (facultatif)</label><input id="bNote"></div>
+            <button class="btn field--full" type="submit" data-i18n="bSend">Demander la réservation</button>
+            <p class="form-msg field--full" id="bookMsg" role="status" aria-live="polite"></p>
+          </form>
+          <div class="mine" id="myResas" hidden>
+            <h3 data-i18n="bMine">Mes réservations</h3>
+            <ul id="myResaList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Infos -->
+    <section class="infos" id="infos" aria-labelledby="iTitle">
+      <div class="wrap infos__in">
+        <div>
+          <p class="kicker" data-i18n="iKicker">Nous trouver</p>
+          <h2 class="h2" id="iTitle" data-i18n="iTitle">Infos pratiques</h2>
+          <div class="links">
+            <a class="link-card" href="https://share.google/38PZvSdP12JilX6cp" target="_blank" rel="noopener">
+              <span class="link-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></svg></span>
+              <span><strong data-i18n="iMaps">Itinéraire Google Maps</strong><small>share.google/38PZvSdP12JilX6cp</small></span>
+            </a>
+            <a class="link-card" href="https://www.instagram.com/brew.coffee.brunch/" target="_blank" rel="noopener">
+              <span class="link-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.8" cy="7.2" r="1.2" fill="currentColor"/></svg></span>
+              <span><strong data-i18n="iFollow">Suivez l'ouverture sur Instagram</strong><small>@brew.coffee.brunch</small></span>
+            </a>
+            <a class="link-card" id="waLink" href="#" target="_blank" rel="noopener">
+              <span class="link-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9.5c.5 2.5 2.5 4.5 5 5l1.2-1.2-1.8-.9-.8.8c-1-.4-1.9-1.3-2.3-2.3l.8-.8-.9-1.8z" fill="currentColor"/></svg></span>
+              <span><strong data-i18n="whatsapp">Écrire sur WhatsApp</strong><small>BREW</small></span>
+            </a>
+          </div>
+        </div>
+        <div class="card hours">
+          <h3 data-i18n="iHours">Horaires</h3>
+          <dl id="hoursList"></dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="checks checks--top" aria-hidden="true"></div>
+    <div class="wrap foot__in">
+      <span class="foot__logo" data-logo="badge"></span>
+      <p>BREW — Coffee &amp; Brunch · @brew.coffee.brunch</p>
+      <p class="foot__small"><span data-i18n="footer">Site réalisé par Dzign Studio</span> · <a href="gestion.html" data-i18n="manager">Espace gérant</a></p>
+    </div>
+  </footer>
+
+  <!-- Barre panier mobile -->
+  <button type="button" class="cartbar" id="cartBar" hidden>
+    <span class="cartbar__n" id="cartBarN">0</span>
+    <span data-i18n="cartTitle">Votre commande</span>
+    <strong id="cartBarTotal">0 DA</strong>
+  </button>
+  <!-- Suivi en cours -->
+  <button type="button" class="trackpill" id="trackPill" hidden><span class="dot" aria-hidden="true"></span><span id="trackPillTxt" data-i18n="trackOpen">Suivre ma commande</span></button>
+
+  <!-- Fiche produit -->
+  <dialog class="sheet" id="sheet" aria-labelledby="sheetTitle">
+    <form method="dialog" class="sheet__in" id="sheetForm" novalidate></form>
+  </dialog>
+
+  <!-- Panier -->
+  <dialog class="sheet sheet--side" id="cart" aria-labelledby="cartTitle">
+    <div class="sheet__in" id="cartIn"></div>
+  </dialog>
+
+  <!-- Suivi -->
+  <dialog class="sheet" id="track" aria-labelledby="trackTitle">
+    <div class="sheet__in" id="trackIn"></div>
+  </dialog>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

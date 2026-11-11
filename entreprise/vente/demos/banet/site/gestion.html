@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Espace gérant · Banet el Baraka</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#26170D">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Manrope:wght@400;500;700;800&family=Reem+Kufi:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/commun.css">
+  <link rel="stylesheet" href="css/gestion.css">
+</head>
+<body class="page-gestion">
+  <!-- Écran de connexion par code PIN -->
+  <main class="pin" id="ecranPin" aria-labelledby="pinTitre">
+    <div class="pin__carte">
+      <span class="pin__logo" data-logo></span>
+      <h1 id="pinTitre"></h1>
+      <p class="pin__sous" id="pinSous"></p>
+      <div class="pin__points" id="pinPoints" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <label class="sr" for="pinChamp" id="pinLabel"></label>
+      <input class="sr" id="pinChamp" type="password" inputmode="numeric" maxlength="4" autocomplete="off">
+      <p class="erreur" id="pinErreur" role="alert"></p>
+      <div class="pin__clavier" id="pinClavier"></div>
+      <p class="pin__demo" id="pinDemo"></p>
+      <div class="pin__bas"><a href="index.html" id="pinRetour"></a><button type="button" class="lien-btn" id="pinLangue"></button></div>
+    </div>
+  </main>
+
+  <!-- Application -->
+  <div class="app" id="app" hidden>
+    <aside class="app__menu" aria-label="Menu">
+      <div class="app__marque"><span class="app__logo" data-logo="icone"></span><span><strong>Banet el Baraka</strong><small id="roleNom"></small></span></div>
+      <nav id="menu" class="menu"></nav>
+      <div class="app__menu-bas"><a href="index.html" target="_blank" rel="noopener" id="lienSite"></a></div>
+    </aside>
+    <div class="app__zone">
+      <header class="app__barre">
+        <h1 id="vueTitre"></h1>
+        <div class="app__barre-actions">
+          <span class="horloge" id="horloge"></span>
+          <button type="button" class="ico-btn" id="btnSon"></button>
+          <button type="button" class="ico-btn" id="btnLangue"></button>
+          <button type="button" class="ico-btn" id="btnQuitter"></button>
+        </div>
+      </header>
+      <main id="vue" class="vue" tabindex="-1"></main>
+    </div>
+    <nav class="onglets-bas" id="ongletsBas" aria-label="Menu"></nav>
+  </div>
+
+  <dialog class="modale modale--g" id="modale" aria-labelledby="modaleTitre"></dialog>
+  <div id="ticket" class="ticket" aria-hidden="true"></div>
+
+  <script src="js/donnees.js"></script>
+  <script src="js/textes.js"></script>
+  <script src="js/commun.js"></script>
+  <script src="js/gestion.js"></script>
+</body>
+</html>

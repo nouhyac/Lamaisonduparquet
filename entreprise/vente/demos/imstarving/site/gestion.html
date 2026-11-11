@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Starving · Espace gérant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gestion.css">
+<style>
+/* Version autonome de l'espace gérant : pour la tablette de la cuisine ou le PC de la caisse. */
+html,body{margin:0;background:#F2F3F7}[hidden]{display:none!important}
+</style></head><body>
+<script src="data.js"></script>
+<script src="gestion.js"></script>
+<script>IMSG.ouvrir({ autonome: true, page: location.hash === '#cuisine' ? 'cuisine' : location.hash === '#caisse' ? 'caisse' : 'accueil' });</script>
+</body></html>
