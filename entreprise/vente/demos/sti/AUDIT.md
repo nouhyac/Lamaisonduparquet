@@ -3,6 +3,15 @@
 Sources : Instagram @sti_bureautique (captures dans `sources/`), site https://www.stibureautique.dz (réalisé par N2i Technologies).
 Activité : mobilier de bureau (chaises ergonomiques, opérateurs, visiteurs, fauteuils PDG, bureaux de direction, armoires métalliques), particuliers et entreprises. Téléphones 0555 59 05 43 / 44.
 
+## Profil Instagram (capture du 11/11)
+11,8 K abonnés · 481 publications · « Magasin de matériel de bureau · Vente en gros et détails de mobilier de bureau » · Pins Maritimes, Mohammadia, Alger · 0555 59 05 43/44 · stibureautique.dz dans la bio **mais le lien cliquable mène à stibureautique.net** · stories à la une : Contact, Chaise ergonomique, Clients, Gamer, Catalogue.
+
+## Deux sites différents
+- **stibureautique.dz** (N2i Technologies) : 87 modèles, devis, espace B2B, adresse Dar El Beïda.
+- **stibureautique.net** (boutique Shopify) : chaises et bureaux avec prix, devis, références clients CNAS, Sonelgaz, Algérie Poste, Sogral, Sonatrach ; restes de modèle (« Your collection's name », « Regular price Sale price », « Unit price / per », site réglé en anglais, tuiles en double).
+- Problème : deux boutiques = clients perdus (lequel est le vrai ?), référencement Google divisé en deux, prix et stocks à tenir deux fois. **Recommandation : un seul site principal, l'autre domaine redirigé dessus.**
+- Atout sous-exploité : les références grands comptes (Sonatrach, Sonelgaz, CNAS, Algérie Poste) doivent apparaître partout (bio, posts, site, catalogue PDF).
+
 ## Ce qui est déjà bien
 - Site récent et soigné : 87 modèles, prix affichés, paiement à la livraison, demande de devis, espace B2B, FR/AR.
 - Identité forte (bleu nuit, rouge, logo ST), visuels produits propres, vraies vidéos de réglage des chaises.
