@@ -1,0 +1,45 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+/* Scène 1 (7 s) : le carrelage gris, puis les lames EGGER qui viennent se poser dessus. */
+.tiles{position:absolute;inset:-40px;background:
+  linear-gradient(90deg,rgba(255,255,255,.55) 0 3px,transparent 3px) 0 0/270px 270px,
+  linear-gradient(0deg,rgba(255,255,255,.55) 0 3px,transparent 3px) 0 0/270px 270px,
+  radial-gradient(120% 80% at 30% 20%,#d9d8d4,#bdbcb7);
+  animation:tz 7s linear both}
+@keyframes tz{from{transform:scale(1.08)}to{transform:scale(1)}}
+.tiles:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.06) 0 2px,transparent 2px 40px)}
+/* lames : vraie texture EGGER EL2863 */
+.pl{position:absolute;left:0;width:1080px;height:236px;background:url(../sources/ref-decor-el2863.jpg) 0 0/1300px auto;
+  box-shadow:0 18px 30px -12px rgba(30,20,10,.55),inset 0 -2px 0 rgba(0,0,0,.18),inset 0 2px 0 rgba(255,255,255,.18);
+  animation:slide 1s var(--ease) both}
+@keyframes slide{from{transform:translateX(105%) translateY(-30px) rotate(-1.2deg);opacity:.4}to{transform:none;opacity:1}}
+.pl.l{animation-name:slideL}
+@keyframes slideL{from{transform:translateX(-105%) translateY(-30px) rotate(1.2deg);opacity:.4}to{transform:none;opacity:1}}
+.pl:after{content:"";position:absolute;top:0;bottom:0;width:4px;left:var(--j,62%);background:rgba(40,25,10,.28)}
+.t1{position:absolute;left:84px;top:250px;font-family:C;font-weight:800;font-size:150px;line-height:.92;text-transform:uppercase;color:var(--ink)}
+.t1 .r{color:var(--red)}
+.t2{position:absolute;left:84px;bottom:300px;right:84px;font-family:C;font-weight:800;font-size:150px;line-height:.92;text-transform:uppercase;color:#fff;
+  text-shadow:0 6px 40px rgba(0,0,0,.35)}
+.bar{position:absolute;left:84px;width:120px;height:12px;background:var(--red);transform-origin:left;animation:grow .7s var(--ease) both}
+.shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,10,6,.55),transparent 55%);animation:fadein .8s ease 4.4s both}
+.out1{animation:fadeout .5s ease 4.1s both}
+</style>
+<div class="tiles"></div>
+<div class="out1">
+  <div class="bar" style="top:205px;animation-delay:.2s"></div>
+  <div class="t1"><span class="mask"><span style="animation-delay:.35s">Votre</span></span><span class="mask"><span style="animation-delay:.5s">carrelage</span></span><span class="mask"><span class="r" style="animation-delay:2.6s">reste.</span></span></div>
+</div>
+<!-- 9 lames qui couvrent l'écran de bas en haut, en alternant les côtés -->
+<div class="pl"   style="top:1684px;background-position:-40px -20px;--j:58%;animation-delay:1.3s"></div>
+<div class="pl l" style="top:1448px;background-position:-160px -260px;--j:24%;animation-delay:1.55s"></div>
+<div class="pl"   style="top:1212px;background-position:-80px -500px;--j:71%;animation-delay:1.8s"></div>
+<div class="pl l" style="top:976px;background-position:-200px -120px;--j:40%;animation-delay:2.05s"></div>
+<div class="pl"   style="top:740px;background-position:-20px -380px;--j:83%;animation-delay:3.0s"></div>
+<div class="pl l" style="top:504px;background-position:-120px -560px;--j:30%;animation-delay:3.2s"></div>
+<div class="pl"   style="top:268px;background-position:-60px -200px;--j:66%;animation-delay:3.4s"></div>
+<div class="pl l" style="top:32px;background-position:-180px -440px;--j:47%;animation-delay:3.6s"></div>
+<div class="pl"   style="top:-204px;background-position:-100px -60px;--j:15%;animation-delay:3.8s"></div>
+<div class="shade"></div>
+<div class="bar" style="bottom:620px;animation-delay:4.6s"></div>
+<div class="t2"><span class="mask"><span style="animation-delay:4.75s">Votre maison</span></span><span class="mask"><span style="animation-delay:4.95s">change.</span></span></div>
+<script src="seek.js"></script>
