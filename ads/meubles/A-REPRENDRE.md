@@ -1,4 +1,4 @@
-# À reprendre (état au 11/11/2026)
+# À reprendre (état au 12/11/2026)
 
 Note de passation : lire ce fichier au début de chaque nouvelle conversation, puis le mettre à jour à la fin.
 
@@ -57,3 +57,13 @@ Note de passation : lire ce fichier au début de chaque nouvelle conversation, p
   1. le détail du poste à 19 000 DA ;
   2. la marge à ajouter.
 - Le client a montré un **échantillon de panneau chêne doré à fil fin**. Il faut savoir si le dressing se refait dans ce décor ; avec le fil du bois, ça tient toujours sur 6 panneaux.
+
+### Instagram (12/11) — `ads/insta/`
+- Plan sur 2 semaines, bio et légendes prêtes : `PLAN-INSTA.md`.
+- Fichiers prêts dans `out/` :
+  - carrousel dressing (6 slides) ;
+  - reel 11 s ;
+  - 6 couvertures de stories à la une ;
+  - 2 slides de fin (meubles, parquet).
+- Générés avec `python3 build.py <images u156> out`, 0 crédit.
+- Prochaine étape : le client publie. Bilan dans 2 semaines avec une capture des statistiques. Lui demander de vraies photos de chantier.
