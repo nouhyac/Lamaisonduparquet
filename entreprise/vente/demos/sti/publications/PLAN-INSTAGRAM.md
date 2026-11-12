@@ -18,7 +18,8 @@ Sonatrach, Sonelgaz, CNAS nous font confiance
 - Adresse : nous avons écrit « Mohammadia, Alger » pour tenir dans 150 caractères. L'adresse complète (Pins Maritimes, Mohammadia) va dans le champ « Adresse » du profil professionnel. ⚠ À faire confirmer par STI : une publication indique « Les Mandarines, Mohammadia » et le site .dz indique « Dar El Beïda ».
 
 ## 2. Stories à la une (couvertures dans `a-la-une/`)
-Catalogue · Prix · Livraisons · Clients · Showroom · Devis. On remplace les anciennes (Contact, Chaise ergonomique, Clients, Gamer, Catalogue) et on réutilise leurs bonnes stories : vidéos de réglage → Catalogue, camions → Livraisons, retours clients → Clients.
+Même style que leurs couvertures actuelles (fond blanc cassé, icône bleu nuit, nom en capitales), mais harmonisé : même taille d'icône, même typo, petit trait rouge du logo sous chaque nom.
+Ordre : Catalogue · Prix · Ergonomique · Gaming · Livraisons · Clients · Showroom · Devis 24 h. On garde le contenu de leurs anciennes stories : vidéos de réglage → Ergonomique, chaises gamer → Gaming, camions → Livraisons, retours clients → Clients, coordonnées → Devis 24 h.
 
 ## 3. Ordre de publication et grille
 Publiez dans l'ordre 01 → 09 : la 09 se retrouve en haut à gauche et la grille forme le damier de l'aperçu. Une rangée (produit · preuve · conseil) correspond à une semaine.

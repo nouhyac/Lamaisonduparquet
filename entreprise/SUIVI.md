@@ -103,6 +103,8 @@ Règle : toujours vérifier le coût (get_cost) avant une vidéo ou un modèle 3
 Solde au 2026-10-14 : **3,39 crédits** (après Arzata : 35 images ≈ 9,25, image verticale 0,5, vidéo Cinema Studio 5 s 5). Repères vidéo 5 s vérifiés : Cinema Studio 5 · Kling 3.0 std sans son 7,5 · Grok 22,5 · Seedance 35.
 
 ## Journal des sessions
+
+- 2026-11-12 · STI : publications livrées une par une (images + légendes + calendrier). Couvertures « à la une » refaites dans le style de STI (fond clair, icônes bleu nuit) : 8 couvertures, dont Ergonomique et Gaming conservées.
 - **2026-10-12** : cadrage du projet, création de ce suivi, premier brouillon de l'offre, puis passage au marché algérien (offre n°2 en DA), prix selon le niveau, propositions de noms. Choix : Dzign Studio, haut de gamme, BaridiMob 50/50. Offre v3 et identité proposées. Outils listés (Hostinger, Higgsfield, Canva gratuit, Meta à relier). Site Dzign Studio v1 construit (z doré en 3D) et publié en aperçu. Puis exemples de sites, puis v3 « choc » avec Higgsfield (≈14 crédits utilisés sur 24 : 5 images, 1 vidéo Kling, 1 modèle 3D Tripo).
 - **2026-10-12 (suite)** : portfolio 8 sites + aperçu instantané, étude de cas La Maison du Parquet, domaine dzignstudio.design vérifié libre, version arabe + FAQ, choix d'offre obligatoire avant WhatsApp, campagne de lancement (3 vidéos, 9 posts FR/AR), kit pubs Meta (FR), conseils email Yahoo, bios Instagram/Facebook/TikTok + photo de profil + couverture.
 - **2026-10-12 (fin)** : numéro WhatsApp passé au 0549506857 partout (site, posts, 6 vidéos refaites), paquet de mise en ligne testé, kit de vente + modèle de devis.
