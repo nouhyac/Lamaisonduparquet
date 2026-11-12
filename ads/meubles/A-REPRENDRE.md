@@ -66,4 +66,7 @@ Note de passation : lire ce fichier au début de chaque nouvelle conversation, p
   - Générées avec `python3 stories.py stories`.
 - Carrousels prêts : `carrousels/1-references` (5 décors) et `carrousels/2-showroom` (vraies photos).
 - Le kit meubles (`out/`, `build.py`) n'est **pas** à publier sur le compte.
-- Prochaine étape : bilan le 26/11 avec une capture des statistiques ; demander de vraies photos de pose.
+- **Mis de côté le 12/11 à la demande du client.** Envoyé : étape 1 (profil + 6 stories DÉCORS, une par une).
+- Reprise : envoyer **une étape à la fois, fichier par fichier** (pas de lots), quand il écrit « suivant ».
+- En attente : choix de la couverture **A** (bois plein) ou **B** (rond de bois sur fond crème), aperçu dans `stories/APERCU-couvertures-A-B.jpg`. Le client n'a pas aimé les premières couvertures (texte sur rond blanc).
+- Ensuite : bilan avec une capture des statistiques ; demander de vraies photos de pose.
