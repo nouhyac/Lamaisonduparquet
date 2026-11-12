@@ -1,139 +1,127 @@
-# Plan Instagram @la.maison.du.parquett · 2 semaines (0 crédit)
+# Instagram @la.maison.du.parquett · PARQUET UNIQUEMENT · 0 crédit
 
-Contenu prêt dans `ads/insta/out/`.
-- Je ne peux pas publier à votre place. Vous postez, je prépare tout.
-- Heure de publication : **19 h**, les **mardi, jeudi et samedi**. Une story chaque jour.
+Aucun prix nulle part. Publications à **19 h**.
 
-## 1. Profil (à faire aujourd'hui, 10 min)
+Tous les fichiers sont dans `ads/insta/` :
+- `stories/` : 21 stories, rangées par rubrique à la une ;
+- `stories/couvertures/` : 5 couvertures ;
+- `carrousels/` : 2 carrousels prêts.
 
-**Nom** (le champ « Nom » compte dans la recherche Instagram) :
-```
-La Maison du Parquet · Parquet & Meubles Alger
-```
+## Comment remplir les stories à la une (vous n'en avez pas encore)
+1. Publier les stories d'une rubrique, dans l'ordre (01, 02…).
+2. Profil → « + Nouveau » (à la une) → cocher ces stories → nom de la rubrique → « Modifier la couverture » → choisir l'image de `stories/couvertures/`.
+3. Une rubrique par jour, comme dans le calendrier ci-dessous. En 5 jours, le profil est complet.
 
-**Bio** :
-```
-Parquet EGGER en stock à Alger 🏠
-Posé sur votre carrelage en 1 journée
-Meubles sur mesure : dressing, cuisine, chambre
-📍 Showroom Dar El Beïda · sur RDV · livraison 58 wilayas
-💬 WhatsApp 0794 70 93 23
-```
+## Profil (aujourd'hui)
+- **Nom** :
+  ```
+  La Maison du Parquet · Parquet Alger
+  ```
+- **Bio** :
+  ```
+  Parquet EGGER en stock à Alger 🏠
+  Posé sur votre carrelage en 1 journée
+  📍 Showroom Dar El Beïda · sur RDV
+  Livraison partout en Algérie
+  💬 WhatsApp 0794 70 93 23
+  ```
+- **Lien** : lamaisonduparquet.org. **Bouton** : WhatsApp.
 
-**Profil pro** :
-- Lien : lamaisonduparquet.org.
-- Bouton de contact : WhatsApp.
-- Catégorie : « Revêtement de sol » ou « Fabricant de meubles ».
+## Calendrier
 
-**Stories à la une** : 6 couvertures dans `stories-a-la-une/`.
-- Parquet · Meubles · Avant/Après · Showroom · Avis · Devis.
-- Mettre dans chaque rubrique au moins 3 stories existantes.
-
-**Épingler 3 publications** :
-1. le carrousel dressing ;
-2. le visuel « Votre carrelage, transformé » ;
-3. un avant/après.
-
-## 2. Les 4 thèmes (on alterne)
-1. **Parquet** : décors en stock, pose sur carrelage, Aqua (cuisine, entrée).
-2. **Meubles sur mesure** : dressing, cuisine, chambre, en 3D puis réalisés.
-3. **Preuve** : avant/après, vraies photos de chantier, avis clients. C'est ce qui vend le plus.
-4. **Showroom** : venir voir et toucher les décors (objectif n° 1 des pubs).
-
-## 3. Calendrier
-
-| Jour | Format | Fichier | Thème |
+| Date | Quoi | Fichiers | Ajouter à la une |
 |---|---|---|---|
-| Mar S1 | Carrousel 6 photos | `out/carrousel-dressing/01→06` | Meubles |
-| Jeu S1 | Reel 11 s | `out/reel-dressing-12s.mp4` + musique tendance Instagram | Meubles |
-| Sam S1 | Publication | `visuels/out/03.jpg` (carrelage → parquet) | Parquet |
-| Mar S2 | Carrousel | `meubles/cuisine-famille/signature/signature-1→8` + `out/fin-carrousel-meubles.jpg` | Meubles |
-| Jeu S2 | Reel | `pub3/pub-showroom-A.mp4` (version darija : B) | Showroom |
-| Sam S2 | Carrousel | `meubles/chambre-H1357-U705/photos-4k-v2/` (6 photos) + `out/fin-carrousel-meubles.jpg` | Meubles |
+| **Jeu 12/11** | Profil + 6 stories | `stories/1-decors/01→06` | **DÉCORS** (couverture 1) |
+| **Ven 13/11** | 5 stories | `stories/2-showroom/01→05` | **SHOWROOM** (couverture 2) |
+| **Sam 14/11, 19 h** | 📌 Carrousel 7 photos + 4 stories | `carrousels/1-references/01→07` + `stories/3-pose/01→04` | **POSE** (couverture 3) |
+| **Dim 15/11** | 4 stories | `stories/4-questions/01→04` | **QUESTIONS** (couverture 4) |
+| **Lun 16/11** | 2 stories + repartager le carrousel en story | `stories/5-devis/01→02` | **DEVIS** (couverture 5) |
+| **Mar 17/11, 19 h** | Reel | `ads/pub3/pub-showroom-A.mp4` | – |
+| **Mer 18/11** | Story sondage « Carrelage ou parquet ? » | `visuels/out/03.jpg` | POSE |
+| **Jeu 19/11, 19 h** | 📌 Publication | `visuels/out/03.jpg` | – |
+| **Sam 21/11, 19 h** | 📌 Carrousel 6 photos (vraies photos du showroom) | `carrousels/2-showroom/01→06` | – |
+| **Mar 24/11, 19 h** | Reel en darija | `ads/pub3/pub-showroom-B.mp4` | – |
+| **Jeu 26/11, 19 h** | Publication | `visuels/out/10.jpg` (quel parquet pour quelle pièce) | – |
+| **Sam 28/11, 19 h** | Publication | `visuels/out/04.jpg` (Melba Aqua, cuisine) | – |
 
-### Légendes prêtes
+📌 = épingler en haut du profil : les 2 carrousels et le carrelage transformé.
 
-**Mar S1 · Dressing**
-```
-Un dressing qui vous ressemble, au millimètre près ✨
-Double penderie, tiroirs, vitrines éclairées, coiffeuse et entrée assorties : tout est conçu en 3D avec vous avant fabrication.
-Envoyez vos mesures ou un croquis, on vous prépare la 3D de votre pièce.
-📍 Showroom Dar El Beïda · sur rendez-vous · livraison partout en Algérie
-💬 WhatsApp : 0794 70 93 23
-👉 lamaisonduparquet.org
-#dressing #meublesurmesure #dressingsurmesure #alger #algerie #decoration #interiordesign #dzpost #darelbeida #amenagement
-```
+**Les autres jours** : une story par jour.
+- Repartager la publication du jour.
+- Ou filmer 10 s au showroom (une main qui passe sur un décor, des cartons en stock).
+- Ou une vraie pose chez un client.
 
-**Jeu S1 · Reel dressing**
-```
-De la 3D à votre chambre 👉 un dressing sur mesure, pensé pour vous.
-Dites-nous « DRESSING » sur WhatsApp et recevez la 3D de votre projet.
-💬 0794 70 93 23 · 👉 lamaisonduparquet.org
-#dressing #meublesurmesure #alger #algerie #decoration #renovation #dzpost
-```
+## Légendes à copier
 
-**Sam S1 · Carrelage → parquet**
+**Sam 14/11 · Carrousel « 5 références »**
 ```
-Vous en avez marre de votre carrelage ? On ne casse rien 🏠
-Le parquet EGGER se pose directement dessus, en une journée, sans gravats ni poussière.
+5 décors EGGER en stock à Alger : lequel est fait pour vous ? ✨
+Asgil miel, Achensee, Chêne du Nord, Melba beige Aqua, Bardolino : glissez pour voir chaque référence.
 📍 Showroom Dar El Beïda · en stock · livraison partout en Algérie
 💬 WhatsApp : 0794 70 93 23
 👉 lamaisonduparquet.org
-#parquet #egger #alger #algerie #renovation #decoration #maison #dzpost #darelbeida
+#parquet #egger #alger #algerie #decoration #renovation #maison #dzpost #darelbeida #parquetstratifie
 ```
 
-**Mar S2 · Cuisine**
-```
-Chêne et noir mat : la cuisine qui ne se démode pas ✨
-Colonne four et café, tiroirs organisés, chauffe-eau caché et ventilé, LED sous les meubles.
-Votre cuisine en 3D avant fabrication : envoyez-nous vos mesures.
-📍 Showroom Dar El Beïda · sur rendez-vous
-💬 WhatsApp : 0794 70 93 23
-👉 lamaisonduparquet.org
-#cuisine #cuisinemoderne #cuisinesurmesure #alger #algerie #decoration #dzpost #interiordesign
-```
-
-**Jeu S2 · Reel showroom**
+**Mar 17/11 · Reel showroom**
 ```
 Un parquet se choisit les pieds dessus 👣
 Venez voir et toucher les 5 décors en stock au showroom de Dar El Beïda.
-Du samedi au jeudi, 8 h à 16 h, sur rendez-vous.
+Du samedi au jeudi, de 8 h à 16 h, sur rendez-vous.
 💬 Réservez votre visite : 0794 70 93 23
 👉 lamaisonduparquet.org
 #parquet #showroom #egger #alger #darelbeida #algerie #decoration
 ```
 
-**Sam S2 · Chambre**
+**Jeu 19/11 · Carrelage transformé**
 ```
-Une chambre complète, pensée d'un seul geste ✨
-Tête de lit chêne, chevets, bureau, placard et mur TV assortis.
-On dessine votre chambre en 3D, vous validez, on fabrique.
+Marre de votre carrelage ? On ne casse rien 🏠
+Le parquet EGGER se pose directement dessus, en une journée, sans gravats ni poussière.
+📍 Showroom Dar El Beïda · livraison partout en Algérie
+💬 WhatsApp : 0794 70 93 23
+👉 lamaisonduparquet.org
+#parquet #egger #alger #algerie #renovation #carrelage #decoration #dzpost
+```
+
+**Sam 21/11 · Carrousel showroom**
+```
+Bienvenue chez nous 👋
+Les décors côte à côte, les lames au sol pour comparer, le stock prêt à partir : venez choisir en vrai.
+📍 Cité ONAB, Lot 148, Dar El Beïda · sur rendez-vous
+💬 WhatsApp : 0794 70 93 23
+👉 lamaisonduparquet.org
+#parquet #showroom #egger #alger #darelbeida #algerie #decoration
+```
+
+**Mar 24/11 · Reel darija**
+```
+Marhba bikoum au showroom 👋 Venez choisir votre parquet sur place.
+📍 Dar El Beïda · sur rendez-vous · livraison partout en Algérie
+💬 0794 70 93 23 · 👉 lamaisonduparquet.org
+#parquet #egger #alger #dzpost #algerie #decoration
+```
+
+**Jeu 26/11 · Quel parquet pour quelle pièce**
+```
+Salon, chambre, cuisine : quel parquet choisir ? 🤔
+Miel pour le salon, Achensee pour la chambre, Melba Aqua pour la cuisine ouverte. On vous conseille selon vos pièces.
 📍 Showroom Dar El Beïda · sur rendez-vous
 💬 WhatsApp : 0794 70 93 23
 👉 lamaisonduparquet.org
-#chambre #meublesurmesure #dressing #alger #algerie #decoration #dzpost #interiordesign
+#parquet #egger #alger #algerie #decoration #maison #conseil
 ```
 
-## 4. Stories (1 par jour, 2 minutes)
-| Jour | Story |
-|---|---|
-| Sam | Sondage « Carrelage ou parquet ? » sur une photo de parquet |
-| Dim | Coulisses atelier : panneau, découpe, chant (vraie photo au téléphone) |
-| Lun | Question « Quelle pièce voulez-vous refaire ? » (boîte à questions) |
-| Mar | Partager la publication du jour + « Nouveau » |
-| Mer | Vidéo de 10 s au showroom : la main qui passe sur un décor |
-| Jeu | Partager le reel + lien vers le site |
-| Ven | Avis client ou capture WhatsApp (avec accord, nom masqué) |
+**Sam 28/11 · Melba Aqua**
+```
+Un parquet dans la cuisine ? Oui, avec le Melba beige Aqua 💧
+Il résiste à l'eau pendant 24 heures : idéal pour la cuisine ouverte et l'entrée.
+📍 Showroom Dar El Beïda · en stock
+💬 WhatsApp : 0794 70 93 23
+👉 lamaisonduparquet.org
+#parquet #egger #cuisine #alger #algerie #decoration #aqua
+```
 
-## 5. Règles qui font la différence
-- **Répondre aux DM et commentaires en moins d'une heure**, avec les réponses types du skill `community-manager-lmdp`. L'algorithme et les clients le voient.
-- **Vraies photos > 3D** : à chaque pose de parquet ou de meuble, prendre 3 photos et 1 vidéo de 10 s **à la lumière du jour**, téléphone à l'horizontale, pièce rangée. Sur un avant/après, garder le même angle.
-  - Envoyez-les-moi : je fais les montages gratuitement.
-- Sur les rendus 3D, mettre « Conception 3D » (c'est déjà sur les slides) : on reste honnête avec le client.
-- **Aucun prix** dans les publications : on demande les m² sur WhatsApp.
-- Les pubs payantes continuent de pousser vers le **showroom**. L'organique sert à rassurer ceux qui viennent du profil.
-
-## 6. Bilan dans 2 semaines
-Envoyez-moi une capture des statistiques du compte (abonnés, comptes touchés, visites du profil, clics WhatsApp).
-
-On garde ce qui marche (souvent : avant/après et reels) et on double ce format.
+## Réflexes d'expert
+- Répondre aux messages et aux commentaires **en moins d'une heure** (réponses types dans le skill `community-manager-lmdp`). Prix demandé = on demande les m² et la pièce.
+- **À chaque pose chez un client** : 3 photos et 1 vidéo de 10 s à la lumière du jour, plus si possible le même angle avant la pose. Ce sera le meilleur contenu. Je le monte gratuitement.
+- Dans 2 semaines : capture des statistiques du compte (comptes touchés, visites du profil, clics WhatsApp) pour faire le bilan.

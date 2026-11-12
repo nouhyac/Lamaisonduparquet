@@ -58,13 +58,13 @@ def slide_cover(img, kicker, title, sub, path):
     d.text((60, H - 96), "Glissez  >>", font=F(SEMI, 34), fill=(255, 255, 255))
     im.save(path, quality=93)
 
-def slide_cta(path, titre="Votre projet sur mesure ?"):
+def slide_cta(path, titre="Votre projet sur mesure ?", lignes=("Envoyez-nous vos mesures ou un croquis :", "on vous prépare la 3D de votre pièce.")):
     im = Image.new("RGB", (W, H), CREAM); d = ImageDraw.Draw(im)
     logo(d, 60, 70)
     y = 330
     for l in wrap(d, titre, F(TITLE, 110), W - 120): d.text((60, y), l, font=F(TITLE, 110), fill=INK); y += 112
     y += 30
-    for t in ["Envoyez-nous vos mesures ou un croquis :", "on vous prépare la 3D de votre pièce."]:
+    for t in lignes:
         d.text((60, y), t, font=F(REG, 38), fill=(60, 60, 60)); y += 52
     y += 50
     d.rounded_rectangle([60, y, W - 60, y + 130], radius=24, fill=INK)
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     slide_cta(f"{c}/06.jpg")
     # ---------- 2. Slide de fin réutilisable (cuisine, chambre) ----------
     slide_cta(os.path.join(OUT, "fin-carrousel-meubles.jpg"))
-    slide_cta(os.path.join(OUT, "fin-carrousel-parquet.jpg"), "Votre sol transformé en 1 jour ?")
+    slide_cta(os.path.join(OUT, "fin-carrousel-parquet.jpg"), "Votre sol transformé en 1 jour ?", ("Envoyez-nous la surface (m²) et la pièce :", "on vous répond avec votre devis gratuit."))
     # ---------- 3. Stories à la une ----------
     h = os.path.join(OUT, "stories-a-la-une"); os.makedirs(h, exist_ok=True)
     for i, (w, s) in enumerate([("PARQUET", "5 décors en stock"), ("MEUBLES", "sur mesure"), ("AVANT", "/ après"), ("SHOWROOM", "Dar El Beïda"), ("AVIS", "clients"), ("DEVIS", "WhatsApp")], 1):

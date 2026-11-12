@@ -58,12 +58,12 @@ Note de passation : lire ce fichier au début de chaque nouvelle conversation, p
   2. la marge à ajouter.
 - Le client a montré un **échantillon de panneau chêne doré à fil fin**. Il faut savoir si le dressing se refait dans ce décor ; avec le fil du bois, ça tient toujours sur 6 panneaux.
 
-### Instagram (12/11) — `ads/insta/`
-- Plan sur 2 semaines, bio et légendes prêtes : `PLAN-INSTA.md`.
-- Fichiers prêts dans `out/` :
-  - carrousel dressing (6 slides) ;
-  - reel 11 s ;
-  - 6 couvertures de stories à la une ;
-  - 2 slides de fin (meubles, parquet).
-- Générés avec `python3 build.py <images u156> out`, 0 crédit.
-- Prochaine étape : le client publie. Bilan dans 2 semaines avec une capture des statistiques. Lui demander de vraies photos de chantier.
+### Instagram (12/11) — `ads/insta/` · **PARQUET UNIQUEMENT** (consigne du client)
+- Plan daté, bio et légendes : `PLAN-INSTA.md`, calendrier du 12/11 au 28/11.
+- Stories pour créer les stories à la une (le compte n'en avait pas) :
+  - `stories/` : 21 stories, rubriques Décors · Showroom · Pose · Questions · Devis ;
+  - `stories/couvertures/`.
+  - Générées avec `python3 stories.py stories`.
+- Carrousels prêts : `carrousels/1-references` (5 décors) et `carrousels/2-showroom` (vraies photos).
+- Le kit meubles (`out/`, `build.py`) n'est **pas** à publier sur le compte.
+- Prochaine étape : bilan le 26/11 avec une capture des statistiques ; demander de vraies photos de pose.
