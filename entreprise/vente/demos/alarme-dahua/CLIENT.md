@@ -64,3 +64,13 @@ Votre maison vous prévient. Même sans Internet. 🔐 Kit alarme Dahua AirShiel
 - Centres d'intérêt : maison, sécurité, voyages, petites entreprises.
 - Vidéo 9:16 en Reels et Stories, 4:5 dans le fil. Objectif : messages WhatsApp ou formulaire de la page.
 - Test de départ : 2 publicités (vidéo 24 s et extrait des 8 premières secondes), budget à fixer par le client.
+
+## Version B « rassurante » (inspirée de la pub Tike Sécurité)
+Référence envoyée : « Publicité 2026 Tike Sécurité » (YouTube). Codes repris, sans rien copier : ouverture sur les maisons avec « Protégez votre maison ou votre entreprise », gestes concrets (pose du détecteur, téléphone), sous-titres en bande en bas, ambiance claire et familiale, fin avec les coordonnées.
+Fichiers : `marketing/pub-B-rassurante-30s-{16x9,9x16,4x5,1x1}.mp4` (30 s, musique originale, lisible sans le son).
+Sans voix off : Higgsfield a atteint sa limite journalière (compte en période de grâce). Une voix off française est possible plus tard (0,3 crédit).
+
+## Plan de test conseillé (A/B)
+- **A « choc »** (nuit, 24 s) : arrêter le scroll, ciblage large (maisons, villas).
+- **B « rassurante »** (jour, 30 s) : familles et commerçants, reciblage des personnes qui ont vu A.
+- Même budget sur les 2 pendant 3 jours. On garde celle qui donne le plus de messages WhatsApp au meilleur coût.

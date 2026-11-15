@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#000}
+#st{position:relative;overflow:hidden;background:#EAF3FB;font-family:'Manrope',sans-serif;color:#0E1220}
+.L{position:absolute;inset:0;opacity:0;overflow:hidden}
+.sky{position:absolute;inset:0;background:linear-gradient(180deg,#9FD1F2 0%,#EAF5FF 55%,#FFF4E2 100%)}
+.wallb{position:absolute;inset:0;background:#BFDDEE}
+.floor{position:absolute;left:0;right:0;bottom:0;background:#E9DCC8}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sub{position:absolute;left:0;right:0;margin:0 auto;width:fit-content;background:rgba(20,26,40,.82);color:#fff;font-weight:800;border-radius:.4em;padding:.35em .7em;text-align:center;line-height:1.25;max-width:88%}
+.ttl{position:absolute;left:6%;right:6%;text-align:center;font-family:'Sora';font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.ttl em{font-style:normal;color:#E30613}
+.prod{position:absolute;filter:drop-shadow(0 24px 30px rgba(14,18,32,.25))}
+.phone{position:absolute;background:#0E1220;border-radius:1.4em;padding:.35em;box-shadow:0 30px 60px -20px rgba(14,18,32,.5)}
+.scr{background:#F5F7FB;border-radius:1.1em;height:100%;overflow:hidden;display:flex;flex-direction:column;gap:.45em;padding:.7em}
+.scr .h{display:flex;justify-content:space-between;align-items:center;font-weight:800}
+.scr .h span{font-size:.7em;background:#DCFCE7;color:#15803D;border-radius:999px;padding:.2em .6em}
+.nt{background:#fff;border-radius:.7em;padding:.5em .6em;display:flex;gap:.5em;align-items:center;box-shadow:0 .4em 1em -.4em rgba(14,18,32,.25);font-weight:800;font-size:.8em}
+.nt i{font-style:normal;width:1.8em;height:1.8em;border-radius:.5em;display:grid;place-items:center;background:#FFE4E6;flex-shrink:0}
+.nt small{display:block;color:#55607A;font-weight:700;font-size:.8em}
+.card{position:absolute;background:#fff;border-radius:.8em;padding:.6em .8em;display:flex;gap:.6em;align-items:center;font-weight:800;box-shadow:0 1em 2em -1em rgba(14,18,32,.35)}
+.card i{font-style:normal;font-size:1.4em}
+.card small{display:block;color:#E30613;font-weight:800;font-size:.75em}
+.shopname{font-family:'Sora';font-weight:800;letter-spacing:-.02em}
+.btn{display:inline-block;background:#25D366;color:#fff;font-weight:800;border-radius:.5em;padding:.5em 1em;box-shadow:0 1em 2em -.8em rgba(37,211,102,.9)}
+.brand{font-family:'Sora';font-weight:800}.brand b{color:#E30613}
+</style></head><body><div id="st"></div>
+<script>
+const Q = new URLSearchParams(location.search), W = +Q.get('w') || 1920, H = +Q.get('h') || 1080;
+const st = document.getElementById('st'); st.style.width = W + 'px'; st.style.height = H + 'px';
+const r = H / W, F = r >= 1.7 ? 'v' : r >= 1.2 ? 'p' : r >= .95 ? 'q' : 'h', HZ = F === 'h';
+const K = Math.min(W, H) / 1080 * ({ v: 1.3, p: 1.1, q: 1, h: 1 })[F];
+const px = n => Math.round(n * K) + 'px';
+st.style.fontSize = px(40);
+const SUB = txt => `<div class="sub" style="bottom:${HZ ? '7%' : F === 'v' ? '11%' : '6%'};font-size:${px(HZ ? 44 : 40)}">${txt}</div>`;
+// maisons en silhouette (ouverture)
+const houses = () => { let s = `<svg viewBox="0 0 1600 500" preserveAspectRatio="xMidYMax slice" style="position:absolute;left:0;right:0;bottom:0;width:100%;height:55%"><rect x="0" y="420" width="1600" height="80" fill="#D9C9AE"/>`;
+  const b = [[40, 260, 220], [280, 200, 200], [500, 300, 160], [690, 230, 240], [950, 280, 180], [1150, 210, 210], [1380, 270, 190]];
+  b.forEach(([x, y, w], i) => { s += `<rect x="${x}" y="${y}" width="${w}" height="${420 - y}" fill="${i % 2 ? '#F7F1E6' : '#FFFFFF'}" stroke="#D8CBB4" stroke-width="3"/>`;
+    for (let wx = x + 25; wx < x + w - 30; wx += 55) for (let wy = y + 30; wy < 400; wy += 70) s += `<rect x="${wx}" y="${wy}" width="28" height="36" rx="3" fill="#9FC7E4"/>`; });
+  s += `<circle cx="1450" cy="120" r="70" fill="#FFD27A" opacity=".8"/></svg>`; return s; };
+const shop = () => `<svg viewBox="0 0 800 500" style="position:absolute;left:50%;bottom:${HZ ? '18%' : '22%'};width:${HZ ? '58%' : '86%'};transform:translateX(-50%)"><rect x="40" y="60" width="720" height="420" rx="10" fill="#fff" stroke="#D8CBB4" stroke-width="4"/><rect x="40" y="60" width="720" height="80" fill="#0E1220"/><text x="400" y="113" text-anchor="middle" font-family="Sora" font-weight="800" font-size="40" fill="#fff">General Electric dz</text><g id="shutter"><rect x="110" y="170" width="580" height="310" fill="#C9CED8"/>${Array.from({ length: 15 }, (_, i) => `<line x1="110" x2="690" y1="${180 + i * 20}" y2="${180 + i * 20}" stroke="#A5ACBA" stroke-width="4"/>`).join('')}</g><rect x="640" y="240" width="40" height="70" rx="8" fill="#F2F4F8" stroke="#ccc"/><circle cx="660" cy="258" r="6" fill="#22C55E"/></svg>`;
+const phone = (inner, w, x, y) => `<div class="phone" style="width:${px(F === 'q' ? w * .82 : w)};height:${px((F === 'q' ? w * .82 : w) * 2)};left:${x};top:${y};font-size:${px(30)}"><div class="scr">${inner}</div></div>`;
+const app = (alerts) => `<div class="h">DMSS <span>Armé · Absent</span></div>` + alerts;
+const S = [
+  [0, 3.4, `<div class="sky"></div>${houses()}<div class="ttl" style="top:${HZ ? 12 : 16}%;font-size:${px(HZ ? 64 : 54)};color:#0E1220"><span class="shopname">General Electric dz</span></div><div class="ttl" style="top:${HZ ? 22 : 23}%;font-size:${px(HZ ? 104 : 80)}">Protégez votre maison<br><em>ou votre commerce</em></div>`],
+  [3.4, 6.6, `<div class="sky" style="background:linear-gradient(180deg,#F4F8FC,#E2ECF6)"></div><img class="prod" id="kit" src="img/kit-complet.webp" style="width:${HZ ? '64%' : '86%'};left:${HZ ? '18%' : '7%'};top:${HZ ? '4%' : '26%'}">` + SUB('Le kit d\'alarme sans fil <b style="color:#FF5A63">Dahua AirShield</b> : 4 pièces, prêt à installer')],
+  [6.6, 9.8, `<div class="wallb"></div><div class="floor" style="height:${HZ ? 26 : 20}%"></div><div style="position:absolute;left:${HZ ? 52 : 18}%;bottom:${HZ ? 26 : 20}%;width:${HZ ? '30%' : '64%'};height:${px(90)};background:#fff;border-radius:${px(10)};box-shadow:0 10px 20px -10px rgba(0,0,0,.2)"></div><img class="prod" id="pir" src="img/detecteur-mouvement.webp" style="height:${px(HZ ? 260 : 300)};left:${HZ ? 30 : 58}%;top:${HZ ? 12 : 14}%">` + phone(app(`<div class="nt"><i style="background:#DBEAFE">➕</i><div>Détecteur ajouté<small>Salon · signal excellent</small></div></div><div class="nt"><i style="background:#DCFCE7">🔋</i><div>Pile 100 %<small>jusqu'à 4 ans</small></div></div>`), HZ ? 360 : 330, HZ ? '12%' : '10%', HZ ? '8%' : ({ v: '30%', p: '20%', q: '10%' })[F]) + SUB('Installation simple, <b>sans aucun câble</b>')],
+  [9.8, 13.6, `<div class="sky" style="background:linear-gradient(180deg,#FFF7EC,#F3E6D2)"></div>` + phone(app(`<div class="nt" id="n1"><i>🚨</i><div>Porte d'entrée ouverte<small>Alerte · 14:32</small></div></div><div class="nt" id="n2"><i style="background:#DBEAFE">✉️</i><div>SMS envoyé<small>à 5 numéros</small></div></div><div class="nt" id="n3"><i style="background:#DCFCE7">📞</i><div>Appel en cours<small>votre alarme vous appelle</small></div></div>`), HZ ? 360 : 420, HZ ? 'calc(50% - ' + px(190) + ')' : 'calc(50% - ' + px(210) + ')', HZ ? '4%' : ({ v: '10%', p: '6%', q: '3%' })[F]) + SUB('Recevez les alertes sur votre téléphone : <b>notification, SMS et appel</b>')],
+  [13.6, 16.8, `<img class="bg" src="img/scenes/telecommande-depart.webp" style="object-position:${HZ ? 'center 40%' : 'center'}">` + SUB('Activez l\'alarme <b>en un clic</b> avant de partir')],
+  [16.8, 20.0, `<div class="sky" style="background:linear-gradient(180deg,#FBD8B0,#F6EBDD)"></div>${shop()}` + SUB('Pour votre maison <b>comme pour votre commerce</b>')],
+  [20.0, 23.2, `<img class="bg" src="img/scenes/mouvement-chat.webp" style="object-position:${HZ ? 'center 65%' : '30% center'}">` + SUB('Vos animaux <b>ne déclenchent pas</b> l\'alarme (jusqu\'à 18 kg)')],
+  [23.2, 26.4, `<div class="sky" style="background:linear-gradient(180deg,#F4F8FC,#E2ECF6)"></div>` + [['🌐', 'Internet coupé', 'la carte SIM prend le relais'], ['⚡', 'Coupure de courant', '12 heures de batterie'], ['📱', 'Application gratuite', 'DMSS, partagée avec la famille']].map((c, i) => `<div class="card" id="cd${i}" style="font-size:${px(HZ ? 48 : 44)};left:${HZ ? 4 + i * 31.5 : 10}%;${HZ ? 'width:29%;top:30%' : 'right:10%;top:' + (18 + i * 17) + '%'}"><i>${c[0]}</i><div>${c[1]}<small>${c[2]}</small></div></div>`).join('') + SUB('Votre alarme <b>ne lâche jamais</b>')],
+  [26.4, 31, `<div class="sky" style="background:linear-gradient(180deg,#FFFFFF,#EAF3FB)"></div><img class="prod" id="box" src="img/boite.webp" style="width:${HZ ? '34%' : F === 'q' ? '50%' : '70%'};left:${HZ ? '8%' : F === 'q' ? '25%' : '15%'};top:${HZ ? '20%' : F === 'q' ? '5%' : '9%'}"><div style="position:absolute;${HZ ? 'left:48%;right:5%;top:24%;text-align:left' : 'left:6%;right:6%;top:' + (F === 'v' ? 50 : F === 'p' ? 56 : 58) + '%;text-align:center'};display:grid;gap:${px(18)};${HZ ? '' : 'justify-items:center'}"><div class="shopname" style="font-size:${px(70)}">General Electric dz</div><div style="font-size:${px(36)};font-weight:700;color:#55607A">Kit officiel Dahua AirShield · El Hamiz</div><span class="btn" style="font-size:${px(46)};justify-self:${HZ ? 'start' : 'center'}">WhatsApp 0666 23 53 30</span><div style="font-size:${px(34)};font-weight:800;color:#E30613">Partez tranquille. Dormez tranquille.</div></div>`]
+];
+window.DUR = 30;
+const layers = S.map(([a, b, h]) => { const d = document.createElement('div'); d.className = 'L'; d.innerHTML = h; st.appendChild(d); return d; });
+const ease = x => x < 0 ? 0 : x > 1 ? 1 : 1 - Math.pow(1 - x, 3);
+window.render = t => {
+  S.forEach(([a, b], i) => {
+    const L = layers[i], fi = ease((t - a) / .4), fo = i === S.length - 1 ? 1 : 1 - ease((t - (b - .3)) / .3);
+    const vis = t >= a - .01 && t < b + .01; L.style.opacity = vis ? Math.min(fi, fo) : 0; if (!vis) return;
+    const p = (t - a) / (b - a);
+    const bg = L.querySelector('.bg'); if (bg) bg.style.transform = `scale(${1.03 + p * .08})`;
+    L.querySelectorAll('.ttl').forEach((el, k) => { const e = ease((t - a - .2 - k * .35) / .5); el.style.opacity = e; el.style.transform = `translateY(${(1 - e) * 30}px)`; });
+    const sb = L.querySelector('.sub'); if (sb) { const e = ease((t - a - .3) / .4); sb.style.opacity = e; }
+    const kit = L.querySelector('#kit'); if (kit) kit.style.transform = `scale(${.94 + ease(p * 2) * .06})`;
+    const pir = L.querySelector('#pir'); if (pir) { const e = ease((t - a - .2) / .9); pir.style.transform = `translateY(${(1 - e) * 140}px)`; }
+    ['#n1', '#n2', '#n3'].forEach((s, k) => { const n = L.querySelector(s); if (n) { const e = ease((t - a - .4 - k * .8) / .35); n.style.opacity = e; n.style.transform = `translateY(${(1 - e) * -30}px)`; } });
+    const sh = L.querySelector('#shutter'); if (sh) { const e = ease((t - a - .3) / 1.6); sh.style.transform = `scaleY(${.15 + e * .85})`; sh.style.transformOrigin = '400px 170px'; }
+    for (let k = 0; k < 3; k++) { const c = L.querySelector('#cd' + k); if (c) { const e = ease((t - a - .3 - k * .5) / .4); c.style.opacity = e; c.style.transform = `translateY(${(1 - e) * 50}px)`; } }
+    const box = L.querySelector('#box'); if (box) { const e = ease((t - a) / .8); box.style.transform = `translateY(${(1 - e) * 60}px)`; }
+    const sky = L.querySelector('svg'); if (sky && i === 0) sky.style.transform = `scale(${1 + p * .05})`;
+  });
+};
+render(0);
+</script></body></html>
