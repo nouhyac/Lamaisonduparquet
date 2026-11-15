@@ -258,8 +258,8 @@ footer a:hover{color:var(--bg)}
 @keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:none;opacity:1}}
 .recap{text-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
 
-.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140px);z-index:120;background:var(--ink);color:var(--bg);font-weight:600;padding:12px 20px;border-radius:999px;transition:transform .3s;max-width:calc(100vw - 32px);text-align:center;letter-spacing:.02em}
-.toast.on{transform:translate(-50%,0)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,calc(100% + 140px));opacity:0;visibility:hidden;z-index:120;background:var(--ink);color:var(--bg);font-weight:600;padding:12px 20px;border-radius:999px;transition:transform .3s,opacity .3s,visibility .3s;max-width:calc(100vw - 32px);text-align:center;letter-spacing:.02em}
+.toast.on{transform:translate(-50%,0);opacity:1;visibility:visible}
 .toast{pointer-events:none}
 @media (max-width:700px){.toast{bottom:calc(86px + env(safe-area-inset-bottom,0px))}}
 .floatcart{position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:50;display:none}

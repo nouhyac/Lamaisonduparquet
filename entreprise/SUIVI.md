@@ -104,6 +104,7 @@ Solde au 2026-10-14 : **3,39 crédits** (après Arzata : 35 images ≈ 9,25, ima
 
 ## Journal des sessions
 
+- 2026-11-15 · Vidéos multi-plateformes : Pepper 15 s (9:16 + 4:5, DM uniquement) et version publique anonymisée Dzign 22 s en 9:16 / 4:5 / 1:1 / 16:9 + couvertures + textes par plateforme (`campagne/demo-restaurant/PUBLICATION.md`). Correction site : message « ajouté » qui restait visible sur mobile.
 - 2026-11-15 · Pepper : kit « choc » prêt dans `vente/demos/pepper/marketing/` : vidéo 30 s verticale, chevalet QR A6, proposition PDF 2 pages. Corrections mobile du site (fiche burger, bandeau, message panier). Démo v3.
 - 2026-11-15 · Pepper : démo refaite avec la **vraie charte** (logo Art déco PEPPER, kraft #C9B198, crème #F3EADC, encre #1B1714, rouge #B3140C, Federo + Josefin Sans) et 5 vraies photos du restaurant (restosdz). Bannière Yassir générique retirée. Même lien, version 2.
 - 2026-11-15 · **Pepper (Garden City, Chéraga)** : nouveau prospect. Recherche web (Linktree, Yassir Hydra, Instagram). Démo complète créée sans crédit Higgsfield : site client FR/AR avec la vraie carte (32 produits, prix, photos Yassir), commande sans file + suivi en direct (vibration/son quand c'est prêt), écran comptoir TV, cuisine, caisse, tableau de bord des 4 restos, fidélité au numéro. Publiée : https://claude.ai/artifact/88bsfx1xfmgvsDxjXXrH84 (privée, à partager). Codes 0328/1111/2222. Fiche + message + déroulé RDV : `vente/demos/pepper/PROSPECT.md`.
