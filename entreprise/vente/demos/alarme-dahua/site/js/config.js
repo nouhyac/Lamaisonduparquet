@@ -9,9 +9,13 @@
    - pin      : code de l'espace commandes
    ===================================================================== */
 window.SHOP = {
-  name: '',
-  whatsapp: '',
-  phone: '',
+  name: 'General Electric dz',
+  whatsapp: '213666235330',
+  whatsappShow: '0666 23 53 30',
+  phone: '0792 54 50 57',
+  city: 'El Hamiz',
+  maps: 'https://maps.google.com/?q=36.717319,3.228126',
+  followers: '65 K',
   price: null,
   oldPrice: null,
   pin: '0328'

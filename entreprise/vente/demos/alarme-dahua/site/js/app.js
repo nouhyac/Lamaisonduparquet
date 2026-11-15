@@ -36,7 +36,7 @@
   $$('[data-t]').forEach(el => { FRX[el.dataset.t] = el.hasAttribute('data-html') ? el.innerHTML : el.textContent; });
   const t = k => (lang === 'ar' && AR[k] != null ? AR[k] : FRX[k] != null ? FRX[k] : (DYN.fr[k] || k));
   const DYN = {
-    fr: { ask: 'Prix et disponibilité : réponse rapide', save: 'Économisez', ordered: 'Merci {n} ! Nous vous appelons au {p} pour confirmer votre commande.', eName: 'Indiquez votre nom.', ePhone: 'Numéro algérien à 10 chiffres (05, 06 ou 07).', eWil: 'Choisissez votre wilaya.', eCom: 'Indiquez votre commune.', choose: 'Choisir…', shop: 'Commandez en ligne : le magasin vous rappelle pour confirmer.' },
+    fr: { ask: 'Prix et disponibilité : réponse rapide', save: 'Économisez', ordered: 'Merci {n} ! Nous vous appelons au {p} pour confirmer votre commande.', eName: 'Indiquez votre nom.', ePhone: 'Numéro algérien à 10 chiffres (05, 06 ou 07).', eWil: 'Choisissez votre wilaya.', eCom: 'Indiquez votre commune.', choose: 'Choisir…', shop: 'Commandez en ligne ou sur WhatsApp : le magasin vous rappelle pour confirmer.' },
     ar: { ask: 'السعر والتوفر: رد سريع', save: 'وفّر', ordered: 'شكراً {n}! سنتصل بك على {p} لتأكيد طلبك.', eName: 'اكتب اسمك.', ePhone: 'رقم جزائري من 10 أرقام (05، 06 أو 07).', eWil: 'اختر ولايتك.', eCom: 'اكتب بلديتك.', choose: 'اختر…', shop: 'اطلب عبر الإنترنت: المحل يتصل بك للتأكيد.' }
   };
   const d = k => DYN[lang][k];
@@ -47,7 +47,14 @@
     const html = S.price ? '<span class="p">' + money(S.price) + '</span>' + (S.oldPrice ? '<span class="o">' + money(S.oldPrice) + '</span><span class="pill">' + d('save') + ' ' + money(S.oldPrice - S.price) + '</span>' : '') : '<span class="ask">' + d('ask') + '</span>';
     ['#priceRow', '#priceRow2'].forEach(s => { $(s).innerHTML = html; });
     $('#stkPrice').textContent = S.price ? money(S.price) : '→';
-    $('#shopLine').textContent = S.name ? S.name + (S.phone ? ' · ' + S.phone : '') : d('shop');
+    $('#shopLine').textContent = d('shop');
+    if (S.name) {
+      $('#seller').innerHTML = (lang === 'ar' ? 'يبيعه ' : 'Vendu par ') + '<b>' + esc(S.name) + '</b>';
+      $('#trustShop').innerHTML = '🏪 <b>' + esc(S.name) + '</b> <i>' + (S.followers ? esc(S.followers) + (lang === 'ar' ? ' متابع على فيسبوك' : ' abonnés Facebook') : '') + '</i>';
+      const wa = S.whatsapp ? 'https://wa.me/' + S.whatsapp + '?text=' + encodeURIComponent('Bonjour, je suis intéressé par le kit alarme Dahua AirShield.') : '';
+      $('#contact').innerHTML = (wa ? '<a href="' + wa + '" target="_blank" rel="noopener">🟢 WhatsApp ' + esc(S.whatsappShow || '') + '</a>' : '') + (S.phone ? '<a href="tel:' + S.phone.replace(/\s/g, '') + '">📞 ' + esc(S.phone) + '</a>' : '') + (S.maps ? '<a href="' + S.maps + '" target="_blank" rel="noopener">📍 ' + esc(S.name) + (S.city ? ' · ' + esc(S.city) : '') + '</a>' : '');
+      if (wa) { $('#waFloat').href = wa; $('#waFloat').hidden = false; }
+    }
     if (S.name) document.title = S.name + ' · Kit alarme Dahua AirShield';
   }
 

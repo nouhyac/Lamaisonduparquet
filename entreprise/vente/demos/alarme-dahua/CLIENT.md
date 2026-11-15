@@ -1,4 +1,7 @@
-# Client : magasin de sécurité · Kit alarme sans fil Dahua AirShield
+# Client : General Electric dz · Kit alarme sans fil Dahua AirShield
+
+Page Facebook « General Electric dz » (65 K abonnés, électricité en général, shopping et vente au détail). WhatsApp 0666 23 53 30 · Tél. 0792 54 50 57 (noté « Apple ») · El Hamiz · https://maps.google.com/?q=36.717319,3.228126 (capture dans `sources/`).
+Intégré dans la page (vendu par, bandeau de confiance, contacts, bouton WhatsApp flottant, commande envoyée sur WhatsApp) et à la fin des 4 vidéos.
 
 Demande (15/11/2026) : une landing page simple et des vidéos publicitaires pour le kit Dahua réf. **DHI-ART-ARC3000H-03-GW2(868)** (photos de la boîte dans `sources/`).
 
@@ -32,7 +35,7 @@ Espace commandes : lien en bas de la page, code **0328**.
 | Système | 150 accessoires (6 sirènes, 64 télécommandes) · AES-128 · 868 MHz · application DMSS |
 
 ## À demander au client (réglage en 1 minute dans `site/js/config.js`)
-- Nom du magasin, téléphone et WhatsApp (sans numéro, le bouton WhatsApp de la page reste masqué).
+- ✅ Nom, WhatsApp, téléphone, lieu : intégrés. Vérifier que 0792 54 50 57 est bien un numéro à afficher.
 - **Prix de vente** et éventuel ancien prix. Sans prix, la page affiche « Prix et disponibilité : réponse rapide ». Repère marché : aivar.dz affiche une version voisine (W2, sans SIM) à 43 000 DA ; à confirmer par le client.
 - Conditions : livraison (wilayas, délais, frais), paiement à la livraison, garantie. Rien n'est affiché tant que ce n'est pas confirmé.
 - Adresse et horaires du magasin (pour la vidéo de fin et le pied de page).
