@@ -18,6 +18,7 @@
 
   /* ---------- connexion ---------- */
   $('#llogo').innerHTML = window.PEPPER_LOGO({});
+  document.querySelector('#llogo').style.width = '240px';
   $('#pad').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, '', 0, '⌫'].map(k => k === '' ? '<span></span>' : '<button data-k="' + k + '">' + k + '</button>').join('');
   $('#pad').addEventListener('click', e => {
     const b = e.target.closest('[data-k]'); if (!b) return;
@@ -151,7 +152,7 @@
   function menu() {
     $('#view').innerHTML = '<div class="h"><div><h1 class="disp">Carte</h1><p>Un produit en rupture ? Désactive-le : il passe en « Bientôt de retour » sur le site, l’écran et la caisse, tout de suite.</p></div></div>' +
       '<div class="panel tw"><table class="mtable"><thead><tr><th></th><th>Produit</th><th>Prix (Simple)</th><th>Disponible</th></tr></thead><tbody>' +
-      D.categories.map(c => '<tr><td colspan="4" style="color:var(--gold);font-weight:800;padding-top:18px">' + c.icon + ' ' + esc(c.fr) + '</td></tr>' +
+      D.categories.map(c => '<tr><td colspan="4" style="color:var(--red);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding-top:18px">' + c.icon + ' ' + esc(c.fr) + '</td></tr>' +
         S.products().filter(p => p.cat === c.id).map(p => '<tr><td><img src="' + img(p.img) + '" alt=""></td><td><b>' + esc(p.name) + '</b>' + (p.sizes ? '<br><small style="color:var(--muted)" class="num">XL ' + S.money(p.sizes[1]) + ' · XXL ' + S.money(p.sizes[2]) + '</small>' : '') + '</td>' +
           '<td><input type="number" min="0" step="50" class="num" data-price="' + p.id + '" value="' + (p.price == null ? '' : p.price) + '" placeholder="prix" aria-label="Prix ' + esc(p.name) + '"></td>' +
           '<td><button class="switch' + (p.available ? ' on' : '') + '" data-av="' + p.id + '" role="switch" aria-checked="' + p.available + '" aria-label="Disponible : ' + esc(p.name) + '"></button></td></tr>').join('')).join('') +

@@ -8,7 +8,6 @@ window.PEPPER_DATA = {
   brand: {
     name: 'Pepper',
     tagline: 'Les artisans du burger',
-    slogan: 'Le vrai goût gourmand',
     instagram: 'https://www.instagram.com/pepperlesartisansduburger/',
     instagramBranch: 'https://www.instagram.com/pepper_ainallah_gardencity/',
     facebook: 'https://www.facebook.com/PepperSandwicherie',

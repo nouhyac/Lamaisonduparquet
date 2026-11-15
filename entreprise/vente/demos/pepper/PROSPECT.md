@@ -10,9 +10,24 @@ Démo (privée, à partager avant envoi) : https://claude.ai/artifact/88bsfx1xfm
 - Instagram : @pepperlesartisansduburger (marque) et @pepper_ainallah_gardencity (Garden City + Aïn Allah, ~2 500 abonnés). Facebook : PepperSandwicherie.
 - Yassir « Pepper Hydra » : note 4,3 (102 avis), livraison 20-30 min, minimum 600 DA, 12h-23h30.
 - Carte complète : 32 produits, prix et photos de leur fiche Yassir (`sources/menu.json`). Burgers en 3 tailles (Simple / XL / XXL, +150 DA par taille). Forest Burger, Quiches et Salade César sont épuisés sur Yassir sans prix publié : affichés « Bientôt de retour ».
-- Identité : logo « PEPPER BURGER » (PE rouge, flamme, filets rouge/doré), slogan « Le vrai goût gourmand ». Bannière reprise de leur fiche Yassir.
+- Identité **officielle** (logo Yassir + photos du restaurant sur restosdz.com) : voir la charte ci-dessous. ⚠ La bannière « PEPPER BURGER / Le vrai goût gourmand » de Yassir n'est pas leur charte (visuel générique) : on ne l'utilise plus.
 - Horaires Garden City : horaires du centre commercial (10h-22h, 23h le vendredi et le samedi), modifiables dans l'espace gérant.
 - Téléphone de la branche Garden City : non trouvé. La démo n'affiche aucun numéro.
+
+## Charte graphique appliquée (relevée sur leurs vrais supports)
+| Élément | Valeur | D'où ça vient |
+|---|---|---|
+| Logo | « PEPPER » en capitales Art déco noires, légère ombre portée | Logo officiel (fiche Yassir) + ardoise du comptoir |
+| Signature | « LES ARTISANS DU BURGER » en capitales espacées | Ardoise du comptoir, Instagram, Linktree |
+| Kraft | #C9B198 (et #BA9E83, #997B62) | Fond du logo officiel |
+| Crème | #F3EADC | Ardoise / menu du comptoir |
+| Encre | #1B1714 | Lettres du logo |
+| Rouge tomate | #B3140C | Panneau rouge et enseigne en salle |
+| Typo titres | Federo (logo), Josefin Sans (titres, texte) | Les plus proches de leur logo et de leur ardoise (Google Fonts) |
+| Ambiance | Kraft, bois, papier griffonné noir et blanc, lumière chaude | Photos du restaurant |
+| Photos | 5 vraies photos du restaurant + 32 photos de la carte (Yassir) | restosdz.com, Yassir |
+
+Le logo est redessiné en vectoriel d'après l'original (fichier source basse définition : `site/img/logo-officiel.png`). À demander : le fichier du logo en haute définition.
 
 ## L'idée qui doit les choquer
 Au food court de Garden City, le problème numéro 1, c'est **la file au comptoir** aux heures de pointe. La démo la supprime :

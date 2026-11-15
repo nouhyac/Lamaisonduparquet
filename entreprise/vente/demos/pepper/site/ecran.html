@@ -5,43 +5,44 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pepper · Écran comptoir</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Federo&family=Josefin+Sans:wght@400;600;700&family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/app.css">
 <style>
 html,body{height:100%;overflow:hidden}
-.scr{height:100%;display:grid;grid-template-rows:auto 1fr auto;background:radial-gradient(80% 60% at 80% 0%,#2A1210 0%,var(--bg) 60%)}
+.scr{--card:#26201B;--line:#3A312A;--muted:#BFB1A0;--dim:#8F8273;height:100%;display:grid;grid-template-rows:auto 1fr auto;background:var(--ink);color:var(--bg)}
+body{background:var(--ink)}
 .hd{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:2vh 3vw;border-bottom:1px solid var(--line)}
 .hd .lg{width:clamp(130px,14vw,240px)}
-.clock{font-family:var(--display);font-size:clamp(28px,4vw,64px)}
+.clock{font-family:var(--logo);font-size:clamp(28px,4vw,64px)}
 .br-name{font-weight:800;color:var(--muted);font-size:clamp(14px,1.4vw,22px);text-align:center}
 .cols{display:grid;grid-template-columns:1fr 1.25fr 0.9fr;min-height:0}
 .col{padding:2.4vh 2.4vw;display:flex;flex-direction:column;min-height:0;border-inline-end:1px solid var(--line)}
-.col h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(26px,3.2vw,56px);margin:0 0 2vh;display:flex;align-items:center;gap:14px}
+.col h2{font-family:var(--display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:clamp(26px,3.2vw,56px);margin:0 0 2vh;display:flex;align-items:center;gap:14px}
 .col h2 i{width:16px;height:16px;border-radius:50%;display:inline-block}
 .nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(90px,9vw,170px),1fr));gap:1.4vh 1vw;align-content:start;overflow:hidden}
-.nb{font-family:var(--display);font-size:clamp(44px,5.4vw,100px);line-height:1;text-align:center;padding:1.2vh 0;border-radius:16px;background:var(--card);border:1px solid var(--line)}
-.ready .nb{background:linear-gradient(180deg,#15422C,#0F2A1D);border-color:#2E8A5C;color:#6FF0A8;font-size:clamp(56px,7vw,132px)}
+.nb{font-family:var(--logo);font-size:clamp(44px,5.4vw,100px);line-height:1;text-align:center;padding:1.2vh 0;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.ready .nb{background:var(--bg);border-color:var(--kraft);color:var(--ink);font-size:clamp(56px,7vw,132px)}
 .ready .nb.new{animation:flash 1s ease 4}
-@keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(111,240,168,.0)}50%{box-shadow:0 0 0 10px rgba(111,240,168,.35);transform:scale(1.04)}}
+@keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(179,20,12,0)}50%{box-shadow:0 0 0 10px rgba(179,20,12,.55);transform:scale(1.04)}}
 .nb small{display:block;font-family:var(--text);font-size:clamp(11px,1vw,16px);font-weight:700;color:var(--muted);margin-top:4px;text-transform:none}
-.ready .nb small{color:#A6E9C4}
-.promo{border-inline-end:0;justify-content:space-between;gap:2vh;background:rgba(0,0,0,.25)}
+.ready .nb small{color:var(--red)}
+.promo{border-inline-end:0;justify-content:space-between;gap:2vh;background:rgba(0,0,0,.2)}
 .slide{flex:1;min-height:0;display:flex;flex-direction:column;gap:1.4vh;border-radius:22px;overflow:hidden;background:#FAFAF8;position:relative}
 .slide img{width:100%;flex:1;min-height:0;object-fit:contain;transition:opacity .6s}
 .slide .cap{position:absolute;left:0;right:0;bottom:0;padding:2vh 1.4vw;background:linear-gradient(0deg,rgba(14,12,11,.95),rgba(14,12,11,0));color:#fff}
-.slide .cap b{font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,46px);text-transform:uppercase;display:block}
-.slide .cap span{font-weight:800;color:var(--gold);font-size:clamp(18px,1.8vw,30px)}
-.qrbox{display:flex;align-items:center;gap:1.2vw;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.6vh 1.2vw}
+.slide .cap b{font-family:var(--display);font-weight:700;letter-spacing:.05em;font-size:clamp(20px,2vw,36px);text-transform:uppercase;display:block;line-height:1.1}
+.slide .cap span{font-weight:700;color:var(--kraft);font-size:clamp(18px,1.8vw,30px)}
+.qrbox{display:flex;align-items:center;gap:1.2vw;background:var(--kraft);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:1.6vh 1.2vw}
 .qrbox .qr{width:clamp(80px,8vw,150px);height:auto;border-radius:8px;flex-shrink:0}
 .qrbox b{font-size:clamp(15px,1.5vw,26px);display:block;line-height:1.15}
-.qrbox small{color:var(--muted);font-size:clamp(12px,1vw,17px)}
-.ft{display:flex;align-items:center;gap:2vw;padding:1.4vh 3vw;border-top:1px solid var(--line);color:var(--muted);font-weight:700;font-size:clamp(12px,1.1vw,18px);overflow:hidden;white-space:nowrap}
+.qrbox small{color:var(--ink2);font-size:clamp(12px,1vw,17px)}
+.ft{background:var(--kraft);color:var(--ink);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:2vw;padding:1.4vh 3vw;border-top:1px solid var(--line);font-weight:700;font-size:clamp(12px,1.1vw,18px);overflow:hidden;white-space:nowrap}
 .ft .tk{display:inline-block;animation:tick 40s linear infinite}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .empty{color:var(--dim);font-weight:600;font-size:clamp(14px,1.3vw,22px)}
-.ctl{position:fixed;top:10px;right:10px;display:flex;gap:6px;opacity:.15;transition:opacity .2s}
-.ctl:hover{opacity:1}
-.ctl button,.ctl select{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:6px 10px;font-size:13px;width:auto}
+.ctl{position:fixed;bottom:8px;left:8px;display:flex;gap:6px;opacity:0;transition:opacity .2s;z-index:5}
+.ctl:hover,.ctl:focus-within{opacity:1}
+.ctl button,.ctl select{background:var(--card);border:1px solid var(--line);color:var(--bg);border-radius:10px;padding:6px 10px;font-size:13px;width:auto}
 @media (max-width:900px){html,body{overflow:auto}.cols{grid-template-columns:1fr}.col{border-inline-end:0;border-bottom:1px solid var(--line)}.promo .slide{min-height:300px}}
 </style>
 </head>
@@ -49,8 +50,8 @@ html,body{height:100%;overflow:hidden}
 <div class="scr">
   <div class="hd"><div class="lg" id="lg"></div><div class="br-name" id="brName"></div><div class="clock num" id="clock">--:--</div></div>
   <div class="cols">
-    <div class="col"><h2><i style="background:var(--gold)"></i>En cuisine</h2><div class="nums" id="prep"></div></div>
-    <div class="col ready"><h2><i style="background:var(--green)"></i>C'est prêt !</h2><div class="nums" id="ready"></div></div>
+    <div class="col"><h2><i style="background:var(--kraft)"></i>En cuisine</h2><div class="nums" id="prep"></div></div>
+    <div class="col ready"><h2><i style="background:var(--red)"></i>C'est prêt !</h2><div class="nums" id="ready"></div></div>
     <div class="col promo">
       <div class="slide" id="slide"><img id="sImg" alt=""><div class="cap"><b id="sName"></b><span id="sPrice" class="num"></span></div></div>
       <div class="qrbox"><div id="qr"></div><div><b>Commande sur ton téléphone, sans faire la queue</b><small>Scanne, choisis, on t'affiche ici quand c'est prêt.</small></div></div>
@@ -69,7 +70,7 @@ html,body{height:100%;overflow:hidden}
   const S = window.PPR, D = S.D, $ = s => document.querySelector(s);
   let br = (function () { try { return localStorage.getItem('ppr-screen') || 'gc'; } catch (e) { return 'gc'; } })();
   let seen = new Set(), first = true, actx = null;
-  $('#lg').innerHTML = window.PEPPER_LOGO({});
+  $('#lg').innerHTML = window.PEPPER_LOGO({ ink: '#F3EADC', shadow: 'rgba(0,0,0,.5)' });
   $('#brSel').innerHTML = D.branches.map(b => '<option value="' + b.id + '">' + b.name + '</option>').join('');
   $('#brSel').value = br;
   $('#brSel').onchange = e => { br = e.target.value; try { localStorage.setItem('ppr-screen', br); } catch (x) { /* bloqué */ } first = true; seen = new Set(); render(); };
@@ -101,7 +102,7 @@ html,body{height:100%;overflow:hidden}
   }
   function tick() { const d = new Date(); $('#clock').textContent = d.toTimeString().slice(0, 5); }
   const msg = ['Pepper · Les artisans du burger', 'Simple, XL ou XXL : choisis ta faim', 'Commande en ligne : ton numéro s\'affiche ici dès que c\'est prêt', 'Paiement au comptoir', '8 burgers = le 9e offert avec ton numéro de téléphone', 'Aussi en livraison sur Yassir'];
-  $('#tk').textContent = (msg.join('   •   ') + '   •   ').repeat(4);
+  $('#tk').textContent = (msg.join('   ✦   ') + '   ✦   ').repeat(4);
   S.on(k => { if (k === 'orders') render(); });
   render(); slide(); tick();
   setInterval(slide, 6000); setInterval(tick, 10000); setInterval(render, 20000);

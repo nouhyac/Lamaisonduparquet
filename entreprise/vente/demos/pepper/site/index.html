@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pepper · Les artisans du burger</title>
 <meta name="description" content="Pepper, les artisans du burger à Alger : Garden City, Hydra, Sidi Yahia, Aïn Allah. Commande en ligne, suivi en direct, retrait sans attente.">
-<meta name="theme-color" content="#0E0C0B">
+<meta name="theme-color" content="#C9B198">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Federo&family=Josefin+Sans:wght@400;600;700&family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -22,17 +22,25 @@
 </header>
 
 <section class="hero">
-  <div class="hero-bg" role="img" aria-label="Burger Pepper, frites et soda"></div>
   <div class="wrap">
-    <div class="row"><span class="chip"><span class="dot" id="heroDot"></span><span id="heroStatus">Ouvert</span></span><span class="chip"><span class="stars">★★★★☆</span> <span class="num">4,3</span> · <span data-t="ratings">102 avis Yassir</span></span></div>
-    <h1 class="disp" id="heroTitle">Commande. <em>On t'appelle</em> quand c'est prêt.</h1>
-    <p id="heroSub" data-t="heroSub">Fini la file au comptoir : commande depuis ton téléphone, suis ton burger en direct et récupère-le au 3e étage de Garden City dès que ton numéro s'affiche.</p>
-    <div class="row">
-      <a class="btn btn-red" href="#carte" data-t="seeMenu">Voir la carte & commander</a>
-      <a class="btn btn-ghost" id="yassirLink" target="_blank" rel="noopener" data-t="delivery">Livraison via Yassir</a>
+    <div class="hero-l">
+      <div class="hero-logo" id="heroLogo"></div>
+      <div class="row"><span class="chip"><span class="dot" id="heroDot"></span><span id="heroStatus">Ouvert</span></span><span class="chip"><span class="stars">★★★★☆</span> <span class="num">4,3</span> · <span data-t="ratings">102 avis Yassir</span></span></div>
+      <h1 class="disp" id="heroTitle">Commande. <em>On t'appelle</em> quand c'est prêt.</h1>
+      <p id="heroSub" data-t="heroSub">Fini la file au comptoir : commande depuis ton téléphone, suis ton burger en direct et récupère-le au 3e étage de Garden City dès que ton numéro s'affiche.</p>
+      <div class="row">
+        <a class="btn btn-red" href="#carte" data-t="seeMenu">Voir la carte & commander</a>
+        <a class="btn btn-ghost" id="yassirLink" target="_blank" rel="noopener" data-t="delivery">Livraison via Yassir</a>
+      </div>
+    </div>
+    <div class="polas" aria-hidden="true">
+      <figure class="pola b"><img src="img/lieu/comptoir.jpg" alt=""><figcaption>au comptoir</figcaption></figure>
+      <figure class="pola a"><img src="img/lieu/ardoise-pepper.jpg" alt=""><figcaption>les artisans du burger</figcaption></figure>
+      <figure class="pola c"><img src="img/lieu/burger-fromage.jpg" alt=""><figcaption>fait minute</figcaption></figure>
     </div>
   </div>
 </section>
+<div class="band" aria-hidden="true"><div class="tk" id="band"></div></div>
 
 <section class="sec" id="comment">
   <div class="wrap">
@@ -49,9 +57,22 @@
 
 <section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="kicker" data-t="sigK">Les signatures</div>
-    <h2 class="disp" data-t="sigT">Le vrai goût gourmand</h2>
+    <div class="kicker" data-t="sigK">Les incontournables</div>
+    <h2 class="disp" data-t="sigT">Nos signatures</h2>
     <div class="sig" id="sig"></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker" data-t="realK">Chez Pepper</div>
+    <h2 class="disp" data-t="realT">Fait minute, servi chaud</h2>
+    <div class="real">
+      <figure><img src="img/lieu/burgers-planche.jpg" alt="Burgers Pepper sur planche" loading="lazy"><figcaption data-t="r1">Sur la planche</figcaption></figure>
+      <figure><img src="img/lieu/burger-fromage.jpg" alt="Burger au fromage fondant" loading="lazy"><figcaption data-t="r2">Fromage fondant</figcaption></figure>
+      <figure><img src="img/lieu/salle-jus.jpg" alt="Burger, croquettes et jus Pepper en salle" loading="lazy"><figcaption data-t="r3">Jus maison</figcaption></figure>
+      <figure><img src="img/lieu/ardoise-pepper.jpg" alt="Ardoise Pepper, les artisans du burger" loading="lazy"><figcaption data-t="r4">Notre ardoise</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -87,7 +108,7 @@
 
 <footer>
   <div class="wrap">
-    <div id="flogo" style="width:150px"></div>
+    <div id="flogo" style="width:190px"></div>
     <div class="links">
       <a id="igLink" target="_blank" rel="noopener">Instagram</a>
       <a id="fbLink" target="_blank" rel="noopener">Facebook</a>

@@ -104,6 +104,7 @@ Solde au 2026-10-14 : **3,39 crédits** (après Arzata : 35 images ≈ 9,25, ima
 
 ## Journal des sessions
 
+- 2026-11-15 · Pepper : démo refaite avec la **vraie charte** (logo Art déco PEPPER, kraft #C9B198, crème #F3EADC, encre #1B1714, rouge #B3140C, Federo + Josefin Sans) et 5 vraies photos du restaurant (restosdz). Bannière Yassir générique retirée. Même lien, version 2.
 - 2026-11-15 · **Pepper (Garden City, Chéraga)** : nouveau prospect. Recherche web (Linktree, Yassir Hydra, Instagram). Démo complète créée sans crédit Higgsfield : site client FR/AR avec la vraie carte (32 produits, prix, photos Yassir), commande sans file + suivi en direct (vibration/son quand c'est prêt), écran comptoir TV, cuisine, caisse, tableau de bord des 4 restos, fidélité au numéro. Publiée : https://claude.ai/artifact/88bsfx1xfmgvsDxjXXrH84 (privée, à partager). Codes 0328/1111/2222. Fiche + message + déroulé RDV : `vente/demos/pepper/PROSPECT.md`.
 
 - 2026-11-12 · STI : publications livrées une par une (images + légendes + calendrier). Couvertures « à la une » refaites (version bleu nuit retenue, icônes blanches + trait rouge) : 8 couvertures, dont Ergonomique et Gaming conservées.

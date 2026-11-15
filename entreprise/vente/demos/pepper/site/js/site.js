@@ -27,7 +27,7 @@
       howK: 'Sans attente', howT: '4 étapes, 0 file', s1t: 'Tu choisis', s1p: 'Ton burger, ta taille (Simple, XL, XXL), tes frites.',
       s2t: 'Tu commandes', s2p: "Sur place, ou avant d'arriver pour le récupérer à l'heure.", s3t: 'Tu suis en direct', s3p: 'Ton numéro passe en cuisine, puis « Prêt » : ton téléphone vibre.',
       s4t: 'Tu récupères', s4p: "Tu paies au comptoir, tu prends ton plateau. C'est tout.",
-      sigK: 'Les signatures', sigT: 'Le vrai goût gourmand', loyK: 'Carte fidélité', loyP: 'Pas de carte en carton à perdre : ton numéro de téléphone suffit. Chaque burger commandé ajoute un tampon.',
+      sigK: 'Les incontournables', sigT: 'Nos signatures', loyK: 'Carte fidélité', loyP: 'Pas de carte en carton à perdre : ton numéro de téléphone suffit. Chaque burger commandé ajoute un tampon.',
       check: 'Voir mes tampons', brK: 'Nos restaurants', brT: '4 adresses à Alger', screen: 'Écran comptoir', staff: 'Espace équipe', made: 'site & système réalisés par Dzign Studio',
       open: 'Ouvert', closed: 'Fermé', until: "jusqu'à", opensAt: 'ouvre à', from: 'dès', add: 'Ajouter', size: 'Taille', sauce: 'Sauce', qty: 'Quantité', withIt: 'Avec ça ?',
       soldout: 'Bientôt de retour', star: 'Signature', hot: 'Piquant', viewCart: 'Voir le panier', empty: 'Ton panier est vide.', emptyP: 'Choisis un burger dans la carte 🍔',
@@ -40,6 +40,8 @@
       eta: 'Prêt dans environ', min: 'min', readyBig: 'C’est prêt !', newOrder: 'Nouvelle commande', back: 'Retour à la carte', keep: 'Garde cette page ouverte : ton téléphone vibre quand c\'est prêt.',
       at: 'au comptoir Pepper', stamps: 'tampons', free: 'Ton prochain burger est offert ! Montre ce message au comptoir.', left: 'encore', toFree: 'avant ton burger offert',
       loyalTitle: n => n + ' burgers = le ' + (n + 1) + 'e offert', chooseBr: 'Choisis ton restaurant', directions: 'Itinéraire', scheduled: 'Restaurant fermé : ta commande sera préparée à l\'ouverture',
+      realK: 'Chez Pepper', realT: 'Fait minute, servi chaud', r1: 'Sur la planche', r2: 'Fromage fondant', r3: 'Jus maison', r4: 'Notre ardoise',
+      band: ['Les artisans du burger', 'Simple · XL · XXL', 'Commande sans file', 'Garden City · Hydra · Sidi Yahia · Aïn Allah', 'Fait minute'],
       sizes: ['Simple', 'XL', 'XXL'], cats: c => c.fr, gift: 'OFFERT', yourStamps: 'Tes tampons', items: 'articles', branchNote: 'Retrait'
     },
     ar: {
@@ -50,7 +52,7 @@
       howK: 'بدون انتظار', howT: '4 خطوات، بدون طابور', s1t: 'اختر', s1p: 'البرغر، الحجم (عادي، XL، XXL) والبطاطا.',
       s2t: 'اطلب', s2p: 'في المطعم، أو قبل وصولك لتستلمه في الوقت.', s3t: 'تابع مباشرة', s3p: 'رقمك يدخل المطبخ ثم «جاهز»: هاتفك يهتز.',
       s4t: 'استلم', s4p: 'ادفع عند الشباك وخذ طلبك. هذا كل شيء.',
-      sigK: 'الأطباق المميزة', sigT: 'الطعم الشهي الحقيقي', loyK: 'بطاقة الوفاء', loyP: 'لا بطاقة ورقية: رقم هاتفك يكفي. كل برغر يضيف طابعاً.',
+      sigK: 'الأكثر طلباً', sigT: 'أطباقنا المميزة', loyK: 'بطاقة الوفاء', loyP: 'لا بطاقة ورقية: رقم هاتفك يكفي. كل برغر يضيف طابعاً.',
       check: 'عرض طوابعي', brK: 'مطاعمنا', brT: '4 عناوين في الجزائر العاصمة', screen: 'شاشة الشباك', staff: 'فضاء الفريق', made: 'الموقع والنظام من إنجاز Dzign Studio',
       open: 'مفتوح', closed: 'مغلق', until: 'حتى', opensAt: 'يفتح على', from: 'من', add: 'أضف', size: 'الحجم', sauce: 'الصلصة', qty: 'الكمية', withIt: 'مع ذلك؟',
       soldout: 'يعود قريباً', star: 'مميز', hot: 'حار', viewCart: 'عرض السلة', empty: 'سلتك فارغة.', emptyP: 'اختر برغر من القائمة 🍔',
@@ -63,6 +65,8 @@
       eta: 'جاهز خلال حوالي', min: 'د', readyBig: 'جاهز!', newOrder: 'طلب جديد', back: 'العودة إلى القائمة', keep: 'اترك هذه الصفحة مفتوحة: هاتفك يهتز عندما يكون جاهزاً.',
       at: 'عند شباك Pepper', stamps: 'طوابع', free: 'البرغر القادم مجاني! أظهر هذه الرسالة عند الشباك.', left: 'بقي', toFree: 'قبل البرغر المجاني',
       loyalTitle: n => n + ' برغر = ' + (n + 1) + ' مجاناً', chooseBr: 'اختر مطعمك', directions: 'الاتجاهات', scheduled: 'المطعم مغلق: سيُحضَّر طلبك عند الافتتاح',
+      realK: 'عند Pepper', realT: 'يُحضَّر في الحين ويُقدَّم ساخناً', r1: 'على اللوح', r2: 'جبن ذائب', r3: 'عصير طبيعي', r4: 'لوحتنا',
+      band: ['حِرفيّو البرغر', 'عادي · XL · XXL', 'اطلب بدون طابور', 'غاردن سيتي · حيدرة · سيدي يحيى · عين الله', 'يُحضَّر في الحين'],
       sizes: ['عادي', 'XL', 'XXL'], cats: c => c.ar, gift: 'مجاني', yourStamps: 'طوابعك', items: 'منتجات', branchNote: 'الاستلام'
     }
   };
@@ -88,7 +92,9 @@
     document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     $('#langBtn').textContent = lang === 'ar' ? 'FR' : 'ع';
     $('#logo').innerHTML = window.PEPPER_LOGO({ sub: true });
-    $('#flogo').innerHTML = window.PEPPER_LOGO({ sub: true });
+    $('#heroLogo').innerHTML = window.PEPPER_LOGO({ sub: true, shadow: 'rgba(27,23,20,.28)' });
+    $('#flogo').innerHTML = window.PEPPER_LOGO({ sub: true, ink: '#F3EADC', shadow: 'rgba(0,0,0,.5)' });
+    $('#band').innerHTML = (t('band').map(esc).join('<i>✦</i>') + '<i>✦</i>').repeat(6);
     document.querySelectorAll('[data-t]').forEach(el => { const v = t(el.dataset.t); if (typeof v === 'string') el.textContent = v; });
     $('#heroTitle').innerHTML = t('heroTitle');
     $('#heroSub').textContent = branchId === 'gc' ? t('heroSubGc') : t('heroSub');
@@ -283,7 +289,7 @@
     const left = Math.max(1, Math.round(prep - (Date.now() - o.t.created) / 60000));
     const msg = { new: t('tNew'), prep: t('tPrep'), ready: t('tReady'), done: t('tDone') }[o.status] || '';
     $('#track').innerHTML = '<div class="wrap">' +
-      '<div style="width:150px;margin:0 auto">' + window.PEPPER_LOGO({}) + '</div>' +
+      '<div style="width:200px;margin:0 auto">' + window.PEPPER_LOGO({}) + '</div>' +
       '<div class="ticket' + (o.status === 'ready' ? ' ready' : '') + '"><span class="kicker">' + esc(t('tNum')) + '</span><div class="n num">' + o.num + '</div>' +
       '<div class="ready-banner">' + esc(t('readyBig')) + '</div>' +
       '<p style="margin:4px 0 0;font-size:17px">' + esc(msg) + '</p>' +

@@ -1,15 +1,15 @@
-/* Logo Pepper Burger redessiné en vectoriel (d'après leur logo : « PE » rouge, flamme, filets rouge/or, « BURGER ») */
+/* Logo Pepper redessiné en vectoriel d'après leur logo officiel :
+   « PEPPER » en capitales Art déco noires, légère ombre portée,
+   signature « LES ARTISANS DU BURGER » (ardoise du restaurant). */
 window.PEPPER_LOGO = function (opt) {
   opt = opt || {};
-  const ink = opt.ink || '#F7F1EA';
+  const ink = opt.ink || '#1B1714';
+  const shadow = opt.shadow || 'rgba(27,23,20,.22)';
   const sub = opt.sub !== false;
-  return '<svg viewBox="0 0 300 ' + (sub ? 112 : 84) + '" role="img" aria-label="Pepper Burger">' +
-    '<path d="M150 4c6 9 13 14 13 24a13 13 0 0 1-26 0c0-5 2-8 5-11 0 5 2 8 5 8-1-8 1-14 3-21z" fill="#E1262D"/>' +
-    '<path d="M150 22c3 4 6 6 6 10a6 6 0 0 1-12 0c0-3 3-6 6-10z" fill="#F4B629"/>' +
-    '<rect x="14" y="26" width="116" height="4" rx="2" fill="#E1262D"/><rect x="170" y="26" width="116" height="4" rx="2" fill="#F4B629"/>' +
-    '<text x="150" y="82" text-anchor="middle" font-family="\'Archivo Black\',\'Arial Black\',Impact,sans-serif" font-size="56" letter-spacing="1">' +
-    '<tspan fill="#E1262D">PE</tspan><tspan fill="' + ink + '">PPER</tspan></text>' +
-    (sub ? '<rect x="40" y="96" width="70" height="3.5" rx="2" fill="#E1262D"/><rect x="190" y="96" width="70" height="3.5" rx="2" fill="#F4B629"/>' +
-      '<text x="150" y="104" text-anchor="middle" font-family="\'Archivo Black\',\'Arial Black\',sans-serif" font-size="17" letter-spacing="3" fill="' + ink + '">BURGER</text>' : '') +
+  const h = sub ? 96 : 70;
+  const txt = (x, y, fill) => '<text x="' + x + '" y="' + y + '" text-anchor="middle" font-family="Federo,\'Josefin Sans\',\'Century Gothic\',sans-serif" font-size="64" letter-spacing="9" fill="' + fill + '">PEPPER</text>';
+  return '<svg viewBox="0 0 320 ' + h + '" role="img" aria-label="Pepper, les artisans du burger">' +
+    txt(163.5, 61.5, shadow) + txt(160, 58, ink) +
+    (sub ? '<text x="160" y="88" text-anchor="middle" font-family="\'Josefin Sans\',\'Century Gothic\',sans-serif" font-weight="600" font-size="13.5" letter-spacing="4.2" fill="' + ink + '">LES ARTISANS DU BURGER</text>' : '') +
     '</svg>';
 };
