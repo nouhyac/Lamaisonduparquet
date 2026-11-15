@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pepper · Les artisans du burger</title>
+<meta name="description" content="Pepper, les artisans du burger à Alger : Garden City, Hydra, Sidi Yahia, Aïn Allah. Commande en ligne, suivi en direct, retrait sans attente.">
+<meta name="theme-color" content="#0E0C0B">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Cairo:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#" id="logo" aria-label="Pepper Burger, accueil"></a>
+    <div class="sp"></div>
+    <button class="branch-btn" id="branchBtn" aria-haspopup="dialog"><span class="dot" id="branchDot"></span><span id="branchLbl">Garden City</span> ▾</button>
+    <button class="lang" id="langBtn" aria-label="Changer de langue">ع</button>
+    <button class="cart-btn" id="cartBtn" aria-label="Panier">🛒 <span class="lbl" data-t="cart">Panier</span> <b id="cartCount">0</b></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="Burger Pepper, frites et soda"></div>
+  <div class="wrap">
+    <div class="row"><span class="chip"><span class="dot" id="heroDot"></span><span id="heroStatus">Ouvert</span></span><span class="chip"><span class="stars">★★★★☆</span> <span class="num">4,3</span> · <span data-t="ratings">102 avis Yassir</span></span></div>
+    <h1 class="disp" id="heroTitle">Commande. <em>On t'appelle</em> quand c'est prêt.</h1>
+    <p id="heroSub" data-t="heroSub">Fini la file au comptoir : commande depuis ton téléphone, suis ton burger en direct et récupère-le au 3e étage de Garden City dès que ton numéro s'affiche.</p>
+    <div class="row">
+      <a class="btn btn-red" href="#carte" data-t="seeMenu">Voir la carte & commander</a>
+      <a class="btn btn-ghost" id="yassirLink" target="_blank" rel="noopener" data-t="delivery">Livraison via Yassir</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="comment">
+  <div class="wrap">
+    <div class="kicker" data-t="howK">Sans attente</div>
+    <h2 class="disp" data-t="howT">4 étapes, 0 file</h2>
+    <div class="steps">
+      <div class="step"><b>1</b><h3 data-t="s1t">Tu choisis</h3><p data-t="s1p">Ton burger, ta taille (Simple, XL, XXL), tes frites.</p></div>
+      <div class="step"><b>2</b><h3 data-t="s2t">Tu commandes</h3><p data-t="s2p">Sur place, ou avant d'arriver pour le récupérer à l'heure.</p></div>
+      <div class="step"><b>3</b><h3 data-t="s3t">Tu suis en direct</h3><p data-t="s3p">Ton numéro passe en cuisine, puis « Prêt » : ton téléphone vibre.</p></div>
+      <div class="step"><b>4</b><h3 data-t="s4t">Tu récupères</h3><p data-t="s4p">Tu paies au comptoir, tu prends ton plateau. C'est tout.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker" data-t="sigK">Les signatures</div>
+    <h2 class="disp" data-t="sigT">Le vrai goût gourmand</h2>
+    <div class="sig" id="sig"></div>
+  </div>
+</section>
+
+<nav class="tabs" id="carte" aria-label="Catégories"><div class="wrap" id="tabs"></div></nav>
+<section class="wrap" id="menu" style="padding-bottom:40px"></section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="loyal">
+      <div>
+        <div class="kicker" data-t="loyK">Carte fidélité</div>
+        <h2 class="disp" style="margin:6px 0" id="loyT">8 burgers = le 9e offert</h2>
+        <p class="lead" data-t="loyP">Pas de carte en carton à perdre : ton numéro de téléphone suffit. Chaque burger commandé ajoute un tampon.</p>
+        <div class="stamps" id="stamps"></div>
+      </div>
+      <form class="lform" id="loyForm">
+        <label class="sr" for="loyPhone">Numéro de téléphone</label>
+        <input id="loyPhone" inputmode="tel" placeholder="05 / 06 / 07 …" autocomplete="tel">
+        <button class="btn btn-gold" type="submit" data-t="check">Voir mes tampons</button>
+        <div class="err" id="loyMsg" style="width:100%;color:var(--muted)"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="restos" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker" data-t="brK">Nos restaurants</div>
+    <h2 class="disp" data-t="brT">4 adresses à Alger</h2>
+    <div class="branches" id="branches"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div id="flogo" style="width:150px"></div>
+    <div class="links">
+      <a id="igLink" target="_blank" rel="noopener">Instagram</a>
+      <a id="fbLink" target="_blank" rel="noopener">Facebook</a>
+      <a id="yLink" target="_blank" rel="noopener">Yassir</a>
+      <a href="ecran.html" target="_blank" data-t="screen">Écran comptoir</a>
+      <a href="gestion.html" target="_blank" data-t="staff">Espace équipe</a>
+    </div>
+    <div class="made" style="width:100%">© Pepper · Les artisans du burger — <span data-t="made">site & système réalisés par Dzign Studio</span></div>
+  </div>
+</footer>
+
+<div class="floatcart" id="floatCart"><button class="btn btn-red" id="floatBtn"><span id="floatLbl">Voir le panier</span><b class="num" id="floatTot"></b></button></div>
+
+<!-- feuille produit -->
+<div class="veil" id="pVeil"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="pName" id="pSheet"></div></div>
+<!-- panier -->
+<div class="veil" id="cVeil"><div class="sheet" role="dialog" aria-modal="true" aria-label="Panier" id="cSheet"></div></div>
+<!-- choix du restaurant -->
+<div class="veil" id="bVeil"><div class="sheet" role="dialog" aria-modal="true" aria-label="Choisir le restaurant" id="bSheet"></div></div>
+<!-- suivi -->
+<div class="track" id="track" role="dialog" aria-modal="true" aria-label="Suivi de commande"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/logo.js"></script>
+<script src="js/store.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

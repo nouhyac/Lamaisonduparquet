@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pepper · Espace équipe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/gestion.css">
+</head>
+<body>
+<div id="login" class="login">
+  <div class="box">
+    <div style="width:180px;margin:0 auto" id="llogo"></div>
+    <h1 class="disp">Espace équipe</h1>
+    <p class="lead" style="margin:0 auto">Entre ton code à 4 chiffres.</p>
+    <div class="pin" id="pinDots"><i></i><i></i><i></i><i></i></div>
+    <div class="pad" id="pad"></div>
+    <div class="err" id="pinErr"></div>
+    <p class="hint">Démo : gérant <b>0328</b> · cuisine <b>1111</b> · caisse <b>2222</b></p>
+  </div>
+</div>
+
+<div id="app" hidden>
+  <header class="gtop">
+    <div class="wrap">
+      <div class="glogo" id="glogo"></div>
+      <nav class="gnav" id="gnav"></nav>
+      <div class="sp"></div>
+      <select id="brSel" aria-label="Restaurant" class="brsel"></select>
+      <button class="btn btn-ghost sm" id="logout">Quitter</button>
+    </div>
+  </header>
+  <main class="wrap gmain" id="view"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/logo.js"></script>
+<script src="js/store.js"></script>
+<script src="js/gestion.js"></script>
+</body>
+</html>

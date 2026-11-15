@@ -1,0 +1,451 @@
+[
+ {
+  "id": "6aeede425a4ddbcdbb0744fb",
+  "name": "Frites",
+  "price": "200",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362976739e07a7-fb65-4e2b-b1a6-3a6c1dc286a9.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744ff",
+  "name": "Nuggets",
+  "price": "450",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362977b7fad59b-f072-4b0a-8bb9-333b57ebde3f.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744f1",
+  "name": "Sandwich Niçois",
+  "price": "600",
+  "desc": "Poulet aux Fines Herbes Grillé, Salade, Tomate, Fromage, Sauce Aioli",
+  "img": "https://food.yassir.io/uploads/images/food/179403936298837c30969-118a-4357-9e80-352da4bb9102.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744f7",
+  "name": "Sandwich Crudites Au Thon",
+  "price": "500",
+  "desc": "Thon, Salade, Tomate, Oignons, Fromage",
+  "img": "https://food.yassir.io/uploads/images/food/17940393629839a6f76b8-4f5f-4f63-89b8-260e5d1b6c1a.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744f9",
+  "name": "Sandwich Beurre 3 Fromage",
+  "price": "450",
+  "desc": "Beurre, Mozza, Camembert, Salade, Tomate, Fromage",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362984915f7eb4-d040-43b4-b536-5d2ec25956be.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744f3",
+  "name": "Sandwich Pondichery",
+  "price": "600",
+  "desc": "Poulet au Curry Grillé, Salade, Tomate, Fromage, Mayo",
+  "img": "https://food.yassir.io/uploads/images/food/17940393629590351fe5f-ae61-43e4-ad5c-5606c5924209.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744f5",
+  "name": "Sandwich Keftaji",
+  "price": "650",
+  "desc": "Kefta, Salade, Tomate, Fromage, Sauce Harissa",
+  "img": "https://food.yassir.io/uploads/images/food/17940393629618b89fc6d-78ae-4ae9-8e29-e018e9528f10.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb074503",
+  "name": "Eau Plate",
+  "price": "50",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/1794039363123832afb3e-7e1f-4909-a6e1-5decc07eb881.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb074507",
+  "name": "Soda",
+  "price": "150",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/179403936303059312d94-e4af-4ff9-bd30-5af4ec4123c0.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb074505",
+  "name": "Eau Gazeuse",
+  "price": "50",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/179403936302307db687a-2138-4e37-8be6-a85ae170b6de.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb074509",
+  "name": "Jus Frais",
+  "price": "250",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/1794039363037c4bc5902-1e64-4d07-b780-fbd655224a99.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744e9",
+  "name": "Chicken Burger",
+  "price": "500",
+  "desc": "Poulet Grillé, Salade, Tomate, Fromage, Sauce Barbecue",
+  "img": "https://food.yassir.io/uploads/images/food/179403936295138968aad-92ee-4aa4-a384-d816b9bed941.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744ed",
+  "name": "Chicken Oriental Burger",
+  "price": "700",
+  "desc": "Poulet, Merguez, Salade, Tomate, Fromage, Sauce Piquante",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362986597844e8-7d9d-4664-99af-e631aafa83dc.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744eb",
+  "name": "Chicken Crispy Burger",
+  "price": "600",
+  "desc": "Poulet Pané, Salade, Tomate, Fromage, Sauce Barbecue",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362953308e513e-da22-427d-ba7f-a310fea00c80.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744ef",
+  "name": "Chicken Mozza Burger",
+  "price": "800",
+  "desc": "Poulet, Roquette, Mozza, Sauce Pesto",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362958a01dab39-0cc2-480f-bdc2-430cb379ca1d.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744b1",
+  "name": "Bbq Burger",
+  "price": "650",
+  "desc": "Steak Haché, Salade, Tomate, Fromage, Sauce Barbecue",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362949f9f50a4d-960d-479d-a250-7279d8537c2c.webp",
+  "sizes": [
+   [
+    "Simple",
+    650
+   ],
+   [
+    "XL",
+    800
+   ],
+   [
+    "XXL",
+    950
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744ab",
+  "name": "Cheese Burger",
+  "price": "600",
+  "desc": "Steak Haché, Salade, Tomate, Fromage, Mayo, Ketchup",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362954db5d7b4c-45ae-4627-9c30-6438b9f5eee0.webp",
+  "sizes": [
+   [
+    "Simple",
+    600
+   ],
+   [
+    "XL",
+    750
+   ],
+   [
+    "XXL",
+    900
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744e1",
+  "name": "Chili Burger",
+  "price": "900",
+  "desc": "Steak Haché, Salade, Tomate, Oignons, Piment, Fromage, Chili Hot Sauce",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362993b57a425f-0a98-414a-9028-cb530b634632.webp",
+  "sizes": [
+   [
+    "Simple",
+    900
+   ],
+   [
+    "XL",
+    1050
+   ],
+   [
+    "XXL",
+    1200
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744c3",
+  "name": "Tatziki Burger",
+  "price": "650",
+  "desc": "Steak Haché, Yaourt, Concombre, Menthe, Fromage",
+  "img": "https://food.yassir.io/uploads/images/food/17940393629796cb703e3-d5ed-4420-b5a9-29a8c86f6b71.webp",
+  "sizes": [
+   [
+    "Simple",
+    650
+   ],
+   [
+    "XL",
+    800
+   ],
+   [
+    "XXL",
+    950
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744e7",
+  "name": "Rossini Burger",
+  "price": "900",
+  "desc": "Steak Haché, Tranche de Foie Grillée, Sauce (Poivre ou Aioli)",
+  "img": "https://food.yassir.io/uploads/images/food/17940393629913c53dbad-1dd5-4554-84d0-11f0e48b8585.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744d5",
+  "name": "Bleu Burger",
+  "price": "800",
+  "desc": "Steak Haché, Sauce Roquefort, Fromage",
+  "img": "https://food.yassir.io/uploads/images/food/17940393630400376424a-82dd-4670-8222-2c3e19cf7253.webp",
+  "sizes": [
+   [
+    "Simple",
+    800
+   ],
+   [
+    "XL",
+    950
+   ],
+   [
+    "XXL",
+    1100
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744b7",
+  "name": "Algerian Burger",
+  "price": "650",
+  "desc": "Steak Haché, Salade, Tomate, Fromage, Sauce Aioli",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362896b710c43c-3a63-4f83-b0c1-5201e40ba595.webp",
+  "sizes": [
+   [
+    "Simple",
+    650
+   ],
+   [
+    "XL",
+    800
+   ],
+   [
+    "XXL",
+    950
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744bd",
+  "name": "Xtrem Burger",
+  "price": "650",
+  "desc": "Steak Haché, Salade, Tomate, Fromage, Sauce Tartare",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362947fd019458-d354-42cd-ade0-bcd8e500f66c.webp",
+  "sizes": [
+   [
+    "Simple",
+    650
+   ],
+   [
+    "XL",
+    800
+   ],
+   [
+    "XXL",
+    950
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744a5",
+  "name": "Pepper Burger",
+  "price": "450",
+  "desc": "Steak Haché, Sauce au Poivre",
+  "img": "https://food.yassir.io/uploads/images/food/1794039362956177699a6-5f69-4fb4-bb1c-d00dc9b2cd40.webp",
+  "sizes": [
+   [
+    "Simple",
+    450
+   ],
+   [
+    "XL",
+    600
+   ],
+   [
+    "XXL",
+    750
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744cf",
+  "name": "Egg Burger",
+  "price": "750",
+  "desc": "Steak Haché, Œuf, Salade, Tomate, Oignons, Fromage, Mayo, Ketchup",
+  "img": "https://food.yassir.io/uploads/images/food/17940393629819ac80dc0-0ff3-4f15-8530-21d4088700d9.webp",
+  "sizes": [
+   [
+    "Simple",
+    750
+   ],
+   [
+    "XL",
+    900
+   ],
+   [
+    "XXL",
+    1050
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb0744c9",
+  "name": "Pickle Burger",
+  "price": "700",
+  "desc": "Steak Haché, Salade, Tomate, Oignons, Pickles, Fromage, House Sauce",
+  "img": "https://food.yassir.io/uploads/images/food/17940393629633826c2ad-6837-470c-9313-5207a82562f7.webp",
+  "sizes": [
+   [
+    "Simple",
+    700
+   ],
+   [
+    "XL",
+    850
+   ],
+   [
+    "XXL",
+    1000
+   ]
+  ],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb07450f",
+  "name": "Dessert Du Jour",
+  "price": "400",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/17940393631687fca356e-6e95-40c2-8519-02714e5cc3df.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb07450b",
+  "name": "Flan",
+  "price": "350",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/1794039363039684b977e-0bfb-4be9-8b05-4bd8f2fa3f9a.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ },
+ {
+  "id": "6aeede425a4ddbcdbb07450d",
+  "name": "Tarte Aux Citrons",
+  "price": "350",
+  "desc": " ",
+  "img": "https://food.yassir.io/uploads/images/food/1794039363038bd0c5313-4d13-4c9c-b805-46048c4a4b3d.webp",
+  "sizes": [],
+  "addons": [],
+  "avail": true,
+  "cat": null
+ }
+]
