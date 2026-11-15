@@ -70,3 +70,13 @@ On peut vous la montrer en 5 minutes au restaurant. Quel jour vous arrange ?
 - Horaires exacts de Garden City.
 - Prix et retour du Forest Burger, des Quiches et de la Salade César.
 - Prix identiques dans les 4 restaurants (la démo reprend les prix Yassir de Hydra).
+
+## Kit pour les choquer (`marketing/`)
+- `video-demo-pepper-30s.mp4` : vidéo verticale 30 s (story/DM WhatsApp) : file → commande sur téléphone → cuisine → écran → « C'est prêt ! » → tableau de bord → « Votre démo est prête. Gratuite. » Musique originale, aucun crédit.
+- `chevalet-qr-A6.pdf` (+ .png) : chevalet de table A6 à leur charte, QR code testé (ouvre la démo ; à remplacer par leur domaine après signature).
+- `proposition-pepper.pdf` : proposition 2 pages A4 (constat, 6 briques, étapes, investissement « à partir de », conditions).
+- Captures du parcours : `captures/01…11`.
+
+## Ordre d'envoi conseillé
+1. DM Instagram : la vidéo seule, puis le message + le lien.
+2. Au rendez-vous : démo en direct, chevalet posé sur une table, proposition imprimée laissée sur place.

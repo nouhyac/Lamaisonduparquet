@@ -1,0 +1,66 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Federo&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="logo.js"></script>
+<style>
+:root{--kraft:#C9B198;--kraft2:#BA9E83;--cream:#F3EADC;--ink:#1B1714;--red:#B3140C}
+*{box-sizing:border-box}body{margin:0;background:#000}
+#st{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--kraft);font-family:'Josefin Sans',sans-serif;color:var(--ink)}
+#st:before{content:"";position:absolute;inset:0;background:radial-gradient(70% 50% at 50% 45%,rgba(255,250,240,.5),transparent 70%)}
+.layer{position:absolute;inset:0;opacity:0;will-change:transform,opacity}
+.cap{position:absolute;left:70px;right:70px;top:150px;text-align:center}
+.cap h1{font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:78px;line-height:1.05;margin:0}
+.cap h1 em{font-style:normal;color:var(--red)}
+.cap p{font-size:40px;margin:22px 0 0;color:#2A231E;font-weight:600}
+.phone{position:absolute;left:50%;top:560px;width:660px;height:1168px;margin-left:-330px;border-radius:78px;background:#111;padding:22px;box-shadow:0 60px 90px -40px rgba(27,23,20,.8)}
+.phone .scr{width:100%;height:100%;border-radius:58px;overflow:hidden;background:#F3EADC;position:relative}
+.phone .scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.phone:after{content:"";position:absolute;top:36px;left:50%;width:150px;height:36px;margin-left:-75px;background:#111;border-radius:20px}
+.desk{position:absolute;left:50px;right:50px;top:760px;border-radius:26px;overflow:hidden;background:#111;padding:16px;box-shadow:0 60px 90px -40px rgba(27,23,20,.8)}
+.desk img{width:100%;border-radius:12px;display:block}
+.tap{position:absolute;width:110px;height:110px;border-radius:50%;border:8px solid rgba(179,20,12,.9);opacity:0}
+.logo{width:760px;margin:0 auto}
+.end{position:absolute;inset:0;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;text-align:center;padding:80px}
+.end h2{font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:70px;line-height:1.1;margin:0}
+.end h2 em{font-style:normal;color:#FF6A5E}
+.end p{font-size:40px;margin:0;color:#D9CCB8;font-weight:600}
+.end .dz{font-size:46px;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);font-weight:700}
+.pill{display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:44px;padding:26px 46px 20px;border-radius:999px;letter-spacing:.04em}
+.big{font-family:Federo;font-size:300px;line-height:1}
+</style></head><body><div id="st"></div>
+<script>
+const A = s => 'shots/' + s;
+const st = document.getElementById('st');
+// scènes : [début, fin, html]
+const S = [
+ [0, 3.2, `<div class="cap" style="top:420px"><div class="logo">${PEPPER_LOGO({})}</div><h1 style="margin-top:120px">Garden City,<br>13h.</h1><p style="font-size:52px">La file au comptoir ?</p></div>`],
+ [3.2, 5.6, `<div class="cap"><h1>Et si vos clients<br><em>commandaient</em><br>depuis leur téléphone ?</h1></div><div class="phone"><div class="scr"><img src="${A('p1-home.png')}"></div></div>`],
+ [5.6, 7.8, `<div class="cap"><h1>Votre vraie carte.<br><em>Vos vrais prix.</em></h1></div><div class="phone"><div class="scr"><img src="${A('p2-menu.png')}"></div></div>`],
+ [7.8, 10.0, `<div class="cap"><h1>Simple, XL, XXL.<br><em>Frites ? Soda ?</em></h1></div><div class="phone"><div class="scr"><img src="${A('p3-product.png')}"></div></div>`],
+ [10.0, 12.2, `<div class="cap"><h1>Une commande.<br><em>Zéro file.</em></h1></div><div class="phone"><div class="scr"><img src="${A('p4-cart.png')}"></div></div>`],
+ [12.2, 14.6, `<div class="cap"><h1>Le client reçoit<br><em>son numéro</em></h1></div><div class="phone"><div class="scr"><img src="${A('p5-ticket.png')}"></div></div>`],
+ [14.6, 17.6, `<div class="cap"><h1>La cuisine la reçoit<br><em>en direct</em></h1></div><div class="desk"><img id="k" src="${A('k1c.png')}"></div>`],
+ [17.6, 20.4, `<div class="cap"><h1>Le numéro s'affiche<br><em>au comptoir</em></h1></div><div class="desk"><img src="${A('tvc.png')}"></div>`],
+ [20.4, 23.4, `<div class="cap"><h1>Son téléphone vibre :<br><em>c'est prêt !</em></h1></div><div class="phone" id="ph"><div class="scr"><img src="${A('p7-ready.png')}"></div></div>`],
+ [23.4, 26.4, `<div class="cap"><h1>Et vous suivez<br><em>vos 4 restaurants</em></h1><p>Caisse · carte · fidélité · tableau de bord</p></div><div class="desk"><img src="${A('dashc.png')}"></div>`],
+ [26.4, 31, `<div class="end"><div style="width:620px">${PEPPER_LOGO({ ink: '#F3EADC', shadow: 'rgba(0,0,0,.5)' })}</div><h2>Votre démo est <em>prête</em>.<br>Gratuite.</h2><p>Préparée pour Pepper Garden City,<br>avec votre carte et votre charte.</p><span class="pill">On vous la montre en 5 min ?</span><div class="dz">Dzign Studio</div><p style="font-size:38px">WhatsApp 0549 50 68 57</p></div>`]
+];
+const layers = S.map(([a, b, h]) => { const d = document.createElement('div'); d.className = 'layer'; d.innerHTML = h; st.appendChild(d); return d; });
+const ease = x => x < 0 ? 0 : x > 1 ? 1 : 1 - Math.pow(1 - x, 3);
+window.render = t => {
+  S.forEach(([a, b], i) => {
+    const L = layers[i]; const fi = ease((t - a) / 0.35), fo = i === S.length - 1 ? 1 : 1 - ease((t - (b - 0.3)) / 0.3);
+    const vis = t >= a - 0.01 && t < b + 0.01; L.style.opacity = vis ? Math.min(fi, fo) : 0;
+    if (!vis) return;
+    const p = (t - a) / (b - a);
+    const cap = L.querySelector('.cap'); if (cap) cap.style.transform = `translateY(${(1 - fi) * 40}px)`;
+    const ph = L.querySelector('.phone'); if (ph) {
+      let tr = `translateY(${(1 - fi) * 140}px) scale(${1 + p * 0.03})`;
+      if (L.querySelector('#ph') && p > 0.15 && p < 0.5) tr += ` rotate(${Math.sin(p * 120) * 2.2}deg)`;
+      ph.style.transform = tr;
+    }
+    const dk = L.querySelector('.desk'); if (dk) dk.style.transform = `translateY(${(1 - fi) * 120}px) scale(${1 + p * 0.04})`;
+    const k = L.querySelector('#k'); if (k) k.src = p > 0.55 ? A('k2c.png') : A('k1c.png');
+  });
+};
+render(0);
+</script></body></html>
