@@ -1,0 +1,72 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#000}
+#st{position:relative;overflow:hidden;background:#0A0E1A;font-family:'Manrope',sans-serif;color:#fff}
+.L{position:absolute;inset:0;opacity:0;overflow:hidden}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,18,.72) 0%,rgba(6,9,18,.05) 38%,rgba(6,9,18,.1) 60%,rgba(6,9,18,.9) 100%)}
+.t{position:absolute;left:7%;right:7%;font-family:'Sora',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+.t em{font-style:normal;color:#FF2A35}
+.s{position:absolute;left:7%;right:7%;font-weight:700;color:#D6DCEB;text-shadow:0 4px 18px rgba(0,0,0,.7)}
+.card{position:absolute;display:flex;gap:.6em;align-items:center;background:rgba(255,255,255,.96);color:#0E1220;border-radius:.7em;padding:.55em .8em;box-shadow:0 1em 2em -.6em rgba(0,0,0,.7);font-weight:800}
+.card i{font-style:normal;width:1.9em;height:1.9em;border-radius:.5em;background:#FFE4E6;display:grid;place-items:center}
+.card small{display:block;color:#55607A;font-weight:700;font-size:.72em}
+.flash{position:absolute;inset:0;background:radial-gradient(circle at 70% 45%,rgba(227,6,19,.55),transparent 60%);mix-blend-mode:screen}
+.prod{position:absolute;filter:drop-shadow(0 30px 40px rgba(0,0,0,.7))}
+.glow{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(227,6,19,.45),transparent 65%)}
+.it{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.4em;text-align:center}
+.it .im{display:grid;place-items:center;background:radial-gradient(circle at 50% 60%,#fff,#E6E9F0);border-radius:.7em}
+.it b{font-family:'Sora';font-weight:800}
+.it span{color:#FF5A63;font-weight:800}
+.chip{position:absolute;display:flex;align-items:center;gap:.5em;background:rgba(17,23,41,.9);border:1px solid #263050;border-radius:.6em;padding:.5em .8em;font-weight:800}
+.chip i{font-style:normal}
+.btn{display:inline-block;background:#E30613;color:#fff;font-weight:800;border-radius:.5em;padding:.6em 1.1em;box-shadow:0 1em 2em -.6em rgba(227,6,19,.9)}
+.brand{font-family:'Sora';font-weight:800;letter-spacing:-.02em}.brand b{color:#E30613}
+</style></head><body><div id="st"></div>
+<script>
+const Q = new URLSearchParams(location.search), W = +Q.get('w') || 1080, H = +Q.get('h') || 1920;
+const st = document.getElementById('st'); st.style.width = W + 'px'; st.style.height = H + 'px';
+const IMG = 'img/', r = H / W, K = Math.min(W, H) / 1080, F = r >= 1.7 ? 'v' : r >= 1.2 ? 'p' : r >= .95 ? 'q' : 'h';
+const KT = ({ v: 1.35, p: 1.1, q: 1, h: 1 })[F];
+st.style.fontSize = Math.round(40 * K * KT) + 'px';
+const px = n => Math.round(n * K * KT) + 'px';
+const tp = (pct) => `top:${pct}%`;
+const T = (html, y, size) => `<div class="t" style="${tp(y)};font-size:${px(size)};${H169 ? 'right:46%' : ''}">${html}</div>`;
+const Sb = (html, y, size) => `<div class="s" style="${tp(y)};font-size:${px(size)};${H169 ? 'right:46%' : ''}">${html}</div>`;
+const bg = (f, pos) => `<img class="bg" src="${IMG}scenes/${f}.webp" style="object-position:${pos || 'center'}"><div class="shade"></div>`;
+const H169 = F === 'h';
+const tx = H169 ? 'left:5%;right:52%' : '';
+const S = [
+  [0, 2.7, bg('porte-nuit', H169 ? 'center 60%' : 'center') + `<div class="flash" id="fl"></div>` + `<div class="t" style="${tp(H169 ? 30 : 8)};font-size:${px(150)};${tx}">02:14</div>` + `<div class="s" style="${tp(H169 ? 58 : 22)};font-size:${px(46)};${tx}">Vous dormez.<br>Quelqu'un ouvre la porte.</div>`],
+  [2.7, 5.2, bg('telephone-nuit', H169 ? 'center 40%' : 'center') + `<div class="card" id="c1" style="left:7%;${tp(H169 ? 14 : 12)};font-size:${px(34)}"><i>🚨</i><div>Alarme · Porte d'entrée<small>Ouverture détectée · 02:14</small></div></div><div class="card" id="c2" style="left:10%;${tp(H169 ? 34 : 21)};font-size:${px(34)}"><i>📞</i><div>Votre alarme vous appelle<small>+ SMS envoyé à 5 numéros</small></div></div>` + T('Votre maison<br><em>vous prévient.</em>', H169 ? 62 : 74, 82)],
+  [5.2, 7.8, `<div class="glow" style="width:${px(1100)};height:${px(1100)};left:50%;top:${H169 ? 50 : 52}%;margin:-${px(550)} 0 0 -${px(550)}"></div><img class="prod" id="hub" src="${IMG}centrale.webp" style="width:${px(H169 ? 460 : 560)};left:50%;margin-left:-${px(H169 ? 230 : 280)};top:${H169 ? 22 : 24}%">` + `<div class="t" style="${tp(H169 ? 6 : 7)};text-align:center;font-size:${px(54)};color:#C8CFE0"><span class="brand"><b>Air</b>Shield</span> by Dahua</div>` + `<div class="t" style="${tp(H169 ? 80 : 74)};text-align:center;font-size:${px(78)}">Le kit d'alarme<br><em>sans fil.</em></div>`],
+  [7.8, 11.8, (() => { const it = [['centrale', 'Centrale', 'Wi-Fi + câble + SIM'], ['detecteur-ouverture', 'Détecteur d\'ouverture', 'Pile jusqu\'à 5 ans'], ['detecteur-mouvement', 'Détecteur de mouvement', '12 m · animaux ≤ 18 kg'], ['telecommande', 'Télécommande', 'SOS en 1 clic']];
+      const cols = H169 ? 4 : 2, cw = H169 ? 22 : ({ v: 40, p: 36, q: 34 })[F], ch = H169 ? 46 : ({ v: 32, p: 36.5, q: 37 })[F], x0 = H169 ? 6 : ({ v: 8, p: 12, q: 14 })[F], y0 = H169 ? 30 : ({ v: 23, p: 21, q: 21 })[F], ih = ({ v: 300, p: 220, q: 190, h: 300 })[F];
+      return T('4 pièces.<br><em>Tout est dans la boîte.</em>', H169 ? 6 : 6, 66) + it.map((a, i) => { const x = x0 + (i % cols) * (cw + (H169 ? 1.5 : 4)), y = y0 + Math.floor(i / cols) * (ch + 3);
+        return `<div class="it" id="it${i}" style="left:${x}%;top:${y}%;width:${cw}%;font-size:${px(30)}"><div class="im" style="width:100%;height:${px(ih)}"><img src="${IMG}${a[0]}.webp" style="max-height:${px(ih * 0.8)};max-width:70%"></div><b>${a[1]}</b><span>${a[2]}</span></div>`; }).join(''); })()],
+  [11.8, 14.2, bg('mouvement-chat', H169 ? 'center 70%' : '30% center') + T('Le chat passe ?<br><em>Pas d\'alarme.</em>', H169 ? 8 : 70, 80) + Sb('Le détecteur ignore les animaux jusqu\'à 18 kg.', H169 ? 36 : 86, 38)],
+  [14.2, 17.0, `<div class="t" style="${tp(H169 ? 10 : 10)};text-align:center;font-size:${px(70)}">Et dans les<br><em>pires cas ?</em></div>` + [['🌐', 'Internet coupé', 'Il vous appelle par la carte SIM'], ['⚡', 'Courant coupé', '12 h sur batterie'], ['🔐', 'Détecteur arraché', 'Alarme anti-arrachement']].map((c, i) => `<div class="chip" id="ch${i}" style="left:${H169 ? 18 : 8}%;right:${H169 ? 18 : 8}%;top:${(H169 ? 40 : 34) + i * (H169 ? 17 : 13)}%;font-size:${px(38)}"><i>${c[0]}</i><div>${c[1]}<br><span style="color:#FF5A63;font-size:.85em">${c[2]}</span></div></div>`).join('')],
+  [17.0, 19.4, bg('telecommande-depart', H169 ? 'center 45%' : 'center') + T('Un clic.<br><em>Vous partez tranquille.</em>', H169 ? 8 : 70, 78)],
+  [19.4, 24.0, `<div class="glow" style="width:${px(1000)};height:${px(1000)};left:50%;top:${H169 ? 45 : 40}%;margin:-${px(500)} 0 0 -${px(500)}"></div><img class="prod" id="box" src="${IMG}boite.webp" style="width:${px(H169 ? 640 : 820)};left:50%;margin-left:-${px(H169 ? 320 : 410)};top:${H169 ? 20 : 22}%">` + `<div class="t" style="${tp(H169 ? 4 : 6)};text-align:center;font-size:${px(64)}">Protégez votre maison<br><em>dès cette semaine.</em></div>` + `<div style="position:absolute;left:0;right:0;${tp(H169 ? 76 : 70)};text-align:center;display:grid;gap:${px(22)};justify-items:center"><span class="btn" style="font-size:${px(46)}">Commandez votre kit</span><span style="font-weight:700;color:#C8CFE0;font-size:${px(32)}">Kit officiel Dahua AirShield · 4 pièces</span><span class="brand" style="font-size:${px(44)}"><b>Air</b>Shield <span style="font-weight:600;color:#8C95AD;font-size:.7em">by Dahua</span></span></div>`]
+];
+window.DUR = 24; window.ALERT = 2.7;
+const layers = S.map(([a, b, h]) => { const d = document.createElement('div'); d.className = 'L'; d.innerHTML = h; st.appendChild(d); return d; });
+const ease = x => x < 0 ? 0 : x > 1 ? 1 : 1 - Math.pow(1 - x, 3);
+window.render = t => {
+  S.forEach(([a, b], i) => {
+    const L = layers[i], fi = ease((t - a) / .3), fo = i === S.length - 1 ? 1 : 1 - ease((t - (b - .2)) / .2);
+    const vis = t >= a - .01 && t < b + .01; L.style.opacity = vis ? Math.min(fi, fo) : 0; if (!vis) return;
+    const p = (t - a) / (b - a);
+    const bgI = L.querySelector('.bg'); if (bgI) bgI.style.transform = `scale(${1.04 + p * .1})`;
+    L.querySelectorAll('.t,.s').forEach((el, k) => { const e = ease((t - a - .15 - k * .25) / .45); el.style.opacity = e; el.style.transform = `translateY(${(1 - e) * 40}px)`; });
+    const fl = L.querySelector('#fl'); if (fl) fl.style.opacity = t > 1.2 ? (Math.sin(t * 18) > 0 ? .9 : .25) : 0;
+    ['#c1', '#c2'].forEach((s, k) => { const c = L.querySelector(s); if (c) { const e = ease((t - a - .1 - k * .6) / .35); c.style.opacity = e; c.style.transform = `translateY(${(1 - e) * -40}px) rotate(${k ? 0 : (t < a + 1.2 ? Math.sin(t * 60) * 1.2 : 0)}deg)`; } });
+    const hub = L.querySelector('#hub'); if (hub) { const e = ease((t - a) / .7); hub.style.transform = `translateY(${(1 - e) * 120 + Math.sin(t * 2) * 10}px) scale(${.85 + e * .15})`; }
+    for (let k = 0; k < 4; k++) { const it = L.querySelector('#it' + k); if (it) { const e = ease((t - a - .3 - k * .45) / .4); it.style.opacity = e; it.style.transform = `translateY(${(1 - e) * 60}px)`; } }
+    for (let k = 0; k < 3; k++) { const c = L.querySelector('#ch' + k); if (c) { const e = ease((t - a - .5 - k * .55) / .4); c.style.opacity = e; c.style.transform = `translateX(${(1 - e) * -80}px)`; } }
+    const box = L.querySelector('#box'); if (box) { const e = ease((t - a) / .8); box.style.transform = `translateY(${(1 - e) * 100}px) rotate(${(1 - e) * -4}deg)`; }
+  });
+};
+render(0);
+</script></body></html>

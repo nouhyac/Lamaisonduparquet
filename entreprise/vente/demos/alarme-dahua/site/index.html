@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kit alarme sans fil Dahua AirShield</title>
+<meta name="description" content="Kit d'alarme sans fil Dahua AirShield : centrale Wi-Fi, Ethernet et SIM, détecteur d'ouverture, détecteur de mouvement, télécommande. Alertes sur l'application, par SMS et par appel.">
+<meta name="theme-color" content="#0A0E1A">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Cairo:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="brand" id="brand"><span class="b-air">Air</span><span class="b-shield">Shield</span><small>by Dahua</small></a>
+    <nav class="nav"><a href="#kit" data-t="nKit">Le kit</a><a href="#simu" data-t="nHow">Comment ça marche</a><a href="#faq" data-t="nFaq">Questions</a></nav>
+    <button class="lang" id="lang" aria-label="Changer de langue">ع</button>
+    <a class="btn btn-red sm" href="#commander" data-t="order">Commander</a>
+  </div>
+</header>
+
+<!-- HÉROS -->
+<section class="hero dark">
+  <div class="wrap hero-grid">
+    <div class="hero-txt">
+      <span class="eyebrow" data-t="heroK">Kit d'alarme sans fil · Dahua AirShield</span>
+      <h1 data-t="heroT" data-html>Votre maison<br><span class="red">vous prévient.</span><br>Où que vous soyez.</h1>
+      <p class="lead" data-t="heroP">Une porte s'ouvre à 2 h du matin ? Votre téléphone sonne, la sirène se déclenche, vous recevez un SMS. Même sans Internet. Même pendant une coupure de courant.</p>
+      <ul class="ticks">
+        <li data-t="h1">Installation sans câble, en quelques minutes</li>
+        <li data-t="h2">Wi-Fi + câble + carte SIM : jamais coupée</li>
+        <li data-t="h3">Appel et SMS vers 5 numéros</li>
+        <li data-t="h4">Piles jusqu'à 5 ans dans les détecteurs</li>
+      </ul>
+      <div class="price-row" id="priceRow"></div>
+      <div class="row"><a class="btn btn-red big" href="#commander" data-t="ctaHero">Commander mon kit</a><a class="btn btn-ghost big" href="#simu" data-t="ctaSim">Tester l'alarme ▶</a></div>
+    </div>
+    <div class="hero-vis" aria-hidden="true">
+      <img class="hv-photo" src="img/scenes/porte-nuit.webp" alt="">
+      <div class="notif n1"><span class="ni">🚨</span><div><b data-t="nt1">Alarme · Porte d'entrée</b><small data-t="ns1">Ouverture détectée · 02:14</small></div></div>
+      <div class="notif n2"><span class="ni">📞</span><div><b data-t="nt2">Appel de votre alarme</b><small data-t="ns2">+ SMS envoyé à 5 numéros</small></div></div>
+      <img class="hv-hub" src="img/centrale.webp" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU CONFIANCE -->
+<div class="trust"><div class="wrap">
+  <span>🛡️ <b>Dahua</b> <i data-t="tr1">marque mondiale de la sécurité</i></span>
+  <span>🔐 <b>AES-128</b> <i data-t="tr2">communication chiffrée</i></span>
+  <span>📡 <b>2 000 m</b> <i data-t="tr3">de portée radio</i></span>
+  <span>🔋 <b>12 h</b> <i data-t="tr4">sur batterie</i></span>
+</div></div>
+
+<!-- SCÉNARIOS -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow dark-t" data-t="scK">Pour quoi faire</span>
+    <h2 data-t="scT">Trois moments où il change tout</h2>
+    <div class="scen">
+      <figure><img src="img/scenes/telecommande-depart.webp" alt="Départ en vacances, télécommande en main" loading="lazy"><figcaption><b data-t="sc1t">Vous partez en vacances</b><span data-t="sc1p">Un clic sur « Absent » en fermant la porte. Vous voyez l'état de la maison depuis votre téléphone.</span></figcaption></figure>
+      <figure><img src="img/scenes/telephone-nuit.webp" alt="Alerte sur le téléphone la nuit" loading="lazy"><figcaption><b data-t="sc2t">Vous dormez</b><span data-t="sc2p">Mode « Maison » : les portes sont surveillées, vous circulez librement à l'intérieur.</span></figcaption></figure>
+      <figure><img src="img/scenes/mouvement-chat.webp" alt="Détecteur de mouvement et chat" loading="lazy"><figcaption><b data-t="sc3t">Vous avez un animal</b><span data-t="sc3p">Le détecteur ignore les animaux jusqu'à 18 kg : pas de fausse alerte à cause du chat.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- LE KIT -->
+<section class="sec alt" id="kit">
+  <div class="wrap">
+    <span class="eyebrow dark-t" data-t="kitK">Dans la boîte</span>
+    <h2 data-t="kitT">4 pièces. Tout est prêt.</h2>
+    <p class="lead dk" data-t="kitP">Le kit officiel Dahua AirShield, référence DHI-ART-ARC3000H-03-GW2(868). Les chiffres viennent de la fiche technique du fabricant.</p>
+    <div class="kit" id="kitGrid"></div>
+  </div>
+</section>
+
+<!-- SIMULATEUR -->
+<section class="sec dark" id="simu">
+  <div class="wrap">
+    <span class="eyebrow" data-t="simK">Comment ça marche</span>
+    <h2 data-t="simT">Essayez l'alarme, ici, maintenant</h2>
+    <p class="lead" data-t="simP">Armez le système, puis provoquez une intrusion : regardez ce qui arrive sur le téléphone.</p>
+    <div class="sim">
+      <div class="house" id="house">
+        <svg viewBox="0 0 600 420" class="plan" role="img" aria-label="Plan de la maison">
+          <rect x="20" y="20" width="560" height="380" rx="14" class="wall"/>
+          <line x1="330" y1="20" x2="330" y2="250" class="wall-l"/>
+          <line x1="20" y1="250" x2="430" y2="250" class="wall-l"/>
+          <text x="40" y="52" class="room">SALON</text><text x="350" y="52" class="room">CHAMBRE</text><text x="40" y="282" class="room">ENTRÉE</text>
+          <rect x="470" y="300" width="90" height="10" class="door-gap"/>
+          <g id="door"><rect x="470" y="300" width="90" height="8" rx="3" class="door"/></g>
+          <g id="dsens"><rect x="555" y="282" width="10" height="26" rx="3" class="sens"/><circle id="dsLed" cx="560" cy="289" r="3" class="led"/></g>
+          <g id="pir"><path d="M40 85 h26 v34 h-26z" class="sens"/><circle id="pirLed" cx="53" cy="112" r="3" class="led"/><path id="pirCone" d="M66 92 L300 60 L300 230 L66 112 Z" class="cone"/></g>
+          <g id="hub"><rect x="200" y="300" width="56" height="56" rx="12" class="hubb"/><rect id="hubLed" x="214" y="346" width="28" height="4" rx="2" class="hubled"/></g>
+          <g id="intruder" class="intr"><circle cx="0" cy="0" r="13"/><path d="M-12 30 Q0 6 12 30 Z"/></g>
+          <g id="cat" class="cat"><ellipse cx="0" cy="0" rx="14" ry="7"/><circle cx="14" cy="-6" r="6"/><path d="M-14 -2 q-10 -10 -4 -16" fill="none" stroke-width="3"/></g>
+          <g id="wifi"><text x="300" y="395" class="tag" id="netTag">Wi-Fi ✓</text></g>
+        </svg>
+        <div class="siren" id="siren"></div>
+      </div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="ph-top"><span id="phClock">02:14</span><span id="phNet">📶 Wi-Fi</span></div>
+          <div class="ph-app">
+            <div class="ph-h"><b>DMSS</b><span id="phState" class="st off" data-t="stOff">Désarmé</span></div>
+            <div class="ph-feed" id="feed"></div>
+          </div>
+          <div class="call" id="call"><div class="c-ico">🛡️</div><b data-t="callT">Votre alarme vous appelle</b><small data-t="callS">Intrusion : porte d'entrée</small><div class="c-btn"><span class="no">✕</span><span class="yes">✓</span></div></div>
+        </div>
+      </div>
+      <div class="ctrls">
+        <div class="cg"><span class="cl" data-t="c1">1 · Armer</span>
+          <button class="cb" data-a="away">🔒 <span data-t="aAway">Absent</span></button>
+          <button class="cb" data-a="home">🏠 <span data-t="aHome">Maison (nuit)</span></button>
+          <button class="cb" data-a="disarm">🔓 <span data-t="aDis">Désarmer</span></button></div>
+        <div class="cg"><span class="cl" data-t="c2">2 · Provoquer</span>
+          <button class="cb" data-a="door">🚪 <span data-t="aDoor">Ouvrir la porte</span></button>
+          <button class="cb" data-a="move">🚶 <span data-t="aMove">Bouger dans le salon</span></button>
+          <button class="cb" data-a="cat">🐈 <span data-t="aCat">Le chat passe</span></button></div>
+        <div class="cg"><span class="cl" data-t="c3">3 · Les pires cas</span>
+          <button class="cb" data-a="net">🌐 <span data-t="aNet">Couper Internet</span></button>
+          <button class="cb" data-a="power">⚡ <span data-t="aPow">Coupure de courant</span></button>
+          <button class="cb" data-a="sos">🆘 <span data-t="aSos">SOS</span></button></div>
+      </div>
+    </div>
+    <p class="fine" data-t="simF">Simulation fidèle au fonctionnement décrit par Dahua (modes Absent / Maison, immunité animaux ≤ 18 kg, bascule sur la carte SIM, batterie 12 h). L'application officielle s'appelle DMSS.</p>
+  </div>
+</section>
+
+<!-- INSTALLATION -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow dark-t" data-t="inK">Installation</span>
+    <h2 data-t="inT">Prêt en 3 étapes, sans un seul câble à tirer</h2>
+    <div class="steps">
+      <div class="step"><b>1</b><h3 data-t="s1t">Branchez la centrale</h3><p data-t="s1p">Sur une prise, au centre du logement. Connectez-la au Wi-Fi ou au câble de la box, et insérez une carte SIM pour la sécurité.</p></div>
+      <div class="step"><b>2</b><h3 data-t="s2t">Ajoutez-la dans DMSS</h3><p data-t="s2p">L'application gratuite de Dahua. Les détecteurs du kit s'y ajoutent en quelques secondes.</p></div>
+      <div class="step"><b>3</b><h3 data-t="s3t">Fixez les détecteurs</h3><p data-t="s3p">Le détecteur d'ouverture sur la porte, le détecteur de mouvement au mur, à 2,2 m de hauteur, dans un angle de la pièce.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSEAU + ÉNERGIE -->
+<section class="sec alt">
+  <div class="wrap two">
+    <div>
+      <span class="eyebrow dark-t" data-t="neK">Jamais coupée</span>
+      <h2 data-t="neT">Trois connexions et une batterie</h2>
+      <p class="lead dk" data-t="neP">Un cambrioleur coupe Internet ? La centrale passe sur la carte SIM et vous appelle quand même. Une coupure de courant ? Sa batterie tient 12 heures.</p>
+      <div class="nets">
+        <div><span>📶</span><b>Wi-Fi</b><small>2,4 GHz</small></div>
+        <div><span>🔌</span><b>Ethernet</b><small data-t="eth">câble RJ-45</small></div>
+        <div><span>📱</span><b data-t="sim">Carte SIM</b><small>2G · SMS · appels</small></div>
+        <div><span>🔋</span><b data-t="bat">Batterie</b><small data-t="bat2">12 h de secours</small></div>
+      </div>
+    </div>
+    <figure class="schema"><img src="img/schema-officiel.webp" alt="Schéma officiel Dahua : centrale, routeur, cloud, téléphone, détecteurs" loading="lazy"><figcaption data-t="schC">Schéma officiel Dahua</figcaption></figure>
+  </div>
+</section>
+
+<!-- APPLICATION + ÉVOLUTIF -->
+<section class="sec">
+  <div class="wrap two">
+    <div>
+      <span class="eyebrow dark-t" data-t="apK">Application DMSS · gratuite</span>
+      <h2 data-t="apT">Toute la maison dans votre poche</h2>
+      <ul class="feats">
+        <li data-t="ap1">Armer et désarmer à distance, ou à heures fixes</li>
+        <li data-t="ap2">Alertes en temps réel, historique des événements</li>
+        <li data-t="ap3">Niveau des piles et du signal de chaque détecteur</li>
+        <li data-t="ap4">Partage avec la famille : chacun reçoit les alertes</li>
+        <li data-t="ap5">Liaison vidéo avec les caméras Dahua</li>
+      </ul>
+    </div>
+    <div class="grow">
+      <span class="eyebrow dark-t" data-t="evK">Évolutif</span>
+      <div class="big-n">150</div>
+      <p data-t="evP">accessoires sans fil sur une seule centrale : d'autres détecteurs, jusqu'à 6 sirènes et 64 télécommandes. Commencez avec le kit, ajoutez des pièces quand vous voulez.</p>
+      <div class="for"><span data-t="f1">🏡 Maison & villa</span><span data-t="f2">🏢 Appartement</span><span data-t="f3">🏪 Magasin & bureau</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FICHE TECHNIQUE -->
+<section class="sec alt">
+  <div class="wrap">
+    <details class="specs"><summary data-t="spT">Fiche technique complète</summary><div class="tw"><table id="specTable"></table></div></details>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap narrow">
+    <span class="eyebrow dark-t" data-t="fqK">Questions fréquentes</span>
+    <h2 data-t="fqT">Vous vous demandez…</h2>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- COMMANDE -->
+<section class="sec dark" id="commander">
+  <div class="wrap two order">
+    <div>
+      <span class="eyebrow" data-t="orK">Commande</span>
+      <h2 data-t="orT">Protégez votre maison dès cette semaine</h2>
+      <img class="box" src="img/boite.webp" alt="Boîte du kit Dahua AirShield" loading="lazy">
+      <div class="price-row" id="priceRow2"></div>
+      <ul class="ticks"><li data-t="o1">Kit complet officiel Dahua (4 pièces)</li><li data-t="o2">On vous rappelle pour confirmer la commande</li><li data-t="o3">Compatible avec les caméras Dahua</li></ul>
+    </div>
+    <form class="form" id="orderForm" novalidate>
+      <div class="f"><label for="oName" data-t="fName">Nom et prénom</label><input id="oName" autocomplete="name" required></div>
+      <div class="f"><label for="oPhone" data-t="fPhone">Téléphone</label><input id="oPhone" inputmode="tel" autocomplete="tel" placeholder="05 / 06 / 07 …" required></div>
+      <div class="f2">
+        <div class="f"><label for="oWil" data-t="fWil">Wilaya</label><select id="oWil" required></select></div>
+        <div class="f"><label for="oCom" data-t="fCom">Commune</label><input id="oCom" required></div>
+      </div>
+      <div class="f"><label for="oAdr" data-t="fAdr">Adresse</label><input id="oAdr" autocomplete="street-address"></div>
+      <div class="f"><label data-t="fQty">Quantité</label><div class="qty"><button type="button" data-q="-1" aria-label="Moins">−</button><b id="oQty">1</b><button type="button" data-q="1" aria-label="Plus">+</button></div></div>
+      <div class="err" id="oErr" role="alert"></div>
+      <button class="btn btn-red big full" type="submit" data-t="fSend">Je commande</button>
+      <p class="fine dk2" data-t="fNote">Aucun paiement en ligne. Le magasin vous appelle pour confirmer.</p>
+    </form>
+    <div class="done" id="done" hidden>
+      <div class="ok">✓</div><h3 data-t="dT">Commande reçue !</h3><p id="dP"></p>
+      <a class="btn btn-red big" id="dWa" target="_blank" rel="noopener" hidden data-t="dWa">Envoyer aussi sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="b-air">Air</span><span class="b-shield">Shield</span><small>by Dahua</small></div>
+    <p id="shopLine"></p>
+    <p class="fine" data-t="legal">Dahua et AirShield sont des marques de Zhejiang Dahua Vision Technology. Caractéristiques issues de la fiche technique officielle. Photos d'ambiance : illustrations.</p>
+    <a href="commandes.html" class="fine" style="opacity:.6" data-t="admin">Espace commandes</a>
+  </div>
+</footer>
+
+<a class="sticky-cta" href="#commander" id="sticky"><span data-t="stk">Commander le kit</span><b id="stkPrice"></b></a>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
