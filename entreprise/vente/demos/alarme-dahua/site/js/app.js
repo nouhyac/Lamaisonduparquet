@@ -10,8 +10,8 @@
   const BASE = Object.assign({}, window.SHOP);
   function applySettings() { const s = store.get('settings', {}); window.SHOP = Object.assign({}, BASE, s); }
   applySettings();
-  let bc = null; try { bc = new BroadcastChannel('ads-sync'); bc.onmessage = () => { applySettings(); renderPrice(); }; } catch (e) { /* ancien navigateur */ }
-  window.addEventListener('storage', e => { if (e.key === 'ads-settings') { applySettings(); renderPrice(); } });
+  let bc = null; try { bc = new BroadcastChannel('ads-sync'); bc.onmessage = () => { applySettings(); renderPrice(); try { updSum(); } catch (x) { /* pas prêt */ } }; } catch (e) { /* ancien navigateur */ }
+  window.addEventListener('storage', e => { if (e.key === 'ads-settings') { applySettings(); renderPrice(); try { updSum(); } catch (x) { /* pas prêt */ } } });
 
   const AR = {
     nKit: 'المجموعة', nHow: 'كيف يعمل', nFaq: 'أسئلة', order: 'اطلب', heroK: 'مجموعة إنذار لاسلكية · Dahua AirShield',
@@ -42,8 +42,8 @@
   $$('[data-t]').forEach(el => { FRX[el.dataset.t] = el.hasAttribute('data-html') ? el.innerHTML : el.textContent; });
   const t = k => (lang === 'ar' && AR[k] != null ? AR[k] : FRX[k] != null ? FRX[k] : (DYN.fr[k] || k));
   const DYN = {
-    fr: { ask: 'Prix et disponibilité : réponse rapide', out: 'Rupture de stock : réservez, on vous rappelle à l\'arrivage', outS: 'Réserver', save: 'Économisez', ordered: 'Merci {n} ! Nous vous appelons au {p} pour confirmer votre commande.', eName: 'Indiquez votre nom.', ePhone: 'Numéro algérien à 10 chiffres (05, 06 ou 07).', eWil: 'Choisissez votre wilaya.', eCom: 'Indiquez votre commune.', choose: 'Choisir…', shop: 'Commandez en ligne ou sur WhatsApp : le magasin vous rappelle pour confirmer.' },
-    ar: { ask: 'السعر والتوفر: رد سريع', out: 'نفد المخزون: احجز ونتصل بك عند الوصول', outS: 'احجز', save: 'وفّر', ordered: 'شكراً {n}! سنتصل بك على {p} لتأكيد طلبك.', eName: 'اكتب اسمك.', ePhone: 'رقم جزائري من 10 أرقام (05، 06 أو 07).', eWil: 'اختر ولايتك.', eCom: 'اكتب بلديتك.', choose: 'اختر…', shop: 'اطلب عبر الإنترنت: المحل يتصل بك للتأكيد.' }
+    fr: { ask: 'Prix et disponibilité : réponse rapide', out: 'Rupture de stock : réservez, on vous rappelle à l\'arrivage', outS: 'Réserver', save: 'Économisez', ordered: 'Merci {n} ! Nous vous appelons au {p} pour confirmer votre commande.', eName: 'Indiquez votre nom.', ePhone: 'Numéro algérien à 10 chiffres (05, 06 ou 07).', eWil: 'Choisissez votre wilaya.', eCom: 'Indiquez votre commune.', choose: 'Choisir…', shop: 'Commandez en ligne ou sur WhatsApp : le magasin vous rappelle pour confirmer.', kitL: 'Kit alarme Dahua', delL: 'Livraison', delTel: 'confirmée par téléphone', free: 'Offerte', totL: 'Total', plusDel: '+ livraison' },
+    ar: { ask: 'السعر والتوفر: رد سريع', out: 'نفد المخزون: احجز ونتصل بك عند الوصول', outS: 'احجز', save: 'وفّر', ordered: 'شكراً {n}! سنتصل بك على {p} لتأكيد طلبك.', eName: 'اكتب اسمك.', ePhone: 'رقم جزائري من 10 أرقام (05، 06 أو 07).', eWil: 'اختر ولايتك.', eCom: 'اكتب بلديتك.', choose: 'اختر…', shop: 'اطلب عبر الإنترنت: المحل يتصل بك للتأكيد.', kitL: 'مجموعة إنذار Dahua', delL: 'التوصيل', delTel: 'يُؤكَّد بالهاتف', free: 'مجاني', totL: 'المجموع', plusDel: '+ التوصيل' }
   };
   const d = k => DYN[lang][k];
 
@@ -120,7 +120,7 @@
     document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     $('#lang').textContent = lang === 'ar' ? 'FR' : 'ع';
     $$('[data-t]').forEach(el => { const v = t(el.dataset.t); if (el.hasAttribute('data-html')) el.innerHTML = v; else el.textContent = v; });
-    renderKit(); renderFaq(); renderPrice(); fillWilayas(); simLang();
+    renderKit(); renderFaq(); renderPrice(); fillWilayas(); simLang(); try { updSum(); } catch (x) { /* pas prêt */ }
   }
   $('#lang').onclick = () => { lang = lang === 'fr' ? 'ar' : 'fr'; store.set('lang', lang); applyLang(); };
 
@@ -200,17 +200,26 @@
   /* ---------- commande ---------- */
   let qty = 1;
   function fillWilayas() { const s = $('#oWil'), v = s.value; s.innerHTML = '<option value="">' + d('choose') + '</option>' + window.WILAYAS.map(w => '<option>' + esc(w) + '</option>').join(''); s.value = v; }
-  $$('.qty button').forEach(b => b.onclick = () => { qty = Math.max(1, Math.min(10, qty + +b.dataset.q)); $('#oQty').textContent = qty; });
+  function feeFor(w) { const z = (window.SHOP.zones || {}); return w && z[w] != null && z[w] !== '' ? +z[w] : null; }
+  function updSum() {
+    const S = window.SHOP; if (!S.price) { $('#oSum').innerHTML = ''; return; }
+    const w = $('#oWil').value, fee = feeFor(w), sub = S.price * qty;
+    $('#oSum').innerHTML = '<div class="r"><span>' + d('kitL') + ' × ' + qty + '</span><b>' + money(sub) + '</b></div>' +
+      '<div class="r"><span>' + d('delL') + (w ? ' (' + esc(w.replace(/^\d+ /, '')) + ')' : '') + '</span><b>' + (fee == null ? d('delTel') : fee === 0 ? d('free') : money(fee)) + '</b></div>' +
+      '<div class="r t"><span>' + d('totL') + '</span><b>' + money(sub + (fee || 0)) + (fee == null ? ' <small style="font-size:12px;color:var(--muted)">' + d('plusDel') + '</small>' : '') + '</b></div>';
+  }
+  $$('.qty button').forEach(b => b.onclick = () => { qty = Math.max(1, Math.min(10, qty + +b.dataset.q)); $('#oQty').textContent = qty; updSum(); });
+  $('#oWil').addEventListener('change', updSum);
   $('#orderForm').addEventListener('submit', e => {
     e.preventDefault();
     const name = $('#oName').value.trim(), phone = $('#oPhone').value.replace(/\D/g, '').replace(/^213/, '0'), wil = $('#oWil').value, com = $('#oCom').value.trim(), adr = $('#oAdr').value.trim();
     const err = !name ? d('eName') : !/^0[567]\d{8}$/.test(phone) ? d('ePhone') : !wil ? d('eWil') : !com ? d('eCom') : '';
     $('#oErr').textContent = err; if (err) return;
-    const o = { id: Date.now().toString(36), at: Date.now(), name, phone, wil, com, adr, qty, price: window.SHOP.price, status: 'nouvelle' };
+    const fee = feeFor(wil); const o = { id: Date.now().toString(36), at: Date.now(), name, phone, wil, com, adr, qty, price: window.SHOP.price, fee, status: 'nouvelle' };
     const list = store.get('orders', []); list.unshift(o); store.set('orders', list); try { bc && bc.postMessage('orders'); } catch (x) { /* ok */ }
     $('#orderForm').hidden = true; $('#done').hidden = false;
     $('#dP').textContent = d('ordered').replace('{n}', name.split(' ')[0]).replace('{p}', phone.replace(/(\d{4})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4'));
-    if (window.SHOP.whatsapp) { const msg = 'Bonjour, je commande le kit alarme Dahua AirShield.\nNom : ' + name + '\nTéléphone : ' + phone + '\nWilaya : ' + wil + '\nCommune : ' + com + (adr ? '\nAdresse : ' + adr : '') + '\nQuantité : ' + qty; const a = $('#dWa'); a.href = 'https://wa.me/' + window.SHOP.whatsapp + '?text=' + encodeURIComponent(msg); a.hidden = false; }
+    if (window.SHOP.whatsapp) { const msg = 'Bonjour, je commande le kit alarme Dahua AirShield.\nNom : ' + name + '\nTéléphone : ' + phone + '\nWilaya : ' + wil + '\nCommune : ' + com + (adr ? '\nAdresse : ' + adr : '') + '\nQuantité : ' + qty + (window.SHOP.price ? '\nTotal : ' + money(window.SHOP.price * qty + (fee || 0)) + (fee == null ? ' + livraison' : '') : ''); const a = $('#dWa'); a.href = 'https://wa.me/' + window.SHOP.whatsapp + '?text=' + encodeURIComponent(msg); a.hidden = false; }
     $('#done').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 

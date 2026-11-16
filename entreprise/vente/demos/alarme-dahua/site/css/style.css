@@ -243,3 +243,9 @@ footer .brand{color:#fff}
 .vid video{width:100%;border-radius:22px;background:#000;box-shadow:0 30px 60px -30px rgba(14,18,32,.5);margin-top:22px;display:block}
 .vid .v916{display:none;max-width:420px;margin-inline:auto}
 @media (max-width:700px){.vid .v169{display:none}.vid .v916{display:block}}
+
+.sum{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:6px;font-size:14.5px}
+.sum .r{display:flex;justify-content:space-between;gap:10px}
+.sum .r span{color:var(--muted);font-weight:600}
+.sum .t{border-top:1px dashed var(--line);padding-top:8px;font-family:var(--disp);font-weight:800;font-size:19px}
+.sum:empty{display:none}

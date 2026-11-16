@@ -16,7 +16,7 @@ window.SHOP = {
   city: 'El Hamiz',
   maps: 'https://maps.google.com/?q=36.717319,3.228126',
   followers: '65 K',
-  price: null,
+  price: 55000,
   oldPrice: null,
   pin: '0328'
 };
