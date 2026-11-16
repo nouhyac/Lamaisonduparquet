@@ -92,3 +92,11 @@ Voix off française : toujours bloquée par la limite journalière Higgsfield (c
 - Livraison : texte neutre « on vous rappelle pour organiser la livraison ou le retrait au magasin », en attendant les vraies conditions.
 - Prix : à saisir par le gérant dans Espace gérant → Réglages (la page se met à jour seule).
 - Voix off : nouvelle tentative programmée le 17/11 à 10 h 30 (heure d'Alger).
+
+## Mise à jour du 16/11/2026 (soir) : prix 55 000 DA et système complet
+- Prix du kit : **55 000 DA** par défaut (modifiable dans Réglages). Récapitulatif avant commande sur la page : kit × quantité + livraison selon la wilaya = total.
+- Espace gérant v2 : rôles gérant (0328), caisse (2222), livreur (3333) ; tableau de bord (CA encaissé, marge, taux de confirmation, alertes stock) ; commandes (recherche, Confirmer WhatsApp, bon de livraison) ; livraisons (itinéraire, « en route », « livrée et encaissée », reporter) ; caisse multi-produits avec remise et paiement CIB/Edahabia ; produits & stock (prix d'achat, marge, réceptions) ; clients (relance) ; journal ; frais de livraison par wilaya ; sauvegarde.
+- Testé de bout en bout (3 rôles, ordinateur + iPhone, 0 erreur, calcul de marge vérifié).
+- Nouvelles vidéos simples Algérie : darija + français, 19,5 s, 4 formats, < 2 Mo (`marketing/simple-algerie/`).
+- Prix 55 000 DA ajouté à la fin des vidéos A et C (+ vidéo de la page).
+- Guide de vente : `VENDRE-EN-ALGERIE.md`.

@@ -1,0 +1,88 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#000}
+#st{position:relative;overflow:hidden;background:#FFFFFF;color:#0E1220}
+#st.ar{font-family:'Tajawal',sans-serif;direction:rtl}
+#st.fr{font-family:'Manrope',sans-serif}
+.L{position:absolute;inset:0;opacity:0;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6%}
+.big{font-weight:900;line-height:1.12;letter-spacing:-.01em}
+.fr .big{font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.big em{font-style:normal;color:#E30613}
+.sm{font-weight:700;color:#55607A;line-height:1.35}
+.prod{filter:drop-shadow(0 30px 40px rgba(14,18,32,.18))}
+.row{display:flex;gap:4%;align-items:flex-end;justify-content:center;width:100%}
+.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:.4em;background:#F3F5F9;border-radius:999px;padding:.35em .9em;font-weight:800}
+.red{background:#E30613;color:#fff}
+.green{background:#25D366;color:#fff}
+.phone{background:#0E1220;border-radius:1.2em;padding:.3em;box-shadow:0 30px 60px -24px rgba(14,18,32,.45)}
+.scr{background:#F5F7FB;border-radius:.95em;height:100%;display:flex;flex-direction:column;gap:.5em;padding:.8em;justify-content:flex-start}
+.nt{background:#fff;border-radius:.6em;padding:.5em .6em;display:flex;gap:.5em;align-items:center;box-shadow:0 .4em 1em -.4em rgba(14,18,32,.25);font-weight:800;text-align:start}
+.nt i{font-style:normal;width:1.8em;height:1.8em;border-radius:.5em;display:grid;place-items:center;background:#FFE4E6;flex-shrink:0}
+.nt small{display:block;color:#55607A;font-weight:700;font-size:.78em}
+.price{white-space:nowrap;font-family:'Manrope',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1;color:#0E1220;direction:ltr}
+.price span{color:#E30613}
+.line{height:.18em;width:3.2em;border-radius:1em;background:#E30613;margin:.5em auto}
+.tag{position:absolute;bottom:3.5%;left:0;right:0;text-align:center;font-family:'Manrope',sans-serif;font-weight:800;color:#8C95AD;letter-spacing:.1em;direction:ltr}
+.icn{display:inline-grid;place-items:center;border-radius:50%;background:#FFE4E6}
+</style></head><body><div id="st"></div>
+<script>
+const Q = new URLSearchParams(location.search), W = +Q.get('w') || 1080, H = +Q.get('h') || 1920, LANG = Q.get('lang') || 'ar';
+const st = document.getElementById('st'); st.style.width = W + 'px'; st.style.height = H + 'px'; st.className = LANG;
+const r = H / W, F = r >= 1.7 ? 'v' : r >= 1.2 ? 'p' : r >= .95 ? 'q' : 'h', HZ = F === 'h';
+const K = Math.min(W, H) / 1080 * ({ v: 1.25, p: 1.1, q: 1.05, h: 1.2 })[F];
+const px = n => Math.round(n * K) + 'px';
+st.style.fontSize = px(40);
+const IMG = 'img/';
+const T = {
+  ar: {
+    s1: 'دارك ولا حانوتك…<br><em>شكون يحرسهم</em><br>كي تكون برّا؟',
+    s2a: 'كيت إنذار Dahua', s2b: 'بلا خيوط · يتركّب في دقايق',
+    s3: 'يتحلّ الباب…<br><em>تيليفونك يرنّ</em>', n1: 'إنذار: الباب تحلّ', n1s: 'الساعة 02:14', n2: 'رسالة SMS', n2s: 'لـ 5 نمر', n3: 'الإنذار يعيّطلك', n3s: 'مكالمة',
+    s4a: 'حتى بلا أنترنت', s4b: 'يخدم بشريحة SIM', s4c: 'كي تطيح الضو', s4d: '12 ساعة باتري',
+    s5: 'القط يتعدّى؟<br><em>ما يصونيش.</em>', s5b: 'ما يحسبش الحيوانات حتى 18 كغ',
+    s6a: 'الكيت كامل · 4 قطع', s6b: 'الجهاز · كاشف الحركة · كاشف الباب · التيليكوموند',
+    s7a: 'اطلب درك', s7b: 'الحميز', wa: 'واتساب'
+  },
+  fr: {
+    s1: 'Votre maison,<br>votre magasin…<br><em>qui veille quand<br>vous êtes dehors ?</em>',
+    s2a: 'Kit alarme Dahua', s2b: 'Sans fil · installé en quelques minutes',
+    s3: 'La porte s\'ouvre…<br><em>votre téléphone sonne</em>', n1: 'Alarme : porte ouverte', n1s: '02:14', n2: 'SMS envoyé', n2s: 'à 5 numéros', n3: 'Votre alarme vous appelle', n3s: 'appel en cours',
+    s4a: 'Sans Internet', s4b: 'marche avec la SIM', s4c: 'Coupure de courant', s4d: '12 h de batterie',
+    s5: 'Le chat passe ?<br><em>Pas d\'alarme.</em>', s5b: 'Animaux ignorés jusqu\'à 18 kg',
+    s6a: 'Kit complet · 4 pièces', s6b: 'Centrale · détecteur de mouvement · détecteur de porte · télécommande',
+    s7a: 'Commandez maintenant', s7b: 'El Hamiz', wa: 'WhatsApp'
+  }
+}[LANG];
+const prodW = (f) => Math.round(({ v: 1, p: .8, q: .7, h: .62 })[F] * f);
+const S = [
+  [0, 2.8, `<div class="big" style="font-size:${px(HZ ? 96 : 104)}">${T.s1}</div>`],
+  [2.8, 5.4, `<img class="prod" id="hub" src="${IMG}centrale.webp" style="width:${px(prodW(560))}"><div class="big" style="font-size:${px(84)};margin-top:${px(40)}">${T.s2a}</div><div class="line"></div><div class="sm" style="font-size:${px(42)}">${T.s2b}</div>`],
+  [5.4, 8.6, (HZ ? '<div style="display:flex;align-items:center;gap:6%;width:100%;justify-content:center">' : '') + `<div class="big" style="font-size:${px(HZ ? 84 : 90)};${HZ ? 'flex:1;max-width:46%' : 'margin-bottom:' + px(50)}">${T.s3}</div><div class="phone" style="width:${px(HZ ? 430 : F === "q" ? 440 : 520)};height:${px(HZ ? 560 : F === "q" ? 520 : 660)};font-size:${px(34)}"><div class="scr">` + [['🚨', T.n1, T.n1s], ['✉️', T.n2, T.n2s], ['📞', T.n3, T.n3s]].map((n, k) => `<div class="nt" id="n${k}"><i${k ? ' style="background:' + (k === 1 ? '#DBEAFE' : '#DCFCE7') + '"' : ''}>${n[0]}</i><div>${n[1]}<small>${n[2]}</small></div></div>`).join('') + `</div></div>` + (HZ ? '</div>' : '')],
+  [8.6, 11.4, `<div style="display:grid;gap:${px(46)};width:100%">` + [['📶', T.s4a, T.s4b], ['🔋', T.s4c, T.s4d]].map((c, k) => `<div id="c${k}" style="display:flex;align-items:center;gap:${px(30)};justify-content:center"><span class="icn" style="width:${px(150)};height:${px(150)};font-size:${px(76)}">${c[0]}</span><div style="text-align:start"><div class="sm" style="font-size:${px(44)}">${c[1]}</div><div class="big" style="font-size:${px(78)}"><em>${c[2]}</em></div></div></div>`).join('') + `</div>`],
+  [11.4, 13.9, `<div style="font-size:${px(150)}">🐈</div><div class="big" style="font-size:${px(98)};margin-top:${px(20)}">${T.s5}</div><div class="sm" style="font-size:${px(40)};margin-top:${px(24)}">${T.s5b}</div>`],
+  [13.9, 16.6, `<div class="row" id="kit">` + [['centrale', 300], ['detecteur-mouvement', 210], ['detecteur-ouverture', 200], ['telecommande', 120]].map(p => `<img class="prod" src="${IMG}${p[0]}.webp" style="height:${px(prodW(p[1]) * 1.15)}">`).join('') + `</div><div class="price" id="pr" style="font-size:${px(HZ ? 140 : 150)};margin-top:${px(50)}">55 000 <span>${LANG === 'ar' ? 'دج' : 'DA'}</span></div><div class="big" style="font-size:${px(52)};margin-top:${px(20)}">${T.s6a}</div><div class="sm" style="font-size:${px(32)};margin-top:${px(10)};max-width:90%">${T.s6b}</div>`],
+  [16.6, 20, `<img class="prod" src="${IMG}boite.webp" style="width:${px(prodW(620))}"><div class="big" style="font-size:${px(78)};margin-top:${px(30)}">${T.s7a}</div><div class="pill green" style="font-size:${px(46)};margin-top:${px(30)};direction:ltr">🟢 ${T.wa} 0666 23 53 30</div><div class="big" style="font-size:${px(58)};margin-top:${px(34)};direction:ltr;font-family:Manrope">General Electric dz</div><div class="sm" style="font-size:${px(38)};margin-top:${px(8)}">📍 ${T.s7b}</div>`]
+];
+window.DUR = 19.5;
+const layers = S.map(([a, b, h]) => { const d = document.createElement('div'); d.className = 'L'; d.innerHTML = h; st.appendChild(d); return d; });
+const tag = document.createElement('div'); tag.className = 'tag'; tag.style.fontSize = px(24); tag.textContent = 'General Electric dz · Dahua'; st.appendChild(tag);
+const ease = x => x < 0 ? 0 : x > 1 ? 1 : 1 - Math.pow(1 - x, 3);
+const back = x => { x = Math.max(0, Math.min(1, x)); const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+window.render = t => {
+  tag.style.opacity = t > 16.6 ? 0 : 1;
+  S.forEach(([a, b], i) => {
+    const L = layers[i], fi = ease((t - a) / .3), fo = i === S.length - 1 ? 1 : 1 - ease((t - (b - .22)) / .22);
+    const vis = t >= a - .01 && t < b + .01; L.style.opacity = vis ? Math.min(fi, fo) : 0; if (!vis) return;
+    const p = (t - a) / (b - a);
+    L.querySelectorAll('.big,.sm,.line,.pill').forEach((el, k) => { const e = ease((t - a - .08 - k * .18) / .4); el.style.opacity = e; el.style.transform = `translateY(${(1 - e) * 26}px)`; });
+    const hub = L.querySelector('#hub'); if (hub) hub.style.transform = `scale(${.8 + back((t - a) / .6) * .2}) translateY(${Math.sin(t * 2) * 6}px)`;
+    for (let k = 0; k < 3; k++) { const n = L.querySelector('#n' + k); if (n) { const e = ease((t - a - .5 - k * .55) / .3); n.style.opacity = e; n.style.transform = `translateY(${(1 - e) * -24}px)`; } }
+    const ph = L.querySelector('.phone'); if (ph) ph.style.transform = (t - a > .5 && t - a < 1.1) ? `rotate(${Math.sin(t * 70) * 2}deg)` : 'none';
+    for (let k = 0; k < 2; k++) { const c = L.querySelector('#c' + k); if (c) { const e = ease((t - a - .1 - k * .5) / .4); c.style.opacity = e; c.style.transform = `translateX(${(1 - e) * (LANG === 'ar' ? 60 : -60)}px)`; } }
+    const kit = L.querySelector('#kit'); if (kit) { [...kit.children].forEach((im, k) => { const e = back((t - a - k * .12) / .45); im.style.transform = `translateY(${(1 - e) * 80}px)`; im.style.opacity = Math.min(1, (t - a - k * .12) / .2); }); }
+    const pr = L.querySelector('#pr'); if (pr) { const e = back((t - a - .5) / .5); pr.style.transform = `scale(${.6 + e * .4})`; pr.style.opacity = Math.min(1, Math.max(0, (t - a - .5) / .2)); }
+  });
+};
+render(0);
+</script></body></html>
