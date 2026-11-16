@@ -17,7 +17,13 @@ Espace commandes : lien en bas de la page, code **0328**.
   - installation en 3 étapes, réseau et batterie (schéma officiel Dahua), application DMSS, évolutivité (150 accessoires) ;
   - fiche technique complète, FAQ (8 questions) ;
   - formulaire de commande (58 wilayas) et bouton collant sur mobile.
-- **Espace commandes** (`commandes.html`) : liste, statuts (nouvelle → confirmée → expédiée → livrée), lien WhatsApp du client, export Excel.
+- **Espace gérant** (`gestion.html`, lien « Espace gérant » en bas de la page) · codes : gérant **0328**, caisse **2222**
+  - Tableau de bord : chiffre d'affaires, commandes à confirmer, kits vendus, stock, ventes sur 7 jours, wilayas, dernières commandes.
+  - Commandes du site en direct : statuts, « Confirmer WhatsApp » (message prérempli), « Appeler », filtre, copie vers Excel.
+  - Caisse au comptoir : kit + tout autre article du magasin (désignation + prix), espèces/carte, ticket.
+  - Stock : réceptions, sorties automatiques (caisse + commandes), alerte de stock bas.
+  - Clients : historique et WhatsApp.
+  - Réglages : prix, ancien prix, rupture → la page publique change en direct ; codes d'accès ; remise à zéro de la démo.
 - **Vidéo pub 24 s**, 4 formats (`marketing/`) : 9:16 (Reels, Stories, TikTok, Shorts, statut WhatsApp) · 4:5 (fil IG/FB) · 1:1 · 16:9 (YouTube, Facebook, site). Musique originale. Couvertures fournies.
 
 ## Sources (aucune caractéristique inventée)
@@ -74,3 +80,7 @@ Sans voix off : Higgsfield a atteint sa limite journalière (compte en période 
 - **A « choc »** (nuit, 24 s) : arrêter le scroll, ciblage large (maisons, villas).
 - **B « rassurante »** (jour, 30 s) : familles et commerçants, reciblage des personnes qui ont vu A.
 - Même budget sur les 2 pendant 3 jours. On garde celle qui donne le plus de messages WhatsApp au meilleur coût.
+
+## Version C « style Tike » (16/11/2026)
+Même déroulé que B, avec de vraies scènes générées (Higgsfield, 4 images, ≈ 1 crédit) : quartier au coucher du soleil, alerte sur téléphone en plein jour, commerçant qui baisse son rideau avec la télécommande Dahua, famille sur le canapé (centrale Dahua visible). Fichiers : `marketing/pub-C-style-tike-33s-{16x9,9x16,4x5,1x1}.mp4`.
+Voix off française : toujours bloquée par la limite journalière Higgsfield (compte en période de grâce). À ajouter dès que possible (0,3 crédit).

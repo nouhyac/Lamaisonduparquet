@@ -6,6 +6,12 @@
   const money = n => n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' DA';
   const store = { get(k, d) { try { const v = localStorage.getItem('ads-' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem('ads-' + k, JSON.stringify(v)); } catch (e) { /* bloqué */ } } };
   let lang = store.get('lang', 'fr');
+  /* réglages modifiés dans l'espace gérant (prix, rupture) */
+  const BASE = Object.assign({}, window.SHOP);
+  function applySettings() { const s = store.get('settings', {}); window.SHOP = Object.assign({}, BASE, s); }
+  applySettings();
+  let bc = null; try { bc = new BroadcastChannel('ads-sync'); bc.onmessage = () => { applySettings(); renderPrice(); }; } catch (e) { /* ancien navigateur */ }
+  window.addEventListener('storage', e => { if (e.key === 'ads-settings') { applySettings(); renderPrice(); } });
 
   const AR = {
     nKit: 'المجموعة', nHow: 'كيف يعمل', nFaq: 'أسئلة', order: 'اطلب', heroK: 'مجموعة إنذار لاسلكية · Dahua AirShield',
@@ -30,23 +36,27 @@
     spT: 'الوثيقة التقنية الكاملة', fqK: 'أسئلة شائعة', fqT: 'تتساءل…', orK: 'الطلب', orT: 'احمِ منزلك هذا الأسبوع',
     o1: 'المجموعة الأصلية من Dahua (4 قطع)', o2: 'نتصل بك لتأكيد الطلب', o3: 'متوافق مع كاميرات Dahua',
     fName: 'الاسم واللقب', fPhone: 'الهاتف', fWil: 'الولاية', fCom: 'البلدية', fAdr: 'العنوان', fQty: 'الكمية', fSend: 'أطلب', fNote: 'لا دفع عبر الإنترنت. المحل يتصل بك للتأكيد.',
-    dT: 'تم استلام طلبك!', dWa: 'أرسله أيضاً عبر واتساب', legal: 'Dahua و AirShield علامتان لشركة Zhejiang Dahua Vision Technology. الخصائص من الوثيقة التقنية الرسمية. صور الأجواء: رسوم توضيحية.', admin: 'فضاء الطلبات', stk: 'اطلب المجموعة'
+    dT: 'تم استلام طلبك!', dWa: 'أرسله أيضاً عبر واتساب', legal: 'Dahua و AirShield علامتان لشركة Zhejiang Dahua Vision Technology. الخصائص من الوثيقة التقنية الرسمية. صور الأجواء: رسوم توضيحية.', admin: 'فضاء المسيّر', stk: 'اطلب المجموعة'
   };
   const FRX = {}; // textes FR d'origine, relevés dans la page
   $$('[data-t]').forEach(el => { FRX[el.dataset.t] = el.hasAttribute('data-html') ? el.innerHTML : el.textContent; });
   const t = k => (lang === 'ar' && AR[k] != null ? AR[k] : FRX[k] != null ? FRX[k] : (DYN.fr[k] || k));
   const DYN = {
-    fr: { ask: 'Prix et disponibilité : réponse rapide', save: 'Économisez', ordered: 'Merci {n} ! Nous vous appelons au {p} pour confirmer votre commande.', eName: 'Indiquez votre nom.', ePhone: 'Numéro algérien à 10 chiffres (05, 06 ou 07).', eWil: 'Choisissez votre wilaya.', eCom: 'Indiquez votre commune.', choose: 'Choisir…', shop: 'Commandez en ligne ou sur WhatsApp : le magasin vous rappelle pour confirmer.' },
-    ar: { ask: 'السعر والتوفر: رد سريع', save: 'وفّر', ordered: 'شكراً {n}! سنتصل بك على {p} لتأكيد طلبك.', eName: 'اكتب اسمك.', ePhone: 'رقم جزائري من 10 أرقام (05، 06 أو 07).', eWil: 'اختر ولايتك.', eCom: 'اكتب بلديتك.', choose: 'اختر…', shop: 'اطلب عبر الإنترنت: المحل يتصل بك للتأكيد.' }
+    fr: { ask: 'Prix et disponibilité : réponse rapide', out: 'Rupture de stock : réservez, on vous rappelle à l\'arrivage', outS: 'Réserver', save: 'Économisez', ordered: 'Merci {n} ! Nous vous appelons au {p} pour confirmer votre commande.', eName: 'Indiquez votre nom.', ePhone: 'Numéro algérien à 10 chiffres (05, 06 ou 07).', eWil: 'Choisissez votre wilaya.', eCom: 'Indiquez votre commune.', choose: 'Choisir…', shop: 'Commandez en ligne ou sur WhatsApp : le magasin vous rappelle pour confirmer.' },
+    ar: { ask: 'السعر والتوفر: رد سريع', out: 'نفد المخزون: احجز ونتصل بك عند الوصول', outS: 'احجز', save: 'وفّر', ordered: 'شكراً {n}! سنتصل بك على {p} لتأكيد طلبك.', eName: 'اكتب اسمك.', ePhone: 'رقم جزائري من 10 أرقام (05، 06 أو 07).', eWil: 'اختر ولايتك.', eCom: 'اكتب بلديتك.', choose: 'اختر…', shop: 'اطلب عبر الإنترنت: المحل يتصل بك للتأكيد.' }
   };
   const d = k => DYN[lang][k];
 
   /* ---------- prix ---------- */
   function renderPrice() {
     const S = window.SHOP;
+    if (S.available === false) { const h = '<span class="pill">' + d('out') + '</span>' + (S.price ? '<span class="p">' + money(S.price) + '</span>' : ''); ['#priceRow', '#priceRow2'].forEach(s => { $(s).innerHTML = h; }); $('#stkPrice').textContent = d('outS'); return renderShop(S); }
     const html = S.price ? '<span class="p">' + money(S.price) + '</span>' + (S.oldPrice ? '<span class="o">' + money(S.oldPrice) + '</span><span class="pill">' + d('save') + ' ' + money(S.oldPrice - S.price) + '</span>' : '') : '<span class="ask">' + d('ask') + '</span>';
     ['#priceRow', '#priceRow2'].forEach(s => { $(s).innerHTML = html; });
     $('#stkPrice').textContent = S.price ? money(S.price) : '→';
+    renderShop(S);
+  }
+  function renderShop(S) {
     $('#shopLine').textContent = d('shop');
     if (S.name) {
       $('#seller').innerHTML = (lang === 'ar' ? 'يبيعه ' : 'Vendu par ') + '<b>' + esc(S.name) + '</b>';
@@ -197,7 +207,7 @@
     const err = !name ? d('eName') : !/^0[567]\d{8}$/.test(phone) ? d('ePhone') : !wil ? d('eWil') : !com ? d('eCom') : '';
     $('#oErr').textContent = err; if (err) return;
     const o = { id: Date.now().toString(36), at: Date.now(), name, phone, wil, com, adr, qty, price: window.SHOP.price, status: 'nouvelle' };
-    const list = store.get('orders', []); list.unshift(o); store.set('orders', list);
+    const list = store.get('orders', []); list.unshift(o); store.set('orders', list); try { bc && bc.postMessage('orders'); } catch (x) { /* ok */ }
     $('#orderForm').hidden = true; $('#done').hidden = false;
     $('#dP').textContent = d('ordered').replace('{n}', name.split(' ')[0]).replace('{p}', phone.replace(/(\d{4})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4'));
     if (window.SHOP.whatsapp) { const msg = 'Bonjour, je commande le kit alarme Dahua AirShield.\nNom : ' + name + '\nTéléphone : ' + phone + '\nWilaya : ' + wil + '\nCommune : ' + com + (adr ? '\nAdresse : ' + adr : '') + '\nQuantité : ' + qty; const a = $('#dWa'); a.href = 'https://wa.me/' + window.SHOP.whatsapp + '?text=' + encodeURIComponent(msg); a.hidden = false; }

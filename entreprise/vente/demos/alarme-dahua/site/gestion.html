@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Espace gérant · General Electric dz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/gestion.css">
+</head>
+<body class="g">
+<div class="gate" id="gate">
+  <div class="gbox">
+    <div class="brand"><span class="b-air">General</span><span class="b-shield">&nbsp;Electric dz</span></div>
+    <h1>Espace gérant</h1>
+    <p>Entrez votre code à 4 chiffres.</p>
+    <div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
+    <div class="pad" id="pad"></div>
+    <div class="err" id="gErr"></div>
+    <small>Démo : gérant <b>0328</b> · caisse <b>2222</b></small>
+  </div>
+</div>
+
+<div id="app" hidden>
+  <header class="gt">
+    <div class="wrap">
+      <div class="brand"><span class="b-air">GE</span><span class="b-shield">&nbsp;dz</span></div>
+      <nav class="tabs" id="tabs"></nav>
+      <a class="btn btn-ghost sm" href="index.html" target="_blank">Voir la page ↗</a>
+      <button class="btn sm out" id="out">Quitter</button>
+    </div>
+  </header>
+  <main class="wrap gm" id="view"></main>
+</div>
+<div class="toast2" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/gestion.js"></script>
+</body>
+</html>
