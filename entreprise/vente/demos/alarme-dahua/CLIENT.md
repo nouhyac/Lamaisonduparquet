@@ -84,3 +84,11 @@ Sans voix off : Higgsfield a atteint sa limite journalière (compte en période 
 ## Version C « style Tike » (16/11/2026)
 Même déroulé que B, avec de vraies scènes générées (Higgsfield, 4 images, ≈ 1 crédit) : quartier au coucher du soleil, alerte sur téléphone en plein jour, commerçant qui baisse son rideau avec la télécommande Dahua, famille sur le canapé (centrale Dahua visible). Fichiers : `marketing/pub-C-style-tike-33s-{16x9,9x16,4x5,1x1}.mp4`.
 Voix off française : toujours bloquée par la limite journalière Higgsfield (compte en période de grâce). À ajouter dès que possible (0,3 crédit).
+
+## Finitions du 16/11/2026
+- Vidéo C intégrée dans la page (section « La vidéo » : 16:9 sur ordinateur, verticale sur téléphone, environ 2 Mo chacune).
+- 4e scénario « Vous fermez votre magasin » (photo du commerçant).
+- Aperçu de partage (image + titre) et icône d'onglet.
+- Livraison : texte neutre « on vous rappelle pour organiser la livraison ou le retrait au magasin », en attendant les vraies conditions.
+- Prix : à saisir par le gérant dans Espace gérant → Réglages (la page se met à jour seule).
+- Voix off : nouvelle tentative programmée le 17/11 à 10 h 30 (heure d'Alger).
