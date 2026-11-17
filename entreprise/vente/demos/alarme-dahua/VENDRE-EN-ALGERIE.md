@@ -65,4 +65,5 @@ Règle d'or : **appeler dans l'heure**. Une commande rappelée vite est rarement
 - Changer les codes d'accès.
 
 ## 6. Voix off
-Higgsfield limite les générations du compte (période de grâce). Nouvelle tentative programmée le 17/11 à 10 h 30 (heure d'Alger) : voix française et darija sur les vidéos simples, puis sur la version C.
+Faite le 17/11 : les 8 vidéos simples ont maintenant une voix off (française et darija), musique baissée de 10 dB. Voix seules : `marketing/simple-algerie/voix-fr.wav` et `voix-darija.wav`.
+Conseil : une voix enregistrée au téléphone par quelqu'un d'ici (accent algérien) marche encore mieux en darija ; on peut la remettre sur les vidéos en quelques minutes.
