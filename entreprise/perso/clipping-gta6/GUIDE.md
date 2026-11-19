@@ -64,3 +64,27 @@ Les titres sont des modèles : on met les vrais détails trouvés en jouant, jam
 - Pas d'argent les 2-4 premières semaines : c'est le temps de construire la chaîne.
 - La hype GTA 6 est maximale les premières semaines : la régularité maintenant compte plus que la perfection.
 - Budget : 0 DA au départ (CapCut + OpusClip gratuits). On ne paie un outil qu'après les premiers résultats.
+
+## 7. Décision du 19/11 : option A (gameplay + ta voix)
+- Monétisation visée : **YouTube (YPP, dispo en Algérie)**. TikTok ne paie pas en Algérie : il sert à amener du monde sur YouTube (lien YouTube en bio).
+- Chaîne en **français**, images de ton propre gameplay (console d'un ami / salle de jeux), **ta voix** (pas de voix IA).
+- Plus de clips de streamers : YouTube refuse de monétiser le contenu réutilisé.
+
+### Session console (1 à 2 h) · liste de tournage
+Enregistrer en 1080p (PS5 : bouton Créer → Démarrer un enregistrement · Xbox : bouton Partager / Captures), sur clé USB en exFAT pour les longues prises.
+1. Les 5 premières minutes du jeu après le menu (sans cinématiques d'histoire complètes).
+2. Un tour de la carte (ouvrir la carte, zoomer sur les zones).
+3. Conduite : 3-4 voitures différentes, une course poursuite avec la police.
+4. Tout ce qui est drôle ou bizarre (PNJ, accidents, bugs) : laisser tourner l'enregistrement.
+5. Les endroits les plus beaux (coucher de soleil, plage, ville la nuit).
+6. Le téléphone du personnage, les menus, les magasins.
+7. Chaque fois que tu découvres un truc : note l'heure de l'enregistrement sur ton téléphone.
+
+### Voix
+Après la session, sur ton téléphone (dictaphone), dans une pièce calme, à 20 cm de la bouche. Tu lis le script préparé par Claude, phrase par phrase ; on refait les phrases ratées.
+
+### Premières vidéos longues
+1. « GTA 6 : les 10 choses à faire en premier »
+2. « J'ai joué mes premières heures sur GTA 6 : voici ce que personne ne vous dit »
+3. « GTA 6 : les plus beaux endroits de la carte »
+Les détails viennent de ce que tu as vraiment vu en jouant ; rien d'inventé.
