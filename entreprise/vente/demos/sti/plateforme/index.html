@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>STI Bureautique · Mobilier de bureau</title>
+<meta name="description" content="Chaises ergonomiques, fauteuils de direction, bureaux et armoires métalliques. Livraison 58 wilayas, paiement à la livraison, devis entreprise sous 24 h. Showroom à Mohammadia, Alger.">
+<meta property="og:title" content="STI Bureautique · Mobilier de bureau">
+<meta property="og:description" content="87 modèles · livraison 58 wilayas · paiement à la livraison · devis entreprise sous 24 h.">
+<meta property="og:image" content="img/p/chaise-ergonomique-galaxy-0.webp">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#catalogue" data-t="skip">Aller au catalogue</a>
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="STI Bureautique, accueil"><img src="img/logo.png" alt="" width="46" height="43"><span>STI <b>Bureautique</b></span></a>
+    <nav class="nav" aria-label="Sections"><a href="#catalogue" data-t="nCat">Catalogue</a><a href="#quiz" data-t="nQuiz">Trouver ma chaise</a><a href="#pack" data-t="nPack">Aménager un bureau</a><a href="#pro" data-t="nPro">Entreprises</a><a href="#showroom" data-t="nShow">Showroom</a></nav>
+    <button class="lang" id="lang" aria-label="Changer de langue">ع</button>
+    <button class="hb hb-dv" id="dvB" aria-label="Mon devis"><span aria-hidden="true">📄</span><span class="hl" data-t="devis">Devis</span><b id="dvN">0</b></button>
+    <button class="hb" id="ctB" aria-label="Mon panier"><span aria-hidden="true">🛒</span><b id="ctN">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hgrid">
+    <div class="htxt">
+      <span class="kick" data-t="hK">Mobilier de bureau · gros et détail</span>
+      <h1 data-t="hT" data-html>Des bureaux où l'on <em>travaille mieux.</em></h1>
+      <p class="lead" data-t="hP">Chaises ergonomiques, fauteuils de direction, bureaux et rangements métalliques : 87 modèles, prix affichés, pour les particuliers comme pour les entreprises.</p>
+      <div class="cta"><a class="btn btn-red" href="#catalogue" data-t="hC1">Voir le catalogue</a><a class="btn btn-ln" href="#pack" data-t="hC2">Équiper mon entreprise</a></div>
+      <ul class="pros"><li data-t="p1">🚚 Livraison 58 wilayas</li><li data-t="p2">💵 Paiement à la livraison</li><li data-t="p3">📄 Devis entreprise sous 24 h</li><li data-t="p4">🔁 Produit endommagé remplacé</li></ul>
+    </div>
+    <div class="hvis" aria-hidden="true"><div class="halo"></div><img id="heroImg" src="img/p/chaise-ergonomique-galaxy-0.webp" alt=""><div class="hcard"><small data-t="from">à partir de</small><b id="heroP">30 000 DA</b><span id="heroN">Chaise ergonomique Galaxy</span></div></div>
+  </div>
+</section>
+
+<section class="refs" aria-labelledby="refT">
+  <div class="wrap"><p id="refT" data-t="refT">Ils nous ont fait confiance</p><div class="rlogos" id="refs"></div></div>
+</section>
+
+<section class="sec" id="cats-sec" aria-labelledby="catT">
+  <div class="wrap"><span class="kick dk" data-t="cK">Nos gammes</span><h2 id="catT" data-t="cT">Choisissez par usage</h2><div class="cats" id="cats"></div></div>
+</section>
+
+<section class="sec alt" id="catalogue" aria-labelledby="ctT">
+  <div class="wrap">
+    <div class="ctop"><div><span class="kick dk" data-t="kCat">Catalogue</span><h2 id="ctT"><span id="ctCount">87</span> <span data-t="models">modèles en ligne</span></h2></div>
+      <div class="ctools"><input id="q" type="search" data-tp="qP" placeholder="Rechercher : ergonomique, 1m60, cuir…" aria-label="Rechercher"><select id="sort" aria-label="Trier"><option value="" data-t="s0">Pertinence</option><option value="pa" data-t="s1">Prix croissant</option><option value="pd" data-t="s2">Prix décroissant</option><option value="n" data-t="s3">Nom A → Z</option></select></div></div>
+    <div class="chips" id="chips" role="group" aria-label="Catégories"></div>
+    <div class="prng"><label for="pmax" data-t="budget">Budget maximum</label><input type="range" id="pmax" min="3000" max="650000" step="500" value="650000"><output id="pmaxV">650 000 DA</output></div>
+    <div class="grid" id="grid"></div>
+    <p class="none" id="none" hidden data-t="none">Aucun modèle ne correspond. Écrivez-nous : nous avons peut-être la pièce en showroom.</p>
+    <div class="more"><button class="btn btn-ln" id="moreB" data-t="more">Afficher plus</button></div>
+  </div>
+</section>
+
+<section class="sec quiz" id="quiz" aria-labelledby="qzT">
+  <div class="wrap qgrid">
+    <div><span class="kick" data-t="qK">Conseiller en 3 questions</span><h2 id="qzT" data-t="qT">Quelle chaise pour vous ?</h2><p class="lead" data-t="qzP">Répondez à 3 questions, on vous propose les modèles du catalogue qui correspondent à votre usage et à votre budget.</p></div>
+    <div class="qbox" id="qbox"></div>
+  </div>
+</section>
+
+<section class="sec" id="pack" aria-labelledby="pkT">
+  <div class="wrap">
+    <span class="kick dk" data-t="pkK">Configurateur entreprise</span><h2 id="pkT" data-t="pkT">Aménagez vos bureaux en 1 minute</h2>
+    <p class="lead dk" data-t="pkP">Choisissez le nombre de postes et les modèles : le total se calcule avec les prix du catalogue. Envoyez-le en demande de devis, notre équipe vous répond sous 24 h.</p>
+    <div class="pack" id="packB"></div>
+  </div>
+</section>
+
+<section class="sec dark" id="pro" aria-labelledby="proT">
+  <div class="wrap">
+    <span class="kick" data-t="proK">Entreprises, administrations, professions libérales</span><h2 id="proT" data-t="proT">Un seul interlocuteur pour équiper tout un site</h2>
+    <div class="pros3">
+      <div><b>📄</b><h3 data-t="b1T">Devis sous 24 h</h3><p data-t="b1P">Envoyez votre liste ou utilisez le configurateur : devis commercial personnalisé sous 24 h, dossier fiscal conforme.</p></div>
+      <div><b>📦</b><h3 data-t="b2T">Gros et détail</h3><p data-t="b2P">D'une chaise à l'aménagement complet d'un étage, au même endroit.</p></div>
+      <div><b>🚚</b><h3 data-t="b3T">58 wilayas</h3><p data-t="b3P">Expédition vers toute l'Algérie, paiement à la livraison. Tout produit endommagé est remplacé.</p></div>
+    </div>
+    <div class="cta"><button class="btn btn-red" id="proDv" data-t="proC">Demander un devis</button><a class="btn btn-wa" id="proWa" target="_blank" rel="noopener" data-t="proW">Parler à un conseiller</a></div>
+  </div>
+</section>
+
+<section class="sec" id="showroom" aria-labelledby="shT">
+  <div class="wrap sgrid">
+    <div><span class="kick dk" data-t="shK">Showroom</span><h2 id="shT" data-t="shT">Venez les essayer</h2><p class="lead dk" data-t="shP">Asseyez-vous, réglez, comparez : tous nos modèles phares sont exposés au showroom.</p>
+      <dl class="info" id="info"></dl>
+      <div class="cta"><a class="btn btn-red" id="mapB" target="_blank" rel="noopener" data-t="route">Itinéraire</a><a class="btn btn-ln" id="waB" target="_blank" rel="noopener">WhatsApp</a></div></div>
+    <div class="faq" id="faq"></div>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap fgrid">
+    <div><img src="img/logo-white.png" alt="STI Bureautique" width="120" height="113" style="height:auto"><p data-t="fT">Mobilier de bureau · vente en gros et détail · Alger</p></div>
+    <div class="fl" id="fl"></div>
+  </div>
+</footer>
+
+<a class="waf" id="waF" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.1-.3-.2-.7-.4z"/></svg></a>
+
+<div class="ov" id="ov" hidden></div>
+<section class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="shName"><button class="x" id="shX" aria-label="Fermer">✕</button><div id="shBody"></div></section>
+<aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drT"><div class="dhd"><h2 id="drT"></h2><button class="x" id="drX" aria-label="Fermer">✕</button></div><div class="dbody" id="drB"></div></aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/demobar.js"></script>
+<script src="js/catalogue.js"></script>
+<script src="js/store.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
