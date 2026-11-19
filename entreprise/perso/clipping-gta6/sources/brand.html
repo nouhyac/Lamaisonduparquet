@@ -1,0 +1,44 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@600;800&display=swap">
+<style>
+html,body{margin:0;background:#000}
+.c{position:relative;overflow:hidden;font-family:Inter,Arial,sans-serif;color:#fff}
+.sky{position:absolute;inset:0;background:linear-gradient(180deg,#120a2e 0%,#3a0f5c 45%,#b3206e 78%,#ff7a3d 100%)}
+.stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 12% 18%,#fff8,transparent),radial-gradient(1.5px 1.5px at 30% 9%,#fff9,transparent),radial-gradient(2px 2px at 72% 14%,#fff7,transparent),radial-gradient(1.5px 1.5px at 88% 30%,#fff8,transparent),radial-gradient(1.5px 1.5px at 55% 22%,#fff6,transparent)}
+.sun{position:absolute;border-radius:50%;background:linear-gradient(180deg,#ffe36b 0%,#ff9a3d 45%,#ff2e88 100%);
+  -webkit-mask:repeating-linear-gradient(180deg,#000 0 62%,transparent 62% 70%,#000 70% 100%);}
+.sea{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,#2b0b4d,#0b0620)}
+.sea::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 14px,#ff2e8833 14px 16px)}
+.palm{position:absolute;fill:#0b0620}
+.t1{font-family:Anton,Impact,sans-serif;letter-spacing:.02em;line-height:.9;text-shadow:0 0 18px #ff2e88aa,0 4px 0 #0b0620}
+.pill{display:inline-block;background:#ff2e88;color:#fff;font-weight:800;letter-spacing:.18em;border-radius:999px;box-shadow:0 0 24px #ff2e88}
+.cy{color:#45f0ff}
+</style></head><body>
+
+<!-- AVATAR 800x800 -->
+<div id="avatar" class="c" style="width:800px;height:800px">
+  <div class="sky"></div><div class="stars"></div>
+  <div class="sun" style="width:420px;height:420px;left:190px;top:150px"></div>
+  <div class="sea" style="height:250px"></div>
+  <svg class="palm" viewBox="0 0 200 400" style="width:300px;left:-40px;bottom:120px"><path d="M100 400 C96 300 92 220 104 140 L112 140 C102 220 106 300 112 400Z"/><path d="M108 140 C70 100 30 110 0 140 C40 120 70 125 108 150Z M108 140 C140 90 180 95 200 120 C170 110 140 115 110 150Z M108 140 C90 80 60 60 30 60 C70 80 90 100 104 148Z M108 140 C130 80 160 60 190 62 C150 80 130 100 112 148Z M108 140 C108 90 120 60 140 40 C125 80 118 110 112 145Z"/></svg>
+  <div style="position:absolute;left:0;right:0;bottom:70px;text-align:center">
+    <div class="t1" style="font-size:150px">VICE CITY</div>
+    <div class="pill" style="font-size:52px;padding:10px 40px;margin-top:10px">DAILY</div>
+  </div>
+</div>
+
+<!-- BANNER 2560x1440 (zone visible partout : 1546x423 au centre) -->
+<div id="banner" class="c" style="width:2560px;height:1440px">
+  <div class="sky"></div><div class="stars"></div>
+  <div class="sun" style="width:560px;height:560px;left:1000px;top:330px;opacity:.9"></div>
+  <div class="sea" style="height:560px"></div>
+  <svg class="palm" viewBox="0 0 200 400" style="width:620px;left:180px;bottom:300px"><path d="M100 400 C96 300 92 220 104 140 L112 140 C102 220 106 300 112 400Z"/><path d="M108 140 C70 100 30 110 0 140 C40 120 70 125 108 150Z M108 140 C140 90 180 95 200 120 C170 110 140 115 110 150Z M108 140 C90 80 60 60 30 60 C70 80 90 100 104 148Z M108 140 C130 80 160 60 190 62 C150 80 130 100 112 148Z M108 140 C108 90 120 60 140 40 C125 80 118 110 112 145Z"/></svg>
+  <svg class="palm" viewBox="0 0 200 400" style="width:520px;right:160px;bottom:300px;transform:scaleX(-1)"><path d="M100 400 C96 300 92 220 104 140 L112 140 C102 220 106 300 112 400Z"/><path d="M108 140 C70 100 30 110 0 140 C40 120 70 125 108 150Z M108 140 C140 90 180 95 200 120 C170 110 140 115 110 150Z M108 140 C90 80 60 60 30 60 C70 80 90 100 104 148Z M108 140 C130 80 160 60 190 62 C150 80 130 100 112 148Z M108 140 C108 90 120 60 140 40 C125 80 118 110 112 145Z"/></svg>
+  <div style="position:absolute;left:507px;top:508px;width:1546px;height:423px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center">
+    <div class="t1" style="font-size:190px">VICE CITY <span class="cy">DAILY</span></div>
+    <div style="font-size:50px;font-weight:800;letter-spacing:.04em">GTA 6 · SECRETS · EASTER EGGS · BEST MOMENTS</div>
+    <div class="pill" style="font-size:34px;padding:10px 34px">NEW VIDEOS EVERY DAY</div>
+  </div>
+</div>
+</body></html>
