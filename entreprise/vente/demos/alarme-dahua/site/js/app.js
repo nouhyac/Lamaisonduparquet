@@ -14,7 +14,7 @@
   window.addEventListener('storage', e => { if (e.key === 'ads-settings') { applySettings(); renderPrice(); try { updSum(); } catch (x) { /* pas prêt */ } } });
 
   const AR = {
-    nKit: 'المجموعة', nHow: 'كيف يعمل', nFaq: 'أسئلة', order: 'اطلب', heroK: 'مجموعة إنذار لاسلكية · Dahua AirShield',
+    nKit: 'المجموعة', nHow: 'كيف يعمل', nFaq: 'أسئلة', nShop: 'المتجر', order: 'اطلب', heroK: 'مجموعة إنذار لاسلكية · Dahua AirShield',
     heroT: 'منزلك<br><span class="red">ينبّهك.</span><br>أينما كنت.',
     heroP: 'باب يُفتح في الساعة 2 ليلاً؟ يرنّ هاتفك، تنطلق الصفارة وتصلك رسالة. حتى بدون إنترنت. حتى عند انقطاع الكهرباء.',
     h1: 'تركيب بدون أسلاك في دقائق', h2: 'واي فاي + كابل + شريحة SIM: لا ينقطع أبداً', h3: 'مكالمة ورسالة إلى 5 أرقام', h4: 'بطاريات تدوم حتى 5 سنوات في الكواشف',
@@ -215,7 +215,7 @@
     const name = $('#oName').value.trim(), phone = $('#oPhone').value.replace(/\D/g, '').replace(/^213/, '0'), wil = $('#oWil').value, com = $('#oCom').value.trim(), adr = $('#oAdr').value.trim();
     const err = !name ? d('eName') : !/^0[567]\d{8}$/.test(phone) ? d('ePhone') : !wil ? d('eWil') : !com ? d('eCom') : '';
     $('#oErr').textContent = err; if (err) return;
-    const fee = feeFor(wil); const o = { id: Date.now().toString(36), at: Date.now(), name, phone, wil, com, adr, qty, price: window.SHOP.price, fee, status: 'nouvelle' };
+    const fee = feeFor(wil); const o = { id: Date.now().toString(36), at: Date.now(), src: 'Page du kit', name, phone, mode: 'livraison', wil, com, adr, qty, price: window.SHOP.price, items: [{ pid: 'kit', name: 'Kit alarme Dahua AirShield (4 pièces)', price: window.SHOP.price, qty }], fee, status: 'nouvelle' };
     const list = store.get('orders', []); list.unshift(o); store.set('orders', list); try { bc && bc.postMessage('orders'); } catch (x) { /* ok */ }
     $('#orderForm').hidden = true; $('#done').hidden = false;
     $('#dP').textContent = d('ordered').replace('{n}', name.split(' ')[0]).replace('{p}', phone.replace(/(\d{4})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4'));

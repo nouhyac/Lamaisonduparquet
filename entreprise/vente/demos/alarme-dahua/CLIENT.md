@@ -100,3 +100,10 @@ Voix off française : toujours bloquée par la limite journalière Higgsfield (c
 - Nouvelles vidéos simples Algérie : darija + français, 19,5 s, 4 formats, < 2 Mo (`marketing/simple-algerie/`).
 - Prix 55 000 DA ajouté à la fin des vidéos A et C (+ vidéo de la page).
 - Guide de vente : `VENDRE-EN-ALGERIE.md`.
+
+## v3 (19/11/2026) · plateforme complète multi-produits, 2 points de vente
+- **Boutique en ligne** (`site/boutique.html`) : catalogue (catégories, recherche, tri), fiche produit, panier, commande en **livraison** (frais par wilaya) ou **retrait** au point de vente choisi (disponibilité affichée), WhatsApp, FR/AR. Seul produit réel pour l'instant : le kit Dahua ; le reste s'ajoute depuis l'espace gérant.
+- **2 points de vente** : « Magasin El Hamiz » (maps de la page Facebook) et « Dépôt » (lien envoyé par l'utilisateur·rice : https://maps.app.goo.gl/AZBY7heeLM4SRT1V7 ; nom et commune non connus, renommable dans Réglages).
+- **Gestion v3** : produits (ajout, photo, catégorie, marque, référence/code-barres, prix, ancien prix, prix d'achat, mise en ligne), **import Excel** (copier-coller ou fichier .csv/.xlsx), stock **par point de vente**, réception / **transfert** / inventaire, caisse par point de vente avec recherche et douchette, commandes multi-produits avec point de vente qui prépare, livreur (où récupérer), tableau de bord par point de vente, valeur du stock.
+- Rôles et codes (non affichés sur le site) : gérant 0328 · caisse 2222 · livreur 3333 · **magasinier 4444** (stock + produits, sans prix d'achat).
+- À obtenir du client : liste des produits (Excel ou photos + prix), nom/commune du dépôt.

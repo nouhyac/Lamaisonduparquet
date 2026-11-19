@@ -104,6 +104,7 @@ Solde au 2026-10-14 : **3,39 crédits** (après Arzata : 35 images ≈ 9,25, ima
 
 ## Journal des sessions
 
+- 2026-11-19 · General Electric dz v3 : boutique multi-produits + 2 points de vente (stock séparé, transferts, inventaire, import Excel, magasinier 4444), codes retirés de l'affichage, barre des espaces. Testé (0 erreur, mobile OK), publié v9. Manque : leur liste de produits.
 - 2026-11-19 · General Electric dz : messages de vente darija prêts (`vente/demos/alarme-dahua/MESSAGES-VENTE.md`), prix proposé 80 000 DA (Plateforme commerçants, 40 000 + 40 000 ou 76 000 en une fois), plancher 60 000 DA, 8 vidéos offertes. RIP BaridiMob à compléter.
 - 2026-11-19 · Chaîne GTA 6 : choix option A (gameplay sur console d'un ami ou salle de jeux + voix de l'utilisateur·rice), monétisation YouTube visée, TikTok pour le trafic (pas payé en Algérie). General Electric dz mis en attente par l'utilisateur·rice (« après »).
 - 2026-11-19 · Projet perso : chaîne GTA 6 « Vice City Daily » (YouTube long + Shorts + TikTok) pour se relancer financièrement. Conseil donné : 80 % Dzign (faire payer General Electric dz), 20 % GTA. Marché vérifié : peu de campagnes payantes GTA 6 (~1 $/1 000 vues, paiement Whop vers l'Algérie non confirmé). Kit créé dans `perso/clipping-gta6/` (logo, bannière, GUIDE.md avec plan 14 jours). En attente : l'utilisateur·rice a-t-il·elle une console + le jeu ?

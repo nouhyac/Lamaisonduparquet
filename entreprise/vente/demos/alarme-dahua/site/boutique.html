@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Boutique General Electric dz</title>
+<meta name="description" content="General Electric dz : électricité en général. Commandez en ligne, livraison ou retrait dans nos 2 points de vente.">
+<meta property="og:title" content="Boutique General Electric dz">
+<meta property="og:description" content="Électricité en général. Commandez en ligne, livraison ou retrait en magasin.">
+<meta property="og:image" content="media/partage.jpg">
+<link rel="icon" href="media/icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@500;600;700;800&family=Cairo:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/boutique.css">
+</head>
+<body class="shop">
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="brand sb"><span class="b-air">General</span><span class="b-shield">&nbsp;Electric dz</span></a>
+    <nav class="nav"><a href="#catalogue" data-t="nCat">Catalogue</a><a href="#points" data-t="nPts">Points de vente</a></nav>
+    <button class="lang" id="lang" aria-label="Changer de langue">ع</button>
+    <button class="cartb" id="cartB" aria-label="Panier"><span aria-hidden="true">🛒</span><b id="cartN">0</b></button>
+  </div>
+</header>
+
+<section class="shero dark">
+  <div class="wrap">
+    <span class="eyebrow" data-t="hK">Électricité en général</span>
+    <h1 data-t="hT" data-html>Électricité, sécurité, réseau :<br><span class="red">commandez en ligne.</span></h1>
+    <p class="lead" data-t="hP">Livraison à domicile ou retrait dans l'un de nos 2 points de vente. On vous rappelle pour confirmer, vous payez à la réception.</p>
+    <div class="hstats"><div><b id="stN">—</b><span data-t="sProd">produits</span></div><div><b>2</b><span data-t="sPts">points de vente</span></div><div><b id="stF">65 K</b><span data-t="sFb">abonnés Facebook</span></div></div>
+  </div>
+</section>
+
+<section class="sec catx" id="catalogue">
+  <div class="wrap">
+    <div class="ctools">
+      <h2 data-t="cT">Catalogue</h2>
+      <div class="cbar"><input id="q" type="search" placeholder="Rechercher un produit, une marque…" data-tp="qP" aria-label="Rechercher"><select id="sort" aria-label="Trier"><option value="" data-t="srt0">Trier</option><option value="pa" data-t="srt1">Prix croissant</option><option value="pd" data-t="srt2">Prix décroissant</option><option value="n" data-t="srt3">Nom A → Z</option></select></div>
+      <div class="chips" id="chips" role="group" aria-label="Catégories"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty2" id="none" hidden data-t="none">Aucun produit trouvé. Écrivez-nous sur WhatsApp : on l'a peut-être en magasin.</p>
+  </div>
+</section>
+
+<section class="sec alt" id="points">
+  <div class="wrap">
+    <span class="eyebrow dark-t" data-t="pK">Nos points de vente</span>
+    <h2 data-t="pT">Passez nous voir, ou retirez votre commande</h2>
+    <div class="pts" id="pts"></div>
+  </div>
+</section>
+
+<footer class="foot dark">
+  <div class="wrap fgrid">
+    <div><div class="brand"><span class="b-air">General</span><span class="b-shield">&nbsp;Electric dz</span></div><p class="fine" data-t="fT">Électricité en général · Shopping et vente au détail</p></div>
+    <div class="fc" id="fc"></div>
+  </div>
+</footer>
+
+<a class="wa-float" id="waF" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.1-.3-.2-.7-.4z"/></svg></a>
+
+<!-- fiche produit -->
+<div class="ov" id="ov" hidden></div>
+<section class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="shT"><button class="x" id="shX" aria-label="Fermer">✕</button><div id="shB"></div></section>
+
+<!-- panier + commande -->
+<aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drT">
+  <div class="dhd"><h2 id="drT" data-t="cart">Mon panier</h2><button class="x" id="drX" aria-label="Fermer">✕</button></div>
+  <div class="dbody" id="drB"></div>
+</aside>
+<div class="toast2" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js"></script>
+<script src="js/demobar.js"></script>
+<script src="js/core.js"></script>
+<script src="js/boutique.js"></script>
+</body>
+</html>
