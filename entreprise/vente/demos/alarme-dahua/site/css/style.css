@@ -249,3 +249,11 @@ footer .brand{color:#fff}
 .sum .r span{color:var(--muted);font-weight:600}
 .sum .t{border-top:1px dashed var(--line);padding-top:8px;font-family:var(--disp);font-weight:800;font-size:19px}
 .sum:empty{display:none}
+/* barre de démo : changer d'espace */
+.dbar{background:#05070F;color:#C9D1E6;font-size:13px;border-bottom:1px solid rgba(255,255,255,.08);position:relative;z-index:60}
+.dbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding-block:7px}
+.dbar nav{display:flex;flex-wrap:wrap;gap:6px}
+.dbar a{color:#fff;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.dbar a:hover,.dbar a:focus-visible{background:rgba(255,255,255,.1)}
+.dbar a[aria-current="page"]{background:#E30613;border-color:#E30613}
+@media (max-width:560px){.dbar .dlab{display:none}.dbar a{padding:5px 9px;font-size:12.5px}}

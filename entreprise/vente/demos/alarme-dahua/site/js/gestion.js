@@ -70,6 +70,21 @@
 
   /* ---------- connexion ---------- */
   try { role = sessionStorage.getItem('ads-role'); } catch (e) { /* bloqué */ }
+  /* barre de démo : gestion.html#manager / #cash / #driver ouvre la connexion de cet espace */
+  const GATE_T = { manager: 'Espace gérant', cash: 'Espace caisse', driver: 'Espace livreur' };
+  function wanted() { const h = location.hash.slice(1); return GATE_T[h] ? h : null; }
+  function showGate() {
+    const w = wanted(); $('#gTitle').textContent = GATE_T[w || 'manager'];
+    $('#gErr').textContent = ''; pin = ''; $$('#dots i').forEach(d => d.classList.remove('on'));
+    $('#app').hidden = true; $('#gate').hidden = false;
+  }
+  if (wanted() && role && wanted() !== role) { role = null; try { sessionStorage.removeItem('ads-role'); } catch (e) { /* bloqué */ } }
+  window.addEventListener('hashchange', () => {
+    const w = wanted(); if (!w || w === role) return;
+    role = null; try { sessionStorage.removeItem('ads-role'); } catch (e) { /* bloqué */ }
+    showGate(); window.scrollTo(0, 0);
+  });
+  if (!role) showGate();
   $('#pad').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, '', 0, '⌫'].map(k => k === '' ? '<span></span>' : '<button data-k="' + k + '">' + k + '</button>').join('');
   $('#pad').addEventListener('click', e => {
     const b = e.target.closest('[data-k]'); if (!b) return;
@@ -77,7 +92,7 @@
     $$('#dots i').forEach((d, i) => d.classList.toggle('on', i < pin.length));
     if (pin.length === 4) {
       const p = S().pins; role = pin === p.manager ? 'manager' : pin === p.cash ? 'cash' : pin === p.driver ? 'driver' : null;
-      if (role) { try { sessionStorage.setItem('ads-role', role); } catch (x) { /* bloqué */ } log('Connexion'); start(); } else $('#gErr').textContent = 'Code incorrect';
+      if (role) { try { sessionStorage.setItem('ads-role', role); } catch (x) { /* bloqué */ } try { history.replaceState(null, '', '#' + role); window.dispatchEvent(new Event('hashchange')); } catch (x) { /* bloqué */ } log('Connexion'); start(); } else $('#gErr').textContent = 'Code incorrect';
       pin = ''; setTimeout(() => $$('#dots i').forEach(d => d.classList.remove('on')), 200);
     }
   });
