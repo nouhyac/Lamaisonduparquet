@@ -12,7 +12,7 @@
       p1: '🚚 توصيل إلى 58 ولاية', p2: '💵 الدفع عند الاستلام', p3: '📄 عرض سعر للمؤسسات خلال 24 ساعة', p4: '🔁 تعويض المنتج التالف', from: 'ابتداءً من', refT: 'وثقوا بنا',
       cK: 'تشكيلاتنا', cT: 'اختر حسب الاستعمال', kCat: 'المنتجات', models: 'موديل متوفر', qP: 'ابحث: مريح، 1m60، جلد…', s0: 'الأنسب', s1: 'السعر تصاعدياً', s2: 'السعر تنازلياً', s3: 'الاسم', budget: 'الميزانية القصوى', none: 'لا يوجد موديل مطابق. راسلنا: قد يكون متوفراً في المعرض.', more: 'عرض المزيد',
       qK: 'مستشار في 3 أسئلة', qT: 'أي كرسي يناسبك؟', qzP: 'أجب عن 3 أسئلة ونقترح عليك من الكتالوج الموديلات المناسبة لاستعمالك وميزانيتك.', pkK: 'أداة المؤسسات', pkT: 'جهّز مكاتبك في دقيقة', pkP: 'اختر عدد المكاتب والموديلات: يُحسب المجموع بأسعار الكتالوج. أرسله كطلب عرض سعر ونرد خلال 24 ساعة.',
-      proK: 'مؤسسات، إدارات، مهن حرة', proT: 'محاور واحد لتجهيز موقع كامل', b1T: 'عرض سعر خلال 24 ساعة', b1P: 'أرسل قائمتك أو استعمل الأداة: عرض سعر تجاري خلال 24 ساعة وملف جبائي مطابق.', b2T: 'جملة وتجزئة', b2P: 'من كرسي واحد إلى تجهيز طابق كامل، في مكان واحد.', b3T: '58 ولاية', b3P: 'شحن إلى كل الجزائر والدفع عند الاستلام. كل منتج تالف يُعوَّض.', proC: 'اطلب عرض سعر', proW: 'تحدث مع مستشار',
+      proK: 'مؤسسات، إدارات، مهن حرة', proT: 'محاور واحد لتجهيز موقع كامل', b1T: 'عرض سعر خلال 24 ساعة', b1P: 'أرسل قائمتك أو استعمل الأداة: عرض سعر تجاري خلال 24 ساعة وملف جبائي مطابق.', b2T: 'جملة وتجزئة', b2P: 'من كرسي واحد إلى تجهيز طابق كامل، في مكان واحد.', b3T: '58 ولاية', b3P: 'شحن إلى كل الجزائر والدفع عند الاستلام. كل منتج تالف يُعوَّض.', proC: 'اطلب عرض سعر', proW: 'تحدث مع مستشار', b4T: 'تهيئة حسب الطلب', b4P: 'نصائح في التهيئة ودراسة مخطط مكاتبك قبل الطلب.', shCap: 'صورة المعرض · منشورة من STI', cmpGo: 'قارن', cmpT: 'مقارنة', cmpN: '{n} موديل للمقارنة', cmpMax: 'يمكن مقارنة 3 موديلات كحد أقصى', price: 'السعر', cat: 'الفئة', opts: 'الخيارات', feats: 'المميزات',
       shK: 'المعرض', shT: 'تعال وجرّبها', shP: 'اجلس، اضبط، قارن: أهم موديلاتنا معروضة في المعرض.', route: 'الاتجاهات', fT: 'أثاث مكتبي · جملة وتجزئة · الجزائر العاصمة',
       add: 'أضف إلى السلة', addDv: '+ عرض سعر', see: 'التفاصيل', added: 'تمت الإضافة إلى السلة', addedDv: 'أُضيف إلى عرض السعر', colors: 'ألوان', sizes: 'مقاسات', onOrder: 'حسب الطلب', best: 'الأكثر مبيعاً', qtyL: 'الكمية', askWa: 'سؤال عبر واتساب',
       tk1: '🚚 توصيل إلى 58 ولاية · الدفع عند الاستلام', tk2: '🔁 كل منتج تالف يُعوَّض', tk3: '🏢 للمؤسسات: عرض سعر خلال 24 ساعة', cart: 'سلتي', dv: 'طلب عرض سعر', empty: 'السلة فارغة.', emptyDv: 'لا توجد منتجات في عرض السعر بعد.', goCat: 'تصفح المنتجات',
@@ -26,7 +26,7 @@
     sub: 'Sous-total', del: 'Livraison', tot: 'Total', delTel: 'confirmée par téléphone', free: 'offerte', plusDel: '+ livraison', mDel: 'Livraison', mDelS: '58 wilayas', mPick: 'Retrait', mPickS: 'au showroom, Mohammadia', name: 'Nom et prénom', phone: 'Téléphone', wil: 'Wilaya', com: 'Commune', adr: 'Adresse (facultatif)', choose: 'Choisir…', srcL: 'Comment nous avez-vous connus ?',
     order: 'Valider la commande', pay: 'Paiement à la livraison. Nous vous appelons pour confirmer.', eName: 'Indiquez votre nom', ePhone: 'Numéro invalide (ex. 0555 12 34 56)', eWil: 'Choisissez votre wilaya', eCom: 'Indiquez votre commune', eCo: 'Indiquez le nom de l\'entreprise', ok: 'Commande envoyée !', okP: 'Merci {n}. Nous vous appelons au {p} pour confirmer.', okWa: 'Envoyer aussi sur WhatsApp', back: 'Continuer',
     co: 'Entreprise / organisme', ct: 'Nom du contact', em: 'E-mail (facultatif)', nif: 'NIF / RC (facultatif)', msg: 'Message (délais, montage, quantités…)', sendDv: 'Envoyer la demande de devis', dvNote: 'Devis commercial sous 24 h, prix TTC, sans engagement.', okDv: 'Demande envoyée !', okDvP: 'Demande n° {r}. Nous vous envoyons votre devis sous 24 h au {p}.', toDv: 'Envoyer en demande de devis', postes: 'Postes de travail', pDesk: 'Bureau', pChair: 'Chaise', pStore: 'Rangements', pVis: 'Chaises visiteurs', pBoss: 'Fauteuils de direction', pTot: 'Total estimé', pTtc: 'aux prix du catalogue, TTC', pNo: '— Aucun —',
-    qs: 'Question {i} sur 3', q1: 'Pour quel usage ?', q2: 'Combien d\'heures assis par jour ?', q3: 'Votre budget pour la chaise ?', qRes: 'Nos recommandations', qAgain: 'Recommencer', qMatch: 'Correspondance' };
+    cmpT: 'Comparer les modèles', cmpN: '{n} modèle(s) à comparer', cmpMax: '3 modèles maximum', price: 'Prix', cat: 'Catégorie', opts: 'Options', feats: 'Points forts', qs: 'Question {i} sur 3', q1: 'Pour quel usage ?', q2: 'Combien d\'heures assis par jour ?', q3: 'Votre budget pour la chaise ?', qRes: 'Nos recommandations', qAgain: 'Recommencer', qMatch: 'Correspondance' };
   let lang = 'fr'; try { lang = localStorage.getItem('sti-lang') || 'fr'; } catch (e) { /* bloqué */ }
   const FRX = {}; $$('[data-t]').forEach(el => { FRX[el.dataset.t] = el.hasAttribute('data-html') ? el.innerHTML : el.textContent; });
   const d = k => (lang === 'ar' && T.ar[k] != null && T.ar[k] !== '') ? T.ar[k] : FR[k] != null ? FR[k] : FRX[k] != null ? FRX[k] : k;
@@ -64,7 +64,7 @@
   }
   function card(p) {
     const mn = X.minP(p), mx = X.maxP(p), o = p.v[0].o, out = p.stock === 0;
-    return '<article class="card">' + (p.best ? '<span class="badge">' + d('best') + '</span>' : '') + '<button class="im" data-open="' + esc(p.id) + '" aria-label="' + esc(d('see') + ' : ' + p.name) + '">' + img(p) + '</button><div class="bd"><span class="ct">' + esc(catName(p.cat)) + '</span><h3><button data-open="' + esc(p.id) + '">' + esc(p.name) + '</button></h3>' +
+    return '<article class="card">' + (p.best ? '<span class="badge">' + d('best') + '</span>' : '') + '<button class="cmpk" data-cmp="' + esc(p.id) + '" aria-pressed="' + cmp.includes(p.id) + '" aria-label="' + esc(d('cmpGo') + ' : ' + p.name) + '" title="' + esc(d('cmpGo')) + '">⇄</button>' + '<button class="im" data-open="' + esc(p.id) + '" aria-label="' + esc(d('see') + ' : ' + p.name) + '">' + img(p) + '</button><div class="bd"><span class="ct">' + esc(catName(p.cat)) + '</span><h3><button data-open="' + esc(p.id) + '">' + esc(p.name) + '</button></h3>' +
       '<div class="pr">' + (mn !== mx ? '<small>' + d('from') + '</small>' : '') + '<b>' + money(mn) + '</b>' + (o ? '<s>' + money(o) + '</s>' : '') + '</div>' +
       (p.v.length > 1 ? '<span class="sw">' + p.v.length + ' ' + (p.opt.join(' ').match(/col|coul/i) ? d('colors') : d('sizes')) + '</span>' : '') + (out ? '<span class="sw" style="color:#B45309">' + d('onOrder') + '</span>' : '') +
       '<div class="cacts"><button class="btn btn-red sm" data-add="' + esc(p.id) + '">' + d('add') + '</button><button class="ib" data-adv="' + esc(p.id) + '" aria-label="' + esc(d('addDv') + ' : ' + p.name) + '">' + d('addDv') + '</button></div></div></article>';
@@ -81,6 +81,20 @@
   $('#sort').addEventListener('change', e => { sort = e.target.value; renderGrid(); });
   $('#pmax').addEventListener('input', e => { pmax = +e.target.value; $('#pmaxV').textContent = money(pmax); shown = 24; renderGrid(); });
   $('#moreB').onclick = () => { shown += 24; renderGrid(); };
+
+  /* ---------- comparateur ---------- */
+  let cmp = ls('cmp', []).filter(id => X.prod(id));
+  function cmpBar() { cmp = cmp.filter(id => X.prod(id)); lsSet('cmp', cmp); $('#cmpBar').hidden = !cmp.length; $('#cmpTxt').textContent = d('cmpN').replace('{n}', cmp.length); $$('[data-cmp]').forEach(b => b.setAttribute('aria-pressed', cmp.includes(b.dataset.cmp))); }
+  function toggleCmp(id) { if (cmp.includes(id)) cmp = cmp.filter(x => x !== id); else { if (cmp.length >= 3) { toast(d('cmpMax')); return; } cmp.push(id); X.track('compare', id); } cmpBar(); }
+  function renderCmp() {
+    const P = cmp.map(X.prod).filter(Boolean), row = (lab, f) => '<tr><th>' + lab + '</th>' + P.map(p => '<td>' + f(p) + '</td>').join('') + '</tr>';
+    $('#drT').textContent = d('cmpT');
+    $('#drB').innerHTML = '<div class="cmpt"><table><tbody>' + row('', p => img(p) + '<b>' + esc(p.name) + '</b>') + row(d('price'), p => '<b>' + money(X.minP(p)) + '</b>' + (X.minP(p) !== X.maxP(p) ? ' – ' + money(X.maxP(p)) : '')) + row(d('cat'), p => esc(catName(p.cat))) +
+      row(d('opts'), p => p.v.length > 1 ? esc(p.v.map(v => v.t).join(' · ')) : '—') + row(d('feats'), p => p.b.length ? '<ul>' + p.b.slice(0, 6).map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '—') +
+      row('', p => '<div style="display:grid;gap:6px"><button class="btn btn-red sm" data-add="' + esc(p.id) + '">' + d('add') + '</button><button class="ib" style="padding:8px" data-adv="' + esc(p.id) + '">' + d('addDv') + '</button></div>') + '</tbody></table></div>';
+  }
+  $('#cmpGo').onclick = () => { lastFocus = $('#cmpGo'); dmode = 'cmp'; done = null; $('#ov').hidden = false; $('#drawer').hidden = false; $('#drawer').classList.add('wide'); document.body.style.overflow = 'hidden'; renderCmp(); $('#drX').focus(); };
+  $('#cmpClr').onclick = () => { cmp = []; cmpBar(); };
 
   /* ---------- fiche produit ---------- */
   let lastFocus = null, cur = null;
@@ -106,10 +120,11 @@
     if (e.target.closest('[data-sadd]')) { addCart(cur.p.id, cur.vi, cur.qty); closeAll(); openDrawer('cart'); return; }
     if (e.target.closest('[data-sdv]')) { addDevis(cur.p.id, cur.vi, cur.qty); return; }
   });
-  function closeAll() { $('#ov').hidden = true; $('#sheet').hidden = true; $('#drawer').hidden = true; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  function closeAll() { $('#drawer').classList.remove('wide'); $('#ov').hidden = true; $('#sheet').hidden = true; $('#drawer').hidden = true; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   $('#shX').onclick = closeAll; $('#ov').onclick = closeAll; $('#drX').onclick = closeAll;
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && (!$('#sheet').hidden || !$('#drawer').hidden)) closeAll(); });
   document.addEventListener('click', e => {
+    const k = e.target.closest('[data-cmp]'); if (k) { toggleCmp(k.dataset.cmp); return; }
     const o = e.target.closest('[data-open]'); if (o) { openSheet(o.dataset.open); return; }
     const a = e.target.closest('[data-add]'); if (a) { addCart(a.dataset.add, 0, 1); return; }
     const b = e.target.closest('[data-adv]'); if (b) { addDevis(b.dataset.adv, 0, 1); return; }
@@ -118,11 +133,11 @@
 
   /* ---------- conseiller (3 questions) ---------- */
   const QZ = [
-    { k: 'use', o: [['op', 'Accueil, opérateur', 'Poste polyvalent', 'مكتب استقبال أو موظف'], ['screen', 'Écran toute la journée', 'Informatique, comptabilité…', 'العمل على الشاشة طوال اليوم'], ['boss', 'Cadre, direction', 'Bureau de responsable', 'إطار أو مدير'], ['game', 'Gaming', 'Jeu, streaming', 'ألعاب'], ['vis', 'Visiteurs, réunion', 'Salle d\'attente, réunion', 'زوار واجتماعات']] },
+    { k: 'use', o: [['op', 'Accueil, opérateur', 'Poste polyvalent', 'مكتب استقبال أو موظف'], ['screen', 'Écran toute la journée', 'Informatique, comptabilité…', 'العمل على الشاشة طوال اليوم'], ['boss', 'Cadre, direction', 'Bureau de responsable', 'إطار أو مدير'], ['game', 'Chaises gamer', 'Jeu, streaming', 'ألعاب'], ['vis', 'Visiteurs, réunion', 'Salle d\'attente, réunion', 'زوار واجتماعات']] },
     { k: 'h', o: [['1', 'Moins de 4 h', '', 'أقل من 4 ساعات'], ['2', '4 à 8 h', '', 'من 4 إلى 8 ساعات'], ['3', 'Plus de 8 h', '', 'أكثر من 8 ساعات']] },
     { k: 'b', o: [['15000', 'Moins de 15 000 DA', '', 'أقل من 15 000 دج'], ['25000', '15 000 à 25 000 DA', '', 'من 15 000 إلى 25 000 دج'], ['40000', '25 000 à 40 000 DA', '', 'من 25 000 إلى 40 000 دج'], ['999999', 'Plus de 40 000 DA', '', 'أكثر من 40 000 دج']] }];
   let qa = {}, qi = 0;
-  const USE = { op: ['Opérateur', 'Ergonomiques'], screen: ['Ergonomiques', 'Opérateur'], boss: ['Direction'], game: ['Gaming', 'Ergonomiques'], vis: ['Visiteurs & réunion'] };
+  const USE = { op: ['Chaises opérateurs', 'Chaises ergonomiques'], screen: ['Chaises ergonomiques', 'Chaises opérateurs'], boss: ['Fauteuils responsable'], game: ['Chaises gamer', 'Chaises ergonomiques'], vis: ['Chaises visiteurs & réunion'] };
   function quiz() {
     if (qi < 3) {
       const Q = QZ[qi];
@@ -145,7 +160,7 @@
   /* ---------- configurateur d'espace ---------- */
   const opts = cats => { const R = []; live().filter(p => cats.includes(p.cat)).sort((a, b) => X.minP(a) - X.minP(b)).forEach(p => p.v.forEach((v, i) => R.push({ k: p.id + '|' + i, p, i, price: v.p, label: X.lineName(p, i) + ' · ' + money(v.p) }))); return R; };
   const pk = { postes: 4, desk: '', chair: '', storeN: 1, store: '', visN: 2, vis: '', bossN: 0, boss: '' };
-  const ROWS = [['desk', 'pDesk', ['Bureaux'], 'postes'], ['chair', 'pChair', ['Opérateur', 'Ergonomiques'], 'postes'], ['store', 'pStore', ['Rangement'], 'storeN'], ['vis', 'pVis', ['Visiteurs & réunion'], 'visN'], ['boss', 'pBoss', ['Direction'], 'bossN']];
+  const ROWS = [['desk', 'pDesk', ['Bureaux'], 'postes'], ['chair', 'pChair', ['Chaises opérateurs', 'Chaises ergonomiques'], 'postes'], ['store', 'pStore', ['Armoires & rangement'], 'storeN'], ['vis', 'pVis', ['Chaises visiteurs & réunion'], 'visN'], ['boss', 'pBoss', ['Fauteuils responsable'], 'bossN']];
   function pick(row, O) { if (!pk[row] || !O.some(o => o.k === pk[row])) pk[row] = (O.find(o => /fonctionnel\|0|nova|2501|metallique-02-porte\||boston|6037/i.test(o.k)) || O[0] || {}).k || ''; return O.find(o => o.k === pk[row]); }
   function pack() {
     const lines = [];
@@ -164,7 +179,7 @@
   let dmode = 'cart', mode = 'livraison', done = null;
   const full = L => L.map(l => { const p = X.prod(l.pid); return { pid: l.pid, vi: l.vi, qty: l.qty, p, name: X.lineName(p, l.vi), price: X.vPrice(p, l.vi) }; });
   const srcSel = () => '<div class="f"><label for="oS">' + d('srcL') + '</label><select id="oS"><option value="">' + d('choose') + '</option>' + X.SOURCES.map(s => '<option value="' + s[0] + '"' + (s[0] === X.source() ? ' selected' : '') + '>' + esc(s[1]) + '</option>').join('') + '</select></div>';
-  function openDrawer(m) { dmode = m; done = null; lastFocus = lastFocus || document.activeElement; $('#ov').hidden = false; $('#drawer').hidden = false; document.body.style.overflow = 'hidden'; renderDrawer(); $('#drX').focus(); }
+  function openDrawer(m) { $('#drawer').classList.remove('wide'); dmode = m; done = null; lastFocus = lastFocus || document.activeElement; $('#ov').hidden = false; $('#drawer').hidden = false; document.body.style.overflow = 'hidden'; renderDrawer(); $('#drX').focus(); }
   $('#ctB').onclick = () => { lastFocus = $('#ctB'); openDrawer('cart'); };
   $('#dvB').onclick = () => { lastFocus = $('#dvB'); openDrawer('dv'); };
   $('#proDv').onclick = () => { lastFocus = $('#proDv'); openDrawer('dv'); };
@@ -174,6 +189,7 @@
     return '<div class="sum"><div class="r"><span>' + d('sub') + '</span><b>' + money(s) + '</b></div><div class="r"><span>' + d('del') + '</span><b>' + (mode === 'retrait' ? d('free') : fee == null ? d('delTel') : fee === 0 ? d('free') : money(fee)) + '</b></div><div class="r t"><span>' + d('tot') + '</span><b>' + money(s + (fee || 0)) + (mode === 'livraison' && fee == null ? ' <small style="font-size:12px;color:var(--muted)">' + d('plusDel') + '</small>' : '') + '</b></div></div>';
   }
   function renderDrawer() {
+    if (dmode === 'cmp') { renderCmp(); return; }
     badges(); $('#drT').textContent = dmode === 'cart' ? d('cart') : d('dv');
     if (done) {
       const isDv = done.kind === 'dv';
@@ -253,5 +269,6 @@
   $('#lang').onclick = () => { lang = lang === 'ar' ? 'fr' : 'ar'; try { localStorage.setItem('sti-lang', lang); } catch (e) { /* bloqué */ } applyLang(); };
 
   X.onChange(k => { if (k === 'prod') { renderCats(); renderGrid(); pack(); badges(); } if (k === 'settings' && !$('#drawer').hidden && !done) keep(); });
-  renderRefs(); applyLang(); badges(); heroTick(); setInterval(heroTick, 5000); X.track('visit');
+  renderRefs(); applyLang(); badges(); cmpBar(); heroTick();
+  (function () { const m = location.hash.slice(1).match(/^([a-z]{1,3})\.([a-z0-9-]+)$/); if (m && X.prod(m[2]) && X.prod(m[2]).web) setTimeout(() => openSheet(m[2]), 300); })(); setInterval(heroTick, 5000); X.track('visit');
 })();

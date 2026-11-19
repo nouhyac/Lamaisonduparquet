@@ -1,5 +1,7 @@
 # Offre Dzign Studio : version 4 (grille du 2026-11-10)
 
+> **19/11/2026 : les prix ne sont plus affichés publiquement.** La grille ci-dessous reste notre base interne pour chiffrer ; le client reçoit son prix en privé, le jour même, après sa démo gratuite.
+
 ## 1. Positionnement
 **Dzign Studio, studio digital haut de gamme basé à Alger.**
 Sites web, expériences 3D, boutiques en ligne et applications, pour tous ceux en
