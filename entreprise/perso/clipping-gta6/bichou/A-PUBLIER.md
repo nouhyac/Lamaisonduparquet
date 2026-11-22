@@ -13,12 +13,14 @@ Ordre : 1 clip à 12 h, 1 à 18 h, 1 à 21 h (heure de France = heure d'Algérie
 Après chaque publication : copier le lien → Content Rewards → campagne Bichou → « Soumettre le clip » (moins de 30 min).
 Compte : @best.of.bichou1 · lien Risor Tracker en bio : risor.link/lbbkzg3zcr
 
-## Lot 2 · à publier le 23/11 (sources : live JOUR 4 du 21/11 et JOUR 2 du 19/11)
+## Lot 2 · publié le 22/11 (avancé d'un jour) (sources : live JOUR 4 du 21/11 et JOUR 2 du 19/11)
 
 | Heure | Fichier | Durée | Légende à copier |
 |---|---|---|---|
 | 12 h | bichou-04-crime-passionnel.mp4 | 34 s | Il avait juré de finir 1er… ça a fini en crime passionnel 💀 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
 | 18 h | bichou-05-yacht.mp4 | 28 s | Son bateau coule… alors il vole un yacht, poliment 😭 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
 | 21 h | bichou-06-rage-bait.mp4 | 21 s | Le chat a essayé de le faire craquer 😤 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
+
+| bonus | bichou-07-videurs.mp4 | 39 s | Il perd tout… même la bagarre contre les videurs 💀 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
 
 Montage v2 (lot 2) : ouverture sur le moment fort (explosion, yacht, « insulter vos mères »), zooms sur les répliques clés, bruitages (boom, whoosh), barre de progression verte en bas, accroche en haut. 21-34 s, une seule histoire avec une chute. Écartés : moments sexuels (club, Lucia), insultes en boucle, passages où d'autres personnes sont filmées (Micka à la piscine, appels vidéo avec des inconnus).
