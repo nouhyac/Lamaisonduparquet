@@ -11,4 +11,14 @@ Format 1080×1920, 30 i/s, sous-titres mot à mot, insultes bipées, overlay « 
 
 Ordre : 1 clip à 12 h, 1 à 18 h, 1 à 21 h (heure de France = heure d'Algérie).
 Après chaque publication : copier le lien → Content Rewards → campagne Bichou → « Soumettre le clip » (moins de 30 min).
-Avant de publier : compte renommé et dédié à Bichou + lien Risor Tracker en bio.
+Compte : @best.of.bichou1 · lien Risor Tracker en bio : risor.link/lbbkzg3zcr
+
+## Lot 2 · à publier le 23/11 (sources : live JOUR 4 du 21/11 et JOUR 2 du 19/11)
+
+| Heure | Fichier | Durée | Légende à copier |
+|---|---|---|---|
+| 12 h | bichou-04-crime-passionnel.mp4 | 31 s | Il avait juré de finir 1er… ça a fini en crime passionnel 💀 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
+| 18 h | bichou-05-yacht.mp4 | 26 s | Son bateau coule… alors il vole un yacht, poliment 😭 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
+| 21 h | bichou-06-rage-bait.mp4 | 24 s | Le chat a essayé de le faire craquer 😤 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
+
+Critères du lot 2 : accroche dans les 2 premières secondes, 24-31 s, une seule histoire avec une chute. Écartés : moments sexuels (club, Lucia), insultes en boucle, passages où d'autres personnes sont filmées (Micka à la piscine, appels vidéo avec des inconnus).
