@@ -17,8 +17,8 @@ Compte : @best.of.bichou1 · lien Risor Tracker en bio : risor.link/lbbkzg3zcr
 
 | Heure | Fichier | Durée | Légende à copier |
 |---|---|---|---|
-| 12 h | bichou-04-crime-passionnel.mp4 | 31 s | Il avait juré de finir 1er… ça a fini en crime passionnel 💀 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
-| 18 h | bichou-05-yacht.mp4 | 26 s | Son bateau coule… alors il vole un yacht, poliment 😭 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
-| 21 h | bichou-06-rage-bait.mp4 | 24 s | Le chat a essayé de le faire craquer 😤 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
+| 12 h | bichou-04-crime-passionnel.mp4 | 34 s | Il avait juré de finir 1er… ça a fini en crime passionnel 💀 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
+| 18 h | bichou-05-yacht.mp4 | 28 s | Son bateau coule… alors il vole un yacht, poliment 😭 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
+| 21 h | bichou-06-rage-bait.mp4 | 21 s | Le chat a essayé de le faire craquer 😤 Live sur kick.com/bichouu #bichou #gta6 #gtavi #kick |
 
-Critères du lot 2 : accroche dans les 2 premières secondes, 24-31 s, une seule histoire avec une chute. Écartés : moments sexuels (club, Lucia), insultes en boucle, passages où d'autres personnes sont filmées (Micka à la piscine, appels vidéo avec des inconnus).
+Montage v2 (lot 2) : ouverture sur le moment fort (explosion, yacht, « insulter vos mères »), zooms sur les répliques clés, bruitages (boom, whoosh), barre de progression verte en bas, accroche en haut. 21-34 s, une seule histoire avec une chute. Écartés : moments sexuels (club, Lucia), insultes en boucle, passages où d'autres personnes sont filmées (Micka à la piscine, appels vidéo avec des inconnus).
