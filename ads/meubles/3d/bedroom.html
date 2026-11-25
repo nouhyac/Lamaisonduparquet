@@ -1,0 +1,87 @@
+<!doctype html><meta charset="utf-8">
+<style>
+@font-face{font-family:C;src:url(fira-sans-extra-condensed-800.woff2)}@font-face{font-family:F;font-weight:600;src:url(fira-sans-600.woff2)}@font-face{font-family:F;font-weight:300;src:url(fira-sans-300.woff2)}
+html,body{margin:0;width:1080px;height:1350px;overflow:hidden;background:#0b0a09}
+canvas{display:block}
+.ov{position:absolute;left:0;right:0;top:0;padding:46px 60px;display:flex;justify-content:space-between;color:#f3efe8;font-family:F;pointer-events:none}
+.k{font:600 17px F;letter-spacing:.24em;text-transform:uppercase;color:#d8ba8b}
+.t{font-family:C;font-size:84px;line-height:.9;margin-top:10px}
+.t i{font-style:normal;color:#e2001a}
+.m{font-family:C;font-size:42px;text-align:right;border-bottom:6px solid #e2001a;line-height:1}
+.u{font:600 17px F;text-align:right;margin-top:8px}
+.bot{display:var(--bot,flex);position:absolute;left:60px;right:60px;bottom:44px;display:flex;gap:14px;font-family:F;color:#f3efe8}
+.bot div{flex:1;background:rgba(14,13,12,.78);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px 18px;backdrop-filter:blur(6px)}
+.bot b{display:block;font:600 13px F;letter-spacing:.16em;text-transform:uppercase;color:#d8ba8b;margin-bottom:4px}
+.bot span{font:300 18px F}
+</style>
+<div class="ov" id="ov"><div><div class="k">Création 3D · Chambre parentale</div><div class="t">Chambre<br><i>Sérénité</i></div></div><div><div class="m">SARL MYF</div><div class="u">lamaisonduparquet.org</div></div></div>
+<div class="bot" id="bot"><div><b>Sol</b><span>Parquet EGGER<br>Chêne Achensee</span></div><div><b>Tête de lit</b><span>Panneau chêne 3 m<br>+ LED cachée</span></div><div><b>Chevets</b><span>Suspendus<br>noir mat EGGER</span></div><div><b>Lit</b><span>Plateforme chêne<br>flottante + LED</span></div></div>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from './RoomEnvironment.js';
+import { RoundedBoxGeometry } from './RoundedBoxGeometry.js';
+import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './jsm/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from './jsm/postprocessing/OutputPass.js';
+const W=1080,H=1350;
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+r.setSize(W,H);r.setPixelRatio(1);r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;
+r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=0.8;r.outputColorSpace=THREE.SRGBColorSpace;
+document.body.prepend(r.domElement);
+const s=new THREE.Scene();s.background=new THREE.Color(0x12100e);
+const pm=new THREE.PMREMGenerator(r);s.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;s.environmentIntensity=0.14;
+const L=new THREE.TextureLoader();
+const tex=(u,rx,ry,rot)=>{const t=L.load(u);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);if(rot)t.rotation=rot;t.anisotropy=8;return t};
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshStandardMaterial({map:tex('ach.jpg',4,4,Math.PI/2),roughness:.55}));
+floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;s.add(floor);
+const wallM=new THREE.MeshStandardMaterial({color:0x8f8475,roughness:.95});
+const back=new THREE.Mesh(new THREE.PlaneGeometry(10,6),wallM);back.position.set(0,3,-1.6);back.receiveShadow=true;s.add(back);
+const side=new THREE.Mesh(new THREE.PlaneGeometry(10,6),wallM);side.rotation.y=Math.PI/2;side.position.set(-2.6,3,2);side.receiveShadow=true;s.add(side);
+const blk=new THREE.MeshStandardMaterial({color:0x0a0a0a,roughness:.78});
+const oak=new THREE.MeshStandardMaterial({map:tex('nord.jpg',3,1,Math.PI/2),color:0xc19a6c,roughness:.55});
+const oakV=new THREE.MeshStandardMaterial({map:tex('nord.jpg',0.15,1.2),color:0xc19a6c,roughness:.55});
+const led=new THREE.MeshStandardMaterial({color:0xffb46a,emissive:0xffa050,emissiveIntensity:5});
+const brass=new THREE.MeshStandardMaterial({color:0xb8925a,metalness:.95,roughness:.28});
+const lin=c=>new THREE.MeshStandardMaterial({color:c,roughness:.95});
+const g=new THREE.Group();s.add(g);
+const add=(geo,m,x,y,z,cast=true,par=g)=>{const o=new THREE.Mesh(geo,m);o.position.set(x,y,z);o.castShadow=cast;o.receiveShadow=true;par.add(o);return o};
+const zw=-1.58;
+// tête de lit murale : tasseaux chêne 3 m × 2,6 m
+for(let k=0;k<60;k++) add(new THREE.BoxGeometry(0.035,2.6,0.035),oakV,-1.5+k*0.05,1.3,zw+0.02);
+add(new THREE.BoxGeometry(3.0,0.02,0.02),led,0,2.62,zw+0.04,false);
+for(let i=0;i<4;i++){const p=new THREE.PointLight(0xffb070,0.35,1.4,2);p.position.set(-1.1+i*0.75,2.55,zw+0.15);g.add(p);}
+// lit 1,80 × 2,00 : socle noir en retrait + LED (lit flottant)
+add(new THREE.BoxGeometry(1.7,0.14,1.9),blk,0,0.07,zw+1.05);
+add(new THREE.BoxGeometry(1.66,0.004,0.01),led,0,0.01,zw+2.0,false);
+for(let i=0;i<3;i++){const p=new THREE.PointLight(0xffa050,0.3,0.6,2);p.position.set(-0.6+i*0.6,0.03,zw+1.95);g.add(p);}
+add(new RoundedBoxGeometry(1.86,0.16,2.04,4,0.02),oak,0,0.22,zw+1.06);
+add(new RoundedBoxGeometry(1.8,0.24,2.0,6,0.08),lin(0xf1ece3),0,0.42,zw+1.06);
+add(new RoundedBoxGeometry(1.84,0.06,1.3,6,0.03),lin(0xb7a48b),0,0.56,zw+1.36);
+add(new RoundedBoxGeometry(1.86,0.04,0.5,4,0.02),lin(0x6e7a64),0,0.585,zw+1.75);
+for(const x of [-0.45,0.45]){add(new RoundedBoxGeometry(0.7,0.22,0.16,6,0.07),lin(0xf4efe6),x,0.66,zw+0.2);add(new RoundedBoxGeometry(0.5,0.18,0.12,6,0.06),lin(0xc9b79c),x*0.9,0.62,zw+0.36);}
+// chevets suspendus noir mat + tiroir chêne
+for(const x of [-1.32,1.32]){add(new THREE.BoxGeometry(0.55,0.3,0.4),blk,x,0.5,zw+0.22);add(new THREE.BoxGeometry(0.5,0.12,0.005),oak,x,0.5,zw+0.423);
+  add(new THREE.BoxGeometry(0.5,0.004,0.01),led,x,0.348,zw+0.38,false);const p=new THREE.PointLight(0xffa050,0.25,0.6,2);p.position.set(x,0.3,zw+0.3);g.add(p);
+  // suspension laiton
+  add(new THREE.CylinderGeometry(0.003,0.003,1.2,6),blk,x,2.2,zw+0.3,false);const sh=add(new THREE.SphereGeometry(0.11,32,16,0,Math.PI*2,0,Math.PI/2),brass,x,1.6,zw+0.3);sh.rotation.x=Math.PI;
+  add(new THREE.SphereGeometry(0.04,16,8),new THREE.MeshStandardMaterial({color:0xfff0d0,emissive:0xffc070,emissiveIntensity:8}),x,1.57,zw+0.3,false);
+  const pl=new THREE.PointLight(0xffc580,0.7,1.8,2);pl.position.set(x,1.5,zw+0.35);g.add(pl);}
+add(new THREE.CylinderGeometry(0.05,0.06,0.16,24),lin(0xe7dfd2),-1.42,0.73,zw+0.2);
+add(new THREE.BoxGeometry(0.2,0.04,0.15),lin(0x2b2b2b),1.25,0.67,zw+0.2);
+// dressing noir mat à gauche, portes sans poignée + fente LED
+const dx=-2.58;
+for(let k=0;k<3;k++){const z=zw+2.25+k*0.62; add(new THREE.BoxGeometry(0.6,2.6,0.6),blk,dx+0.31,1.3,z);
+  add(new THREE.BoxGeometry(0.005,2.5,0.008),led,dx+0.62,1.3,z+0.31,false);}
+// tapis
+add(new THREE.BoxGeometry(2.6,0.01,1.6),lin(0xcfc3b0),0,0.005,zw+2.1,false);
+// lumières
+const key=new THREE.SpotLight(0xfff1e0,22,12,Math.PI/6,0.5,1.6);key.position.set(2.2,4.0,3.6);key.target.position.set(0,0.6,zw+1);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.bias=-0.0004;s.add(key,key.target);
+s.add(new THREE.HemisphereLight(0xfff4e6,0x2a1d14,0.12));
+const cam=new THREE.PerspectiveCamera(42,W/H,0.1,50);
+const comp=new EffectComposer(r);comp.addPass(new RenderPass(s,cam));
+comp.addPass(new UnrealBloomPass(new THREE.Vector2(W,H),0.35,0.35,0.97));comp.addPass(new OutputPass());
+window.renderAt=(a)=>{const R=6.3;cam.position.set(R*Math.sin(a),1.75,zw+R*Math.cos(a));cam.lookAt(-0.15,0.95,zw+0.7);comp.render();};
+L.manager.onLoad=()=>{window.renderAt(0.38);window.ready=true;};
+</script>

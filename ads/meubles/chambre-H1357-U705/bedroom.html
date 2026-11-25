@@ -1,0 +1,211 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#000;overflow:hidden}</style></head><body>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from './RoomEnvironment.js';
+import { RoundedBoxGeometry } from './RoundedBoxGeometry.js';
+import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './jsm/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from './jsm/postprocessing/OutputPass.js';
+import { GTAOPass } from './jsm/postprocessing/GTAOPass.js';
+import { SMAAPass } from './jsm/postprocessing/SMAAPass.js';
+
+const W = innerWidth, H = innerHeight;
+const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+r.setPixelRatio(1); r.setSize(W, H);
+r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 0.9;
+r.outputColorSpace = THREE.SRGBColorSpace;
+r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(r.domElement);
+const sc = new THREE.Scene(); sc.background = new THREE.Color(0xe9e4dc);
+const pm = new THREE.PMREMGenerator(r);
+sc.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; sc.environmentIntensity = 0.4;
+
+const TL = new THREE.TextureLoader();
+function tex(f, rep) { const t = TL.load(f); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; if (rep) t.repeat.set(rep[0], rep[1]); t.anisotropy = 8; return t; }
+const oakT = tex('oak1357.jpg', [1, 0.5]);
+const M = {
+  oak: new THREE.MeshStandardMaterial({ map: oakT, roughness: 0.6 }),                 // H1357 (chêne EGGER)
+  u705: new THREE.MeshStandardMaterial({ color: 0xb2aca3, roughness: 0.55 }),         // U705 ST9 gris angora
+  caisson: new THREE.MeshStandardMaterial({ color: 0xece9e3, roughness: 0.7 }),
+  noir: new THREE.MeshStandardMaterial({ color: 0x151515, roughness: 0.3, metalness: 0.4 }),
+  mur: new THREE.MeshStandardMaterial({ color: 0xf3eee7, roughness: 0.95 }),
+  sol: new THREE.MeshStandardMaterial({ map: tex('floor.jpg', [6, 6]), roughness: 0.5 }),
+  linge: new THREE.MeshStandardMaterial({ color: 0xf3efe8, roughness: 0.95 }),
+  plaid: new THREE.MeshStandardMaterial({ color: 0x9a8f80, roughness: 0.95 }),
+  coussin: new THREE.MeshStandardMaterial({ color: 0xd9cfc1, roughness: 0.95 }),
+  verre: new THREE.MeshStandardMaterial({ color: 0xdfeeff, emissive: 0xcfe2f5, emissiveIntensity: 0.9, roughness: 0.1 }),
+  cadre: new THREE.MeshStandardMaterial({ color: 0x3a3a3a, roughness: 0.4, metalness: 0.3 }),
+  ecran: new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.1, metalness: 0.2 }),
+  radi: new THREE.MeshStandardMaterial({ color: 0xf2f2f0, roughness: 0.5 }),
+};
+M.sol.map.rotation = Math.PI / 2;
+const G = new THREE.Group(); sc.add(G);
+function bx(x0, y0, z0, x1, y1, z1, mat, round = 0, opts = {}) {
+  const geo = round ? new RoundedBoxGeometry(x1 - x0, y1 - y0, z1 - z0, 2, round) : new THREE.BoxGeometry(x1 - x0, y1 - y0, z1 - z0);
+  const m = new THREE.Mesh(geo, mat); m.position.set((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
+  m.castShadow = opts.cast !== false; m.receiveShadow = true; G.add(m); return m;
+}
+const GAP = 3, T = 19;
+// door/front facing -x (wardrobe on left wall faces +x), helpers
+function frontPX(z0, z1, y0, y1, x, mat) { return bx(x, y0 + GAP / 2, z0 + GAP / 2, x + T, y1 - GAP / 2, z1 - GAP / 2, mat, 1.5); }
+function frontPZ(x0, x1, y0, y1, z, mat) { return bx(x0 + GAP / 2, y0 + GAP / 2, z, x1 - GAP / 2, y1 - GAP / 2, z + T, mat, 1.5); }   // faces +z
+function frontNZ(x0, x1, y0, y1, z, mat) { return bx(x0 + GAP / 2, y0 + GAP / 2, z - T, x1 - GAP / 2, y1 - GAP / 2, z, mat, 1.5); }   // faces -z
+function frontNX(z0, z1, y0, y1, x, mat) { return bx(x - T, y0 + GAP / 2, z0 + GAP / 2, x, y1 - GAP / 2, z1 - GAP / 2, mat, 1.5); }
+
+// ---------- room (mm) : main room x 2020..5870, z 0..3750 ; alcove x 0..2020, z 1260..3750 ----------
+const CEIL = 2800, X0 = 2020, XR = 5870, ZB = 3750, ZA = 1260, WT = 120;
+bx(-300, -20, -300, XR + 400, 0, ZB + 400, M.sol, 0, { cast: false });
+const walls = [];
+const wall = (...a) => { const m = bx(...a, M.mur, 0, { cast: false }); walls.push(m); return m; };
+wall(X0 - WT, 0, -WT, XR + WT, CEIL, 0);                    // top wall (TV wall)
+wall(XR, 0, 0, XR + WT, CEIL, 1300); wall(XR, 0, 1900, XR + WT, CEIL, ZB + WT);   // right wall with window
+wall(XR, 0, 1300, XR + WT, 900, 1900); wall(XR, 2250, 1300, XR + WT, CEIL, 1900);
+bx(XR + 30, 900, 1300, XR + 50, 2250, 1900, M.verre, 0, { cast: false });           // window glass
+bx(XR - 10, 880, 1280, XR + 20, 2270, 1300, M.cadre); bx(XR - 10, 880, 1900, XR + 20, 2270, 1920, M.cadre);
+bx(XR - 10, 880, 1300, XR + 20, 900, 1900, M.cadre); bx(XR - 10, 2250, 1300, XR + 20, 2270, 1900, M.cadre);
+bx(XR - 10, 1560, 1595, XR + 20, 1580, 1605, M.cadre);
+wall(-WT, 0, ZB, XR + WT, CEIL, ZB + WT);                  // bottom wall (bed wall)
+wall(-WT, 0, ZA, 0, CEIL, ZB);                             // alcove left wall (wardrobe)
+wall(X0 - WT, 0, 0, X0, CEIL, ZA);                         // main left wall
+wall(-WT, 0, ZA - WT, 700, CEIL, ZA); wall(1650, 0, ZA - WT, X0, CEIL, ZA); wall(700, 2150, ZA - WT, 1650, CEIL, ZA); // alcove top wall with door opening
+const ceil = bx(-300, CEIL, -300, XR + 400, CEIL + 20, ZB + 400, new THREE.MeshStandardMaterial({ color: 0xf0ece6, emissive: 0x7d7872, roughness: 0.9 }), 0, { cast: false });
+// radiator on TV wall
+bx(2250, 150, 30, 2850, 750, 110, M.radi);
+for (let y = 190; y < 740; y += 70) bx(2260, y, 110, 2840, y + 8, 114, new THREE.MeshStandardMaterial({ color: 0xe2e2e0, roughness: 0.6 }), 0, { cast: false });
+
+// ---------- WARDROBE 2490 on alcove left wall (front +x), depth 620 ----------
+// z: 1260..3750 : side 70 | bay 1110 | middle 130 | bay 1110 | side 70
+const WD = 620, z0 = ZA, Hb = 50, Hd = 1980, Hband = 110, Htop = 570, Hcap = 50;
+const y1 = Hb, y2 = y1 + Hd, y3 = y2 + Hband, y4 = y3 + Htop, y5 = y4 + Hcap;  // 50,2030,2140,2710,2760
+bx(0, y1, z0 + 70, WD - 30, y4, ZB - 70, M.caisson);                           // carcass
+bx(0, 0, z0, WD + T, y5, z0 + 70, M.u705, 2);                                   // side 70
+bx(0, 0, ZB - 70, WD + T, y5, ZB, M.u705, 2);                                   // side 70
+bx(0, y1, z0 + 70 + 1110, WD + T, y5, z0 + 70 + 1110 + 130, M.u705, 2); // middle 130
+bx(0, 0, z0 + 70, WD + T, y1, ZB - 70, M.u705);                                 // base
+
+bx(0, y4, z0 + 70, WD - 30, y5, ZB - 70, M.caisson);                           // top inside (hidden)
+for (const b0 of [z0 + 70, z0 + 70 + 1110 + 130]) {
+  frontPX(b0, b0 + 555, y1, y5, WD, M.u705); frontPX(b0 + 555, b0 + 1110, y1, y5, WD, M.u705);
+  // long black bar handles
+  bx(WD + T, 900, b0 + 530, WD + T + 16, 1600, b0 + 542, M.noir, 3); bx(WD + T, 900, b0 + 568, WD + T + 16, 1600, b0 + 580, M.noir, 3);
+}
+
+// ---------- ARMOIRE 2 portes 900 (top-right corner, front +z), depth 600 ----------
+const AX0 = XR - 900, AD = 600;
+bx(AX0 + 70, y1, 0, XR - 70, y4, AD - 30, M.caisson);
+bx(AX0, 0, 0, AX0 + 70, y5, AD + T, M.u705, 2); bx(XR - 70, 0, 0, XR, y5, AD + T, M.u705, 2);
+bx(AX0 + 70, 0, 0, XR - 70, y1, AD + T, M.u705); bx(AX0 + 70, y4, 0, XR - 70, y5, AD - 30, M.caisson);
+frontPZ(AX0 + 70, AX0 + 450, y1, y5, AD, M.u705); frontPZ(AX0 + 450, XR - 70, y1, y5, AD, M.u705);
+bx(AX0 + 425, 900, AD + T, AX0 + 437, 1600, AD + T + 16, M.noir, 3); bx(AX0 + 463, 900, AD + T, AX0 + 475, 1600, AD + T + 16, M.noir, 3);
+
+// LED material (warm indirect light lines)
+const LED = new THREE.MeshBasicMaterial({ color: 0xffd9a8 });
+const ledLight = (x, y, z, k = 40000, d = 1400) => { const p = new THREE.PointLight(0xffc98a, k, d, 2); p.position.set(x, y, z); sc.add(p); };
+
+// ---------- TV WALL: full-height fluted oak panel H1357 + floating TV unit all U705 ----------
+const TX0 = AX0 - 2100, TD = 400, TY0 = 300, TY1 = 760;
+bx(TX0 - 20, 0, 0, AX0, CEIL, 18, M.caisson, 0, { cast: false });                         // panel backing
+for (let x = TX0 - 20; x < AX0; x += 60) bx(x + 4, 0, 18, x + 56, CEIL, 38, M.oak, 0, { cast: false }); // vertical oak flutes
+bx(TX0, TY0, 38, AX0 - 10, TY1, TD, M.caisson);
+bx(TX0, TY1 - 25, 38, AX0 - 10, TY1, TD + T, M.u705, 2);                   // U705 top
+bx(TX0, TY0, 38, AX0 - 10, TY0 + 25, TD + T, M.u705, 2);                   // U705 bottom
+bx(TX0, TY0 + 25, 38, TX0 + 25, TY1 - 25, TD + T, M.u705); bx(AX0 - 35, TY0 + 25, 38, AX0 - 10, TY1 - 25, TD + T, M.u705);
+for (let k = 0; k < 3; k++) frontPZ(TX0 + 25 + k * 676.7, TX0 + 25 + (k + 1) * 676.7, TY0 + 25, TY1 - 25, TD, M.u705);
+bx(TX0 + 40, TY0 - 6, 120, AX0 - 50, TY0 - 2, 300, LED, 0, { cast: false });              // LED under floating unit
+for (let x = TX0 + 300; x < AX0; x += 600) ledLight(x, TY0 - 60, 250, 25000, 900);
+// TV
+bx(TX0 + 450, 1150, 40, TX0 + 1650, 1830, 80, M.ecran, 4);
+const v1 = new THREE.Mesh(new THREE.CylinderGeometry(60, 50, 220, 32), new THREE.MeshStandardMaterial({ color: 0xe5ded2, roughness: 0.5 })); v1.position.set(TX0 + 1850, TY1 + 110, 220); v1.castShadow = true; G.add(v1);
+// plinth LED under the 2490 wardrobe and the 900 armoire
+bx(WD - 10, 30, z0 + 75, WD + 4, 42, ZB - 75, LED, 0, { cast: false });
+bx(AX0 + 75, 30, AD - 10, XR - 75, 42, AD + 4, LED, 0, { cast: false });
+ledLight(WD + 200, 120, 2500, 30000, 1200); ledLight(AX0 + 450, 120, AD + 200, 20000, 900);
+
+// ---------- BED 1800 x 2000 + full-width headboard wall (bed + nightstands) ----------
+const BX0 = 2400, BX1 = 4200, BZ1 = ZB, BZ0 = ZB - 2000;
+const HW0 = BX0 - 560, HW1 = BX1 + 560, HH = 1350;
+bx(HW0, 0, ZB - 40, HW1, HH, ZB, M.oak, 2);                                                // oak wall panel H1357
+for (let x = HW0 + 400; x < HW1 - 100; x += 466) bx(x - 3, 0, ZB - 44, x + 3, HH, ZB - 39, M.noir, 0, { cast: false }); // panel joints
+bx(HW0, HH, ZB - 60, HW1, HH + 20, ZB, M.oak, 2);                                          // top shelf/cap
+bx(HW0 + 20, HH - 4, ZB - 58, HW1 - 20, HH, ZB - 44, LED, 0, { cast: false });              // LED wash up the wall
+for (let x = HW0 + 300; x < HW1; x += 700) ledLight(x, HH + 80, ZB - 120, 22000, 1100);
+bx(BX0 - 20, 330, ZB - 120, BX1 + 20, 1150, ZB - 40, M.u705, 30);                          // upholstered U705 headboard
+bx(BX0, 0, BZ0, BX1, 320, BZ1 - 120, M.u705, 8);                                           // bed base U705
+bx(BX0 + 30, 320, BZ0 + 30, BX1 - 30, 560, BZ1 - 140, M.linge, 30);
+bx(BX0 + 10, 330, BZ0 + 10, BX1 - 10, 580, BZ0 + 650, M.plaid, 20);
+for (const x of [BX0 + 120, BX0 + 940]) bx(x, 560, BZ1 - 560, x + 740, 760, BZ1 - 160, M.coussin, 60);
+// wall sconces
+for (const sx of [HW0 + 280, HW1 - 280]) { bx(sx - 15, 1000, ZB - 60, sx + 15, 1060, ZB - 40, M.noir, 2); bx(sx - 35, 960, ZB - 170, sx + 35, 1030, ZB - 60, M.noir, 10); ledLight(sx, 950, ZB - 200, 30000, 1200); }
+// nightstands 500, posés: U705 drawer on top + open oak niche below (with LED)
+for (const nx of [BX0 - 540, BX1 + 40]) {
+  const nz0 = ZB - 460, nz1 = ZB - 40;
+  bx(nx, 0, nz0, nx + 19, 470, nz1, M.u705); bx(nx + 481, 0, nz0, nx + 500, 470, nz1, M.u705);   // sides
+  bx(nx + 19, 0, nz0, nx + 481, 60, nz1, M.u705);                                                 // base
+  bx(nx + 19, 60, nz1 - 19, nx + 481, 290, nz1, M.oak);                                           // niche back oak
+  bx(nx + 19, 60, nz0 + 40, nx + 481, 62, nz1 - 19, M.oak, 0, { cast: false });                    // niche floor oak
+  bx(nx + 30, 282, nz0 + 60, nx + 470, 286, nz1 - 40, LED, 0, { cast: false });                    // niche LED
+  ledLight(nx + 250, 200, nz0 + 120, 8000, 500);
+  bx(nx + 19, 290, nz0 + 19, nx + 481, 450, nz1, M.caisson);
+  frontNZ(nx + 21, nx + 479, 292, 448, nz0 + 19, M.u705);                                           // drawer
+  bx(nx + 190, 360, nz0 - 4, nx + 310, 372, nz0 + 2, M.noir, 2);
+  bx(nx, 450, nz0, nx + 500, 470, nz1, M.u705, 2);                                                 // top
+  const plant = new THREE.Mesh(new THREE.CylinderGeometry(55, 45, 120, 24), new THREE.MeshStandardMaterial({ color: 0xe6e0d6, roughness: 0.6 }));
+  plant.position.set(nx + 140, 530, nz0 + 200); plant.castShadow = true; G.add(plant);
+  const leaves = new THREE.Mesh(new THREE.SphereGeometry(110, 16, 12), new THREE.MeshStandardMaterial({ color: 0x5d7552, roughness: 0.8 }));
+  leaves.position.set(nx + 140, 660, nz0 + 200); leaves.scale.set(1, 0.8, 1); leaves.castShadow = true; G.add(leaves);
+}
+
+// ---------- DESK niche on right wall: oak back panel + floating shelves with LED, U705 floating desk ----------
+const DZ0 = 2490, DZ1 = ZB, DD = 600, DXf = XR - DD;
+bx(XR - 20, 0, DZ0, XR, 2400, DZ1, M.oak, 0, { cast: false });                               // oak back panel
+bx(XR - 420, 0, DZ0 - 20, XR, 2400, DZ0, M.oak, 2);                                          // oak side panel
+bx(XR - 420, 2400, DZ0 - 20, XR, 2420, DZ1, M.oak, 2);                                       // oak top
+bx(DXf, 700, DZ0, XR - 20, 760, DZ1, M.u705, 3);                                              // floating desk top U705 (60 mm)
+frontNX(DZ0 + 20, DZ0 + 640, 702, 758, DXf, M.u705); frontNX(DZ0 + 640, DZ1 - 20, 702, 758, DXf, M.u705);   // 2 thin drawers
+for (const y of [1300, 1720]) { bx(XR - 300, y, DZ0, XR - 20, y + 38, DZ1, M.oak, 2); bx(XR - 290, y - 4, DZ0 + 20, XR - 30, y, DZ1 - 20, LED, 0, { cast: false }); ledLight(XR - 150, y - 60, (DZ0 + DZ1) / 2, 15000, 900); }
+const chair = new THREE.Group();
+const fab = new THREE.MeshStandardMaterial({ color: 0xcfc4b4, roughness: 0.95 });
+const cx = DXf - 330, cz = DZ0 + 380;
+const seat = new THREE.Mesh(new RoundedBoxGeometry(460, 60, 450, 3, 20), fab); seat.position.set(cx, 465, cz); chair.add(seat);
+const back = new THREE.Mesh(new RoundedBoxGeometry(50, 330, 430, 3, 20), fab); back.position.set(cx - 215, 700, cz); back.rotation.z = -0.12; chair.add(back);
+for (const [dx, dz] of [[-190, -190], [190, -190], [-190, 190], [190, 190]]) {
+  const l = new THREE.Mesh(new THREE.CylinderGeometry(13, 10, 440, 12), M.noir); l.position.set(cx + dx, 220, cz + dz); chair.add(l); }
+chair.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } }); G.add(chair);
+// rug
+bx(BX0 - 300, 0, BZ0 - 600, BX1 + 300, 8, BZ0 + 1300, new THREE.MeshStandardMaterial({ color: 0xd8d0c4, roughness: 1 }), 0, { cast: false });
+
+// ---------- lights ----------
+sc.add(new THREE.HemisphereLight(0xffffff, 0xd8cfc2, 0.55));
+const sun = new THREE.DirectionalLight(0xfff1e0, 1.6);
+sun.position.set(XR + 3500, 2600, 1600); sun.target.position.set(3500, 0, 2000); sc.add(sun.target);
+sun.castShadow = true; sun.shadow.mapSize.set(4096, 4096);
+Object.assign(sun.shadow.camera, { left: -5000, right: 5000, top: 5000, bottom: -5000, near: 100, far: 20000 });
+sun.shadow.bias = -0.0004; sun.shadow.radius = 4; sc.add(sun);
+const spotM = new THREE.MeshBasicMaterial({ color: 0xfff1dc });
+for (const [x, z] of [[2900, 1000], [4500, 1000], [2900, 2400], [4500, 2400], [1000, 2500]]) {
+  const d = new THREE.Mesh(new THREE.CircleGeometry(45, 32), spotM); d.rotation.x = Math.PI / 2; d.position.set(x, CEIL - 1, z); G.add(d);
+  const pl = new THREE.PointLight(0xfff0dc, 70000, 3500, 2); pl.position.set(x, CEIL - 80, z); sc.add(pl);
+}
+
+// ---------- camera + post ----------
+const cam = new THREE.PerspectiveCamera(50, W / H, 10, 60000);
+const comp = new EffectComposer(r);
+comp.addPass(new RenderPass(sc, cam));
+const ao = new GTAOPass(sc, cam, W, H);
+ao.updateGtaoMaterial({ radius: 700, distanceExponent: 1.2, thickness: 400, scale: 1.6, samples: 24 });
+ao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 6, rings: 2, samples: 16 });
+comp.addPass(ao);
+comp.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.15, 0.4, 0.97));
+comp.addPass(new OutputPass());
+comp.addPass(new SMAAPass(W, H));
+// renderAt(px,py,pz, tx,ty,tz, fov, top)
+window.renderAt = (px, py, pz, tx, ty, tz, fov, top) => {
+  ceil.visible = !top;
+  cam.fov = fov || 50; cam.updateProjectionMatrix();
+  cam.position.set(px, py, pz); cam.lookAt(tx, ty, tz); comp.render(); return true;
+};
+setTimeout(() => { window.renderAt(3300, 1500, 300, 3000, 900, 3500); window.ready = true; }, 800);
+</script></body></html>

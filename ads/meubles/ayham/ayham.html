@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#fff;overflow:hidden}
+#t{position:fixed;left:40px;top:30px;font:800 54px 'C',sans-serif;color:#111}#s{position:fixed;left:42px;top:96px;font:400 26px sans-serif;color:#555}
+@font-face{font-family:C;src:url(fira-sans-extra-condensed-800.woff2)}#b{position:fixed;right:30px;bottom:24px;font:600 22px sans-serif;color:#111;background:#fff;border-left:6px solid #e2001a;padding:10px 16px}</style></head><body>
+<div id="t"></div><div id="s"></div><div id="b">SARL MYF · Panneaux EGGER 19 mm · lamaisonduparquet.org</div>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+const q=new URLSearchParams(location.search); const M=q.get('m'); const open=q.get('open')==='1'; const ex=q.get('ex')==='1';
+document.getElementById('t').textContent=q.get('title')||''; document.getElementById('s').textContent=q.get('sub')||'';
+const parts=await (await fetch('parts.json')).json();
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true}); r.setPixelRatio(1); r.setSize(innerWidth,innerHeight); document.body.appendChild(r.domElement);
+const sc=new THREE.Scene(); sc.background=new THREE.Color(0xffffff);
+sc.add(new THREE.HemisphereLight(0xffffff,0xb8b0a0,1.6)); const dl=new THREE.DirectionalLight(0xffffff,1.6); dl.position.set(-3000,5000,6000); sc.add(dl);
+const tex=new THREE.TextureLoader().load('oak.jpg'); tex.wrapS=tex.wrapT=THREE.RepeatWrapping; tex.colorSpace=THREE.SRGBColorSpace;
+const mats={caisson:new THREE.MeshLambertMaterial({color:0xe9dcc4}),facade:new THREE.MeshLambertMaterial({map:tex,color:0xffffff}),porte:new THREE.MeshLambertMaterial({map:tex,color:0xffffff})};
+const lm=new THREE.LineBasicMaterial({color:0x1a1a1a}); const box=new THREE.Box3(); const g=new THREE.Group(); sc.add(g);
+for(const p of parts){ if(M&&p.meuble!==M) continue; if(open&&(p.role==='porte'||p.role==='facade')) continue;
+  const [x,y,z,dx,dy,dz]=p.box; const geo=new THREE.BoxGeometry(dx,dy,dz);
+  const m=new THREE.Mesh(geo,mats[p.role]||mats.caisson); m.position.set(x+dx/2,y+dy/2,z+dz/2+(ex&&p.role==='porte'?250:0)); g.add(m);
+  const e=new THREE.LineSegments(new THREE.EdgesGeometry(geo),lm); e.position.copy(m.position); g.add(e); box.expandByObject(m);}
+const c=box.getCenter(new THREE.Vector3()), s=box.getSize(new THREE.Vector3()); const R=Math.max(s.x,s.y,s.z);
+const cam=new THREE.PerspectiveCamera(30,innerWidth/innerHeight,10,100000);
+const dir=new THREE.Vector3(-0.55,0.38,1).normalize(); cam.position.copy(c).addScaledVector(dir,R*(M?2.55:1.9)); cam.lookAt(c.x,c.y-s.y*0.04,c.z);
+// sol
+const fl=new THREE.Mesh(new THREE.PlaneGeometry(40000,40000),new THREE.MeshLambertMaterial({color:0xf3f1ec})); fl.rotation.x=-Math.PI/2; fl.position.y=-1; sc.add(fl);
+setTimeout(()=>{r.render(sc,cam); window.ready=true;},400);
+</script></body></html>
